@@ -228,7 +228,7 @@ $rg "EXT4-fs \(sda3\)" /var/log/syslog -C 2
 ~~~
 
 ### Searching Compressed Files
-`ripgrep` can also search for the text in compressed files. As of this writing it supports the follow file formats:
+`ripgrep` can also search for the text in compressed files. As of this writing it supports the following file formats:
 
 - .lzma
 - .bzip2 
