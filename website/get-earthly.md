@@ -177,6 +177,15 @@ ide:
 
 <div class="get-started">
 
+<div class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6">
+  <div class="text-3xl pb-4">
+      Earthly is Better Logged In
+  </div>
+  <div>
+    A better, interactive version of this installation guide is available in <a href="/earthly-cloud" class="underline font-semibold blue-link">Earthly Cloud</a>. Earthly Cloud gives you consistent builds, ridiculous speed, a next-gen developer experience, and it works with any CI. It's your Earthly builds in the cloud. Get 6,000 minutes/month for free by visiting the <a href="https://cloud.earthly.dev/login" class="underline font-semibold blue-link">sign up</a> page.
+  </div>
+</div>
+
 {% include tabs.html title="Install Earthly CLI" selectDescription="Select your OS:" tabs=page.os id="os" %}
 
 <div class="text-base max-w-[800px] mt-2 text-gray-600 pl-2 font-normal">
@@ -185,7 +194,7 @@ For alternative installation options see the <a class="underline blue-link" href
 
 <div class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6">
     <div class="text-3xl pb-4">
-        Verify installation
+        Verify Installation
     </div>
 
 <div>
@@ -207,7 +216,7 @@ This command executes the target <span class="font-semibold">hello</span> from t
 
 </div>
 
-{% include tabs.html title="Add Syntax highlighting" selectDescription="Select your IDE:" tabs=page.ide id="ide" %}
+{% include tabs.html title="Add Syntax Highlighting" selectDescription="Select your IDE:" tabs=page.ide id="ide" %}
 
 <div class="border rounded-xl bg-gray-100 px-6 py-4 mt-6 mb-6" markdown="1">
 
@@ -215,7 +224,7 @@ This command executes the target <span class="font-semibold">hello</span> from t
     Next Steps
   </div>
 
-  <div class="text-gray-500 mt-2 text-lg">Learn more about Earthly through docs and examples, try Earthly CI, or use Earthly with your existing CI.</div>
+  <div class="text-gray-500 mt-2 text-lg">Learn more about Earthly through docs and examples, use Earthly with your existing CI, or use Earthly as a standalone CI.</div>
 
  <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Learn Earthly</div>
 
@@ -229,28 +238,21 @@ To learn how to use Earthly, try:
 
  <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Example projects</div>
  <div class="mt-2">
-Need some inspiration to get started with your project? <div class="mt-2 pb-4">Check out <a class="blue-link underline font-semibold " href="https://github.com/earthly/earthly/tree/main/examples">examples on GitHub</a></div>
+Need some inspiration to get started with your project?
+<div class="mt-2 mb-4">Check out <a class="blue-link underline font-semibold " href="https://github.com/earthly/earthly/tree/main/examples">examples on GitHub</a></div>
 </div>
-
-  <div class="text-2xl mt-4 border-t pt-4 border-gray-300">
-    Earthly CI
-  </div>
-
-  <div class="mt-2">
-See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="underline blue-link  font-semibold">Earthly CI docs</a>
-</div>
-
-<a href="https://cloud.earthly.dev/login" class="try-button py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex" onclick="tryEarthlyCIClick()">
-                    Get Started Free
-                </a>
-  <div>Have questions? <a class="blue-link underline font-semibold " href="/contact-us">Contact us</a></div>
-
   <div class="text-2xl mt-6 border-t pt-4 border-gray-300">
-    Run Earthly in a traditional CI
+    Run Earthly in CI
   </div>
-<div class="mt-2">
-See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a> to use Earthly in GitHub Actions, Circle CI, Jenkins, GitLab CI, and others.
-</div>
+  <div class="mt-2">
+    See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a> to use Earthly in GitHub Actions, Circle CI, Jenkins, GitLab CI, and others.
+    <div class="mt-2 mb-4">
+    You can also use Earthly Satellites <em>(part of Earthly Cloud)</em> in your CI system. Satellites are remote build runners that make builds fast, are super simple to use, and work seamlessly with any CI. See the <a href="https://docs.earthly.dev/earthly-cloud/satellites#using-satellites-in-ci" class="underline font-semibold blue-link">Earthly Satellites docs</a> for more information.
+    </div>
+    <div class="mt-2">
+    Alternatively, you can use Earthly CI <em>(part of Earthly Cloud)</em> – a full-fledged CI system that uses Earthly Satellites under the hood. See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="underline font-semibold blue-link">Earthly CI docs</a> for more information.
+    </div>
+  </div>
 </div>
 
 </div>
