@@ -1,5 +1,5 @@
 ---
-title: "A Guide to Debugging Docker Containers"
+title: "A Beginner's Guide to Debugging Docker Containers"
 categories:
   - Tutorials
 toc: true
@@ -12,13 +12,13 @@ internal-links:
  - debugging docker
  - docker containers
  - encountering bugs
+excerpt: | 
+Debugging Docker containers can be frustrating. Luckily, Docker provides several commands that make managing and troubleshooting containers easy. In this article, we'll walk you through several real world scenarios and show you some tips and techniques for debugging Docker containers.
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article discusses how you can debug Docker containers for different scenarios. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
 
-Since its release in 2013, Docker has become an increasingly popular tool for software development. This popularity of Docker containers is due to several features, such as its compatibility across several environments. Additionally, with the increasing rise of the microservice architecture, Docker containers can break down services into separate containers.
-
-Due to Docker's widespread use, encountering bugs or the need for debugging is nearly unavoidable, which can be quite frustrating. However, Docker provides several commands that make managing and troubleshooting containers easy. In this article, This article will take you through some of these commands you can use while debugging. You will have a practical approach to debugging Docker containers via the various real-world scenarios in this article.
+Debugging Docker containers can be frustrating. Luckily, Docker provides several commands that make managing and troubleshooting containers easy. In this article, we'll walk you through several real world scenarios and show you some tips and techniques for debugging Docker containers.
 
 ## Prerequisites
 
@@ -37,25 +37,19 @@ Before moving into the various debugging techniques and their respective Docker 
 
 Docker containers have numerous features that make them highly popular. Some of these features include being lightweight, portable, and disposable. That means you can start, stop and destroy Docker containers with ease.
 
-Although advantageous, these features mean containers would be short-lived, making it challenging to capture and analyze the state of a container at any point in time. However, you will learn strategies to gain insights into the status of a container.
+Although advantageous, these features mean containers would be short-lived, making it challenging to capture and analyze the state of a container at any point in time.
 
 ### Isolated Environments
 
 Part of the design of Docker containers is their isolation from the underlying host system and other containers. This feature makes it more secure and improves encapsulation; however, debugging can be complex with this design.
 
-Troubleshooting within this isolated Docker environment requires specific techniques and Docker commands. You will gain practical knowledge of methods to access container shells and execute commands within running containers.
-
 ### Limited Visibility
 
 Imagine a scenario where your application comprises multiple interconnected containers. If one container is not working correctly, it may impact the entire application's functionality. However, pinpointing the exact cause of the issue becomes a puzzle due to limited visibility from the host system into individual containers making it challenging to observe internal states, logs, and network interactions.
 
-To address this challenge, you will better understand commands and strategies that help you gain visibility into your containers. Additionally, you will learn techniques to inspect container networks and diagnose network-related problems. These approaches will enable you to understand how your containers communicate and help you identify and resolve issues affecting your application's performance and functionality.
-
-A thorough grasp of the Docker debugging landscape is crucial to troubleshooting Docker containers effectively.
-
 ## Exploring Essential Docker Debugging Commands
 
-The following sections contain various scenarios where debugging and troubleshooting commands are helpful. These commands are powerful tools that will equip you to resolve issues within your containerized applications effectively.
+The following sections contain various scenarios where debugging and troubleshooting commands are helpful.
 
 ### Inspecting Container Status and Logs
 
@@ -208,10 +202,8 @@ Both methods have advantages and can be utilized based on your specific debuggin
    docker exec -it [container] /bin/sh
    ~~~
 
-   **Output:**
-
-   ~~~{.bash caption=">_"}
-   # Is
+   ~~~{ caption="Output"}
+   # ls
    bin build cgi-bin conf error htdocs icons include logs modules
    ~~~
 
@@ -268,9 +260,7 @@ Below are the steps you would take to troubleshoot this issue:
 
    Replace `container` with the name or ID of the problematic container.
 
-   **Output:**
-
-   ~~~{.bash caption="Output"}
+   ~~~{ caption="Output"}
    UID      PID   PPID  STIME  TTY  TIME      CMD
    lxd      2523  2502  21:06  -    00:00:38  mysqld
    ~~~
@@ -287,7 +277,7 @@ By following these steps, you can effectively use `docker stats` and `docker top
 
 ### Debugging Network Connectivity
 
-Network connectivity issues can arise when working with Docker containers, and having the right tools to diagnose and troubleshoot them is crucial. This section will teach you essential Docker commands to use while debugging network connectivity problems.
+Learning [Docker networking](/blog/docker-networking/) can be tricky. Even with a solid understanding of the fundamentals, debugging Docker network connectivity errors can be frustrating. In this section, we'll take a look at some strategies you can use next time you encounter a network error.
 
 You can use the following commands to resolve network difficulties:
 
@@ -301,7 +291,7 @@ You can use the following commands to resolve network difficulties:
 
 - **Docker exec**: The `docker exec` command, as you learned earlier, allows you to execute commands within a running container. It can also be utilized in two ways to debug network connectivity issues:
 
-   1. `docker exec -it [container] ping [host]`: The `docker exec` command, combined with the `ping` utility, allows you to verify network connectivity between containers and external hosts. With the following command:
+   1. `ping`: The `docker exec` command, combined with the `ping` utility, allows you to verify network connectivity between containers and external hosts:
 
       ~~~{.bash caption=">_"}
       docker exec -it [container] ping [host]
@@ -309,7 +299,7 @@ You can use the following commands to resolve network difficulties:
 
       To test a specific container, replace `container` with its name or ID. Similarly, replace `host` with the hostname or IP address of the target host.
 
-   2. `docker exec -it [container] nc -zv [host] [port]`: The `docker exec` command, combined with the [nc](https://www.tutorialspoint.com/unix_commands/nc.htm) utility, allows you to check connectivity to a specific port on a host. To perform a check on the connection between a container and a specific host and port, use the command below:
+   2. `nc`: The `docker exec` command, combined with the [nc](https://www.tutorialspoint.com/unix_commands/nc.htm) utility, allows you to check connectivity to a specific port on a host. To perform a check on the connection between a container and a specific host and port, use the command below:
 
       ~~~{.bash caption=">_"}
       docker exec -it [container] nc -zv [host] [port]`
@@ -343,9 +333,7 @@ To troubleshoot and resolve the network problem, you can follow these steps:
    docker exec -it 192df0366472 nc 54.91.248.13 8080
    ~~~
 
-   **Output:**
-
-   ~~~{.bash caption=">_"}
+   ~~~{ caption="Output"}
    Connection to 54.91.248.13 8080 port [tcp/*] succeeded!
    ~~~
 
