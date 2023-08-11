@@ -12,7 +12,7 @@ internal-links:
  - deploying infrastructure as code
  - code deployment
 excerpt: | 
-With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog.
+     With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog.
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shows you how to deploy Infrastructure as Code with AWS CloudFormation. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
