@@ -1,108 +1,129 @@
-<div class="w-full mt-6">
-  <div class="px-6 lg:px-10 pt-4 max-w-7xl m-auto">
-    <div class="text-4xl font-semibold">Testimonials</div>
-    <div class="text-2xl text-slate-500 pt-1 pb-3">
-      Developers and engineering teams love Earthly
+<div class="w-full pt-4 pb-12">
+  <div class="max-w-7xl m-auto px-6 lg:px-10">
+    <div id="slides-container" class="flex overflow-hidden rounded-2xl scroll-smooth shadow-md border">
+      {% for item in site.data.customer-quotes %}
+      <div id="slide" class="w-full basis-full flex flex-col lg:flex-row flex-1 shrink-0">
+        {% if item.changeType %}
+        <div class="min-h-[194px] lg:w-[346px]  flex flex-col items-center justify-center">
+          {% if item.changeType == "speed-percentage" %}
+          <div class="w-[120px] h-[120px] bg-white flex items-center justify-center rounded-full">
+            <div class="progress-bar" style="--progress-value: {{ item.changeValue }}">
+              <p class="flex font-medium items-center text-4xl tracking-tighter">
+                {{ item.changeValue }}
+                <span class="text-lg">&nbsp;%</span>
+              </p>
+            </div>
+          </div>
+          <p class="font-medium mt-2 text-sm">Decrease in build time after Earthly</p>
+          {% elsif item.changeType == "speed" %}
+          <div class="w-[120px] h-[120px] bg-white flex items-center justify-center rounded-full">
+            <div class="border-2 border-[#4175DD] progress-bar">
+              <p class="flex font-medium items-center rounded-full text-4xl tracking-tighter">
+                {{ item.changeValue }}
+              </p>
+            </div>
+          </div>
+          <p class="font-medium mt-2 text-sm">9 times faster builds with Earthly</p>
+          {% endif %}
+
+        </div>
+        {% endif %}
+
+        <div
+          class="flex flex-1 flex-col max-w-3xl mx-auto pb-6 px-10 lg:px-0 lg:pb-0 lg:pt-8 justify-center lg:justify-start">
+          <div class="flex items-start">
+            <img class="mt-0.5 pt-px" src="/assets/svg/quotes.svg" alt="Quotes" />
+            <p class="leading-8 text-gray-700 text-xl">{{ item.quote }}</p>
+          </div>
+
+          <div class="flex items-center mt-2">
+            <img class="w-12 h-12 mr-3 rounded-full" src="./assets/img/{{ item.image }}" alt="{{ item.name }}" />
+            <div>
+              <p class="font-bold leading-5">{{ item.name }}</p>
+              <p class="mt-1 opacity-50 text-sm">
+                {{ item.headline[0] }} <a class="underline" target="_blank" href="{{ item.link }}">{{ item.headline[1]
+                  }}</a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% endfor %}
     </div>
-  </div>
 
-  <div class="px-6 lg:px-10 max-w-7xl m-auto">
-    <div class="lg:grid grid-cols-2 gap-4">
-      <div class="mb-4 lg:mb-0 col-span-1 rounded-lg bg-gray-100 pl-4 pr-10 pt-6 pb-12">
-        <div class="flex items-center">
-          <div class="flex">
-            <img
-              class="rounded-full h-16 mr-4"
-              src="./assets/img/jesus-rodriguez-valencia.jpg"
-              alt="Jesús Rodríguez Valencia"
-            />
-          </div>
-          <div class="flex flex-col flex-1">
-            <div class="font-semibold">Jesús Rodríguez Valencia</div>
-            <div class="text-base text-gray-400">
-              Principal Software Engineer @
-              <a target="_blank" href="https://www.roche.com/">Roche</a>
-            </div>
-          </div>
-        </div>
-        <div class="pl-4 lg:pl-20 lg:pr-4 pt-4 lg:pt-0 text-xl text-gray-600">
-          By using Earthly, we enabled developers to execute complex CI
-          pipelines on their laptops without having to commit any code!
-        </div>
+    <div class="flex gap-2 justify-center mt-4">
+      {% for item in site.data.customer-quotes %}
+      <div id="indicator-{{ forloop.index }}"
+        class="w-3 h-3 cursor-pointer duration-300 rounded-full transition-colors {% if forloop.index > 1 %}bg-[#d8d8d8]{% else %}bg-[#535E73]{% endif %}">
       </div>
-
-      <div class="mb-4 lg:mb-0 col-span-1 rounded-lg bg-gray-100 pl-4 pr-10 pt-6 pb-12">
-        <div class="flex items-center">
-          <div class="flex">
-            <img
-              class="rounded-full h-16 mr-4"
-              src="./assets/img/jesse-anger.jpg"
-              alt="Jesse Anger"
-            />
-          </div>
-          <div class="flex flex-col flex-1">
-            <div class="font-semibold">Jesse Anger</div>
-            <div class="text-base text-gray-400">
-              Head of IT & Security Operations @
-              <a target="_blank" href="https://www.deepgenomics.com/">Deep Genomics</a>
-            </div>
-          </div>
-        </div>
-        <div class="pl-4 lg:pl-20 lg:pr-4 pt-4 lg:pt-0 pr-4 text-xl text-gray-600">
-          By providing rapid build times, intelligent caching, and
-          repeatability, Earthly enables a better approach to the coordination
-          of development and deployment.
-        </div>
-      </div>
-
-      <div class="mb-4 lg:mb-0 col-span-1 rounded-lg bg-gray-100 pl-4 pr-10 pt-6 pb-12">
-        <div class="flex items-center">
-          <div class="flex">
-            <img
-              class="rounded-full h-16 mr-4"
-              src="./assets/img/brian-bugh.jpg"
-              alt="Brian Bugh"
-            />
-          </div>
-          <div class="flex flex-col flex-1">
-            <div class="font-semibold">Brian Bugh</div>
-            <div class="text-base text-gray-400">
-              CTO @
-              <a target="_blank" href="https://tableneeds.com/">Table Needs</a>
-            </div>
-          </div>
-        </div>
-        <div  class="pl-4 lg:pl-20 lg:pr-4 pt-4 lg:pt-0 pr-4 text-xl text-gray-600">
-          Earthly CI reduced our average build time from 20 minutes to 3 minutes
-          and was quick and straightforward to set up and use.
-        </div>
-      </div>
-
-      <div class="mb-4 lg:mb-0 col-span-1 rounded-lg bg-gray-100 pl-4 pr-10 pt-6 pb-12">
-        <div class="flex items-center">
-          <div class="flex">
-            <img
-              class="rounded-full w-16 h-16 mr-4"
-              src="./assets/img/spencer-kimball.png"
-              alt="Spencer Kimball"
-            />
-          </div>
-          <div class="flex flex-col flex-1">
-            <div class="font-semibold">Spencer Kimball</div>
-            <div class="text-base text-gray-400">
-              Creator of
-              <a target="_blank" href="https://www.cockroachlabs.com/">CockroachDB</a>
-              and co-creator of
-              <a target="_blank" href="https://www.gimp.org/">GIMP</a>
-            </div>
-          </div>
-        </div>
-        <div class="pl-4 lg:pl-20 lg:pr-4 pt-4 lg:pt-0 pr-4 text-xl text-gray-600">
-          By reducing the friction inherent in build tools, Earthly is enabling
-          companies to move quickly and reduce the context switching overhead in
-          their engineering organizations.
-        </div>
-      </div>
+      {% endfor %}
     </div>
   </div>
 </div>
+
+<script>
+  const totalSlides = document.querySelectorAll("#slide").length;
+  const slidesContainer = document.getElementById("slides-container");
+
+  let currentSlide = 1;
+
+  const intervalFunction = () => {
+    const slideWidth = document.getElementById("slide").clientWidth;
+
+    if (currentSlide === totalSlides) {
+      let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+      indicatorClasses.remove("bg-[#535E73]")
+      indicatorClasses.add("bg-[#d8d8d8]")
+
+      slidesContainer.scrollLeft = 0;
+      currentSlide = 1;
+
+      indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+      indicatorClasses.remove("bg-[#d8d8d8]")
+      indicatorClasses.add("bg-[#535E73]")
+    } else {
+      let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+      indicatorClasses.remove("bg-[#535E73]")
+      indicatorClasses.add("bg-[#d8d8d8]")
+
+      slidesContainer.scrollLeft = slideWidth * currentSlide;
+      currentSlide++;
+
+      indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+      indicatorClasses.remove("bg-[#d8d8d8]")
+      indicatorClasses.add("bg-[#535E73]")
+    }
+  }
+
+  var interval = setInterval(intervalFunction, 10000);
+
+  const indicators = document.querySelectorAll('[id^="indicator"]');
+  indicators.forEach(indicator => {
+    indicator.addEventListener("click", e => {
+      const slideWidth = document.getElementById("slide").clientWidth;
+      const id = +e.target.id.replace("indicator-", "")
+
+      if (id !== currentSlide) {
+        clearInterval(interval)
+
+        let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#535E73]")
+        indicatorClasses.add("bg-[#d8d8d8]")
+
+        currentSlide = id
+        slidesContainer.scrollLeft = slideWidth * (currentSlide - 1);
+
+        indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#d8d8d8]")
+        indicatorClasses.add("bg-[#535E73]")
+
+        interval = setInterval(intervalFunction, 10000);
+      }
+    })
+  })
+
+  window.addEventListener('resize', () => {
+    const slideWidth = document.getElementById("slide").clientWidth;
+    slidesContainer.scrollLeft = slideWidth * (currentSlide - 1);
+  })
+</script>

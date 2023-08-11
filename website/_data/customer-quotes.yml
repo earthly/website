@@ -1,0 +1,36 @@
+- name: Ses Goe
+  image: ses-goe.jpg
+  headline:
+    - Director of Internal Tools @
+    - NOCD
+  link: https://www.deepgenomics.com/
+  quote: Switching to Earthly took us from 45 minutes to 20 minutes, and using Satellites took us from like 20 minutes to 4 or 5 on average.
+  changeType: speed
+  changeValue: 9X
+
+- name: Jesús Valencia
+  image: jesus-rodriguez-valencia.jpg
+  headline:
+    - Principal Software Engineer @
+    - Roche
+  link: https://www.roche.com/
+  quote: By using Earthly, we enabled developers to execute complex CI pipelines on their laptops without having to commit any code!
+
+- name: Brian Bugh
+  image: brian-bugh.jpg
+  headline:
+    - CTO @
+    - Table Needs
+  link: https://tableneeds.com/
+  quote: Earthly CI reduced our average build time from 20 minutes to 3 minutes and was quick and straightforward to set up and use.
+  changeType: speed-percentage
+  changeValue: 85
+
+- name: Jesse Anger
+  image: jesse-anger.jpg
+  headline:
+    - Head of IT & Security Operations @
+    - Deep Genomics
+  link: https://www.deepgenomics.com/
+  quote: By providing rapid build times, intelligent caching, and repeatability, Earthly enables a better approach to the coordination of development and deployment.
+
