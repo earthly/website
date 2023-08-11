@@ -69,6 +69,7 @@ publish:
   RUN mkdir -p ./build/blog
   RUN cp -rf ./blog/* ./build/blog
   RUN cp -rf ./website/* ./build
+  COPY ./netlify.toml ./build/netlify.toml
 
   IF [ "$DESTINATION" = "PROD" ]
     RUN --no-cache echo "PROD_DEPLOY"
