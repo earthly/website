@@ -13,7 +13,7 @@ excerpt: |
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler. It's a nifty tool that could help enhance your team's DX. [Give it a shot](/).**
 
-Developer Experience is the User Experience of a Developer. Developer Experience Design (DX) is User Experience Design (UX Design), the work of improving a user's experience with a product where the user is a developer.
+Developer Experience (DX) is the User Experience (UX) tailored specifically for developers. While a UX Engineer optimizes interactions for end-users, DX focuses on enhancing a developer's journey with tools, libraries, APIs, and platforms.
 
 ## Who Should Care About Developer Experience?
 
@@ -38,7 +38,7 @@ Alice is a Product Manager at Request Express, a developer tool for API developm
 
 To her, everything you need to know about Developer Experience can be traced back to Stripe. Stripe is a whole successful billion-dollar company based on the observation that the developer experience for payment processing was horrible and they could do better.
 
-Alice raves about how easy Stripe is to work with. She looks to Stripe as a model to emulate for elements like clear documentation, reusable code samples, and a straightforward onboarding process. Stripe helped demonstrate to the industry how valuable investing in developer experience can be.
+Alice raves about how easy Stripe is to work with. She looks to Stripe as a model to emulate for elements like clear documentation, reusable code samples, and a straightforward onboarding process. Stripe demonstrated to the industry the immense value of investing in developer experience.
 
 Alice has modeled some of Request Express's newest features after Stripe's developer-centric approach. She led her team to create interactive documentation with embedded code samples inspired by Stripe's docs. And she led a redesign of Request Express's onboarding flow to simplify the initial integration steps that had been pain points for developers.
 
@@ -98,7 +98,7 @@ Carlos doesn't have the luxury of focusing on just one tool - he has to think of
 * **Documentation** of key procedures and processes to help with onboarding
 * **Continuous delivery pipelines** and test automation so developers can ship faster with confidence.
 
-For Carlos, key metrics to measure might include:
+For Carlos, key metrics might include:
 
 * **Onboarding Duration** - How long it takes new developers to make their first successful code contribution.
 * **Time To First Commit** - Time from cloning repo to having a local commit ready. Includes time for getting dependencies, setting up the environment, and making a superficial change.
@@ -141,12 +141,14 @@ Six months later, the anonymous developer survey looked a lot better, and six mo
 
 ## Conclusion
 
-So there you go. Developer Experience Design (DX) is not just a trendy concept but a fundamental pillar of success in modern software development. Alice, Carlos, and Bob underscore its wide-ranging impact.
+So there you go. Developer Experience is not just a trendy new term but a fundamental pillar of success in modern software development. Alice, Carlos, and Bob underscore its wide-ranging impact.
 
 * For **Alice**, embracing DX, transformed her product's usability and popularity by prioritizing clear documentation and smooth onboarding.
 * **Bob** took DX to heart within his organization, turning a once-underused tool into a loved and valued resource by being attuned to his internal users' needs.
 * Meanwhile, **Carlos** leveraged DX to tackle rapid scaling challenges, using feedback to implement necessary changes that sped up development and improved team collaboration.
 
 From public-facing APIs to internal tools and across entire organizations, DX defines the quality of the interaction developers have with the systems they use. Field testing and continuous feedback play a critical role in identifying pain points and areas of improvement. They drive adoption, nurture loyalty, and fosters success.
+
+Are there tools or API's you use that could benefit from a DX overhaul?
 
 DX can transform an ignored tool into an essential one, facilitate a struggling product's rise to popularity, and turn a rapidly expanding team into a well-oiled machine. Whether you are an Alice, a Bob, or a Carlos, recognizing the importance of DX and continuously working to improve it is the key to ensuring developer satisfaction and, ultimately, your organization's success. And if you're interested in improving your Developer Experience, you might want to check out [Earthly](https://www.earthly.dev/), a build automation tool designed to simplify and accelerate development workflows.
