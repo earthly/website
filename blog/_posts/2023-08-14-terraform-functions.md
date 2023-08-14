@@ -11,6 +11,9 @@ internal-links:
  - terraform functions
  - automating with terraforms functions
  - best practices to automate
+
+excerpt: |
+     One of Terraform's key features is its built-in functions that automate tasks in infrastructure management. These functions allow you to perform complex operations and calculations, making your code more flexible and reusable.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers automating infrastructure using terraform functions. If you want to know more about building in containers, then [check us out](/).**
@@ -33,7 +36,7 @@ While Terraform functions provide a lot of flexibility and power, there are also
 
 Although predefined values can be fed into the configuration file, this approach may restrict the overall flexibility of your Terraform configuration. In such cases, runtime values can't be computed, limiting the dynamic nature of your runtime setup.
 
-To execute the code snippets in this article, you must install Terraform locally on your system by following the official [Terraform installation](https://developer.hashicorp.com/terraform/downloads) guide. Alternatively, you can utilize an online Terraform playground to run the code examples in your browser.
+To execute the code snippets in this article, you must install Terraform locally on your system by following the official [Terraform installation](https://developer.hashicorp.com/terraform/downloads) guide. Alternatively, you can utilize an [online Terraform playground](https://terraform-online-console.com/) to run the code examples in your browser.
 
 ## Types of Terraform Functions
 
@@ -156,8 +159,6 @@ secret_key
 File system functions are useful when generating or managing files dynamically. However, because Terraform is mainly designed for infrastructure provisioning, you should limit using file system functions.
 
 In the following example, the `file` function in Terraform reads the contents of a specified file and returns them as a string. This can be useful when you need to use the contents of a file as input for a resource or data source in your Terraform configuration.
-
-In your Terraform console, run the following code:
 
 ~~~{.bash caption=">_"}
 file("ip_addresses.txt")
