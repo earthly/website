@@ -106,7 +106,7 @@ layout: default
                 <p>Table of contents</p>
                 {% svg assets/svg/chevron.svg id="toc-dropdown-icon" width="16px" height="16px" class="transition-transform" %}
               </div>
-              <div id="toc-dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-2 pb-4 pt-2 hidden">
+              <div id="toc-dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-2 py-4 hidden">
                 {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
               </div>
             {% endif %}
