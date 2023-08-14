@@ -85,11 +85,11 @@ To see how powerful this can be, suppose you currently sell a product in three c
 ~~~{.python caption=""}
 def lambda_handler(event, context):
 
-    // application logic here
+    # application logic here
 
     cloudwatch = boto3.client('cloudwatch')
-    color = event['color'] // String
-    units_sold = event['units_sold'] // String
+    color = event['color'] # String
+    units_sold = event['units_sold'] # String
 
     cloudwatch.put_metric_data(
         MetricData=[
@@ -108,7 +108,7 @@ def lambda_handler(event, context):
         Namespace='Products'
     )
 
-    // more application logic here
+   # more application logic here
 ~~~
 
 This code initializes a CloudWatch client, and then obtains two fields from the input event: the `color` of the unit sold, and the number of `units_sold`. To put custom metric data into CloudWatch, the code then calls the CloudWatch [PutMetricData](https://docs.aws.amazon.com/AmazonCloudWatch/latest/APIReference/API_PutMetricData.html) API with the `color` and `units_sold` parameters.
