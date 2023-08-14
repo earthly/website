@@ -106,6 +106,7 @@ $ rg "EXT4" /var/log/syslog
 Here, we are searching for logs that contain the word `EXT4` from `/var/log/syslog`, which is the central repository for all system log messages:
 
 ~~~{ caption="Output"}
+
 3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
 3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
 ~~~
@@ -119,6 +120,7 @@ $ rg "EXT4-fs \(sda3\):" /var/log/syslog
 Here, we are searching for logs related to the storage device sda3. The search is performed on the file /var/log/syslog, and parentheses around sda3 are escaped using a single backslash (\) to treat them as literal characters.
 
 ~~~{ caption="Output"}
+
 3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
 3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
 ~~~
@@ -161,6 +163,7 @@ $ rg -i "Error" /var/log/syslog
 ~~~
 
 ~~~{ caption="Output"}
+
 6211:Apr  2 12:15:35 ubuntu-2204 kernel: [    1.986379] RAS: Correctable Errors collector initialized.
 26819:Apr  5 19:07:51 ubuntu-2204 pipewire[8265]: mod.rt: RTKit error: org.freedesktop.DBus.Error.AccessDenied
 ...
@@ -177,6 +180,7 @@ $ rg "EXT4-fs \(sda3\)|Error: " /var/log/syslog
 ~~~
 
 ~~~{ caption="Output"}
+
 3874:Apr  2 12:10:49 ubuntu-2204 kernel: [   15.040728] EXT4-fs (sda3): mounted filesystem with ordered data mode. Quota mode: none.
 3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
 3978:Apr  2 12:10:49 ubuntu-2204 kernel: [   19.180410] ACPI Error: No handler for Region [SYSI] (0000000012a1600a) [IPMI] (20220331/evregion-130)
@@ -195,6 +199,7 @@ $rg "EXT4-fs \(sda3\)" /var/log/syslog -B 1 -A 2
 ~~~
 
 ~~~{ caption="Output"}
+
 3931-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362418] systemd[1]: Finished Load Kernel Module efi_pstore.
 3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
 3933-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.365877] systemd[1]: Finished Remount Root and Kernel File Systems.
@@ -216,6 +221,7 @@ $rg "EXT4-fs \(sda3\)" /var/log/syslog -C 2
 ~~~
 
 ~~~{ caption="Output"}
+
 3930-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362154] systemd[1]: modprobe@efi_pstore.service: Deactivated successfully.
 3931-Apr  2 12:10:49 ubuntu-2204 kernel: [   18.362418] systemd[1]: Finished Load Kernel Module efi_pstore.
 3932:Apr  2 12:10:49 ubuntu-2204 kernel: [   18.364213] EXT4-fs (sda3): re-mounted. Quota mode: none.
@@ -245,6 +251,7 @@ $ rg 'ERST' -z dmesg.1.gz
 ~~~
 
 ~~~{ caption="Output"}
+
 65:[    0.012175] kernel: ACPI: ERST 0x000000007BAFB000 000230 (v01 DELL   PE_SC3   00000002 DELL 00000001)
 86:[    0.012202] kernel: ACPI: Reserving ERST table memory at [mem 0x7bafb000-0x7bafb22f]
 1075:[    1.842525] kernel: ERST: Error Record Serialization Table (ERST) support is initialized.
@@ -275,6 +282,7 @@ $ rg --replace 'EARTHLY' 'ERST' -z dmesg.2.gz
 ~~~
 
 ~~~{ caption="Output"}
+
 65:[    0.012106] kernel: ACPI: EARTHLY 0x000000007BAFB000 000230 (v01 DELL   PE_SC3   00000002 DELL 00000001)
 86:[    0.012134] kernel: ACPI: Reserving EARTHLY table memory at [mem 0x7bafb000-0x7bafb22f]
 1075:[    1.846199] kernel: EARTHLY: Error Record Serialization Table (EARTHLY) support is initialized.
@@ -292,6 +300,7 @@ $ rg '^Apr.*ID=[0-9+][0-9+] \w+ ' /var/log/syslog
 ~~~
 
 ~~~{ caption="Output"}
+
 482:Apr  2 02:33:26 ubuntu-2204 kernel: [325746.634509] [UFW BLOCK] IN=eno1 OUT= MAC=18:66:da:b4:2c:2a:f4:cc:55:43:4f:c1:08:00 SRC=113.203.240.39 DST=14.141.138.19 LEN=48 TOS=0x00 PREC=0x20 TTL=107 ID=43 DF PROTO=TCP SPT=56379 DPT=3389 WINDOW=8192 RES=0x00 SYN URGP=0
 1042:Apr  2 05:35:04 ubuntu-2204 kernel: [336644.124908] [UFW BLOCK] IN=eno1 OUT= MAC=18:66:da:b4:2c:2a:f4:cc:55:43:4f:c1:08:00 SRC=113.203.240.39 DST=14.141.138.19 LEN=52 TOS=0x02 PREC=0x20 TTL=107 ID=91 DF PROTO=TCP SPT=53749 DPT=3389 WINDOW=8192 RES=0x00 CWR ECE SYN URGP=0
 ~~~
