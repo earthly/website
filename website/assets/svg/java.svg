@@ -1,7 +1,7 @@
 <svg width="59" height="60" viewBox="0 0 59 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <circle cx="29.5002" cy="30.0837" r="29" fill="#81FEFC" stroke="white"/>
-  <circle cx="29.5001" cy="30.0838" r="26.3678" fill="#34F8BB"/>
-  <circle cx="29.5006" cy="30.0839" r="23.856" fill="#D7FEF9"/>
+  <circle cx="29.5002" cy="30.0837" r="29" fill="white" stroke="white"/>
+  <circle cx="29.5001" cy="30.0838" r="26.3678" fill="#4175DD"/>
+  <circle cx="29.5006" cy="30.0839" r="23.856" fill="white"/>
   <circle cx="29.5004" cy="30.0839" r="20.6476" fill="white"/>
 
   <g>
