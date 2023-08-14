@@ -100,6 +100,18 @@ layout: default
             {% endif %}
           </div>
 
+          <div class="lg:hidden mb-4">
+            {% if page.toc %}
+              <div class="border border-gray-400 flex items-center justify-between my-2 px-4 py-2 rounded-md" onclick="toggleToc()">
+                <p>Table of contents</p>
+                {% svg assets/svg/chevron.svg id="toc-dropdown-icon" width="16px" height="16px" class="transition-transform" %}
+              </div>
+              <div id="toc-dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-2 pb-4 pt-2 hidden">
+                {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
+              </div>
+            {% endif %}
+          </div>
+
           <div class="prose content-block">{{ content }}</div>
 
           <div class="mt-4 prose">
@@ -182,19 +194,33 @@ layout: default
     var seriesContent = document.getElementById('series-content')
     breadcrumbs.style.top = banner[0].scrollHeight + 36 + 'px'
     seriesContent.style.top = banner[0].scrollHeight + 86 + 'px'
-
-    var dropdownList = document.getElementById('dropdown-list')
-    var dropdownIcon = document.getElementById( 'dropdown-icon')
-
-    function toggleSeriesContent() {
-      if (dropdownList.classList.contains('hidden')) {
-        dropdownList.classList.remove('hidden')
-        dropdownIcon.style.transform = 'rotate(180deg)'
-      } else {
-        dropdownList.classList.add('hidden')
-        dropdownIcon.style.transform = 'rotate(0deg)'
-      }
-    }
   </script>
 {% endif %}
 
+<script>
+  var dropdownList = document.getElementById('dropdown-list')
+  var dropdownIcon = document.getElementById('dropdown-icon')
+
+  function toggleSeriesContent() {
+    if (dropdownList.classList.contains('hidden')) {
+      dropdownList.classList.remove('hidden')
+      dropdownIcon.style.transform = 'rotate(180deg)'
+    } else {
+      dropdownList.classList.add('hidden')
+      dropdownIcon.style.transform = 'rotate(0deg)'
+    }
+  }
+
+  var tocDropdownList = document.getElementById('toc-dropdown-list')
+  var tocDropdownIcon = document.getElementById('toc-dropdown-icon')
+
+  function toggleToc() {
+    if (tocDropdownList.classList.contains('hidden')) {
+      tocDropdownList.classList.remove('hidden')
+      tocDropdownIcon.style.transform = 'rotate(180deg)'
+    } else {
+      tocDropdownList.classList.add('hidden')
+      tocDropdownIcon.style.transform = 'rotate(0deg)'
+    }
+  }
+</script>

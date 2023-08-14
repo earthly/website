@@ -107,12 +107,29 @@ html {
   }
 }
 
+.toc__menu {
+  max-height: unset;
+
+  li a {
+    margin-bottom: 4px;
+  }
+}
+
 @media (min-width: 1024px) {
   #series-content {
     width: 250px;
     margin-left: -250px;
     position: sticky;
     right: 0;
+  }
+
+  .toc__menu {
+    max-height: calc(100vh - 216px);
+    overflow-y: auto;
+
+    li a {
+      margin-bottom: 0;
+    }
   }
 }
 
@@ -234,11 +251,6 @@ html {
   z-index: 5;
   opacity: 0.5;
   border-radius: 4px 0 0 0;
-}
-
-.toc__menu {
-  max-height: calc(100vh - 216px);
-  overflow-y: auto;
 }
 
 @media (max-width: 580px) {

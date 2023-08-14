@@ -131,7 +131,7 @@
                 {% capture anchorAttributes %}{{ anchorAttributes }} class="{{ include.anchor_class | split: '.' | join: ' ' }}"{% endcapture %}
             {% endif %}
 
-            {% capture listItem %}<a{{ anchorAttributes }} class="text-sm text-gray-600 pl-2 pb-2 pt-2 border-b border-gray-200 block hover:bg-gray-100 ">{{ anchorBody }}</a>{% endcapture %}
+            {% capture listItem %}<a{{ anchorAttributes }} class="text-sm text-gray-600 pl-2 py-0.5 lg:py-2 lg:border-b border-gray-200 block hover:bg-gray-100 ">{{ anchorBody }}</a>{% endcapture %}
         {% elsif skipNoIDs == true %}
             {% continue %}
         {% else %}
