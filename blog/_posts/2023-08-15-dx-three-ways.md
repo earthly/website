@@ -48,7 +48,7 @@ Alice took a page from Stripe's book, modeling Request Express's new features af
   <figcaption>Bob - Internal Tools Lead</figcaption>
 </div>
 
-Bob is a staff software engineer at Shop-O-Rama. He works on internal tools and platforms used by Shop-o-rama's engineering teams.  His job? Make their work easier and more productive.
+Bob is a staff software engineer at Shop-O-Rama. He works on internal tools and platforms used by Shop-o-rama's engineering teams. His job? Make their work easier and more productive.
 
 Bob's wake-up call? Failure. His team built this dashboard system at Shop-o-rama called 'Dash-forge'. Bob thought it was powerful, a game changer. But no one used it. Not without a fight.
 
@@ -134,7 +134,7 @@ After that integration, he paired with the dev. He took a backseat, but still sp
 
 Carlos did things differently. He started with anonymous surveys. What was preventing you from getting your job done? What's frustrating you? New hires made daily lists of problems. Carlos took this data, cleaned it up, summarized it, and took it to a focus group of trusted devs.
 
-He came out of this with a list.  Improvements the organization needed to prioritize.  Build speed had to go up. Red tape had to go. Cross-team collaboration had to be strongly encouraged. Then there was the implementation work: A new docs system based on markdown, a backstage implementation, and a new role, all about onboarding and training improvements.
+He came out of this with a list. Improvements the organization needed to prioritize. Build speed had to go up. Red tape had to go. Cross-team collaboration had to be strongly encouraged. Then there was the implementation work: A new docs system based on markdown, a backstage implementation, and a new role, all about onboarding and training improvements.
 
 Six months later, the anonymous developer survey looked a lot better. Another six months, and the engineering org was moving faster than ever.
 
@@ -146,7 +146,7 @@ So there you go. Developer Experience is not just a trendy new term but a fundam
 * **Bob** really embraced DX in his tool building. He turned a tool that was barely used into something everyone loved by listening to what his users needed.
 * Meanwhile, **Carlos** used DX improvements handle fast growth. He listened to feedback, made changes, and sped up work.
 
-From public-facing APIs to internal tools and across entire organizations, DX means asking how easy our tools are to use.  Testing these tools, getting feedback, that's how we find problems and fix them. It's how we keep developers happy and successful. It's how wedrive adoption, nurture loyalty, and fosters success.
+From public-facing APIs to internal tools and across entire organizations, DX means asking how easy our tools are to use. Testing these tools, getting feedback, that's how we find problems and fix them. It's how we keep developers happy and successful. It's how we drive adoption, nurture loyalty, and fosters success.
 
 Are there tools or apps you use that could be improved?
 
