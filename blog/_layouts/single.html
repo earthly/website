@@ -38,7 +38,7 @@ layout: default
     {% endif %}
 
     <div class="page__inner-wrap flex relative">
-      <div id="breadcrumbs" class="w-[1px] h-full text-md sticky top-[36px] z-10 hidden lg:block">
+      <div id="breadcrumbs" class="w-[1px] h-full text-md top-[36px] z-10 hidden lg:block">
         <div class="w-[250px] pb-20 pt-6 pl-3">
           <div class="mt-6">
             <a href="/blog/" class="text-xl text-blue-600 hover:underline">Blog</a>
@@ -46,7 +46,7 @@ layout: default
             {% if page.sidebar %}
               <a href="/blog/series/" class="text-xl text-blue-600 font-semibold hover:underline">Series</a>
               <span class="text-slate-400 ml-1 mr-1">/</span>
-              <span class="text-xl font-semibold">{{ site.data.navigation[page.sidebar.nav][0].title }}</span>
+              <a href="/blog/series/{{ page.sidebar.nav }}" class="text-xl text-blue-600 font-semibold hover:underline">{{ site.data.navigation[page.sidebar.nav][0].title }}</a>
             {% else %}
               <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
             {% endif %}
@@ -57,7 +57,8 @@ layout: default
               <header>
                 <h4 class="font-semibold text-md mb-2">Table of contents</h4>
               </header>
-              <div class="border-gray-300 relative border bg-white rounded-md mt-2">
+              <div class="border-gray-300 relative border bg-white rounded-md shadow-md mt-2 hidden group-hover:block">
+                <div class="arrow border-l border-t border-gray-300 absolute z-10"></div>
                 <div class="relative z-50 pb-1 pt-1">
                   {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
                 </div>
@@ -70,7 +71,7 @@ layout: default
       <section class="page__content w-full p-2 pt-8 md:p-10 flex flex-1 flex-col items-center relative" itemprop="text">
         {% if page.sidebar %}
           {% if page.sidebar.nav %}
-            <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block" style="height: calc(100% - 114px);">
+            <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block">
               {% include nav_list nav=page.sidebar.nav %}
             </div>
           {% endif %}
@@ -186,16 +187,6 @@ layout: default
     {% endif %}
   {% endif %}
 </div>
-
-{% if page.banner or page.mobileBanner or site.banner or site.mobileBanner %}
-  <script>
-    var banner = document.getElementsByClassName('announcement-banner')
-    var breadcrumbs = document.getElementById('breadcrumbs')
-    var seriesContent = document.getElementById('series-content')
-    breadcrumbs.style.top = banner[0].scrollHeight + 36 + 'px'
-    seriesContent.style.top = banner[0].scrollHeight + 86 + 'px'
-  </script>
-{% endif %}
 
 <script>
   var dropdownList = document.getElementById('dropdown-list')

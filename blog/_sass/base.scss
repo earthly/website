@@ -101,12 +101,6 @@ html {
   }
 }
 
-#series-content {
-  nav {
-    max-height: calc(100vh - 116px);
-  }
-}
-
 .toc__menu {
   max-height: unset;
 
@@ -119,8 +113,6 @@ html {
   #series-content {
     width: 250px;
     margin-left: -250px;
-    position: sticky;
-    right: 0;
   }
 
   .toc__menu {

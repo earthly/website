@@ -3,7 +3,7 @@
 
 <div id="series-content">
     <div class="group">
-        <nav class="relative pb-2 pt-2w lg:mt-3 overflow-y-auto">
+        <nav class="relative pb-2 pt-2w lg:mt-3">
             <div class="font-semibold text-slate-600 text-lg relative z-10 hidden lg:block">In this Series</div>
             <h3 class="nav__title font-semibold mb-2" style="padding-left: 0;">{{ page.sidebar.title }}</h3>
             <ul class="nav__items -mt-2">
