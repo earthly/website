@@ -12,7 +12,7 @@ excerpt: |
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler. Let us enhance your team's build DX. [Give it a shot](/).**
 
-Think of Developer Experience, or DX, as the user experience but for developers. Instead of making things easier for the everyday user, DX is all about making a developer's life easier when they're working with tools, libraries, and platforms.
+Think of Developer Experience, or DX, as user experience but for developers. Instead of making things easier for the everyday user, DX is about making a developer's life easier when working with tools, libraries, and platforms.
 
 ## Who Should Care About Developer Experience?
 
@@ -35,7 +35,7 @@ Three types of people might care about developer experience. Their jobs are diff
 
 Alice is a Product Manager at Request Express, a developer tool for API development. Developer experience is critical for her because Request Express's customers are all developers.
 
-To her, everything about Developer Experience leads back to Stripe. Stripe, a billion-dollar success, was built on a simple observation: the developer experience for payment processing was horrible and they could do better.
+To her, everything about Developer Experience leads back to Stripe. Stripe, a billion-dollar success, was built on a simple observation: the developer experience for payment processing was horrible, and they could do better.
 
 Alice can't stop talking about Stripe. She loves their clear instructions, reusable code, and easy start-up. Stripe showed everyone the value of making things easy for developers.
 
@@ -48,15 +48,15 @@ Alice took a page from Stripe's book, modeling Request Express's new features af
   <figcaption>Bob - Internal Tools Lead</figcaption>
 </div>
 
-Bob is a staff software engineer at Shop-O-Rama. He works on internal tools and platforms used by Shop-o-rama's engineering teams. His job? Make their work easier and more productive.
+Bob is a staff software engineer at Shop-O-Rama. He works on internal tools and platforms used by Shop-o-rama's engineering teams. His job: make their work easier and more productive.
 
 Bob's wake-up call? Failure. His team built this dashboard system at Shop-o-rama called 'Dash-forge'. Bob thought it was powerful, a game changer. But no one used it. Not without a fight.
 
-He could have forced it. He'd seen it before. Top-down mandates, standardizing internal tools, causing friction. Developers forced to use tools they hated. He knew that wasn't the way. So he changed his approach. Started acting like a product manager. Treating internal tools and APIs as a product. Other teams? They were his customers.
+He could have forced it. He'd seen it before. Top-down mandates, standardizing internal tools, causing friction. Developers forced to use tools they hated. He knew that wasn't the way. So he changed his approach. Started acting like a product manager. Treating internal tools and APIs as a product. Those other teams were his customers.
 
-He found that his product solved a genuine problem, but no one could use it. Or at least the usability was bad enough to outweigh any potential benefits.
+His product solved a genuine problem, but no one could use it. Or at least the usability was terrible enough to outweigh any potential benefits.
 
-For Bob, DX is about being selective. He doesn't have the big bucks like a developer tools company. But he can make sure he's building with his users in mind. Now, things like documentation, user testing, and support are part of the product development process.
+For Bob, DX is about being selective. He doesn't have the resources of a developer tools company. But he can make sure he's building with his users in mind. Now, things like documentation, user testing, and support are part of the product development process.
 
 ### Carlos - Organizational Developer Experience
 
@@ -67,13 +67,13 @@ For Bob, DX is about being selective. He doesn't have the big bucks like a devel
 
 Meet Carlos. He's the Director of Engineering at a fast-growing ML startup. But he's got a problem. Carlos faces onboarding and team productivity challenges as the engineering team has grown from 10 to 100 developers.
 
-Quick hiring means training new developers is tough. Getting them the right environment, tools, and documentation to start contributing? Even tougher. Just when things need to speed up, they're slowing down.
+Quick hiring means training new developers is tricky. Getting them the right environment, tools, and documentation to start contributing was even tougher. Just when things need to speed up, they're slowing down.
 
-The ballooning team size has also introduced friction into development workflows. More developers, more confusion. Work's getting duplicated. Carlos sees it. He knows they need a team focused on making things smoother if this startup wants to keep growing.
+The ballooning team size has also introduced friction into development workflows. More developers, more confusion. Work's getting duplicated. Carlos sees it. He knows they need a team focused on smoothing things out if this startup wants to keep growing.
 
 ## DX Metrics
 
-So for Alice, Bob, and Carlos, the tactics employed to improve the developer experience will vary. They're all about improving how developers interact with code, tools, resources. Every interaction matters. But what Alice, Bob, and Carlos focus on? That's where they differ.
+So for Alice, Bob, and Carlos, the tactics employed to improve the developer experience will vary. They're all about improving how developers interact with code, tools, and resources. Every interaction matters. But what Alice, Bob, and Carlos focus on? That's where they differ.
 
 For Alice, DX might focus on these key elements of her company's API and CLI tool:
 
@@ -106,7 +106,7 @@ For Carlos, key metrics might include:
 
 Bob's worries are a mix. He's got Carlos' concerns about developers in his Org. And he's got Alice's concerns about the tools he owns.
 
-Regardless of the use case, though, there is no perfect metric for measuring DX improvements. Instead, whether your situation is closer to Alice, Bob, or Carlos, you should center your efforts around developer satisfaction and frustration. The best way? Field testing. It's not easy, but it pays off.
+Regardless of the use case, though, there is no perfect metric for measuring DX improvements. Instead, whether your situation is closer to Alice, Bob, or Carlos, you should center your efforts around developer satisfaction and frustration. The least scalable but highest payoff way to do this is field testing.
 
 ## Field Testing
 
@@ -120,7 +120,7 @@ Each volunteer gets on a video call with Alice and is given a task to complete u
 
 ## Field Testing Analysis
 
-The first field test Alice did is hard to forget. The user was confused and lost at step one of the tutorial. He would have never even made it to step two without a nudge from her. That testing led to some tutorial changes and error message cleanup, and then field testing started flowing more smoothly.
+The first field test Alice did is hard to forget. The user was confused and lost at step one of the tutorial. He would have never even made it to step two without a nudge from her. That testing led to some tutorial changes and error message cleanup, and then field testing flowed more smoothly.
 
 For Alice, analysis of the field testing results is a breeze. Every new volunteer finds something. A confusion point, a missing usage pattern, or just a rough edge. The hundred-dollar gift cards she hands out at the end are the best money her company has ever spent.
 
@@ -150,4 +150,4 @@ From public-facing APIs to internal tools and across entire organizations, DX me
 
 Are there tools or apps you use that could be improved?
 
-DX can turn a tool from ignored to essential, boost a struggling product, and make a growing team run smoothly. Whether you're an Alice, a Bob, or a Carlos, improving DX is key. It ensures developer satisfaction and your organization's success. And if you're looking to improve your Developer Experience, check out [Earthly](https://www.earthly.dev/). It's a tool designed to simplify and speed up build and accelerate development workflows.
+DX can turn a tool from ignored to essential, boost a struggling product, and make a growing team run smoothly. Whether you're an Alice, a Bob, or a Carlos, improving DX is key. It ensures developer satisfaction and your organization's success. And if you're looking to improve your Developer Experience, check out [Earthly](https://www.earthly.dev/). It's a tool designed to simplify and speed up builds and accelerate development workflows.
