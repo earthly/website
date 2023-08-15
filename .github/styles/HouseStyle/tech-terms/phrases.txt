@@ -50,3 +50,9 @@ iperf
 nmap
 
 msg
+
+xz
+zstd
+ack
+
+nc

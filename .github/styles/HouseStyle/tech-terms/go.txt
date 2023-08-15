@@ -16,3 +16,5 @@ godotenv
 gomail
 docconv
 Gomail
+
+gorm

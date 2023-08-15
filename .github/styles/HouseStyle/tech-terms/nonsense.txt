@@ -3,6 +3,8 @@
 # IE. inside backtics and code blocks and link urls
 
 oom_score_adj
+rama
+Rama
 scala
 adamgordonbell
 cloudservices
@@ -117,6 +119,8 @@ Lequipe
 
 Akamai
 
+Linuxhandbook
+Mariusschulz
 Loadash
 Vue
 deduped
