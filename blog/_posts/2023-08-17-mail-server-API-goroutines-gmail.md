@@ -1852,10 +1852,3 @@ The article comprehensively outlines the implementation of a concurrent mail ser
 The next steps involve enhancing functionality by adding features like email filtering, attachment handling, and advanced search capabilities, improving user experience through intuitive forms and real-time validation, optimizing load balancing and caching performance, and ensuring security measures.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
-
