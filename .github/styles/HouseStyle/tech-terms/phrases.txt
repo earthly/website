@@ -48,3 +48,5 @@ tcpdump
 iftop
 iperf
 nmap
+
+nc
