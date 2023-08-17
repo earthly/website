@@ -17,8 +17,6 @@ excerpt: |
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/vAS4R5P0Orc" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using `make` and a `Makefile` in VS Code. If you're interested in a different approach to building and packaging software then [check us out](/).**
-
 Microsoft announced [recently](https://devblogs.microsoft.com/cppblog/now-announcing-makefile-support-in-visual-studio-code/) a new Visual Studio Code extension to handle Makefiles. This extension provides a set of commands to the editor that will facilitate working with projects that rely on a Makefile to speed up the build.
 
 In this tutorial, you'll set up a simple C++ project that depends on a well-known Python library to produce some sample charts. This is not a deep tutorial about [make and Makefiles](/blog/g++-makefile/), but to get the most out of the extension you will need to have some concepts clear.

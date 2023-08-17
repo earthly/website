@@ -116,3 +116,6 @@ pushd
 popd
 rpms
 systemctl
+journalctl
+sbin
+deserialize

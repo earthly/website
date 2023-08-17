@@ -3,13 +3,15 @@ title: Earthly API Terms
 layout: page
 ---
 
+<link rel="stylesheet" href="/assets/css/subpage.css">
+
 *2020-12-01*
 
 These terms ("**API Terms**") are a legally binding agreement between you and Earthly Technologies Inc. ("**Earthly Technologies,**" "**we,**" "**us,**" or "**our**") and will apply if you are issued an API Token or otherwise given access to our API (as defined below) for use in connection with the Service (as defined in the Terms of Service). These API Terms are in addition to the Earthly Technologies Terms of Service ("**Terms of Service**"), which generally governs your access to and use of the Service.
 
 BY ACCESSING OR USING THE API TOKEN OR API KIT, YOU ARE INDICATING THAT YOU HAVE READ, UNDERSTOOD, AND AGREE TO BE BOUND BY THESE API TERMS. IF YOU DO NOT AGREE TO THESE API TERMS, THEN YOU DO NOT HAVE OUR PERMISSION TO USE THE API KIT.
 
-1. **DEFINITIONS**. Capitalized but undefined terms used herein have the meanings ascribed to them in the Terms of Service.
+1. **1. DEFINITIONS**. Capitalized but undefined terms used herein have the meanings ascribed to them in the Terms of Service.
 
    1.1. "**API**" means any application programming interface made available by Earthly Technologies to you that allows you to interact and exchange information, such as secrets, software artifacts, and software builds, with the Service.
 
@@ -23,7 +25,7 @@ BY ACCESSING OR USING THE API TOKEN OR API KIT, YOU ARE INDICATING THAT YOU HAVE
 
    1.6. "**Sample Code**" means any software in source code format that may be provided or made available by Earthly Technologies to you under these API Terms.
 
-2. **API USE AND RESTRICTIONS**
+2. **2. API USE AND RESTRICTIONS**
 
    2.1. **API Use**. Subject to the terms and conditions of these API Terms, you may:  internally use a reasonable number of copies of the API Kit in strict accordance with the Documentation, solely to develop and test Applications;  make calls to the documented public features of the API solely from your Application and solely for the purposes of interacting and exchanging information between the Application and the Service in accordance with the Documentation and any other restrictions applicable to the service tier of your account on the Service; and  reproduce and internally modify the Sample Code solely as a component of an Application. By submitting any data to the API, you grant to Earthly Technologies a worldwide, nonexclusive, paid-up, sublicensable, perpetual, irrevocable license to use, copy, display, modify, analyze and prepare derivatives of the data for purposes of responding to your API calls and fulfilling our obligations under any agreements between you and Earthly Technologies.
 
@@ -37,13 +39,13 @@ BY ACCESSING OR USING THE API TOKEN OR API KIT, YOU ARE INDICATING THAT YOU HAVE
 
    2.6. **Reservation of Rights**. All rights not expressly granted to you in these API Terms are reserved to Earthly Technologies. No additional rights whatsoever (including, without limitation, any implied licenses) are granted to you by implication, estoppel or otherwise.
 
-3. **UPDATES AND SUPPORT**
+3. **3. UPDATES AND SUPPORT**
 
    3.1. **Updates**. We may, in our sole discretion, provide replacements, updates, modifications, or bug fixes for the API Kit to you ("**Updated API Kit**"). Each Updated API Kit will be deemed part of the API Kit and subject to these API Terms. Modified or merged portions of the Sample Code will be deemed part of the Sample Code and subject to these API Terms. You will ensure that, prior to commercially using or releasing any Application, each Application will be fully compatible with the most recent Updated API Kit, if any.
 
    3.2. **Support**. We are not obligated to provide you with any assistance related to the API Kit, the development of Applications, or connection to the Service.
 
-4. **TERM AND TERMINATION**
+4. **4. TERM AND TERMINATION**
 
    4.1 **Term**.  These API Terms commences on the date you agree to the Terms of Service and these API Terms and will continue in effect until terminated in accordance with these API Terms.
 
@@ -61,13 +63,13 @@ BY ACCESSING OR USING THE API TOKEN OR API KIT, YOU ARE INDICATING THAT YOU HAVE
 
     4.3. **Survival**.  Sections 2.2 through 2.6, 4.3, and 5 through 9 will survive any termination of these API Terms.
 
-5. **DISCLAIMER OF WARRANTIES**. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE API KIT AND ALL INTELLECTUAL PROPERTY MADE AVAILABLE BY EARTHLY TECHNOLOGIES UNDER THESE API TERMS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.  EARTHLY TECHNOLOGIES DISCLAIMS ALL WARRANTIES DUTIES AND CONDITIONS, WHETHER EXPRESS, IMPLIED OR STATUTORY, WITH RESPECT TO THE API KIT AND RELATED INTELLECTUAL PROPERTY, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. EARTHLY TECHNOLOGIES MAKES NO WARRANTIES OR REPRESENTATIONS AS TO THE TIMELINESS, ACCURACY, COMPLETENESS, RELIABILITY, CORRECTNESS, AVAILABILITY, SECURITY, LACK OF DEFECTS OR ERRORS, LACK OF VIRUSES OR OTHER HARMFUL COMPONENTS, OR QUALITY OF THE API KIT.
+5. **5. DISCLAIMER OF WARRANTIES**. TO THE MAXIMUM EXTENT PERMITTED BY LAW, THE API KIT AND ALL INTELLECTUAL PROPERTY MADE AVAILABLE BY EARTHLY TECHNOLOGIES UNDER THESE API TERMS ARE PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND.  EARTHLY TECHNOLOGIES DISCLAIMS ALL WARRANTIES DUTIES AND CONDITIONS, WHETHER EXPRESS, IMPLIED OR STATUTORY, WITH RESPECT TO THE API KIT AND RELATED INTELLECTUAL PROPERTY, INCLUDING BUT NOT LIMITED TO ANY WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, TITLE, AND NON-INFRINGEMENT. EARTHLY TECHNOLOGIES MAKES NO WARRANTIES OR REPRESENTATIONS AS TO THE TIMELINESS, ACCURACY, COMPLETENESS, RELIABILITY, CORRECTNESS, AVAILABILITY, SECURITY, LACK OF DEFECTS OR ERRORS, LACK OF VIRUSES OR OTHER HARMFUL COMPONENTS, OR QUALITY OF THE API KIT.
 
-6. **LIMITATION OF LIABILITY**. TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER EARTHLY TECHNOLOGIES NOR ITS SUPPLIERS WILL BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, COVER OR CONSEQUENTIAL DAMAGES ARISING FROM OR OTHERWISE RELATED TO THESE TERMS, EVEN IF EARTHLY TECHNOLOGIES OR ITS REPRESENTATIVES HAVE BEEN ADVISED OF THE POSSIBILITY OF THESE DAMAGES AND EVEN IF A REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE. TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR TOTAL LIABILITY UNDER THESE API TERMS FOR ACTUAL DAMAGES FOR ANY CAUSE WHATSOEVER, WHETHER IN CONTRACT, TORT, OR OTHERWISE, WILL BE LIMITED TO ONE HUNDRED DOLLARS ($100).
+6. **6. LIMITATION OF LIABILITY**. TO THE MAXIMUM EXTENT PERMITTED BY LAW, NEITHER EARTHLY TECHNOLOGIES NOR ITS SUPPLIERS WILL BE LIABLE TO YOU OR ANY THIRD PARTY FOR ANY INDIRECT, SPECIAL, INCIDENTAL, PUNITIVE, COVER OR CONSEQUENTIAL DAMAGES ARISING FROM OR OTHERWISE RELATED TO THESE TERMS, EVEN IF EARTHLY TECHNOLOGIES OR ITS REPRESENTATIVES HAVE BEEN ADVISED OF THE POSSIBILITY OF THESE DAMAGES AND EVEN IF A REMEDY SET FORTH HEREIN IS FOUND TO HAVE FAILED OF ITS ESSENTIAL PURPOSE. TO THE MAXIMUM EXTENT PERMITTED BY LAW, OUR TOTAL LIABILITY UNDER THESE API TERMS FOR ACTUAL DAMAGES FOR ANY CAUSE WHATSOEVER, WHETHER IN CONTRACT, TORT, OR OTHERWISE, WILL BE LIMITED TO ONE HUNDRED DOLLARS ($100).
 
-7. **INDEMNITY**. You are responsible for your use of the API Kit, and you will defend and indemnify Earthly Technologies Entities from and against every claim brought by a third party, and any related liability, damage, loss, and expense, including reasonable attorneys' fees and costs, arising out of or connected with: (a) your use of, or misuse of, the API Kit; or (b) your violation of any portion of these API Terms, any representation, warranty, or agreement referenced in these API Terms, or any applicable law or regulation.
+7. **7. INDEMNITY**. You are responsible for your use of the API Kit, and you will defend and indemnify Earthly Technologies Entities from and against every claim brought by a third party, and any related liability, damage, loss, and expense, including reasonable attorneys' fees and costs, arising out of or connected with: (a) your use of, or misuse of, the API Kit; or (b) your violation of any portion of these API Terms, any representation, warranty, or agreement referenced in these API Terms, or any applicable law or regulation.
 
-8. **GENERAL**.
+8. **8. GENERAL**.
 
    8.1. **Modification of these Terms**. We reserve the right to change these API Terms on a going-forward basis at any time, in accordance with Section 12 of the Terms of Service. Please check these API Terms periodically for changes.
 

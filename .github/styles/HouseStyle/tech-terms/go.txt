@@ -11,3 +11,5 @@ Logrus
 gocsv
 
 golang
+
+gorm
