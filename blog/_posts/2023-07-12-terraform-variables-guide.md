@@ -17,6 +17,7 @@ excerpt: |
 ---
 **We're [Earthly](https://earthly.dev/). We make building and automating software pipelines simpler and faster using containerization. If you're working with Terraform, Earthly can be a valuable ally. [Check it out](/).**
 
+
 [Terraform](https://www.terraform.io/) is a widespread [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool that lets you automate the provisioning and management of cloud resources using the [HashiCorp Configuration Language (HCL)](https://www.linode.com/docs/guides/introduction-to-hcl/).
 
 Terraform's configuration language has many constructs, such as resources, data sources, modules, and variables. Variables are configurable parameters used in Terraform configuration files, allowing for more flexible and dynamic setups. They enable users to customize aspects of their infrastructure without altering the main configuration.
