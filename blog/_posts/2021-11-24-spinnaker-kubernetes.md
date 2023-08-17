@@ -15,7 +15,7 @@ excerpt: |
 
 Kubernetes has become the standard for deploying and managing containerized applications, but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
 
-*How do you constantly release software with speed, quality, and confidence?* 
+*How do you constantly release software with speed, quality, and confidence?*
 
 This is where Spinnaker comes in. [Spinnaker is an open-source continuous delivery platform](https://spinnaker.io/) that offers an automated and repeatable process for releasing changes to major cloud platforms. In this article, you'll learn what Spinnaker is, its use cases, and how to deploy a sample application to your Kubernetes cluster using Spinnaker.
 
