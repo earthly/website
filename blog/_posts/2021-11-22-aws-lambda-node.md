@@ -33,7 +33,7 @@ Here are some of the benefits Lambda offers:
 - It allows you to run scripts to automatically discover unused computing resources using [CloudTrail](https://aws.amazon.com/cloudtrail/), a service that tracks and records your AWS API usage.
 - You can create an event-driven app to track your costs and consumption across AWS services.
 
-Lambda has excellent support for Node.js. The [V8 engine](https://v8.dev/) and runtime environment starts quickly in AWS Lambda. This means you don't need a server or container running in order to do something like sending emails.
+Lambda has excellent support for Node.js. The V8 engine and runtime environment starts quickly in AWS Lambda. This means you don't need a server or container running in order to do something like sending emails.
 
 This tutorial will show you how to construct and integrate a service with AWS Lambda that sends emails using [SES](https://docs.aws.amazon.com/lambda/latest/dg/services-ses.html), which you'll build and integrate into a Node.js app.
 
@@ -341,7 +341,7 @@ body:"AWS Lambda is awesome"'
 
 ## Conclusion
 
-You've now created and deployed your first AWS Lambda/Node.js app. To get started with AWS Lambda functions, you used the [serverless.com](https://www.serverless.com/) platform as a reliable and easy-to-manage tool to manage and monitor your AWS Lambda apps.
+You've now created and deployed your first AWS Lambda/Node.js app. To get started with AWS Lambda functions, you used the `serverless.com` platform as a reliable and easy-to-manage tool to manage and monitor your AWS Lambda apps.
 
 To further improve your development workflow, try [Earthly](https://earthly.dev/). The free, open-source container tool works with multiple programming languages and platforms. Earthly can help you establish and repeat a build process for your app.
 

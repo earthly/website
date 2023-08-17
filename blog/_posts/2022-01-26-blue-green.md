@@ -15,7 +15,7 @@ excerpt: |
 
 Remember when systems would go offline to implement changes and updates? Sometimes you still get emails from applications with notifications of downtime, apologizing in advance for any interruption. That's a costly and outdated way of maintaining applications that are constantly evolving.
 
-These days, [blue/green deployments](https://en.wikipedia.org/wiki/Blue-green_deployment) address the downtime and embarrassing errors that are commonly associated with taking an application offline for updates.
+These days, blue/green deployments address the downtime and embarrassing errors that are commonly associated with taking an application offline for updates.
 
 This guide explains blue/green deployments and shares best practices for running them seamlessly. You'll also discover industry-leading tools and techniques to reduce the friction of deploying new application versions continuously.
 
@@ -53,11 +53,11 @@ Finally, the database can be upgraded to `v4` where you simply drop the `birthda
 
 ### CI/CD and Blue/Green Deployments
 
-[CI/CD](https://en.wikipedia.org/wiki/CI/CD) has to be the norm before you implement a blue/green strategy in order to remove complexities with the changeover process.
+Automated deployment has to be the norm before you implement a blue/green strategy in order to remove complexities with the changeover process.
 
 Continuous delivery makes it possible for the application branch in the staging environment to take form seamlessly. Developers add code and integrate it automatically to the previous version with automated tests and lint error removal during static code analysis. However, deployment is left to an ultimate check and green-light process by your engineers.
 
-[Continuous deployment](/blog/deployment-strategies)  takes the process further by automating the deployment and changeover processes. Typically, this workflow comprises small batch-processing events and the creation of build-files with new dependencies. Then there's an automated test of the new build for compatibility with the staging environment and finally, pushing all approved changes as ready for a blue/green switch.
+Continuous deployment takes the process further by automating the deployment and changeover processes. Typically, this workflow comprises small batch-processing events and the creation of build-files with new dependencies. Then there's an automated test of the new build for compatibility with the staging environment and finally, pushing all approved changes as ready for a blue/green switch.
 
 The key to running a successful blue/green deployment is ensuring the replicability and stability of both environments. As the application evolves, either of them could become the production and traffic destination. Keeping that in mind, one of the crucial areas to optimize your transitions around is handling requests made during the blue-to-green (or reverse) transition. In a nutshell, "in-flight" request management is left to the load balancer to delay and route accordingly as soon as the new production environment is stable.
 

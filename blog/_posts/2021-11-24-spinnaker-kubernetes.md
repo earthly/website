@@ -11,11 +11,11 @@ internal-links:
 excerpt: |
     Learn how to use Spinnaker, an open-source continuous delivery platform, to automate and standardize software releases to Kubernetes clusters. This tutorial provides step-by-step instructions on setting up Spinnaker, configuring providers and storage, and deploying applications with pipelines.
 ---
->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Pair it with Spinnaker for even smoother Kubernetes deployments. [Check it out](/).**
+**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Pair it with Spinnaker for even smoother Kubernetes deployments. [Check it out](/).**
 
-[Kubernetes has become the standard for deploying and managing containerized applications](https://newrelic.com/blog/how-to-relic/what-is-kubernetes), but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
+Kubernetes has become the standard for deploying and managing containerized applications, but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
 
-How do you constantly release software with speed, quality, and confidence?  
+*How do you constantly release software with speed, quality, and confidence?*
 
 This is where Spinnaker comes in. [Spinnaker is an open-source continuous delivery platform](https://spinnaker.io/) that offers an automated and repeatable process for releasing changes to major cloud platforms. In this article, you'll learn what Spinnaker is, its use cases, and how to deploy a sample application to your Kubernetes cluster using Spinnaker.
 
@@ -470,7 +470,7 @@ And of course there are tons of [other configuration options](https://www.opsmx.
 
 ## Conclusion
 
-[Spinnaker](https://spinnaker.io/) makes it easy to automate application deployments. Your development team can spend its energy more wisely, improving the number of releases they can handle per day, per week, or per month.
+Spinnaker makes it easy to automate application deployments. Your development team can spend its energy more wisely, improving the number of releases they can handle per day, per week, or per month.
 
 To further improve your CI/CD workflow, check out [Earthly](https://earthly.dev/). Earthly is a continuous integration tool for both your development machine and the CI server, ensuring repeatable builds for everyone.
 

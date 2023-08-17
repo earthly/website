@@ -22,18 +22,16 @@ Part of my job entailed figuring out how to onboard developers who didn't practi
 
 Companies I've worked at during the past 7 years have all used Kubernetes in some way; and the last one, Turbine.ai, adopted it with my lead. It's been quite a journey for me
 since I first encountered the technology in 2015, not long after securing my first full time role as a software engineer at a SaaS startup.
-Back in those days, the only cloud vendor that had a managed public [K8s](/blog/k8s-autoscaling offering was Google Cloud Platform (GKE). The tech was fresh and all backend engineers at our company were pretty hyped about migrating to GKE from Heroku.
+Back in those days, the only cloud vendor that had a managed public K8s offering was Google Cloud Platform (GKE). The tech was fresh and all backend engineers at our company were pretty hyped about migrating to GKE from Heroku.
 
 Later that year, I moved to a role more aligned with my aspirations of working on distributed data processing pipelines with Apache Spark and had little exposure to K8s for
-over a year and a half. My path eventually lead back to the [container](/blog/docker-slim) orchestrator when I started working with the machine learning team, running ML workflows in our cloud environment. I recall manually installing and upgrading Apache Airflow (which was the only service I operated) with Helm, all from my development laptop. If the templates rendered the release was good to go.
+over a year and a half. My path eventually lead back to the container orchestrator when I started working with the machine learning team, running ML workflows in our cloud environment. I recall manually installing and upgrading Apache Airflow (which was the only service I operated) with Helm, all from my development laptop. If the templates rendered the release was good to go.
 
 Fast-forward to my next role where we operated an internal data platform with a more mature development lifecycle. I encountered GitOps for the first time here,
-as backend teams were using Argo CD to deploy their applications. It was a radical quality of life improvement over what I'd been practicing previously. Automatic change detection,
-a nice GUI, alerts on failures and a unified delivery approach for all applications instead of pile of [deployment](/blog/deployment-strategies) scripts; what's not to love?
+as backend teams were using Argo CD to deploy their applications. It was a radical quality of life improvement over what I'd been practicing previously. Automatic change detection, a nice GUI, alerts on failures and a unified delivery approach for all applications instead of pile of deployment scripts. What's not to love?
 
 Then, I was hired by Turbine.ai, which is a cool biotech startup. In the simulation team, we decided to move our workflow orchestrator to K8s, with expectations that other services will follow suit gradually. However, there was a problem. Backend developers weren't generally practicing DevOps in the company, and even a simple configuration change in a web app deployment often involved a sysadmin in the loop. Moving to K8s can be daunting for such newcomers, as they have to learn how to rebuild their existing applications according to cloud native application development principles
-such as [12 factor app](https://12factor.net); learn the fundamentals of K8s alongside with its limitations and idiosynchronicities, pick up new tools and infrastructure components, etc. Moreover, the [cloud native landscape]([https://landscape.cncf.io])
-is vast and rapidly changing, so the best way to do X might be completely different than it was two years ago.
+such as [12 factor app](https://12factor.net); learn the fundamentals of K8s alongside with its limitations and idiosynchronicities, pick up new tools and infrastructure components, etc. Moreover, the [cloud native landscape]([https://landscape.cncf.io]) is vast and rapidly changing, so the best way to do X might be completely different than it was two years ago.
 
 So, long story short, I was afraid that if we didn't offer a smooth developer experience, DevOps would be too much pain to do, which would lead to backlash. GitOps is a method that can largely simplify infrastructure operations for developers, and I managed to convince our team that we should deliver it as part of the milestone marking k8s general availability for the rest of the teams. But what is GitOps and how can it help?
 
@@ -59,14 +57,6 @@ After this short introduction, now it's time to get on with our topic: comparing
 
 ## Introducing the Two Contenders
 
-<!--
-<div class="grid">
-  <div class="cell cell--5 center"><a href=""><img class="image image--md" src="/assets/2022-06-27-flux-vs-argocd/flux-stacked-white.png"/></a></div>
-  <div class="cell cell--2 center">vs</div>
-  <div class="cell cell--5 center"><a href=""><img class="image image--md" src="/assets/2022-06-27-flux-vs-argocd/argo-stacked-white.png"/></a></div>
-</div>
--->
-
 ||<a href="https://fluxcd.io" ><img alt="Flux logo" class="image image--md" src="{{site.images}}{{page.slug}}/flux.png"/> </a>|<a href="https://argoproj.github.io/cd"><img alt="Argo CD logo" class="image image--md" src="{{site.images}}{{page.slug}}/argo.png"/></a>|
 |-|-|-|
 |initial release|Flux2: Jun 25, 2020<br>Flux (succeeded): Jun 27, 2017|Mar 18, 2018|
@@ -83,7 +73,7 @@ Flux predates Argo CD and has been around since 2017. I explore the second major
 
 This article follows with the comparison of the two frameworks organized by core aspects, such as how they carry out reconciliaton, what tools they support, etc. Bear in mind that I do not attempt a full comparison, for the sake of conciseness and because of my limited research, covering the core functionalities and our use cases. I still believe that it could prove useful for many.
 
-## Reconciliation
+## Kubernetes Cluster Reconciliation
 
 _Reconciliation_ or _synchronization_ (_sync_) is the act of modifying the [cluster](/blog/kube-bench) state to match the description stored in git.
 
@@ -116,7 +106,7 @@ It's worth noting that running `flux reconcile` against a suspended resource wil
 Another way to trigger reconciliation is to temporarily `flux resume` the resource. One can argue that this is an imperative action too. The difference is that `suspend` has a declarative setting, so the command effectively edits an in-cluster resource, similarly to e.g `kubectl scale deployment`. Admittedly, this still hurts auditability, since the GitOps state is overridden (at least until the next reconciliation).
 </div>
 
-## Source Tracking
+## GitOps Source Tracking
 
 Source tracking controls how changes are detected in the GitOps resource. Both [Argo CD](https://argo-cd.readthedocs.io/en/stable/user-guide/tracking_strategies/#git) and [Flux](https://fluxcd.io/docs/components/source/gitrepositories/#reference) can be configured to track a branch, a tag pattern, or a fixed commit hash in git.
 
@@ -201,7 +191,7 @@ Don't mistake `kustomize.toolkit.fluxcd.io/Kustomization` for `kustomize.config.
 
 ## Configuration
 
-Flux supports defining strategic merge and [JSON](/blog/convert-to-from-json) patches, overriding images and the [namespaces](/blog/k8s-namespaces in the `kustomize.toolkit.fluxcd.io/Kustomization` [resource](https://fluxcd.io/docs/components/kustomize/kustomization/#override-kustomize-config). Argo CD is less flexible, you have to place your edits in the overlays of your kustomization (with [a few exceptions](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize)). This might be a problem for certain repo layouts, e.g where kustomizations of an app live in a separate repo which is owned by a different team, and adding a new kustomization there is not preferable / feasible. If you are familiar with Helm, it's not hard to see how this will cause a bigger problem there, but about that later. As an additional customization, Flux supports [variable templating and substitution](https://fluxcd.io/docs/components/kustomize/kustomization/#variable-substitution).
+Flux supports defining strategic merge and [JSON](/blog/convert-to-from-json) patches, overriding images and the namespaces in the `kustomize.toolkit.fluxcd.io/Kustomization` [resource](https://fluxcd.io/docs/components/kustomize/kustomization/#override-kustomize-config). Argo CD is less flexible, you have to place your edits in the overlays of your kustomization (with [a few exceptions](https://argo-cd.readthedocs.io/en/stable/user-guide/kustomize/#kustomize)). This might be a problem for certain repo layouts, e.g where kustomizations of an app live in a separate repo which is owned by a different team, and adding a new kustomization there is not preferable / feasible. If you are familiar with Helm, it's not hard to see how this will cause a bigger problem there, but about that later. As an additional customization, Flux supports [variable templating and substitution](https://fluxcd.io/docs/components/kustomize/kustomization/#variable-substitution).
 
 ## Summary
 
