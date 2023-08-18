@@ -70,7 +70,7 @@
       <rect x="5.19019" y="5.58105" width="170.211" height="38.5" rx="6.25" stroke="#D9D9D9" stroke-width="1.5" shape-rendering="crispEdges"/>
     </g>
 
-    <animate attributeName="opacity" begin="1s; d6Logo.end + 2s" dur="50ms" fill="freeze" from="0" to="1"/>
+    <animate attributeName="opacity" begin="1.02s; d6Logo.end + 2.02s" dur="50ms" fill="freeze" from="0" to="1"/>
     <animateMotion id="t1" begin="1.02s; d6Logo.end + 2.02s" dur="0.75s" fill="freeze" path="M718.517 176.42H461.87"/>
     <animate attributeName="opacity" begin="t1.end + 1s" dur="50ms" fill="freeze" from="1" to="0"/>
   </g>
