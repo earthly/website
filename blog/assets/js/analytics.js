@@ -1,11 +1,15 @@
-function setCookie(name, value, days) {
-  var expires = "";
-  if (days) {
-      var date = new Date();
-      date.setTime(date.getTime() + (days*24*60*60*1000));
-      expires = "; expires=" + date.toUTCString();
-  }
-  document.cookie = name + "=" + (value || "")  + expires + "; path=/";
+function setCookie(name, value, days, domain) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    var domStr = "";
+    if (domain) {
+        domStr = "; Domain=" + domain;
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/" + domStr;
 }
 
 function getCookie(name) {
@@ -35,7 +39,7 @@ function getAnalyticCookie() {
       earthlyID = uuidv4();
       newVisitor = true;
   }
-  setCookie(cookieName, earthlyID, 100*365);
+  setCookie(cookieName, earthlyID, 100*365, ".earthly.dev");
   return earthlyID;
 }
 
