@@ -55,13 +55,21 @@
     <animate attributeName="stroke" begin="t5.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="#A5A5A5; #92BCF0; #92BCF0; #A5A5A5"/>
   </path>
 
+  <!-- Calculating offsets for bubbles to run in 2nd, 3rd & 4th loops -->
+  <animate id="loop1" attributeName="opacity" begin="1s; loop4.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
+  <animate id="offsetReuse" attributeName="opacity" begin="loop1.end" end="b1.end" fill="freeze" from="1" to="0"/>
+  <animate id="loop2" attributeName="opacity" begin="loop1.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
+  <animate id="offsetContainerized" attributeName="opacity" begin="loop2.end" end="a9.end" fill="freeze" from="1" to="0"/>
+  <animate id="loop3" attributeName="opacity" begin="loop2.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
+  <animate id="loop4" attributeName="opacity" begin="loop3.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
+
   <!-- T1 -->
   <use href="#dot" opacity="0">
     <animate attributeName="opacity" begin="1s; d6Logo.end + 2s" dur="50ms" fill="freeze" from="0" to="1"/>
     <animateMotion id="t1" begin="1s; d6Logo.end + 2s" dur="0.75s" fill="freeze" path="M718.517 176.42H461.87"/>
     <animate attributeName="opacity" begin="t1.end" dur="50ms" fill="freeze" from="1" to="0"/>
   </use>
-  <g width="181" height="49" viewBox="0 0 181 49" opacity="0" transform="translate(5 -25)">
+  <g width="181" height="49" viewBox="0 0 181 49" opacity="0" transform="translate(468 182)">
     <g filter="url(#filterAutomaticallyParallel)">
       <rect x="4.44019" y="4.83105" width="171.711" height="40" rx="7" fill="#F9FAFB" shape-rendering="crispEdges"/>
       <text xml:space="preserve" fill="black" font-family="Helvetica" font-size="16" letter-spacing="0em" style="white-space: pre">
@@ -70,9 +78,8 @@
       <rect x="5.19019" y="5.58105" width="170.211" height="38.5" rx="6.25" stroke="#D9D9D9" stroke-width="1.5" shape-rendering="crispEdges"/>
     </g>
 
-    <animate attributeName="opacity" begin="1.02s; d6Logo.end + 2.02s" dur="50ms" fill="freeze" from="0" to="1"/>
-    <animateMotion id="t1" begin="1.02s; d6Logo.end + 2.02s" dur="0.75s" fill="freeze" path="M718.517 176.42H461.87"/>
-    <animate attributeName="opacity" begin="t1.end + 1s" dur="50ms" fill="freeze" from="1" to="0"/>
+    <animate attributeName="opacity" begin="loop4.begin" dur="50ms" fill="freeze" from="0" to="1"/>
+    <animate attributeName="opacity" begin="loop4.begin + 1.5s" dur="50ms" fill="freeze" from="1" to="0"/>
   </g>
 
   <!-- A1 -->
@@ -172,8 +179,7 @@
     <path d="M118.488 15.6758L111.097 6.9486L103.706 15.6758L118.488 15.6758Z" fill="#F9FAFB" stroke="#D9D9D9" stroke-width="1.5"/>
     <path d="M118.683 17.087L116.895 14.9385L105.294 14.9385L103.574 17.087L118.683 17.087Z" fill="#F9FAFB"/>
 
-    <animate attributeName="opacity" begin="a9.end" dur="100ms" fill="freeze" from="0" to="1"/>
-    <animate attributeName="opacity" begin="a15Logo.end" dur="100ms" fill="freeze" from="1" to="0"/>
+    <animate attributeName="opacity" begin="offsetContainerized.end" dur="4.2s" fill="freeze" keyTimes="0; 0.023; 0.977; 1" values="0; 1; 1; 0"/>
   </g>
 
   <!-- T2 -->
@@ -260,7 +266,7 @@
     <path d="M15.9813 34.1729L7.25403 26.782L15.9813 19.391L15.9813 34.1729Z" fill="#F9FAFB" stroke="#D9D9D9" stroke-width="1.5"/>
     <path d="M17.072 34.3486L15.2439 32.5656L15.2439 20.993L17.072 19.2773L17.072 34.3486Z" fill="#F9FAFB"/>
 
-    <animate attributeName="opacity" begin="b1.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
+    <animate attributeName="opacity" begin="offsetReuse.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
   </g>
 
   <!-- B12 -->
