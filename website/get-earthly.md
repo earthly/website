@@ -224,7 +224,7 @@ This command executes the target <span class="font-semibold">hello</span> from t
     Next Steps
   </div>
 
-  <div class="text-gray-500 mt-2 text-lg">Learn more about Earthly through docs and examples, use Earthly with your existing CI, or use Earthly as a standalone CI.</div>
+  <div class="text-gray-500 mt-2 text-lg">Learn more about Earthly through docs and examples and how to use Earthly with your existing CI</div>
 
  <div class="text-2xl mt-6 border-t pt-4 border-gray-300">Learn Earthly</div>
 
@@ -248,9 +248,6 @@ Need some inspiration to get started with your project?
     See the <a href="https://docs.earthly.dev/guides/ci-integration" class="underline  font-semibold blue-link">CI integration guide</a> to use Earthly in GitHub Actions, Circle CI, Jenkins, GitLab CI, and others.
     <div class="mt-2 mb-4">
     You can also use Earthly Satellites <em>(part of Earthly Cloud)</em> in your CI system. Satellites are remote build runners that make builds fast, are super simple to use, and work seamlessly with any CI. See the <a href="https://docs.earthly.dev/earthly-cloud/satellites#using-satellites-in-ci" class="underline font-semibold blue-link">Earthly Satellites docs</a> for more information.
-    </div>
-    <div class="mt-2">
-    Alternatively, you can use Earthly CI <em>(part of Earthly Cloud)</em> – a full-fledged CI system that uses Earthly Satellites under the hood. See the <a href="https://docs.earthly.dev/earthly-cloud/earthly-ci" class="underline font-semibold blue-link">Earthly CI docs</a> for more information.
     </div>
   </div>
 </div>

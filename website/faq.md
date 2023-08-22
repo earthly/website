@@ -5,65 +5,41 @@ layout: page
 <!-- vale HouseStyle.H2 = NO -->
 <link rel="stylesheet" href="/assets/css/subpage.css">
 
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="traditional-ci">How is Earthly CI different from a traditional CI?<span class="hide"><a href="#traditional-ci">¶</a></span></h2>
-
-Traditional CI systems were invented in a time before containerization and microservices were popular and the concerns were much more fundamental: does the team even have continuous integration to begin with, and can we ship frequently enough to minimize the lead time between a change and its deployment?
-
-Today the concerns are much more complex: can we do the above, but efficiently, and with a high degree of confidence that the build is correct? Can we do this across multiple platforms, and with a high degree of parallelism? Can we do this while integrating with the open-source ecosystem? Can the CI scale to the needs of monorepos? Can we do this with a high degree of caching, so that we don't have to rebuild the entire world every time we make a change?
-
-Earthly CI was created for the era of today. The era of the modern developer working with complex code bases using a mix of open-source, containerized workloads, monorepo and polyrepo layouts, mixed platforms, and mixed programming languages. Earthly CI democratizes builds in a team, and brings simplicity to the world of ever-increasing complexity. Additionally, Earthly CI scales to the needs of the team via its parallelization and caching capabilities that bring 2-20X faster builds compared to traditional CI systems.
-
-To learn more about why we built Earthly CI, check out our [launch blog post](https://earthly.dev/blog/launching-earthly-ci/).
-
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="pricing">How is Earthly CI pricing different?<span class="hide"><a href="#pricing">¶</a></span></h2>
-
-Traditional hosted CIs bill by the build minute. This creates a misalignment between the CI provider and the customer, because the slower the build is, the more the vendor profits.
-
-Earthly CI, on the other hand, uses Zero-margin Compute pricing plus a seat-based price. This means that the customer pays for the compute with no additional markup. Thus, making builds faster is a win-win for both the customer and us: the customer saves time, and we get to provide a better experience that creates customer retention, without sacrificing our profits. The seat-based component of our pricing is how we make money, and it is based on the number of developers who are actively using Earthly CI. This means that it is directly proportional to the value that the customer is getting out of the product: increased developer productivity.
-
-To learn more about our pricing, please visit our [pricing page](/pricing). To learn more about the motivation behind Zero-margin Compute, check out the [Earthly CI launch blog post](https://earthly.dev/blog/launching-earthly-ci/).
-
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="existing-ci">Can I use Earthly with my existing continuous integration (CI) system?<span class="hide"><a href="#existing-ci">¶</a></span></h2>
 
 Yes, both Earthly and Earthly Satellite can be used from existing continuous integration (CI) systems. We have documented integrations for some [popular CI systems](https://docs.earthly.dev/docs/ci-integration) but it is likely that you will be able to get earthly working with any other CI System. Hop in our [Slack channel](/slack) and you may find others using your CI system of choice.
 
-Earthly CI, on the other hand, does not work together with a traditional CI. Earthly CI is typically used as a replacement for a traditional CI system.
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="performance">How does Earthly Cloud achieve 2-20X performance gain compared to traditional CIs?<span class="hide"><a href="#performance">¶</a></span></h2>
 
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="performance">How does Earthly CI achieve 2-20X performance gain compared to traditional CIs?<span class="hide"><a href="#performance">¶</a></span></h2>
-
-Earthly was designed from the ground up to be fast and to reuse as much previous work as possible in every run, without compromising usability or versatility. Earthly CI achieves 2-20X performance gain via a combination of caching and parallelization.
+Earthly was designed from the ground up to be fast and to reuse as much previous work as possible in every run, without compromising usability or versatility. Earthly Cloud achieves 2-20X performance gain via a combination of caching and parallelization.
 
 Earthly's caching is based on the idea of image building layer caching, except that it is extended beyond image building, to also include testing, linting, code generation, producing non-image artifacts (such as binaries), and other use-cases typically involved in the CI/CD process. The layer caching technique allows Earthly to reuse computation from a previous run for the parts of the build where nothing has changed.
 
-A key performance feature of Earthly CI and of Earthly Satellite is the fact that the cache does not require any uploads or downloads. It is just there, available instantly when the build runs. By contrast, a traditional CI has a caching system with significantly less capabilties, but it also requires uploads and downloads, which can be a significant performance bottleneck. With traditional CIs caching something usually results in slower build times, because of the upload/download overhead.
+A key performance feature of Earthly Cloud is the fact that the cache does not require any uploads or downloads. It is just there, available instantly when the build runs. By contrast, a traditional CI has a caching system with significantly less capabilties, but it also requires uploads and downloads, which can be a significant performance bottleneck. With traditional CIs caching something usually results in slower build times, because of the upload/download overhead.
 
 Earthly's parallelization is based on the fact that every component of the build executes in a container. As the container has clear inputs and outputs and is otherwise isolated from the rest of the process, the system can create a dynamic direct acyclic graph (DAG) and parallelize its operations to the maximum extent possible. Although currently, Earthly executes builds on a single machine, it is designed to be able to scale even further to multiple machines in the future.
 
-To learn more about why we designed Earthly CI this way, check out our [launch blog post](https://earthly.dev/blog/launching-earthly-ci/).
-
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="satellites">What are Earthly Satellites?<span class="hide"><a href="#satellites">¶</a></span></h2>
 
-Satellites are single-tenant remote runners managed by the Earthly team. Satellites power the Earthly CI backbone, and as such, every pipeline created runs on its own dedicated satellite. Satellites may also be created manually, to be used as remote executors in development workflows.
+Earthly Satellites are a part of and included with Earthly Cloud. Satellites are single-tenant remote runners managed by the Earthly team. Satellites are frequently used as remote runners in CI or development workflows.
 
-A subscription to Earthly Satellite allows you to use only satellites directly, without the Earthly CI web interface or automated GitHub triggers. Common use-cases for using standalone satellites include:
+Common use-cases for using Satellites include:
 
-- Using satellites on top of a traditional CI, in order to take advantage of the Earthly caching and parallelization capabilities without switching the CI system to Earthly CI
+- Using satellites on top of a traditional CI, in order to take advantage of the Earthly caching and parallelization capabilities
 - Using satellites in local development workflows in order to share compute and cache with colleagues
 - Using satellites in order to execute x86 builds on ARM (or Apple Silicon) machines, or vice-versa
 
-A subscription to Earthly CI allows access to both the CI capabilities, and also to the standalone satellite capabilities.
-
 To learn more about our plans, please visit our [pricing page](/pricing).
 
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="monorepo">How does Earthly CI handle monorepo setups and what makes it special?<span class="hide"><a href="#monorepo">¶</a></span></h2>
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="monorepo">How does Earthly handle monorepo setups and what makes it special?<span class="hide"><a href="#monorepo">¶</a></span></h2>
 
-Earthly CI is designed to perform minimal work when a build is triggered. In a monorepo setup this means only rebuilding the components within the repository that have actually changed. This allows Earthly CI to scale to large monorepo setups, without sacrificing performance.
+Earthly  is designed to perform minimal work when a build is triggered. In a monorepo setup this means only rebuilding the components within the repository that have actually changed. This allows Earthly to scale to large monorepo setups, without sacrificing performance.
 
 Additionally, Earthly's strong reusability constructs allows for parts of the build to be shared between different sub-projects. The interdependencies between the sub-projects are expressed in the Earthfile, and the system will automatically detect when a sub-project has changed and needs to be rebuilt.
 
 In a traditional CI system, the chain between a changed file and the set of deliverables that need to be rexecuted (artifacts to be rebuilt, tests to be rerun, deployments to be refreshed) is not known to the system. The only available setting is often configuring triggers based on changes to subdirectories of a monorepo. However that strategy has significant limitations that don't work well in real-world scenarios. Either the triggers are too aggressive and result in builds that grind the team to a halt, or they are too conservative and result in accidentally shipping changes that do not pass testing. No traditional CI supports monorepos properly.
 
-<h2 class="text-2xl font-semibold mb-5 mt-20" id="polyrepo">How does Earthly CI handle polyrepo or hybrid setups and what makes it special?<span class="hide"><a href="#polyrepo">¶</a></span></h2>
+<h2 class="text-2xl font-semibold mb-5 mt-20" id="polyrepo">How does Earthly handle polyrepo or hybrid setups and what makes it special?<span class="hide"><a href="#polyrepo">¶</a></span></h2>
 
 Earthly has strong reusability constructs that allow for parts of the build to be referenced or imported from other repositories. It is possible to import artifacts, images and recipes from other repositories, such that the build definition is not repeated.
 
@@ -101,7 +77,9 @@ For more information about when to use Bazel, check out our blog, where we have 
 
 Both [Dagger](https://dagger.io/) and Earthly are open-source CI/CD frameworks that use BuildKit and containerization to improve the CI workflow. With both tools, you can run the CI or CD process locally, which is a big step forward from the world of needing to work with a centralized build process.
 
-The most fundamental difference between Earthly and Dagger is that through Earthly CI, Earthly forms a complete CI/CD platform optimized for the democratization of builds within the engineering team, and for unlocking team productivity at a level no other CI/CD platform can match. Earthly pipelines can be executed in Earthly CI, which allows CI/CD pipelines to run 2-20X faster than on any traditional CI. In terms of build specification, Earthly and Dagger differ in the following ways:
+The most fundamental difference between Earthly and Dagger is that through Earthly Cloud, Earthly forms a complete build automation platform optimized for the democratization of builds within the engineering team, and for unlocking team productivity at a level no CI/CD platform can match.
+
+In terms of build specification, Earthly and Dagger differ in the following ways:
 
 - Earthly uses an `Earthfile` to specify a build in a format that takes inspiration from Dockerfiles, shell scripting, and Makefiles. As a result, if you know how to perform a step in your build process at the command line, you know how to do it in Earthly.
 - Dagger uses an SDK to configure build steps via general-purpose programming languages, such as Go and Python.
@@ -122,7 +100,7 @@ Sure, you can do that. That's how Earthly started.
 
 Earthly grew out of a wrapper around Dockerfiles. As your project grows, your build and testing requirements will grow too. You might end up with multiple Dockerfiles, you might need to support running tests and builds on Linux, MacOS, and Windows, you might run into parallelization issues, and you might need to scale across multiple repositories. After all that hard work, the performance of the build will still be limited, because it would rely on traditional CI technologies, with limited parallelism and caching.
 
-Earthly and Earthly CI grew out of all of these requirements and is supported by a growing user base, which (most likely) offers a more battle-tested code base than your custom in-house wrapper. Earthly CI also gives you a level of performance that is unmatched by traditional CI systems.
+Earthly grew out of all of these requirements and is supported by a growing user base, which (most likely) offers a more battle-tested code base than your custom in-house wrapper.
 
 Still think you should just write your own wrapper? We have some tips on our [blog](https://earthly.dev/blog/repeatable-builds-every-time/).
 
@@ -154,7 +132,7 @@ As an alternative, you may port your Dockerfiles to Earthly entirely. Translatin
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="host">Where does Earthly host the build runners?<span class="hide"><a href="#host">¶</a></span></h2>
 
-Earthly CI and Earthly Satellite runners are only available as a fully managed SaaS offering currently. The servers are hosted in AWS on the West Coast in the USA. The runners are single-tenant. For more information regarding our security measures please see our [security page](/security).
+Earthly Cloud is a fully managed SaaS offering that includes Earthly Satellite runners. The servers are hosted in AWS on the West Coast in the USA. The runners are single-tenant. For more information regarding our security measures please see our [security page](/security).
 
 {: .mb-6 .text-lg .font-medium .text-gray-600 .sm:w-full .sm:text-lg .sm:leading-8 .sm:mb-6 }
 
