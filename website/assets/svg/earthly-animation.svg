@@ -57,7 +57,6 @@
 
   <!-- Calculating offsets for bubbles to run in 2nd, 3rd & 4th loops -->
   <animate id="loop1" attributeName="opacity" begin="1s; loop4.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
-  <animate id="offsetReuse" attributeName="opacity" begin="loop1.end" end="b1.end" fill="freeze" from="1" to="0"/>
   <animate id="loop2" attributeName="opacity" begin="loop1.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
   <animate id="offsetContainerized" attributeName="opacity" begin="loop2.end" end="a9.end" fill="freeze" from="1" to="0"/>
   <animate id="loop3" attributeName="opacity" begin="loop2.end" end="d6Logo.end + 2s" fill="freeze" from="1" to="0"/>
@@ -79,7 +78,7 @@
     </g>
 
     <animate attributeName="opacity" begin="loop4.begin" dur="50ms" fill="freeze" from="0" to="1"/>
-    <animate attributeName="opacity" begin="loop4.begin + 1.5s" dur="50ms" fill="freeze" from="1" to="0"/>
+    <animate attributeName="opacity" begin="loop4.end - 2.02s" dur="50ms" fill="freeze" from="1" to="0"/>
   </g>
 
   <!-- A1 -->
@@ -266,7 +265,8 @@
     <path d="M15.9813 34.1729L7.25403 26.782L15.9813 19.391L15.9813 34.1729Z" fill="#F9FAFB" stroke="#D9D9D9" stroke-width="1.5"/>
     <path d="M17.072 34.3486L15.2439 32.5656L15.2439 20.993L17.072 19.2773L17.072 34.3486Z" fill="#F9FAFB"/>
 
-    <animate attributeName="opacity" begin="offsetReuse.end" dur="1.5s" fill="freeze" keyTimes="0; 0.167; 0.667; 1" values="0; 1; 1; 0"/>
+    <animate attributeName="opacity" begin="loop2.begin" dur="50ms" fill="freeze" from="0" to="1"/>
+    <animate attributeName="opacity" begin="loop2.end - 2.02s" dur="50ms" fill="freeze" from="1" to="0"/>
   </g>
 
   <!-- B12 -->
