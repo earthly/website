@@ -75,17 +75,17 @@
       } else if (value <= 5) {
         planName.innerText = "Starter Plan"
         planDescription.innerText = "For small projects"
-        planPrice.innerText = Number(((checkbox.checked ? 9.17 : 11)* value).toFixed(2)).toLocaleString()
+        planPrice.innerText = ((checkbox.checked ? 9.17 : 11) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
         planMinutes.innerText = (10000 + 2000 * value).toLocaleString()
       } else if (value <= 15) {
         planName.innerText = "Pro Plan"
         planDescription.innerText = "For small teams"
-        planPrice.innerText = Number(((checkbox.checked ? 29.17 : 35)* value).toFixed(2)).toLocaleString()
+        planPrice.innerText = ((checkbox.checked ? 29.17 : 35) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
         planMinutes.innerText = (20000 + 3000 * value).toLocaleString()
       } else if (value <= 50) {
         planName.innerText = "Team Plan"
         planDescription.innerText = "For large teams"
-        planPrice.innerText = Number(((checkbox.checked ? 49.17 : 59)* value).toFixed(2)).toLocaleString()
+        planPrice.innerText = ((checkbox.checked ? 49.17 : 59) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
         planMinutes.innerText = (50000 + 4000 * value).toLocaleString()
       } else {
         planName.innerText = "Enterprise Plan"
