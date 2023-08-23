@@ -13,25 +13,22 @@ internal-links:
  - goroutines and gmail integration
  - building concurrent mail server
 ---
-
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and accelerate software building through containerization. Interested in faster, smoother builds? [Give us a look](/).**
 
 It is fascinating to take full advantage of the multicore processor for executing and implementing concurrent processes or programs, and it's interesting doing so using the simplicity of [Go](https://go.dev/) and its abstractions.
 
-In this tutorial, you will learn how to implement a practical idea using concurrency and integrate it using Go functionality and its basic building blocks. So let's dive in at the right angle.
+In this tutorial, we'll learn how to use concurrency in Go. We'll take a practical idea and make it concurrent. It's about setting up a concurrent mail server. It's way more efficient for sending emails than the old way. And you'll see why concurrency is a game changer. Ready? Let's dive in.
 
 ## Overview of Concurrent Mail Server
 
 This tutorial will show you how to set up a concurrent mail server to efficiently send emails, compared to the traditional email method without concurrency. You will also discover the benefits of using concurrency in this process.
-Furthermore, you learn to design a simple interface for subscribers to provide details and for users to upload documents of the mail to send.
+You'll learn to design a simple interface. One where subscribers can provide details. And users can upload documents to send.
 
 But before you dive into that, Let me take you alongside the coast of concurrency and goroutine to get you started.
 
 ## Concurrency and Its Importance
 
-It would help if you were anxious to know the full depth of concurrency. Let's get started.
-
-Concurrency is the act of putting together multiple independent processes or task structures that are executed simultaneously and dealing with multiple requests simultaneously, improving performance and reducing delays in execution.
+Concurrency is about doing multiple tasks at the same time. It's about handling multiple requests all at once. It boosts performance and cuts down on delays.
 
 Some of the advantages of concurrency include:
 
