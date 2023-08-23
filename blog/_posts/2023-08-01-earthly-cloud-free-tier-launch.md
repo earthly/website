@@ -73,9 +73,7 @@ Developer Experience isn't a nice-to-have. Done right, it becomes a critical str
 
 I'm here to tell you that CI/CD needs rethinking. Its lack of innovation over the last decade, the inaccessibility of modern build systems, and the recent and needed emphasis on Developer Experience are all blaring, screaming signals that the way we CI/CD right now isn't going to last much longer. There will be a category-defining product (or products) that will change the way we do CI/CD across big and small companies.
 
-We believe that everyone should have access to this – CI/CD that is modern like a build system, accessible like a SaaS tool, and that makes developers more productive. For this reason, we are announcing our newest offering, [Earthly Cloud](https://earthly.dev/earthly-cloud). Earthly Cloud is a SaaS build automation platform that gives you consistent builds, ridiculous speed, a next-gen developer experience, and it works with any CI (or as a standalone CI).
-
-Earthly Cloud includes the functionality of both [Earthly Satellites](https://earthly.dev/earthly-satellites) and [Earthly CI](https://earthly.dev/earthly-ci) in one package. Earthly Satellites are remote build runners that make builds fast, are super simple to use, and work seamlessly with any CI (and with your laptop). Earthly CI is a full-fledged CI system that uses Earthly Satellites under the hood.
+We believe that everyone should have access to this – CI/CD that is modern like a build system, accessible like a SaaS tool, and that makes developers more productive. For this reason, we are announcing our newest offering, [Earthly Cloud](https://earthly.dev/earthly-cloud). Earthly Cloud is a SaaS build automation platform that gives you consistent builds, ridiculous speed, a next-gen developer experience, and it works with any CI.
 
 ## Get Started With Earthly Cloud for Free
 

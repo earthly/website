@@ -7,6 +7,10 @@
 # Hiring
 /hiring https://jobs.earthly.dev
 
+# Redirect for CI
+/signup/earthly-ci /
+/earthly-ci /
+
 # Renamed article
 /blog/dont-use-earthly /blog/repeatable-builds-every-time
 /blog/how-cls-obj-work-python /blog/python-classes-and-objects
