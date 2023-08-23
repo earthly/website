@@ -10,6 +10,7 @@
 # Redirect for CI
 /signup/earthly-ci /
 /earthly-ci /
+/blog/devcontianers /devcontainers
 
 # Renamed article
 /blog/dont-use-earthly /blog/repeatable-builds-every-time
