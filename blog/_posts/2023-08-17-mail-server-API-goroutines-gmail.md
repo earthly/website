@@ -37,7 +37,7 @@ In the next sections, I'll clarify the differences and similarities between conc
 > _**Concurrency** simplifies Synchronization; **Concurrency** enables **Parallelism**._
 > _**Concurrency** means **dealing** with multiple things at once while **Parallelism** means **doing** multiple things at the same time._
 >
-> - _[Rob Pike](https://www.youtube.com/watch?v=oV9rvDllKEg)_
+> * _[Rob Pike](https://www.youtube.com/watch?v=oV9rvDllKEg)_
 
 <div class="wide">
 ![concurrent vs parallelism Image]({{site.images}}{{page.slug}}/eIId6C3.png)
@@ -57,10 +57,10 @@ In **Go**,[Goroutines](https://go.dev/tour/concurrency/1) can be simple function
 
 To get the most out of Goroutines, you should understand these key components:
 
-- Channels
-- Select statement
-- Waitgroup
-- Mutexes
+* Channels
+* Select statement
+* Waitgroup
+* Mutexes
 
 ### Channels
 
@@ -104,7 +104,7 @@ time.Sleep(time.Second)
 
 ~~~
 
-Values 10 and 20 are sent to a buffered channel using the <- syntax. Meanwhile, an unbuffered channel uses a goroutine to assign received values to a data variable. A brief delay, added via the time package, ensures the goroutine completes before the main function ends: 
+Values 10 and 20 are sent to a buffered channel using the <- syntax. Meanwhile, an unbuffered channel uses a goroutine to assign received values to a data variable. A brief delay, added via the time package, ensures the goroutine completes before the main function ends:
 
 ~~~{.go caption="channels.go"}
 // Send some data to the unbuffered channel.
@@ -300,10 +300,10 @@ Now that you're up to speed with goroutines, let's dive into their advantages wh
 
 Benefits of using Goroutines with Gmail Integration:
 
-- Asynchronous, offering great scalability.
-- Efficient multitasking during email dispatch.
-- Quicker email processing.
-- Enhanced experience for users and customers.
+* Asynchronous, offering great scalability.
+* Efficient multitasking during email dispatch.
+* Quicker email processing.
+* Enhanced experience for users and customers.
 
 Ready to harness the power of goroutines for more tasks? Let's set up your workspace next.
 
@@ -315,21 +315,21 @@ Find all the code for this tutorial on this [GitHub repository](https://github.c
 
 Before starting:
 
-- Ensure you have the Go compiler installed. The latest version is Go v1.20.5. If you don't have it, download it from [Go.dev](https://go.dev/dl/). Then we will use these dependencies:
+* Ensure you have the Go compiler installed. The latest version is Go v1.20.5. If you don't have it, download it from [Go.dev](https://go.dev/dl/). Then we will use these dependencies:
 
 ### Essential Packages
 
-- Install the [go-mongodb-driver](https://www.mongodb.com/docs/drivers/go/current/). For interaction with MongoDB cloud database and storing user details
+* Install the [go-mongodb-driver](https://www.mongodb.com/docs/drivers/go/current/). For interaction with MongoDB cloud database and storing user details
 
-- Install [gomail](https://github.com/go-gomail/gomail). For sending emails via an SMTP server for account notifications and communication.
+* Install [gomail](https://github.com/go-gomail/gomail). For sending emails via an SMTP server for account notifications and communication.
 
-- Install [chi](https://pkg.go.dev/github.com/go-chi/chi/v5). For building HTTP services, initializes middleware, manages request paths, and serves static files.
+* Install [chi](https://pkg.go.dev/github.com/go-chi/chi/v5). For building HTTP services, initializes middleware, manages request paths, and serves static files.
 
-- Install [godotenv](https://github.com/joho/godotenv). Loads environment variables from a .env file.
+* Install [godotenv](https://github.com/joho/godotenv). Loads environment variables from a .env file.
 
-- Install [docconv](https://pkg.go.dev/code.sajari.com/docconv). Converts .docx and .doc files to plain text.
+* Install [docconv](https://pkg.go.dev/code.sajari.com/docconv). Converts .docx and .doc files to plain text.
 
-But before you install any of these packages, create a new folder and run go mod init: 
+But before you install any of these packages, create a new folder and run go mod init:
 
 ~~~{.bash caption=">_"}
 go mod init github.com/akinbyte/mailapp
@@ -353,13 +353,13 @@ i. Sign in to your Gmail account, go to the top right corner, and click on your 
 
 ii. Once you've accessed your account page, you can modify settings and make configuration changes. Follow these steps:
 
-- On the left menu, click on the "Security" section.
+* On the left menu, click on the "Security" section.
 
 <div class="wide">
 ![account-page]({{site.images}}{{page.slug}}/06J03Wi.png)
 </div>
 
-- Scroll down to the bottom and click "**Less secure app**." You can find additional information about less secure apps if needed.
+* Scroll down to the bottom and click "**Less secure app**." You can find additional information about less secure apps if needed.
 
 <div class="wide">
 ![less-secure-app]({{site.images}}{{page.slug}}/whVgwM6.png)
@@ -387,7 +387,7 @@ iii. Once you have enabled the **2-Step Verification**, add an **App Password**.
 ![choose-create-app-password]({{site.images}}{{page.slug}}/3MP3q0U.png)
 </div>
 
-- Choose an app name and device from the dropdown menu, or create a custom name as shown in the image below:
+* Choose an app name and device from the dropdown menu, or create a custom name as shown in the image below:
 
 <div class="wide">
 ![create-app-password]({{site.images}}{{page.slug}}/sfIOfUz.png)
@@ -433,17 +433,17 @@ Soon, you'll grasp the application's structure implemented using Package Oriente
 
 To structure the application for this project, you'll create the following directories (packages) and files. You'll learn about their features and usage.
 
-- `_Main and routes_`: These are the leading root files of the project that use the main package for compilation.
+* `_Main and routes_`: These are the leading root files of the project that use the main package for compilation.
 
-- `_db_`: The _db_ package manages interactions with the **MongoDB** database, including reading and writing queries.
+* `_db_`: The _db_ package manages interactions with the **MongoDB** database, including reading and writing queries.
 
-- `_handlers_`: The _handlers_ package contains methods to process user requests.
+* `_handlers_`: The _handlers_ package contains methods to process user requests.
 
-- `_tools_`: The _tools_ package consists of predefined reusable functions that facilitate user requests.
+* `_tools_`: The _tools_ package consists of predefined reusable functions that facilitate user requests.
 
-- `_email_`: The _email_ package is the project's main focus. It includes a function that receives emails through channels using goroutines and another function that sets up the **SMTP** server to send emails.
+* `_email_`: The _email_ package is the project's main focus. It includes a function that receives emails through channels using goroutines and another function that sets up the **SMTP** server to send emails.
 
-- `_model_`: The _model_ package contains structs that hold the payload or details received while processing requests.
+* `_model_`: The _model_ package contains structs that hold the payload or details received while processing requests.
 
 It's important to note that the output method of the **query** from the **db** package to the **handlers** package implements an `interface` in the `service.go` file in the **db** package, which is the same as the one used in the  **handlers** package to make handlers methods available in the **main** package.
 
@@ -545,33 +545,33 @@ Check this [**link**](https://www.mongodb.com/docs/atlas/getting-started/) for s
 
 You can follow the steps below to set up your database and get the connection string:
 
-- Click on **Database** in the left menu and select **Browse Collection** to create a database for the application.
+* Click on **Database** in the left menu and select **Browse Collection** to create a database for the application.
 
 <div class="wide">
 ![atlas-dashboard]({{site.images}}{{page.slug}}/m7pZDFJ.png)
 </div>
 
-- Click **Create Database** to add a new database named **mail-app** and include two collections:
+* Click **Create Database** to add a new database named **mail-app** and include two collections:
 **mails** (stores sent mail) and **subscribers** (stores registered subscribers).
 
 <div class="wide">
 ![create-db]({{site.images}}{{page.slug}}/rPVJCu7.png)
 </div>
 
-- Next, click "Connect" to choose a connection method.
+* Next, click "Connect" to choose a connection method.
 
 <div class="wide">
 ![connect-method]({{site.images}}{{page.slug}}/Tayy1Km.png)
 </div>
 
-- Select the required MongoDB Driver for **Go** and copy the connection string. Update it with your username and password.
+* Select the required MongoDB Driver for **Go** and copy the connection string. Update it with your username and password.
 `mongodb+srv://<username>:<password>@cluster0.opv1wfb.mongodb.net/?retryWrites=true&w=majority`
 
 <div class="wide">
 ![connect-string]({{site.images}}{{page.slug}}/gUuJQBk.png)
 </div>
 
-- Update the .env file with the URI connection string:
+* Update the .env file with the URI connection string:
 
 ~~~
 APP_PASSWORD=YOUR_APP_PASSWORD
@@ -737,9 +737,9 @@ return &Mongo{MailDB: client}
 
 The application utilises three query methods to interact with the **mail-app** database:
 
-- `AddSubscriber`: Adds and stores new subscriber details.
-- `AddMail`: Stores the sent mail.
-- `FindSubscribers`: Retrieves all registered subscribers.
+* `AddSubscriber`: Adds and stores new subscriber details.
+* `AddMail`: Stores the sent mail.
+* `FindSubscribers`: Retrieves all registered subscribers.
 
 Below, you will delve into each of these query methods used to interact with the **mail-app** database by examining each defined method in detail. These methods work together to ensure efficient and effective management of data within the **mail-app** database.
 
@@ -1622,25 +1622,25 @@ As you have finished building the mail server API, it is time to test the applic
 
 To follow along, make sure you have Thunder Client extension or Postman installed and set up the API as described below:
 
-- Create an API collection named **MailAPP**, then add a new request as shown below
+* Create an API collection named **MailAPP**, then add a new request as shown below
 
 <div class="wide">
 ![create-collection-request]({{site.images}}{{page.slug}}/Z3WSRX7.png)
 </div>
 
-- Add a new request for the home page, which you will use to render the application interface later.
+* Add a new request for the home page, which you will use to render the application interface later.
 
 <div class="wide">
 ![home-page-request]({{site.images}}{{page.slug}}/g7NnLQg.png)
 </div>
 
-- Add the HTTP **GET** request method and configure it with the correct URL.
+* Add the HTTP **GET** request method and configure it with the correct URL.
 
 <div class="wide">
 ![home-request-config]({{site.images}}{{page.slug}}/Z3LeWnd.png)
 </div>
 
-- Create and configure new HTTP **POST** requests for subscribers to **subscribe** with their details and **send mail** content of the uploaded document with their URLs.
+* Create and configure new HTTP **POST** requests for subscribers to **subscribe** with their details and **send mail** content of the uploaded document with their URLs.
 
 <div class="wide">
 ![subscribe-request]({{site.images}}{{page.slug}}/Rr3VKfY.png)
