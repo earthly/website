@@ -1,0 +1,65 @@
+<main class="mb-16 mt-[70px] pt-16 lg:pt-24 relative">
+  <div class="flex flex-col items-center max-w-7xl mx-auto px-4 lg:px-10">
+    <h1 class="font-medium max-w-4xl text-[#2d7e5d] text-5xl sm:text-7xl text-center tracking-tight">Earthly Customer Stories</h1>
+
+    <p class="font-medium max-w-lg mt-10 text-[#1F2937] text-xl lg:text-3xl text-center tracking-tight">
+      Earthly makes builds super simple
+    </p>
+
+    <div class="flex gap-6 lg:gap-10 mt-4">
+      {% for item in site.data.customer-stories-highlights %}
+        <p id="highlight-category-{{ forloop.index }}" class="highlight-category {% if forloop.index == 1 %}active{% endif %}" onclick="">{{ item.category }}</p>
+      {% endfor %}
+    </div>
+
+    <div id="highlights" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
+      {% for item in site.data.customer-stories-highlights %}
+        <a id="highlight" href="{{ item.link }}" class="w-full basis-full cursor-pointer flex-1 shrink-0">
+          <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
+            <div class="w-full lg:w-5/12 h-full bg-white flex flex-col justify-center px-8 py-10 rounded-2xl text-xl">
+              <p class="font-medium text-[#475569]">{{ item.title }}</p>
+              <p class="mt-4 text-lg tracking-tight">{{ item.description }}</p>
+            </div>
+
+            <div class="h-full flex-1">
+              <img class="h-full object-cover rounded-2xl" src="{{ item.image }}" alt="{{ item.title }}" />
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="wave-container">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+  
+  <script>
+    const highlightsContainer = document.getElementById("highlights");
+    let currentHighlight = 1;
+  
+    const tabs = document.querySelectorAll('[id^="highlight-category"]');
+    tabs.forEach(tab => {
+      tab.addEventListener("click", e => {
+        const slideWidth = document.getElementById("highlight").clientWidth;
+        const id = +e.target.id.replace("highlight-category-", "")
+
+        if (id !== currentHighlight) {
+          document.getElementById(`highlight-category-${currentHighlight}`).classList.remove('active')
+
+          currentHighlight = id
+          highlightsContainer.scrollLeft = slideWidth * (currentHighlight - 1);
+  
+          document.getElementById(`highlight-category-${currentHighlight}`).classList.add('active')
+        }
+      })
+    })
+  
+    window.addEventListener('resize', () => {
+      const slideWidth = document.getElementById("highlight").clientWidth;
+      highlightsContainer.scrollLeft = slideWidth * (currentHighlight - 1);
+    })
+  </script>  
+</main>

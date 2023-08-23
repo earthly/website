@@ -267,3 +267,22 @@ main.wave-main.homepage {
   display: flex;
   justify-content: center;
 }
+
+.wave-container {
+  height: 500px;
+  background-color: #e8f8fe;
+  overflow: hidden;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  z-index: -1;
+}
+
+.highlight-category {
+  @apply cursor-pointer pb-2 text-[#6B7280] lg:text-xl;
+}
+
+.highlight-category.active {
+  @apply border-b-2 border-[#6B7280] text-black;
+}
