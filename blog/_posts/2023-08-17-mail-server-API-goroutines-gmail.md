@@ -15,31 +15,22 @@ internal-links:
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and accelerate software building through containerization. Interested in faster, smoother builds? [Give us a look](/).**
 
-It is fascinating to take full advantage of the multicore processor for executing and implementing concurrent processes or programs, and it's interesting doing so using the simplicity of [Go](https://go.dev/) and its abstractions.
-
-In this tutorial, we'll learn how to use concurrency in Go. We'll take a practical idea and make it concurrent. It's about setting up a concurrent mail server. It's way more efficient for sending emails than the old way. And you'll see why concurrency is a game changer. Ready? Let's dive in.
+Harnessing the power of multicore processors is a breeze with Go. In this tutorial, we'll explore concurrency in Go by setting up an efficient mail server. You'll quickly see why concurrency transforms the way we send emails. Let's get started!
 
 ## Overview of Concurrent Mail Server
 
-This tutorial will show you how to set up a concurrent mail server to efficiently send emails, compared to the traditional email method without concurrency. You will also discover the benefits of using concurrency in this process.
-You'll learn to design a simple interface. One where subscribers can provide details. And users can upload documents to send.
-
-But before you dive into that, Let me take you alongside the coast of concurrency and goroutine to get you started.
+This tutorial guides you through setting up a concurrent mail server for more efficient email sending. You'll also see the perks of using concurrency. Additionally, you'll design an interface where subscribers input details, and users upload documents to send. Before we dive in, let's get a grip on concurrency and goroutines.
 
 ## Concurrency and Its Importance
 
-Concurrency is about doing multiple tasks at the same time. It's about handling multiple requests all at once. It boosts performance and cuts down on delays.
+Concurrency allows multiple tasks to be handled at once, boosting performance and minimizing delays. This means:
 
-Some of the advantages of concurrency include:
+* Optimized performance
+* Efficient use of resources
+* Faster server responses
+* Greater fault tolerance
 
-- Performance optimisation
-- Better resource utilisation
-- Improved responsiveness of the server
-- Better fault tolerance
-
-Concurrency refers to running multiple independent processes or tasks simultaneously, in which it can process and manage numerous requests simultaneously at the same time. Simultaneously processing multiple tasks can optimise performance and significantly reduce execution delays.
-
-To avoid confusion, I'll explain the differences and similarities between concurrency and parallelism in the following sections below.
+In the next sections, I'll clarify the differences and similarities between concurrency and parallelism to clear any confusion.
 
 ## Concurrency and Parallelism
 
@@ -52,21 +43,19 @@ To avoid confusion, I'll explain the differences and similarities between concur
 ![concurrent vs parallelism Image]({{site.images}}{{page.slug}}/eIId6C3.png)
 </div>
 
-Concurrency and parallelism often need clarification to be the same, even though they are not. However, they both involve the simultaneous execution of processes and are sometimes used interchangeably and based on similar principles.
+Concurrency and parallelism, though often used interchangeably, have distinct concepts. Both relate to multiple processes, but their approaches differ.
 
-The focus of concurrency is designing a program to handle multiple processes concurrently in an overlapping manner. It is possible to accomplish this through various mechanisms, such as multithreading and multiprocessing.
+Concurrency is about managing multiple tasks so they seem to run simultaneously, often achieved through mechanisms like multithreading or multiprocessing. Parallelism, in contrast, is the true simultaneous execution of tasks, possible with hardware like multi-core CPUs.
 
-In contrast, parallelism means executing multiple processes simultaneously by utilising processing cores and taking advantage of the resources to perform tasks in parallel.
-
-The main focus is to understand the implications of these two phenomena for the efficient design of software applications or systems.
+Grasping these nuances is crucial for effective software design.
 
 ## Goroutine and Its Basic Building Block
 
 Goroutines achieve concurrency in Go, lightweight threads and the fundamental organisation unit in **Go**. Goroutines are more cost-effective than traditional threading and execute within the same address space, leveraging multiple dynamic OS threads.
 
-In **Go**,[Goroutines](https://go.dev/tour/concurrency/1) can be implemented as functions, anonymous functions, or methods, allowing them to execute concurrently alongside other code or tasks without requiring parallel execution. It is worth highlighting that even the `main` function in a **Go** program is considered a Goroutine.
+In **Go**,[Goroutines](https://go.dev/tour/concurrency/1) can be simple functions, anonymous functions, or methods. They run concurrently with other tasks, and even the main function is a Goroutine.
 
-One way to improve Goroutines' performance is to enhance them. It is crucial to understand their basic building blocks are briefly explained below:
+To get the most out of Goroutines, you should understand these key components:
 
 - Channels
 - Select statement
@@ -75,9 +64,9 @@ One way to improve Goroutines' performance is to enhance them. It is crucial to 
 
 ### Channels
 
-**Channels** are synchronisation primitives that act as pipelines or transmission mediums for safe communication and data sharing between goroutines. There are two types of channels: buffered and unbuffered. Buffered channels have a predefined capacity to store a certain amount of data, while unbuffered channels have no capacity limit.
+**Channels** allow safe communication between goroutines. There are two types: buffered, which have a set capacity, and unbuffered, which don't.
 
-You can refer to the code section below for insights on creating and using channels to communicate within your program.
+Here's an example:
 
 ~~~{.go caption="channels.go"}
 package main
@@ -96,7 +85,7 @@ bufferedChan := make(chan int, 2)
 unbufferedChan := make(chan string)
 ~~~
 
-In the main program, a variable is declared as a **Buffered** channel with a specific capacity, whereas the **Unbuffered** channels stated below do not have a set capacity.
+In the main program, a variable is declared as a **Buffered** channel with a specific capacity, whereas the **Unbuffered** channels do not have a set capacity.
 
 ~~~{.go caption="channels.go"}
 // Send two integers to the channel.
@@ -115,7 +104,7 @@ time.Sleep(time.Second)
 
 ~~~
 
-Two values, 10 and 20, are sent to a **buffered** channel using the arrow syntax(`<-`). In the main program, an **unbuffered** channel utilises a goroutine to assign received value to a `data` variable and perform its process. A short delay introduces using the `time` package to ensure proper execution of the goroutine before the main function finishes.
+Values 10 and 20 are sent to a buffered channel using the <- syntax. Meanwhile, an unbuffered channel uses a goroutine to assign received values to a data variable. A brief delay, added via the time package, ensures the goroutine completes before the main function ends: 
 
 ~~~{.go caption="channels.go"}
 // Send some data to the unbuffered channel.
@@ -132,9 +121,9 @@ fmt.Println("Received from buffered channel:", data1, data2)
 
 ~~~
 
-A `string` data is sent to the unbuffered channel, while the data sent to the buffered channels are received and stored in variables(`data1` & `data2`). If the buffered channel's capacity exceeds, it can cause an error and lead to a deadlock. Considering the channel when sending data. Buffered channels can store data but stay within their capacity. Unbuffered channels require immediate data reception.
+A string is sent to an unbuffered channel, which requires immediate reception. On the other hand, buffered channels store data in variables (data1 & data2). However, if they exceed their capacity, it results in errors and a potential deadlock.
 
-Here's the complete code snippet below:
+Here's the full thing:
 
 ~~~{.go caption="channels.go"}
 package main
@@ -177,7 +166,7 @@ fmt.Println("Received from buffered channel:", data1, data2)
 
 ~~~
 
-Here is the output of the code below:
+Output:
 
 <div class="wide">
 ![channels]({{site.images}}{{page.slug}}/Lla3u9E.png)
@@ -185,9 +174,9 @@ Here is the output of the code below:
 
 ### Select Statement
 
-Go's **select** statement is similar to the `switch` statement. It is typically employed to execute tasks in the presence of channel data while concurrently reading from or writing to other goroutines. This feature enhances performance and minimises delays among goroutines during program execution.
+Go's **select** statement, akin to the `switch`` statement, lets you handle channel data while simultaneously reading from or writing to different goroutines.
 
-A simple code explains how the `select` statement works.
+Here's an example:
 
 ~~~{.go caption="select.go"}
 package main
@@ -220,7 +209,7 @@ stringChan <- "Hello, Gophers."
 
 ~~~
 
-Goroutines are created and utilised to send data through their respective channels, allowing for simultaneous data transmission of different types (such as `int` and `string`).
+Goroutines create and use channels to send data, like `int` and `string`, simultaneously.
 
 ~~~{.go caption="select.go"}
 // Receive from the channels in a separate goroutine.
@@ -237,9 +226,9 @@ fmt.Println("Received a string:", s)
 time.Sleep(1 * time.Second)
 ~~~
 
-An initialised goroutine receives data sent through the channels. It executes the `case` condition in the `select` statement block based on which goroutine receives the transmitted data first. The goroutine runs after a delay, just before the `main` program ends.
+A goroutine waits for data sent through channels. It then executes a case based on which goroutine gets the data first. This goroutine runs with a delay, right before the main program finishes.
 
-Below is the complete code snippet for the select statement.
+Here's the full thing:
 
 ~~~{.go caption="select.go"}
 package main
@@ -279,151 +268,74 @@ time.Sleep(1 * time.Second)
 }
 ~~~
 
-When you run the code above several times, the output you see should be similar to the image below:
+Here some sample runs:
 
 <div class="wide">
 ![channels]({{site.images}}{{page.slug}}/eI2puXg.png)
 </div>
 
-This basic explanation is sufficient for your needs in this tutorial. For a deeper understanding of concurrency, Goroutines, and their building blocks, refer to this [resource](https://earthly.dev/blog/concurrency-in-go/).
+For a deeper understanding of concurrency, Goroutines, and their building blocks, refer to this [resource](https://earthly.dev/blog/concurrency-in-go/).
 
 ## Communicating Sequential Processes(CSP): The Model of Concurrency
 
-Now that you have gained a basic understanding of concurrency and its practical implementation using Goroutines, it is essential to note that these concepts in Go are designed and built based on the theoretical model of [CSP](https://www.webopedia.com/definitions/communicating-sequential-processes/)
+Goroutines are built on the theoretical model of [CSP](https://www.webopedia.com/definitions/communicating-sequential-processes/)
 
 <div class="wide">
 ![CSP]({{site.images}}{{page.slug}}/aZv1TX8.png)
 </div>
 
-CSP is a framework for describing patterns and understanding systems involving complex message exchanges. It helps explain how different components of a concurrent system interact. **Go's** approach to concurrency prioritizes the principles of CSP and focuses on safety, efficiency, and ease of programming, building Goroutines upon them.
-
-It's time to unleash the power of communication. Embrace CSP to conquer the complexities of concurrent systems and seamlessly orchestrate interactions. Up Next, You will learn how to relate concurrency and goroutines to the natural cycle of the earth and the universe at large.
+CSP offers a framework to describe patterns in systems with complex messaging. In Go, concurrency follows CSP principles, emphasizing safety, efficiency, and ease of use with Goroutines. If you want to navigate the challenges of concurrent systems smoothly, CSP is your guide. Up next, we'll draw a surprising connection: relating concurrency and goroutines to the rhythms of the earth and the broader universe.
 
 ## Explanation using the Universe: Planet Earth and Human
 
-As you know, the universe comprises planets, galaxies, stars, moons, and asteroids. These celestial bodies coexist and engage in their natural processes concurrently in deep space.
+Think of the universe. It's filled with planets, stars, and moons, all operating at the same time. Take Earth, for instance. Here, countless events like weather patterns, ocean currents, and even our day-to-day activities happen all at once, influencing each other.
 
-Consider planet Earth as an example. It houses sophisticated systems with independent natural cycles. Weather changes, ocean currents, plant growth, ecosystem evolution, and human activities co-occur and influence one another.
+Humans are masters of concurrency. We juggle thoughts, feelings, and tasks every day. You might be reading this, thinking about its content, and maybe even listening to music—all at the same time. Our brains effortlessly handle these simultaneous processes.
 
-Humans demonstrate concurrency. You have unique thoughts, feelings, and actions. Multitasking is natural for you, whether talking, reading this article, critical thinking, or listening to music. Your brain adeptly manages these processes without becoming overwhelmed.
-
-Concurrency proves beneficial in software programs and applications. Like humans, the software can benefit from executing multiple tasks simultaneously. This approach ensures a substantial increase in productivity, allows for the speedy completion of functions, and promotes a well-rounded approach to accomplishing your objectives.
-
-You have covered the fundamentals of concurrency and goroutines sufficiently. It's time to prepare ourselves for the real challenges ahead.
+In the world of software, concurrency means a program doing multiple things at once, boosting productivity. Just like how our brain multitasks, software benefits from running several tasks simultaneously, getting more done in less time.
 
 ## Benefits of Using Goroutines and Gmail Integration
 
-Now that you are familiar with goroutines, you must understand the advantages and benefits of using them in conjunction with Gmail Integration for sending newsletter emails to users, which you will learn in this tutorial.
+Now that you're up to speed with goroutines, let's dive into their advantages when paired with Gmail Integration for sending newsletter emails.
 
-The benefits of utilizing Goroutines and Gmail Integration include:
+Benefits of using Goroutines with Gmail Integration:
 
-- Asynchronous operation and scalability.
-- Efficient multitasking when sending emails.
-- Fast email processing.
-- Improved user and customer experience.
+- Asynchronous, offering great scalability.
+- Efficient multitasking during email dispatch.
+- Quicker email processing.
+- Enhanced experience for users and customers.
 
-As you continue your journey, you will likely use goroutines to tackle various problem-solving tasks. In the following section, I will assist you in creating a necessary workspace.
+Ready to harness the power of goroutines for more tasks? Let's set up your workspace next.
 
 ## Setting Up the Environment
 
-This section will teach you how to prepare your working environment for this tutorial, including creating a Gmail account and enabling third-party access.
-
-All the code you will learn to build this application in this article is available on the GitHub repository [link](https://github.com/akinbyte/mail-app).
+Find all the code for this tutorial on this [GitHub repository](https://github.com/akinbyte/mail-app).
 
 ## Prerequisite Knowledge
 
-Before you start building things, ensure you have the following basic setup:
+Before starting:
 
-- Make sure you have installed the Go compiler on your machine. The latest version available is Go v1.20.5. You can download it from [Go.dev](https://go.dev/dl/) based on your operating system if you still need to install it.
+- Ensure you have the Go compiler installed. The latest version is Go v1.20.5. If you don't have it, download it from [Go.dev](https://go.dev/dl/). Then we will use these dependencies:
 
-- Follow the installation instructions for your operating system (Mac, Linux, or Windows).
+### Essential Packages
 
-## Installing Necessary Tools
+- Install the [go-mongodb-driver](https://www.mongodb.com/docs/drivers/go/current/). For interaction with MongoDB cloud database and storing user details
 
-Now that you have set up your work environment, I will list all the necessary packages, tools, and libraries that you will use to build the application.
+- Install [gomail](https://github.com/go-gomail/gomail). For sending emails via an SMTP server for account notifications and communication.
 
-- Install the [go-mongodb-driver](https://www.mongodb.com/docs/drivers/go/current/), a tool designed to interact with a MongoDB cloud database. This project offers a range of tools to store user details and simplify the storage of emails intended for users.
+- Install [chi](https://pkg.go.dev/github.com/go-chi/chi/v5). For building HTTP services, initializes middleware, manages request paths, and serves static files.
 
-- Install [gomail](https://github.com/go-gomail/gomail): a package that sends emails using an SMTP server to subscribed users for account notifications and communication.
+- Install [godotenv](https://github.com/joho/godotenv). Loads environment variables from a .env file.
 
-- Install [chi](https://pkg.go.dev/github.com/go-chi/chi/v5): a package that builds HTTP services, initialises middleware, handles request paths, and serves static files.
+- Install [docconv](https://pkg.go.dev/code.sajari.com/docconv). Converts .docx and .doc files to plain text.
 
-- Install [godotenv](https://github.com/joho/godotenv): a package that loads environment variables from a `.env` file to access key variable values easily.
-
-- Install [docconv](https://pkg.go.dev/code.sajari.com/docconv): package to converts uploaded `.docx` and `.doc` files to plain text for easier processing.
-
-But before you install any of these packages, follow the instructions below:
-
-1. Create a folder called "**mailapp**" or any name you like for the project.
-2. Open the folder in your preferred IDE or text editor at the project's root level.
-Use the terminal in the editor and run this command: `[go mod init github.com/username/project-folder-name]` in the given format 👇.
+But before you install any of these packages, create a new folder and run go mod init: 
 
 ~~~{.bash caption=">_"}
 go mod init github.com/akinbyte/mailapp
 ~~~
 
-After initialising the `go mod init` command, the project folder will contain `go.mod` file.
-
-<div class="wide">
-![go-modules]({{site.images}}{{page.slug}}/X5qYNQv.png)
-</div>
-
-The `go.mod` file holds module details like name and version. Learn more about Go modules on [Go.dev](https://go.dev/doc/modules/managing-dependencies).
-
-Once you have completed that task, you can install the packages required for the application. Take it step by step.
-
-To start, install the [MongoDB](https://www.mongodb.com/docs/drivers/go/current/) package for **Go** by executing the following command:
-
-~~~{.bash caption=">_"}
-go get go.mongodb.org/mongo-driver/mongo
-~~~
-
-Upon successful execution, you should observe a similar output in the terminal as shown below:
-
-<div class="wide">
-![mongo-install]({{site.images}}{{page.slug}}/DNkvNxJ.png)
-</div>
-
-The following package you need to install is the [Gomail](https://github.com/go-gomail/gomail) package. The installation process for this package is similar to the previous one. To install it, use the following command:
-
-~~~{.bash caption=">_"}
-go get gopkg.in/gomail.v2
-~~~
-
-After executing this command, you should see a similar output in your terminal, as shown below:
-
-<div class="wide">
-![go-mail-install]({{site.images}}{{page.slug}}/jqGQoYW.png)
-</div>
-
-Use the same approach to install [chi](https://pkg.go.dev/github.com/go-chi/chi/v5) for routing. Use the command below:
-
-~~~{.bash caption=">_"}
-go get github.com/go-chi/chi/v5
-~~~
-
-<div class="wide">
-![go-chi-install]({{site.images}}{{page.slug}}/hp2a48a.png)
-</div>
-
-Follow the same procedure to install [godotenv](https://github.com/joho/godotenv) and [docconv](https://pkg.go.dev/code.sajari.com/docconv) using the commands below one at a time, respectively.
-
-~~~{.bash caption=">_"}
-go get github.com/joho/godotenv
-
-go get -u code.sajari.com/docconv
-~~~
-
-<div class="wide">
-![godotenv-install]({{site.images}}{{page.slug}}/InpfnYb.png)
-</div>
-<div class="wide">
-![docconv-install]({{site.images}}{{page.slug}}/tktdrHV.png)
-</div>
-
-After installing all the libraries and their dependencies, you will notice that your project folder automatically creates a `go.sum` file. This file stores dependency checksums and versions, which are vital for managing dependencies in Go.
-
-Create a `.env` file to store all the necessary environment variables to finalize the project setup. Once done, proceed to the next section, where you'll create a Gmail account and enable API access for email.
+After `go mod init` command, the project folder will contain `go.mod` file. Add your dependencies to `go.mod`.
 
 ## Creating A Gmail Account and Enabling API Access
 
@@ -1584,9 +1496,7 @@ All this while, you must be wondering what the primary function entails or what 
 
 The Mail Server API representation of the application server shows that the packages created and the code in each lead back to the **main**.
 
-In the following few paragraphs, you will get a comprehensive understanding that will help you make sense of all you have learnt so far while initialising the primary function and application server.
-
-Before you do that, update the `.env` file with the `PORT` address or the number of `8080` on which the HTTP server will listen and respond.
+We will cover that next but before we do, update the `.env` file with the `PORT` address or the number of `8080` on which the HTTP server will listen and respond.
 
 ~~~
 PORT=8080
@@ -1844,8 +1754,14 @@ You can check the full [HTML](https://github.com/akinbyte/mail-app/blob/main/ind
 
 ## Conclusion
 
-The article comprehensively outlines the implementation of a concurrent mail server, covering topics such as concurrency models, API development, database integration, and Gmail API integration. It also discusses the setup process, testing, and ways to improve the user interface. This article is a practical guide for individuals looking to build a robust mail server with concurrency features.
+And that's a wrap! In this tutorial, we went on quite a journey building a concurrent mail server from start to finish.
 
-The next steps involve enhancing functionality by adding features like email filtering, attachment handling, and advanced search capabilities, improving user experience through intuitive forms and real-time validation, optimizing load balancing and caching performance, and ensuring security measures.
+We covered a ton of ground, from grasping concurrency models and Goroutines to creating a MongoDB database and implementing handlers. Then we integrated the Gmail API for seamless email sending and added forms to let users easily upload documents and subscribe.
+
+While there's always room for improvement, this mail server already performs way better than a synchronous alternative. Concurrency works its magic, allowing us to send emails to multiple subscribers simultaneously with Goroutines and channels.
+
+Overall, building this mail server showcased Go's concurrency strengths. Goroutines make easy work of tasks that would be tedious threaded in other languages. And channels provide a clean way to share data between goroutines.
+
+This project lays a solid foundation for a production-ready mail service. Some next steps could be adding email templates, implementing a frontend, and beefing up security. But for now, we have a working concurrent mail server with Goroutines and Gmail integration!
 
 {% include_html cta/bottom-cta.html %}
