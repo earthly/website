@@ -456,7 +456,6 @@ Before you proceed, here's a quick explanation of the application's `model`.
 The `model` package includes the `Subscriber struct`, which holds various fields of type `string` to store the details and `struct` tags of the **subscribers** when they submit their information.
 
 ~~~{.go caption="model.go"}
-
 package model
 
 import "time"
@@ -473,7 +472,6 @@ type Subscriber struct {
 The `MailUpload struct` stores the document uploaded by the user along with their corresponding types and `struct` tags.
 
 ~~~{.go caption="model.go"}
-
 // MailUpload - holds the uploaded content and details for the mail
 type MailUpload struct {
  DocxName    string    `bson:"docx_name" json:"docx_name"`
@@ -487,7 +485,6 @@ type MailUpload struct {
 The `Mail struct` will be filled with information and seamlessly routed to subscribers via channels.
 
 ~~~{.go caption="model.go"}
-
 // Mail: contains the field of what the mail entails
 type Mail struct {
  Source      string
@@ -503,7 +500,6 @@ type Mail struct {
 ### Code Snippet for the model Package
 
 ~~~{.go caption="model.go"}
-
 package model
 
 import "time"
@@ -596,7 +592,6 @@ Create these **Go** files: `db.go`, `query.go`, `collection.go`, and `service.go
 In `db.go`, import the necessary packages and set up the cloud database connection with the `SetConnect` function.
 
 ~~~{.go caption="db.go"}
-
 package db
 
 import (
@@ -617,7 +612,6 @@ func SetConnect(uri string) (*mongo.Client, error) {}
 The `SetConnect` function sets a `context` timeout with a deadline and cancellation signal, ensuring the database connection process finishes within a specified time limit.
 
 ~~~{.go caption="db.go"}
-
 dbCtx, dbCancelCtx := context.WithTimeout(context.Background(), 100*time.Second)
 defer dbCancelCtx()
 ~~~
@@ -625,7 +619,6 @@ defer dbCancelCtx()
 Connect the database using the `dbCtx` context and the `URI` string. Check for connection errors.
 
 ~~~{.go caption="db.go"}
-
 client, err := mongo.Connect(dbCtx, options.Client().ApplyURI(uri))
 if err != nil {
 log.Panicln("Error while connecting to database: ", err)
@@ -635,7 +628,6 @@ log.Panicln("Error while connecting to database: ", err)
 Pinging the database verifies the connection, and the code returns the database client.
 
 ~~~{.go caption="db.go"}
-
 if err := client.Ping(dbCtx, nil); err != nil {
 log.Fatalln("cannot ping the database: ", err)
 }
@@ -646,7 +638,6 @@ return client, nil
 In the `db.go` file, the `OpenConnect` function keeps the database connection open to avoid program failure. It returns a `*mongo.Client` pointer, initialises `count` to zero, and sets up an infinite `for` loop.
 
 ~~~{.go caption="db.go"}
-
 func OpenConnect() *mongo.Client {
  uri := os.Getenv("URI")
  count := 0
@@ -658,7 +649,6 @@ func OpenConnect() *mongo.Client {
 The infinite loop invokes `SetConnect` with the environment variable key `URI` using the `os` package. If there's a connection error, it logs the message for database disconnection and increments `count`. Otherwise, it confirms the database connection and returns the client.
 
 ~~~{.go caption="db.go"}
-
 client, err := SetConnect(uri)
 if err != nil {
  log.Println("Mail App Database not Connected")
@@ -672,7 +662,6 @@ if err != nil {
 In the loop, the code checks the value of `count`. If it exceeds the limit, it logs the error and returns nothing. If the `count` is less than 5, it logs retry information, pauses the program, and continues the connection process.
 
 ~~~{.go caption="db.go"}
-
 if count >= 5 {
  log.Println(err)
  return nil
@@ -690,7 +679,6 @@ Please note that the `main` function of the program will invoke the `OpenConnect
 The `collection.go` file contains a `Default` function. It takes a `client` parameter of type `*mongo.Client` and a `collectionName` parameter of type `string`. This function returns a pointer to `*mongo.Collection` for accessing the specific **mail-app** database.
 
 ~~~{.go caption="collection.go"}
-
 package db
 
 import "go.mongodb.org/mongo-driver/mongo"
@@ -711,7 +699,6 @@ Import the necessary packages and create a `Mongo struct` type with a `MailDB` f
 Lastly, a `NewMongo` constructor function is defined. It takes a `client` database pointer as a parameter and returns a `DataStore` interface for implementing the queries.
 
 ~~~{.go caption="query.go"}
-
 package db
 
 import (
@@ -746,19 +733,17 @@ Below, you will delve into each of these query methods used to interact with the
 Let's begin with the `AddSubscriber` query. This method requires the `subs` argument of type `model.Subscriber` and returns `bool`, `string`, and `error`.
 
 ~~~{.go caption="query.go"}
-
 func (mg *Mongo) AddSubscriber(subs model.Subscriber) (bool, string, error) {}
 ~~~
 
 `AddSuscriber` method above sets a timeout in the `context` for query processing to enable the addition and storage of new subscriber details. The subscriber's `email` is used to check for their existence in the `subscribers` collection of the database while also verifying for errors.
 
 ~~~{.go caption="query.go"}
-
 ctx, cancelCtx := context.WithTimeout(context.Background(), 10*time.Second)
 defer cancelCtx()
 
 var res bson.M
-filter := bson.D{{Key: "email", Value: subs.Email}}
+filter :=  {% raw %}bson.D{{Key: "email", Value: subs.Email}}{% endraw %}
 err := Default(mg.MailDB, "subscribers").FindOne(ctx, filter).Decode(&res)
 ~~~
 
@@ -767,7 +752,6 @@ If the error `mongo.ErrNoDocuments` occurs during error checking, indicating no 
 Errors are checked and returned with relevant information. New subscribers are added to the `subscribers` collection without errors, while the function returns that the subscriber is registered already for existing subscribers.
 
 ~~~{.go caption="query.go"}
-
 if err != nil {
  if err == mongo.ErrNoDocuments {
   _, err := Default(mg.MailDB, "subscribers").InsertOne(ctx, subs)
@@ -792,7 +776,6 @@ As it is important for you to set the timeout within the context for a database 
 It is important, you set the timeout within the `context` for a database query to establish a duration within which queries are expected to be completed. The `mailUpload struct` saves the sent mail and its details in the `mails` collection of the `mail-app` database. When the mail details are successfully added, it returns a `nil` error. However, it returns an error message if there are any issues.
 
 ~~~{.go caption="query.go"}
-
 ctx, cancelCtx := context.WithTimeout(context.Background(), 10*time.Second)
 defer cancelCtx()
 //All the uploaded mail to the database
@@ -806,14 +789,12 @@ return "New mail successfully added", nil
 Finally, the `FindSubscribers` method below retrieves subscriber details without any parameters. It returns a `slice` of type `Primitive.M`, an alias for `map[string]interface{}`, along with a possible `error`.
 
 ~~~{.go caption="query.go"}
-
 func (mg *Mongo) FindSubscribers() ([]primitive.M, error) {}
 ~~~
 
 A `context` timeout is added to process the query within a specified time. The `Find()` method queries the `subscribers` collection without any filter argument passed to it to obtain a `Cursor` that encompasses all the documents in the collection. The result of all the documents is decoded or wrapped in a variable called `res` of type `[]bson.M`. Finally, the `Cursor` is closed using the `defer Cursor.Close(ctx)`. Handled the errors and returned the outcomes of all subscriber's documents.
 
 ~~~{.go caption="query.go"}
-
 ctx, cancelCtx := context.WithTimeout(context.Background(), 5*time.Second)
 defer cancelCtx()
 
@@ -848,7 +829,6 @@ This level of abstraction you will be adding, not only improves the maintainabil
 Below, you will have the `Mongo struct` type created in the section above will implicitly implement the `DataStore` interface by providing implementations for all the methods defined in the interface.
 
 ~~~{.go caption="service.go"}
-
 package db
 
 import (
@@ -861,7 +841,6 @@ type DataStore interface {
  AddMail(mu model.MailUpload) (string, error)
  FindSubscribers() ([]primitive.M, error)
 }
-
 ~~~
 
 After importing the necessary packages, the `DataStore` interface is defined, that includes the `AddSubscriber` method for adding new users to the database, the `AddMail` method to store uploaded emails in the database, and the `FindSubscribers` method to retrieve all subscriber details through a database query.
@@ -881,7 +860,6 @@ The following explains the functionalities of the functions within the package:
 First, import all the packages and built-ins needed here.
 
 ~~~{.go caption="tools.go"}
-
 package tools
 
 import (
@@ -907,7 +885,6 @@ The subs of struct type of `model.Subscribers` fields are populated using the `r
 If successful, The function returns the filled `subs` struct and a `nil` error message.
 
 ~~~{.go caption="tools.go"}
-
 // ReadForm: This is a reusable function to help read the information or details submitted.
 func ReadForm(rq *http.Request, subs model.Subscriber) (model.Subscriber, error) {
  if err := rq.ParseForm; err != nil {
@@ -929,28 +906,26 @@ It would help to use the `JSONWriter` function to write to the server. This func
 This function sets the HTTP response header to JSON format and adds the status code. It encodes the `msg` value into JSON using `json.Marshal`. Finally, it writes the encoded data to the output response using the `Write` method of `http.ResponseWriter`. Throughout the process, it checks for errors.
 
 ~~~{.go caption="tools.go"}
-
 // JSONWriter: this will help send json response to the client page of this application
 func JSONWriter(wr http.ResponseWriter, msg string, statusCode int) error {
-wr.Header().Set("Content-Type", "application/json")
-wr.WriteHeader(statusCode)
+  wr.Header().Set("Content-Type", "application/json")
+  wr.WriteHeader(statusCode)
 
-b, err := json.Marshal(msg)
-if err != nil {
- return err
-}
-_, err = wr.Write(b)
-if err != nil {
- return err
-}
-return nil
+  b, err := json.Marshal(msg)
+  if err != nil {
+   return err
+  }
+  _, err = wr.Write(b)
+  if err != nil {
+   return err
+  }
+  return nil
 }
 ~~~
 
 The `ReadMultiForm` function reads and processes a multipart form submitted via an HTTP request. It accepts three parameters: `wr http.ResponseWriter`, `rq *http.Request`, and `mail model.MailUpload`. The function returns a `model.MailUpload` object and an error, if any, for further processing.
 
 ~~~{.go caption="tools.go"}
-
 func ReadMultiForm(wr http.ResponseWriter, rq *http.Request, \
 mail model.MailUpload) (model.MailUpload, error) {}
 ~~~
@@ -958,7 +933,6 @@ mail model.MailUpload) (model.MailUpload, error) {}
 The function starts by parsing the multipart form data from the HTTP request using the `rq.ParseMultipartForm(10 << 20)` method, which can handle up to 10 megabytes (10MB) of data to ensure correct extraction of the form data. If there are any issues during the parsing process, the code logs the error and terminates the program.
 
 ~~~{.go caption="tools.go"}
-
 if err := rq.ParseMultipartForm(10 << 20); err != nil {
  log.Fatal(err)
 }
@@ -967,21 +941,18 @@ if err := rq.ParseMultipartForm(10 << 20); err != nil {
 Then the function parses the form data and retrieves the `MultipartForm` from the request using the `rq.MultipartForm` property to access the form's fields and files.
 
 ~~~{.go caption="tools.go"}
-
 form := rq.MultipartForm
 ~~~
 
 Next, the function assigns the form's `docx_name` field value to the `mail.DocxName` variable, capturing the uploaded document's name from the submitted form.
 
 ~~~{.go caption="tools.go"}
-
 mail.DocxName = form.Value["docx_name"][0]
 ~~~
 
 The function sets the `mail.Date` field to the current time using `time.Now()` to record the timestamp of the form submission.
 
 ~~~{.go caption="tools.go"}
-
 mail.Date = time.Now()
 ~~~
 
@@ -997,7 +968,6 @@ if !ok {
 If the file is present, the function verifies the file's extension using `filepath.Ext(file[0].Filename)`. The valid file extension is to access to read using `file[0].Open()`. If any error occurs during the opening, it returns an error indicating the inability to open the document, and the `defer` function closes up the file once it finishes reading.
 
 ~~~{.go caption="tools.go"}
-
 if file[0].Filename != "" {
 fileExtension := filepath.Ext(file[0].Filename)
 
@@ -1012,19 +982,17 @@ defer f.Close()
 The `switch-case` statement checks if the uploaded file extension matches the allowed extensions like ".doc", "docx", or ".txt".
 
 ~~~{.go caption="tools.go"}
-
 switch fileExtension {}
 ~~~
 
 For `case ".txt"`, the function utilises the `bufio.Scanner` function to process the content of the opened file. It reads the file line by line, formats each string with an HTML line break (`<br>`), and appends it to the `mail.DocxContent` variable.
 
 ~~~{.go caption="tools.go"}
-
 scanner := bufio.NewScanner(f)
 
 for scanner.Scan() {
-line := fmt.Sprintf("%s<br>", scanner.Text())
-mail.DocxContent += line
+  line := fmt.Sprintf("%s<br>", scanner.Text())
+  mail.DocxContent += line
 }
 
 if err := scanner.Err(); err != nil {
@@ -1037,56 +1005,52 @@ The code reads all the lines and checks for scanning errors using `scanner.Err()
 While for that of `case ".docx", ".doc"`, the function utilises a `docconv.ConvertDocx` function to convert an MS Word docx or doc file to text for easy readability. It reads the file line by line, formats each line with an HTML line break (`<br>`), appends it to the `content` variable, and then assigns its value to `mail.DocxContent`.
 
 ~~~{.go caption="tools.go"}
-
 // process .docx or .doc uploaded files
 case ".docx", ".doc":
-res, _, err := docconv.ConvertDocx(f)
-if err != nil {
- log.Fatal(err)
-}
+  res, _, err := docconv.ConvertDocx(f)
+  if err != nil {
+   log.Fatal(err)
+  }
 
-lines := strings.Split(res, "\n")
-var content string
-// Add line breaks to each line
-for _, line := range lines {
- content += line + "<br>"
-}
-mail.DocxContent = content
+  lines := strings.Split(res, "\n")
+  var content string
+  // Add line breaks to each line
+  for _, line := range lines {
+   content += line + "<br>"
+  }
+  mail.DocxContent = content
 ~~~
 
 If the file extension is not allowed, the function returns an error message stating that only specific file extensions (like ".doc", "docx", or ".txt") are permitted using the `default` condition.
 
 ~~~{.go caption="tools.go"}
-
 default:
-return model.MailUpload{}, fmt.Errorf("upload document not allow; try .txt .docx or .doc")
+  return model.MailUpload{}, fmt.Errorf("upload document not allow; try .txt .docx or .doc")
 ~~~
 
 Finally, the function returns the `mail` object containing the extracted form information. It also bears a `nil` error value to indicate the successful process.
 
 ~~~{.go caption="tools.go"}
-
 return mail, nil
 ~~~
 
 The `HTMLRender` function takes three parameters: `wr http.ResponseWriter`, `rq http.Request`, and `dt any` (alias for `interface`). It parses an HTML template file using `template.ParseFiles` and executes it with `wr` and `dt` using the `tmp.Execute` method. If an error occurs while parsing or during execution, the function returns an error message, and a `nil` value indicates successful rendering.
 
 ~~~{.go caption="tools.go"}
-
 func HTMLRender(wr http.ResponseWriter, rq *http.Request, dt any) error {
-filePath := "./index.html"
+  filePath := "./index.html"
 
-tmp, err := template.ParseFiles(filePath)
-if err != nil {
- return fmt.Errorf("HTMLRender Error: failed to parse file: %v", err)
-}
+  tmp, err := template.ParseFiles(filePath)
+  if err != nil {
+   return fmt.Errorf("HTMLRender Error: failed to parse file: %v", err)
+  }
 
-err = tmp.Execute(wr, dt)
-if err != nil {
- return fmt.Errorf("HTMLRender Error: failed to execute template: %v", err)
-}
+  err = tmp.Execute(wr, dt)
+  if err != nil {
+   return fmt.Errorf("HTMLRender Error: failed to execute template: %v", err)
+  }
 
-return nil
+  return nil
 }
 ~~~
 
@@ -1101,7 +1065,6 @@ Defining an interface in the `service.go` file that encompasses all the handler 
 Open the `handlers.go` file located in `./mailapp/handlers/handlers.go`  and import all the necessary packages to the file.
 
 ~~~{.go caption="handlers.go"}
-
 package handlers
 
 import (
@@ -1122,7 +1085,6 @@ import (
 The `MailApp struct` contains two fields: `MailDB` of type `db.DataStore`, an interface implementing query methods in the _db_ package, and `MailChan` of type `chan model.Mail` channel to hold mail details to be sent to subscribers.
 
 ~~~{.go caption="handlers.go"}
-
 type MailApp struct {
  MailDB db.DataStore
  MailChan chan model.Mail
@@ -1132,7 +1094,6 @@ type MailApp struct {
 The `NewMailApp` function below accepts `client *mongo.Client` and `mailchan chan model.Mail` as parameters and returns a `Logic` interface implementing all the handler methods. It serves as a constructor function, enabling modularisation, dependency injection, and asynchronous communication for building the application.
 
 ~~~{.go caption="handlers.go"}
-
 func NewMailApp(client *mongo.Client, mailchan chan model.Mail) Logic {
  return &MailApp{
   MailDB: db.NewMongo(client),
@@ -1144,7 +1105,6 @@ func NewMailApp(client *mongo.Client, mailchan chan model.Mail) Logic {
 The `MailApp struct` has a `Home` method that returns an anonymous function, `http.HandlerFunc`. This function takes `wr http.ResponseWriter` and `rq *http.Request` as parameters. It generates an HTML response for the route using `tools.HTMLRender()` from the _tools_ package. While rendering, any error is logged.
 
 ~~~{.go caption="handlers.go"}
-
 func (ma *MailApp) Home() http.HandlerFunc {
  return func(wr http.ResponseWriter, rq *http.Request) {
   err := tools.HTMLRender(wr, rq, nil)
@@ -1161,7 +1121,6 @@ func (ma *MailApp) Home() http.HandlerFunc {
 The following implemented method is `GetSubscriber`. This method handled the registration process of the subscribers after their details had been submitted through a form in a JSON format, and have their details stored in the database.
 
 ~~~{.go caption="handlers.go"}
-
 func (ma *MailApp) GetSubscriber() http.HandlerFunc {
  return func(wr http.ResponseWriter, rq *http.Request) {}
 }
@@ -1173,7 +1132,6 @@ Declare a variable named `subs` of type `model.Subscriber`.
 Call the `tools.ReadForm` function from the _tools_ package to read the HTTP request by passing `wr`, `rq`, and `subs` as arguments. Respond to an error with `http.Error`, including the specified status code and error message.
 
 ~~~{.go caption="handlers.go"}
-
 var subs model.Subscriber
 subscriber, err := tools.ReadForm(rq, subs)
 if err != nil {
@@ -1185,7 +1143,6 @@ if err != nil {
 The `AddSubscriber` method injects dependency through the `db.DataStore` interface. It receives the result of the `ReadForm` function as an argument. The `AddSubscriber` function returns three outputs: `ok` (to verify the successful addition of the subscriber), "msg" (a message to include in the HTTP response), and `err` (to indicate any errors encountered).
 
 ~~~{.go caption="handlers.go"}
-
 ok, msg, err := ma.MailDB.AddSubscriber(subscriber)
 if err != nil {
  http.Error(wr, msg, http.StatusInternalServerError)
@@ -1196,7 +1153,6 @@ if err != nil {
 The `switch-case` statement utilises the `tools.JSONWriter` to generate an **HTTP** response by providing reasonable arguments for verifying subscriber registration.
 
 ~~~{.go caption="handlers.go"}
-
 switch ok {
  case msg == "":
  tools.JSONWriter(wr, "You have already registered", http.StatusOK)
@@ -1208,7 +1164,6 @@ switch ok {
 The `SendMail` method is the primary handler for processing the HTTP request to send mail to all registered subscribers. I will explain the implementation of this handler step by step.
 
 ~~~{.go caption="handlers.go"}
-
 func (ma *MailApp) SendMail() http.HandlerFunc {
  return func(wr http.ResponseWriter, rq *http.Request) {}
 }
@@ -1217,7 +1172,6 @@ func (ma *MailApp) SendMail() http.HandlerFunc {
 To retrieve input details and the uploaded document containing the mail to send, the `tools.ReadMultiForm` function accepts a `mailUpload` variable of type `model.MailUpload` as an argument, along with `wr` and `rq`. `http.Error` to obtain the corresponding HTTP response message and `http.StatusBadRequest` (400) status code.
 
 ~~~{.go caption="handlers.go"}
-
 var mailUpload model.MailUpload
 upload, err := tools.ReadMultiForm(wr, rq, mailUpload)
 if err != nil {
@@ -1229,7 +1183,6 @@ if err != nil {
 The `tools.ReadMultiForm` function returns a value of type `model.MailUpload` and is then passed as an argument to the `AddMail` method, which is part of the `db.DataStore` interface. The purpose is to store the mail intended for subscribers in the database. Following this, an HTTP response with a status code of `http.StatusInternalServerError` (500), accompanied by an appropriate message.
 
 ~~~{.go caption="handlers.go"}
-
 msg, err := ma.MailDB.AddMail(upload)
 if err != nil {
 http.Error(wr, msg, http.StatusInternalServerError)
@@ -1240,7 +1193,6 @@ return
 The program logs information, notifies the following process, and pauses for a few milliseconds using the `time` package.
 
 ~~~{.go caption="handlers.go"}
-
 log.Println(msg)
 log.Println("........ preparing to send mail to subscribers ........ ")
 time.Sleep(time.Millisecond)
@@ -1250,7 +1202,6 @@ log.Println("........ Accessing the subscribers Database ........ ")
 The next process calls the `FindSubscribers` method, which returns all registered subscribers in the form of a `[]primitive.M` slice of `map[string]interface{}` named `res`. The process also checks for any return error.
 
 ~~~{.go caption="handlers.go"}
-
 res, err := ma.MailDB.FindSubscribers()
 if err != nil {
  http.Error(wr, fmt.Sprintf("failed query: %v", err), http.StatusInternalServerError)
@@ -1263,7 +1214,6 @@ Iterate through `res` to access each `map[string]interface{}` containing the dat
 Assign subscriber details to variables `subEmail`, `firstName`, and `lastName` by extracting them using their respective keys. Fill in the fields of `model.Mail struct` with their corresponding values and assign it to the `mail` variable. Send `mail` through the `MailChan` channel field in the `MailApp struct` to a receiving Goroutine.
 
 ~~~{.go caption="handlers.go"}
-
 for _, s := range res {
  subEmail := s["email"].(string)
  firstName := s["first_name"].(string)
@@ -1284,7 +1234,6 @@ for _, s := range res {
 After successfully sending the mail to the subscriber through an efficient performance channel for processing, the `tool.JSONWriter` generates an HTTP response to the server with the status code `http.StatusOK` (200), confirming the successful delivery of the mail.
 
 ~~~{.go caption="handlers.go"}
-
 err = tools.JSONWriter(wr, fmt.Sprintf("Mail Sent %v subscribers", len(res)), http.StatusOK)
 if err != nil {
  http.Error(wr, err.Error(), http.StatusInternalServerError)
@@ -1303,7 +1252,6 @@ An interface is required to promote code reusability, modularity, and easy maint
 For you to create the interface, open the `service.go` file and implement the `Logic` interface to add all the defined handler methods.
 
 ~~~{.go caption="service.go"}
-
 package handlers
 
 import "net/http"
@@ -1326,7 +1274,6 @@ The `Routes` function takes in the parameter of `lg handlers.Logic` to access al
 A new HTTP multiplexer `mux` is initialized, which implements the `Router interface` of the `chi` package, then the `Logger` function from the `chi` middleware logs the start and end of each request call and then recovers from panics logs the panic (and a backtrace) using the `Recoverer` function.
 
 ~~~{.go caption="routes.go"}
-
 package main
 import (
  "github.com/go-chi/chi/v5"
@@ -1346,7 +1293,6 @@ Then, the HTTP method `GET` execute the `lg.Home` HandlerFunc attached with the 
 Also, there are the `POST` methods with the route pattern of `/api/submit` and `/api/send` to carry out the request for the Subscriber to register and for the user to send mail to their subscribers, respectively.
 
 ~~~{.go caption="routes.go"}
-
 mux.Get("/", lg.Home())
 mux.Post("/api/submit", lg.GetSubscriber())
 mux.Post("/api/send", lg.SendMail())
@@ -1357,14 +1303,12 @@ The server should serve and handle the static files (CSS and images) required by
 To achieve that, `http.Dir` allows access to the **static** directory path `./static` at the root level. This directory is passed as an argument to the `http.FileServer` function, which returns an `http.Handler` assigned to the `fileServer` variable. This `fileServer` serves HTTP requests with the contents of the directory.
 
 ~~~{.go caption="routes.go"}
-
 fileServer := http.FileServer(http.Dir("./static"))
 ~~~
 
 The `Handle` method is invoked to execute the `fileServer` `http.Handler` by stripping off the prefix `/static` of the pattern `/static/*` with the `http.StripPrefix` function. `mux` Pointer to `chi.Mux` is returned to be passed as an argument to the `http.Server`.
 
 ~~~{.go caption="routes.go"}
-
 mux.Handle("/static/*", http.StripPrefix("/static", fileServer))
 return mux
 ~~~
@@ -1382,7 +1326,6 @@ You can proceed with following the next steps:
 Create an `email.go` file in the _email_ package. If done, first import the packages needed to implement the functionality of this package.
 
 ~~~{.go caption="email.go"}
-
 package email
 
 import (
@@ -1397,7 +1340,6 @@ import (
 Create a `MailServer` function with a parameter of the `mailChan model.Mail` is the receiving channel object when the user requests to send mail.
 
 ~~~{.go caption="email.go"}
-
 func MailServer(mailChan model.Mail) {}
 ~~~
 
@@ -1406,7 +1348,6 @@ The `gomail` package initialises a new SMTP Dialer to connect to the SMTP Server
 The dial function returns a value that authenticates the user's access to the SMTP Server. It assigns this value to variables `s` and `err` for further processing. Next, it performs error checking, and if any errors are detected, the program panics.
 
 ~~~{.go caption="email.go"}
-
 d := gomail.NewDialer("smtp.gmail.com", 465, os.Getenv("GMAIL_ACC"), os.Getenv("APP_PASSWORD"))
 s, err := d.Dial()
 if err != nil {
@@ -1417,7 +1358,6 @@ if err != nil {
 After the `Dial` function opens a connection to the server, a newly constructed message is now assigned to `msg` utilising the available methods such as `SetHeader`, `SetBody` and `SetAddressHeader` that `gomail.Message struct` implements
 
 ~~~{.go caption="email.go"}
-
 msg := gomail.NewMessage()
 msg.SetAddressHeader("From", mailChan.Source, os.Getenv("USER_NAME"))
 msg.SetHeader("To", mailChan.Destination)
@@ -1429,7 +1369,6 @@ After connecting to the SMTP server and composing the message, the user's authen
 The `Reset` method maintains the message settings for future messages.
 
 ~~~{.go caption="email.go"}
-
 if err := gomail.Send(s, msg); err != nil {
  log.Printf("Mail Sever : %s %v\n", mailChan.Destination, err)
 }
@@ -1449,14 +1388,12 @@ You will use the custom implementation with the Buffered channel, and I will pro
 The function `MailDelivery` uses two parameters, `mailChan` and `worker`, to receive a channel object and determine the number of goroutines (gophers) to generate.
 
 ~~~{.go caption="email.go"}
-
 func MailDelivery(mailChan chan model.Mail, worker int) {}
 ~~~
 
 The function starts by creating a buffered channel called `completionChan` of a boolean type with a capacity equal to the value of the `worker` parameter. This channel enables non-blocking data transmission when the buffer is not complete.
 
 ~~~{.go caption="email.go"}
-
 completionChan := make(chan bool, worker)
 ~~~
 
@@ -1465,24 +1402,22 @@ A `for` loop generates goroutines (gophers) within the range of the specified nu
 Remember that `defer` works in LIFO; It schedules the complete execution of the goroutine for processing the mail message and sends the completion signal to the `completeChan` when the goroutine finishes execution.
 
 ~~~{.go caption="email.go"}
-
 for x := 0; x < worker; x += 1 {
-go func() {
- // Signal completion
- defer func() {
-  completionChan <- true
- }()
- for m := range mailChan {
-  MailServer(m)
-  } 
- }()
+  go func() {
+   // Signal completion
+   defer func() {
+    completionChan <- true
+   }()
+   for m := range mailChan {
+    MailServer(m)
+    } 
+   }()
 }
 ~~~
 
 The program executes another `for` loop with the `worker` variable. This loop receives and discards completion signals from the `completeChan` channel using `<-completeChan`. The `defer` anonymous function manages this process. This loop effectively blocks the main goroutine, ensuring it waits for the completion signal from the `completeChan` channel until all the generated goroutines have finished processing.
 
 ~~~{.go caption="email.go"}
-
 for x := 0; x < worker; x += 1 {
  <-completionChan
 }
@@ -1514,7 +1449,6 @@ URI=<MONGODB_URI>
 In the `main` package, import all the needed builtins packages alongside the customs-created packages in the application.
 
 ~~~{.go caption="main.go"}
-
 package main
 
 import (
@@ -1533,7 +1467,6 @@ import (
 Three essential variables are employed: `MailChan`, a channel of type `chan model.Mail` for transmitting mail data between the main goroutine and other goroutines; The `BufferSize` variable specifies the capacity of the buffered channel, and the `Worker` variable handles the number of goroutines to create.
 
 ~~~{.go caption="main.go"}
-
 var (
  MailChan   chan model.Mail
  BufferSize int
@@ -1544,7 +1477,6 @@ var (
 In the `main` function, `MailChan` is assigned, allocated, and initialised an object of type `chan model.Mail` with `BufferSize` a buffer capacity using the `make` built-in function. The `Worker` variable is assigned a value of 5.
 
 ~~~{.go caption="main.go"}
-
 MailChan = make(chan model.Mail, BufferSize)
 Worker = 5
 ~~~
@@ -1553,7 +1485,6 @@ The `godotenv.Load()` is used to read and access the value of the environment va
 Logs to show the database is about to connect.
 
 ~~~{.go caption="main.go"}
-
 err := godotenv.Load()
 if err != nil {
  log.Fatal(err)
@@ -1567,7 +1498,6 @@ log.Println("Preparing Database Connection")
 The application server establishes the database connection by calling the `OpenConnect` function before it starts. The `defer` function closes the link to the database after executing the main goroutine.
 
 ~~~{.go caption="main.go"}
-
 client := db.OpenConnect()
 defer func(ctx context.Context) {
  err := client.Disconnect(ctx)
@@ -1581,7 +1511,6 @@ defer func(ctx context.Context) {
 The `MailChan` and `Worker` is passed as an argument to the `MailDelivery` function from the `email` package to generate the goroutines, and the `MailChan` is closed once the main goroutine finishes executing.
 
 ~~~{.go caption="main.go"}
-
 go email.MailDelivery(MailChan, Worker)
 defer close(MailChan)
 ~~~
@@ -1589,14 +1518,12 @@ defer close(MailChan)
 The `NewMailApp` function in the `handlers` package initialises the `MailApp struct` by accepting the `client` and `MailChan` as arguments. The `app` variable receives the assignment of the resulting instance.
 
 ~~~{.go caption="main.go"}
-
 app := handlers.NewMailApp(client, MailChan)
 ~~~
 
 The `Routes` function from the `handlers` package receives the `app` variable as an argument. It returns a value of type `*chi.Mux`, which you assign to the `handle` variable. The 'handle' variable initialises the application server on the port address `8080` .
 
 ~~~{.go caption="main.go"}
-
 handle := Routes(app)
 
 srv := http.Server{
@@ -1729,7 +1656,7 @@ It's described below how to create form inputs for the email title and its docum
 Here is a form created for the subscriber to submit their details in the input fields named `first_name`, `last_name`, `email`, and `interest` and have it stored in the database by the API. Also, the `**submit**` button triggers an 'alert' message when clicked to submit the form to this endpoint `/api/submit`.
 
 ~~~{.html caption="index.html"}
-form action="/api/submit" method="post">
+<form action="/api/submit" method="post">
           <label for="">First Name</label>
           <div class="user-input">
             <input type="text" name="first_name" id="first_name" />
