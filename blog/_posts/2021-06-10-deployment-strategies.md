@@ -40,7 +40,7 @@ In a software-as-a-service world, with frequent updates, this strategy can reall
 
 ## Rolling Update Deployment Strategy
 
-The recreate strategy above assumes you only have one instance of your service running at a time. But if you have several with a load balancer in front, you can improve the downtime story with a rolling update strategy. You start an instance of the new version, and once it's up, gracefully terminate one instance of the old version. Then continue this pattern until only new versions of the service are running. This strategy is ubiquitous in [Kubernetes](/blog/building-on-kubernetes-ingress) and other containerized production environments.
+The recreate strategy above assumes you only have one instance of your service running at a time. But if you have several with a load balancer in front, you can improve the downtime story with a rolling update strategy. You start an instance of the new version, and once it's up, gracefully terminate one instance of the old version. Then continue this pattern until only new versions of the service are running. This strategy is ubiquitous in Kubernetes and other containerized production environments.
 
 <div class="no_toc_section">
 ### Pros
@@ -78,7 +78,7 @@ A [blue-green deployment](/blog/blue-green/) requires a bit more resources: you 
 
 A canary deployment strategy looks a lot like a blue-green deployment -- a new version of the service starts up parallel to the existing version -- with a slight improvement made: instead of switching all traffic over to the new version, only a percentage of traffic is initially sent. This traffic is the canary in the coal mine. Canaries were used in mining to measure air quality. The miners would bring a canary with them as they traveled down into the mine. If there was an air quality problem, the canary would die before the miners and act as an early warning signal.
 
-In the same way, a canary deployment does not prevent downtime, but limits its impact by giving an early warning. It limits access to the new version to a subset of users. If [metrics](/blog/incident-management-metrics) indicate that the new service is not responding well to this fraction of requests, then the roll-out can be aborted, lessening its impact. If everything looks OK, request volume is slowly ramped up until its being entirely served by the new version.
+In the same way, a canary deployment does not prevent downtime, but limits its impact by giving an early warning. It limits access to the new version to a subset of users. If [incident management metrics](/blog/incident-management-metrics) indicate that the new service is not responding well to this fraction of requests, then the roll-out can be aborted, lessening its impact. If everything looks OK, request volume is slowly ramped up until its being entirely served by the new version.
 
 Depending on how the canary traffic is chosen, a downside to this approach is that a specific subset of users may experience most of the production issues.
 

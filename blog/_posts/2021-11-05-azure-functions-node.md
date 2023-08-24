@@ -19,7 +19,7 @@ Deploying an application once meant provisioning a virtual machine, ensuring sec
 
 Now, though, cloud computing has advanced to the point where you can rely on serverless computing for your platform and other deployment infrastructure and just focus on writing code.
 
-This tutorial will introduce you to Azure functions, the Microsoft flavor of serverless computing. You'll learn how to create [Node.js](https://nodejs.org/en/about/) applications using [VS Code](https://code.visualstudio.com/), create Azure functions in [Microsoft Azure](https://azure.microsoft.com/en-us/), and finally deploy the application to Azure using the [CI / CD](/blog/ci-vs-cd) pipeline in [Azure DevOps](https://azure.microsoft.com/en-us/services/devops/).
+This tutorial will introduce you to Azure functions, the Microsoft flavor of serverless computing. You'll learn how to create Node.js applications using VS Code, create Azure functions in Microsoft Azure, and finally deploy the application to Azure using the CI / CD pipeline in Azure DevOps.
 
 ## The Case for Serverless Functions
 
@@ -29,7 +29,7 @@ First, you'll have less responsibility for maintaining your system. Your cloud p
 
 Second, you'll improve your computing resources utilization since you can configure your Azure functions to run on demand and pay only for what you use. Compare that to the virtual machines scenario, where the bill keeps going up as long as you have a running VM.
 
-These two characteristics make Azure functions suitable for specific use cases such as short running jobs, simple APIs, and other [orchestration](https://en.wikipedia.org/wiki/Orchestration_(computing))-based business workflows.
+These two characteristics make Azure functions suitable for specific use cases such as short running jobs, simple APIs, and other orchestration-based business workflows.
 
 ## How to Deploy an Azure Function Using Node.js
 
@@ -85,7 +85,7 @@ Create a sample Azure function using VS Code.
   <figcaption>Project structure</figcaption>
 </figure>
 
-- In `index.js`, you can find the logic of the Azure function. It receives a [query string](https://en.wikipedia.org/wiki/Query_string) and returns a response.
+- In `index.js`, you can find the logic of the Azure function. It receives a query string and returns a response.
 - To test the function locally, hit F5 (or go to **Debug > Start Debugging** ). You should see the listening application URL in the terminal output. It should resemble the following:
 
  ```

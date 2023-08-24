@@ -162,6 +162,8 @@ deployment-strategies:
         url: /canary-deployment/
       - title: "Continuous Integration vs. Continuous Deployment"
         url: /ci-vs-cd/
+      - title: "Using Canary Deployments in Kubernetes"
+        url: /canary-deployment-in-k8s/
   - title: "Continous Deployment Tools"
     children:
       - title: "Octopus Deploy"
@@ -174,6 +176,8 @@ deployment-strategies:
         url: /gitlab-ci/  
       - title: "Jenkins Deployment"
         url: /jenkins-stages-pipelines/  
+      - title: "Flux vs Argo CI/CD"
+        url: /flux-vs-argo-cd/
   - title: "Serverless Deployment"
     children:
       - title: "Azure Functions Deployment "
