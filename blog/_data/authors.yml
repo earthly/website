@@ -491,3 +491,7 @@ Ikeh Akinyemi:
     name    : "Ikeh Akinyemi"
     bio     : "I’m a software engineer, technical writer, and open source evangelist. I have more than three years of professional experience building and writing web applications, focusing on the frontend and backend with Node.js and Python. I’m also an experienced technical writer with publications like Fauna, Adeva, and Smashing Magazine."
     avatar  : "/assets/images/authors/ikeh-akinyemi.png"
+Yusuf Akinleye:
+    name    : "Yusuf Akinleye"
+    bio     : "He is a Software engineer and a technical writer who is aptitude, highly focused, and a go-getter."
+    avatar  : "/assets/images/authors/yusuf-akinleye.jpg"
