@@ -12,4 +12,9 @@ gocsv
 
 golang
 
+godotenv
+gomail
+docconv
+Gomail
+
 gorm
