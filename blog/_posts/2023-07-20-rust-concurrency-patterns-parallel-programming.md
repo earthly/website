@@ -11,6 +11,8 @@ internal-links:
  - rust concurrency patterns
  - concurrency patterns
  - parallel programming
+excerpt: |
+    
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore faster – like Dockerfile and Makefile had a baby. This is about Rust Concurrency Patterns for Parallel Programming**

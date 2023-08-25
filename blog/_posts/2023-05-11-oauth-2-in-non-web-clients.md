@@ -12,7 +12,7 @@ internal-links:
  - Authorization
  - Clients
 excerpt: |
-    Learn how to implement OAuth 2.0 flow in non-web clients and create a seamless user experience with the Device Authorization Grant flow. Discover how to configure a Facebook app for device login and improve the security and usability of your non-web client applications.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're implementing OAuth, Earthly can help streamline your build process. [Check it out](/).**
 

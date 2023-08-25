@@ -8,7 +8,7 @@ author: Gavin
 internal-links:
  - just an example
 excerpt: |
-    Learn how NOCD, a leading telehealth provider, reduced their CI build times by 9x using Earthly and Earthly Cloud.
+    
 ---
 
 ![NOCD Logo]({{site.images}}{{page.slug}}/nocd.png)\

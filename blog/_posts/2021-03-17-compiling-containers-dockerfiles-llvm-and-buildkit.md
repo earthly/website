@@ -6,7 +6,7 @@ categories:
   - Tutorials
 toc: true
 excerpt: |
-    Learn how containers are compiled using Dockerfiles, LLVM, and BuildKit in this tutorial. Explore the phases involved in creating a container image, the similarities between compiling code and building images, and how to programmatically generate container images using BuildKit and Go. Discover the concept of intermediate representations and see the development of a custom frontend for Docker build using the Ickfile format.
+    
 author: Adam
 sidebar:
   nav: "docker"

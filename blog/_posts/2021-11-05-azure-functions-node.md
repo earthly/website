@@ -11,7 +11,7 @@ internal-links:
  - azure
 related: true 
 excerpt: |
-    Learn how to deploy Azure functions using Node.js with this tutorial. Discover the benefits of serverless computing and how it can simplify your application deployment process.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're a Node.js Developer, Earthly can help optimize your build process. [Check it out](/).**
 

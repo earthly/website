@@ -10,7 +10,7 @@ internal-links:
  - Codespaces
  - Dev Containers
 excerpt: |
-    Learn how to use Dev Containers and Github Codespaces to simplify development and make it more portable. These tools allow you to define a development environment and run your project in a Docker container, either locally or in the cloud. With Dev Containers and Codespaces, you can code from anywhere and standardize development across your team.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly can enhance your CI process just like Dev Containers can enhance your development process. [Check it out](/).**
 

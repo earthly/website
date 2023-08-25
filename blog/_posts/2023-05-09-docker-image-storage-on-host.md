@@ -12,7 +12,7 @@ internal-links:
  - Docker
  - Image-Management
 excerpt: |
-    Learn how Docker images are stored on the host machine and gain a deeper understanding of Docker image management. Discover the internals of Docker images, including layers, DiffIDs, and ChainIDs, and explore the storage drivers used by Docker.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Do a lot with Docker images? Earthly could simplify the process for you. [Give it a try](/).**
 

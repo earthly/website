@@ -9,7 +9,7 @@ internal-links:
  - Python
  - Python Classes
 excerpt: |
-    In this tutorial, you'll learn about Python data classes and how they provide a convenient way to define and manage data-oriented classes. You'll explore the basics of data classes, their differences from regular classes, and how they support type hints, default values, immutability, and more. If you're interested in simplifying your data-oriented classes and improving your Python code, this tutorial is for you!
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. Earthly can help manage and automate your Python project's build process. [Check it out](/).**
 

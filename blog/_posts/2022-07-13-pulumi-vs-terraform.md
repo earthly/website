@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Alexander Yu
 excerpt: |
-    Learn about the differences between Pulumi and Terraform, two popular Infrastructure as Code (IaC) tools. Discover their functionality, learning curves, compatibility, modularity, and community support to help you decide which tool is best for your infrastructure needs.
+    
 internal-links:
  - just an example
  - Pulumi

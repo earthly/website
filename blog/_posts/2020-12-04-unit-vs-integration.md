@@ -10,7 +10,7 @@ internal-links:
   - unit testing
 bottomcta: false
 excerpt: |
-    Learn the differences between unit testing and integration testing and when to use each approach. Discover how unit tests focus on small, isolated pieces of code, while integration tests ensure that different components of your software work together seamlessly.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can enhance your testing process, including unit and integration tests. [Check it out](/).**
 

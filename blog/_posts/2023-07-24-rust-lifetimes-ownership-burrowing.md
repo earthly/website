@@ -11,6 +11,8 @@ internal-links:
  - rust lifetimes
  - ownership and borrowing
  - rust guide
+excerpt: |
+    
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore, faster – like Dockerfile and Makefile had a baby. This article is all about the Rust Lifetimes**.

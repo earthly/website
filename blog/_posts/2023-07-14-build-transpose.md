@@ -11,6 +11,7 @@ internal-links:
  - meaningful methods from large language
  - mining methods
 excerpt: |
+    
   Learn strategies for working with LLMs, such managing context, framing the problem, thinking outloud and more in this newbs's guide to applying large language models.
 ---
 

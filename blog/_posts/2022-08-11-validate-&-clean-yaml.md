@@ -11,7 +11,7 @@ internal-links:
  - ValidKube
  - Linux
 excerpt: |
-    Learn how to validate and clean your YAML files using Kubeval and ValidKube. These tools help you spot misconfigurations and remove clutter from your files, ensuring the security and health of your Kubernetes cluster.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. With Earthly there is less YAML and more working software. [Check it out](/).**
 

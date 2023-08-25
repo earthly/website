@@ -7,7 +7,7 @@ author: James Konik
 internal-links:
  - terraform
 excerpt: |
-    Learn how to automate the deployment process and manage complex applications using Terraform and Kubernetes. Discover the benefits of scalability, portability, and workload support that these tools offer, and how they can complement each other to streamline your infrastructure management.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Working with complex deployments like Terraform and Kubernetes? Earthly can help. [Check it out](/).**
 

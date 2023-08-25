@@ -12,7 +12,7 @@ internal-links:
 topic: cli
 last_modified_at: 2023-04-17
 excerpt: |
-    Learn how to convert JSON to CSV and vice versa at the command line using tools like `dasel`, `jq`, `jsonv`, and `csvtojson`. These handy command line tools make the conversion process easy and efficient, allowing you to handle edge cases and customize the output according to your needs. Whether you're a data engineer or just someone who loves working with the command line, this article provides the knowledge and tools you need to perform JSON to CSV conversion effortlessly.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about CSV files but if you're interested in a different approach to building and packaging software then [check us out](/).**
 

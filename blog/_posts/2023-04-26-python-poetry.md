@@ -12,7 +12,7 @@ internal-links:
  - Poetry
  - Virtual Environments
 excerpt: |
-    Learn how to manage dependencies in Python projects using Poetry, a package manager that simplifies the process. From creating virtual environments to adding and removing dependencies, this tutorial covers all the essentials. Plus, discover how to publish your Python project as a package on PyPI.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We streamline software building using containerization. Earthly, combined with Poetry, can make your Python project builds smoother and faster. [Check it out](/).**
 

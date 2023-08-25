@@ -12,7 +12,7 @@ internal-links:
  - Continuous Deployment
  - Github
 excerpt: |
-    Learn about the challenges and best practices for securing your CI/CD pipeline in this informative article. Discover how to mitigate security risks and ensure the reliability and integrity of your software development and deployment process.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an ideal tool for boosting the security and efficiency of your CI/CD pipelines. [Check it out](/).**
 

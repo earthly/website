@@ -11,7 +11,7 @@ internal-links:
 topic: monorepo
 funnel: 2
 excerpt: |
-    Learn about the different monorepo build tools available, including Bazel, Pants, Nx, and Earthly. Discover their features, programming language support, learning curves, remote caching and execution capabilities, build introspection abilities, and versatility. Find the right tool for your organization's monorepo needs.
+    
 ---
 **We're [Earthly](https://earthly.dev/) and this article is about Monorepo build tools. Earthly is particularly useful if you're working with a Monorepo. [check us out](/).**
 

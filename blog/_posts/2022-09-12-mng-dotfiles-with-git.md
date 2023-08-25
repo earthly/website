@@ -12,7 +12,7 @@ internal-links:
  - Gitlab
  - Bash
 excerpt: |
-    Learn how to manage your dotfiles using Git and make your environment configuration easier to maintain and synchronize across multiple machines. Say goodbye to the hassle of manually reinstalling programs and customizing settings every time you switch computers.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify software building using containerization. [Check it out](/).**
 

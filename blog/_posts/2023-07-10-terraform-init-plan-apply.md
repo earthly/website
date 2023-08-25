@@ -11,7 +11,7 @@ internal-links:
  - Virtual Machines
  - Kubernetes
 excerpt: |
-    Learn how to create and manage infrastructure with Terraform using the `terraform init`, `terraform plan`, and `terraform apply` commands. This article covers the basics of Terraform installation, configuration syntax, and the workflow for deploying and updating infrastructure.
+    
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is on the basics of Terraform but if you're interested in a different approach to building and packaging software then [check us out](/).**

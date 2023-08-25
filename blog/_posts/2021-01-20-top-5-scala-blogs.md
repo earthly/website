@@ -8,7 +8,7 @@ internal-links:
   - blog
   - blogs
 excerpt: |
-    Looking for some interesting Scala blogs to celebrate Scala's birthday? Check out this list of active Scala blogs that cover a range of topics, from library insights to Scala 3 updates and functional programming. Whether you're a beginner or an experienced developer, these blogs are sure to keep you informed and inspired.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly is a powerful build tool that can be used with Scala projects. [Check it out](/).**
 

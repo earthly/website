@@ -12,7 +12,7 @@ internal-links:
  - debuggers
  - debugging
 excerpt: |
-    Learn why many experienced software engineers prefer printf debugging over using debuggers, and how this approach can deepen your understanding of your code and make you a better developer. Discover the connection between printf debugging and the unconventional learning methods of mathematician Srinivasa Ramanujan.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly is a powerful build tool that would complement any printf debugging process. [Check it out](/).**
 

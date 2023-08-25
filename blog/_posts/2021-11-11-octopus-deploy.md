@@ -9,7 +9,7 @@ sidebar:
 internal-links:
  - octopus deploy
 excerpt: |
-    Learn how to simplify complex deployments with Octopus Deploy, a continuous deployment platform that automates releases, manages deployments, and handles routine procedures. Discover the benefits of using Octopus Deploy and follow step-by-step instructions to set it up and connect it to your application.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly complements tools like Octopus Deploy, enhancing the building phase of your CI pipeline. [Check it out](/).**
 

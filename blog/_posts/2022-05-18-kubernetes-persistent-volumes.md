@@ -10,7 +10,7 @@ internal-links:
  - kubernetes persistence
 topic: kubernetes
 excerpt: |
-    Learn how to use Kubernetes persistent volumes to store data for stateful applications in your Kubernetes cluster. This article explains what persistent volumes are, why they're important, and how to create and manage them using kubectl.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're sailing the K8s seas, [check out Earthly](/).**
 

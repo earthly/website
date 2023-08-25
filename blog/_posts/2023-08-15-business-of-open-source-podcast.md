@@ -6,7 +6,7 @@ toc: true
 author: Josh
 topcta: false
 excerpt: |
-    It's not that passion doesn't matter, but rather that Vlad had to learn to build things that inspired passion from both the market and the builders.
+    
 ---
 
 Vlad was on [The Business of Open Source Podcast](https://www.emilyomier.com/podcast)!

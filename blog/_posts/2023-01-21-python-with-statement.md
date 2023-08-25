@@ -10,7 +10,7 @@ internal-links:
  - Context Manager
  - Handling
 excerpt: |
-    Learn how to use the `with` keyword in Python to handle exceptions and ensure proper resource management. This article explains the concept of context managers and provides examples of creating your own classes and functions that support the `with` statement. Whether you're working with files, locks, or other types of connections, understanding the `with` statement is essential for writing clean and efficient Python code.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We streamline software building with containerization. If you're wrestling with complex Python CI/CD pipelines, you'll find Earthly can make your life a lot easier. [Check it out](/).**
 

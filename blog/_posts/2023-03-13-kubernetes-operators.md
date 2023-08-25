@@ -12,7 +12,7 @@ internal-links:
  - Deployment
  - MongoDB
 excerpt: |
-    Learn how Kubernetes operators can simplify the deployment and management of complex, stateful applications in a Kubernetes cluster. Discover the benefits of using operators, how they work, and explore real-world examples of popular Kubernetes operators.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check us out](/).**
 

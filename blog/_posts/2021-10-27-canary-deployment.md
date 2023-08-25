@@ -9,7 +9,7 @@ sidebar:
 internal-links:
  - canary
 excerpt: |
-    Learn how canary deployments can help you catch bugs and regressions early in your application deployment process. Discover the benefits and downsides of this strategy, as well as how to implement it effectively.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly is a fantastic tool to help manage and streamline your build process. [Give it a look](/).**
 

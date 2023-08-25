@@ -12,7 +12,7 @@ internal-links:
  - Functions
  - Serverless
 excerpt: |
-    Learn how to create powerful serverless applications with Netlify Functions. This tutorial covers the basics of Netlify Functions, different types of functions, and how they compare to AWS Lambda.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make software development simpler and faster using containerization. Want to improve your workflow when you're working with Netlify Functions? Earthly can smooth out the build process. [Check it out](/).**
 

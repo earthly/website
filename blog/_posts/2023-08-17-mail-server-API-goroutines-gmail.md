@@ -12,6 +12,8 @@ internal-links:
  - mail server with goroutines and gmail
  - goroutines and gmail integration
  - building concurrent mail server
+excerpt: |
+    
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and accelerate software building through containerization. Interested in faster, smoother builds? [Give us a look](/).**
 

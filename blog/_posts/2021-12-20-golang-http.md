@@ -11,7 +11,7 @@ internal-links:
  - golang json
  - golang http
 excerpt: |
-    Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can streamline your Golang build process, making your HTTP server projects a breeze. [Give it a go](/).**
 

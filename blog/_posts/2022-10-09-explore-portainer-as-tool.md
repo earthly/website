@@ -11,7 +11,7 @@ internal-links:
  - Container
  - Kubernetessource ./util/functions
 excerpt: |
-    Learn how to use Portainer, an open-source container management tool, to easily deploy and manage Docker containers without the need for complex command-line interfaces. With Portainer's graphical user interface, you can view and administer your containerized applications with ease.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. It's a great companion with tools like Docker and Kubernetes, for a smoother containerization workflow. [Give it a try](/).**
 

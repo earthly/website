@@ -14,7 +14,7 @@ internal-links:
  - until loop
  - until loops
 excerpt: |
-    Learn how to use loops in Bash to control the flow of your programs. This article covers the different types of loops in Bash, including `while`, `until`, and `for`, and provides examples of how to use them in practical scenarios.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about looping in bash. If you are looking for to move beyond bash scripts for building and deploying then [check us out](/).**
 

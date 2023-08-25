@@ -9,7 +9,7 @@ sidebar:
 internal-links:
  - containerd
 excerpt: |
-    Learn about the differences between container runtimes containerd and Docker in this informative article. Discover their features, how they work together, and what they can do individually, helping you make an informed decision for your containerized applications.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and speedier with containerization. If you're deep diving into Docker and `containerd`, you'd be interested in how Earthly can streamline your builds. [Check us out](/).**
 

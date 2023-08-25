@@ -7,7 +7,7 @@ author: James Konik
 internal-links:
  - docker alternatives
 excerpt: |
-    Looking for alternatives to Docker? This article explores various container and non-container tools that can help you deploy software faster and more securely. From Podman to Kubernetes, discover the pros and cons of each option and find the right tool for your team.
+    
 ---
 **We're [Earthly](https://earthly.dev/). Into exploring Docker alternatives? We're an open-source build tool that simplifies the software building process and works great with Docker, Podman and other container platforms. [Check us out](/).**
 

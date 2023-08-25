@@ -9,7 +9,7 @@ internal-links:
  - terraform backend
 bottomcta: false
 excerpt: |
-    Learn how to store your Terraform state in an S3 bucket to avoid leaking sensitive information and manage changes made by multiple people.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about storing Terraform state in an S3 bucket. Earthly is a powerful build tool that can be used with Terraform to streamline management of infrastructure. [Check us out](/).**
 

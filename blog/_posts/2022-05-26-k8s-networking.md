@@ -9,7 +9,7 @@ internal-links:
  - kubernetes networking
  - ingress
 excerpt: |
-    Learn about the ins and outs of Kubernetes networking, including IP address allocation, container network interfaces, services, DNS, and more. Whether you're a beginner or an experienced user, this guide will provide valuable insights into how networking works in the Kubernetes ecosystem.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. If you're working with Kubernetes networking, Earthly can be a handy sidekick, making your containerized builds a breeze. [Give us a look](/).**
 

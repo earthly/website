@@ -13,7 +13,7 @@ internal-links:
  - Reusability
  - Automate
 excerpt: |
-    Learn all about Terraform variables and how to use them in this comprehensive guide. Discover the different variable types, their usage, and workarounds for their limitations. Whether you're new to Terraform or looking to enhance your skills, this article has got you covered.
+    
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building and automating software pipelines simpler and faster using containerization. If you're working with Terraform, Earthly can be a valuable ally. [Check it out](/).**

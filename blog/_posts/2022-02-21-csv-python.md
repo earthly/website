@@ -11,7 +11,7 @@ internal-links:
 topic: python
 last_modified_at: 2023-04-17
 excerpt: |
-    Learn how to read a CSV file in Python using both the `csv` and `pandas` libraries. Discover the different methods and possible delimiter issues, and find out how to overcome them.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a simple and containerized approach to building Python code then [check us out](/).**
 

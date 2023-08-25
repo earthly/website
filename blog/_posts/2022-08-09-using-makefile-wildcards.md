@@ -12,7 +12,7 @@ internal-links:
  - Programming
  - Make
 excerpt: |
-    Learn how to use wildcards in Makefiles to create flexible and automated build processes. This tutorial provides examples and explanations of common wildcard use, the wildcard function, and rules with wildcards. Whether you're new to Make or looking to enhance your Makefile skills, this article is a must-read.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We're here to make your software builds simpler and faster using containerization. If you're using Makefiles, consider giving Earthly a spin for a more modern approach. [Check us out](/).**
 

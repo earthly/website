@@ -9,7 +9,7 @@ internal-links:
  - Python
  - Python Classes
 excerpt: |
-    Learn more about Python data classes and their features in this tutorial. Discover how to set default values, exclude fields from the constructor, create fields post-initialization, and use slots for more efficient data classes.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Ideal for Python projects like the ones using data classes. [Give us a look](/).**
 

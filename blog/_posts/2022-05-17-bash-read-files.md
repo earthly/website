@@ -11,7 +11,7 @@ internal-links:
  - nl 
 topic: cli
 excerpt: |
-    Learn how to use Bash to read files line by line, use custom delimiters, assign variables, and more. This article provides step-by-step instructions and examples to help you efficiently search for keywords, process text, automate tasks, and more using Bash scripts.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about IO and file reading in bash. If you are looking for to move beyond bash scripts for building and deploying software then [check us out](/).**
 

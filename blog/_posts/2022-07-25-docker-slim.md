@@ -10,7 +10,7 @@ internal-links:
  - Docker Slim
  - container
 excerpt: |
-    Learn how to optimize your Docker images and containers with Docker Slim, a tool that can reduce image size up to thirty times without any manual optimization. Discover how Docker Slim performs static and dynamic analysis to generate smaller and more efficient Docker containers, and how it can help you analyze, compress, and secure your Docker resources.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about optimizing Docker images with Docker Slim. Earthly is a powerful build tool can help streamline your Docker development process. [Check it out](/).**
 

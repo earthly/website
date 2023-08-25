@@ -12,7 +12,7 @@ internal-links:
  - Softwares
  - Business 
 excerpt: |
-    Discover the hidden pitfalls of dev tool businesses and how misaligned incentives can lead to bloated software and unsatisfied users. Learn how Earthly tackles these challenges and prioritizes customer needs in this insightful article.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you are tired of misaligned incentives in dev tool businesses, Earthly is a breath of fresh air that puts developer needs first. [Check us out](/).**
 

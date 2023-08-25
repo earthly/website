@@ -10,7 +10,7 @@ internal-links:
  - Cluster
  - Microservices
 excerpt: |
-    Learn how to simplify your Kubernetes configuration management using custom resources and controllers. This article guides you through creating a configuration template for your microservice infrastructure and shows you how to use a custom controller to generate microservice configurations from the template.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We streamline software build processes using containerization. If you're dealing with Kubernetes configurations, Earthly could be your go-to tool for simpler and faster build automation. [Check it out](/).**
 

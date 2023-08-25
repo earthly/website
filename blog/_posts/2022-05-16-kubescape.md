@@ -7,7 +7,7 @@ author: Boemo Wame Mmopelwa
 internal-links:
  - kubescape
 excerpt: |
-    Learn how to improve the security of your Kubernetes cluster with Kubescape, a free tool that scans for non-compliant YAML files and image vulnerabilities. Find out how to install Kubescape on Windows, macOS, and Linux, and discover how to analyze the scan results to identify and fix security risks.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and accelerate software building with containerization. [Check us out](/).**
 

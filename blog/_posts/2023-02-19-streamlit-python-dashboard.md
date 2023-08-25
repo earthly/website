@@ -12,7 +12,7 @@ internal-links:
  - OpenSource
  - Matplotlib
 excerpt: |
-    Learn how to build a data dashboard with Streamlit in Python. This tutorial will teach you how to create interactive visualizations and deploy web apps for data analysis and machine learning models.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster. If you're working with Streamlit or Python, Earthly can help automate and speed up your build process. [Check it out](/).**
 

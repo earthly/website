@@ -4,7 +4,7 @@ categories:
   - News
 author: Earthly
 excerpt: |
-    Learn how developer advocate Adam Gordon Bell uses Earthly to enhance his writing experience and maintain high-quality published content. Discover his favorite dev tools for writing in this casual and informative Sourcegraph article.
+    
 ---
 Earthly was covered on Sourcegraph's [Dev Tool Time](https://www.youtube.com/watch?v=oPaPhFX7SeM):
 <div class="wide">

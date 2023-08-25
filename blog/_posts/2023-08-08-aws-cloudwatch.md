@@ -12,6 +12,7 @@ internal-links:
  - application performance with aws
  - aws cloudwatch service
 excerpt: |
+    
    AWS CloudWatch is a comprehensive monitoring and observability service. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities.
 ---
 

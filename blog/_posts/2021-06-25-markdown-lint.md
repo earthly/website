@@ -10,7 +10,7 @@ internal-links:
  - spell
  - spelling
 excerpt: |
-    Learn how to ensure the quality of your markdown files and documentation with linting tools. Discover various tools like markdownlint, mdspell, alex, write-good, textlint, proselint, and Vale that can help you catch formatting errors, spelling mistakes, grammar errors, and improve writing clarity. Find the right tool for your needs and automate their usage to maintain high-quality documentation.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Need to automate your documentation? Earthly can help by simplifying the build process in a CI environment. [Check us out](/).**
 

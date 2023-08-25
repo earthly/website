@@ -9,7 +9,7 @@ bottomcta: false
 internal-links:
  - YAML
 excerpt: |
-    Learn why using YAML for control flow configuration can lead to complex and hard-to-understand code, and why it's better to use existing programming languages or write a parser instead. Discover the pitfalls of using YAML as a programming language and explore alternative tools like Makefile or Earthfile.
+    
 ---
 **We're [Earthly](https://earthly.dev/). Build scripts without YAML are possible. After reading this article about YAML hell maybe [check us out](/).**
 

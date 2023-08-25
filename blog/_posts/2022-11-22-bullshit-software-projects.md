@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Adam
 excerpt: |
-    Discover the frustrations and challenges faced by software developers in the world of "bullshit work." From pointless projects to busy work and executive pet projects, this article sheds light on the absurd tasks that developers often encounter in their careers.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Give it a whirl](/).**
 

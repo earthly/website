@@ -5,7 +5,7 @@ categories:
   - News
 author: Vlad
 excerpt: |
-    In this article, the Earthly community discusses their plans for future improvements and directions for the Earthly project. They are seeking feedback from users to ensure they are meeting their needs and making them happy and productive. If you're interested in build processes and want to have a say in the development of Earthly, this article is for you!
+    
 internal-links:
   - road map
   - roadmap

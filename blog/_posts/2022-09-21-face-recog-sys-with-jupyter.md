@@ -11,7 +11,7 @@ internal-links:
  - Anvil
  - Python
 excerpt: |
-    Learn how to create and deploy a facial recognition system using Jupyter Notebooks and Anvil. This tutorial will guide you through the process of building the logic in Deepnote and creating the interface in Anvil, allowing you to serve models from your notebooks and quickly build minimal interfaces.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're dealing with deploying applications developed originally developed in Jupyter Notebooks, Earthly can streamline the process. [Check it out](/).**
 

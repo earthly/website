@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Adam
 excerpt: |
-    Learn how to use mitmproxy, a command-line tool that acts as an HTTP and HTTPS proxy, to capture and modify network traffic. This tutorial provides step-by-step instructions for installing and using mitmproxy on macOS, Linux, and Windows, as well as capturing traffic from Docker containers.
+    
 internal-links:
    - mitmproxy
    - proxy

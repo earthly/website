@@ -12,8 +12,8 @@ internal-links:
  - search efficiency
  - ripgrep to improve search efficiency
 
-excerpt: | 
-     This article will cover what the ripgrep command-line tool does, what its key features are, how to install it, and how to use its basic and advanced options.
+excerpt: |
+    
 
 ---
 

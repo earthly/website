@@ -9,7 +9,7 @@ internal-links:
  - yaml lint
  - yaml validate
 excerpt: |
-    Learn how to use Cuelang, an extension of YAML, to validate your YAML configurations and prevent runtime errors. Discover how to define types, add constraints, and import packages to ensure your YAML files are structured correctly.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up builds using containerization. [Check it out](/).**
 

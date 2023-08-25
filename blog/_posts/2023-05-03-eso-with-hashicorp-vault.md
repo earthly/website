@@ -13,7 +13,7 @@ internal-links:
  - Security
  - Secret Management
 excerpt: |
-    Learn how to enhance the security of your Kubernetes cluster by using external secret operators (ESOs) with HashiCorp Vault. This tutorial will guide you through the process of setting up and configuring ESOs, allowing you to store your secrets securely outside of the cluster while still making them accessible to your applications.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using HashiCorp Vault, you might like Earthly. [Check it out](/).**
 

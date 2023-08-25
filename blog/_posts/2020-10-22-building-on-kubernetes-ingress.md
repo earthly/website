@@ -12,7 +12,7 @@ as_related: false
 topic: kubernetes
 funnel: 2
 excerpt: |
-    In this article, Corey Larson, the lead architect at Earthly, discusses the decisions and trade-offs involved in designing an internal platform on AWS using EKS. He covers topics such as the role of Kubernetes as a platform, the use of Ingress controllers, the benefits of Traefik over Nginx, and the importance of testing in production. If you're interested in learning about the challenges and considerations of building on Kubernetes, this article is a must-read.
+    
 ---
 *Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform.*
 

@@ -10,7 +10,7 @@ internal-links:
  - Cluster
  - RBAC
 excerpt: |
-    Learn how to implement Role-Based Access Control (RBAC) in Kubernetes to secure resources and components from unauthorized access. This tutorial covers the creation of Roles and RoleBindings at both the cluster and namespace levels, as well as the differences between ClusterRoles and Roles.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We help simplify and speed up software builds using containerization. If you're working with Kubernetes, Earthly could be a game-changer for streamlining your container builds. [Check it out](/).**
 

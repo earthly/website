@@ -11,7 +11,7 @@ internal-links:
  - deployment
  - continous deployment
 excerpt: |
-    Learn about different deployment strategies, their pros and cons, and how they can impact downtime and deployment complexity. Find the best approach for your application and gain insights into optimizing your deployment process.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're into deployment strategies, Earthly can streamline your build process. [Check it out](/).**
 

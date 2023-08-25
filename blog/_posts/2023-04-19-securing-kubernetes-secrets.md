@@ -12,7 +12,7 @@ internal-links:
  - Credentials
  - Application Security
 excerpt: |
-    Learn how to secure your Kubernetes secrets effectively by enabling encryption at rest, implementing role-based access control, and securing the ETCD data store. Protect your sensitive information and keep your secrets safe from unauthorized access.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
 

@@ -13,7 +13,7 @@ topic: cli
 bottomcta: false
 last_modified_at: 2023-04-17
 excerpt: |
-    Learn how to manipulate strings in bash with this informative tutorial. From concatenating strings to replacing parts of a string, you'll discover useful techniques for working with text in bash scripts.
+    
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about bash – which has its quirks but is a tool we find ourselves often reaching for. If you are looking for an open-source tool to improve how you build software, then [check us out](/).**

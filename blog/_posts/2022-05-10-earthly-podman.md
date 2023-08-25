@@ -7,7 +7,7 @@ author: David Szakallas
 internal-links:
  - podman
 excerpt: |
-    Learn how to use Podman, Docker Compose, and Earthly to develop and manage containers on your Linux system. Discover how to install and configure these tools, and explore their features and functionalities.
+    
 ---
 **We're [Earthly](https://earthly.dev/). This is a historical document but please see our [Podman guide](https://docs.earthly.dev/docs/guides/podman) for the latest podman details.**
 

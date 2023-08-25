@@ -13,7 +13,7 @@ tags:
 toc: true
 author: Vlad
 excerpt: |
-    Learn how to improve build repeatability and maintainability in your software engineering projects, even without using Earthly. This article provides tips and tricks for managing build scripts, using Makefiles and Dockerfiles effectively, and handling parallelism and shared caching. Plus, discover options for managing secrets and maintaining consistency in your build processes.
+    
 topic: earthly
 funnel: 3
 ---

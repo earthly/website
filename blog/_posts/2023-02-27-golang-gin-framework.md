@@ -12,7 +12,7 @@ internal-links:
  - Framework
  - Web Application
 excerpt: |
-    Learn how to build web applications in Go using the Gin framework. This tutorial will guide you through developing a CRUD API and using features like routing, JSON parsing, and database operations with GORM.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're using Go, Earthly can help streamline your build process. [Check it out](/).**
 

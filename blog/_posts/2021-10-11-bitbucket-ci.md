@@ -9,7 +9,7 @@ internal-links:
  - bitbucket
  - groovy 
 excerpt: |
-    Learn about the different options for continuous integration with Bitbucket, including using Jenkins, integrating with cloud CI/CD tools like AWS, and utilizing Bitbucket's native CI/CD service, Bitbucket Pipelines. Discover the benefits and costs of each option to determine the best fit for your project.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and quicker with containerization. If you're looking for a tool to optimize your CI workflows, Earthly could be a great open-source option for you. [Check it out](/).**
 

@@ -9,7 +9,7 @@ sidebar:
 internal-links:
  - spinnaker
 excerpt: |
-    Learn how to use Spinnaker, an open-source continuous delivery platform, to automate and standardize software releases to Kubernetes clusters. This tutorial provides step-by-step instructions on setting up Spinnaker, configuring providers and storage, and deploying applications with pipelines.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Pair it with Spinnaker for even smoother Kubernetes deployments. [Check it out](/).**
 

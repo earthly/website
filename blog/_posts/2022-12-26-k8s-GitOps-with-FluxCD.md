@@ -12,7 +12,7 @@ internal-links:
  - GitOps
  - Cluster
 excerpt: |
-    Learn how to configure a continuous delivery pipeline with Flux for your Kubernetes cluster in this tutorial. Discover how GitOps can automate application delivery and deployment using a Git repository as the single source of truth.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an ideal tool for building and managing containerized applications, perfect for those working with Kubernetes. [Check it out](/).**
 

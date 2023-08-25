@@ -11,7 +11,7 @@ internal-links:
  - Graph
  - Optimize
 excerpt: |
-    Learn all you need to know about Bazel queries in this article. Discover how Bazel queries can help you analyze your project's build graph, optimize build performance, and debug builds.
+    
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article is about Bazel query. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**

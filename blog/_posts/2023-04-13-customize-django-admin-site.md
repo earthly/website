@@ -11,7 +11,7 @@ internal-links:
  - Python
  - Model
 excerpt: |
-    Learn how to customize the Django Admin site to enhance the user experience and increase efficiency in managing data within a Django project. This tutorial covers various customization options such as controlling field display, adding filters and thumbnails, linking related objects, and overriding templates and forms.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're building Django services, Earthly can automate your build process. [Check it out](/).**
 

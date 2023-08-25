@@ -11,7 +11,7 @@ internal-links:
  - Python
  - Signals
 excerpt: |
-    Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Django signals. Earthly is a powerful build tool that can be used to build and test Django projects and projects in any framework. [Check us out](/).**
 

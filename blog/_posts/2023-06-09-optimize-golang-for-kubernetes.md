@@ -13,7 +13,7 @@ internal-links:
  - Optimize
  - Load Balancing
 excerpt: |
-    Learn how to optimize Golang applications for Kubernetes and reduce server load with best practices such as resource allocation, garbage collection optimization, connection pooling, and implementing health checks and readiness probes. Improve the performance and scalability of your Golang applications in a containerized environment and ensure efficient resource utilization and cost-efficiency.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're looking to optimize your Go applications builds, Earthly can be a great addition to your toolkit. [Check it out](/).**
 

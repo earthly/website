@@ -10,7 +10,7 @@ internal-links:
     - liveview
 bottomcta: false
 excerpt: |
-    Learn how to build a real-time crowdfunding application using the Phoenix Framework and Elixir. Discover the power of Phoenix LiveView and how to leverage PubSub to broadcast updates to all users in real time.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a real-time application in the Phoenix Framework with Elixir. Earthly can be used in conjunction Elixir to streamline your CI builds. [Check us out](/).**
 

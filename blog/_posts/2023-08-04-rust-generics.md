@@ -12,6 +12,8 @@ internal-links:
  - write code
  - rust generics
  - flexible and reusable code
+excerpt: |
+    
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**

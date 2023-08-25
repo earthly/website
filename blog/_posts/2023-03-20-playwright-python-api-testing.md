@@ -13,7 +13,7 @@ internal-links:
  - Playwright
  - Framework
 excerpt: |
-    Learn how to implement API testing using Playwright with Python and generate an allure report for your tests. Discover how to create, update, and delete GitHub repositories using Playwright's built-in methods, and see how to fix failing tests using the allure report.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. If you're testing APIs with Python, Earthly can streamline and automate your build process. [Check it out](/).**
 

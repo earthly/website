@@ -13,7 +13,7 @@ internal-links:
  - Namespace
 topic: kubernetes
 excerpt: |
-    Learn how to monitor your Kubernetes cluster using Grafana and Prometheus. This tutorial will guide you through the process of setting up your own monitoring dashboard, visualizing internal state metrics, and accessing Grafana dashboards for resource monitoring.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify software building using containerization. Earthly can streamline your Kubernetes container building process. [Check it out](/).**
 

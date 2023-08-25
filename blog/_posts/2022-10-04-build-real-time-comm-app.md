@@ -10,7 +10,7 @@ internal-links:
  - Django
  - Python
 excerpt: |
-    Learn how to build a real-time communication application with Django Channels and the WebSocket Protocol. This tutorial will guide you through setting up the project, creating the necessary models and views, and handling WebSocket connections. Get ready to dive into the world of real-time communication!
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're developing real-time apps with Django, Earthly can streamline your build process, making your life a whole lot easier. [Check it out](/).**
 

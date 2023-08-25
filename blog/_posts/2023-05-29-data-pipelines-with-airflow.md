@@ -13,7 +13,7 @@ internal-links:
  - Data Workflows
  - Apache
 excerpt: |
-    Learn how to automate your data pipelines and workflows using Apache Airflow. This powerful open-source platform simplifies task scheduling, monitoring, and collaboration, making it a must-have tool for data engineers.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that can automate and streamline data engineering CI processes. [Check it out](/).**
 

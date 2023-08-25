@@ -13,7 +13,7 @@ internal-links:
  - Compilation
  - Dependency-Management
 excerpt: |
-    Learn the key differences between CMake and Make, two popular build automation tools. Discover how CMake's cross-platform capabilities, GUI, and better dependency handling make it a preferred choice for software development.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We streamline building software using containerization. If you're into CMake or Make, you might find Earthly interesting for an even more efficient build process. [Give it a look](/).**
 

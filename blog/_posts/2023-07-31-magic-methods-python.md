@@ -11,6 +11,8 @@ internal-links:
  - methods in python
  - exploring the magic methods
  - special methods
+excerpt: |
+    
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. If you're interested in a simple and containerized approach to building Python code, then [check us out](/).**

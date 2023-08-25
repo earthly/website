@@ -11,7 +11,7 @@ internal-links:
  - Debugging
  - Exceptions
 excerpt: |
-    Learn how to handle errors in Python with this comprehensive article. From syntax errors to runtime errors, you'll discover how to use the `try-except` block, raise custom exceptions, and implement best practices for error handling.
+    
 ---
 **We're [Earthly](https://earthly.dev/). Our build automation tool makes building software simpler and faster using containerization. Earthly can make your Python projects easier to build and troubleshoot. [Check us out](/).**
 

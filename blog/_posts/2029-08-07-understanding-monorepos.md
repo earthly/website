@@ -10,6 +10,8 @@ internal-links:
  - build systems
  - understanding monorepos
  - monorepos and build systems
+excerpt: |
+    
 ---
 
 

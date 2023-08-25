@@ -8,7 +8,7 @@ author: Josh
 internal-links:
  - just an example
 excerpt: |
-    In this episode of The Jeff Bullas Show, software engineer Vlad shares his journey into technology, the importance of cloud computing for businesses, and the exciting implications of AI for entrepreneurs. Don't miss out on this insightful conversation and valuable lessons learned as a tech business owner!
+    
 ---
 Vlad was on [The Jeff Bullas Show](https://www.jeffbullas.com/podcast/)!
 

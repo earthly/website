@@ -8,7 +8,7 @@ internal-links:
  - virtual machine 
  - hypervisor
 excerpt: |
-    Learn about the differences between Docker containers and virtual machines (VMs) in this article. Discover the strengths and limitations of each technology, including factors such as host machine utilization, simplicity, speed, security, and ease of replicability. Whether you're new to containerization or looking to optimize your virtualized deployments, this article provides valuable insights to help you make informed decisions.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. If you're grappling with Docker containers vs VMs, Earthly certainly help on the container side. [Give it a go](/).**
 

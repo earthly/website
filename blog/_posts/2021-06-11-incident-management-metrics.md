@@ -11,7 +11,7 @@ internal-links:
  - metrics
  - incident management
 excerpt: |
-    Learn about the essential metrics and key performance indicators (KPIs) for incident management in software development. Discover how Mean Time Between Failures (MTBF), Mean Time to Recovery (MTTR), Mean Time to Resolve (MTTRe), and Mean Time to Acknowledge (MTTA) can help improve the quality of your software releases and enhance your incident response process.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Interested in efficient, high-quality software development? Earthly can help with that. [Check us out](/).**
 

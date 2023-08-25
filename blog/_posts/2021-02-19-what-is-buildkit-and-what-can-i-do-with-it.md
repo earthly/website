@@ -14,7 +14,7 @@ internal-links:
    - docker daemon
 last_modified_at: 2022-11-17
 excerpt: |
-    Learn how to use BuildKit, an open-source project that turns Dockerfiles into Docker images. Discover its history, how to install it, and how to build images using BuildKit directly. Explore different output types and gain insights into the inner workings of BuildKit.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization.[Check it out](/).**
 

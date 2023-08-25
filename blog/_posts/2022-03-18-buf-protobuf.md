@@ -9,7 +9,7 @@ author: Adam
 internal-links:
  - buf
 excerpt: |
-    Learn how to avoid common pitfalls when working with Protobuf using Buf, a suite of tools that simplifies dealing with protocol buffers. Discover how to use Buf's linting, breaking change detection, and code generation features to improve your development process.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about avoiding common pitfalls with Protobuf using Buf. Earthly great build tool if you are using Protobufs. [Check us out](/).**
 

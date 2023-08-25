@@ -11,7 +11,7 @@ internal-links:
  - Caching
  - Optimization
 excerpt: |
-    Learn how to improve the performance of your Django web application using caching techniques. This article covers everything from the basics of caching to advanced strategies, helping you optimize your application and provide a better user experience.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly could be your go-to tool for optimizing the build process of your Django application, ensuring faster and more efficient development. [Check it out](/).**
 

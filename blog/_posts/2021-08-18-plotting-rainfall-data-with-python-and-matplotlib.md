@@ -8,7 +8,7 @@ internal-links:
 
 author: Alex
 excerpt: |
-    Learn how to plot precipitation data using Python, Pandas, and Matplotlib. Explore how to parse and manipulate the data, plot it interactively or save it as an image, and compare annual rainfall over multiple years.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. [Check it out](/).**
 

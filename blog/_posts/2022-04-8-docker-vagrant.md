@@ -8,7 +8,7 @@ author: Gineesh Madapparambath
 internal-links:
  - vagrant
 excerpt: |
-    Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're interested in enhancing your container workflow, Earthly could be a game-changer. [Check it out](/).**
 

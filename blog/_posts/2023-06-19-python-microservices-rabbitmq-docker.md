@@ -13,7 +13,7 @@ internal-links:
  - Docker
  - Software
 excerpt: |
-    Learn how to convert a monolith recipe API into microservices using Django and Flask. This article covers the usage of RabbitMQ for communication between microservices and provides a step-by-step guide on Dockerizing the microservices.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly ideal for developers building microservices. [Check it out](/).**
 

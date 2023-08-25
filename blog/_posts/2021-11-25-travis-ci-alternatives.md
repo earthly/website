@@ -8,7 +8,7 @@ internal-links:
  - travis ci
  - travis
 excerpt: |
-    Looking for alternatives to Travis CI? Check out this article that explores the ten best alternatives, including CircleCI, Jenkins, Bitrise, and more. Find the perfect CI tool for your project and improve your build process.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about exploring Travis CI alternatives. Since the original date of publication we have released our own CI. [Check it out](/).**
 

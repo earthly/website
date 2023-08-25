@@ -12,7 +12,7 @@ internal-links:
   - shebang
 
 excerpt: |
-    Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software easier and quicker using containerization. If you're into bash scripting, you'll get the value of Earthly right away. Why not [give it a try](/)?**
 

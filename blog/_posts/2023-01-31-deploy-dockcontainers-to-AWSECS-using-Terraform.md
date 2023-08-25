@@ -11,7 +11,7 @@ internal-links:
  - AWS
  - Container
 excerpt: |
-    Learn how to automate the process of deploying Docker containers to AWS ECS using Terraform. This tutorial provides step-by-step instructions and code examples to help you set up the necessary infrastructure and launch your containers on AWS.
+    
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about IO and file reading in bash. If you are looking for to move beyond bash scripts for building and deploying software then [check us out](/).**
 

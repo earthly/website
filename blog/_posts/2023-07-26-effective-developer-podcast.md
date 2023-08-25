@@ -6,7 +6,7 @@ toc: true
 author: Josh
 topcta: false
 excerpt: |
-    In this episode of The Effective Developer Podcast, Sebastian Daschner talks with Vlad about all things productivity, and especially Earthly, a tool to improve CI/CD productivity.
+    
 ---
 
 Vlad was on [The Effective Developer Podcast](https://podcasters.spotify.com/pod/show/effective-developer/episodes/67---Interview-With-Vlad-A--Ionescu-e26or8q)

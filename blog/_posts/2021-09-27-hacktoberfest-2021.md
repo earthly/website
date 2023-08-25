@@ -7,7 +7,7 @@ internal-links:
    - hacktoberfest
    - contributor
 excerpt: |
-    Join Earthly in celebrating Hacktoberfest 2021! Contribute to open-source projects, submit pull requests, and get a chance to win an Earthly sticker. Don't miss out on this opportunity to showcase your skills and support the open-source community.
+    
 ---
 We're excited to announce that Earthly is participating in Hacktoberfest this October [again](/2020-09-30-hacktoberfest-2020).
 
