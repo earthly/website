@@ -2,8 +2,6 @@ name: Raise PR with changes
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: '* /15 * * *' 
 
 jobs:
   create-pr:
@@ -22,17 +20,32 @@ jobs:
         sudo mv gh_*/bin/gh /usr/local/bin/
         rm -rf gh_2.0.0_linux_amd64/ ghcli.tar.gz
 
-    - name: Create a new branch
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.x'  # This will get the latest version of Python 3
+
+    - name: Create a new branch and make changes
       run: |
         git config user.name 'GitHub Actions Bot'
         git config user.email 'actions@github.com'
-        branch_name="automated-changes-$(date +'%Y%m%d%H%M%S')"  # create a unique branch name based on the current date/time
+        branch_name="automated-changes-$(date +'%d%m%Y')"  # create a branch name based on the current day/month/year
         git checkout -b $branch_name
-        echo "Some changes" >> some-file.txt  # Make whatever changes you want to your codebase
+
+        # Install any required packages if necessary (for example)
+        # pip install some-package
+
+        # Run your Python script
+        python ./util/sgpt/excerpt.py  --dir ./blog/_posts
+
         git add -A
         git commit -m "Automated code changes"
+
+    - name: Push changes and create PR
+      run: |
         git push --set-upstream origin HEAD  # pushes the newly created branch to origin
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
+        branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
         gh pr create --base main --head $branch_name --title "Automated PR" --body "This is an automated PR."
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
