@@ -28,19 +28,10 @@ jobs:
         git config user.email 'actions@github.com'
         branch_name="automated-changes-$(date +'%Y%m%d%H%M%S')"  # create a unique branch name based on the current date/time
         git checkout -b $branch_name
-
-    - name: Make code changes
-      run: |
         echo "Some changes" >> some-file.txt  # Make whatever changes you want to your codebase
-
-    - name: Commit and push changes
-      run: |
         git add -A
         git commit -m "Automated code changes"
         git push --set-upstream origin HEAD  # pushes the newly created branch to origin
-
-    - name: Raise a PR
-      run: |
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         gh pr create --base main --head HEAD --title "Automated PR" --body "This is an automated PR."
       env:
