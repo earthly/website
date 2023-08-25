@@ -41,7 +41,7 @@ jobs:
 
     - name: Raise a PR
       run: |
-        gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+        gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         gh pr create --base main --head HEAD --title "Automated PR" --body "This is an automated PR."
       env:
-        GH_CLI_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
