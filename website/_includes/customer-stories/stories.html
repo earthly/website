@@ -1,0 +1,48 @@
+<div class="max-w-7xl mt-5 mx-auto px-4 lg:px-10">
+  <div class="gap-5 grid md:grid-cols-2 lg:grid-cols-3">
+    {% for item in site.data.customer-stories %}
+      <a id="story-{{ forloop.index }}" href="{{ item.link }}" class="{% if forloop.index > 6 %}hidden{% endif %}">
+        <div class="border border-[#D1D6D9] cursor-pointer group px-3 py-4 rounded-lg">
+          <div class="overflow-hidden rounded-md">
+            <img
+              class="w-full h-[200px] duration-700 object-cover group-hover:scale-110 transition-transform"
+              src="{{ item.image }}"
+              alt="{{ item.title }}"
+            />
+          </div>
+
+          <div class="mt-2 p-4 pt-2">
+            <p class="text-sm uppercase">Whitepaper</p>
+
+            <p class="font-bold mt-4 text-[#475569] text-xl">{{ item.title }}</p>
+
+            <div class="w-fit decoration-[#2d7e5d] flex items-center mt-6 group-hover:underline">
+              <p class="font-bold text-[#2d7e5d] text-lg">Read now</p>
+              <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div id="load-more-button" class="flex justify-center mt-10">
+    <p class="border border-[#D1D6D9] cursor-pointer px-10 py-3 rounded-full text-[#6B7280] text-xl" onclick="loadMore()">Load more</p>
+  </div>
+</div>
+
+<script>
+  const allStories = document.querySelectorAll('[id^="story"]');
+  var stories = 6
+
+  function loadMore() {
+    stories += 6
+
+    allStories.forEach(story => {
+      const id = +story.id.replace("story-", "")
+      if (id <= stories) story.classList.remove('hidden')
+    })
+
+    if (stories >= allStories.length) document.getElementById('load-more-button').classList.add('hidden')
+  }
+</script>
