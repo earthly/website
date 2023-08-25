@@ -33,6 +33,6 @@ jobs:
         git commit -m "Automated code changes"
         git push --set-upstream origin HEAD  # pushes the newly created branch to origin
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
-        gh pr create --base main --head HEAD --title "Automated PR" --body "This is an automated PR."
+        gh pr create --base main --head $branch_name --title "Automated PR" --body "This is an automated PR."
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
