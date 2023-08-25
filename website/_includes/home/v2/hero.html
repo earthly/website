@@ -1,9 +1,9 @@
-<main class="homepage mb-6 lg:mb-12 mt-[70px] overflow-hidden wave-main">
+<main class="homepage lg:mb-6 xl:mb-12 mt-[70px] wave-main">
   <div class="wave"></div>
   <div class="wave"></div>
   <div class="wave"></div>
 
-  <div class="max-w-7xl mt-12 mx-auto px-6 lg:px-10 relative z-10">
+  <div class="max-w-7xl mt-12 mx-auto px-6 lg:px-10 relative z-10" style="padding-top: 48px;">
     <h1 class="font-medium text-5xl sm:text-7xl text-center xl:text-left text-slate-900 tracking-tight">
       Earthly makes builds
       <span class="block pt-4 text-[#2d7e5d] whitespace-nowrap">super simple</span>
@@ -28,16 +28,16 @@
 
     <p class="text-center xl:text-left text-slate-400">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a></p>
 
-    <div class="absolute bottom-0 right-0 top-12 hidden min-[1800px]:flex">
-      {% svg assets/svg/earthly-animation.svg class="h-full absolute -right-20" %}
-      <p class="earthly-animation-text">Rebuild only what has changed</p>
+    <div class="absolute bottom-0 right-0 hidden min-[1800px]:flex" style="margin-bottom: -64px; top: 88px;">
+      {% svg assets/svg/earthly-animation.svg class="h-full absolute -right-32" %}
     </div>
   </div>
 
-  <div class="xl:w-fit bg-white xl:bg-transparent relative xl:absolute bottom-0 right-0 top-0 xl:top-20 earthly-animation xl:flex min-[1800px]:hidden items-center z-10">
-    {% svg assets/svg/earthly-animation.svg class="h-full min-h-[280px] pt-10 lg:pt-12 xl:pt-0 relative xl:absolute -right-5 sm:right-[-10vw] xl:right-0 pb-4 lg:pb-0" %}
-    <p class="earthly-animation-text">Rebuild only what has changed</p>
+  <div class="xl:w-fit bg-white xl:bg-transparent relative xl:absolute bottom-0 right-0 top-0 earthly-animation xl:flex min-[1800px]:hidden items-center z-10">
+    {% svg assets/svg/earthly-animation.svg class="h-full min-h-[280px] pt-10 lg:pt-12 xl:pt-0 relative xl:absolute -right-0.5 sm:-right-2.5 xl:right-0 pb-4 lg:pb-0" %}
   </div>
+
+  {% svg assets/svg/earthly-animation-defs.svg %}
 </main>
 
 <script>

@@ -49,6 +49,8 @@ iftop
 iperf
 nmap
 
+msg
+
 xz
 zstd
 ack

@@ -279,7 +279,7 @@ Developer speed is also an important dimension to consider. As I mentioned earli
 
 ### **Earthly**
 
-With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [](https://earthly.dev/earthly-ci)[Earthly Satellites](https://earthly.dev/earthly-satellites) (our managed remote build runners), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
+With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [Earthly Satellites](https://earthly.dev/earthly-satellites) (our managed remote build runners), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
 
 <div class="wide">
 ![7-secs]({{site.images}}{{page.slug}}/7-secs.png)\
