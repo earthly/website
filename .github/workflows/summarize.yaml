@@ -1,9 +1,9 @@
 name: Raise PR with changes
 
 on:
-  # run everyday at 12:20 utf ( 8:20 am est) to alert on new posts
-  schedule:
-    - cron: '* /15 * * *' 
+  workflow_dispatch:
+  # schedule:
+  #   - cron: '* /15 * * *' 
 
 jobs:
   create-pr:
