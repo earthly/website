@@ -43,7 +43,6 @@ def build_paragraph(content):
     {{~/assistant}}
     """),llm=gpt4)
     out = run_llm_program(score, content=content)
-    print(out)
     article_sentence = out["summary"].strip()
 
     score = guidance(dedent("""
