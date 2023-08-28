@@ -12,6 +12,8 @@ internal-links:
  - write code
  - rust generics
  - flexible and reusable code
+excerpt: |
+    Rust's use of generics allows developers to write flexible and reusable code by defining functions, structs, and enums without specifying the type of data they will operate on. Generics provide better type safety, reduce errors, and can be used in advanced topics such as traits, generic lifetimes, phantom types, and type-level programming.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**

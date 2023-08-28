@@ -11,6 +11,8 @@ internal-links:
  - rust lifetimes
  - ownership and borrowing
  - rust guide
+excerpt: |
+    This article provides a comprehensive guide to Rust lifetimes, explaining ownership and borrowing in the language. It covers the basics of lifetimes, borrowing and references, as well as advanced topics like lifetime subtyping and higher-ranked trait bounds.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore, faster – like Dockerfile and Makefile had a baby. This article is all about the Rust Lifetimes**.
