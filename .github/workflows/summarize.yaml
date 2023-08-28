@@ -32,11 +32,10 @@ jobs:
         branch_name="automated-changes-$(date +'%d%m%Y')"  # create a branch name based on the current day/month/year
         git checkout -b $branch_name
 
-        # Install any required packages
         pip install -r ./util/sgpt/requirements.txt
 
-        # Run your Python script
         python ./util/sgpt/excerpt.py  --dir ./blog/_posts
+        python ./util/sgpt/topcta.py  --dir ./blog/_posts
 
         git add -A
         git commit -m "Automated code changes"
