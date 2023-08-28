@@ -11,6 +11,8 @@ internal-links:
  - rust concurrency patterns
  - concurrency patterns
  - parallel programming
+excerpt: |
+    This article explores Rust's concurrency features and patterns for parallel programming. It covers topics such as threads, sharing data between threads, managing thread synchronization, and using high-level abstractions like Rayon and Tokio for parallel and async programming.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore faster – like Dockerfile and Makefile had a baby. This is about Rust Concurrency Patterns for Parallel Programming**

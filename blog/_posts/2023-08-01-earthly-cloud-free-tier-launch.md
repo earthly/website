@@ -9,6 +9,8 @@ internal-links:
  - just an example
  - excerpt: |
     Introducing the future of CI/CD: Earthly Cloud. A SaaS build automation platform with consistent builds, ridiculous speed, a next-gen Developer Experience, and that works with any CI. Get 6,000 build min/month with our free tier.
+excerpt: |
+    Earthly Cloud is a new SaaS build automation platform that offers consistent builds, fast speed, and a next-gen Developer Experience for CI/CD. It provides a free tier with 6,000 build minutes per month.
 ---
 
 **TLDR: We believe CI/CD is overdue for revolutionary improvements, in build consistency, speed, and ease of use, and that everyone should have access to it. Today we launch Earthly Cloud with a 6,000 build minutes/month free tier to get that revolution started. [Get started for free.](https://cloud.earthly.dev/login)**

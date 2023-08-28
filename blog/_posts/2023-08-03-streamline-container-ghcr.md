@@ -13,6 +13,8 @@ internal-links:
  - container workflow
  - streamline workflow
  - container registry
+excerpt: |
+    This article explores how to streamline your container workflow with the GitHub Container Registry. It covers configuring access, deploying Docker images, integrating with GitHub Actions, and integrating with Kubernetes.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**
