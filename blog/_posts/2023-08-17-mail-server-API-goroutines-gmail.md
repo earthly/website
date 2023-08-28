@@ -13,7 +13,7 @@ internal-links:
  - goroutines and gmail integration
  - building concurrent mail server
 excerpt: |
-    Learn how to build a concurrent mail server API using Goroutines and integrate it with Gmail for efficient email sending. This tutorial covers everything from setting up the server and database to handling user requests and sending emails to subscribers.
+    In this tutorial, we built a concurrent mail server API using Goroutines and integrated it with Gmail for email sending. We explored concurrency in Go, set up a MongoDB database, implemented handlers for handling HTTP requests, and created a user interface for submitting subscriber details and sending emails.
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and accelerate software building through containerization. Interested in faster, smoother builds? [Give us a look](/).**
 
