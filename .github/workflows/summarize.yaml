@@ -37,13 +37,22 @@ jobs:
         python ./util/sgpt/excerpt.py  --dir ./blog/_posts
         python ./util/sgpt/topcta.py  --dir ./blog/_posts
 
-        git add -A
-        git commit -m "Automated code changes"
+        # git add -A
+        # git commit -m "Automated code changes"
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
-
+    - name: Check for changes
+      id: changes
+      run: |
+        git diff --exit-code || echo "::set-output name=has_changes::true"
+    - name: Commit changes
+      if: steps.changes.outputs.has_changes == 'true'  
+      run: | 
+        git add -A
+        git commit -m "Automated code changes"
     - name: Push changes and create PR
+      if: steps.changes.outputs.has_changes == 'true'
       run: |
         branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
         git push --force --set-upstream origin HEAD:$branch_name  
