@@ -11,6 +11,8 @@ internal-links:
  - methods in python
  - exploring the magic methods
  - special methods
+excerpt: |
+    This tutorial explores the concept of magic methods in Python, which are special methods that allow you to define and customize the behavior of classes. It covers topics such as object-oriented programming, operator overloading, and context managers, providing practical examples and explanations of commonly used magic methods.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. If you're interested in a simple and containerized approach to building Python code, then [check us out](/).**
