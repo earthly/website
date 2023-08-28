@@ -11,7 +11,7 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
       with:
-        fetch-depth: 0  # fetch all commits/branches
+        fetch-depth: 1  
 
     - name: Set up GitHub CLI
       run: |
@@ -32,8 +32,8 @@ jobs:
         branch_name="automated-changes-$(date +'%d%m%Y')"  # create a branch name based on the current day/month/year
         git checkout -b $branch_name
 
-        # Install any required packages if necessary (for example)
-        # pip install some-package
+        # Install any required packages
+        pip install -r ./util/sgpt/requirements.txt
 
         # Run your Python script
         python ./util/sgpt/excerpt.py  --dir ./blog/_posts
