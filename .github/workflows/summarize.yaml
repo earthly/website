@@ -2,6 +2,8 @@ name: Raise PR with changes
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '0 0 * * 1'
 
 jobs:
   create-pr:
@@ -36,9 +38,6 @@ jobs:
 
         python ./util/sgpt/excerpt.py  --dir ./blog/_posts
         python ./util/sgpt/topcta.py  --dir ./blog/_posts
-
-        # git add -A
-        # git commit -m "Automated code changes"
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
@@ -57,6 +56,6 @@ jobs:
         branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
         git push --force --set-upstream origin HEAD:$branch_name  
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
-        gh pr create --base main --head $branch_name --title "Automated PR" --body "This is an automated PR."
+        gh pr create --base main --head $branch_name --title "Automated PR: Excerpt and Summary" --body "This is an automated PR."
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
