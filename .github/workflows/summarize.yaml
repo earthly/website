@@ -45,7 +45,7 @@ jobs:
 
     - name: Push changes and create PR
       run: |
-        git push --set-upstream origin HEAD  # pushes the newly created branch to origin
+        git push --force --set-upstream origin HEAD  
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
         gh pr create --base main --head $branch_name --title "Automated PR" --body "This is an automated PR."

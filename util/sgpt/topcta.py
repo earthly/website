@@ -36,7 +36,13 @@ def build_paragraph(content):
     ---
     {{content}} 
     ---
-    Can you summarize this blog post in a three word sentence of the form 'This article is about ....'?
+    Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? Do no put the summary in quotes.
+    Examples:
+    - This article is about gmail API changes.
+    - This article is about Python CLIs. 
+    - This article is about Python CLIs. 
+                            
+    Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? 
     {{~/user}}
     {{#assistant~}}
     {{gen 'summary' max_tokens=100 temperature=0}}
