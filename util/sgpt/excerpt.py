@@ -1,39 +1,56 @@
 import argparse
 import subprocess
 import os
+import guidance
+from pathlib import Path
+import contextlib
+
+gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
+
+def get_excerpt(content):
+  score = guidance("""
+  {{#system~}}
+  You generate two sentence summaries from markdown content.
+  {{~/system}}
+
+  {{#user~}}
+  {{content}}
+  Can you summarize this in two sentences?
+  {{~/user}}
+
+  {{#assistant~}}
+  {{gen 'summary' max_tokens=100 temperature=0}}
+  {{~/assistant}}
+  """, llm=gpt35turbo)
+  out = run_llm_program(score, content=content)
+  return out['summary'].strip() 
+
+def run_llm_program(program, *args, **kwargs):
+    with open("log.txt", "a") as f, contextlib.redirect_stdout(
+        f
+    ), contextlib.redirect_stderr(f):
+        return program(*args, **kwargs)
 
 def add_excerpt_to_md_file(filename):
-    command = f'cat "{filename}" | sgpt --role excerpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a two sentence  summary that will make people want to read it that is casual in tone."'
-
-    result = subprocess.run(command, capture_output=True, text=True, shell=True)
-    excerpt = result.stdout.strip()
 
     with open(filename, 'r') as f:
         lines = f.readlines()
 
-    assert lines[0].strip() == "---", "The file does not start with '---'."
-
     excerpt_exists = False
-    excerpt_start = 0
-
 
     for i, line in enumerate(lines[1:], start=1):
         if line.strip().startswith('excerpt:'):
-            # Start replacing the existing excerpt
-            excerpt_start = i
             excerpt_exists = True
-        elif excerpt_exists:
-            # If the line is indented, it's part of the existing excerpt and should be removed
-            if line.startswith('    '):
-                lines[i] = ''
-            else:
-                # We've reached the end of the existing excerpt
-                lines[excerpt_start] = f"excerpt: |\n    {excerpt}\n"
-                break
         elif not excerpt_exists and line.strip() == "---":
-            # Add the excerpt before the second ---
-            lines.insert(i, f"excerpt: |\n    {excerpt}\n")
             break
+
+    if not excerpt_exists:
+        # Generate the excerpt
+        file_content = Path(filename).read_text()
+        excerpt = get_excerpt(file_content)
+
+        # Insert the excerpt
+        lines.insert(i, f"excerpt: |\n    {excerpt}\n")
 
     with open(filename, 'w') as f:
         f.writelines(lines)

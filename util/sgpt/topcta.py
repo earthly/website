@@ -8,25 +8,68 @@ import guidance
 from typing import List, Dict, Tuple
 import contextlib
 import os
+from pathlib import Path
+from textwrap import dedent
+import guidance
 
 gpt4 = guidance.llms.OpenAI("gpt-4")
+gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
-from textwrap import dedent
+rerun = False
 
-def build_paragraph(filename):
-    command1 = dedent(f"""
-            cat "{filename}" | sgpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a three word summary of the article in sentence form of 'This article is about ....' .  For example: 'This article is about large scale builds.' or 'This article is about python list comprehensions.'. It should be just the topic in that form of sentence and should make sense." 
-            """).strip() 
-    result = subprocess.run(command1, capture_output=True, text=True, shell=True)
-    article_sentence = result.stdout.strip()
+def run_llm_program(program, *args, **kwargs):
+    with open("log.txt", "a") as f, contextlib.redirect_stdout(
+        f
+    ), contextlib.redirect_stderr(f):
+        return program(*args, **kwargs)
 
-    command2 = dedent(f"""
-             cat "{filename}" | sgpt --model gpt-3.5-turbo-16k "This is a post in markdown. I need a very short sentence explaining why Earthly would be interested to readers of this article. So summarize the article and then return a small bridging sentence. Earthly is an open source build tool for CI. The sentence should be of the form 'Earthly is popular with users of bash.' Example: 'Earthly is great in combination with Dockerfiles.', 'Earthly is particularly useful if you are working with Monorepos', 'If you are looking for a way to build your Ruby code then Earthly is a great option.' It should be a sentence that bridges between the topic and Earthly.
-             
-             This is a post in markdown. I need a very short sentence explaining why Earthly would be interested to readers of this article."
-                      """)
-    result = subprocess.run(command2, capture_output=True, text=True, shell=True)
-    tie_in_sentence = result.stdout.strip().split(".",1)[0] # Earthly is particularly useful if you're working with a Monorepo.
+
+def build_paragraph(content):
+    score = guidance(dedent("""
+    {{#system~}}
+    You summarize markdown blog posts.
+    {{~/system}}
+    {{#user~}}
+   
+
+    Post:
+    ---
+    {{content}} 
+    ---
+    Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? Do no put the summary in quotes.
+    Examples:
+    - This article is about gmail API changes.
+    - This article is about Python CLIs. 
+    - This article is about Python CLIs. 
+                            
+    Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? 
+    {{~/user}}
+    {{#assistant~}}
+    {{gen 'summary' max_tokens=100 temperature=0}}
+    {{~/assistant}}
+    """),llm=gpt4)
+    out = run_llm_program(score, content=content)
+    article_sentence = out["summary"].strip()
+
+    score = guidance(dedent("""
+    {{#system~}}
+    You summarize markdown blog posts.
+    {{~/system}}
+    {{#user~}}
+   
+
+    Post:
+    ---
+    {{content}} 
+    ---
+    Can you provide a short sentence explaining why Earthly would be interested to readers of this article? Earthly is an open source build tool for CI. The sentence should be of the form 'Earthly is popular with users of bash.' 
+    {{~/user}}
+    {{#assistant~}}
+    {{gen 'summary' max_tokens=100 temperature=0}}
+    {{~/assistant}}
+    """),llm=gpt4)
+    out = run_llm_program(score, content=content)
+    tie_in_sentence = out["summary"].strip().split(".",1)[0]
 
     template = dedent(f"""
         **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. {article_sentence} {tie_in_sentence}. [Check us out](/).**
@@ -64,12 +107,13 @@ def add_paragraph_if_word_missing(filename, dryrun):
                 first_paragraph_found = True
                 break
 
-        if first_paragraph_found and 'sgpt' in first_paragraph:
+        if first_paragraph_found and 'sgpt' in first_paragraph and rerun:
             print(f"Updating CTA:\t {filename}")
             if not dryrun:
                 # print("shell gpt paragraph found. updating it.")
                 # Remove the first paragraph (up to the first double line break)
-                replace = build_paragraph(filename) 
+                file_content = Path(filename).read_text()
+                replace = build_paragraph(file_content) 
                 replace = "<!--sgpt-->"+shorter(replace)
                 rest_of_article = rest_of_file.lstrip().split("\n\n", 1)[1]
                 new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_article

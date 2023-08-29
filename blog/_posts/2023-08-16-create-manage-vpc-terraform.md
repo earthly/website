@@ -12,6 +12,8 @@ internal-links:
  - creating and managing vpc
  - guide to manage vpc
 
+excerpt: |
+    This tutorial provides a step-by-step guide on how to create and manage an Amazon VPC using Terraform. It covers the configuration of VPC elements such as subnets, internet gateways, NAT gateways, security groups, and EC2 instances.
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shows you how to create and manage Amazon VPC with Terraform. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**

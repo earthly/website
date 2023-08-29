@@ -25,12 +25,15 @@
               <p class="mt-4 text-lg tracking-tight">{{ item.description }}</p>
             </div>
 
-            <div class="h-full flex-1">
+            <div class="h-full flex-1 relative">
               <img
                 class="h-full object-cover rounded-2xl"
                 src="{{ item.image }}"
                 alt="{{ item.title }}"
               />
+              <div class="absolute flex justify-center items-center inset-0">
+                <img src="assets/svg/play.svg" alt="play" />
+              </div>
             </div>
           </div>
         </a>

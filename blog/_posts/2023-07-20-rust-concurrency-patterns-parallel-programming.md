@@ -11,6 +11,8 @@ internal-links:
  - rust concurrency patterns
  - concurrency patterns
  - parallel programming
+excerpt: |
+    This article explores Rust's concurrency features and provides an overview of basic concurrency primitives such as threads, shared ownership, and message passing. It also covers more advanced topics like error handling, performance optimization, testing, parallel programming with Rayon, and asynchronous programming with Tokio.
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore faster – like Dockerfile and Makefile had a baby. This is about Rust Concurrency Patterns for Parallel Programming**
