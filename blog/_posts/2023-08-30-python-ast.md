@@ -390,10 +390,3 @@ Code transformation using Abstract Syntax Trees (AST) offers powerful capabiliti
 In conclusion, using Python's abstract syntax trees you can analyze and transform code effectively. It generates a tree representation of a program's code, which can help identify potential issues and improve code quality and security.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-
