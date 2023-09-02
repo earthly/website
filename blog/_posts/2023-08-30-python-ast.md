@@ -63,7 +63,7 @@ FunctionDef(
         kwarg=None,
         defaults=[]
     ),
-    body=[        Expr(value=Num(n=42))    ],
+    body=[Expr(value=Num(n=42))],
     decorator_list=[]
 )
 ~~~
@@ -350,7 +350,7 @@ The `add_logging` function takes a code snippet as input and performs the follow
 
 3. Converting the transformed AST back to code: The ast.unparse function is used to convert the transformed AST back into code. This function generates Python code from the AST representation.
 
-4. Returning the transformed code: The transformed code is returned as the result of the `add_logging `function.
+4. Returning the transformed code: The transformed code is returned as the result of the `add_logging` function.
 
 Let's add a useful example to demonstrate the output of the `add_logging` function:
 
