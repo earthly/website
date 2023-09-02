@@ -54,7 +54,7 @@ The child nodes of an AST node represent the sub-elements of the syntax element 
 
 Here's an example of an AST node for a simple Python function:
 
-~~~
+~~~{.python caption=""}
 FunctionDef(
     name='my_function',
     args=arguments(
@@ -76,7 +76,7 @@ In Python, an AST is generated using the built-in `ast` module, which provides a
 
 For example, consider the following Python code:
 
-~~~
+~~~{.python caption=""}
 def greet(name):
     print("Hello, " + name + "!")
     
@@ -85,8 +85,7 @@ greet("John")
 
 To generate an AST tree for this code, we can use the `ast.parse()` function as follows:
 
-~~~
-python
+~~~{.python caption=""}
 import ast
 
 code = '''
@@ -103,7 +102,7 @@ This will create an AST tree that represents the structure of the code, with eac
 
 We can also use the `ast.dump()` function to visualize the AST tree in a more readable format, as follows:
 
-~~~
+~~~{.python caption=""}
 import pprint
 
 pprint.pprint(ast.dump(tree))
@@ -111,7 +110,8 @@ pprint.pprint(ast.dump(tree))
 
 This will output the following representation of the AST tree:
 
-~~~
+~~~{ caption="Output"}
+
 ("Module(body=[FunctionDef(name='greet', args=arguments(posonlyargs=[], "
  "args=[arg(arg='name')], kwonlyargs=[], kw_defaults=[], defaults=[]), "
  "body=[Expr(value=Call(func=Name(id='print', ctx=Load()), "
@@ -122,30 +122,30 @@ This will output the following representation of the AST tree:
 ~~~
 
 The output above shows the structure of a program's syntax in a hierarchical manner. Each element of the code is represented by a node in the AST.
-In this specific example, the AST represents a Python module that contains a function definition named "greet". The "greet" function takes an argument called "name". The body of the function consists of an expression that calls the "print" function, passing it a formatted string that includes the value of the "name" argument.
+In this specific example, the AST represents a Python module that contains a function definition named  `greet`. The `greet` function takes an argument called `name`. The body of the function consists of an expression that calls the `print` function, passing it a formatted string that includes the value of the "name" argument.
 To make sense of this AST representation, you can break it down as follows:
 
-- The outermost node is the "Module" node, which represents the entire module.
+- The outermost node is the `Module` node, which represents the entire module.
 
-- Within the "Module" node, there is a "FunctionDef" node representing the "greet" function definition.
+- Within the `Module` node, there is a `FunctionDef` node representing the `greet` function definition.
 
-- The "FunctionDef" node has various attributes, such as the name of the function ("name") and the arguments it takes ("args").
+- The `FunctionDef` node has various attributes, such as the name of the function (`name`) and the arguments it takes (`args`).
 
-- The body of the "greet" function is represented by a list of nodes, in this case, containing a single "Expr" node.
+- The body of the `greet` function is represented by a list of nodes, in this case, containing a single "Expr" node.
 
-- The "Expr" node represents an expression, and in this case, it contains a function call to "print".
+- The `Expr` node represents an expression, and in this case, it contains a function call to `print`.
 
-- The function call is represented by the "Call" node, which has the function name ("Name") as "print" and the arguments it takes.
+- The function call is represented by the "Call" node, which has the function name ("Name") as `print` and the arguments it takes.
 
-- The arguments of the "print" function call include a formatted string that concatenates the "name" argument with other strings.
+- The arguments of the `print` function call include a formatted string that concatenates the `name` argument with other strings.
 
 ### Visualizing the Graph
 
 There are several ways to visualize an AST in Python. One popular library for this purpose is the `graphviz` library, which can generate visual representations of graphs and trees. To use graphviz for rendering graphs to PNG, you first need to install it on your system. You can do this by following the installation instructions on the graphviz [website](https://graphviz.readthedocs.io/en/stable/manual.html#installation) for your specific operating system. Once installed, you can then use pip to install the Python bindings for graphviz by running the command `pip install graphviz`.
 
- Here's an example of how to use `graphviz` to visualize an AST:
+Here's an example of how to use `graphviz` to visualize an AST:
 
-~~~
+~~~{.python caption=""}
 import ast
 from graphviz import Digraph
 
@@ -188,7 +188,7 @@ By using AST for static code analysis, we can quickly identify and fix potential
 
 To perform static code analysis on the given code using an AST, we can generate an AST tree and traverse it to identify potential issues. Let's consider an example where we want to analyze a Python codebase for inefficient string concatenation. We can use the `ast.NodeVisitor` class to visit each node in the AST tree and check if any string concatenations are being performed inefficiently. Here's a suitable example:
 
-~~~
+~~~{.python caption=""}
 import ast
 
 class FunctionCallVisitor(ast.NodeVisitor):
@@ -217,7 +217,7 @@ This code essentially traverses the AST and detects print statements with string
 
 To demonstrate static code analysis using AST in Python, let's create a function called perform_static_analysis. This function takes a code snippet as input and performs the analysis. First, it parses the code using ast.parse to generate the corresponding Abstract Syntax Tree (AST). Then, it creates an instance of the FunctionCallVisitor class and visits each node in the AST to identify specific function calls. The function call visitor can be customized to detect and analyze specific patterns or behaviors. In our case, we will focus on identifying print statements with string literals. Let's take a look at the code implementation below:
 
-~~~
+~~~{.python caption=""}
 def perform_static_analysis(code):
     tree = ast.parse(code)
     visitor = FunctionCallVisitor()
@@ -238,7 +238,7 @@ This code performs the static code analysis by parsing the given code into an AS
 
 Now to observe the output of the code and understand how the static analysis works, let's consider the following example:
 
-~~~
+~~~{.python caption=""}
 def main():
     code = '''
 def calculate_average(numbers):
@@ -261,11 +261,11 @@ After defining the calculate_average function, the code snippet creates a list d
 By calling perform_static_analysis(code), the code is analyzed using the FunctionCallVisitor to detect any print statements that use string literals. This analysis helps identify any potential issues or inefficiencies in the code related to printing values.
 Now when we call our main function, we will see the following output:
 
-~~~
+~~~{.python caption=""}
 main()
 ~~~
 
-~~~
+~~~{ caption="Output"}
 Detected print statements with string literals:
 Average:
 Detected print statements with string literals:
@@ -282,7 +282,7 @@ One benefit of using AST for code transformation is that it allows developers to
 
 To demonstrate the effectiveness of using AST for code transformation, let's consider a practical scenario. Imagine we have a complex Python codebase consisting of multiple modules and classes. We want to introduce a logging mechanism by adding a logger instance to all relevant functions and methods in the codebase. Manually modifying each function would be tedious and error-prone, especially in a large-scale project. However, by leveraging the power of AST and AST manipulation techniques, we can programmatically traverse the codebase, identify function and method definitions, and automatically inject the necessary logging statements. This approach saves developers significant time and effort while ensuring consistent and reliable modifications across the entire codebase.
 
-~~~
+~~~{.python caption=""}
 class LoggingTransformer(ast.NodeTransformer):
     def visit_FunctionDef(self, node):
         # Check if the function requires logging
@@ -307,7 +307,8 @@ class LoggingTransformer(ast.NodeTransformer):
 
     def requires_logging(self, node):
         # Add your logic here to determine if the function requires logging
-        # For example, you can check function attributes, docstrings, or function names
+        # For example, you can check function attributes, docstrings, 
+        # or function names
         # Return True if logging is required, False otherwise
         return True
 
@@ -326,7 +327,7 @@ Finally, the logger statement is inserted at the beginning of the function body 
 The requires_logging method is defined to determine if a function requires logging. It can be customized by adding specific logic to check function attributes, docstrings, or function names. In the given example, the method simply returns True, indicating that logging is required for all functions.
 To actually transform the code and add logging statements, we can use the following approach:
 
-~~~
+~~~{.python caption=""}
 def add_logging(code):
     # Parse the code into an AST
     tree = ast.parse(code)
@@ -353,7 +354,7 @@ The `add_logging` function takes a code snippet as input and performs the follow
 
 Let's add a useful example to demonstrate the output of the `add_logging` function:
 
-~~~
+~~~{.python caption=""}
 def main():
     code = '''
 def example_function():
