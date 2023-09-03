@@ -100,6 +100,8 @@ So, what can be done to help prevent this recurrent bastardization of technical 
 
 It's on you, the technical professionals – developers, DevOps engineers, SREs, engineering managers, all the way up to CTOs – to remove the incentive marketers and consultants have to develop BS solutions. Be critical about research, reports, or other content developed or contributed to by marketers and consultants. Ask if the solutions marketers and consultants are trying to sell you require organizational change. If it does, don't buy anything. Ask if they are selling work that isn't transient, that should be done by a full-time employee. If they are, don't buy anything. Ask if the solution they are selling sounds feasible and reasonable. If it doesn't, you should not buy anything and ask a lot more questions. When it comes to marketers and consultants (and, honestly, so many other people in life), be skeptical, be critical, and don't believe anything that sounds too good to be true.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -109,4 +111,3 @@ It's on you, the technical professionals – developers, DevOps engineers, SREs,
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
