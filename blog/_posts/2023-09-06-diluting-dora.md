@@ -3,7 +3,7 @@ title: "Diluting DORA: How Marketers and Consultants Bastardize Engineering Best
 categories:
   - Tutorials
 toc: true
-author: Gavin Johnson
+author: Gavin
 
 internal-links:
  - diluting dora
