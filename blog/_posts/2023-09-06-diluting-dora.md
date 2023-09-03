@@ -6,7 +6,10 @@ toc: true
 author: Gavin Johnson
 
 internal-links:
- - just an example
+ - diluting dora
+ - engineering best practices
+ - marketers and consultants bastardize engineering
+ - how to bastardize engineering best practices
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
@@ -109,5 +112,4 @@ It's on you, the technical professionals – developers, DevOps engineers, SREs,
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
