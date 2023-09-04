@@ -1,0 +1,90 @@
+<div class="max-w-7xl mt-16 mx-auto px-4 lg:px-10">
+  <h2 class="font-semibold text-4xl">
+    Explore Earthly's Impact Across Various Industries
+  </h2>
+
+  <p class="font-semibold mt-5 text-[#6b7280] text-2xl tracking-tight">
+    Many industries benefit from Earthly innovative solutions and services
+    tailored to their specific needs.
+  </p>
+
+  <div class="flex flex-col md:flex-row gap-5 mt-10">
+    <div class="md:w-5/12 flex flex-col">
+      {% for item in site.data.impacts %}
+        <div class="border flex font-medium px-6 md:px-16 py-4 rounded-md text-lg border-[#ededed] impact {% if forloop.index > 1 %}mt-4{% endif %}" data-impact="impact-{{ forloop.index }}">
+          <p class="flex-1">{{ item.title }}</p>
+          <img class="transition-transform md:hidden" src="../../../assets/svg/chevron.svg" alt="Chevron icon" />
+        </div>
+
+        <div class="bg-[#e9f8ff] flex flex-1 flex-col px-4 md:px-8 py-4 rounded-lg impact-item-mobile md:hidden" data-impact-item="impact-item-mobile-{{ forloop.index }}">
+          <img class="rounded-xl" src="{{ item.image }}" alt="{{ item.title }}" />
+
+          <p class="mt-5 text-[#6b7280] text-lg tracking-tight">{{ item.description }}</p>
+
+          <a href="{{ item.link }}" class="inline-block mt-5">
+            <div class="w-fit cursor-pointer decoration-[#2d7e5d] flex items-center hover:underline">
+              <p class="font-bold text-[#2d7e5d] text-lg tracking-tight">Learn more</p>
+              <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="flex-1 hidden md:block">
+      {% for item in site.data.impacts %}
+        <div class="bg-[#e9f8ff] flex flex-col px-4 md:px-8 py-4 rounded-lg impact-item {% if forloop.index > 1 %}hidden{% endif %}" data-impact-item="impact-item-{{ forloop.index }}">
+          <img class="rounded-xl" src="{{ item.image }}" alt="{{ item.title }}" />
+
+          <p class="mt-5 text-[#6b7280] text-lg tracking-tight">{{ item.description }}</p>
+
+          <a href="{{ item.link }}" class="inline-block mt-5">
+            <div class="w-fit cursor-pointer decoration-[#2d7e5d] flex items-center hover:underline">
+              <p class="font-bold text-[#2d7e5d] text-lg tracking-tight">Learn more</p>
+              <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+            </div>
+          </a>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+<script>
+  function selectPoint(element) {
+    $(".impact").removeClass("active");
+    element.addClass("active");
+
+    $(".impact-item").addClass("hidden");
+
+    var item = element.data("impact").replace('impact-', '')
+    item = $("[data-impact-item='impact-item-" + item + "']").first();
+    item.removeClass("hidden")
+  }
+
+  (function () {
+    $(document).ready(function () {
+      $(".impact").eq(0).addClass("active")
+
+      $(".impact").hover(function () {
+        selectPoint($(this))
+      });
+
+      $(".impact").click(function () {
+        if (window.innerWidth >= 1024) {
+          selectPoint($(this))
+        } else {
+          var item = $(this).data("impact").replace('impact-', '')
+          item = $("[data-impact-item='impact-item-mobile-" + item + "']").first();
+          if (item.hasClass("active")) {
+            $(this).find('img').first().removeClass('rotate-180')
+            item.removeClass("active");
+          } else {
+            $(this).find('img').first().addClass('rotate-180')
+            item.addClass("active");
+          }
+        }
+      });
+    });
+  })();
+</script>

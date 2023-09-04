@@ -1,0 +1,9 @@
+- title: Write once, run anywhere
+  description: Execute CI anywhere; reproducible, self-contained builds ensure consistent results.
+  image: assets/svg/pc-check.svg
+- title: Super simple
+  description: 'Intuitive Earthfiles: Dockerfile simplicity meets Makefile clarity.'
+  image: assets/svg/snap.svg
+- title: Very compatible
+  description: Compatible with every language, framework, and build tool.
+  image: assets/svg/puzzle-plus.svg
