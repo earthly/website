@@ -408,6 +408,8 @@ In this article, you have learned how uploading media files to your server can b
 
 Thank you for reading up to this point, I hope you learned something new in this article. Interested in more insightful tutorials? You can find more articles like this right here on [Earthly.dev](https://earthly.dev/blog).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -415,4 +417,4 @@ Thank you for reading up to this point, I hope you learned something new in this
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+
