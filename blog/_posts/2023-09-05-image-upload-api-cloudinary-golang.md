@@ -24,6 +24,8 @@ In this tutorial, you'll learn how to upload images to Cloudinary in a Golang we
 
 ## What Is Cloudinary?
 
+![What]({{site.images}}{{page.slug}}/what.png])\
+
 Cloudinary is a powerful media management platform that provides global content delivery and real-time optimizations. It also offers SDKs and APIs for seamless integration with web technologies.
 Storing media in Cloudinary brings advantages like improved performance, scalability, cost-effectiveness, and advanced media management features. With Cloudinary, you store only the Cloudinary-assigned URL in your database, making it a smarter choice for handling media files.
 To implement an image upload system in Golang, you need the following prerequisites:
@@ -47,7 +49,7 @@ To use Cloudinary's SDK, you need an API key and a secret key for authentication
 Before we get started on the image upload system, let's develop a simple REST API with Gin, which is a popular web framework for building APIs in Go. With Gin, we can manage HTTP requests, read and return JSON data, and create different endpoints.
 Launch your terminal and run the following commands which create a new folder `go-image-uploader`, navigate to it, and initialize a new Go project inside it, all in the given order.
 
-~~~
+~~~{.bash caption=">_"}
 mkdir go-image-uploader
 cd go-image-uploader
 go mod init go-image-uploader
@@ -57,18 +59,18 @@ It makes sense to define a directory structure early on before we start building
 
 <div class="wide">
 ![Application directory structure]({{site.images}}{{page.slug}}/XKUykML.png)
+</div>
 
 We also need to install the Gin framework to use it to build the REST API. You can use the `go get` command to install Gin, just execute the following command in your terminal.
 
-~~~
+~~~{.bash caption=">_"}
 go get github.com/gin-gonic/gin
 ~~~
 
 We will create an API where a user can create a profile, and upload a picture. We will use a data structure to define the user data with just four properties: ID, email, password, and image URL.
 The `models` folder is the directory for managing data structures and models. Go to the `user.go` file in the `models` folder and define the user data structure like this:
 
-~~~
-// models/user.go
+~~~{.go caption="user.go"}
 package models
 
 type User struct {
@@ -81,8 +83,7 @@ type User struct {
 
 In this tutorial, we'll use a map as an in-memory database user. This is a simplified alternative to using a real database system like MongoDB. The map will use user IDs as keys and user objects as values. To implement the database functionality, we need to allocate memory to the map when the application starts. Add the following code to the user model file to achieve this.
 
-~~~
-// models/user.go
+~~~{.go caption="user.go"}
 var users map[int]User
 
 // function to allocate memory when the app starts
@@ -93,8 +94,7 @@ func NewUserDB() {
 
 We require functions to manipulate data in the temporary database. The user creation function adds a new user by generating a unique ID. It calculates the ID by incrementing the current database length by 1. This helps it emulate a real database. Below is the implementation:
 
-~~~
-// models/user.go
+~~~{.go caption="user.go"}
 func CreateUser(u *User) {
     id := len(users) + 1
     u.ID = id
@@ -104,8 +104,7 @@ func CreateUser(u *User) {
 
 Next is the function to update a user's data. This is only needed to add the image URL property when the user uploads their picture. Add it to your model also like this:
 
-~~~
-// models/user.go
+~~~{.go caption="user.go"}
 func (u *User) UpdateUser(id int, update map[string]string) User {
     user := users[id]
     for key, value := range update {
@@ -129,8 +128,7 @@ The `CreateUser` handler gets the request body and binds the JSON data to the us
 
 Define the `CreateUser` handler as shown here:
 
-~~~
-// controllers/user.go
+~~~{.go caption="user.go"}
 package controllers
 
 import (
@@ -150,8 +148,7 @@ func CreateUser(c *gin.Context) {
 
 The REST API is almost ready, and the remaining step is to define routes and create the application server. Open your `main.go` file and import Gin with your models and controller packages.
 
-~~~
-// main.go
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -163,8 +160,7 @@ import (
 
 The `models` package is needed to call the `NewUserDB` function to initialize our database, Gin is needed to create a router and start the server, while controllers will enable us to access our handler functions. The main function **initializes** the database, **creates** a new router, and **registers** the `CreateUser` endpoint. It then starts the application on port `5000`. Here is what the main function looks like:
 
-~~~
-// main.go
+~~~{.go caption="main.go"}
 func main() {
   models.NewUserDB()
     router := gin.Default()
@@ -177,7 +173,7 @@ The router directs every HTTP POST request sent to the `/user` endpoint to the `
 
 The REST API is now set up and we can check to see that everything works by starting the application and running test requests in [Postman](https://www.postman.com/). Start the application by running the command below in the root directory.
 
-~~~
+~~~{.bash caption=">_"}
 go run main.go
 ~~~
 
@@ -199,14 +195,13 @@ We can now run a test request to create a new user. The response should look lik
 
 To enable image uploads to Cloudinary, we'll use the Cloudinary Golang SDK. It offers a straightforward interface for managing media files on Cloudinary. Before proceeding, we need to install the Cloudinary Golang SDK. Run the following command to install it:
 
-~~~
+~~~{.bash caption=">_"}
 go get -u github.com/cloudinary/cloudinary-go/v2
 ~~~
 
 You need to initialize the Cloudinary client using the API credentials that you got from the dashboard earlier. Cloudinary SDK allows us to initialize a client using the `NewFromParams` function. Open the `config` folder's `cloudinary.go` file, import the Cloudinary package, and implement the `SetupCloudinary` function as shown here:
 
-~~~
-// config/cloudinary.go
+~~~{.go caption="cloudinary.go"}
 package config
 
 import (
@@ -229,8 +224,7 @@ func SetupCloudinary() (*cloudinary.Cloudinary, error) {
 
 Next, in the `utils` folder, open `uploader.go` to implement the file upload helper function. We start by importing the necessary packages for the function: `context` for background context, Cloudinary's `uploader` for defining upload parameters, `config` for the `SetupCloudinary` function, and `multipart` for file parsing.
 
-~~~
-// utils/uploader.go
+~~~{.go caption="uploader.go"}
 package utils
 
 import (
@@ -243,8 +237,7 @@ import (
 
 Next, we proceed to implement the function by defining it and initializing Cloudinary.
 
-~~~
-// utils/uploader.go
+~~~{.go caption="uploader.go"}
 func UploadToCloudinary(file multipart.File, filePath string) (string, error) {
     ctx := context.Background()
     cld, err := config.SetupCloudinary()
@@ -256,8 +249,7 @@ func UploadToCloudinary(file multipart.File, filePath string) (string, error) {
 
 Then, we set the properties of the file using upload parameters. Although there are other parameters that could be set like `Folder`, `ResourceType`, and others, only `PublicID`(file name) is set here. `ResourceType` is set to `auto` by default, so it detects the file type on request, and we don't need the files to store in any folder on Cloudinary, so we can omit the field too.
 
-~~~
-// utils/uploader.go
+~~~{.go caption="uploader.go"}
     uploadParams := uploader.UploadParams{
         PublicID: filePath,
     }
@@ -267,8 +259,7 @@ Check out the [Cloudinary Go docs](https://pkg.go.dev/github.com/cloudinary/clou
 
 Complete `UploadToCloudinary` with the following code.
 
-~~~
-// utils/uploader.go
+~~~{.go caption="uploader.go"}
 result, err := cld.Upload.Upload(ctx, file, uploadParams)
 if err != nil {
     return "", err
@@ -284,8 +275,7 @@ The next step is to implement the HTTP request handler for the image upload endp
 
 Go into `fileUpload.go` inside the `middlewares` directory to implement the middleware that gets the opened file from the request using Gin's `Request.FormFile` function. It also gets its filename from the request header and adds these two data to the Gin context using `Set`. It then passes control to the controller which performs the upload.
 
-~~~
-// middlewares/fileUpload.go
+~~~{.go caption="fileUpload.go"}
 package middlewares
 
 import (
@@ -317,7 +307,7 @@ The system is almost complete, and we can now implement the request handler. Ret
 
 We need to import the following packages into the file as we'll be using functions from them in the upload controller:
 
-~~~
+~~~{.go caption="fileUpload.go"}
 "go-image-uploader/utils"
 "mime/multipart"
 "strconv"
@@ -325,8 +315,7 @@ We need to import the following packages into the file as we'll be using functio
 
 We also need the user ID from the URL parameters to identify the user, and the opened file with its name, which the middleware would have added to context by the time control reaches the handler. Define the `UploadImage` controller and use Gin to get the ID, file, and filename as the following code shows:
 
-~~~
-// controllers/user.go
+~~~{.go caption="user.go"}
 func UploadImage(c *gin.Context) {
     id := c.Params.ByName("id")
     filename, ok := c.Get("filePath")
@@ -344,9 +333,9 @@ func UploadImage(c *gin.Context) {
 
 The function makes sure both `file` and `filePath` exist before going on to do anything else. The next step is to upload the image to Cloudinary and get its URL. The code below calls `UploadToCloudinary`, and passes the `file` and `filePath` to it as parameters. Add it to the `UploadImage` code.
 
-~~~
-// controllers/user.go
-imageUrl, err := utils.UploadToCloudinary(file.(multipart.File), filename.(string))
+~~~{.go caption="user.go"}
+imageUrl, err := utils.UploadToCloudinary(file.(multipart.File), \
+filename.(string))
 if err != nil {
     c.JSON(http.StatusInternalServerError, gin.H{"error": err.Error()})
     return
@@ -357,8 +346,7 @@ Notice the use of [type assertion](https://golangdocs.com/type-assertions-in-gol
 
 Next, add the image URL to the user's data in the database and return a response to the client. Add the following code to convert the user ID gotten from the URL from string to integer using `strconv.Atoi`, then set the user's `ImageURL` to the uploaded image URL.
 
-~~~
-// controllers/user.go
+~~~{.go caption="user.go"}
 var user models.User
 userId, _ := strconv.Atoi(id)
 update := map[string]string{
@@ -371,9 +359,10 @@ return
 
 The last step is to add an upload route to the API. This route has a different structure compared to the `CreateUser` route. It first executes the `FileUploadMiddleware` for file processing and then calls the handler. Return to the main function and add the route as follows:
 
-~~~
-// main.go
-router.POST("/user/:id/uploadImage", middlewares.FileUploadMiddleware(), controllers.UploadImage)
+~~~{.go caption="main.go"}
+
+router.POST("/user/:id/uploadImage", \
+middlewares.FileUploadMiddleware(), controllers.UploadImage)
 ~~~
 
 The image upload system is now complete, and we can run the application and test it in Postman. Start the application again by running `go run main.go` in the terminal, and create a new **POST** request in Postman.
@@ -412,10 +401,3 @@ In this article, you have learned how uploading media files to your server can b
 Thank you for reading up to this point, I hope you learned something new in this article. Interested in more insightful tutorials? You can find more articles like this right here on [Earthly.dev](https://earthly.dev/blog).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
