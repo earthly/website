@@ -7,7 +7,10 @@ author: Timilehin Omolana
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - implementing an image upload system
+ - cloudinary in golang
+ - image uploading to cloudinary
+ - implementation in golang
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
@@ -415,6 +418,4 @@ Thank you for reading up to this point, I hope you learned something new in this
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
 
