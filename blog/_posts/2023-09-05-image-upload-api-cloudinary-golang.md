@@ -34,7 +34,10 @@ Let's get started!
 ## Setting Up Access Credentials for Cloudinary
 
 To use Cloudinary's SDK, you need an API key and a secret key for authentication. Sign up on [Cloudinary](https://cloudinary.com/users/register_free) if you haven't yet and get your cloud name, API key, and secret key from your dashboard like the screenshot below:
+
+<div class="wide">
 ![Cloudinary dashboard]({{site.images}}{{page.slug}}/zIAQlID.jpg)
+</div>
 
 ## Implementing a Golang REST API
 
@@ -49,6 +52,7 @@ go mod init go-image-uploader
 
 It makes sense to define a directory structure early on before we start building. Go ahead and create the following files and folders according to the application structure for the API:
 
+<div class="wide">
 ![Application directory structure]({{site.images}}{{page.slug}}/XKUykML.png)
 
 We also need to install the Gin framework to use it to build the REST API. You can use the `go get` command to install Gin, just execute the following command in your terminal.
@@ -176,11 +180,15 @@ go run main.go
 
 The output looks like the screenshot below:
 
+<div class="wide">
 ![Start application in terminal]({{site.images}}{{page.slug}}/4gpEhM0.jpg)
+</div>
 
 We can now run a test request to create a new user. The response should look like the following:
 
+<div class="wide">
 ![Request to create user]({{site.images}}{{page.slug}}/4413nzI.jpg)
+</div>
 
 **Note**: This REST API is a minimalist implementation, and it lacks essential components like password hashing, error handling, and authentication, which are crucial in real-world projects.
 
@@ -370,19 +378,27 @@ The image upload system is now complete, and we can run the application and test
 Since the database is in-memory, the previously created user no longer exists after restarting the application. Therefore, you need to create a new user again for testing the image upload endpoint. Follow the steps below to test the endpoint.
 
 1. Add the request URL. The ID should be 1 if you have just one user in the database.
-    ![Enter request URL]({{site.images}}{{page.slug}}/up6UYi1.jpg)
+    <div class="wide">
+![Enter request URL]({{site.images}}{{page.slug}}/up6UYi1.jpg)
+</div>
 
 2. Select the Body tab and choose **form-data**,
 
-    ![Select form-data as body type]({{site.images}}{{page.slug}}/s4fmwpf.jpg)
+    <div class="wide">
+![Select form-data as body type]({{site.images}}{{page.slug}}/s4fmwpf.jpg)
+</div>
 
 3. Then in the **key** field, switch its type from **text** to **file**, then select the image you want to upload in **value**.
 
-    ![Select file to upload]({{site.images}}{{page.slug}}/S5CDlv6.jpg)
+    <div class="wide">
+![Select file to upload]({{site.images}}{{page.slug}}/S5CDlv6.jpg)
+</div>
 
 When you send the request, your file will be uploaded and the response should return the updated user data containing the `image_url` property.
 
+<div class="wide">
 ![Successful image upload request]({{site.images}}{{page.slug}}/CVbAK65.jpg)
+</div>
 
 Congratulations, you have successfully built a REST API with an image upload feature in Golang using Cloudinary.
 
@@ -397,8 +413,6 @@ Thank you for reading up to this point, I hope you learned something new in this
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
