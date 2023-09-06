@@ -11,7 +11,7 @@ internal-links:
  - cloudinary in golang
  - image uploading to cloudinary
  - implementation in golang
- 
+
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
@@ -371,21 +371,20 @@ The image upload system is now complete, and we can run the application and test
 Since the database is in-memory, the previously created user no longer exists after restarting the application. Therefore, you need to create a new user again for testing the image upload endpoint. Follow the steps below to test the endpoint.
 
 1. Add the request URL. The ID should be 1 if you have just one user in the database.
-    <div class="wide">
-![Enter request URL]({{site.images}}{{page.slug}}/up6UYi1.jpg)
-</div>
+   <div class="wide">
+   ![Enter request URL]({{site.images}}{{page.slug}}/up6UYi1.jpg)
+   </div>
 
 2. Select the Body tab and choose **form-data**,
 
-    <div class="wide">
-![Select form-data as body type]({{site.images}}{{page.slug}}/s4fmwpf.jpg)
-</div>
+   <div class="wide">
+   ![Select form-data as body type]({{site.images}}{{page.slug}}/s4fmwpf.jpg)
+   </div>
 
 3. Then in the **key** field, switch its type from **text** to **file**, then select the image you want to upload in **value**.
-
-    <div class="wide">
-![Select file to upload]({{site.images}}{{page.slug}}/S5CDlv6.jpg)
-</div>
+   <div class="wide">
+   ![Select file to upload]({{site.images}}{{page.slug}}/S5CDlv6.jpg)
+   </div>
 
 When you send the request, your file will be uploaded and the response should return the updated user data containing the `image_url` property.
 
