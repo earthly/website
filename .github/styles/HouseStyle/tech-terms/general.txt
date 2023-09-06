@@ -491,3 +491,5 @@ mailapp
 builtins
 Vscode
 modularisation
+
+Cloudinary
