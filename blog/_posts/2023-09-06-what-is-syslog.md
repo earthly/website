@@ -331,6 +331,8 @@ In this article, you have learned the syslog architecture components, syslog fac
 
 To build on this and gain more insights, a good next step would be to read the [RFC 5424 document](https://www.rfc-editor.org/rfc/rfc5424) or [Building Secure Servers with Linux](https://learning.oreilly.com/library/view/building-secure-servers/0596002173/ch10s02.html) book from O'Reilly Media. Learn how to configure remote logging for your environment with tools like Graylog or Splunk and manage your log files in a central location. You can also write custom shell scripts utilizing `grep` and `awk` to filter instances where you have failures.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -338,4 +340,3 @@ To build on this and gain more insights, a good next step would be to read the [
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
