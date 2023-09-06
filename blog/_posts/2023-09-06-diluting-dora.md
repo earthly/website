@@ -20,7 +20,8 @@ Marketers and consultants are scummy. They try to make you think they have the a
 I have a somewhat unique and fairly thorough understanding of how marketers and consultants do this, how they take useful technical best practices and bastardize them for their own gain. I have a Computer Science degree and started my career as a computer programmer. I moved up into a system administrator role – the spiritual predecessor to DevOps roles. Eventually, I decided to get an MBA and worked for Deloitte as a senior consultant and eventually manager on tech projects afterward. After Deloitte, I moved into product marketing, working at DirecTV and then at several tech companies including New Relic, Twilio Segment, and, now, Earthly. I have been the user, the buyer, the marketer, and the consultant at different points in my career. I've seen this pattern repeated over and over.
 
 In this post, I'm going to focus specifically on DevOps Research and Assessment (DORA), what it is, why it matters, how marketers and consultants abuse it, and the negative impacts that abuse causes.
-Understanding DORA
+
+## Understanding DORA
 
 ![IMegaPower]({{site.images}}{{page.slug}}/megapowers.jpg)\
 
@@ -51,8 +52,9 @@ It's difficult to explain how impactful DORA's approach to DevOps and especially
 
 This success and the trust that DORA has gained, especially the success of the DORA metrics, has made it a ripe vehicle to disguise selling snake oil and bullshit. The DORA metrics seem like a straightforward path to success, but, if you read the reports beyond just the metrics, it clearly isn't. The path to improving your company's DORA metrics was never prescriptive in any of the reports, and that's because it usually involves deep cultural change in an IT or Engineering organization. There is no cookie-cutter approach to organizational change. It's difficult and unique to each organization. Having simple, easy-to-measure metrics as goals and an ambiguous path to get there leaves a lot of room to create imaginary solutions and sell people things that may or may not help them.
 
-How Marketers Abuse DORA
-Not All Marketing is Bad
+## How Marketers Abuse DORA
+
+### Not All Marketing is Bad
 
 ![marketer-good]({{site.images}}{{page.slug}}/marketer-good.jpg)\
 
@@ -61,7 +63,8 @@ I'm going to give marketers a lot of credit for popularizing useful technical be
 Marketers do a lot of good things that follow this pattern. They create and sponsor reports, like Google prior to acquiring DORA and like CircleCI, GitLab, Deloitte, and many others that sponsored the most recent State of DevOps Report. They create and sponsor organizations and events – such as the Cloud Native Computing Foundation and KubeCon. They spend time and money doing a bunch of other things that are beneficial and also work as marketing.
 
 When I was the product marketer for the open source program at New Relic, I put together and the company executed a marketing program that sponsored the Oregon State University Open Source Lab, made a grant to freeCodeCamp for them to create a course on OpenTelemetry (that has been viewed 190k times, nice!), sponsored multiple tech podcasts, and started the company's GitHub Sponsors program that has now sponsored over 70 developers and organizations (do you have any idea how difficult it is to get a corporate procurement manager to give you approval to spend $5K on donations to individuals through one of GitHub's then-beta features?). Every item on that list is a good thing in my opinion. Every item on that list also works as marketing.
-Where Marketers Go Bad
+
+## Where Marketers Go Bad
 
 ![marketer-bad]({{site.images}}{{page.slug}}/marketer-bad.jpg)\
 
@@ -74,8 +77,9 @@ If a marketing solution promises to solve an organizational problem, if it solve
 For DORA, this exhibits itself by observability tool vendors creating solutions for things like DevOps or Cloud Adoption – things that require organizational change. They use DORA's State of DevOps Report and the DORA metrics to shape the steps in their solutions and the pitches they make to customers.
 
 The result is frequently a hefty amount of instrumentation that leaves the customer more locked into the vendor's tool (although this is getting less prevalent with OpenTelemetry), a bag of dashboards that show DORA metrics alongside a smattering of other metrics the vendor's solution deems important, and a fat bill.
-How Consultants Abuse DORA
-Consultants are Smart, and Sometimes You Need Them
+
+## How Consultants Abuse DORA
+### Consultants are Smart, and Sometimes You Need Them
 
 ![cream-of-the-crop]({{site.images}}{{page.slug}}/cream-of-the-crop.jpg)\
 
@@ -94,7 +98,9 @@ A consultant is like a marketer cross-bred with a 1980s professional wrestler wh
 For DORA, this exhibits itself by consulting companies creating drivel like this from McKinsey, "Yes, you can measure software developer productivity" (the inspiration for this post). McKinsey is far from the only consulting company to push solutions like this one, ostensibly for the technology, media, and communications industries. Every consulting company has some version of this solution that they sell. This one takes DORA metrics, adds in SPACE metrics to measure developer productivity (developed by GitHub, Microsoft Research, and the University of Victoria), and then adds in some custom McKinsey-curated metrics that are supposed to "... identify what can be done to improve how products are delivered and what those improvements are worth, without the need for heavy instrumentation."
 
 Are your BS meters beeping like crazy right now? Let's see, this solution promises to solve an organization problem, requires a large number of metrics that you need to collect for it to function properly, and you have no good way of measuring ~50% of them because they can't be instrumented. The beauty of DORA metrics is that they are constrained and they can be measured precisely (through instrumentation). This solution that this consulting company is selling sounds like you're getting a bag of semi-related, occasionally useful metrics with a project that is a nightmare during requirements, drowning in change requests and additional billings, and results in something pretty to look at but not the organizational change you needed.
-Help Stop the Dilution of DORA
+
+## Help Stop the Dilution of DORA
+
 DORA's annual State of DevOps Report and the metrics they've developed to improve IT performance are extremely useful and widely adopted. There isn't a ton of argument about the efficacy of improving DORA metrics. There is a lot of disagreement on how to get to the point that your team can efficiently monitor and improve DORA metrics though. That's because it requires organizational change, and organizational change isn't cookie-cutter. Marketers and consultants capitalize on this ambiguity and create solutions promised to improve your DORA metrics. No matter what they say though, their solutions will never be able to consistently cause the organizational change promised by them. The organizational change required for DevOps to thrive and for DORA metrics to be their most useful has to come from within an organization. You can't outsource it or ask an outsider to do it for you, because the hard part isn't the right tool or metric, but the people and processes.
 
 So, what can be done to help prevent this recurrent bastardization of technical best practices? I could make an impassioned plea to all of the decent, honest marketers and consultants out there (the majority of both are decent and honest), but that wouldn't get the job done. It doesn't matter how honest and decent marketers and consultants are, their behavior will follow their incentives, and their incentives are too perverse. The sale is what matters most to both of these groups as a whole, not the efficacy of the solutions they provide. So asking these groups or even individuals in these groups to change their behavior is pointless.
