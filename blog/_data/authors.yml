@@ -499,3 +499,7 @@ Ibukun Oyedeji:
     name    : "Ibukun Oyedeji"
     bio     : "Ibukun is a DevOps engineer keen on streamlining software delivery, and a technical writer, committed to simplifying the complex while continuously embracing new learning experiences."
     avatar  : "/assets/images/authors/ibukun-oyedeji.jpg"
+Timilehin Omolana:
+    name    : "Timilehin Omolana"
+    bio     : "Timilehin is a skilled software engineer and technical writer with an undying passion for building, deploying, and writing about secure and scalable server-side systems with technologies including Go, Node.js, C++, and AWS."
+    avatar  : "/assets/images/authors/timilehin-omolana.jpg"
