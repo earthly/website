@@ -25,7 +25,7 @@ In this tutorial, you'll learn how to upload images to Cloudinary in a Golang we
 
 ## What Is Cloudinary?
 
-![What]({{site.images}}{{page.slug}}/what.png])\
+![What]({{site.images}}{{page.slug}}/what.png)\
 
 Cloudinary is a powerful media management platform that provides global content delivery and real-time optimizations. It also offers SDKs and APIs for seamless integration with web technologies.
 Storing media in Cloudinary brings advantages like improved performance, scalability, cost-effectiveness, and advanced media management features. With Cloudinary, you store only the Cloudinary-assigned URL in your database, making it a smarter choice for handling media files.
