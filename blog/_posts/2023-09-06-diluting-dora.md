@@ -1,17 +1,17 @@
 ---
 title: "Diluting DORA: How Marketers and Consultants Bastardize Engineering Best Practices"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Gavin
 
 internal-links:
  - diluting dora
  - engineering best practices
- - marketers and consultants bastardize engineering
- - how to bastardize engineering best practices
+ - marketers and consultants bastardize engineering best practices
+ - how engineering best practices are bastardized
 excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
+    Learn the ways marketers and consultants exploit DORA metrics. This blog post highlights ethical from unethical practices around the use of DORA metrics and offers guidance for tech experts. Learn how to protect the integrity of DORA metrics and make informed decisions.
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 
@@ -54,7 +54,7 @@ This success and the trust that DORA has gained, especially the success of the D
 
 ## How Marketers Abuse DORA
 
-### Not All Marketing is Bad
+### Not All Marketing Is Bad
 
 ![marketer-good]({{site.images}}{{page.slug}}/marketer-good.jpg)\
 
@@ -64,7 +64,7 @@ Marketers do a lot of good things that follow this pattern. They create and spon
 
 When I was the product marketer for the open source program at New Relic, I put together and the company executed a marketing program that sponsored the Oregon State University Open Source Lab, made a grant to freeCodeCamp for them to create a course on OpenTelemetry (that has been viewed 190k times, nice!), sponsored multiple tech podcasts, and started the company's GitHub Sponsors program that has now sponsored over 70 developers and organizations (do you have any idea how difficult it is to get a corporate procurement manager to give you approval to spend $5K on donations to individuals through one of GitHub's then-beta features?). Every item on that list is a good thing in my opinion. Every item on that list also works as marketing.
 
-## Where Marketers Go Bad
+### Where Marketers Go Bad
 
 ![marketer-bad]({{site.images}}{{page.slug}}/marketer-bad.jpg)\
 
@@ -79,7 +79,7 @@ For DORA, this exhibits itself by observability tool vendors creating solutions 
 The result is frequently a hefty amount of instrumentation that leaves the customer more locked into the vendor's tool (although this is getting less prevalent with OpenTelemetry), a bag of dashboards that show DORA metrics alongside a smattering of other metrics the vendor's solution deems important, and a fat bill.
 
 ## How Consultants Abuse DORA
-### Consultants are Smart, and Sometimes You Need Them
+### Consultants Are Smart, and Sometimes You Need Them
 
 ![cream-of-the-crop]({{site.images}}{{page.slug}}/cream-of-the-crop.jpg)\
 
@@ -87,7 +87,7 @@ I'm not as generous in my assessment of consultants as I am in my assessment of 
 
 So here's the part where I tell you the pros of consultants. They sponsor a lot of the same technical reports, organizations, events, content creators, etc., as marketers. They also produce a lot of research-heavy reports that have useful info (unfortunately, they also produce a lot of sales pitches disguised as reports). Consultants probably do the best job of spreading technical best practices across industries, because they jump around industries so often. Sometimes you need a consultant because you need an outside perspective, you want advice from people with experience in areas your team is lacking, or you don't want to hire people full-time for temporary roles for work that is project-based or non-recurring. I can also say with certainty that my co-workers when I was a consultant were, for the most part, some of the most intelligent, well-rounded, well-composed people I've ever met in my life. If you need to put together an Academic Decathlon team or want to get the best tutors to get your child through high school and college with straight A's, consultants are the way to go.
 
-## Where Consultants Go Bad
+### Where Consultants Go Bad
 
 ![change-requests]({{site.images}}{{page.slug}}/change-requests.jpg)\
 
