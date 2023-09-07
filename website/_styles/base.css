@@ -257,3 +257,44 @@ main.wave-main.homepage {
 .highlight-category.active {
   @apply border-b-2 border-[#6B7280] text-black;
 }
+
+.earthly-solution {
+  max-width: 100%;
+  min-width: 100%;
+}
+
+@media screen and (min-width: 640px) {
+  .earthly-solution {
+    max-width: calc(50% - 10px);
+    min-width: calc(50% - 10px);
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .earthly-solution {
+    max-width: calc((100% - 40px) / 3);
+    min-width: calc((100% - 40px) / 3);
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .impact.active {
+    @apply bg-[#e9f8ff] border-[#e9f8ff];
+  }
+}
+
+.impact-item-mobile {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  padding-block: 0;
+  transition: all ease-in-out 0.25s;
+}
+
+.impact-item-mobile.active {
+  margin-top: 8px;
+  max-height: 1000px;
+  opacity: 1;
+  overflow: unset;
+  padding-block: 16px;
+}

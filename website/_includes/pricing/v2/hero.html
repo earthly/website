@@ -5,9 +5,9 @@
 <div class="bg-white flex flex-col lg:flex-row gap-8 mb-16 mt-12 pb-10 pt-6 px-8 rounded-xl shadow-xl">
   {% for item in site.data.pricing-features %}
   <div class="flex flex-1 flex-col items-center">
-    <img class="w-11 h-11" src="{{ item.image }}" alt="Clock Fast" />
-    <div class="font-bold flex w-full items-center mt-2 text-lg min-h-[60px] mb-2">{{ item.title }}</div>
-    <div class="font-normal text-base text-gray-600">{{ item.description }}</div>
+    <img class="w-11 h-11" src="{{ item.image }}" alt="{{ item.title }}" />
+    <div class="font-bold flex items-center mt-2 text-center text-lg min-h-[60px] mb-2">{{ item.title }}</div>
+    <div class="font-normal text-base text-center text-gray-600">{{ item.description }}</div>
   </div>
   {% endfor %}
 </div>
