@@ -87,21 +87,21 @@ Here are some commonly used syslog facilities, along with their numeric codes:
 
 Syslog defines eight categories from 0 (emergency) to 7 (Debug level). These levels are used to classify messages based on their severity. Levels 5 - 7 are mostly used by applications, while 0 - 4 are mostly used by the operating system. For example, we can enable debug logs when developing or troubleshooting an application and change the log level to errors or warnings when we deploy it. Here are the syslog levels, along with their numeric codes:
 
-`0` - emergency: System is unusable. This level indicates a catastrophic failure or a situation that requires immediate attention.
+`0` - `emergency`: System is unusable. This level indicates a catastrophic failure or a situation that requires immediate attention.
 
-`1` - alert: Immediate action is needed. This level indicates a condition that should be corrected immediately, such as a critical system component failure.
+`1` - `alert`: Immediate action is needed. This level indicates a condition that should be corrected immediately, such as a critical system component failure.
 
-`2` - critical: Critical conditions. This level indicates a severe error or problem that requires prompt attention.
+`2` - `critical`: Critical conditions. This level indicates a severe error or problem that requires prompt attention.
 
-`3` - error: Error conditions. This level indicates non-critical errors that may require investigation or troubleshooting.
+`3` - `error`: Error conditions. This level indicates non-critical errors that may require investigation or troubleshooting.
 
-`4` - warning: Warning conditions. This level indicates a potential problem or situation that should be monitored or addressed.
+`4` - `warning`: Warning conditions. This level indicates a potential problem or situation that should be monitored or addressed.
 
-`5` - notice: Normal but significant conditions. This level indicates noteworthy events but is not necessarily indicative of an error.
+`5` - `notice`: Normal but significant conditions. This level indicates noteworthy events but is not necessarily indicative of an error.
 
-`6` - informational: Informational messages. This level provides general operational information or status updates.
+`6` - `informational`: Informational messages. This level provides general operational information or status updates.
 
-`7` - debug: Debug-level messages. This level denotes detailed debugging and diagnostic information.
+`7` - `debug`: Debug-level messages. This level denotes detailed debugging and diagnostic information.
 
 Depending on the logging configuration, messages can be filtered or handled differently based on their level.
 
@@ -109,29 +109,29 @@ Depending on the logging configuration, messages can be filtered or handled diff
 
 System administrators use syslog to collect, analyze, monitor, and store log messages from various devices, servers, and applications to facilitate troubleshooting, performance monitoring and mitigate security events. Below, you will learn some of the use cases in a practical setting:
 
-* System and Network Monitoring: Collecting log messages from servers, network devices, and applications helps monitor their health, identify issues, and perform troubleshooting. Network administrators may send log events to a Graylog server for analysis and troubleshooting if devices fail.
-* Security Event Logging: syslog collects security-related events such as failed SSH login attempts, firewall alerts from UFW, and Nginx access and error alerts.
-* Compliance and Auditing: Compliance standards require organizations to maintain comprehensive logs for audit purposes.
-* Troubleshooting and Debugging: Analyzing syslog messages provides insights into system or application issues, aiding in troubleshooting and debugging processes.
-* Application Performance Monitoring: Logs collected from application components help identify performance bottlenecks. In a LAMP/LEMP stack utilizing the PHP FastCGI process manager, the FPM server will always log warnings when resource utilization increases and adjustments are needed. Developers and administrators can track application behavior under load and make necessary adjustments.
-* Log Analysis: Syslog messages are loaded into analysis tools for log correlation, threat detection, and incident response.
-* Forensics and Incident Response: Analyzing syslog messages can help identify the root cause of incidents and provide evidence for legal or compliance purposes.
-* Log Archiving and Long-Term Storage: Syslog enables the collection and storage of logs from multiple sources in a centralized location, ensuring long-term retention for compliance, historical analysis, or future reference.
+* `System and Network Monitoring`: Collecting log messages from servers, network devices, and applications helps monitor their health, identify issues, and perform troubleshooting. Network administrators may send log events to a Graylog server for analysis and troubleshooting if devices fail.
+* `Security Event Logging`: syslog collects security-related events such as failed SSH login attempts, firewall alerts from UFW, and Nginx access and error alerts.
+* `Compliance and Auditing`: Compliance standards require organizations to maintain comprehensive logs for audit purposes.
+* `Troubleshooting and Debugging`: Analyzing syslog messages provides insights into system or application issues, aiding in troubleshooting and debugging processes.
+* `Application Performance Monitoring`: Logs collected from application components help identify performance bottlenecks. In a LAMP/LEMP stack utilizing the PHP FastCGI process manager, the FPM server will always log warnings when resource utilization increases and adjustments are needed. Developers and administrators can track application behavior under load and make necessary adjustments.
+* `Log Analysis`: Syslog messages are loaded into analysis tools for log correlation, threat detection, and incident response.
+* `Forensics and Incident Response`: Analyzing syslog messages can help identify the root cause of incidents and provide evidence for legal or compliance purposes.
+* `Log Archiving and Long-Term Storage`: Syslog enables the collection and storage of logs from multiple sources in a centralized location, ensuring long-term retention for compliance, historical analysis, or future reference.
 
 ## How to Interpret Syslog Entries
 
 To interpret log entries, we must know when the event occurred, the severity level to determine its importance, and the facility to determine the message's origin. Interpreting syslog entries requires understanding the structure and format of syslog messages. Understanding how components interact allows you to correlate events between two or more applications or components. Syslog messages contain several components, as illustrated below:
 
-* Timestamp: The timestamp indicates when the event occurred. It includes date and time information, allowing you to understand the temporal context of the event and relate events chronologically.
-* Hostname: The hostname identifies the device or system that generated the syslog message.
-* Process: The process field shows the name or identifier of the process or application that generated the syslog message.
-* Severity Level: Syslog messages are assigned a severity level to indicate the event's importance or urgency.
-* Message: The message field contains the actual content of the syslog entry. It includes information about the event, error details, status messages, or any other relevant information related to the logged event.
-* Structured Data (Optional): Structured data provides additional context or specific information about the event. Structured data is typically presented in key-value pairs and can be used to convey precise details or metadata associated with the event.
+* **Timestamp**: The timestamp indicates when the event occurred. It includes date and time information, allowing you to understand the temporal context of the event and relate events chronologically.
+* **Hostname**: The hostname identifies the device or system that generated the syslog message.
+* **Process**: The process field shows the name or identifier of the process or application that generated the syslog message.
+* **Severity Level**: Syslog messages are assigned a severity level to indicate the event's importance or urgency.
+* **Message**: The message field contains the actual content of the syslog entry. It includes information about the event, error details, status messages, or any other relevant information related to the logged event.
+* **Structured Data (Optional)**: Structured data provides additional context or specific information about the event. Structured data is typically presented in key-value pairs and can be used to convey precise details or metadata associated with the event.
 
 You can use the `tail` command to view log entries as they are appended like so:
 
-~~~
+~~~{.bash caption=">_"}
 tail -f /var/log/syslog
 ~~~
 
@@ -141,10 +141,10 @@ tail -f /var/log/syslog
 
 Every line in the screenshot above gives us the following information about events:
 
-* The date and time an event occurred
-* The hostname of the device on which the event occurred. In this case, it is on my laptop
-* The third column is the program that generated the event
-* The final column is the message content associated with that event
+* The date and time an event occurred.
+* The hostname of the device on which the event occurred. In this case, it is on my laptop.
+* The third column is the program that generated the event.
+* The final column is the message content associated with that event.
 
 ## How To Limit the Size and Number of Syslog Entries
 
@@ -156,13 +156,13 @@ In the example below, we specify the conditions that must be met before the `sys
 
 Open the `logrotate` configuration file for `syslog`:
 
-~~~
+~~~{.bash caption=">_"}
 sudo nano /etc/logrotate.d/rsyslog
 ~~~
 
 You can configure the rotation options for `syslog` by adding the below contents to the configuration file. With this configuration, only the last 5 syslog files will be retained, each with a maximum size of 100 MB. Log rotation will not take place if the file is less than one week old or is less than 100 MB.
 
-~~~{ caption="/etc/logrotate.d/rsyslog"}
+~~~{.bash  caption="/etc/logrotate.d/rsyslog"}
 /var/log/syslog {
 # Rotate the file weekly
 weekly
@@ -172,7 +172,7 @@ size 100M
 rotate 5
 # Compress the rotated file using Gzip
 compress
-#  Delay the compression of the previous log file until the next rotation cycle
+# Delay the compression of the previous log file until the next rotation cycle
 delaycompress
 # Do not raise an error if the syslog file is missing
 missingok
@@ -191,7 +191,7 @@ endscript
 Once you are done editing, press **CTRL+O** to write the contents to the file followed by **CTRL+X** to exit the editor.
 * Test the configuration:
 
-~~~
+~~~{.bash caption=">_"}
 sudo logrotate -d /etc/logrotate.d/rsyslog
 ~~~
 
@@ -205,19 +205,19 @@ Follow these steps to configure log rotation for the Nginx error log using `logr
 
 * Create a logrotate configuration file.
 
-~~~
+~~~{.bash caption=">_"}
 sudo touch /etc/logrotate.d/nginx-logrotate.conf
 ~~~
 
 * Define the log rotation configuration.
 
-~~~
+~~~{.bash caption=">_"}
 sudo nano /etc/logrotate.d/nginx-logrotate.conf
 ~~~
 
 In the configuration below, we specify that the logs should be rotated every day or when they reach 10 MB. We also specify that we want to keep only the last seven files, use Gzip compression, delay compression until the next file is created, skip rotation if the file is empty, and create a new file with the specified permissions and ownership. The compressed files are stored with a `.gz` file extension in the same directory as the original uncompressed files.
 
-~~~
+~~~{.bash caption=">_"}
 /var/log/nginx/error.log {
 # Rotate log files every day
 daily
@@ -241,13 +241,13 @@ create 0644 www-data www-data
 * Save the configuration file and exit the text editor. Press **CTRL+X** and **CTRL+O** to write the file to disk and exit from `nano`.
 * Test the configuration
 
-~~~
+~~~{.bash caption=">_"}
 sudo logrotate -d /etc/logrotate.d/nginx-logrotate.conf
 ~~~
 
 * Restart the server daemon with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl restart rsyslogd.service
 ~~~
 
@@ -257,13 +257,13 @@ It is also easier to correlate events from multiple sources by matching text pat
 
 Here are the general steps to configure your syslog server and clients:
 
-1. Choose a Syslog Server: Select a server or system to act as your centralized syslog server. Ubuntu and Debian come pre-installed with `rsyslog`.
-2. Install and Configure Syslog Server: Set up the `syslog` server software on the chosen server. Some popular syslog server software options are syslog-ng, Graylog, and Splunk.
-3. Configure Syslog Clients: Configure the devices, servers, or applications that send syslog messages to the remote server. Locate the syslog configuration file on each client and update it to include the remote server's IP address.
-4. Set Logging Levels and Filters: Determine the level of detail you want to capture in the syslog messages and configure appropriate filters. You can specify which log messages to forward to the remote server based on severity level or specific facilities.
-5. Test Syslog Communication: Restart the syslog service on each client device and the syslog server to apply the configuration changes. Generate test log messages on the client devices to verify transmission to the remote server.
-6. Manage Log Storage: Configure log rotation and retention policies on the syslog server to ensure log files are periodically rotated, compressed, and retained for a specific duration.
-7. Security Considerations: Set up a VPN tunnel between the client and the server if the transmission is over an untrusted network.
+1. **Choose a Syslog Server**: Select a server or system to act as your centralized syslog server. Ubuntu and Debian come pre-installed with `rsyslog`.
+2. **Install and Configure Syslog Server:** Set up the `syslog` server software on the chosen server. Some popular syslog server software options are syslog-ng, Graylog, and Splunk.
+3. **Configure Syslog Clients**: Configure the devices, servers, or applications that send syslog messages to the remote server. Locate the syslog configuration file on each client and update it to include the remote server's IP address.
+4. **Set Logging Levels and Filters**: Determine the level of detail you want to capture in the syslog messages and configure appropriate filters. You can specify which log messages to forward to the remote server based on severity level or specific facilities.
+5. **Test Syslog Communication**: Restart the syslog service on each client device and the syslog server to apply the configuration changes. Generate test log messages on the client devices to verify transmission to the remote server.
+6. **Manage Log Storage**: Configure log rotation and retention policies on the syslog server to ensure log files are periodically rotated, compressed, and retained for a specific duration.
+7. **Security Considerations**: Set up a VPN tunnel between the client and the server if the transmission is over an untrusted network.
 
 ## Syslog Storage Full | Emergency Actions
 
@@ -279,7 +279,7 @@ Follow these steps to rotate the syslog file manually:
 
 * Check the current size of the syslog file
 
-~~~
+~~~{.bash caption=">_"}
 ls -lh /var/log/syslog
 ~~~
 
@@ -291,7 +291,7 @@ The output shows the permissions, ownership, and size in a human-readable format
 
 * Truncate the syslog file.
 
-~~~
+~~~{.bash caption=">_"}
 : > /var/log/syslog
 ~~~
 
@@ -306,13 +306,13 @@ This empties the file while preserving the permissions, which is much better tha
 
 * Next Step is to restart the syslog daemon:
 
-~~~
+~~~{.bash caption=">_"}
 systemctl restart rsyslog.service
 ~~~
 
 * Verify that syslog is running:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl status rsyslog.service
 ~~~
 
