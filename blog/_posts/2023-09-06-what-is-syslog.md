@@ -7,7 +7,9 @@ author: Felix Kinaro
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - introduction to syslog
+ - what is syslog
+ - how syslog works
 excerpt: |
     Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
 ---
@@ -337,5 +339,3 @@ To build on this and gain more insights, a good next step would be to read the [
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
