@@ -162,7 +162,7 @@ sudo nano /etc/logrotate.d/rsyslog
 
 You can configure the rotation options for `syslog` by adding the below contents to the configuration file. With this configuration, only the last 5 syslog files will be retained, each with a maximum size of 100 MB. Log rotation will not take place if the file is less than one week old or is less than 100 MB.
 
-~~~{.caption=/etc/logrotate.d/rsyslog caption=""}
+~~~{ caption="/etc/logrotate.d/rsyslog"}
 /var/log/syslog {
 # Rotate the file weekly
 weekly
@@ -335,7 +335,6 @@ To build on this and gain more insights, a good next step would be to read the [
 
 ## Outside Article Checklist
 
-* [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Add keywords for internal links to front-matter
