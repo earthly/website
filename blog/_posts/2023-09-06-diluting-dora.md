@@ -79,6 +79,7 @@ For DORA, this exhibits itself by observability tool vendors creating solutions 
 The result is frequently a hefty amount of instrumentation that leaves the customer more locked into the vendor's tool (although this is getting less prevalent with OpenTelemetry), a bag of dashboards that show DORA metrics alongside a smattering of other metrics the vendor's solution deems important, and a fat bill.
 
 ## How Consultants Abuse DORA
+
 ### Consultants Are Smart, and Sometimes You Need Them
 
 ![cream-of-the-crop]({{site.images}}{{page.slug}}/cream-of-the-crop.jpg)\
