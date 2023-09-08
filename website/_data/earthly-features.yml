@@ -1,0 +1,9 @@
+- title: Write once, run anywhere
+  description: Execute CI pipelines on your laptop, remotely, or in any CI. Easily reproduce CI failures locally.
+  image: assets/svg/pc-check.svg
+- title: Ridiculously fast
+  description: 2-20x faster builds in CI. Automatic parallel execution and caching with no configuration required.
+  image: assets/svg/speedometer.svg
+- title: Compatible with everything
+  description: Works with any CI. Compatible with every language, framework, and build tool.
+  image: assets/svg/puzzle-plus.svg

@@ -1,0 +1,24 @@
+- title: Modernize Your Builds
+  description: Elevate your development process with Earthly's cutting-edge build automation. Simplify complex workflows and ensure consistency across projects.
+  image: assets/svg/loop-automatic.svg
+  link: 
+
+- title: Enhance Collaboration
+  description: Collaborate seamlessly with Earthly's shareable build configurations. Foster teamwork and streamline communication among development teams.
+  image: assets/svg/community.svg
+  link: 
+
+- title: Optimize Deployment
+  description: Efficiently deploy your projects with Earthly's automated processes. From small applications to large-scale solutions, ensure reliability in deployments.
+  image: assets/svg/clock-fast.svg
+  link: 
+
+- title: Future-Proof Workflows
+  description: Adapt to evolving technologies and industry trends effortlessly. Earthly empowers you to future-proof your development workflows.
+  image: assets/svg/future-proof-workflows.svg
+  link: 
+
+- title: Boost Development Velocity
+  description: Accelerate development cycles with Earthly's optimized build automation. Increase efficiency and shorten time-to-market for your projects.
+  image: assets/svg/fastapi.svg
+  link: 

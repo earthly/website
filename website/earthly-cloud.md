@@ -9,7 +9,7 @@ mobileBanner: <b>Introducing Earthly Cloud.</b> Get 6,000 min/mth free! <a href=
 {% include home/layout.html template='cloud/hero.html' %}
 {% include home/layout.html template='cloud/call-to-action.html' %}
 {% include home/layout.html template='satellite/customers.html' %}
-{% include home/layout.html template='home/why.html' %}
+{% include home/layout.html template='cloud/why.html' %}
 
 {% include home/layout.html template='cloud/benefits-title.html' %}
 {% include home/layout.html template='cloud/benefits-build-automation.html' %}

@@ -1,5 +1,6 @@
 ---
 title: Customer Stories
+description: Stories and examples of customers that Earthly helped.
 layout: default
 ---
 
