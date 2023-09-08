@@ -3,12 +3,12 @@
 
   <div class="gap-5 grid md:grid-cols-2 lg:grid-cols-3 mt-4">
     {% for item in site.data.webinar-videos %}
-      <a id="video-{{ forloop.index }}" href="{{ item.link }}" class="{% if forloop.index > 6 %}hidden{% endif %}">
-        <div class="border border-[#D1D6D9] cursor-pointer duration-700 group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
+      <a id="video-{{ forloop.index }}" href="https://www.youtube.com/watch?v={{ item.videoId }}" class="{% if forloop.index > 6 %}hidden{% endif %}">
+        <div class="h-full border border-[#D1D6D9] cursor-pointer duration-700 group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
           <div class="overflow-hidden rounded-md">
             <img
               class="w-full h-[200px] duration-700 object-cover group-hover:scale-110 transition-transform"
-              src="{{ item.image }}"
+              src="https://img.youtube.com/vi/{{ item.videoId }}/mqdefault.jpg"
               alt="{{ item.title }}"
             />
           </div>

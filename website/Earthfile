@@ -62,6 +62,7 @@ build:
   CACHE _site
   COPY --dir _data _sass _styles _layouts _includes assets signup .
   COPY *.md *.js *.html *.yml *.json _redirects Gemfile Gemfile.lock robots.txt .
+  RUN node website/youtubeVideos.js
   RUN bundle update
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL ./build/site/
