@@ -214,8 +214,11 @@ Will a net new player be able to launch a new CI ever again?
 I think so, yes. But the strategy has to be different. I can see this happening in a few possible ways:
 
 - You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
+
 - You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
+
 - Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
+
 - Some other strategy that I can't think of.
 
 {% include_html cta/bottom-cta.html %}
