@@ -1,4 +1,4 @@
-name: Raise PR with changes
+name: Add CTAs and summaries to articles
 
 on:
   workflow_dispatch:
@@ -38,6 +38,7 @@ jobs:
 
         python ./util/sgpt/excerpt.py  --dir ./blog/_posts
         python ./util/sgpt/topcta.py  --dir ./blog/_posts
+        git restore ./blog/_posts/2029-01-01-checklist.md
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
         ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
