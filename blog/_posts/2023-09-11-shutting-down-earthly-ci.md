@@ -6,7 +6,10 @@ toc: true
 author: Vlad
 
 internal-links:
- - just an example
+ - earthly ci shutting down
+ - earthly ci failed
+ - learning from failures
+ - fastest ci failed
 ---
 
 Imagine you live in a world where no part of the build has to repeat unless the changes actually impacted it. A world in which all builds happened with automatic parallelism. A world in which you could reproduce very reliably any part of the build on your laptop. Fairy tales, right? Well, that's what we built, and to everyone's surprise, nobody wanted it. It's like flying cars - they sound amazing, but in practice, things are more difficult than they might seem.
@@ -195,5 +198,3 @@ Earthly Satellites are ridiculously fast remote build runners that work seamless
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
