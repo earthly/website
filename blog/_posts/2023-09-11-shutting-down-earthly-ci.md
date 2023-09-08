@@ -173,10 +173,14 @@ I don't think so. After all, GitHub Actions started not too long ago, and it's q
 Theoretically, any existing CI company could innovate on top of its existing platform. But to make a significant difference, it would most likely require big architectural changes. Plus a syntax change would mean customers would have to migrate over. Plus innovator's dilemma and all that. I don't see this variant as a likely scenario.
 Will a net new player be able to launch a new CI ever again?
 I think so, yes. But the strategy has to be different. I can see this happening in a few possible ways:
-- You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
-- You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
-- Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
-- Some other strategy that I can't think of.
+
+* You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
+
+* You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
+
+* Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
+
+* Some other strategy that I can't think of.
 
 But Vlad, you're deprecating the thing you just launched?
 
@@ -191,19 +195,22 @@ Migration off Earthly CI is really easy because Earthly works with any CI. And i
 It seems that Earthly Satellites are taking off, not just because we are delivering fast and consistent builds, but also, crucially, because we are **letting users keep their own CI**. Given this signal, it makes sense for us, as a company, to continue to invest in this direction. In fact, by shutting down Earthly CI, we have more time to execute on a number of things that the Earthly community have been asking us about:
 
 * Satellite metrics – including CPU, memory, disk, and network I/O usage.
+
 * Build history – for both local and Satellites builds – in the web UI.
+
 * Auto-skip – the ability to skip a build instantly if the changed files don't impact it.
+
 * The ability to execute Dockerfile builds remotely on Satellites, as a fast drop-in replacement for `docker build`.
+
 * Self-hosted Satellites (a better-supported version of [our self-hosted, remote Buildkit](https://docs.earthly.dev/ci-integration/remote-buildkit)).
+
 * The ability to spread a single build onto multiple Satellites for added speed.
+
 * Compute v2 - fully distributed, serverless Satellites (this one will take a while to get right).
 
 If you're not a user and you came to this post just for the story, then boy do I have some goodies for you to check out 🙂.
 
 Earthly Satellites are ridiculously fast remote build runners that work seamlessly with any CI. It is available via Earthly Cloud and free to get started. Satellites are built on top of our open source build framework, Earthly. Earthly gives you write once, run anywhere build consistency, making it super easy to reproduce CI failures on your local computer. Earthly and Satellites together are like peanut butter and jelly – fast, consistent builds that work with any CI and are easy to debug locally. Come check us out at [earthly.dev](https://earthly.dev)!
-
-
-[^1]: What does this mean for the CI industry? Are we just never going to have new, better CIs ever again? Are we doomed to use mediocre CIs forever?
 
 I don't think so. After all, GitHub Actions started not too long ago, and it's quickly becoming the de-facto standard, at least for the open-source community and small companies. What's different about GitHub Actions is that it has a huge platform play. This is despite the fact that like many other traditional CIs, the offering is not differentiated. It just happens to be closer to your code, and that is convenient. So there are ways to get on the market.
 
@@ -213,12 +220,12 @@ Will a net new player be able to launch a new CI ever again?
 
 I think so, yes. But the strategy has to be different. I can see this happening in a few possible ways:
 
-- You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
+* You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
 
-- You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
+* You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
 
-- Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
+* Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
 
-- Some other strategy that I can't think of.
+* Some other strategy that I can't think of.
 
 {% include_html cta/bottom-cta.html %}
