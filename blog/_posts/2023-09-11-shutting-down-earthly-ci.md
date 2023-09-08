@@ -15,7 +15,7 @@ Back in April 2020, we at Earthly set out on this quest to improve CI/CD tooling
 
 Now we all know dreaming big is easy. Execution is where things get hard.
 
-## What does success look like?
+## What Does Success Look Like?
 
 In a startup, you don't have the luxury of building a mature product with all the possible bells and whistles before shipping it to your customers. Mature products take many years and many engineers to build out.
 
@@ -33,9 +33,9 @@ Successful products will show validation at a small scale, despite all their lim
 
 What early-stage validation looks like is a small group of people who have a lot of passion for what you do. Nobody has heard about your stuff, but your users are passionately shouting from the rooftops about it. You walk into their office and everyone has stickers with your company on their laptops, and everyone wants to talk to you.
 
-## The master plan for Earthly CI
+## The Master Plan for Earthly CI
 
-To build out the vision of Earthly CI, we devised a master plan. We knew that we didn't want to go on a crazy complex implementation for 3 years only to emerge from a cave with a product that would not fit the needs of the real world. So we split up the end-vision into several independent products that we would validate along the way. 
+To build out the vision of Earthly CI, we devised a master plan. We knew that we didn't want to go on a crazy complex implementation for 3 years only to emerge from a cave with a product that would not fit the needs of the real world. So we split up the end-vision into several independent products that we would validate along the way.
 
 Thus, instead of building Earthly CI from day 0, we first built the syntax, and the general experience around running builds on-demand. The key value we delivered was build consistency: there is a level of guarantee that the build will execute the same, regardless of the environment it runs in. The syntax of this build tool is the same as the CI down the road, but it only ran locally initially and in other CIs. We called this **first milestone** Earthly.
 
@@ -73,23 +73,23 @@ The closer we were getting to the Earthly CI launch, the more of a slam dunk it 
 
 But, as you already know what this blog post is about, making Earthly CI successful turned out to be more challenging than we thought.
 
-## The early symptoms
+## The Early Symptoms
 
 For Earthly CI, we did a [solid launch](https://earthly.dev/blog/launching-earthly-ci/), landed on [TechCrunch](https://techcrunch.com/2023/02/23/earthly-wants-to-reinvent-continuous-integration-to-make-it-faster-and-cheaper/), and lined up [a few blog articles for Reddit and HackerNews](https://earthly.dev/blog/remote-code-execution/).
 
 From the launch we got about 50 emails signing up on the waitlist in the first week or two, outpacing the goals we had. We started setting up calls with these people, and, right off the bat, we could sense a big difference between existing Earthly users vs. people who were coming to us for the first time.
 
-These weren’t the raving fans we were used to talking with. New people would look at Earthly CI with a skeptical eye. They were mostly thinking that "all CIs are the same - they just have different syntax," and then they would not really look any further as to why we might actually be different. As a result, the conversation invariably turned to the **cost of migration**. How difficult would it be for them to rewrite and adapt a bunch of existing scripts to be able to use Earthly effectively?
+These weren't the raving fans we were used to talking with. New people would look at Earthly CI with a skeptical eye. They were mostly thinking that "all CIs are the same - they just have different syntax," and then they would not really look any further as to why we might actually be different. As a result, the conversation invariably turned to the **cost of migration**. How difficult would it be for them to rewrite and adapt a bunch of existing scripts to be able to use Earthly effectively?
 
 Existing users, by contrast, were already fans, had already done the work of the migration, and already saw the benefits of Earthly. They were ready to champion us in their organizations, even if not everyone in their organization was on board yet.
 
-We kept talking to as many teams as we could, to understand the apprehension toward Earthly CI, but it always came back to weighing the cost of migration vs. the benefit. And we could never win this up-front, mainly because these prospects had no idea whether we could deliver on the benefits we promised at scale. We don't have a long-established reputation like our incumbents. Existing users claimed we were 10x easier to use, but how can you prove that to a new client on a quick Zoom call? So it didn’t make sense for them to jump head-first into an expensive and time-consuming migration effort just because some startup they had never heard of promised to deliver the sun and the moon.
+We kept talking to as many teams as we could, to understand the apprehension toward Earthly CI, but it always came back to weighing the cost of migration vs. the benefit. And we could never win this up-front, mainly because these prospects had no idea whether we could deliver on the benefits we promised at scale. We don't have a long-established reputation like our incumbents. Existing users claimed we were 10x easier to use, but how can you prove that to a new client on a quick Zoom call? So it didn't make sense for them to jump head-first into an expensive and time-consuming migration effort just because some startup they had never heard of promised to deliver the sun and the moon.
 
 We also tried getting existing Earthly Satellite customers to switch to Earthly CI – after all, they were all using Satellites **in their CIs**. The problem with this group was that they were already getting 95% of the value of Earthly CI through Satellites. Their builds were already really fast. Compared to a GitHub Actions + Satellite setup, Earthly CI wasn't better, or at least, it wasn't better enough to warrant the switch.
 
 And then, after the launch traffic died down... There was silence.
 
-## The most ridiculous negative lead qualification criteria ever
+## The Most Ridiculous Negative Lead Qualification Criteria Ever
 
 The odd thing about direct calls with prospects was that we could never convince them to try out any of our products when talking to them face to face. Not Earthly CI, not Satellites, not even Earthly. At this point, we probably had over 100 calls with prospects. We were hearing over and over how they spent 2 years migrating to their current setup, how they put so much effort into it, and how throwing all that away would be so wasteful. And how annoying it is to switch CIs.
 
@@ -101,9 +101,9 @@ In retrospect, it's of course obvious that there's no way to sell developer prod
 
 We ended up with the most ridiculous negative qualification criteria I have ever heard of: if the prospect requires a demo, then they're not worth going after. The type of prospect that *does* convert will come to us after they downloaded Earthly, read some docs, and wrote a bunch of Earthfiles. These teams never need a demo. It's weird, but demoing is one of the strongest negative signals we have.
 
-The moral of the story here is that when you introduce a developer tool that requires integration work (work outside of the development team's commonly expected flow, work that replicates already existing work, and work that requires learning a new syntax or API), you can never force, or hurry anyone to adopt it. This can only happen on the user's schedule. **People will buy a developer tool, but you can’t sell it**. We all know that engineers like to get their hands dirty and explore things on their own. This conclusion is the corollary of that well-known fact. That's why you can't hard sell to engineers. You can only soft-sell.
+The moral of the story here is that when you introduce a developer tool that requires integration work (work outside of the development team's commonly expected flow, work that replicates already existing work, and work that requires learning a new syntax or API), you can never force, or hurry anyone to adopt it. This can only happen on the user's schedule. **People will buy a developer tool, but you can't sell it**. We all know that engineers like to get their hands dirty and explore things on their own. This conclusion is the corollary of that well-known fact. That's why you can't hard sell to engineers. You can only soft-sell.
 
-## Problems converting Earthly users
+## Problems Converting Earthly Users
 
 Our other big channel was converting existing Earthly users into Earthly CI users. This was a key segment because there is no migration concern - everyone in this segment has already converted to Earthfiles. It should be just a flip of a switch, right?... Right?...
 
@@ -115,7 +115,7 @@ But for the most part, the Earthly community came to our product mainly for the 
 
 And the few organizations that did have both of these needs ended up becoming Satellite customers instead. Not that we minded the Satellite customers, but it wasn't helping to validate Earthly CI as a product.
 
-## Validating the invalidation
+## Validating the Invalidation
 
 At this point, we could see that things weren't going according to plan. Calls weren't converting. Existing Satellite customers weren't converting. And existing Earthly users weren't converting.
 
@@ -129,7 +129,7 @@ This one-word change ended up **doubling** conversions to the "Get Earthly" page
 
 Now we were starting to get really doubtful about this Earthly CI thing.
 
-## Lessons from another life
+## Lessons From Another Life
 
 In the fall of 2016, long before Earthly, I, along with two co-founders, a really smart code analysis scientist, and an incredibly dedicated team, started ShiftLeft (nowadays called [Qwiet.ai](https://qwiet.ai)). Our vision was to build a security agent that you could install in production and it would protect your cloud app from attacks on vulnerabilities that you have in your source code. This was an incredibly complex system, which required that we build an entire code analyzer that would work with multiple programming languages, runtime agents for individual runtimes, and a distributed backend to integrate everything. The complexity was akin to three companies, all being built by one tiny startup.
 
@@ -150,7 +150,7 @@ My biggest regret from the experience was that we did not stop earlier when the 
 
 Fast forward to today, learning from mistakes of the past, at Earthly we built everything incrementally. And we even put products on the market that initially seemed like purely engineering intermediate milestones. Each product builds on top of the previous achievements, thus allowing for incremental iteration with the customer in mind. We're now seeing our latest incremental iteration not working in the marketplace. And, knowing what I know about early products, it's not the missing features that are the problem.
 
-## What's next for Earthly?
+## What's Next for Earthly?
 
 Here's how I rationalize what's happening:
 
@@ -169,7 +169,7 @@ But Vlad, you're deprecating the thing you just launched?
 
 Well, yes. We failed fast. And that is a success in my book (or at least that's what I keep telling myself to feel better about it). Imagine if we had built only Earthly CI from the get-go. Just like with ShiftLeft, the components of the end-vision ended up being more valuable than the original end-vision itself. Only this time, we discovered that much more efficiently.
 
-## Wrapping up
+## Wrapping Up
 
 Earthly CI is shutting down on October 1st, 2023. If you are a user, you have my sincere gratitude for experimenting with Earthly CI - it's because of people like you that there is any innovation in the world. You took a chance on us, and we appreciate it from the bottom of our hearts.
 
@@ -193,10 +193,7 @@ Earthly Satellites are ridiculously fast remote build runners that work seamless
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
