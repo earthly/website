@@ -335,7 +335,3 @@ To build on this and gain more insights, a good next step would be to read the [
 
 {% include_html cta/bottom-cta.html %}
 
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
