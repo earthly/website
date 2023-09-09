@@ -1,0 +1,49 @@
+- title: Software Development
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: E-commerce
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/twitter-card-large.png
+  link: /earthly-github-action
+
+- title: Healthcare and Life Sciences
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Finance and Fintech
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Gaming and Entertainment
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Manufacturing and Industrial
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Energy and Utilities
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Media and Publishing
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Telecommunications
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
+
+- title: Education and EdTech
+  description: Lorem ipsum dolor sit amet consectetur. Nibh amet id ut tempus consectetur venenatis vel quis fames. Ac vel lacinia quam feugiat turpis potenti viverra. Aliquam nec donec bibendum massa.
+  image: assets/img/opensource-unsplash.jpeg
+  link: /earthly-github-action
