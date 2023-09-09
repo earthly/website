@@ -83,7 +83,8 @@ Here are some commonly used syslog facilities, along with their numeric codes:
 `15` - `solaris-cron`: Log entries specific to Solaris cron.
 
 `16` - `local0` to `local7`: These are user-defined facilities for local applications or services.
- These facilities provide flexibility for customizing logging for specific needs.
+
+These facilities provide flexibility for customizing logging for specific needs.
 
 ## What Are Syslog Levels?
 
@@ -260,11 +261,17 @@ It is also easier to correlate events from multiple sources by matching text pat
 Here are the general steps to configure your syslog server and clients:
 
 1. **Choose a Syslog Server**: Select a server or system to act as your centralized syslog server. Ubuntu and Debian come pre-installed with `rsyslog`.
+
 2. **Install and Configure Syslog Server:** Set up the `syslog` server software on the chosen server. Some popular syslog server software options are syslog-ng, Graylog, and Splunk.
+
 3. **Configure Syslog Clients**: Configure the devices, servers, or applications that send syslog messages to the remote server. Locate the syslog configuration file on each client and update it to include the remote server's IP address.
+
 4. **Set Logging Levels and Filters**: Determine the level of detail you want to capture in the syslog messages and configure appropriate filters. You can specify which log messages to forward to the remote server based on severity level or specific facilities.
+
 5. **Test Syslog Communication**: Restart the syslog service on each client device and the syslog server to apply the configuration changes. Generate test log messages on the client devices to verify transmission to the remote server.
+
 6. **Manage Log Storage**: Configure log rotation and retention policies on the syslog server to ensure log files are periodically rotated, compressed, and retained for a specific duration.
+
 7. **Security Considerations**: Set up a VPN tunnel between the client and the server if the transmission is over an untrusted network.
 
 ## Syslog Storage Full | Emergency Actions
@@ -334,4 +341,3 @@ In this article, you have learned the syslog architecture components, syslog fac
 To build on this and gain more insights, a good next step would be to read the [RFC 5424 document](https://www.rfc-editor.org/rfc/rfc5424) or [Building Secure Servers with Linux](https://learning.oreilly.com/library/view/building-secure-servers/0596002173/ch10s02.html) book from O'Reilly Media. Learn how to configure remote logging for your environment with tools like Graylog or Splunk and manage your log files in a central location. You can also write custom shell scripts utilizing `grep` and `awk` to filter instances where you have failures.
 
 {% include_html cta/bottom-cta.html %}
-
