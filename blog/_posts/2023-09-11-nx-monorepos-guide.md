@@ -417,6 +417,8 @@ Monorepos are becoming the norm for organizing multiple interrelated projects in
 
 In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://earthly.dev/)
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -426,4 +428,3 @@ In this article, you explored a powerful tool called Nx. You learned about its p
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
