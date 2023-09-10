@@ -7,7 +7,10 @@ author: Aniket Bhattacharyea
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - guide to nx monorepos
+ - starting with nx monorepos
+ - introduction to nx monorepos
+ - nx monorepos for beginners
 ---
 
 Imagine you have a collection of distinct but interrelated projects. For instance, you might have an app with its own [React](https://react.dev/) frontend and [Node.js](https://nodejs.org/en/) backend, or two different [Angular](https://angular.io/) applications sharing a common collection of components. Monorepos offer an effective solution to organize these distinct but interrelated projects into a single repository.
@@ -422,10 +425,6 @@ In this article, you explored a powerful tool called Nx. You learned about its p
 
 ## Outside Article Checklist
 
-* [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
