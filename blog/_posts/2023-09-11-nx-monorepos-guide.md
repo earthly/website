@@ -95,7 +95,7 @@ To follow along, make sure you have [Node.js](https://nodejs.org/en) installed. 
 
 You need to start by creating an Nx workspace with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npx create-nx-workspace@latest
 ~~~
 
@@ -120,7 +120,7 @@ In `apps/customer`, you'll find that you have a React project. You also have an 
 
 Now it's time to create a second React app with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx g @nx/react:app admin
 ~~~
 
@@ -128,19 +128,19 @@ This creates another React app named `admin` in the `apps` directory as well as 
 
 Before you can create the Node.js backend, you need to install the Node.js plugin for Nx:
 
-~~~
+~~~{.bash caption=">_"}
 npm install -D @nx/node
 ~~~
 
 Run the following command to create a Node.js application in the `apps/backend` directory. Choose `express` as the framework of choice:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx g @nx/node:app backend
 ~~~
 
 Then create a React library that will be used by the `customer` and `admin` applications:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx g @nx/react:lib common-components
 ~~~
 
@@ -148,7 +148,7 @@ Choose `jest` as the test runner and `vite` as the bundler. This creates a React
 
 Finally, create a JavaScript library named `functions` that will be used by the `backend` application:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx g @nx/js:lib functions
 ~~~
 
@@ -156,7 +156,7 @@ Choose `none` for both the test runner bundler.
 
 At this point, you should have the following directory structure:
 
-~~~
+~~~{ caption=""}
 |__ apps
 |    |__ admin
 |    |__ admin-e2e
@@ -171,7 +171,7 @@ At this point, you should have the following directory structure:
 
 You can explore the projects and their interdependencies by running the following command, which opens a new page in your browser:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx graph
 ~~~
 
@@ -185,13 +185,14 @@ As you can see, you have five projects and three E2E tests. The E2E tests have i
 
 Create a new `Header` component in `common-components` that will be used in both `admin` and `customer` with the following command:
 
-~~~
-npx nx g @nx/react:component header --project=common-components --export
+~~~{.bash caption=">_"}
+npx nx g @nx/react:component header \
+--project=common-components --export
 ~~~
 
 Open `libs/common-components/src/lib/header/header.tsx` and replace the existing code with the following:
 
-~~~
+~~~{.ts caption="header.tsx"}
 import styles from './header.module.css';
 
 /* eslint-disable-next-line */
@@ -216,13 +217,13 @@ Installing a library in an Nx workspace is different because you need to install
 
 Run the following command in the workspace:
 
-~~~
+~~~{.bash caption=">_"}
 npm install axios cors
 ~~~
 
 Open `apps/admin/src/app/app.tsx` and replace the existing code with the following:
 
-~~~
+~~~{.ts caption="app.tsx"}
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 
@@ -255,7 +256,7 @@ This code makes a GET request to `http://localhost:3000/admin`, where the backen
 
 Repeat the same step with the `customer` app. Open `apps/customer/src/app/app.tsx` and add the following code:
 
-~~~
+~~~{.ts caption="app.tsx"}
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 
@@ -288,13 +289,13 @@ This code is largely the same as the `admin` code, except this time, you make a 
 
 Now create a `currentDate` function in the `functions` project that will be used in the `backend`. This function simply returns the current date. For that, you use the `date-fns` library:
 
-~~~
+~~~{.bash caption=">_"}
 npm install date-fns
 ~~~
 
 Open `libs/functions/src/lib/functions.ts` and replace the existing code with the following:
 
-~~~
+~~~{.ts caption="functions.ts"}
 import { format } from 'date-fns';
 
 export function currentDate(): string {
@@ -340,13 +341,13 @@ This time, you can see that you have dependencies between the projects. Both `cu
 
 To run the projects, start the `backend` project with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx serve backend
 ~~~
 
 Then in another terminal, start the `admin` app:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx serve admin
 ~~~
 
@@ -358,7 +359,7 @@ Visit [http://localhost:4200](http://localhost:4200) and verify that you can see
 
 To run the `customer` app, stop the `admin` app and then start the `customer` app with the following:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx serve customer
 ~~~
 
@@ -372,14 +373,14 @@ Typically, almost all commits change only a small subset of your projects. This 
 
 Start by creating a commit to mark the current state:
 
-~~~
+~~~{.bash caption=">_"}
 git add .
 git commit -m "Initial commit"
 ~~~
 
 Now, change the `common-components` project. Open `libs/common-components/src/lib/header/header.module.css` and add the following CSS code:
 
-~~~
+~~~{.css caption="module.css"}
 header {
     color: red;
 }
@@ -387,7 +388,7 @@ header {
 
 Check which projects have been affected by this change with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx affected:graph
 ~~~
 
@@ -399,7 +400,7 @@ Select **Show all projects**, and you'll see that the `customer`, `admin`, `comm
 
 Now you can run the tests for only the affected projects with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npx nx affected -t test
 ~~~
 
