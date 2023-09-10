@@ -36,7 +36,7 @@ In Nx, a monorepo is known as a workspace. Each workspace can have multiple (pos
 
 Some of the advantages of Nx include the following:
 
-#### Integration with Frameworks and Tools
+#### Integration With Frameworks and Tools
 
 As previously stated, Nx integrates with popular JavaScript frameworks, such as React, [Vue](https://vuejs.org/), Angular, [Express](https://expressjs.com/), and [Expo](https://expo.dev/); testing frameworks, such as [Jest](https://jestjs.io/) and [Cypress](https://www.cypress.io/); and bundlers, such as [Vite](https://vitejs.dev/) and [webpack](https://webpack.js.org/). Apart from these JavaScript technologies, Nx also offers support for frameworks in other languages, such as Flutter and .NET, as well as tools such as [Firebase](https://firebase.google.com/).
 
@@ -76,16 +76,18 @@ While Nx comes with numerous advantages, it's important to be aware of some of i
 * Apart from the graph and affected mechanism, Nx has very little build introspection capabilities compared to something like Bazel or Earthly.
 * Nx only offers extensions for VS Code, JetBrains, and Neovim, which can be frustrating if you're used to using another editor.
 
-## Implementing Monorepos with Nx
+## Implementing Monorepos With Nx
 
-Now let’s create a monorepo consisting of the following projects:
+Now let's create a monorepo consisting of the following projects:
 
 1. Two React applications: `customer` and `admin`.
 2. A React library named `common-components` that will have components shared by the previous two React applications.
 3. A Node.js server named `backend`.
 4. A TypeScript library named `functions` that will be used by `backend`.
 
-![The architecture diagram](https://i.imgur.com/kzTuwx6.png)
+<div class="wide">
+![The architecture diagram]({{site.images}}{{page.slug}}/kzTuwx6.png)
+</div>
 
 To follow along, make sure you have [Node.js](https://nodejs.org/en) installed. This article uses Node.js 20.3.0.
 
@@ -93,9 +95,9 @@ To follow along, make sure you have [Node.js](https://nodejs.org/en) installed. 
 
 You need to start by creating an Nx workspace with the following command:
 
-```bash
+~~~
 npx create-nx-workspace@latest
-```
+~~~
 
 You'll be asked a few questions. Answer with the following:
 
@@ -108,7 +110,9 @@ You'll be asked a few questions. Answer with the following:
 * **Default stylesheet format:** Choose **css**.
 * **Enable distributed caching to make your CI faster:** Select **Yes**.
 
-![Workspace creation](https://i.imgur.com/7ux7KbH.png)
+<div class="wide">
+![Workspace creation]({{site.images}}{{page.slug}}/7ux7KbH.png)
+</div>
 
 Once the command finishes running, you'll have a directory named `myorg`. Navigate to that directory, as the rest of the tutorial will take place there.
 
@@ -116,76 +120,78 @@ In `apps/customer`, you'll find that you have a React project. You also have an 
 
 Now it's time to create a second React app with the following command:
 
-```bash
+~~~
 npx nx g @nx/react:app admin
-```
+~~~
 
 This creates another React app named `admin` in the `apps` directory as well as an E2E test in `apps/admin-e2e`.
 
 Before you can create the Node.js backend, you need to install the Node.js plugin for Nx:
 
-```bash
+~~~
 npm install -D @nx/node
-```
+~~~
 
 Run the following command to create a Node.js application in the `apps/backend` directory. Choose `express` as the framework of choice:
 
-```
+~~~
 npx nx g @nx/node:app backend
-```
+~~~
 
 Then create a React library that will be used by the `customer` and `admin` applications:
 
-```bash
+~~~
 npx nx g @nx/react:lib common-components
-```
+~~~
 
 Choose `jest` as the test runner and `vite` as the bundler. This creates a React library in `libs/common-components`.
 
 Finally, create a JavaScript library named `functions` that will be used by the `backend` application:
 
-```bash
+~~~
 npx nx g @nx/js:lib functions
-```
+~~~
 
 Choose `none` for both the test runner bundler.
 
 At this point, you should have the following directory structure:
 
-```
+~~~
 |__ apps
-|	|__ admin
-|	|__ admin-e2e
-|	|__ backend
-|	|__ backend-e2e
-|	|__ customer
-|	|__ customer-e2e
+|    |__ admin
+|    |__ admin-e2e
+|    |__ backend
+|    |__ backend-e2e
+|    |__ customer
+|    |__ customer-e2e
 |__ libs
-|	|__ custom-components
-|	|__ functions
-```
+|    |__ custom-components
+|    |__ functions
+~~~
 
 You can explore the projects and their interdependencies by running the following command, which opens a new page in your browser:
 
-```bash
+~~~
 npx nx graph
-```
+~~~
 
 Select **Show all projects** in the sidebar, and you'll see the following screen:
 
-![The current graph](https://i.imgur.com/0jWiH4g.png)
+<div class="wide">
+![The current graph]({{site.images}}{{page.slug}}/0jWiH4g.png)
+</div>
 
 As you can see, you have five projects and three E2E tests. The E2E tests have implicit dependencies on their corresponding projects. However, none of the projects are dependent on each other.
 
 Create a new `Header` component in `common-components` that will be used in both `admin` and `customer` with the following command:
 
-```bash
+~~~
 npx nx g @nx/react:component header --project=common-components --export
-```
+~~~
 
 Open `libs/common-components/src/lib/header/header.tsx` and replace the existing code with the following:
 
-```tsx
+~~~
 import styles from './header.module.css';
 
 /* eslint-disable-next-line */
@@ -195,12 +201,12 @@ export interface HeaderProps {
 
 export function Header(props: HeaderProps) {
   return (
-	<header>{props.text}</header>
+    <header>{props.text}</header>
   );
 }
 
 export default Header;
-```
+~~~
 
 You can use this component by installing it from "@myorg/common-components" (which you'll do soon). Initially, you need to install Axios, which will be used to make HTTP requests to the backend server.
 
@@ -210,13 +216,13 @@ Installing a library in an Nx workspace is different because you need to install
 
 Run the following command in the workspace:
 
-```bash
+~~~
 npm install axios cors
-```
+~~~
 
 Open `apps/admin/src/app/app.tsx` and replace the existing code with the following:
 
-```tsx
+~~~
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 
@@ -229,27 +235,27 @@ export function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-	axios.get('http://localhost:3000/admin').then((response) => {
-  	setMessage(response.data);
-	});
+    axios.get('http://localhost:3000/admin').then((response) => {
+      setMessage(response.data);
+    });
   }, []);
 
   return (
-	<div>
-  	<Header text="Welcome to admin!" />
-  	<p>{message}</p>
-	</div>
+    <div>
+      <Header text="Welcome to admin!" />
+      <p>{message}</p>
+    </div>
   );
 }
 
 export default App;
-```
+~~~
 
 This code makes a GET request to `http://localhost:3000/admin`, where the backend returns a message. This message is then displayed on the page using the `Header` component.
 
 Repeat the same step with the `customer` app. Open `apps/customer/src/app/app.tsx` and add the following code:
 
-```tsx
+~~~
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 import styles from './app.module.css';
 
@@ -262,43 +268,43 @@ export function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-	axios.get('http://localhost:3000/customer').then((response) => {
-  	setMessage(response.data);
-	});
+    axios.get('http://localhost:3000/customer').then((response) => {
+      setMessage(response.data);
+    });
   }, []);
 
   return (
-	<div>
-  	<Header text="Welcome to customer!" />
-  	<p>{message}</p>
-	</div>
+    <div>
+      <Header text="Welcome to customer!" />
+      <p>{message}</p>
+    </div>
   );
 }
 
 export default App;
-```
+~~~
 
 This code is largely the same as the `admin` code, except this time, you make a request to `http://localhost:3000/customer`.
 
 Now create a `currentDate` function in the `functions` project that will be used in the `backend`. This function simply returns the current date. For that, you use the `date-fns` library:
 
-```bash
+~~~
 npm install date-fns
-```
+~~~
 
 Open `libs/functions/src/lib/functions.ts` and replace the existing code with the following:
 
-```ts
+~~~
 import { format } from 'date-fns';
 
 export function currentDate(): string {
   return format(new Date(), 'yyyy-MM-dd');
 }
-```
+~~~
 
 Finally, create the backend app at `apps/backend/src/main.ts`:
 
-```ts
+~~~
 import express from 'express';
 import { currentDate } from '@myorg/functions';
 import cors from 'cors';
@@ -320,39 +326,45 @@ app.get('/admin', (req, res) => {
 app.listen(port, host, () => {
   console.log(`[ ready ] http://${host}:${port}`);
 });
-```
+~~~
 
 This code creates a simple Express app with two routes: `/customer` and `/admin`. Both routes use the `currentDate` function imported from `@myorg/functions` and return the current date, along with an indication of `customer` or `admin`.
 
 Run `npx nx graph` again and select **Show all projects**:
 
-![The graph of the project](https://i.imgur.com/x9j04Dw.png)
+<div class="wide">
+![The graph of the project]({{site.images}}{{page.slug}}/x9j04Dw.png)
+</div>
 
 This time, you can see that you have dependencies between the projects. Both `customer` and `admin` depend on `common-components`, and `backend` depends on `functions`.
 
 To run the projects, start the `backend` project with the following command:
 
-```bash
+~~~
 npx nx serve backend
-```
+~~~
 
 Then in another terminal, start the `admin` app:
 
-```bash
+~~~
 npx nx serve admin
-```
+~~~
 
 Visit [http://localhost:4200](http://localhost:4200) and verify that you can see the admin page:
 
-![The admin app](https://i.imgur.com/bPfAloT.png)
+<div class="wide">
+![The admin app]({{site.images}}{{page.slug}}/bPfAloT.png)
+</div>
 
 To run the `customer` app, stop the `admin` app and then start the `customer` app with the following:
 
-```bash
+~~~
 npx nx serve customer
-```
+~~~
 
-![The customer app](https://i.imgur.com/DM95lio.png)
+<div class="wide">
+![The customer app]({{site.images}}{{page.slug}}/DM95lio.png)
+</div>
 
 ### The Affected Mechanism
 
@@ -360,38 +372,42 @@ Typically, almost all commits change only a small subset of your projects. This 
 
 Start by creating a commit to mark the current state:
 
-```bash
+~~~
 git add .
 git commit -m "Initial commit"
-```
+~~~
 
 Now, change the `common-components` project. Open `libs/common-components/src/lib/header/header.module.css` and add the following CSS code:
 
-```css
+~~~
 header {
-	color: red;
+    color: red;
 }
-```
+~~~
 
 Check which projects have been affected by this change with the following command:
 
-```bash
+~~~
 npx nx affected:graph
-```
+~~~
 
 Select **Show all projects**, and you'll see that the `customer`, `admin`, `common-components`, and their corresponding E2E tests are marked in red. This is because changing `common-components` also affects these projects:
 
-![The affected projects are marked in red](https://i.imgur.com/lISgdEG.png)
+<div class="wide">
+![The affected projects are marked in red]({{site.images}}{{page.slug}}/lISgdEG.png)
+</div>
 
 Now you can run the tests for only the affected projects with the following command:
 
-```bash
+~~~
 npx nx affected -t test
-```
+~~~
 
 The tests will fail since you haven't written tests for the modified code. Note that only the tests for the affected components were run:
 
-![The tests were run for the affected projects only](https://i.imgur.com/YvhoLrt.png)
+<div class="wide">
+![The tests were run for the affected projects only]({{site.images}}{{page.slug}}/lISgdEG.png)
+</div>
 
 All the code for this tutorial can be found in this [GitHub repo](https://github.com/heraldofsolace/nx-demo).
 
@@ -399,16 +415,15 @@ All the code for this tutorial can be found in this [GitHub repo](https://github
 
 Monorepos are becoming the norm for organizing multiple interrelated projects in a single repo. To make full use of a monorepo, you must use a build tool that is capable of efficiently handling a monorepo.
 
-In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects includ use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://earthly.dev/)
+In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://earthly.dev/)
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Add in Author page
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
