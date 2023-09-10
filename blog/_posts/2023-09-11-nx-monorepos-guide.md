@@ -23,6 +23,8 @@ If you're looking to learn more about Nx and how it works, this article is for y
 
 ## Monorepos and Monorepo Tools
 
+![Monorepo Tools]({{site.images}}{{page.slug}}/monorepo-tools.png)\
+
 A majority of software projects are made up of smaller, interlinked components. While it may be tempting to put them in separate repositories, it may become convoluted as the number of components and the dependencies between them grows.
 
 If you have different components across different repositories and different teams working on them, each team will likely introduce its tooling and styles. Since the projects are isolated, it's also possible that one project will be updated with a change that breaks the projects that depend on it.
@@ -422,9 +424,3 @@ Monorepos are becoming the norm for organizing multiple interrelated projects in
 In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://earthly.dev/)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-
