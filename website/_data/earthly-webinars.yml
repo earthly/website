@@ -1,14 +1,11 @@
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/chroot
+- title: "Earthly Satellites with Github Actions - Speed up and simplify your GHA builds."
+  videoId: tAQx2oYU-vw
   type: Webinar
 
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/make-tutorial
+- title: A Dockerfile and a Makefile Had a Baby
+  videoId: WJE4NHI7dPg
   type: Video
 
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/make-tutorial
+- title: "Mastering LLMs Techniques: 7 Expert Tips & Tricks for Developers"
+  videoId: Z8ShM-SFxzM
   type: Webinar

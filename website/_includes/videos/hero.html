@@ -1,7 +1,7 @@
 <main class="mb-16 mt-[70px] pt-16 lg:pt-24 relative">
   <div class="flex flex-col items-center max-w-7xl mx-auto px-4 lg:px-10">
     <h1 class="font-medium max-w-4xl text-[#2d7e5d] text-5xl sm:text-7xl text-center tracking-tight">
-      Earthly Webinars & Videos
+      Videos and Webinars
     </h1>
 
     <p class="font-medium max-w-lg mt-10 text-[#1F2937] text-xl lg:text-3xl text-center tracking-tight">
@@ -18,17 +18,17 @@
 
     <div id="featured-webinars" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
       {% for item in site.data.featured-webinars %}
-        <a id="featured" href="{{ item.link }}" class="w-full basis-full cursor-pointer flex-1 shrink-0">
+        <a id="featured" href="https://www.youtube.com/watch?v={{ item.videoId }}" class="w-full basis-full cursor-pointer flex-1 shrink-0">
           <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
             <div class="w-full lg:w-5/12 h-full bg-white flex flex-col justify-center px-8 py-10 rounded-2xl text-xl">
               <p class="font-medium text-[#475569]">{{ item.title }}</p>
-              <p class="mt-4 text-lg tracking-tight">{{ item.description }}</p>
+              <p class="break-words mt-4 text-lg tracking-tight whitespace-pre-wrap">{{ item.description }}</p>
             </div>
 
             <div class="h-full flex-1 relative">
               <img
-                class="h-full object-cover rounded-2xl"
-                src="{{ item.image }}"
+                class="w-full h-full object-cover rounded-2xl"
+                src="https://img.youtube.com/vi/{{ item.videoId }}/mqdefault.jpg"
                 alt="{{ item.title }}"
               />
               <div class="absolute flex justify-center items-center inset-0">
@@ -42,12 +42,12 @@
 
     <div class="w-full gap-5 grid lg:grid-cols-3 mt-5 lg:mt-3">
       {% for item in site.data.earthly-webinars %}
-        <a href="{{ item.link }}">
+        <a href="https://www.youtube.com/watch?v={{ item.videoId }}">
           <div class="bg-[#E8F7FE] cursor-pointer duration-700 group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
             <div class="overflow-hidden rounded-md">
               <img
                 class="w-full h-[200px] duration-700 object-cover group-hover:scale-110 transition-transform"
-                src="{{ item.image }}"
+                src="https://img.youtube.com/vi/{{ item.videoId }}/mqdefault.jpg"
                 alt="{{ item.title }}"
               />
             </div>

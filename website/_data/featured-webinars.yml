@@ -1,23 +1,14 @@
 - category: Lorem
-  title: Lorem ipsum dolor sit amet
-  description: Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae.
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/chroot
+  title: "The Ultimate JQ Tutorial: Everything You Need to Know to Parse JSON Like a Pro"
+  description: "Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae."
+  videoId: m9dhrq9iRHA
 
 - category: Ipsum
-  title: Lorem ipsum dolor sit amet
-  description: Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae.
-  image: assets/img/twitter-card-large.png
-  link: /blog/make-tutorial
+  title: "Unlock the Power of AWK: Learn This Tool in Minutes!"
+  description: "Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae."
+  videoId: yJek26lyXZ0
 
 - category: Dolor
-  title: Lorem ipsum dolor sit amet
-  description: Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae.
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/make-tutorial
-
-- category: Consectetur
-  title: Lorem ipsum dolor sit amet
-  description: Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae.
-  image: assets/img/twitter-card-large.png
-  link: /blog/chroot
+  title: "Build your own Container Runtime"
+  description: "Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae."
+  videoId: JOsWB50LmwQ
