@@ -5,7 +5,7 @@ require 'uri'
 puts "Fetching youtube videos for webinars page"
 
 def fetchVideos (videos, error, nextPageToken)
-  uri = URI("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UUlROK3yIuIyJWmt-gnkAjlQ&key=AIzaSyCKS2_U1c9NGRlcobOjN9MEpV1WGGWVHSA#{ "&pageToken=#{nextPageToken}" if nextPageToken }")
+  uri = URI("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UUlROK3yIuIyJWmt-gnkAjlQ&key=#{ARGV[0]}#{ "&pageToken=#{nextPageToken}" if nextPageToken }")
   res = Net::HTTP.get_response(uri)
 
   if res.code == "200"
