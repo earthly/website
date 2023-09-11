@@ -11,9 +11,8 @@ internal-links:
  - cloudinary in golang
  - image uploading to cloudinary
  - implementation in golang
-
 excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
+    This tutorial explains how to implement an image upload system in a Golang web application using Cloudinary. It covers setting up access credentials, creating a Golang REST API with Gin, and integrating the Cloudinary Golang SDK for efficient image uploads.
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simple way to build then [check us out](/).**

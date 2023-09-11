@@ -10,11 +10,10 @@ internal-links:
  - syntax trees in python
  - abstract syntax trees
  - introduction to abstract in python
-
 excerpt: |
-    Learn how to write an engaging article with this checklist that covers everything from creating a catchy title to adding captivating images and incorporating internal links. Perfect for both new and experienced writers!
+    This tutorial introduces the concept of Abstract Syntax Trees (AST) in Python and explains their importance in code analysis and transformation. It provides examples of how to generate and work with ASTs, including static code analysis and code transformation techniques.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster. If you're into Python AST, you'll love how Earthly can streamline your build process. [Give it a try](/).**
 
 When working with Python, it is essential to have a clear understanding of the code's structure and how it works. This is where Abstract Syntax Trees (AST) come into play. An AST is a tree-like structure that represents the syntactic structure of a program, making it a powerful tool for Python programmers who want to take their coding skills to the next level. By understanding how Python code is parsed, developers can efficiently analyze thier code leading to more effective and efficient programming.
 
