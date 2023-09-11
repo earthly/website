@@ -46,6 +46,10 @@ These linting errors can also be seen directly in VS Code if you install them na
 
 Also the helper function `lint` exists which will correct some of the lint problems itself and return any it can't correct (see helper functions below).
 
+## Updating Videos page content
+
+The Videos page is built with static data from files in the _data folder. Just before the website is built in CI, a step runs to update the content of the applicable file in the _data folder – `webinar-videos.json` – with videos from Earthly's YouTube channel. You can run this process manually using `earthly +./website+update-videos`. It requires that you have a `.secret` file in this repo's root directory that specifies a `YOUTUBE_API_KEY` that has API access to Earthly's YouTube account.
+
 ## Run Blog Native on MacOS
 
 Volume mounts on a mac can be slow, until such time as [watch mode](https://docs.google.com/document/d/18VIcpWBmQ8HcNlmtlZtc84mvJA87_QZePZZY1ZPLI90/edit) exists it can be worth it to run Jekyll natively.

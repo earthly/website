@@ -35,7 +35,7 @@ begin
 
   if !error
     puts "Updated videos data in _data directory"
-    File.write("_data/webinar-videos.json", videos.to_json)
+    File.write("./_data/webinar-videos.json", videos.to_json)
   end
 rescue Timeout::Error, Errno::EINVAL, Errno::ECONNRESET, EOFError, Net::HTTPBadResponse, Net::HTTPHeaderSyntaxError, Net::ProtocolError => e
 end
