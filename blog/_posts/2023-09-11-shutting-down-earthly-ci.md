@@ -1,7 +1,7 @@
 ---
 title: "We built the fastest CI in the world. It failed. Here's what we learned"
 categories:
-  - Tutorials
+  - News
 toc: true
 author: Vlad
 
@@ -20,6 +20,8 @@ Now we all know dreaming big is easy. Execution is where things get hard.
 
 ## What Does Success Look Like?
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4340.png --picture --img height="400px" %}
+
 In a startup, you don't have the luxury of building a mature product with all the possible bells and whistles before shipping it to your customers. Mature products take many years and many engineers to build out.
 
 And yet, you are going up against the incumbents - companies that have hundreds of millions in funding, (maybe even IPO'd), they have hundreds of engineers, they have a 10-year head start, and a ton of reputation. How can you even compete?
@@ -37,6 +39,8 @@ Successful products will show validation at a small scale, despite all their lim
 What early-stage validation looks like is a small group of people who have a lot of passion for what you do. Nobody has heard about your stuff, but your users are passionately shouting from the rooftops about it. You walk into their office and everyone has stickers with your company on their laptops, and everyone wants to talk to you.
 
 ## The Master Plan for Earthly CI
+
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4610.png --picture --img height="400px" %}
 
 To build out the vision of Earthly CI, we devised a master plan. We knew that we didn't want to go on a crazy complex implementation for 3 years only to emerge from a cave with a product that would not fit the needs of the real world. So we split up the end-vision into several independent products that we would validate along the way.
 
@@ -78,6 +82,8 @@ But, as you already know what this blog post is about, making Earthly CI success
 
 ## The Early Symptoms
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4680.png --picture --img height="400px" %}
+
 For Earthly CI, we did a [solid launch](https://earthly.dev/blog/launching-earthly-ci/), landed on [TechCrunch](https://techcrunch.com/2023/02/23/earthly-wants-to-reinvent-continuous-integration-to-make-it-faster-and-cheaper/), and lined up [a few blog articles for Reddit and HackerNews](https://earthly.dev/blog/remote-code-execution/).
 
 From the launch we got about 50 emails signing up on the waitlist in the first week or two, outpacing the goals we had. We started setting up calls with these people, and, right off the bat, we could sense a big difference between existing Earthly users vs. people who were coming to us for the first time.
@@ -94,6 +100,8 @@ And then, after the launch traffic died down... There was silence.
 
 ## The Most Ridiculous Negative Lead Qualification Criteria Ever
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4880.png --picture --img height="400px" %}
+
 The odd thing about direct calls with prospects was that we could never convince them to try out any of our products when talking to them face to face. Not Earthly CI, not Satellites, not even Earthly. At this point, we probably had over 100 calls with prospects. We were hearing over and over how they spent 2 years migrating to their current setup, how they put so much effort into it, and how throwing all that away would be so wasteful. And how annoying it is to switch CIs.
 
 And yet, when users were coming on their own to our website, through a mix of product-led / word of mouth and content marketing, the adoption of Earthly was happening every single day. At a very significant and increasing rate.
@@ -107,6 +115,8 @@ We ended up with the most ridiculous negative qualification criteria I have ever
 The moral of the story here is that when you introduce a developer tool that requires integration work (work outside of the development team's commonly expected flow, work that replicates already existing work, and work that requires learning a new syntax or API), you can never force, or hurry anyone to adopt it. This can only happen on the user's schedule. **People will buy a developer tool, but you can't sell it**. We all know that engineers like to get their hands dirty and explore things on their own. This conclusion is the corollary of that well-known fact. That's why you can't hard sell to engineers. You can only soft-sell.
 
 ## Problems Converting Earthly Users
+
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5140.png --picture --img height="400px" %}
 
 Our other big channel was converting existing Earthly users into Earthly CI users. This was a key segment because there is no migration concern - everyone in this segment has already converted to Earthfiles. It should be just a flip of a switch, right?... Right?...
 
@@ -134,6 +144,8 @@ Now we were starting to get really doubtful about this Earthly CI thing.
 
 ## Lessons From Another Life
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5320.png --picture --img height="400px" %}
+
 In the fall of 2016, long before Earthly, I, along with two co-founders, a really smart code analysis scientist, and an incredibly dedicated team, started ShiftLeft (nowadays called [Qwiet.ai](https://qwiet.ai)). Our vision was to build a security agent that you could install in production and it would protect your cloud app from attacks on vulnerabilities that you have in your source code. This was an incredibly complex system, which required that we build an entire code analyzer that would work with multiple programming languages, runtime agents for individual runtimes, and a distributed backend to integrate everything. The complexity was akin to three companies, all being built by one tiny startup.
 
 And yet, we somehow got one programming language to work end-to-end after over a year of effort, even if it was incredibly buggy initially. We tried to put it on the market - after all "if you're not embarrassed by your first version, you launched too late". After several attempts, we realized that it wasn't appealing to the market. ShiftLeft being a security product, our target audience was heavily regulated enterprises. These enterprises, by definition, have a lot of red tape, and it is difficult to put anything in production without extensive bureaucracy. To make matters worse, you had to put this both in CI/CD, for the code analysis, and in production, for the runtime protection, thus creating a virtually impossible insertion motion.
@@ -155,6 +167,8 @@ Fast forward to today, learning from mistakes of the past, at Earthly we built e
 
 ## What's Next for Earthly?
 
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5430.png --picture --img height="400px" %}
+
 Here's how I rationalize what's happening:
 
 * People want faster builds.
@@ -168,19 +182,6 @@ Failing to create enough meaningful initial traction with an MVP, for some the c
 
 So, our conclusion is that we need to shut down Earthly CI and refocus our energy on what is working: Earthly and Earthly Satellites. [^1]
 
-[^1]: What does this mean for the CI industry? Are we just never going to have new, better CIs ever again? Are we doomed to use mediocre CIs forever?
-I don't think so. After all, GitHub Actions started not too long ago, and it's quickly becoming the de-facto standard, at least for the open-source community and small companies. What's different about GitHub Actions is that it has a huge platform play. This is despite the fact that like many other traditional CIs, the offering is not differentiated. It just happens to be closer to your code, and that is convenient. So there are ways to get on the market.
-Theoretically, any existing CI company could innovate on top of its existing platform. But to make a significant difference, it would most likely require big architectural changes. Plus a syntax change would mean customers would have to migrate over. Plus innovator's dilemma and all that. I don't see this variant as a likely scenario.
-Will a net new player be able to launch a new CI ever again?
-I think so, yes. But the strategy has to be different. I can see this happening in a few possible ways:
-
-* You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
-
-* You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
-
-* Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
-
-* Some other strategy that I can't think of.
 
 But Vlad, you're deprecating the thing you just launched?
 
@@ -211,21 +212,5 @@ It seems that Earthly Satellites are taking off, not just because we are deliver
 If you're not a user and you came to this post just for the story, then boy do I have some goodies for you to check out 🙂.
 
 Earthly Satellites are ridiculously fast remote build runners that work seamlessly with any CI. It is available via Earthly Cloud and free to get started. Satellites are built on top of our open source build framework, Earthly. Earthly gives you write once, run anywhere build consistency, making it super easy to reproduce CI failures on your local computer. Earthly and Satellites together are like peanut butter and jelly – fast, consistent builds that work with any CI and are easy to debug locally. Come check us out at [earthly.dev](https://earthly.dev)!
-
-I don't think so. After all, GitHub Actions started not too long ago, and it's quickly becoming the de-facto standard, at least for the open-source community and small companies. What's different about GitHub Actions is that it has a huge platform play. This is despite the fact that like many other traditional CIs, the offering is not differentiated. It just happens to be closer to your code, and that is convenient. So there are ways to get on the market.
-
-Theoretically, any existing CI company could innovate on top of its existing platform. But to make a significant difference, it would most likely require big architectural changes. Plus a syntax change would mean customers would have to migrate over. Plus innovator's dilemma and all that. I don't see this variant as a likely scenario.
-
-Will a net new player be able to launch a new CI ever again?
-
-I think so, yes. But the strategy has to be different. I can see this happening in a few possible ways:
-
-* You go for specific verticals first, where a traditional generic CI is inferior in the DX department, and you bring really good DX yourself. Like the best CI for frontend projects. In many ways, that's what Vercel is doing, even though CI/CD is not their main target. Another example might be targeting CI/CD for ML/AI, and then extending into generic CI/CD. The relatively limited size of the CI/CD space ($1B TAM), makes it unattractive to stay in the single vertical forever because the piece of the pie is too small - you have to branch out. That's why CI/CD is not Vercel's main thing - frontend CI/CD isn't a big enough market.
-
-* You build a product close enough to CI/CD, build wide adoption, and then extend to CI/CD. We might one day come back and pursue this path ourselves.
-
-* Creating a drop-in replacement for existing technologies. e.g. a CI that can run Jenkinsfiles, but has 10X the usability of Jenkins.
-
-* Some other strategy that I can't think of.
 
 {% include_html cta/bottom-cta.html %}
