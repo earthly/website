@@ -8,17 +8,9 @@
       Featured
     </p>
 
-    <div class="flex gap-6 lg:gap-10 mt-4">
+    <div id="slides-container" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
       {% for item in site.data.featured-webinars %}
-        <p id="featured-category-{{ forloop.index }}" class="featured-category {% if forloop.index == 1 %}active{% endif %}">
-          {{ item.category }}
-        </p>
-      {% endfor %}
-    </div>
-
-    <div id="featured-webinars" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
-      {% for item in site.data.featured-webinars %}
-        <a id="featured" href="https://www.youtube.com/watch?v={{ item.videoId }}" class="w-full basis-full cursor-pointer flex-1 shrink-0">
+        <a id="slide" href="https://www.youtube.com/watch?v={{ item.videoId }}" class="w-full basis-full cursor-pointer flex-1 shrink-0">
           <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
             <div class="w-full lg:w-5/12 h-full bg-white flex flex-col justify-center px-8 py-10 rounded-2xl text-xl">
               <p class="font-medium text-[#475569]">{{ item.title }}</p>
@@ -40,10 +32,18 @@
       {% endfor %}
     </div>
 
-    <div class="w-full gap-5 grid lg:grid-cols-3 mt-5 lg:mt-3">
+    <div class="flex gap-2 justify-center mt-4">
+      {% for item in site.data.featured-webinars %}
+      <div id="indicator-{{ forloop.index }}"
+        class="w-3 h-3 cursor-pointer duration-300 rounded-full transition-colors {% if forloop.index > 1 %}bg-[#d8d8d8]{% else %}bg-[#535E73]{% endif %}">
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="w-full gap-5 grid lg:grid-cols-3 mt-10">
       {% for item in site.data.earthly-webinars %}
         <a href="https://www.youtube.com/watch?v={{ item.videoId }}">
-          <div class="bg-[#E8F7FE] cursor-pointer duration-700 group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
+          <div class="h-full bg-[#E8F7FE] cursor-pointer duration-700 flex flex-col group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
             <div class="overflow-hidden rounded-md">
               <img
                 class="w-full h-[200px] duration-700 object-cover group-hover:scale-110 transition-transform"
@@ -52,7 +52,7 @@
               />
             </div>
   
-            <div class="bg-white mt-2 p-4 pt-2 rounded-lg">
+            <div class="bg-white flex-1 mt-2 p-4 pt-2 rounded-lg">
               <p class="text-sm uppercase">{{ item.type }}</p>
   
               <p class="font-bold mt-4 text-[#475569] text-xl">{{ item.title }}</p>
@@ -75,29 +75,69 @@
   </div>
 
   <script>
-    const featuredWebinars = document.getElementById("featured-webinars");
-    let currentWebinar = 1;
-
-    const tabs = document.querySelectorAll('[id^="featured-category"]');
-    tabs.forEach((tab) => {
-      tab.addEventListener("click", (e) => {
-        const slideWidth = document.getElementById("featured").clientWidth;
-        const id = +e.target.id.replace("featured-category-", "");
-
-        if (id !== currentWebinar) {
-          document.getElementById(`featured-category-${currentWebinar}`).classList.remove("active");
-
-          currentWebinar = id;
-          featuredWebinars.scrollLeft = slideWidth * (currentWebinar - 1);
-
-          document.getElementById(`featured-category-${currentWebinar}`).classList.add("active");
+    const totalSlides = document.querySelectorAll("#slide").length;
+    const slidesContainer = document.getElementById("slides-container");
+  
+    let currentSlide = 1;
+  
+    const intervalFunction = () => {
+      const slideWidth = document.getElementById("slide").clientWidth;
+  
+      if (currentSlide === totalSlides) {
+        let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#535E73]")
+        indicatorClasses.add("bg-[#d8d8d8]")
+  
+        slidesContainer.scrollLeft = 0;
+        currentSlide = 1;
+  
+        indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#d8d8d8]")
+        indicatorClasses.add("bg-[#535E73]")
+      } else {
+        let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#535E73]")
+        indicatorClasses.add("bg-[#d8d8d8]")
+  
+        slidesContainer.scrollLeft = slideWidth * currentSlide;
+        currentSlide++;
+  
+        indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#d8d8d8]")
+        indicatorClasses.add("bg-[#535E73]")
+      }
+    }
+  
+    var interval = setInterval(intervalFunction, 10000);
+  
+    const indicators = document.querySelectorAll('[id^="indicator"]');
+    indicators.forEach(indicator => {
+      indicator.addEventListener("click", e => {
+        const slideWidth = document.getElementById("slide").clientWidth;
+        const id = +e.target.id.replace("indicator-", "")
+  
+        if (id !== currentSlide) {
+          clearInterval(interval)
+  
+          let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+          indicatorClasses.remove("bg-[#535E73]")
+          indicatorClasses.add("bg-[#d8d8d8]")
+  
+          currentSlide = id
+          slidesContainer.scrollLeft = slideWidth * (currentSlide - 1);
+  
+          indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+          indicatorClasses.remove("bg-[#d8d8d8]")
+          indicatorClasses.add("bg-[#535E73]")
+  
+          interval = setInterval(intervalFunction, 10000);
         }
-      });
-    });
-
-    window.addEventListener("resize", () => {
-      const slideWidth = document.getElementById("highlight").clientWidth;
-      featuredWebinars.scrollLeft = slideWidth * (currentWebinar - 1);
-    });
+      })
+    })
+  
+    window.addEventListener('resize', () => {
+      const slideWidth = document.getElementById("slide").clientWidth;
+      slidesContainer.scrollLeft = slideWidth * (currentSlide - 1);
+    })
   </script>
 </main>
