@@ -182,7 +182,6 @@ Failing to create enough meaningful initial traction with an MVP, for some the c
 
 So, our conclusion is that we need to shut down Earthly CI and refocus our energy on what is working: Earthly and Earthly Satellites. [^1]
 
-
 But Vlad, you're deprecating the thing you just launched?
 
 Well, yes. We failed fast. And that is a success in my book (or at least that's what I keep telling myself to feel better about it). Imagine if we had built only Earthly CI from the get-go. Just like with ShiftLeft, the components of the end-vision ended up being more valuable than the original end-vision itself. Only this time, we discovered that much more efficiently.
