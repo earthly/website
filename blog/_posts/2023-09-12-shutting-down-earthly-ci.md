@@ -180,7 +180,7 @@ Here's how I rationalize what's happening:
 
 Failing to create enough meaningful initial traction with an MVP, for some the conclusion might be simple: "It just needs more features," or "just put it back in the oven." But I know what a promising product's initial traction looks like, and this is not it. If this were the real deal, there would be a group of people tolerating the absence of features for the benefits. But that's not happening here, or at least not to a meaningful enough degree.
 
-So, our conclusion is that we need to shut down Earthly CI and refocus our energy on what is working: Earthly and Earthly Satellites.
+So, our conclusion is that we need to shut down Earthly CI and refocus our energy on what is working: Earthly and Earthly Satellites. [^1]
 
 But Vlad, you're deprecating the thing you just launched?
 
