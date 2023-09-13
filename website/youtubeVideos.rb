@@ -4,7 +4,7 @@ require 'uri'
 
 puts "Fetching youtube videos for webinars page"
 
-def fetchVideos (videos, error, nextPageToken)
+def fetchVideos (videos, errors, nextPageToken)
   uri = URI("https://youtube.googleapis.com/youtube/v3/playlistItems?part=snippet&maxResults=50&playlistId=UUlROK3yIuIyJWmt-gnkAjlQ&key=#{ARGV[0]}#{ "&pageToken=#{nextPageToken}" if nextPageToken }")
   res = Net::HTTP.get_response(uri)
 
@@ -18,7 +18,7 @@ def fetchVideos (videos, error, nextPageToken)
     return body['nextPageToken']
   end
 
-  error = true
+  errors << res.body
   puts "Error fetching youtube data: #{res.body}"
 
   return nil
@@ -26,14 +26,14 @@ end
 
 begin
   videos = []
-  error = false
+  errors = []
 
-  response = fetchVideos(videos, error, nil)
+  response = fetchVideos(videos, errors, nil)
   while response
-    response = fetchVideos(videos, error, response)
+    response = fetchVideos(videos, errors, response)
   end
 
-  if !error
+  if errors.length == 0
     puts "Updated videos data in _data directory"
     File.write("./_data/webinar-videos.json", videos.to_json)
   end
