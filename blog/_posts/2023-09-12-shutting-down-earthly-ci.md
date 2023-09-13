@@ -18,7 +18,7 @@ internal-links:
 - **We are doubling down on Earthly's core strengths of local builds and reproducibility.**
 - **We are recentering around Earthly and Earthly Satellites.**
 
-## The Fastest CI 
+## The Fastest CI
 
 Imagine you live in a world where no part of the build has to repeat unless the changes actually impacted it. A world in which all builds happened with automatic parallelism. A world in which you could reproduce very reliably any part of the build on your laptop. Fairy tales, right? Well, that's what we built, and to everyone's surprise, nobody wanted it. It's like flying cars - they sound amazing, but in practice, things are more difficult than they might seem.
 
@@ -220,4 +220,4 @@ If you're not a user and you came to this post just for the story, then boy do I
 
 Earthly Satellites are ridiculously fast remote build runners that work seamlessly with any CI. It is available via Earthly Cloud and free to get started. Satellites are built on top of our open source build framework, Earthly. Earthly gives you write once, run anywhere build consistency, making it super easy to reproduce CI failures on your local computer. Earthly and Satellites together are like peanut butter and jelly – fast, consistent builds that work with any CI and are easy to debug locally. Come check us out at [earthly.dev](https://earthly.dev)!
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/cta-2.html %}
