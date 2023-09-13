@@ -220,4 +220,4 @@ If you're not a user and you came to this post just for the story, then boy do I
 
 Earthly Satellites are ridiculously fast remote build runners that work seamlessly with any CI. It is available via Earthly Cloud and free to get started. Satellites are built on top of our open source build framework, Earthly. Earthly gives you write once, run anywhere build consistency, making it super easy to reproduce CI failures on your local computer. Earthly and Satellites together are like peanut butter and jelly – fast, consistent builds that work with any CI and are easy to debug locally. Come check us out at [earthly.dev](https://earthly.dev)!
 
-{% include_html cta/cta-2.html %}
+{% include_html cta/cta2.html %}
