@@ -29,7 +29,7 @@ DORA started as a collaboration between a small group of researchers and [Puppet
 
 > You can learn more about DORA's history in co-founder Jez Humble's 2019 blog post, ["DORA's Journey: An Exploration"](https://medium.com/@jezhumble/doras-journey-an-exploration-4c6bfc41e667).
 
-From the very earliest State of DevOps Reports, one of the primary takeaways is that companies with better IT performance are more productive, profitable, and have a higher market share.
+From the very earliest State of DevOps Reports, one of the primary takeaways is that companies with better IT performance are more productive, more profitable, and have a higher market share.
 
 "Our data shows that IT performance and well-known DevOps practices, such as those that enable continuous delivery, are predictive of organizational performance. As IT performance increases, profitability, market share and productivity also increase." - [2014 State of DevOps Report](https://dora.dev/publications/pdf/state-of-devops-2014.pdf)
 
@@ -44,7 +44,7 @@ DORA has since expanded this to four metrics:
 1. Deployment frequency
 2. Lead time for changes
 3. Time to restore service
-4. Change failure rate.
+4. Change failure rate
 
 Each State of DevOps report includes a lot of information and research on what it takes to meaningfully improve these metrics, including tooling that helps measure and/or improve these metrics and a heavy emphasis on the organizational culture needed to perform well and improve. It looks at large systemic changes that teams can make to help improve IT performance and encourages measuring that performance according to this set of metrics.
 
