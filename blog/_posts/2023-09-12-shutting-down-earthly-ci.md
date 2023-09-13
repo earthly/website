@@ -18,6 +18,8 @@ internal-links:
 - **We are doubling down on Earthly's core strengths of local builds and reproducibility.**
 - **We are recentering around Earthly and Earthly Satellites.**
 
+## The Fastest CI 
+
 Imagine you live in a world where no part of the build has to repeat unless the changes actually impacted it. A world in which all builds happened with automatic parallelism. A world in which you could reproduce very reliably any part of the build on your laptop. Fairy tales, right? Well, that's what we built, and to everyone's surprise, nobody wanted it. It's like flying cars - they sound amazing, but in practice, things are more difficult than they might seem.
 
 Back in April 2020, we at Earthly set out on this quest to improve CI/CD tooling. We dared to ask questions like "What if the CI could run on your laptop?" And "what would the fastest CI system on the planet look like?" With these questions in mind, we came to a pretty strange, but pretty interesting answer... the build system and the CI need to be the same. And it needs to be distributed.
