@@ -12,6 +12,14 @@ internal-links:
  - fastest ci failed
 ---
 
+### TLDR
+
+- **We are shutting down Earthly CI.**
+- **We are doubling down on Earthly's core strengths of local builds and reproducibility.**
+- **We are recentering around Earthly and Earthly Satellites.**
+
+## The Fastest CI 
+
 Imagine you live in a world where no part of the build has to repeat unless the changes actually impacted it. A world in which all builds happened with automatic parallelism. A world in which you could reproduce very reliably any part of the build on your laptop. Fairy tales, right? Well, that's what we built, and to everyone's surprise, nobody wanted it. It's like flying cars - they sound amazing, but in practice, things are more difficult than they might seem.
 
 Back in April 2020, we at Earthly set out on this quest to improve CI/CD tooling. We dared to ask questions like "What if the CI could run on your laptop?" And "what would the fastest CI system on the planet look like?" With these questions in mind, we came to a pretty strange, but pretty interesting answer... the build system and the CI need to be the same. And it needs to be distributed.
@@ -156,8 +164,8 @@ And bake it we did. For another year and a half. And still... Nobody. Wanted. It
 
 Looking back on the experience, we made many mistakes, which, at this point, sound like startup cliche:
 
-* We did not build the product incrementally, with user feedback informing every step of the execution.
-* There were some early signals that certain aspects of the product did not align with what the industry needs, but we didn't listen. We just kept building.
+- We did not build the product incrementally, with user feedback informing every step of the execution.
+- There were some early signals that certain aspects of the product did not align with what the industry needs, but we didn't listen. We just kept building.
 
 Luckily, we later realized that this complex product can be split into two other products: a security code introspector for security experts, and a standalone code analyzer that is 40 times faster than any other code analyzer on the market. Yay! But we lost over a year of work and hired too many people to execute in a direction that never materialized into anything successful. It would have been so much more efficient if we started out by building smaller components of the end vision and selling those components as independent products first. The team would have been leaner, we would have had an MVP faster, and we would have had customer feedback much sooner, to help direct the roadmap.
 
@@ -171,12 +179,12 @@ Fast forward to today, learning from mistakes of the past, at Earthly we built e
 
 Here's how I rationalize what's happening:
 
-* People want faster builds.
-* People hate switching CIs.
-* There is a stigma toward new CIs in general. Specifically that they are undifferentiated. It's hard to shake that bias, and we scare people off as soon as they see "CI" on our website.
-* Design-partner type of engagements don't work when we try to engage with customers directly, due to the perceived high cost of migration.
-* The Earthly CI MVP isn't validating, failing to create a significant enough early adopter group.
-* When we tell people that they can get faster builds without switching their CI (i.e. through Earthly Satellites), their eyes light up.
+- People want faster builds.
+- People hate switching CIs.
+- There is a stigma toward new CIs in general. Specifically that they are undifferentiated. It's hard to shake that bias, and we scare people off as soon as they see "CI" on our website.
+- Design-partner type of engagements don't work when we try to engage with customers directly, due to the perceived high cost of migration.
+- The Earthly CI MVP isn't validating, failing to create a significant enough early adopter group.
+- When we tell people that they can get faster builds without switching their CI (i.e. through Earthly Satellites), their eyes light up.
 
 Failing to create enough meaningful initial traction with an MVP, for some the conclusion might be simple: "It just needs more features," or "just put it back in the oven." But I know what a promising product's initial traction looks like, and this is not it. If this were the real deal, there would be a group of people tolerating the absence of features for the benefits. But that's not happening here, or at least not to a meaningful enough degree.
 
@@ -194,19 +202,19 @@ Migration off Earthly CI is really easy because Earthly works with any CI. And i
 
 It seems that Earthly Satellites are taking off, not just because we are delivering fast and consistent builds, but also, crucially, because we are **letting users keep their own CI**. Given this signal, it makes sense for us, as a company, to continue to invest in this direction. In fact, by shutting down Earthly CI, we have more time to execute on a number of things that the Earthly community have been asking us about:
 
-* Satellite metrics – including CPU, memory, disk, and network I/O usage.
+- Satellite metrics – including CPU, memory, disk, and network I/O usage.
 
-* Build history – for both local and Satellites builds – in the web UI.
+- Build history – for both local and Satellites builds – in the web UI.
 
-* Auto-skip – the ability to skip a build instantly if the changed files don't impact it.
+- Auto-skip – the ability to skip a build instantly if the changed files don't impact it.
 
-* The ability to execute Dockerfile builds remotely on Satellites, as a fast drop-in replacement for `docker build`.
+- The ability to execute Dockerfile builds remotely on Satellites, as a fast drop-in replacement for `docker build`.
 
-* Self-hosted Satellites (a better-supported version of [our self-hosted, remote Buildkit](https://docs.earthly.dev/ci-integration/remote-buildkit)).
+- Self-hosted Satellites (a better-supported version of [our self-hosted, remote Buildkit](https://docs.earthly.dev/ci-integration/remote-buildkit)).
 
-* The ability to spread a single build onto multiple Satellites for added speed.
+- The ability to spread a single build onto multiple Satellites for added speed.
 
-* Compute v2 - fully distributed, serverless Satellites (this one will take a while to get right).
+- Compute v2 - fully distributed, serverless Satellites (this one will take a while to get right).
 
 If you're not a user and you came to this post just for the story, then boy do I have some goodies for you to check out 🙂.
 
