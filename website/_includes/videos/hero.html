@@ -1,0 +1,143 @@
+<main class="mb-16 mt-[70px] pt-16 lg:pt-24 relative">
+  <div class="flex flex-col items-center max-w-7xl mx-auto px-4 lg:px-10">
+    <h1 class="font-medium max-w-4xl text-[#2d7e5d] text-5xl sm:text-7xl text-center tracking-tight">
+      Videos & Webinars
+    </h1>
+
+    <p class="font-medium max-w-lg mt-10 text-[#1F2937] text-xl lg:text-3xl text-center tracking-tight">
+      Featured
+    </p>
+
+    <div id="slides-container" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
+      {% for item in site.data.featured-webinars %}
+        <a id="slide" href="https://www.youtube.com/watch?v={{ item.videoId }}" class="w-full basis-full cursor-pointer flex-1 shrink-0">
+          <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
+            <div class="w-full lg:w-5/12 h-full bg-white flex flex-col justify-center px-8 py-10 rounded-2xl text-xl">
+              <p class="font-medium text-[#475569]">{{ item.title }}</p>
+              <p class="break-words mt-4 text-lg tracking-tight whitespace-pre-wrap">{{ item.description }}</p>
+            </div>
+
+            <div class="h-full flex-1 relative">
+              <img
+                class="w-full h-full object-cover rounded-2xl"
+                src="https://img.youtube.com/vi/{{ item.videoId }}/maxresdefault.jpg"
+                alt="{{ item.title }}"
+              />
+              <div class="absolute flex justify-center items-center inset-0">
+                <img src="assets/svg/play.svg" alt="play" />
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+
+    <div class="flex gap-2 justify-center mt-4">
+      {% for item in site.data.featured-webinars %}
+      <div id="indicator-{{ forloop.index }}"
+        class="w-3 h-3 cursor-pointer duration-300 rounded-full transition-colors {% if forloop.index > 1 %}bg-[#d8d8d8]{% else %}bg-[#535E73]{% endif %}">
+      </div>
+      {% endfor %}
+    </div>
+
+    <div class="w-full gap-5 grid lg:grid-cols-3 mt-10">
+      {% for item in site.data.earthly-webinars %}
+        <a href="https://www.youtube.com/watch?v={{ item.videoId }}">
+          <div class="h-full bg-[#E8F7FE] cursor-pointer duration-700 flex flex-col group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
+            <div class="overflow-hidden rounded-md">
+              <img
+                class="w-full h-[200px] duration-700 object-cover group-hover:scale-110 transition-transform"
+                src="https://img.youtube.com/vi/{{ item.videoId }}/maxresdefault.jpg"
+                alt="{{ item.title }}"
+              />
+            </div>
+  
+            <div class="bg-white flex-1 mt-2 p-4 pt-2 rounded-lg">
+              <p class="text-sm uppercase">{{ item.type }}</p>
+  
+              <p class="font-bold mt-4 text-[#475569] text-xl">{{ item.title }}</p>
+  
+              <div class="w-fit decoration-[#2d7e5d] flex items-center mt-6 group-hover:underline">
+                <p class="font-bold text-[#2d7e5d] text-lg">Watch now</p>
+                <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+              </div>
+            </div>
+          </div>
+        </a>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="wave-container">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+  </div>
+
+  <script>
+    const totalSlides = document.querySelectorAll("#slide").length;
+    const slidesContainer = document.getElementById("slides-container");
+  
+    let currentSlide = 1;
+  
+    const intervalFunction = () => {
+      const slideWidth = document.getElementById("slide").clientWidth;
+  
+      if (currentSlide === totalSlides) {
+        let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#535E73]")
+        indicatorClasses.add("bg-[#d8d8d8]")
+  
+        slidesContainer.scrollLeft = 0;
+        currentSlide = 1;
+  
+        indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#d8d8d8]")
+        indicatorClasses.add("bg-[#535E73]")
+      } else {
+        let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#535E73]")
+        indicatorClasses.add("bg-[#d8d8d8]")
+  
+        slidesContainer.scrollLeft = slideWidth * currentSlide;
+        currentSlide++;
+  
+        indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+        indicatorClasses.remove("bg-[#d8d8d8]")
+        indicatorClasses.add("bg-[#535E73]")
+      }
+    }
+  
+    var interval = setInterval(intervalFunction, 10000);
+  
+    const indicators = document.querySelectorAll('[id^="indicator"]');
+    indicators.forEach(indicator => {
+      indicator.addEventListener("click", e => {
+        const slideWidth = document.getElementById("slide").clientWidth;
+        const id = +e.target.id.replace("indicator-", "")
+  
+        if (id !== currentSlide) {
+          clearInterval(interval)
+  
+          let indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+          indicatorClasses.remove("bg-[#535E73]")
+          indicatorClasses.add("bg-[#d8d8d8]")
+  
+          currentSlide = id
+          slidesContainer.scrollLeft = slideWidth * (currentSlide - 1);
+  
+          indicatorClasses = document.getElementById(`indicator-${currentSlide}`).classList
+          indicatorClasses.remove("bg-[#d8d8d8]")
+          indicatorClasses.add("bg-[#535E73]")
+  
+          interval = setInterval(intervalFunction, 10000);
+        }
+      })
+    })
+  
+    window.addEventListener('resize', () => {
+      const slideWidth = document.getElementById("slide").clientWidth;
+      slidesContainer.scrollLeft = slideWidth * (currentSlide - 1);
+    })
+  </script>
+</main>

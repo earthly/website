@@ -1,0 +1,11 @@
+- videoId: m9dhrq9iRHA
+  title: "The Ultimate JQ Tutorial: Everything You Need to Know to Parse JSON Like a Pro"
+  description: "Learn to use JQ to manipulate JSON documents! We explore the powerful features and functions of JQ, guiding you through constructing, sorting, filtering, and combining functions with pipes to enhance your JSON manipulation skills."
+
+- videoId: yJek26lyXZ0
+  title: "Unlock the Power of AWK: Learn This Tool in Minutes!"
+  description: "Delve into the powerful command line tool, awk, and learn about its exceptional capabilities for parsing and analyzing data. Whether you're a data enthusiast or a programming novice, awk can revolutionize the way you handle and process files and text."
+
+- videoId: JOsWB50LmwQ
+  title: "Build your own Container Runtime"
+  description: "Demystify containerization. Dive into creating a container runtime from scratch using chroot. We'll also tackle Linux namespaces and control groups. Remember, containers are just like regular processes running on a Linux machine!"

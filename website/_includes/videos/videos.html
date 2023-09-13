@@ -1,0 +1,50 @@
+<div class="max-w-7xl mx-auto px-4 lg:px-10">
+  <h2 class="font-semibold text-2xl lg:text-4xl">Discover more</h2>
+
+  <div class="gap-5 grid md:grid-cols-2 lg:grid-cols-3 mt-4">
+    {% for item in site.data.webinar-videos %}
+      <a id="video-{{ forloop.index }}" href="https://www.youtube.com/watch?v={{ item.videoId }}" class="{% if forloop.index > 6 %}hidden{% endif %}">
+        <div class="h-full border border-[#D1D6D9] cursor-pointer duration-700 group px-3 py-4 rounded-lg transition-shadow hover:shadow-md">
+          <div class="overflow-hidden rounded-md">
+            <img
+              class="w-full h-[200px] duration-700 object-cover group-hover:scale-110 transition-transform"
+              src="https://img.youtube.com/vi/{{ item.videoId }}/maxresdefault.jpg"
+              alt="{{ item.title }}"
+            />
+          </div>
+
+          <div class="mt-2 p-4 pt-2">
+            <p class="text-sm uppercase">{{ item.type }}</p>
+
+            <p class="font-bold mt-4 text-[#475569] text-xl">{{ item.title }}</p>
+
+            <div class="w-fit decoration-[#2d7e5d] flex items-center mt-6 group-hover:underline">
+              <p class="font-bold text-[#2d7e5d] text-lg">Watch now</p>
+              <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+            </div>
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div id="load-more-videos" class="flex justify-center mt-10">
+    <p class="border border-[#D1D6D9] cursor-pointer px-10 py-3 rounded-full text-[#6B7280] text-xl" onclick="loadMore()">Load more</p>
+  </div>
+</div>
+
+<script>
+  const allVideos = document.querySelectorAll('[id^="video"]');
+  var videos = 6
+
+  function loadMore() {
+    videos += 6
+
+    allVideos.forEach(video => {
+      const id = +video.id.replace("video-", "")
+      if (id <= videos) video.classList.remove('hidden')
+    })
+
+    if (videos >= allVideos.length) document.getElementById('load-more-videos').classList.add('hidden')
+  }
+</script>
