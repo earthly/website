@@ -506,6 +506,7 @@ lineno
 unparse
 Cloudinary
 
+bundlers
 waitlist
 introspector
 Jenkinsfiles
