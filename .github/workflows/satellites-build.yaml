@@ -30,6 +30,7 @@ jobs:
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         with:
           run: |-
               echo "Setup Satellite"
@@ -43,6 +44,7 @@ jobs:
                 earthly \
                  --secret  NETLIFY_SITE_ID="$NETLIFY_SITE_ID" \
                  --secret  NETLIFY_AUTH_TOKEN="$NETLIFY_AUTH_TOKEN" \
+                 --secret  YOUTUBE_API_KEY="$YOUTUBE_API_KEY" \
                  --build-arg DESTINATION="PROD" \
                  --build-arg DATE="$(date +"%D")" \
                  +publish 2>&1
@@ -51,6 +53,7 @@ jobs:
                 earthly \
                  --secret NETLIFY_STAGING_SITE_ID="$NETLIFY_STAGING_SITE_ID" \
                  --secret NETLIFY_STAGING_AUTH_TOKEN="$NETLIFY_STAGING_AUTH_TOKEN" \
+                 --secret YOUTUBE_API_KEY="$YOUTUBE_API_KEY" \
                  --build-arg DATE="$(date +"%D")" \
                 +publish 2>&1
               fi
