@@ -61,10 +61,20 @@ build:
   FROM +base-or-cache-image
   CACHE _site
   COPY --dir _data _sass _styles _layouts _includes assets signup .
-  COPY *.md *.js *.html *.yml *.json _redirects Gemfile Gemfile.lock robots.txt .
+  COPY *.md *.js *.html *.yml *.json *.rb _redirects Gemfile Gemfile.lock robots.txt .
+  RUN --no-cache --secret YOUTUBE_API_KEY ruby youtubeVideos.rb "$YOUTUBE_API_KEY"
   RUN bundle update
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL ./build/site/
+
+# Manually update the Youtube videos on the Videos page (happens automatically in CI in +build)
+update-videos:
+  FROM +base-or-cache-image
+  CACHE _site
+  COPY _data/webinar-videos.json ./_data/webinar-videos.json
+  COPY youtubeVideos.rb .
+  RUN --no-cache --secret YOUTUBE_API_KEY ruby youtubeVideos.rb "$YOUTUBE_API_KEY"
+  SAVE ARTIFACT _data/webinar-videos.json AS LOCAL ./_data/webinar-videos.json
 
 # Build docker image for local development
 docker:

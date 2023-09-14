@@ -125,3 +125,7 @@ Loadash
 Vue
 deduped
 Vercel
+
+Nrwl
+Neovim
+Axios

@@ -250,6 +250,14 @@ main.wave-main.homepage {
   z-index: -1;
 }
 
+.featured-category {
+  @apply cursor-pointer pb-2 text-[#6B7280] lg:text-xl;
+}
+
+.featured-category.active {
+  @apply border-b-2 border-[#6B7280] text-black;
+}
+
 .highlight-category {
   @apply cursor-pointer pb-2 text-[#6B7280] lg:text-xl;
 }
