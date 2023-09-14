@@ -1,8 +1,9 @@
 <div class="max-w-7xl mx-auto px-4 lg:px-10">
   <div class="flex gap-6 lg:gap-10 justify-center mt-4">
     <p id="highlight-category-0" class="highlight-category active">All</p>
-    <p id="highlight-category-1" class="highlight-category">Press release</p>
-    <p id="highlight-category-2" class="highlight-category">Earthly</p>
+    <p id="highlight-category-1" class="highlight-category">Press Release</p>
+    <p id="highlight-category-2" class="highlight-category">Media Coverage</p>
+    <p id="highlight-category-3" class="highlight-category">Podcast</p>
   </div>
 
   <div class="gap-5 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
@@ -54,15 +55,20 @@
               else x.classList.add('hidden')
             })
             break
-          case 'Press release':
-            allNews = document.querySelectorAll('[id^="news"][data-category="Press release"]')
+          case 'Press Release':
+            allNews = document.querySelectorAll('[id^="news"][data-category="Press Release"]')
             allNews.forEach(x => x.classList.remove('hidden'))
-            document.querySelectorAll('[id^="news"]:not([data-category="Press release"])').forEach(x => x.classList.add('hidden'))
+            document.querySelectorAll('[id^="news"]:not([data-category="Press Release"])').forEach(x => x.classList.add('hidden'))
             break
-          case 'Earthly':
-            allNews = document.querySelectorAll('[id^="news"][data-category="Earthly"]')
+          case 'Media Coverage':
+            allNews = document.querySelectorAll('[id^="news"][data-category="Media Coverage"]')
             allNews.forEach(x => x.classList.remove('hidden'))
-            document.querySelectorAll('[id^="news"]:not([data-category="Earthly"])').forEach(x => x.classList.add('hidden'))
+            document.querySelectorAll('[id^="news"]:not([data-category="Media Coverage"])').forEach(x => x.classList.add('hidden'))
+            break
+          case 'Podcast':
+            allNews = document.querySelectorAll('[id^="news"][data-category="Podcast"]')
+            allNews.forEach(x => x.classList.remove('hidden'))
+            document.querySelectorAll('[id^="news"]:not([data-category="Podcast"])').forEach(x => x.classList.add('hidden'))
             break
           default:
             break

@@ -1,6 +1,6 @@
 ---
 title: Newsroom
-description: Stories and examples of customers that Earthly helped.
+description: Get Earthly's most recent press releases, product launches, company announcements, and media coverage.
 layout: default
 ---
 
