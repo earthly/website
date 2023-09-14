@@ -503,3 +503,7 @@ Timilehin Omolana:
     name    : "Timilehin Omolana"
     bio     : "Timilehin is a skilled software engineer and technical writer with an undying passion for building, deploying, and writing about secure and scalable server-side systems with technologies including Go, Node.js, C++, and AWS."
     avatar  : "/assets/images/authors/timilehin-omolana.jpg"
+Felix Kinaro:
+    name    : "Felix Kinaro"
+    bio     : "Felix is a linux and network administrator. Always tinkering"
+    avatar  : "/assets/images/authors/felix-kinaro.jpg"
