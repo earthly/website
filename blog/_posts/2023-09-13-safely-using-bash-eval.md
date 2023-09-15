@@ -7,7 +7,11 @@ author: Thinus Swart
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - understanding the power of dynamic code evaluation
+ - using the power of dynamic code evaluation
+ - what is dynamic code evaluation
+ - power of dynamic code evaluation
+ - how to use the power of dynamic code evaluation
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article explains how you can safely use the Bash `eval` command. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
@@ -225,7 +229,7 @@ In 2021, a [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposu
 
 Vulnerabilities caused by `eval` have even been published in documentation.
 
-The [Advanced Bash Scripting Guide](https://tldp.org/LDP/abs/html/) hosted on [The Linux Documentation Project](https://tldp.org) contains a function called `[getopt_simple](https://tldp.org/LDP/abs/html/string-manipulation.html#GETOPTSIMPLE)`. This function has an unsanitized `eval` that would allow an attacker at arbitrarily execute commands just by specifying a command via a command line argument.
+The [Advanced Bash Scripting Guide](https://tldp.org/LDP/abs/html/) hosted on [The Linux Documentation Project](https://tldp.org) contains a function called [`getopt_simple`](https://tldp.org/LDP/abs/html/string-manipulation.html#GETOPTSIMPLE). This function has an unsanitized `eval` that would allow an attacker at arbitrarily execute commands just by specifying a command via a command line argument.
 
 This vulnerability was discovered by [RedTeam Pentesting](https://www.redteam-pentesting.de/en/advisories/rt-sa-2019-007/-code-execution-via-insecure-shell-function-getopt-simple) and [CVE-2019-9891](https://cve.mitre.org/cgi-bin/cvename.cgi?name=CVE-2019-9891) was issued for it.
 
@@ -304,5 +308,3 @@ As long as you keep security in mind, you should be good to go!
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
