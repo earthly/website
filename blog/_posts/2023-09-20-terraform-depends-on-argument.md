@@ -475,6 +475,8 @@ If you want to learn more about this topic, check out the [official depends_on d
 
 Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect complement to your chosen IaC tool.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -484,4 +486,3 @@ Looking to simplify your build automation further? Give [Earthly](https://www.ea
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
