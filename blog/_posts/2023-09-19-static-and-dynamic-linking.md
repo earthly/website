@@ -392,6 +392,8 @@ In this article, you explored the concept of linking and its role in resolving s
 
 For a deeper dive into linking, check out chapter 7 of [*Computer Systems: A Programmer's Perspective* (third edition)](https://csapp.cs.cmu.edu/).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -400,4 +402,3 @@ For a deeper dive into linking, check out chapter 7 of [*Computer Systems: A Pro
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
