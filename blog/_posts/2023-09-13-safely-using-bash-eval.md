@@ -38,6 +38,8 @@ The `eval` statement is frequently used when you need to generate and execute co
 
 Take a look at a few `eval` examples to help you understand what's going on when you use it.
 
+![examples]({{site.images}}{{page.slug}}/examples.png)\
+
 ### Basic `eval` Usage
 
 To explore a basic `eval` example, run the following command in your terminal window:
@@ -94,6 +96,8 @@ This is because the `eval` statement runs the command again, which, by default, 
 While this can be useful, it can also be dangerous, as you'll learn next.
 
 ## Risks of Using the `eval` Statement
+
+![Risks]({{site.images}}{{page.slug}}/risk.png)\
 
 While its dynamic nature is one of `eval`'s strengths, it also makes it a dangerous tool if you don't use it properly. Because it parses any string as a possible command, it can be abused to execute commands that aren't part of the original script or scheduled task.
 
@@ -224,6 +228,8 @@ For example, your script might be capturing user responses in a database. If you
 
 ## Real-World Vulnerabilities Caused by `eval`
 
+![Vulnerabilities]({{site.images}}{{page.slug}}/vulnerabilities.png)\
+
 Software vulnerabilities are found in software on a daily basis. There is a continuous process to find and fix vulnerabilities, especially in open-source software. Here are a few examples where vulnerabilities were caused by the `eval` command.
 
 In 2021, a [CVE](https://en.wikipedia.org/wiki/Common_Vulnerabilities_and_Exposures) was issued for [Gradle](https://gradle.org), a popular application build tool that helps developers to automate the build pipeline of their application.
@@ -307,8 +313,3 @@ Bash is a powerful tool for scripting, programming, and automating different tas
 As long as you keep security in mind, you should be good to go!
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
