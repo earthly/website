@@ -32,7 +32,9 @@ This is where linking comes into play. Linking is the process of resolving all v
 
 To put it simply, linking is like connecting the pieces of a puzzle. It ensures that all the required components of your program, including the code from external libraries, are brought together so that the computer can run the program.
 
+<div class="wide">
 ![How a C program is compiled and linked](https://raw.github.com/abhinav-upadhyay/linking_explained/master/compilation_process.png)
+</div>
 
 This linking is can be static linking or dynamic linking.
 
@@ -55,15 +57,14 @@ This example will demonstrate how static linking works by showing the process of
 
 Start by creating a directory called `linking_explained` for your project:
 
-~~~
+~~~{.bash caption=">_"}
 $ mkdir linking_explained
 $ cd linking_explained
 ~~~
 
 Then create a new file called `add.c`:
 
-~~~
-
+~~~{.c caption="add.c"}
 int add(int a, int b)
 {
     return a + b;
@@ -72,7 +73,7 @@ int add(int a, int b)
 
 And create a file named `main.c`:
 
-~~~
+~~~{.c caption="main.c"}
 int add(int, int); // the prototype for add
 
 // global variables
@@ -90,7 +91,7 @@ In this code, `add.c` contains the function `add` which takes two integers and r
 
 Next, build this project using CMake. To do that, you need to add a file called `CMakeLists.txt` with the following content:
 
-~~~
+~~~{.txt caption="CMakeLists.txt"}
 # minimum CMake version required to build our project
 cmake_minimum_required(VERSION 3.10)
 # Set the project name as linking_explained
@@ -101,7 +102,7 @@ add_executable(main main.c add.c)
 
 To build the project, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 $ cmake .
 $ cmake --build .
 ~~~
@@ -110,7 +111,7 @@ The first command generates the build files, and the second command runs the bui
 
 The second command's output should look like this:
 
-~~~
+~~~{ caption="Output"}
 Scanning dependencies of target main
 [ 33%] Building C object CMakeFiles/main.dir/main.c.o
 [ 66%] Building C object CMakeFiles/main.dir/add.c.o
@@ -124,14 +125,14 @@ In the next step, the linker performs linking by resolving any missing informati
 
 To experiment a little more, try to remove `add.c` from the `add_executable` command in `CMakeLists.txt` and then build it again:
 
-~~~
+~~~{.bash caption=">_"}
 $ cmake .
 $ cmake --build .
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 Scanning dependencies of target main
 [ 50%] Linking C executable main
 /usr/bin/ld: CMakeFiles/main.dir/main.c.o: in function `main':
@@ -144,7 +145,7 @@ make: *** [Makefile:84: all] Error 2
 
 As you can see, you get an error message:
 
-~~~
+~~~{ caption="Output"}
 undefined reference to `add'
 ~~~
 
@@ -158,7 +159,7 @@ Just like linking, there are two types of libraries: static and dynamic librarie
 
 Start by adding another file called `sub.c` to your project, which contains the following code:
 
-~~~
+~~~{.c caption="sub.c"}
 int sub(int a, int b)
 {
     return a - b;
@@ -167,7 +168,7 @@ int sub(int a, int b)
 
 You can create a library called `libint` using the `add.c` and `sub.c` files. Creating a library will allow you to group similar files (such as those containing mathematical operations) in one place and link them with other programs with a single command. To do this, you need to make the following changes to your `CMakeLists.txt` file:
 
-~~~
+~~~{.txt caption="CMakeLists.txt"}
 # The minimum CMake version required to build this project
 cmake_minimum_required(VERSION 3.10)
 
@@ -181,7 +182,8 @@ add_library(libint STATIC add.c sub.c)
 set_target_properties(libint PROPERTIES OUTPUT_NAME int)
 
 # Set the library output directory
-set_target_properties(libint PROPERTIES ARCHIVE_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+set_target_properties(libint PROPERTIES ARCHIVE_OUTPUT_DIRECTORY \
+${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # Add the include directory for the library to access necessary header files
 target_include_directories(libint PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -195,14 +197,14 @@ Here, you added a static library called `libint` with `add.c` and `sub.c` as sou
 
 To build the project, run the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 $ cmake .
 $ cmake --build .
 ~~~
 
 You should see the following output:
 
-~~~
+~~~{ caption="Output"}
 Scanning dependencies of target libint
 [ 20%] Building C object CMakeFiles/libint.dir/add.c.o
 [ 40%] Building C object CMakeFiles/libint.dir/sub.c.o
@@ -282,7 +284,8 @@ add_library(libint SHARED add.c sub.c)
 set_target_properties(libint PROPERTIES OUTPUT_NAME int)
 
 # Set the library output directory
-set_target_properties(libint PROPERTIES LIBRARY_OUTPUT_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/lib)
+set_target_properties(libint PROPERTIES LIBRARY_OUTPUT_DIRECTORY \
+${CMAKE_CURRENT_BINARY_DIR}/lib)
 
 # Add the include directory for the library to access necessary header files
 target_include_directories(libint PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
@@ -300,7 +303,7 @@ Here, you made the following modifications:
 
 Now, build the project:
 
-~~~
+~~~{.bash caption=">_"}
 $ cmake .
 $ cmake --build .
 ~~~
@@ -327,7 +330,7 @@ In dynamic linking at build time, the executable file is equipped with informati
 
 Let's take a look at how this works in the context of your project. If you're on Linux, run the [`ldd`](https://man7.org/linux/man-pages/man1/ldd.1.html) command to see what dynamic libraries your program depends on like this (macOS does not have the `ldd` command, but the same concepts apply):
 
-~~~
+~~~{.bash caption=">_"}
 $ ldd main
 ~~~
 
@@ -344,7 +347,7 @@ In the output you can see that the `main` program depends on quite a few dynamic
 
 When the program is run, the OS will try to load the library from that location. You can verify this by running the program as shown here:
 
-~~~
+~~~{.bash caption=">_"}
 $ ./main
 $ echo $?
 30
@@ -354,10 +357,11 @@ Since the program doesn't produce an output, you won't see anything appear on th
 
 Now, let's remove the dynamic library file from the `lib` directory and run the program to see what happens:
 
-~~~
+~~~{.bash caption=">_"}
 $ rm lib/libint.so
 $ ./main
-./main: error while loading shared libraries: libint.so: cannot open shared object file: No such file or directory
+./main: error while loading shared libraries: libint.so: \
+cannot open shared object file: No such file or directory
 ~~~
 
 As you can see, the OS is unable to load the `libint.so` dynamic library and the program fails to execute.
@@ -402,6 +406,3 @@ For a deeper dive into linking, check out chapter 7 of [*Computer Systems: A Pro
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
