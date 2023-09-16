@@ -14,9 +14,9 @@ internal-links:
 
 Have you ever wondered how your code can call a library function like `printf()` and the system can locate it instantly? It may seem like magic, but there's a lot more going on behind the scenes. In fact, it all works because of a process called linking, which plays a crucial role in the compilation process of programming languages like C and C++.
 
-When you write a program in a compiled language, such as C or C++, the code goes through several stages before it can be executed by the computer (more on these stages in the next section). 
+When you write a program in a compiled language, such as C or C++, the code goes through several stages before it can be executed by the computer (more on these stages in the next section).
 
-Linking can be accomplished via two methods: static linking at compile time or dynamic linking at runtime. In this article, you'll learn about both types of linking and how they work. In addition, you'll learn how to create and effectively use static and dynamic libraries. But let's start by outlining the compilation process. 
+Linking can be accomplished via two methods: static linking at compile time or dynamic linking at runtime. In this article, you'll learn about both types of linking and how they work. In addition, you'll learn how to create and effectively use static and dynamic libraries. But let's start by outlining the compilation process.
 
 ## The Compilation Process
 
@@ -38,7 +38,7 @@ Static linking is a technique in which all the required code and libraries for a
 
 The resulting executable file contains all the necessary code and dependencies, ensuring that the program can run independently without requiring any external files or libraries at runtime. In other words, static linking creates a self-contained program that doesn't rely on any external resources when executed.
 
-To illustrate static linking, let’s create a basic C program for a project. You need the following prerequisites before you get started:
+To illustrate static linking, let's create a basic C program for a project. You need the following prerequisites before you get started:
 
 - **A C compiler**, such as the [GNU Compiler Collection (GCC)](https://gcc.gnu.org/) or [Clang](https://clang.llvm.org/). Most Linux distributions including Ubuntu and Fedora come preinstalled with `gcc`; however, if you're using macOS, `clang` is the preferred C compiler. To check if it's installed, open a terminal window and run the `clang` command. If it's not currently installed, run the command `xcode-select --install` to install it.
 - **[CMake](https://cmake.org/)**, an open source platform-independent build system, to build the program.
@@ -47,28 +47,28 @@ All the code for this tutorial is available in [this GitHub repo](https://github
 
 ### Static Linking Example
 
-This example will demonstrate how static linking works by showing  the process of compiling and linking C code using CMake, a build system generator. 
+This example will demonstrate how static linking works by showing the process of compiling and linking C code using CMake, a build system generator.
 
 Start by creating a directory called `linking_explained` for your project:
 
-```bash
+~~~
 $ mkdir linking_explained
 $ cd linking_explained
-```
+~~~
 
 Then create a new file called `add.c`:
 
-```c
+~~~
 
 int add(int a, int b)
 {
-	return a + b;
+    return a + b;
 }
-```
+~~~
 
 And create a file named `main.c`:
 
-```C
+~~~
 int add(int, int); // the prototype for add
 
 // global variables
@@ -77,42 +77,42 @@ int y = 20;
 
 int main(int argc, char **argv)
 {
-	int sum = add(x, y);
-	return sum;
+    int sum = add(x, y);
+    return sum;
 }
-```
+~~~
 
-In this code, `add.c` contains the function `add` which takes two integers and returns their sum. The `main.c` file calls the`add` function. 
+In this code, `add.c` contains the function `add` which takes two integers and returns their sum. The `main.c` file calls the`add` function.
 
 Next, build this project using CMake. To do that, you need to add a file called `CMakeLists.txt` with the following content:
 
-```
+~~~
 # minimum CMake version required to build our project
 cmake_minimum_required(VERSION 3.10)
 # Set the project name as linking_explained
 project(linking_explained)
 # add an executable with name "main", which depends on main.c and add.c
 add_executable(main main.c add.c)
-```
+~~~
 
 To build the project, run the following commands:
 
-```bash
+~~~
 $ cmake .
 $ cmake --build .
-```
+~~~
 
 The first command generates the build files, and the second command runs the build using the generated build files.
 
 The second command's output should look like this:
 
-```
+~~~
 Scanning dependencies of target main
 [ 33%] Building C object CMakeFiles/main.dir/main.c.o
 [ 66%] Building C object CMakeFiles/main.dir/add.c.o
 [100%] Linking C executable main
 [100%] Built target main
-```
+~~~
 
 When you compile this project, the compiler creates individual object files (`main.o` and `add.o`) containing machine code for each C file. Since the `main.c` file doesn't define the `add` function, the compiler leaves it undefined in the `main.o` file.
 
@@ -120,14 +120,14 @@ In the next step, the linker performs linking by resolving any missing informati
 
 To experiment a little more, try to remove `add.c` from the `add_executable` command in `CMakeLists.txt` and then build it again:
 
-```bash
+~~~
 $ cmake .
 $ cmake --build .
-```
+~~~
 
 Output:
 
-```
+~~~
 Scanning dependencies of target main
 [ 50%] Linking C executable main
 /usr/bin/ld: CMakeFiles/main.dir/main.c.o: in function `main':
@@ -136,34 +136,34 @@ collect2: error: ld returned 1 exit status
 make[2]: *** [CMakeFiles/main.dir/build.make:84: main] Error 1
 make[1]: *** [CMakeFiles/Makefile2:76: CMakeFiles/main.dir/all] Error 2
 make: *** [Makefile:84: all] Error 2
-```
+~~~
 
 As you can see, you get an error message:
 
-```
+~~~
 undefined reference to `add'
-```
+~~~
 
 Since you haven't added `add.c` as a dependency, the linker is unable to find a definition for the `add` function, and it can't perform the linking.
 
 ### Statically Linked Libraries
 
-Now that you know how static linking works, let’s dive into static libraries. Libraries are collections of reusable code that can be utilized in a project instead of duplicating the same code.
+Now that you know how static linking works, let's dive into static libraries. Libraries are collections of reusable code that can be utilized in a project instead of duplicating the same code.
 
 Just like linking, there are two types of libraries: static and dynamic libraries. Static libraries are linked to the executable using static linking. In this section, you'll create a static library and link it to your main program.
 
 Start by adding another file called `sub.c` to your project, which contains the following code:
 
-```C
+~~~
 int sub(int a, int b)
 {
-	return a - b;
+    return a - b;
 }
-```
+~~~
 
 You can create a library called `libint` using the `add.c` and `sub.c` files. Creating a library will allow you to group similar files (such as those containing mathematical operations) in one place and link them with other programs with a single command. To do this, you need to make the following changes to your `CMakeLists.txt` file:
 
-```
+~~~
 # The minimum CMake version required to build this project
 cmake_minimum_required(VERSION 3.10)
 
@@ -185,20 +185,20 @@ target_include_directories(libint PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 # Create an executable from main.c and link it to the library
 add_executable(main main.c)
 target_link_libraries(main libint)
-```
+~~~
 
-Here, you added a static library called `libint` with `add.c` and `sub.c` as sources, and you specified the output file name as `int`. You also specified the `include directory`, which allows it to access any required header files needed by the `libint` target. Header files are files containing global variables and function prototypes (such as the prototype you created for `add.c` in `main.c` previously) that helped the linker identify and locate the functions that will be imported in the libraries. In this case, `libint` depends on the `add` and `sub` functions located in the `add.c` and `sub.c` files in the current working directory. That's why the current working directory has been added as a directory for the `libint` target. 
+Here, you added a static library called `libint` with `add.c` and `sub.c` as sources, and you specified the output file name as `int`. You also specified the `include directory`, which allows it to access any required header files needed by the `libint` target. Header files are files containing global variables and function prototypes (such as the prototype you created for `add.c` in `main.c` previously) that helped the linker identify and locate the functions that will be imported in the libraries. In this case, `libint` depends on the `add` and `sub` functions located in the `add.c` and `sub.c` files in the current working directory. That's why the current working directory has been added as a directory for the `libint` target.
 
 To build the project, run the following commands:
 
-```bash
+~~~
 $ cmake .
 $ cmake --build .
-```
+~~~
 
 You should see the following output:
 
-```
+~~~
 Scanning dependencies of target libint
 [ 20%] Building C object CMakeFiles/libint.dir/add.c.o
 [ 40%] Building C object CMakeFiles/libint.dir/sub.c.o
@@ -208,13 +208,13 @@ Scanning dependencies of target main
 [ 80%] Building C object CMakeFiles/main.dir/main.c.o
 [100%] Linking C executable main
 [100%] Built target main
-```
+~~~
 
 In this code, the object files are generated for the `add.c` and `sub.c` files, which are combined to create the static library: `libint.a`. You'll notice that the generated file has the extension `.a`. This is the standard extension in C for static libraries on Linux and is short for "archive". On Windows, static libraries typically carry the extension `.lib`. Once the static library is created, the main executable is linked to the library.
 
 #### What Happens When You Link to a Static Library?
 
-Static libraries, also known as archive files, are packages of code that are compiled and linked directly to the target program. To create a static library, you need to compile its C source files (*ie* `add.c` and `sub.c`) into object files and then package these object files into an archive file. The static library created in the previous example is called  `libint.a` and consists of `add.o` and `sub.o` files. 
+Static libraries, also known as archive files, are packages of code that are compiled and linked directly to the target program. To create a static library, you need to compile its C source files (*ie* `add.c` and `sub.c`) into object files and then package these object files into an archive file. The static library created in the previous example is called  `libint.a` and consists of `add.o` and `sub.o` files.
 
 CMake simplifies the process of generating a static library because it generates build scripts by analyzing your project and its dependencies, automating the creation of object files and archive files. CMake reads the `CMakeLists.txt` file, which specifies your project requirements and the necessary build steps. By defining the source files, target libraries, and executables in this file, CMake can automatically create the required object files, as well as the archive file (static library). This means, you don't need to perform these steps manually.
 
@@ -244,7 +244,7 @@ While static linking has its benefits, there are also some disadvantages to cons
 
 Dynamic linking is a method of linking a program to a library at runtime rather than at build time. When you link a program to a library dynamically, the dependency information is stored in the executable as a reference to the library instead of the actual library code. As the program is executed, the operating system loads the dependent libraries into memory and resolves the symbols using them.
 
-Libraries that are meant to be linked dynamically to targets are known as dynamic libraries, dynamically-linked libraries, or shared libraries. These libraries carry the file extension `.so` (short for shared object library), `.dylib` (short for dynamic library) on MacOS, and `.dll` (short for dynamic link library) on Windows. 
+Libraries that are meant to be linked dynamically to targets are known as dynamic libraries, dynamically-linked libraries, or shared libraries. These libraries carry the file extension `.so` (short for shared object library), `.dylib` (short for dynamic library) on MacOS, and `.dll` (short for dynamic link library) on Windows.
 
 During linking, these libraries are not included as a part of the executable binary, allowing the binary to be smaller in size than when using static linking. When the binary is executed, it looks up the dynamic library file using the path that was provided to it by the linker during the linking process and loads the required code from the library.
 
@@ -252,7 +252,7 @@ This allows for multiple targets to reuse the same dynamic library file by simpl
 
 For example, imagine you're developing a photo editing application that supports several filters. These filters are implemented in a separate dynamic library such as `imagefilters.so`, in the form of functions like `applySepiaFilter` and `applyFishLens`. With dynamic linking, your application can efficiently reference the necessary filter functions without needing to incorporate all the code in its executable file.
 
-When a user starts the application, the operating system detects that the `imagefilters.so` library is required and loads it into memory before the main program starts executing. The filter functions are now available for use in your application as it runs. 
+When a user starts the application, the operating system detects that the `imagefilters.so` library is required and loads it into memory before the main program starts executing. The filter functions are now available for use in your application as it runs.
 
 Dynamic linking offers several advantages in this scenario. First, it helps to keep the photo editor's executable file smaller and less complex by avoiding the need to include every filter's code. Second, it allows you to easily update or add support for new filters by simply providing an updated dynamic library without modifying the editor's core code. This modular approach not only simplifies program development but also makes it more flexible and easier to maintain for both developers and users.
 
@@ -264,7 +264,7 @@ A key component of dynamic linking is the use of dynamically linked libraries. I
 
 In the previous section you created a static library. With a few changes to the `CMakeLists.txt` file, you can create a dynamic library in place of the static library. Replace the contents of the `CMakeLists.txt` file with the following configuration that is documented inline:
 
-```
+~~~
 # The minimum CMake version required to build this project
 cmake_minimum_required(VERSION 3.10)
 
@@ -286,7 +286,7 @@ target_include_directories(libint PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
 # Create an executable using main.c and link it to the library
 add_executable(main main.c)
 target_link_libraries(main PRIVATE libint)
-```
+~~~
 
 Here, you made the following modifications:
 
@@ -296,14 +296,14 @@ Here, you made the following modifications:
 
 Now, build the project:
 
-```bash
+~~~
 $ cmake .
 $ cmake --build .
-```
+~~~
 
 You should see the following output:
 
-```
+~~~
 Scanning dependencies of target libint
 [ 20%] Building C object CMakeFiles/libint.dir/add.c.o
 [ 40%] Building C object CMakeFiles/libint.dir/sub.c.o
@@ -313,52 +313,52 @@ Scanning dependencies of target main
 [ 80%] Building C object CMakeFiles/main.dir/main.c.o
 [100%] Linking C executable main
 [100%] Built target main
-```
+~~~
 
 > **Please note:** On macOS, the standard extension for dynamic libraries is `.dylib` instead of `.so`.
 
-### What Happens during Dynamic Linking?
+### What Happens During Dynamic Linking?
 
 In dynamic linking at build time, the executable file is equipped with information about the dynamic libraries that the program needs. When the program is run, the operating system examines the list of necessary dynamic libraries and attempts to load them accordingly. If any of these dependencies are not found or cannot be loaded, the execution fails.
 
-Let’s take a look at how this works in the context of your project. If you're on Linux, run the [`ldd`](https://man7.org/linux/man-pages/man1/ldd.1.html) command to see what dynamic libraries your program depends on like this (macOS does not have the `ldd` command, but the same concepts apply):
+Let's take a look at how this works in the context of your project. If you're on Linux, run the [`ldd`](https://man7.org/linux/man-pages/man1/ldd.1.html) command to see what dynamic libraries your program depends on like this (macOS does not have the `ldd` command, but the same concepts apply):
 
-```bash
+~~~
 $ ldd main
-```
+~~~
 
 Output:
 
-```
+~~~
  linux-vdso.so.1 (0x00007ffec69bb000)
  libint.so => /home/abhinav/dev/linking_explained/dynamically_linked_libraries/lib/libint.so (0x00007fa1d8401000)
  libc.so.6 => /lib/x86_64-linux-gnu/libc.so.6 (0x00007fa1d81f2000)
  /lib64/ld-linux-x86-64.so.2 (0x00007fa1d840d000)
-```
+~~~
 
-In the output you can see that the `main` program depends on quite a few dynamic libraries. The dependencies on `linux-vdso.so.1`, `libc.so.6`, and `ld-linux-x86-64.so.2` are system dependencies added to all the programs in order to run them on Linux. You can also see the dependency on the library you created: `libint.so`, and next to it is the file path of the library. 
+In the output you can see that the `main` program depends on quite a few dynamic libraries. The dependencies on `linux-vdso.so.1`, `libc.so.6`, and `ld-linux-x86-64.so.2` are system dependencies added to all the programs in order to run them on Linux. You can also see the dependency on the library you created: `libint.so`, and next to it is the file path of the library.
 
 When the program is run, the OS will try to load the library from that location. You can verify this by running the program as shown here:
 
-```bash
+~~~
 $ ./main
 $ echo $?
 30
-```
+~~~
 
-Since the program doesn't produce an output, you won't see anything appear on the screen when you run it. However, it returns the sum of the global variables `x` (value 10)  and `y` (value 20). You can verify the exit status of the program by running the command `echo $?`, and you should see the status as 30.
+Since the program doesn't produce an output, you won't see anything appear on the screen when you run it. However, it returns the sum of the global variables `x` (value 10) and `y` (value 20). You can verify the exit status of the program by running the command `echo $?`, and you should see the status as 30.
 
 Now, let's remove the dynamic library file from the `lib` directory and run the program to see what happens:
 
-```bash
+~~~
 $ rm lib/libint.so
 $ ./main
 ./main: error while loading shared libraries: libint.so: cannot open shared object file: No such file or directory
-```
+~~~
 
-As you can see, the OS is unable to load the `libint.so` dynamic library and the program fails to execute. 
+As you can see, the OS is unable to load the `libint.so` dynamic library and the program fails to execute.
 
-> In general, the OS looks for dynamic libraries in a few standard locations such as `/lib`, `/usr/lib`, and `/usr/local/lib`. This search path can be extended by setting an environemnt variable `LD_LIBRARY_PATH` on Linux, or `DYLD_LIBRARY_PATH` on macOS. Or you can generate binaries which have the path of the library hardcoded in the binary itself. In this case, the OS looks for that library only in that path, which is what CMake did in your project, as you saw in the output of the `ldd` command where the full path of the library was embedded in the binary.
+> In general, the OS looks for dynamic libraries in a few standard locations such as `/lib`, `/usr/lib`, and `/usr/local/lib`. This search path can be extended by setting an environment variable `LD_LIBRARY_PATH` on Linux, or `DYLD_LIBRARY_PATH` on macOS. Or you can generate binaries which have the path of the library hardcoded in the binary itself. In this case, the OS looks for that library only in that path, which is what CMake did in your project, as you saw in the output of the `ldd` command where the full path of the library was embedded in the binary.
 
 ### Advantages of Dynamic Linking
 
@@ -398,7 +398,6 @@ For a deeper dive into linking, check out chapter 7 of [*Computer Systems: A Pro
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
