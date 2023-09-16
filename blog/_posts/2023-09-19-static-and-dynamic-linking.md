@@ -24,6 +24,8 @@ Linking can be accomplished via two methods: static linking at compile time or d
 
 ## The Compilation Process
 
+![Process]({{site.images}}{{page.slug}}/process.png)\
+
 The compilation process begins with the source code, which is a human-readable representation of your program. The source code is then fed into a compiler, which translates the code into instructions known as object code. The output of this stage is one or more object files, each containing a portion of the program's machine code.
 
 However, programs often rely on external code libraries to provide additional functionality. These libraries contain pre-compiled code that can be reused by other programs. The object files generated from your source code may have references to functions or variables defined in these external libraries.
@@ -247,6 +249,8 @@ While static linking has its benefits, there are also some disadvantages to cons
 - **Maintainability issues:** If there is any change in the library, all the linked programs need to be relinked against the updated version of the library. This can become a burden for developers who have to ensure that all the programs that rely on the library are updated accordingly. In addition, since static linking creates a separate copy of the library code in each executable, it can be more difficult to keep track of which versions of the library are being used in different programs.
 
 ## What Is Dynamic Linking?
+
+![what]({{site.images}}{{page.slug}}/what.png)\
 
 Dynamic linking is a method of linking a program to a library at runtime rather than at build time. When you link a program to a library dynamically, the dependency information is stored in the executable as a reference to the library instead of the actual library code. As the program is executed, the operating system loads the dependent libraries into memory and resolves the symbols using them.
 
