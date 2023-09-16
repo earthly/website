@@ -7,7 +7,11 @@ author: Abhinav Upadhyay
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - linking process
+ - static linking
+ - dynamic linking
+ - linking functions
+ - how linking works
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article explains what Static and Dynamic Linking are. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
@@ -400,5 +404,4 @@ For a deeper dive into linking, check out chapter 7 of [*Computer Systems: A Pro
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
