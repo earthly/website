@@ -390,6 +390,8 @@ Following are some of the disadvantages of dynamic linking:
 
 ## How to Choose Between Static and Dynamic Linking
 
+![what]({{site.images}}{{page.slug}}/what.png)\
+
 As you can see, static and dynamic linking each have their own unique advantages, and choosing between them depends on the goal of your project. The following guidelines can help point you in the right direction.
 
 In general, if you want to simplify deployments and if a larger binary size and increased memory usage are acceptable trade-offs, then static linking is the right choice. Static linking creates a stand-alone binary file that can be deployed and run without any dependencies. Moreover, it's quick to start up.
@@ -405,8 +407,3 @@ In this article, you explored the concept of linking and its role in resolving s
 For a deeper dive into linking, check out chapter 7 of [*Computer Systems: A Programmer's Perspective* (third edition)](https://csapp.cs.cmu.edu/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
