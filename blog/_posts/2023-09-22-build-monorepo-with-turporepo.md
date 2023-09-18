@@ -7,7 +7,11 @@ author: Aniket Bhattacharyea
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - using turborepo
+ - turborepo to build your first monorepo
+ - building your first monorepo
+ - turborepo
+ - first monorepo with turborepo
 ---
 
 In recent years, monorepos have seen a boom in popularity. Many real-life software projects consist of smaller, individual components that often depend on each other.
@@ -577,7 +581,3 @@ In this article, you learned the pros and cons of Turborepo and saw how to use T
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
