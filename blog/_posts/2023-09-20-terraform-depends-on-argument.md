@@ -1,5 +1,5 @@
 ---
-title: "Getting Started with Terraform `depends_on`` to Specify Dependencies"
+title: "Getting Started with Terraform `depends_on` to Specify Dependencies"
 categories:
   - Tutorials
 toc: true
@@ -29,30 +29,29 @@ Terraform configuration files define your infrastructure and are written in HCL.
 There are four key components of a Terraform configuration file:
 
 1. **[Providers](https://registry.terraform.io/browse/providers)** are plugins that interface with your specific cloud provider or infrastructure platform. You declare the provider and its configuration details, such as access credentials and region.
-	
-For instance, if you're using Amazon Web Services (AWS) Cloud and want to create resources in the `eu-west-1` region, you would specify the provider like this:
-	
 
-```hcl
-provider "aws" {
-region = "ca-central-1"  # Replace with your desired AWS region
-}
-```
-	
+   For instance, if you're using Amazon Web Services (AWS) Cloud and want to create resources in the `eu-west-1` region, you would specify the provider like this:
+
+   ~~~
+   provider "aws" {
+   region = "ca-central-1"  # Replace with your desired AWS region
+   }
+   ~~~
+
 2. **[Resources](https://developer.hashicorp.com/terraform/language/resources)** help you declare the infrastructure components that you want to create and manage. Each resource has its type and set of properties.
-	
-For example, take a look at this Amazon Simple Storage Service (Amazon S3) bucket resource:
-	
-```hcl
-resource "aws_s3_bucket" "my_bucket" {
-bucket = "my-bucket"
-}
-```
-	
-Here, the `aws_s3_bucket` resource represents an Amazon S3 bucket in the AWS provider. The resource block defines a specific instance of the S3 bucket with the name `my_bucket`.
-	
+
+   For example, take a look at this Amazon Simple Storage Service (Amazon S3) bucket resource:
+
+   ~~~
+   resource "aws_s3_bucket" "my_bucket" {
+   bucket = "my-bucket"
+   }
+   ~~~
+
+   Here, the `aws_s3_bucket` resource represents an Amazon S3 bucket in the AWS provider. The resource block defines a specific instance of the S3 bucket with the name `my_bucket`.
+
 3. **[Variables](https://developer.hashicorp.com/terraform/language/values)** let you parameterize your configurations, making them more flexible. You can define variables with default values or prompt the user for input during runtime.
-	
+
 4. **[Outputs](https://developer.hashicorp.com/terraform/language/values/outputs)** define the values that are useful to display or pass to other Terraform configurations. For instance, you can output the IP address of a provisioned virtual machine.
 
 ### State and Modules Concepts in Terraform
@@ -64,7 +63,7 @@ Other related Terraform IaC concepts include `state` and `modules`. Terraform us
 If you want to follow along with some of the examples used here, you'll need the following:
 
 * [Terraform version 1.5.4](https://developer.hashicorp.com/terraform/downloads) (or later) installed. This is the latest version at the time of writing and provides the most recent improvements and features.
-* An [AWS Account(https://aws.amazon.com/account/) and [the latest version of the AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
+* An [AWS Account(<https://aws.amazon.com/account/>) and [the latest version of the AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
 
 Even though the examples are using AWS, it's important to note that Terraform also supports a wide range of other cloud providers, including Azure and Google Cloud.
 
@@ -88,17 +87,17 @@ There are two types of dependencies in Terraform: *explicit* and *implicit* depe
 
 The `depends_on` argument is added within a resource block, and it takes a list of resource dependencies. The `depends_on` syntax looks like this:
 
-```hcl
+~~~
 resource "resource_type" "resource_name" {
   ...
   depends_on = [resource_type.resource_name, ...]
   ...
 }
-```
+~~~
 
 To better understand how explicit dependencies using `depends_on` work, create a `main.tf` file in your `terraform_dependencies` directory. In that file, add the following Terraform code:
 
-```hcl
+~~~
 provider "aws" {
   region = "ca-central-1"  # Replace with your desired AWS region
 }
@@ -114,7 +113,7 @@ resource "aws_subnet" "public_subnet" {
   …
   
   depends_on = [
-	aws_vpc.main_vpc
+    aws_vpc.main_vpc
   ]
 }
 
@@ -133,7 +132,7 @@ resource "aws_vpc" "main_vpc" {
     Name = "main-vpc"
   }
 }
-```
+~~~
 
 Here, an Amazon Elastic Compute Cloud (Amazon EC2) instance named `web-server` depends on an AWS `public_subnet`, and the `public_subnet` depends on the Virtual Private Cloud (VPC) (`vpc_main`). The EC2 instance needs the subnet to be available before it can be launched.
 
@@ -143,21 +142,25 @@ Additionally, an AWS security group called `web-sg` depends on both the EC2 inst
 
 Currently, there are no instances deployed in the region and only one security group (the default):
 
-![No instances deployed in the region](https://i.imgur.com/5hWA4R1.png)
+<div class="wide">
+![No instances deployed in the region]({{site.images}}{{page.slug}}/5hWA4R1.png)
+</div>
 
 In addition, there's currently only the default VPC:
 
-![Only the default VPC in the region](https://i.imgur.com/CKo6XX4.png)
+<div class="wide">
+![Only the default VPC in the region]({{site.images}}{{page.slug}}/CKo6XX4.png)
+</div>
 
 Open your terminal, and in the `terraform_dependencies` directory, run the following command to initialize Terraform:
 
-```bash
+~~~
 terraform init
-```
+~~~
 
 Your output looks like this:
 
-```output
+~~~
 Initializing the backend...
 
 Initializing provider plugins...
@@ -165,33 +168,43 @@ Initializing provider plugins...
 - Installing hashicorp/aws v5.3.0...
 
 ...output omitted...
-```
+~~~
 
 Next, run the `terraform plan` command to review the changes that Terraform will make. Your output looks like this:
 
-![terraform plan summary](https://i.imgur.com/ivL5E6u.png)
+<div class="wide">
+![terraform plan summary]({{site.images}}{{page.slug}}/ivL5E6u.png)
+</div>
 
 In the second to last statement (*ie* `Plan: 4 to add, 0 to change, 0 to destroy`), the code adds four resources: an EC2 Instance, a VPC, a subnet, and a security group.
 
 To create these resources, run the `terraform apply` command. This command prompts you to confirm if you want to make changes.  
 
-![terraform apply summary](https://i.imgur.com/R5taxAB.png)
+<div class="wide">
+![terraform apply summary]({{site.images}}{{page.slug}}/R5taxAB.png)
+</div>
 
 Enter `yes`. Your output looks like this:
 
-![terraform apply output](https://i.imgur.com/v6yE4P3.png)
+<div class="wide">
+![terraform apply output]({{site.images}}{{page.slug}}/v6yE4P3.png)
+</div>
 
 As you can see from the output, the VPC was created first, since it's required by the subnet. Then the `public_subnet` was created because the web server requires it. The `web_server` instance depends on the public subnet and therefore it was created after the subnet. Lastly, the security group was created as it depends on both the `web_server` instance and the public subnet.
 
 After running this command, you have a new EC2 instance as well as two new security groups:
 
-![EC2 instance created](https://i.imgur.com/I5F2GLe.png)
+<div class="wide">
+![EC2 instance created]({{site.images}}{{page.slug}}/I5F2GLe.png)
+</div>
 
 `main-vpc` has also been created:
 
-![VPC created](https://i.imgur.com/yfFCjax.png)
+<div class="wide">
+![VPC created]({{site.images}}{{page.slug}}/yfFCjax.png)
+</div>
 
-And that's how you create resources using explicit dependencies. Next, let’s explore the implicit dependencies.
+And that's how you create resources using explicit dependencies. Next, let's explore the implicit dependencies.
 
 ### Implicit Dependencies in Terraform
 
@@ -201,7 +214,7 @@ For instance, look at an example where you need to create `web_server`, `vpc`, `
 
 Start by replacing the contents of your `main.tf` file with the following:
 
-```hcl
+~~~
 provider "aws" {
   region = "ca-central-1"  # Replace with your desired AWS region
 }
@@ -230,7 +243,7 @@ resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
   …  }
 }
-```
+~~~
 
 > As a reminder, the full code can be found in the `main_implicit.tf` file of this [GitHub repo](https://github.com/Ndafara/Terrafrom_Depends_On).
 
@@ -240,15 +253,21 @@ Run the `terraform destroy` command to destroy all the resources you created wit
 
 Then run the `terraform plan` command. If you're satisfied with the plan, run the `terraform apply` command to create the resources using implicit dependencies:
 
-![Terraform implicit apply](https://i.imgur.com/v4qpBrx.png)
+<div class="wide">
+![Terraform implicit apply]({{site.images}}{{page.slug}}/v4qpBrx.png)
+</div>
 
 Now, if you check the EC2 instances, you should have an instance called **Web Server Implicit**:
 
-![**Web Server Implicit** created](https://i.imgur.com/pyR53Pb.png)
+<div class="wide">
+![**Web Server Implicit** created]({{site.images}}{{page.slug}}/pyR53Pb.png)
+</div>
 
 Additionally, if you check the VPCs, you'll find a VPC named **main-vpc-implicit**:
 
-![**main-vpc-implicit** created](https://i.imgur.com/aUILuC6.png)
+<div class="wide">
+![**main-vpc-implicit** created]({{site.images}}{{page.slug}}/aUILuC6.png)
+</div>
 
 This example shows you that you can create the same infrastructure resources using either explicit or implicit dependencies.
 
@@ -264,17 +283,17 @@ Module dependencies allow you to create relationships between the modules and sp
 
 To specify module dependencies, use the `depends_on` argument within a module block. The syntax for module dependency looks like this:
 
-```hcl
+~~~
 module "module_name" {
   depends_on = [module.module_name, ...]
 }
-```
+~~~
 
 For a deeper understanding, consider a scenario where you want to provision AWS resources using modular infrastructure with module dependencies. In this instance, you need to create a directory called `modular_infrastructure` that serves as the root directory. Then in the `modular_infrastructure` directory, create a directory called `modules` and a `main.tf` file.
 
 In the `main.tf` file, add the following HCL code:
 
-```hcl
+~~~
 provider "aws" {
   region = "ca-central-1"
 }
@@ -288,7 +307,7 @@ module "compute" {
   subnet_id  = module.network.public_subnet_id
   depends_on = [module.network]
 }
-```
+~~~
 
 Be sure to replace `ca-central-1` with the region where you want to deploy the resources.
 
@@ -300,7 +319,7 @@ In the `modules` directory, create another directory named `network`, and inside
 
 In the `main.tf` file, add the following HCL code:
 
-```hcl
+~~~
 resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
 }
@@ -325,7 +344,7 @@ resource "aws_security_group" "web_sg" {
 output "public_subnet_id" {
   value = aws_subnet.public_subnet.id
 }
-```
+~~~
 
 In this file, the `aws_vpc` resource block is defined, representing an Amazon VPC configuration. The `cidr_block` parameter specifies the IPv4 address range for the VPC.
 
@@ -337,7 +356,7 @@ Because you've included these resource and output definitions, Terraform provisi
 
 Now, create another directory in the `modules` directory called `compute`. Inside this directory, create the `main.tf` file and add the following configuration code:
 
-```hcl
+~~~
 variable "subnet_id" {
   description = "ID of the subnet where the instance will be launched"
 }
@@ -351,7 +370,7 @@ resource "aws_instance" "web_server" {
     Name = "Web Server"
   }
 }
-```
+~~~
 
 In this file, the `variable` block declares the `subnet_id` variable. Variables in Terraform allow you to parameterize your configurations and pass values between modules.
 
@@ -363,7 +382,7 @@ By including these configurations, Terraform creates an EC2 instance using the s
 
 Now, you're done setting up the modules, and your directory structure should look like this:
 
-```
+~~~
 modularInfrastructure/
 ├── main.tf
 └── modules
@@ -371,7 +390,7 @@ modularInfrastructure/
     │   └── main.tf
     └── network
         └── main.tf
-```
+~~~
 
 With this configuration, the compute module now explicitly depends on the network module using `depends_on = [module.network]`. This ensures that the network resources are created before the compute resources.
 
@@ -391,12 +410,11 @@ Following are some best practices that you should consider when working with Ter
 
 ### Promote a Modular and Maintainable Infrastructure Codebase
 
-When expressing dependencies between modules in Terraform, it's advisable to adhere to best practices that promote a modular, efficient, and maintainable infrastructure codebase. This means you should embrace Terraform's inherent dependency resolution mechanism by relying on resource references to dictate the order of provisioning and updates. Avoid using `depends_on` unless it's absolutely necessary, such as when dealing with external resources or enforcing specific creation sequences. 
+When expressing dependencies between modules in Terraform, it's advisable to adhere to best practices that promote a modular, efficient, and maintainable infrastructure codebase. This means you should embrace Terraform's inherent dependency resolution mechanism by relying on resource references to dictate the order of provisioning and updates. Avoid using `depends_on` unless it's absolutely necessary, such as when dealing with external resources or enforcing specific creation sequences.
 
-Additionally, structure your modules with a focus on reusability and composability. Design smaller, specialized modules that encapsulate distinct components of your infrastructure, and then combine them to create higher-level constructs. Utilize input and output variables to communicate data between parent and child modules, keeping them decoupled and facilitating effective information sharing. 
+Additionally, structure your modules with a focus on reusability and composability. Design smaller, specialized modules that encapsulate distinct components of your infrastructure, and then combine them to create higher-level constructs. Utilize input and output variables to communicate data between parent and child modules, keeping them decoupled and facilitating effective information sharing.
 
 Moreover, document dependencies within your modules, providing clarity for both present and future collaborators. By adhering to these practices, you'll build a robust and adaptable Terraform codebase that harnesses the tool's full potential in managing module dependencies while maintaining readability and scalability.
-
 
 ### Decide between Implicit and Explicit Dependencies
 
@@ -422,14 +440,14 @@ You should also assign meaningful names to resources and use appropriate tags to
 
 For instance, you can tag the `aws instance` like this:
 
-```
+~~~
     tags = {
         Name = "Web Server"
         Environment = "Production"
         Project = "My Project"
     }
 
-```
+~~~
 
 These tags provide additional context and metadata about the resource, making it easier to identify and manage resources in the future. It then becomes easier to understand the purpose and role of each resource, especially when dealing with larger infrastructures and multiple resources of the same type.
 
@@ -479,10 +497,7 @@ Looking to simplify your build automation further? Give [Earthly](https://www.ea
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
