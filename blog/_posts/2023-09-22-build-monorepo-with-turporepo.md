@@ -105,7 +105,7 @@ The entire code for this tutorial is available on this [GitHub repo](https://git
 
 To begin, you need to create a directory to hold the monorepo and initialize pnpm in it:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir turborepo-demo && cd turborepo-demo
 pnpm init
 ~~~
@@ -114,14 +114,14 @@ Because Turborepo doesn't have a fixed directory structure, you can choose whate
 
 In this tutorial, you'll create the applications (frontends and backends) under the `apps` directory and libraries and packages under the `packages` directory. Use the following command to create the directory structure:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir apps
 mkdir packages
 ~~~
 
 Now, navigate to the `apps` directory. This is where you create the React frontend, the Vue frontend, and the Express backend. Start by creating the Vue frontend by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm create vue@latest
 ~~~
 
@@ -145,7 +145,7 @@ This creates a Vue app in the `blog` directory.
 
 Next, create the React app with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm create vite@latest
 ~~~
 
@@ -159,7 +159,7 @@ Now, your React app is ready in the `admin` directory.
 
 Next, you need to create a directory named `backend` and initialize a `pnpm` project:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir backend
 cd backend
 pnpm init
@@ -169,7 +169,7 @@ The `backend` folder holds the Express app that you'll create later.
 
 Navigate back to the root of your monorepo and create a `types` directory inside the `packages` directory. Use the following command to create the directory structure as well as initialize `pnpm`:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir packages/types
 cd packages/types
 pnpm init
@@ -178,7 +178,7 @@ cd ../..
 
 The next step is to set up `pnpm` workspaces. Create a file named `pnpm-workspace.yaml` at the root of the monorepo with the following content:
 
-~~~
+~~~{.yaml caption="pnpm-workspace.yaml"}
 packages:
   - "packages/*"
   - "apps/*"
@@ -190,7 +190,7 @@ Run `pnpm install` to install the dependencies in all the workspaces.
 
 Then install Turborepo globally in the repo:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm install turbo --global
 ~~~
 
@@ -200,13 +200,13 @@ pnpm install turbo --global
 
 Once you've installed Turborepo in the repo, it's time to install TypeScript in the `types` package:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm add --save-dev typescript --filter types
 ~~~
 
 Create a `src` directory inside `packages/types` and create an `index.ts` file in the `src` directory. Then write the following code in the `index.ts`:
 
-~~~
+~~~{.ts caption="index.ts"}
 export type Blog = {
     id: string;
     title: string;
@@ -218,7 +218,7 @@ This code defines a `Blog` type with ID, title, and content fields. This type is
 
 Create a `tsconfig.json` file in the `types` directory with the following code:
 
-~~~
+~~~{.js caption="tsconfig.json"}
   {
       "compilerOptions": {
         "baseUrl": ".",
@@ -245,7 +245,7 @@ This file tells the TypeScript compiler to compile TypeScript files in the `src`
 
 Finally, you need to tell the Node.js engine how to import this file. For that, edit `packages/types/package.json`. Change the `main` key to `./src/index.ts` and add a `type` key with the value `./src/index.ts`. Finally, modify the `scripts` key as follows:
 
-~~~
+~~~{.ts caption="index.ts"}
 "scripts": {
     "type-scheck": "tsc"
 }
@@ -253,7 +253,7 @@ Finally, you need to tell the Node.js engine how to import this file. For that, 
 
 The `package.json` file should look something like this:
 
-~~~
+~~~{.js caption="package.json"}
   {
     "name": "types",
     "version": "1.0.0",
@@ -278,20 +278,21 @@ The `package.json` file should look something like this:
 
 Now it's time to create the backend. Run the following command in the workspace root to install the dependencies in the `backend` package:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm add express cors --filter backend
-pnpm add --save-dev typescript esbuild tsx @types/{express,cors} --filter backend
+pnpm add --save-dev typescript esbuild \
+tsx @types/{express,cors} --filter backend
 ~~~
 
 Next, install the `types` package that you previously created. To install packages from the same workspace, you can use the `package-name@workspace` syntax:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm add --save-dev types@workspace --filter backend
 ~~~
 
 Create a `src` directory inside `apps/backend` and create a file `index.ts` inside it with the following code:
 
-~~~
+~~~{.ts caption="index.ts"}
 import express from 'express';
 import cors from 'cors';
 
@@ -321,11 +322,12 @@ This code creates an Express server at port 8000 and returns a dummy list of blo
 
 Finally, modify `apps/backend/package.json` and modify the `scripts` key as shown here:
 
-~~~
+~~~{.js caption="package.json"}
 "scripts": {
       "test": "echo \"Error: no test specified\" && exit 1",
       "dev": "tsx watch src/index.ts",
-      "build": "esbuild src/index.ts --bundle --platform=node --outfile=dist/index.js --external:express --external:cors",
+      "build": "esbuild src/index.ts --bundle --platform=node \
+      --outfile=dist/index.js --external:express --external:cors",
       "start": "node dist/index.js"
     },
 
@@ -337,21 +339,21 @@ Here, you're defining how to build the backend and how to run a development serv
 
 Now it's time to code the frontends to send requests to the backend. Start by installing the `types` package to both `admin` and `blog` by using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm add --save-dev types@workspace --filter admin
 pnpm add --save-dev types@workspace --filter blog
 ~~~
 
 Then install [Axios](https://axios-http.com) in both packages:
 
-~~~
+~~~{.bash caption=">_"}
 pnpm add axios --filter admin
 pnpm add axios --filter blog
 ~~~
 
 Open `apps/admin/src/App.tsx` and replace the code with the following:
 
-~~~
+~~~{.tsx caption="App.tsx"}
 import { useEffect, useState } from 'react'
 import { Blog } from 'types'
 import './App.css'
@@ -388,7 +390,7 @@ This code fetches the list of blogs from the backend and displays them on the HT
 
 Now you'll create a blog page in the Vue app. Open `apps/blog/src/App.vue` and replace the existing code with the following:
 
-~~~
+~~~{.vue caption="App.vue"}
 <script setup lang="ts">
 import { ref } from 'vue';
 import axios from 'axios'
@@ -423,7 +425,7 @@ This code is similar to the React version and does the exact same thing—fetche
 
 To set up Turborepo, create a `turbo.json` file in the root of the workspace:
 
-~~~
+~~~{.js caption="turbo.json"}
 {
     "$schema": "https://turbo.build/schema.json",
 }
@@ -437,7 +439,7 @@ The `build` task is responsible for building the whole monorepo. In order to bui
 
 Edit `turbo.json` to add the `build` pipeline as follows:
 
-~~~
+~~~{.js caption="turbo.json"}
 {
     "$schema": "https://turbo.build/schema.json",
     "pipeline": {
@@ -457,14 +459,15 @@ The `test` pipeline is responsible for running tests in the workspace.
 
 Add the following in `turbo.json` to define the `test` pipeline:
 
-~~~
+~~~{.js caption="turbo.json"}
 {
     ...
     "pipeline": {
         ...,
         "test": {
           "dependsOn": ["build"],
-          "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", "test/**/*.tsx"]
+          "inputs": ["src/**/*.tsx", "src/**/*.ts", "test/**/*.ts", \
+          "test/**/*.tsx"]
         },
     }
 }
@@ -478,7 +481,7 @@ The `inputs` key tells TurboRepo that the tests should be rerun whenever the spe
 
 The `lint` task should run linters on the packages. This task has no dependencies and should be able to run whenever needed. So you need to use an empty object:
 
-~~~
+~~~{.js caption="turbo.json"}
 {
     ...
     "pipeline": {
@@ -492,7 +495,7 @@ The `lint` task should run linters on the packages. This task has no dependencie
 
 The `dev` task starts development builds in each package. Since this should never be cached, you must set `cache: false`. Additionally, since the development servers are persistent, meaning they never exit on their own, you need to set `persistent: true`. This makes sure no other task can depend on the `dev` task:
 
-~~~
+~~~{.js caption="turbo.json"}
 {
     ...
     "pipeline": {
@@ -509,7 +512,7 @@ The `dev` task starts development builds in each package. Since this should neve
 
 The `deploy` task should be used to deploy the final code(s) to the servers or package registries. This task requires `build`, `test`, and `lint` to be finished:
 
-~~~
+~~~{.js caption="turbo.json"}
 {
     ...
     "pipeline": {
@@ -525,7 +528,7 @@ The `deploy` task should be used to deploy the final code(s) to the servers or p
 
 Once the tasks are defined, you can run them with the `turbo run` command. Check the apps out with the `dev` command:
 
-~~~
+~~~{.bash caption=">_"}
 turbo run dev
 ~~~
 
@@ -543,7 +546,7 @@ Then open [http://localhost:5174](http://localhost:5174) to see the Vue app:
 
 Stop the `dev` task by pressing **Ctrl + C** and run the `build` task:
 
-~~~
+~~~{.bash caption=">_"}
 turbo run build
 ~~~
 
@@ -561,7 +564,7 @@ Rerun the same command (*i.e.* `turbo run build`). This time, it's instant since
 
 You can generate a graph of the tasks and save it to a PNG by running the following:
 
-~~~
+~~~{.bash caption=">_"}
 turbo run build --graph=tasks.png
 ~~~
 
