@@ -11,7 +11,10 @@ internal-links:
  - starting with nx monorepos
  - introduction to nx monorepos
  - nx monorepos for beginners
+excerpt: |
+    This article introduces Nx, a monorepo build tool, and explains how it can be used to efficiently manage multiple interrelated projects in a single repository. It covers the advantages and disadvantages of using Nx and provides a step-by-step guide on creating and managing a monorepo with Nx.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building through containerization. If you're dealing with Nx monorepos, Earthly can efficiently handle your build dependencies and parallel tasks. [Check it out](/).**
 
 Imagine you have a collection of distinct but interrelated projects. For instance, you might have an app with its own [React](https://react.dev/) frontend and [Node.js](https://nodejs.org/en/) backend, or two different [Angular](https://angular.io/) applications sharing a common collection of components. Monorepos offer an effective solution to organize these distinct but interrelated projects into a single repository.
 
