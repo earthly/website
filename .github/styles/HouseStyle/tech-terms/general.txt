@@ -512,3 +512,8 @@ bundlers
 waitlist
 introspector
 Jenkinsfiles
+
+dealbreakers
+Pinia
+Vitest
+parallelly
