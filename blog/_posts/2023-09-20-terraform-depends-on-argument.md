@@ -66,7 +66,7 @@ Other related Terraform IaC concepts include `state` and `modules`. Terraform us
 If you want to follow along with some of the examples used here, you'll need the following:
 
 * [Terraform version 1.5.4](https://developer.hashicorp.com/terraform/downloads) (or later) installed. This is the latest version at the time of writing and provides the most recent improvements and features.
-* An [AWS Account(<https://aws.amazon.com/account/>) and [the latest version of the AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
+* An [AWS Account](https://aws.amazon.com/account/) and [the latest version of the AWS Command Line Interface (AWS CLI)](https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html) installed.
 
 Even though the examples are using AWS, it's important to note that Terraform also supports a wide range of other cloud providers, including Azure and Google Cloud.
 
@@ -501,8 +501,3 @@ If you want to learn more about this topic, check out the [official depends_on d
 Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect complement to your chosen IaC tool.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Optional: Find ways to break up content with quotes or images
-
