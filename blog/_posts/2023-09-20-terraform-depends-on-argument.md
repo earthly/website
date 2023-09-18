@@ -7,7 +7,10 @@ author: Ndafara Tsamba
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - starting with terraform
+ - terraform `depends_on` to specify dependencies
+ - specifying dependencies with terraform
+ - getting started with terraform depends_on
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify and speed up the software building process using containerization. Earthly can seamlessly work with Terraform to streamline your infra process. [Check it out](/).**
@@ -499,5 +502,4 @@ Looking to simplify your build automation further? Give [Earthly](https://www.ea
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
