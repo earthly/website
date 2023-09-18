@@ -35,7 +35,7 @@ There are four key components of a Terraform configuration file:
 
    For instance, if you're using Amazon Web Services (AWS) Cloud and want to create resources in the `eu-west-1` region, you would specify the provider like this:
 
-   ~~~
+   ~~~{.tf caption="main.tf"}
    provider "aws" {
    region = "ca-central-1"  # Replace with your desired AWS region
    }
@@ -45,7 +45,7 @@ There are four key components of a Terraform configuration file:
 
    For example, take a look at this Amazon Simple Storage Service (Amazon S3) bucket resource:
 
-   ~~~
+   ~~~{.tf caption="main.tf"}
    resource "aws_s3_bucket" "my_bucket" {
    bucket = "my-bucket"
    }
@@ -90,7 +90,7 @@ There are two types of dependencies in Terraform: *explicit* and *implicit* depe
 
 The `depends_on` argument is added within a resource block, and it takes a list of resource dependencies. The `depends_on` syntax looks like this:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "resource_type" "resource_name" {
   ...
   depends_on = [resource_type.resource_name, ...]
@@ -100,7 +100,7 @@ resource "resource_type" "resource_name" {
 
 To better understand how explicit dependencies using `depends_on` work, create a `main.tf` file in your `terraform_dependencies` directory. In that file, add the following Terraform code:
 
-~~~
+~~~{.tf caption="main_explicit.tf"}
 provider "aws" {
   region = "ca-central-1"  # Replace with your desired AWS region
 }
@@ -157,13 +157,13 @@ In addition, there's currently only the default VPC:
 
 Open your terminal, and in the `terraform_dependencies` directory, run the following command to initialize Terraform:
 
-~~~
+~~~{.bash caption=">_"}
 terraform init
 ~~~
 
 Your output looks like this:
 
-~~~
+~~~{ caption="Output"}
 Initializing the backend...
 
 Initializing provider plugins...
@@ -217,7 +217,7 @@ For instance, look at an example where you need to create `web_server`, `vpc`, `
 
 Start by replacing the contents of your `main.tf` file with the following:
 
-~~~
+~~~{.tf caption="main_implicit.tf"}
 provider "aws" {
   region = "ca-central-1"  # Replace with your desired AWS region
 }
@@ -286,7 +286,7 @@ Module dependencies allow you to create relationships between the modules and sp
 
 To specify module dependencies, use the `depends_on` argument within a module block. The syntax for module dependency looks like this:
 
-~~~
+~~~{.tf caption="main.tf"}
 module "module_name" {
   depends_on = [module.module_name, ...]
 }
@@ -296,7 +296,7 @@ For a deeper understanding, consider a scenario where you want to provision AWS 
 
 In the `main.tf` file, add the following HCL code:
 
-~~~
+~~~{.tf caption="main.tf"}
 provider "aws" {
   region = "ca-central-1"
 }
@@ -322,7 +322,7 @@ In the `modules` directory, create another directory named `network`, and inside
 
 In the `main.tf` file, add the following HCL code:
 
-~~~
+~~~{.tf caption="main.tf"}
 resource "aws_vpc" "main_vpc" {
   cidr_block = "10.0.0.0/16"
 }
@@ -359,7 +359,7 @@ Because you've included these resource and output definitions, Terraform provisi
 
 Now, create another directory in the `modules` directory called `compute`. Inside this directory, create the `main.tf` file and add the following configuration code:
 
-~~~
+~~~{.tf caption="main.tf"}
 variable "subnet_id" {
   description = "ID of the subnet where the instance will be launched"
 }
@@ -385,7 +385,7 @@ By including these configurations, Terraform creates an EC2 instance using the s
 
 Now, you're done setting up the modules, and your directory structure should look like this:
 
-~~~
+~~~{ caption=""}
 modularInfrastructure/
 ├── main.tf
 └── modules
@@ -443,7 +443,7 @@ You should also assign meaningful names to resources and use appropriate tags to
 
 For instance, you can tag the `aws instance` like this:
 
-~~~
+~~~{.tf caption="main.tf"}
     tags = {
         Name = "Web Server"
         Environment = "Production"
