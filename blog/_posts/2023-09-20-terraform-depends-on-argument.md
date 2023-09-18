@@ -409,6 +409,8 @@ Run the command `terraform init` in the `modular_infrastructure` directory to in
 
 ## Best Practices for Terraform Configurations
 
+![Configurations]({{site.images}}{{page.slug}}/configure.png)
+
 Following are some best practices that you should consider when working with Terraform configurations:
 
 ### Promote a Modular and Maintainable Infrastructure Codebase
@@ -458,6 +460,8 @@ Finally, regularly review and refactor your Terraform configurations to remove d
 
 ## Troubleshooting and Edge Cases
 
+![Troubleshooting]({{site.images}}{{page.slug}}/tshoot.png)\
+
 To handle errors and edge cases in Terraform, you can employ the following strategies:
 
 ### Error Handling
@@ -500,6 +504,5 @@ Looking to simplify your build automation further? Give [Earthly](https://www.ea
 
 ## Outside Article Checklist
 
-* [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 
