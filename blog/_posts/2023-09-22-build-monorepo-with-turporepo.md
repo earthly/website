@@ -555,6 +555,8 @@ Turborepo is a young contender in the world of build tools. Its speed and optimi
 
 In this article, you learned the pros and cons of Turborepo and saw how to use Turborepo in a monorepo for building and running tasks. If you have JavaScript or TypeScript projects that you want to speed up, give Turborepo a try! If your projects include the use of other languages, Turborepo won’t be a fit,  but you might want to take a look at [Earthly](https://earthly.dev/). Earthly can speed up your builds and work with other tools including Turborepo and NX.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -564,4 +566,3 @@ In this article, you learned the pros and cons of Turborepo and saw how to use T
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
