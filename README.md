@@ -60,10 +60,12 @@ For blogging locally:
 
 ```
  brew update
+ brew install gawk
+ brew install ruby
  brew upgrade ruby-build
  brew install rbenv
- rbenv install 2.7.0
- rbenv global 2.7.0
+ rbenv install 2.7.8
+ rbenv global 2.7.8
  brew install vips
  brew install pandoc
  brew install dateutils 
