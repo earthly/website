@@ -502,4 +502,4 @@ Speaking of Golang projects, you might want to check out [Earthly](https://www.e
 
 If you want to be notified about the next installment, sign up for the newsletter:
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/embedded-newsletter.html %}
