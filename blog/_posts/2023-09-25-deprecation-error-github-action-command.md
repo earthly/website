@@ -3,7 +3,7 @@ title: "Resolving Deprecation Errors in GitHub Actions Due to the `set-output`, 
 categories:
   - Tutorials
 toc: true
-author: Mustapha Ahmad
+author: Mustapha Ahmad Ayodeji
 
 internal-links:
  - resolving deprecation errors
