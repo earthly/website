@@ -39,14 +39,14 @@ The `save-state` was used to persist data across different steps in the same job
 
 It had the following syntax:
 
-~~~
+~~~{.bash caption=">_"}
 echo "::save-state name=<state_name>::<state_value>"
 ~~~
 
 For example, you could persist a Go version environment variable as shown below:
 
-~~~
- echo "::save-state name=build_version::$VERSION"
+~~~{.bash caption=">_"}
+echo "::save-state name=build_version::$VERSION"
 ~~~
 
 The `build_version` state would then be available throughout the workflow run.
@@ -57,14 +57,14 @@ The `set-output` was used to set the output for a workflow job. This output woul
 
 An example of using this command is shown below:
 
-~~~
+~~~{.bash caption=">_"}
 echo "::set-output name=<output_name>::<output_value>"
 ~~~
 
 For example, you could set an output of an already defined timestamp variable as shown below:
 
-~~~
- echo "::set-output name=build_timestamp::$TIMESTAMP"
+~~~{.bash caption=">_"}
+echo "::set-output name=build_timestamp::$TIMESTAMP"
 ~~~
 
 The `build_timestamp` would then be available in the steps that follow and the steps of other jobs that depend on the job that sets the output.
@@ -77,7 +77,7 @@ The `set-env` command was used to set environment variables that could be used i
 
 It had the following syntax:
 
-~~~
+~~~{.bash caption=">_"}
 echo ::set-env:: name="<env_name>::<env_value>
 ~~~
 
@@ -85,7 +85,7 @@ The `add-path` command was used to add a directory to PATH to make it available 
 
 It had the following syntax:
 
-~~~
+~~~{.bash caption=">_"}
 echo "::add-path::/usr/local/mytool"
 ~~~
 
@@ -113,13 +113,13 @@ These environment files offer a highly secure and user-friendly method of managi
 
 An example of how they can be used to set environment variables is shown below:
 
-~~~
+~~~{.bash caption=">_"}
 echo "{key}={value}" >> "$GITHUB_ENV"
 ~~~
 
 They also support the use of multiline with the syntax
 
-~~~
+~~~{.bash caption=">_"}
 {name}<<{delimiter}
 {value}
 {delimiter}
@@ -127,7 +127,7 @@ They also support the use of multiline with the syntax
 
 An example of this is the step below that saves a multiline encoded data as an environment variable:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 ​​steps:
   - name: Set the value in bash
     id: step_one
@@ -146,7 +146,7 @@ An example of this is the step below that saves a multiline encoded data as an e
 
 The content that will be saved in the environment file will look as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 ENCODED_SECRET<<EOF
 bXlfc2VjcmV0X2tleQ==
 EOF
@@ -163,83 +163,90 @@ As a workflow author, you write workflow files. A simple fix for your workflow f
 
 For the warning below:
 
-~~~
-The `save-state` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see:
+~~~{ caption="Output"}
+The `save-state` command is deprecated and will be disabled soon. 
+Please upgrade to using Environment Files. For more information see:
 https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
 ~~~
 
 Replace the syntax below:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Save state 
   run: echo "::save-state name={state_name}::{state_value}"
 ~~~
 
 With:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Save state 
   run: echo "{state_name}={state_value}" >> $GITHUB_STATE
 ~~~
 
 For the warning below:
 
-~~~
-The `set-output` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see:
+~~~{ caption="Output"}
+The `set-output` command is deprecated and will be disabled soon. 
+Please upgrade to using Environment Files. For more information see:
 https://github.blog/changeloq/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
 ~~~
 
 Update your workflow files to replace the syntax below:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Set output
   run: echo "::set-output name={output_name}::{output_value}"
 ~~~
 
 With:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Set output 
   run: echo "{name}={value}" >> $GITHUB_OUTPUT
 ~~~
 
 For the error below:
 
-~~~
-The `add-path` command is disabled. Please upgrade to using Environment Files or opt into unsecure command execution by setting the
-`ACTIONS_ALLOW _UNSECURE_COMMANDS` environment variable to `true`. For more information see: https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
+~~~{ caption="Output"}
+The `add-path` command is disabled. Please upgrade to using 
+Environment Files or opt into unsecure command execution by setting the
+`ACTIONS_ALLOW _UNSECURE_COMMANDS` environment variable to `true`. 
+For more information see: https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
 ~~~
 
 Update your workflow files by replacing the syntax below:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Add Path
   run echo "::add-path::/usr/local/mytool"
 ~~~
 
 With:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Add Path
    run echo "{:/usr/local/mytool}" >> $GITHUB_PATH
 ~~~
 
 For the error below:
 
-~~~
-The `set-env` command is disabled. Please upgrade to using Environment Files or opt into unsecure command execution by setting the `ACTIONS_ALLOW_UNSECURE_COMMANDS` environment variable to 'true. For more information see: https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
+~~~{ caption="Output"}
+The `set-env` command is disabled. Please upgrade to using 
+Environment Files or opt into unsecure command execution by 
+setting the `ACTIONS_ALLOW_UNSECURE_COMMANDS` environment 
+variable to 'true. For more information see: https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
 ~~~
 
 Update your workflow files by replacing the syntax below:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Set Env
   run echo "::set-env name={output_name}::{output_value}"
 ~~~
 
 With:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 - name: Set Env
   run: echo "{name}={value}" >> $GITHUB_ENV
 ~~~
@@ -248,7 +255,7 @@ To do a quick hands-on of making these fixes in an actual workflow file, let's m
 
 The workflow is as shown below:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 name: Build and Deploy
 on:
   workflow_dispatch:
@@ -286,13 +293,15 @@ jobs:
           echo "::save-state name=build_timestamp::$TIMESTAMP"
 
       - name: Set Go version as env value 
-        run: echo "::set-env name=GO_VERSION::$(go version | awk '{print $3}')"
+        run: echo "::set-env name=GO_VERSION::$(go version \
+        | awk '{print $3}')"
 
 
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: always()  # Ensure the job runs always, regardless of the first job's status
+    if: always()  # Ensure the job runs always, regardless of the \
+    first job's status
 
     steps:
       - name: Download Artifact
@@ -310,7 +319,8 @@ jobs:
         run: |
           TIMESTAMP=${{needs.build.outputs.build_timestamp}}
           DRA_ENV=${{needs.build.outputs.draenv}}
-          echo "Deployment completed at timestamp $TIMESTAMP and environment variable $DRA_ENV was setups"
+          echo "Deployment completed at timestamp $TIMESTAMP and \
+          environment variable $DRA_ENV was setups"
 
       - name: Install jq and add to PATH
         run: |
@@ -342,7 +352,7 @@ To fix the errors and the warning that you will get from executing this workflow
 
 The first one is the step below that sets a value as an output:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Save an Environment version as output
         run: |
           DRA_ENV="This is from GA"
@@ -351,7 +361,7 @@ The first one is the step below that sets a value as an output:
 
 Here, you will change the `set-output` command to use the new environment file for setting output:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Save an Environment version as output
         run: |
           DRA_ENV="This is from GA"
@@ -360,7 +370,7 @@ Here, you will change the `set-output` command to use the new environment file f
 
 The second one is the step that saves the timestamp as a state:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Save Timestamp as State
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -369,7 +379,7 @@ The second one is the step that saves the timestamp as a state:
 
 You can fix this by using the new environment file for saving the state:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Save Timestamp as State
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
@@ -378,21 +388,23 @@ You can fix this by using the new environment file for saving the state:
 
 The third error was from the step that sets the Go version as an environment variable with the disabled `set-env` command:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Set Go version as env value 
-        run: echo "::set-env name=GO_VERSION::$(go version | awk '{print $3}')"
+        run: echo "::set-env name=GO_VERSION::$(go version \
+        | awk '{print $3}')"
 ~~~
 
 This can be fixed as shown below:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Set Go version as env value 
-        run: echo "GO_VERSION=$(go version | awk '{print $3}')" >> $GITHUB_ENV
+        run: echo "GO_VERSION=$(go version \
+        | awk '{print $3}')" >> $GITHUB_ENV
 ~~~
 
 Finally, the last error was from the step that installed the `jq` command and added it to the path:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
       - name: Install jq and add to PATH
         run: |
           sudo apt-get update
@@ -443,8 +455,9 @@ To use it, click on the search icon from anywhere in your GitHub account:
 
 Add your search query in the search bar. The query below searches for the use of any of the `save-state`, `add-path`, `set-env`, and `set-output` in the file path of `.github/workflows`  in any repository owned by `DrAnonymousNet` (replace with your GitHub username:
 
-~~~
-owner:DrAnonymousNet  path:/^\.github\/workflows\// save-state OR add-path OR set-env OR set-output
+~~~{ caption=""}
+owner:DrAnonymousNet  path:/^\.github\/workflows\// save-state \
+OR add-path OR set-env OR set-output
 ~~~
 
 This search query returns the following result in my repository:
@@ -459,12 +472,12 @@ From the result, you can identify the files where these commands are used. In th
 
 To fix all instances of these commands in a file, you can execute this `sed` command in a bash-based workflow:
 
-~~~
+~~~{.bash caption=">_"}
 sed -i '' \
   -e 's/echo "::set-output name=\([^:]*\)::\([^"]*\)"/echo "\1=\2" >> $GITHUB_OUTPUT/g' \
   -e 's/echo "::set-env name=\([^:]*\)::\([^"]*\)"/echo "\1=\2" >> $GITHUB_ENV/g' \
   -e 's/echo "::save-state name=\([^:]*\)::\([^"]*\)"/echo "\1=\2" >> $GITHUB_STATE/g' \
--e   's/echo "::add-path::\([^"]*\)"/echo "\1" >> $GITHUB_PATH/'
+  -e 's/echo "::add-path::\([^"]*\)"/echo "\1" >> $GITHUB_PATH/'
 
  file_name
 ~~~
@@ -490,7 +503,7 @@ The fixes discussed above are applicable when you get these errors and warnings 
 
 Take this workflow file that uses the [`setup-python`](https://github.com/actions/setup-python) action pinned to an old commit sha:
 
-~~~
+~~~{.yaml caption="build-and-deploy.yaml"}
 name: My Workflow
 
 on:
@@ -510,7 +523,7 @@ jobs:
 When you dispatch this workflow, you will get the errors and warnings below due to the deprecated commands even though you don't directly use them:
 
 <div class="wide">
-![image]({{site.images}}{{page.slug}}/S6eiaoS.png)
+![image]({{site.images}}{{page.slug}}/S6eiaoS.png)\
 </div>
 
 To fix this, you need to switch to an updated version provided by the action author where they have fixed the issue. If there is no updated version, you can raise an issue in their repository to notify them of the errors and warnings.
@@ -528,9 +541,3 @@ For action authors, you have also learned about how to fix the custom action tha
 In order to stay updated with the latest changes like deprecation or features introduction on GitHub products generally, you can always visit the [changelog page](https://github.blog/changelog).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
