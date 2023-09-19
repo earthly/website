@@ -24,6 +24,8 @@ However, monorepos require specialized [build tools](https://earthly.dev/blog/mo
 
 ## What Is a Monorepo?
 
+![What]({{site.images}}{{page.slug}}/what.png)\
+
 With traditional polyrepo architecture, each individual component of a project is stored in separate repos. While this makes it easier to develop, test, and deploy individual components, it may become convoluted as the number of components and the dependencies between them grow.
 
 For instance, if you have twenty different components across twenty different repositories and twenty different teams working on them, it's likely that each team will introduce its own tooling and styles, creating a management nightmare. Since the projects are isolated, it's also possible to introduce breaking changes since the developers don't have visibility over how their changes affect other projects.
@@ -41,6 +43,8 @@ Even though it's aimed mainly at monorepos, it can be added to any JavaScript or
 Even though Turborepo is relatively young compared to other mature tools, such as [Nx](https://nx.dev), Turborepo has quite a few advantages that make it a superb choice for monorepos:
 
 #### Fast Builds
+
+![Fast Builds]({{site.images}}{{page.slug}}/fast.png)\
 
 The selling point of Turborepo is its speed. Turborepo uses a combination of caching, multitasking, and pruning to speed up builds by as much as 85 percent.
 
@@ -579,8 +583,3 @@ Turborepo is a young contender in the world of build tools. Its speed and optimi
 In this article, you learned the pros and cons of Turborepo and saw how to use Turborepo in a monorepo for building and running tasks. If you have JavaScript or TypeScript projects that you want to speed up, give Turborepo a try! If your projects include the use of other languages, Turborepo won't be a fit, but you might want to take a look at [Earthly](https://earthly.dev/). Earthly can speed up your builds and work with other tools including Turborepo and NX.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
