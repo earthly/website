@@ -6,7 +6,11 @@ toc: true
 author: Mustapha Ahmad
 
 internal-links:
- - just an example
+ - resolving deprecation errors
+ - errors in gitHub actions
+ - errors workflow commands
+ - gitHub actions workflow commands
+ - set-output save-state add-path set-env workflow commands
 ---
 
 <div class="wide">
@@ -529,5 +533,4 @@ In order to stay updated with the latest changes like deprecation or features in
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
