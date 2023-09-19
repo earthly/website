@@ -7,11 +7,20 @@
   </div>
 
   <div class="gap-5 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
-    {% assign news = site.news | sort: 'createdAt' %}
-    {% for item in news %}
+    {% assign newsData = site.data.news %}
+    {% for item in site.news %}
+      {% assign newsData = newsData | push: item %}
+    {% endfor %}
+
+    {% assign news = newsData | sort: 'createdAt' %}
+
+    {% for item in news reversed %}
       <a id="news-{{ forloop.index }}" href="{{ item.link }}" class="{% if forloop.index > 6 %}hidden{% endif %}" data-category="{{ item.category }}">
-        <div class="border border-[#D1D6D9] cursor-pointer group pb-8 pt-6 px-7 rounded-lg">
-          <p class="text-sm">{{ item.subtitle }} - {{ item.createdAt | date: "%B %-d, %Y" }}</p>
+        <div class="h-full border border-[#D1D6D9] cursor-pointer group pb-8 pt-6 px-7 rounded-lg">
+          <div class="flex flex-wrap">
+            <p class="mr-1 text-sm uppercase">{{ item.source }} -</p>
+            <time class="text-sm" datetime="{{ date | date_to_xmlschema }}">{{ item.createdAt | date: "%B %-d, %Y" }}</time>
+          </div>
 
           <p class="font-bold mt-4 text-[#475569] text-xl">{{ item.title }}</p>
 
@@ -24,14 +33,12 @@
     {% endfor %}
   </div>
 
-  <div id="load-more-button" class="flex justify-center mt-10 {% if site.news.size <= 6 %}hidden{% endif %}">
+  <div id="load-more-button" class="flex justify-center mt-10 {% if news.size <= 6 %}hidden{% endif %}">
     <p class="border border-[#D1D6D9] cursor-pointer px-10 py-3 rounded-full text-[#6B7280] text-xl" onclick="loadMore()">Load more</p>
   </div>
 </div>
   
 <script>
-  var highlightsContainer = document.getElementById("highlights");
-
   var allNews = document.querySelectorAll('[id^="news"]');
   var news = 6;
 
@@ -50,29 +57,27 @@
         switch (document.getElementById(`highlight-category-${currentTab}`).innerText) {
           case 'All':
             allNews = document.querySelectorAll('[id^="news"]')
-            allNews.forEach((x, i) => {
-              if (i < 6) x.classList.remove('hidden')
-              else x.classList.add('hidden')
-            })
             break
           case 'Press Release':
             allNews = document.querySelectorAll('[id^="news"][data-category="Press Release"]')
-            allNews.forEach(x => x.classList.remove('hidden'))
             document.querySelectorAll('[id^="news"]:not([data-category="Press Release"])').forEach(x => x.classList.add('hidden'))
             break
           case 'Media Coverage':
             allNews = document.querySelectorAll('[id^="news"][data-category="Media Coverage"]')
-            allNews.forEach(x => x.classList.remove('hidden'))
             document.querySelectorAll('[id^="news"]:not([data-category="Media Coverage"])').forEach(x => x.classList.add('hidden'))
             break
           case 'Podcast':
             allNews = document.querySelectorAll('[id^="news"][data-category="Podcast"]')
-            allNews.forEach(x => x.classList.remove('hidden'))
             document.querySelectorAll('[id^="news"]:not([data-category="Podcast"])').forEach(x => x.classList.add('hidden'))
             break
           default:
             break
         }
+
+        allNews.forEach((x, i) => {
+          if (i < 6) x.classList.remove('hidden')
+          else x.classList.add('hidden')
+        })
 
         news = 6
         if (allNews.length <= 6) document.getElementById('load-more-button').classList.add('hidden')

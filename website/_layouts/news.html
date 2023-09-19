@@ -1,0 +1,30 @@
+---
+layout: default
+---
+
+<div class="mt-[70px] pt-6">
+  <div class="max-w-4xl mx-auto px-4 lg:px-10">
+    <a href="/newsroom" class="flex items-center">
+      <img src="/assets/svg/back.svg" alt="Back" />
+      <p class="font-bold ml-1 text-[#2463eb] text-lg">Newsroom</p>
+    </a>
+
+    <div class="flex items-center pt-10">
+      <div class="flex flex-wrap font-bold text-[#2d7e5d]">
+        <time class="text-sm" datetime="{{ date | date_to_xmlschema }}">{{ page.createdAt | date: "%B %-d, %Y" }} -</time>
+        <p class="ml-1 text-sm uppercase">{{ page.source }}</p>
+      </div>
+
+      <a href="{{ page.originalLink }}" class="ml-1">
+        <img src="/assets/svg/link.svg" alt="Link" />
+      </a>
+    </div>
+
+    <h1 class="font-bold mt-4 text-[#1f2937] text-3xl">{{ page.title }}</h1>
+    <p class="leading-10 mt-6 text-[#64748b] text-2xl">{{ page.subtitle }}</p>
+
+    <section class="news-content">{{ content }}</section>
+  </div>
+
+  {% include newsroom/cta-button.html %}
+</div>

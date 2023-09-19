@@ -1,0 +1,58 @@
+- title: Earthly wants to reinvent continuous integration to make it faster and cheaper
+  source: Tech Crunch
+  category: Media Coverage
+  link: https://techcrunch.com/2023/02/23/earthly-wants-to-reinvent-continuous-integration-to-make-it-faster-and-cheaper/
+  createdAt: 2023-02-23 15:00:00
+
+- title: "Earthly: Build Automation with Vlad Ionescu"
+  source: SE Daily
+  category: Podcast
+  link: https://softwareengineeringdaily.com/2021/03/01/earthly-with-vlad-ionescu/
+  createdAt: 2021-03-01 00:00:00
+
+- title: Vlad Ionescu
+  source: Coffee and Open Source
+  category: Podcast
+  link: https://www.coffeeandopensource.com/guest/vlad-ionescu.html
+  createdAt: 2023-05-30 00:00:00
+
+- title: Removing Complexity For The Developer Community
+  source: Podcast
+  link: https://podcasters.spotify.com/pod/show/techandmain/episodes/Removing-Complexity-For-The-Developer-Community--Vlad-A--Ionescu-e265974
+  createdAt: 2023-06-25 00:00:00
+
+- title: Two-time founder Vlad A. Ionescu on finding success after repeated entrepreneurial failures
+  source: The Business of Open Source
+  category: Podcast
+  link: https://share.transistor.fm/s/7bf78eb5
+  createdAt: 2023-08-09 00:00:00
+
+- title: Interview With Vlad A. Ionescu
+  source: The Effective Developer
+  category: Podcast
+  link: https://podcasters.spotify.com/pod/show/effective-developer/episodes/67---Interview-With-Vlad-A--Ionescu-e26or8q
+  createdAt: 2023-07-14 00:00:00
+
+- title: Exploring Trailblazing Business Models in the Age of Artificial Intelligence
+  source: The Jeff Bullas Show
+  category: Podcast
+  link: https://thejeffbullasshow.libsyn.com/exploring-trailblazing-business-models-in-the-age-of-artificial-intelligence
+  createdAt: 2023-06-01 00:00:00
+
+- title: Earthly, a CI/CD Framework that Can Run Anywhere
+  source: OSS Podcast
+  category: Podcast
+  link: https://oss-startup-podcast.launchnotes.io/announcements/episode-42-earthly-a-ci-cd-framework-that-can-run-anywhere
+  createdAt: 2022-07-11 00:00:00
+
+- title: Achieve Repeatable Builds Of Your Software On Any Machine With Earthly
+  source: The Python Podcast.__init__
+  category: Podcast
+  link: https://www.pythonpodcast.com/earthly-repeatable-build-tool-episode-351/
+  createdAt: 2022-02-06 00:00:00
+
+- title: Fixing the CI/CD experience with Vlad A. Ionescu
+  source: DevXPod
+  category: Podcast
+  link: https://www.devxpod.com/1895030/10907567-fixing-the-ci-cd-experience-with-vlad-a-ionescu
+  createdAt: 2022-07-22 00:00:00
