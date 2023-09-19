@@ -15,7 +15,13 @@
             <p class="mt-4 text-lg tracking-tight">{{ featured[0].subtitle }}</p>
 
             <div class="w-fit cursor-pointer decoration-[#2d7e5d] flex items-center mt-8 hover:underline">
-              <p class="font-bold text-[#2d7e5d] text-lg">Read now</p>
+              <p class="font-bold text-[#2d7e5d] text-lg">
+                {% if (featured[0].category == 'Press Release' or featured[0].category == 'Media Coverage') %}
+                  Read more
+                {% elsif featured[0].category == 'Podcast' %}
+                  Listen
+                {% endif %}
+              </p>
               <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
             </div>
           </div>
