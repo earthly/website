@@ -420,7 +420,7 @@ To use this, open the workflow file in edit mode and click on `Command`+`F` (Mac
 `Ctrl`+`F` (Windows/Linux). This will bring up a panel that allows you to search for the instances of these commands:
 
 <div class="wide">
-![image]({{site.images}}{{page.slug}}/SPGtAtD.png)
+![image]({{site.images}}{{page.slug}}/SPGtAtD.png)\
 </div>
 
 Using the replace feature might not be efficient here due to the dynamics of the usage of these commands. However, you can manually edit the file to effect the new changes.
@@ -434,7 +434,7 @@ To look for all the instances of the above-deprecated commands in your repositor
 To use it, click on the search icon from anywhere in your GitHub account:
 
 <div class="wide">
-![image]({{site.images}}{{page.slug}}/0Jggjx9.png)
+![image]({{site.images}}{{page.slug}}/0Jggjx9.png)\
 </div>
 
 Add your search query in the search bar. The query below searches for the use of any of the `save-state`, `add-path`, `set-env`, and `set-output` in the file path of `.github/workflows`  in any repository owned by `DrAnonymousNet` (replace with your GitHub username:
@@ -446,7 +446,7 @@ owner:DrAnonymousNet  path:/^\.github\/workflows\// save-state OR add-path OR se
 This search query returns the following result in my repository:
 
 <div class="wide">
-![image]({{site.images}}{{page.slug}}/P8ixXzA.png)
+![image]({{site.images}}{{page.slug}}/P8ixXzA.png)\
 </div>
 
 From the result, you can identify the files where these commands are used. In the next section, you will see how you can fix all the instances of these commands in a file at once with the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command.
@@ -474,7 +474,7 @@ After running the command, inspect the output of `git diff` and make any final t
 The following is the output of executing the command on the workflow file used in this article:
 
 <div class="wide">
-![output of git diff]({{site.images}}{{page.slug}}/JeTyTxx.png)
+![Output of git diff]({{site.images}}{{page.slug}}/JeTyTxx.png)
 </div>
 
 Another instance of this `sed` command is suggested by [kcgen](https://github.com/kcgen) in this [GitHub community discussion](https://github.com/orgs/community/discussions/35994#discussioncomment-3881150
@@ -523,10 +523,11 @@ For action authors, you have also learned about how to fix the custom action tha
 
 In order to stay updated with the latest changes like deprecation or features introduction on GitHub products generally, you can always visit the [changelog page](https://github.blog/changelog).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
