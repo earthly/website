@@ -9,9 +9,11 @@ internal-links:
  - just an example
 ---
 
-![Disabled and Deprecated Workflow Commands Errors and Warnings](https://i.imgur.com/KyJZvzC.png)
+<div class="wide">
+![Disabled and Deprecated Workflow Commands Errors and Warnings]({{site.images}}{{page.slug}}/KyJZvzC.png)
+</div>
 
-Have you encountered failed GitHub Actions (GA) workflow runs accompanied by the error messages above? Or perhaps you've come across those unsettling warnings displayed in the screenshot? If so,  you are probably wondering what these errors meant, how can you resolve them, the purpose of the environment files suggested in the warnings, and why are these actions even being deprecated.
+Have you encountered failed GitHub Actions (GA) workflow runs accompanied by the error messages above? Or perhaps you've come across those unsettling warnings displayed in the screenshot? If so, you are probably wondering what these errors meant, how can you resolve them, the purpose of the environment files suggested in the warnings, and why are these actions even being deprecated.
 
 This article will address all these concerns. However, this article assumes that you are already familiar with Github Action.
 
@@ -19,7 +21,7 @@ The errors and warnings are shown because GitHub has deprecated and disabled the
 
 Before you dive into how you can fix the errors and warnings, and the rationale behind their deprecation, let's take a short review of what these workflow commands do.
 
-> If you like to just take the fix and move on, you can find them [here](#Fixing-for-Workflow-Authors)
+> If you like to just take the fix and move on, you can find them in [this section](#fix-for-workflow-authors)
 
 ## The `save-state` and `set-output` Workflow Command
 
@@ -27,22 +29,21 @@ The steps in your workflow jobs run sequentially, one after the other and your w
 
 Despite their shared functionalities, they served different purposes and the data that they stored was available in different scopes.
 
-
 ### The `save-state` Command
 
 The `save-state` was used to persist data across different steps in the same job or different jobs (not necessarily depending on each other) in the same workflow file and the data persisted was available for the entire duration of the workflow run.
 
 It had the following syntax:
 
-```bash
+~~~
 echo "::save-state name=<state_name>::<state_value>"
-``` 
+~~~
 
 For example, you could persist a Go version environment variable as shown below:
 
-```bash
+~~~
  echo "::save-state name=build_version::$VERSION"
-```
+~~~
 
 The `build_version` state would then be available throughout the workflow run.
 
@@ -52,15 +53,15 @@ The `set-output` was used to set the output for a workflow job. This output woul
 
 An example of using this command is shown below:
 
-```bash
+~~~
 echo "::set-output name=<output_name>::<output_value>"
-```
+~~~
 
 For example, you could set an output of an already defined timestamp variable as shown below:
 
-```bash
- echo “::set-output name=build_timestamp::$TIMESTAMP"
-```
+~~~
+ echo "::set-output name=build_timestamp::$TIMESTAMP"
+~~~
 
 The `build_timestamp` would then be available in the steps that follow and the steps of other jobs that depend on the job that sets the output.
 
@@ -72,18 +73,17 @@ The `set-env` command was used to set environment variables that could be used i
 
 It had the following syntax:
 
-```bash
-echo ::set-env:: name=”<env_name>::<env_value>
-```
- 
+~~~
+echo ::set-env:: name="<env_name>::<env_value>
+~~~
+
 The `add-path` command was used to add a directory to PATH to make it available for use without the need to specify the full path when executing the command.
 
 It had the following syntax:
 
-
-```bash
+~~~
 echo "::add-path::/usr/local/mytool"
-```
+~~~
 
 So, what were the problems with them and why were they deprecated?
 
@@ -93,7 +93,7 @@ The `save-state` and the `set-output` command were deprecated (although not yet 
 
 As outlined in the [changelog post](https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/) that introduced this changes:
 
->” To avoid untrusted logged data to use `save-state` and `set-output` workflow commands without the intention of the workflow author we have introduced a new set of environment files to manage state and output.”
+>" To avoid untrusted logged data to use `save-state` and `set-output` workflow commands without the intention of the workflow author we have introduced a new set of environment files to manage state and output."
 
 These suggested new sets of environment files will be discussed later on in the article.
 
@@ -109,22 +109,21 @@ These environment files offer a highly secure and user-friendly method of managi
 
 An example of how they can be used to set environment variables is shown below:
 
-
-```bash
+~~~
 echo "{key}={value}" >> "$GITHUB_ENV"
-```
+~~~
 
-They also support the use of multiline with the syntax 
+They also support the use of multiline with the syntax
 
-```bash
+~~~
 {name}<<{delimiter}
 {value}
 {delimiter}
-``` 
+~~~
 
 An example of this is the step below that saves a multiline encoded data as an environment variable:
 
-```yaml
+~~~
 ​​steps:
   - name: Set the value in bash
     id: step_one
@@ -139,19 +138,18 @@ An example of this is the step below that saves a multiline encoded data as an e
       echo "ENCODED_SECRET<<EOF" >> "$GITHUB_ENV"
       echo "$ENCODED_DATA" >> "$GITHUB_ENV"
       echo "EOF" >> "$GITHUB_ENV"
-```
+~~~
 
 The content that will be saved in the environment file will look as shown below:
 
-
-```
+~~~
 ENCODED_SECRET<<EOF
 bXlfc2VjcmV0X2tleQ==
 EOF
 
-```
+~~~
 
-So now that you understand why you are seeing these errors and warnings, what they meant,  and how to use the suggested environment files, You can now move on to fixing the warnings and the errors.
+So now that you understand why you are seeing these errors and warnings, what they meant, and how to use the suggested environment files, You can now move on to fixing the warnings and the errors.
 
 The fixes that will be discussed will be for both workflow authors and action authors.
 
@@ -161,92 +159,92 @@ As a workflow author, you write workflow files. A simple fix for your workflow f
 
 For the warning below:
 
-```
+~~~
 The `save-state` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see:
 https://github.blog/changelog/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
-```
+~~~
 
 Replace the syntax below:
 
-```yaml
+~~~
 - name: Save state 
   run: echo "::save-state name={state_name}::{state_value}"
-```
+~~~
 
 With:
 
-```yaml
+~~~
 - name: Save state 
   run: echo "{state_name}={state_value}" >> $GITHUB_STATE
-```
+~~~
 
 For the warning below:
 
-```
+~~~
 The `set-output` command is deprecated and will be disabled soon. Please upgrade to using Environment Files. For more information see:
 https://github.blog/changeloq/2022-10-11-github-actions-deprecating-save-state-and-set-output-commands/
-```
+~~~
 
 Update your workflow files to replace the syntax below:
 
-```yaml
+~~~
 - name: Set output
   run: echo "::set-output name={output_name}::{output_value}"
-```
+~~~
 
 With:
 
-```yaml
+~~~
 - name: Set output 
   run: echo "{name}={value}" >> $GITHUB_OUTPUT
-```
+~~~
 
 For the error below:
 
-```
+~~~
 The `add-path` command is disabled. Please upgrade to using Environment Files or opt into unsecure command execution by setting the
 `ACTIONS_ALLOW _UNSECURE_COMMANDS` environment variable to `true`. For more information see: https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
-```
+~~~
 
 Update your workflow files by replacing the syntax below:
 
-```yaml
+~~~
 - name: Add Path
   run echo "::add-path::/usr/local/mytool"
-```
+~~~
 
 With:
 
-```yaml
+~~~
 - name: Add Path
    run echo "{:/usr/local/mytool}" >> $GITHUB_PATH
-```
+~~~
 
 For the error below:
 
-```
+~~~
 The `set-env` command is disabled. Please upgrade to using Environment Files or opt into unsecure command execution by setting the `ACTIONS_ALLOW_UNSECURE_COMMANDS` environment variable to 'true. For more information see: https://github.blog/changelog/2020-10-01-github-actions-deprecating-set-env-and-add-path-commands/
-```
+~~~
 
 Update your workflow files by replacing the syntax below:
 
-```yaml
+~~~
 - name: Set Env
   run echo "::set-env name={output_name}::{output_value}"
-```
+~~~
 
 With:
 
-```yaml
+~~~
 - name: Set Env
   run: echo "{name}={value}" >> $GITHUB_ENV
-```
+~~~
 
-To do a quick hands-on of making these fixes in an actual workflow file, let’s make use of the workflow file that generated the errors and warnings in the image at the beginning of this article. The workflow file is available in this [GitHub repository](https://github.com/DrAnonymousNet/gh-actions/blob/master/.github/workflows/build-and-deploy.yaml).
+To do a quick hands-on of making these fixes in an actual workflow file, let's make use of the workflow file that generated the errors and warnings in the image at the beginning of this article. The workflow file is available in this [GitHub repository](https://github.com/DrAnonymousNet/gh-actions/blob/master/.github/workflows/build-and-deploy.yaml).
 
 The workflow is as shown below:
 
-```yaml
+~~~
 name: Build and Deploy
 on:
   workflow_dispatch:
@@ -315,7 +313,7 @@ jobs:
           sudo apt-get update
           sudo apt-get install jq -y
           echo "::add-path::/usr/bin"
-```
+~~~
 
 The workflow file is designed to build and run a simple Go app. This workflow is triggered by a `workflow_dispatch` event and consists of two distinct jobs.
 
@@ -340,86 +338,90 @@ To fix the errors and the warning that you will get from executing this workflow
 
 The first one is the step below that sets a value as an output:
 
-
-```yaml
+~~~
       - name: Save an Environment version as output
         run: |
           DRA_ENV="This is from GA"
           echo "::set-output name=draenv::$DRA_ENV"
-```
+~~~
 
 Here, you will change the `set-output` command to use the new environment file for setting output:
 
-```yaml
+~~~
       - name: Save an Environment version as output
         run: |
           DRA_ENV="This is from GA"
           echo "draenv=$DRA_ENV" >> $GITHUB_OUTPUT
-```
+~~~
 
 The second one is the step that saves the timestamp as a state:
 
-```yaml
+~~~
       - name: Save Timestamp as State
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           echo "::save-state name=build_timestamp::$TIMESTAMP"
-```
+~~~
 
 You can fix this by using the new environment file for saving the state:
 
-```yaml
+~~~
       - name: Save Timestamp as State
         run: |
           TIMESTAMP=$(date -u +"%Y-%m-%dT%H:%M:%SZ")
           echo "build_timestamp=$TIMESTAMP" >> $GITHUB_STATE
-```
+~~~
 
 The third error was from the step that sets the Go version as an environment variable with the disabled `set-env` command:
 
-```yaml
+~~~
       - name: Set Go version as env value 
         run: echo "::set-env name=GO_VERSION::$(go version | awk '{print $3}')"
-```
+~~~
 
 This can be fixed as shown below:
 
-```yaml
+~~~
       - name: Set Go version as env value 
         run: echo "GO_VERSION=$(go version | awk '{print $3}')" >> $GITHUB_ENV
-```
+~~~
 
 Finally, the last error was from the step that installed the `jq` command and added it to the path:
 
-```yaml
+~~~
       - name: Install jq and add to PATH
         run: |
           sudo apt-get update
           sudo apt-get install jq -y
           echo "/usr/bin" >> $GITHUB_PATH
-```
+~~~
 
 This [github branch](https://github.com/DrAnonymousNet/gh-actions/tree/patch-1/.github/workflows) contains these changes. The highlighted changes can be found in this GitHub [commit](https://github.com/DrAnonymousNet/gh-actions/pull/6/commits/afdb5b80acfde957d2f3b62e4511d1463b855747).
 
 If you rerun this workflow file in this new branch:
 
-![Rerun build](https://i.imgur.com/zuhAgU0.png)
+<div class="wide">
+![Rerun build]({{site.images}}{{page.slug}}/zuhAgU0.png)
+</div>
 
 The run will be successful without any warnings or errors:
 
-![Successful build without any warnings](https://i.imgur.com/UAPpQGK.png)
+<div class="wide">
+![Successful build without any warnings]({{site.images}}{{page.slug}}/UAPpQGK.png)
+</div>
 
-
-In your GitHub repositories, you have probably used these commands in multiple places in a workflow file, it can be a little bit hard looking for the usage of these commands in the file. You can make use of the GitHub editor’s find and replace features to make this a little bit easier.
+In your GitHub repositories, you have probably used these commands in multiple places in a workflow file, it can be a little bit hard looking for the usage of these commands in the file. You can make use of the GitHub editor's find and replace features to make this a little bit easier.
 
 ### Searching for the Command Usage in a Single File
 
-You can search for the instances of these deprecated commands in a single file by using the GitHub editor’s find and replace feature.
+You can search for the instances of these deprecated commands in a single file by using the GitHub editor's find and replace feature.
 
 To use this, open the workflow file in edit mode and click on `Command`+`F` (Mac) or
-`Ctrl`+`F` (Windows/Linux). This will bring up a panel that allows you to search for the instances of these commands: 
+`Ctrl`+`F` (Windows/Linux). This will bring up a panel that allows you to search for the instances of these commands:
 
-![](https://i.imgur.com/SPGtAtD.png)
+<div class="wide">
+![image]({{site.images}}{{page.slug}}/SPGtAtD.png)
+</div>
 
 Using the replace feature might not be efficient here due to the dynamics of the usage of these commands. However, you can manually edit the file to effect the new changes.
 
@@ -431,17 +433,21 @@ To look for all the instances of the above-deprecated commands in your repositor
 
 To use it, click on the search icon from anywhere in your GitHub account:
 
-![](https://i.imgur.com/0Jggjx9.png)
+<div class="wide">
+![image]({{site.images}}{{page.slug}}/0Jggjx9.png)
+</div>
 
 Add your search query in the search bar. The query below searches for the use of any of the `save-state`, `add-path`, `set-env`, and `set-output` in the file path of `.github/workflows`  in any repository owned by `DrAnonymousNet` (replace with your GitHub username:
 
-```
+~~~
 owner:DrAnonymousNet  path:/^\.github\/workflows\// save-state OR add-path OR set-env OR set-output
-```
+~~~
 
 This search query returns the following result in my repository:
 
-![](https://i.imgur.com/P8ixXzA.png)
+<div class="wide">
+![image]({{site.images}}{{page.slug}}/P8ixXzA.png)
+</div>
 
 From the result, you can identify the files where these commands are used. In the next section, you will see how you can fix all the instances of these commands in a file at once with the [`sed`](https://www.gnu.org/software/sed/manual/sed.html) command.
 
@@ -449,7 +455,7 @@ From the result, you can identify the files where these commands are used. In th
 
 To fix all instances of these commands in a file, you can execute this `sed` command in a bash-based workflow:
 
-```bash
+~~~
 sed -i '' \
   -e 's/echo "::set-output name=\([^:]*\)::\([^"]*\)"/echo "\1=\2" >> $GITHUB_OUTPUT/g' \
   -e 's/echo "::set-env name=\([^:]*\)::\([^"]*\)"/echo "\1=\2" >> $GITHUB_ENV/g' \
@@ -457,7 +463,7 @@ sed -i '' \
 -e   's/echo "::add-path::\([^"]*\)"/echo "\1" >> $GITHUB_PATH/'
 
  file_name
-```
+~~~
 
 The command searches all syntax that matches the deprecated syntax and replaces them with the new syntax of the environment files.
 
@@ -467,7 +473,9 @@ After running the command, inspect the output of `git diff` and make any final t
 
 The following is the output of executing the command on the workflow file used in this article:
 
-![output of git diff](https://i.imgur.com/JeTyTxx.png)
+<div class="wide">
+![output of git diff]({{site.images}}{{page.slug}}/JeTyTxx.png)
+</div>
 
 Another instance of this `sed` command is suggested by [kcgen](https://github.com/kcgen) in this [GitHub community discussion](https://github.com/orgs/community/discussions/35994#discussioncomment-3881150
 )
@@ -478,7 +486,7 @@ The fixes discussed above are applicable when you get these errors and warnings 
 
 Take this workflow file that uses the [`setup-python`](https://github.com/actions/setup-python) action pinned to an old commit sha:
 
-```yaml
+~~~
 name: My Workflow
 
 on:
@@ -493,17 +501,19 @@ jobs:
         uses: actions/setup-python@bdd6409dc13e625e6c1c0ad857bd591804786f7b
         with:
             python-version: "3.10"
-```
+~~~
 
-When you dispatch this workflow, you will get the errors and warnings below due to the deprecated commands even though you don’t directly use them:
+When you dispatch this workflow, you will get the errors and warnings below due to the deprecated commands even though you don't directly use them:
 
-![](https://i.imgur.com/S6eiaoS.png)
+<div class="wide">
+![image]({{site.images}}{{page.slug}}/S6eiaoS.png)
+</div>
 
 To fix this, you need to switch to an updated version provided by the action author where they have fixed the issue. If there is no updated version, you can raise an issue in their repository to notify them of the errors and warnings.
 
 ## Fix for Action Authors
 
-As an action author that writes custom actions that workflow files depend on, If  the users of your custom actions are raising GitHub issues due to the deprecation of the commands above, you need to update the [@actions/core](https://github.com/actions/toolkit/blob/45c49b09df04cff84c5f336f07d5232fa7103761/packages/core/README.md#L4) package to the latest version. The latest version of this package provides the updated version of the code that provides the workflow commands.
+As an action author that writes custom actions that workflow files depend on, If the users of your custom actions are raising GitHub issues due to the deprecation of the commands above, you need to update the [`@actions/core`](https://github.com/actions/toolkit/blob/45c49b09df04cff84c5f336f07d5232fa7103761/packages/core/README.md#L4) package to the latest version. The latest version of this package provides the updated version of the code that provides the workflow commands.
 
 ## Conclusion
 
@@ -517,9 +527,6 @@ In order to stay updated with the latest changes like deprecation or features in
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
