@@ -29,13 +29,15 @@ In this article, I will discuss the phenomenon of the Curse of Knowledge and how
 
 ## What is the Curse of Knowledge
 
-The [Curse of Knowledge](https://en.m.wikipedia.org/wiki/Curse_of_knowledge) refers to the cognitive bias in which an individual assumes that their audience possesses the prior knowledge necessary to understand a concept, leading to ineffective communication. This idea [was first introduced by economists [Colin Camerer](https://en.m.wikipedia.org/wiki/Colin_Camerer), [George Loewenstein](https://en.m.wikipedia.org/wiki/George_Loewenstein), and Martin Weber](<https://en.m.wikipedia.org/w/index.php?title=Curse_of_knowledge&action=edit&section=1>) in their research on the concept of the curse of knowledge and its economic implications. They found that better-informed parties are unable to ignore their better information.
+The [Curse of Knowledge](https://en.m.wikipedia.org/wiki/Curse_of_knowledge) refers to the cognitive bias in which an individual assumes that their audience possesses the prior knowledge necessary to understand a concept, leading to ineffective communication. This idea [was first introduced by economists [Colin Camerer]](https://en.m.wikipedia.org/wiki/Colin_Camerer), [George Loewenstein](https://en.m.wikipedia.org/wiki/George_Loewenstein), and [Martin Weber](https://en.m.wikipedia.org/w/index.php?title=Curse_of_knowledge&action=edit&section=1) in their research on the concept of the curse of knowledge and its economic implications. They found that better-informed parties are unable to ignore their better information.
 
 This concept of curse of knowledge is observed in various fields, including academia, software engineering, and technical writing.
 
 The Curse of knowledge in technical writing occurs when an author assumes that their audience has prior knowledge to understand their technical writing fully. This assumption can lead to technical writing that is unclear, ambiguous, and difficult to understand.
 
 ## Causes of Curse of Knowledge in Technical Writing
+
+![Causes]({{site.images}}{{page.slug}}/cause.png)\
 
 The curse of knowledge is generally [attributed to Fluency misattribution and Inhibition](https://www.sciencedirect.com/science/article/abs/pii/S0010027717301245?via%3Dihub).
 
@@ -53,6 +55,8 @@ Understanding these causes is essential for overcoming it. Next let's discuss im
 
 ## Impact of the Curse of Knowledge on Readers of Technical Writing
 
+![Readers]({{site.images}}{{page.slug}}/readers.png)\
+
 The curse of Knowledge can negatively impact the readers of technical writing in several ways. These include:
 
 1. Poor understanding of technical articles
@@ -68,6 +72,8 @@ The curse of Knowledge can negatively impact the readers of technical writing in
    The curse of knowledge can have significant negative impacts on the readers of technical writing. Poor understanding of technical articles and misinterpretation are some of the consequences that readers may face. However, there are ways to overcome this curse and improve the quality of technical writing. In the next section, I will discuss some strategies for writers to overcome the curse of knowledge and create technical content that is clear, concise, and engaging for readers.
 
 ## Overcoming Curse of Knowledge in Technical Article
+
+![Overcoming]({{site.images}}{{page.slug}}/overcome.png)\
 
 Overcoming the curse of knowledge totally is difficult, but writers can make an effort to reduce it.
 
@@ -86,11 +92,3 @@ Now that you know all about the curse of knowledge, here's the best advice I can
 If we make a real effort to see things from our readers' perspective, we can beat the curse of knowledge. Just remember to have empathy for your audience, and you'll be explaining things clearly in no time.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
