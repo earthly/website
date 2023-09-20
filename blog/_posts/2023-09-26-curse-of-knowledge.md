@@ -6,7 +6,10 @@ toc: true
 author: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - curse of knowledge
+ - knowledge in technical writing
+ - curse in technical writing
+ - technical writing
 ---
 
 <div class="align-right">
@@ -90,5 +93,4 @@ If we make a real effort to see things from our readers' perspective, we can bea
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
