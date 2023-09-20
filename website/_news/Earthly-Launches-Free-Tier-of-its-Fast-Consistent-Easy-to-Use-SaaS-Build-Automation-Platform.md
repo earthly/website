@@ -3,9 +3,11 @@ title: Earthly Launches Free Tier of its Fast, Consistent & Easy-to-Use SaaS Bui
 subtitle: The new offering gives developers 6,000 minutes per month of Earthly Cloud’s remote build runners and continuous integration
 source: Business Wire
 category: Press Release
+thumbnail: ../assets/img/earthly-logo-news.png
 link: /news/Earthly-Launches-Free-Tier-of-its-Fast-Consistent-Easy-to-Use-SaaS-Build-Automation-Platform
 originalLink: https://www.businesswire.com/news/home/20230801391405/en/Earthly-Launches-Free-Tier-of-its-Fast-Consistent-Easy-to-Use-SaaS-Build-Automation-Platform
 createdAt: 2023-08-01 00:00:00
+featured: true
 layout: news
 ---
 

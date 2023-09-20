@@ -15,7 +15,11 @@
     {% assign news = newsData | sort: 'createdAt' %}
 
     {% for item in news reversed %}
-      <a id="news-{{ forloop.index }}" href="{{ item.link }}" class="{% if forloop.index > 6 %}hidden{% endif %}" data-category="{{ item.category }}">
+      {% if item.category == 'Press Release' %}
+        <a id="news-{{ forloop.index }}" href="{{ item.link }}" class="{% if forloop.index > 6 %}hidden{% endif %}" data-category="{{ item.category }}">
+      {% elsif (item.category == 'Media Coverage' or item.category == 'Podcast') %}
+        <a id="news-{{ forloop.index }}" href="{{ item.link }}" target="_blank" class="{% if forloop.index > 6 %}hidden{% endif %}" data-category="{{ item.category }}">
+      {% endif %}
         <div class="h-full border border-[#D1D6D9] cursor-pointer group pb-8 pt-6 px-7 rounded-lg">
           <div class="flex flex-wrap">
             <p class="mr-1 text-sm uppercase">{{ item.source }} -</p>

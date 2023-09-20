@@ -3,7 +3,6 @@
   category: Podcast
   thumbnail: https://images.transistor.fm/file/transistor/images/show/10529/thumb_1656512000-artwork.jpg
   link: https://share.transistor.fm/s/7bf78eb5
-  featured: true
   createdAt: 2023-08-09 00:00:00
 
 - title: Interview With Vlad A. Ionescu
@@ -35,11 +34,12 @@
   createdAt: 2023-05-30 00:00:00
 
 - title: Earthly wants to reinvent continuous integration to make it faster and cheaper
-  subtitle: Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt...
+  subtitle: Earthly Technologies is predicated on the idea that traditional CI is too slow and expensive, and it wants to change that.
   source: Tech Crunch
   category: Media Coverage
   thumbnail: https://techcrunch.com/wp-content/uploads/2023/02/GettyImages-1312072591.jpg?w=1390&crop=1
   link: https://techcrunch.com/2023/02/23/earthly-wants-to-reinvent-continuous-integration-to-make-it-faster-and-cheaper/
+  #featured: true
   createdAt: 2023-02-23 15:00:00
 
 - title: Fixing the CI/CD experience with Vlad A. Ionescu

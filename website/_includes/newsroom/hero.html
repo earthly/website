@@ -9,7 +9,11 @@
     {% assign featured = newsData | where:"featured", true %}
 
     <div class="flex mt-10">
-      <a href="{{ featured[0].link }}">
+      {% if featured[0].category == 'Press Release' %}
+        <a href="{{ featured[0].link }}">
+      {% elsif (featured[0].category == 'Media Coverage' or featured[0].category == 'Podcast') %}
+        <a href="{{ featured[0].link }}" target="_blank">
+      {% endif %}
         <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
           <div class="w-full lg:min-w-[42%] lg:max-w-[496px] h-full bg-white flex flex-1 flex-col justify-center px-8 py-10 rounded-2xl text-xl">
             <div class="flex flex-wrap">
