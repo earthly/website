@@ -259,7 +259,7 @@ main.wave-main.homepage {
 }
 
 .highlight-category {
-  @apply cursor-pointer pb-2 text-[#6B7280] lg:text-xl;
+  @apply cursor-pointer pb-2 text-[#6B7280] text-sm lg:text-xl;
 }
 
 .highlight-category.active {

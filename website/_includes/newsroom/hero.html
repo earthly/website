@@ -2,11 +2,16 @@
   <div class="flex flex-col items-center max-w-7xl mx-auto px-4 lg:px-10">
     <h1 class="font-medium max-w-4xl text-[#2d7e5d] text-5xl sm:text-7xl text-center tracking-tight">Newsroom</h1>
 
-    {% assign featured = site.data.news | where:"featured", true %}
+    {% assign newsData = site.data.news %}
+    {% for item in site.news %}
+      {% assign newsData = newsData | push: item %}
+    {% endfor %}
+    {% assign featured = newsData | where:"featured", true %}
+
     <div class="flex mt-10">
       <a href="{{ featured[0].link }}">
         <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
-          <div class="w-full lg:w-5/12 h-full bg-white flex flex-col justify-center px-8 py-10 rounded-2xl text-xl">
+          <div class="w-full lg:min-w-[42%] lg:max-w-[496px] h-full bg-white flex flex-1 flex-col justify-center px-8 py-10 rounded-2xl text-xl">
             <div class="flex flex-wrap">
               <p class="mr-1 text-sm uppercase">{{ featured[0].source }} -</p>
               <time class="text-sm" datetime="{{ date | date_to_xmlschema }}">{{ featured[0].createdAt | date: "%B %-d, %Y" }}</time>
@@ -26,9 +31,11 @@
             </div>
           </div>
 
-          <div class="h-full flex-1">
-            <img class="h-full object-cover rounded-2xl" src="{{ featured[0].thumbnail }}" alt="{{ item.title }}" />
-          </div>
+          {% if featured[0].thumbnail %}
+            <div class="w-fit lg:max-w-[632px] h-full mx-auto">
+              <img class="h-full object-cover rounded-2xl" src="{{ featured[0].thumbnail }}" alt="{{ item.title }}" />
+            </div>
+          {% endif %}
         </div>
       </a>
     </div>
