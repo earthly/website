@@ -264,3 +264,7 @@ Segun
 Colin
 Loewenstein
 Camerer
+DORA
+Starship
+Powerlevel
+Powerlevel10k
