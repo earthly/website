@@ -82,6 +82,7 @@ For linting locally (and in vs code):
  brew install sponge
  brew install gawk
  brew install gnu-sed
+ brew install rg
 
  npm install -g markdownlint-cli@0.32.0
 ```

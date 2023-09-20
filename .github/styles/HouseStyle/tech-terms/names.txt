@@ -261,3 +261,7 @@ Sedaris
 Schumer
 ses
 Segun
+DORA
+Starship
+Powerlevel
+Powerlevel10k
