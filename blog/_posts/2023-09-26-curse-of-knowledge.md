@@ -82,6 +82,8 @@ Now that you know all about the curse of knowledge, here's the best advice I can
 
 If we make a real effort to see things from our readers' perspective, we can beat the curse of knowledge. Just remember to have empathy for your audience, and you'll be explaining things clearly in no time.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -90,4 +92,3 @@ If we make a real effort to see things from our readers' perspective, we can bea
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
