@@ -7,7 +7,11 @@ author: Aniket Bhattacharyea
 editor: Ubaydah Abdulwasiu
 
 internal-links:
- - just an example
+ - workspaces for monorepo
+ - using npm for monorepo
+ - utilizing monorepo management
+ - how to use npm workspaces
+ - npm workspaces for monorepo management
 ---
 
 In the ever-evolving world of software development, managing complex projects with multiple interconnected components can be a daunting task. However, monorepos provide an efficient organizational strategy by offering a unified repository that houses all related projects in one place.
@@ -26,7 +30,7 @@ For example, if you have `package-a` and `package-b` in a single top-level packa
 
 To enable workspaces, you need to add the `workspaces` key to your root-level `package.json`. This key should list all the directories containing the workspaces:
 
-~~~
+~~~{.js caption="package.json"}
 {
     ...,
     "workspaces": [ "./package-a", "./package-b" ]
@@ -35,10 +39,13 @@ To enable workspaces, you need to add the `workspaces` key to your root-level `p
 
 Once this is defined, you can use the `--workspace` flag in `npm` commands to run the commands in a particular workspace and the `--workspaces` flag to run the commands in all workspaces like this:
 
-~~~
-npm install date-fns --workspace package-a # Install date-fns into package-a
-npm uninstall lodash --workspace package-b # Uninstall lodash from package-b
-npm run build --workspaces # Run build in all workspaces
+~~~{.bash caption=">_"}
+npm install date-fns --workspace package-a 
+# Install date-fns into package-a
+npm uninstall lodash --workspace package-b 
+# Uninstall lodash from package-b
+npm run build --workspaces 
+# Run build in all workspaces
 ~~~
 
 ### Pros of npm Workspaces
@@ -73,13 +80,13 @@ Additionally, npm workspaces also don't have integration with IDEs, and you have
 
 To follow along with this tutorial, you need to install the latest version of [Node.js](https://nodejs.org/en) and [npm](https://npmjs.com). The npm workspace was introduced in npm version 7, so make sure you have the latest version of npm installed by running `npm -v`:
 
-~~~
+~~~{.bash caption=">_"}
 npm -v
 ~~~
 
 If the npm version is earlier than 7, install the latest version of npm with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npm install -g npm@latest
 ~~~
 
@@ -89,20 +96,20 @@ npm install -g npm@latest
 
 Create a new directory named `npm-workspaces-demo` and initiate an npm package:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir npm-workspace-demo && cd npm-workspace-demo
 npm init -y
 ~~~
 
 To use npm workspaces, you don't need to follow a certain directory structure; you're free to structure your workspace as you see fit. For this tutorial, create two directories: `apps` to hold the React apps and `packages` to hold the shared package:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir apps packages
 ~~~
 
 Move into the `apps` directory and create two React apps with Vite: `app1` and `app2`:
 
-~~~
+~~~{.bash caption=">_"}
 cd apps
 npm create vite@latest app1 -- --template react-ts
 npm create vite@latest app2 -- --template react-ts
@@ -110,7 +117,7 @@ npm create vite@latest app2 -- --template react-ts
 
 Edit the `package.json` file of `app1` and change the name field to the following:
 
-~~~
+~~~{.js caption="package.json"}
 {
     "name": "@npm-workspace-demo/app1",
     ...
@@ -121,7 +128,7 @@ Even though it's not mandatory, scoping the packages with `@npm-workspace-demo` 
 
 Do the same in the `package.json` of `app2`:
 
-~~~
+~~~{.js caption="package.json"}
 {
     "name": "@npm-workspace-demo/app2",
     ...
@@ -130,13 +137,13 @@ Do the same in the `package.json` of `app2`:
 
 Finally, move into the `packages` directory and create another React app named `components`:
 
-~~~
+~~~{.bash caption=">_"}
 npm create vite@latest components -- --template react-ts
 ~~~
 
 Then create a directory named `components` inside `packages/components/src` and create a file `Header.tsx` in this directory with the following code:
 
-~~~
+~~~{.tsx caption="Header.tsx"}
 import React from 'react'
 
 export interface HeaderText {
@@ -151,14 +158,14 @@ This code simply defines a `Header` component that displays a text.
 
 Next, create an `index.ts` file in the same directory and export the `Header` and `HeaderText` components:
 
-~~~
+~~~{.ts caption="index.ts"}
 export { Header } from './Header'
 export { type HeaderText } from './Header'
 ~~~
 
 Your shiny new `Header` component is ready. However, before you can use it, you need to compile the TSX into JavaScript before importing it into your React apps. To tell Vite how to do that, open the `vite.config.ts` file in `packages/components` and replace the existing code with the following:
 
-~~~
+~~~{.ts caption="vite.config.ts"}
 import { resolve } from 'node:path'
 
 import react from '@vitejs/plugin-react'
@@ -194,7 +201,7 @@ The `dts` function compiles the type information from `src/components`, and the 
 
 Open the `tsconfig.json` file in `packages/components` and write the following code:
 
-~~~
+~~~{.js caption="tsconfig.json"}
 {
   "compilerOptions": {
     "target": "ESNext",
@@ -233,7 +240,7 @@ This enables the TypeScript compiler to know what files to compile to JavaScript
 
 Replace the contents of `tsconfig.node.json` in the same directory with the following to configure the compiler options for Vite:
 
-~~~
+~~~{.js caption="tsconfig.node.json"}
 {
   "compilerOptions": {
     "composite": true,
@@ -248,7 +255,7 @@ Replace the contents of `tsconfig.node.json` in the same directory with the foll
 
 Finally, open `package.json` in the same directory and add the following entries to the JSON object:
 
-~~~
+~~~{.js caption="package.json"}
 "files": [
     "dist"
 ],
@@ -267,7 +274,7 @@ This simply tells npm which files to export. After the components are compiled, 
 
 Rename the `dependencies` key to `peerDependencies` and change the `name` field to include the scope:
 
-~~~
+~~~{.js caption="package.json"}
 {
     "name": "@npm-workspace-demo/components",
     ...
@@ -276,7 +283,7 @@ Rename the `dependencies` key to `peerDependencies` and change the `name` field 
 
 Finally, open the `package.json` file of the root workspace and add the following entry:
 
-~~~
+~~~{.js caption="package.json"}
 {
     ...,
     "workspaces": ["./packages/*", "./apps/*"]
@@ -295,28 +302,31 @@ For the `components` library to compile, you need to install a few dependencies.
 
 Run the following command to install `vite-plugin-dts` and `vite-tsconfig-paths` into the `components` workspace:
 
-~~~
-npm install vite-plugin-dts vite-tsconfig-paths --workspace @npm-workspace-demo/components
+~~~{.bash caption=">_"}
+npm install vite-plugin-dts vite-tsconfig-paths --workspace \
+@npm-workspace-demo/components
 ~~~
 
 Build the `components` library:
 
-~~~
+~~~{.bash caption=">_"}
 npm run build --workspace @npm-workspace-demo/components
 ~~~
 
 And install it into `app1` and `app2`:
 
-~~~
-npm install @npm-workspace-demo/components --workspace @npm-workspace-demo/app1
-npm install @npm-workspace-demo/components --workspace @npm-workspace-demo/app2
+~~~{.bash caption=">_"}
+npm install @npm-workspace-demo/components --workspace \
+@npm-workspace-demo/app1
+npm install @npm-workspace-demo/components --workspace \
+@npm-workspace-demo/app2
 ~~~
 
 It's time to use the component in the React apps and make sure the setup works as expected.
 
 Open `apps/app1/src/App.tsx` and replace the code with the following:
 
-~~~
+~~~{.tsx caption="App.tsx"}
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -339,7 +349,7 @@ Here, the `Header` component is imported from `@npm-workspace-demo/components`. 
 
 Do the same thing for `app2.` This time, change the text to `Hello World from app2`:
 
-~~~
+~~~{.tsx caption="App.tsx"}
 import { useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
@@ -368,7 +378,7 @@ At this point, you've finished interlinking the apps and the architecture looks 
 
 Run `app1` and make sure that it works:
 
-~~~
+~~~{.bash caption=">_"}
 npm run dev --workspace @npm-workspace-demo/app1
 ~~~
 
@@ -378,7 +388,7 @@ npm run dev --workspace @npm-workspace-demo/app1
 
 And then make sure `app2` works as well:
 
-~~~
+~~~{.bash caption=">_"}
 npm run dev --workspace @npm-workspace-demo/app2
 ~~~
 
@@ -400,5 +410,3 @@ Even though npm workspaces are an excellent option for small monorepos, it's not
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
