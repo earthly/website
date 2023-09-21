@@ -265,3 +265,5 @@ DORA
 Starship
 Powerlevel
 Powerlevel10k
+Bhattacharyea
+Aniket
