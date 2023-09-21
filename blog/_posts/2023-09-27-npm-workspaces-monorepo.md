@@ -18,11 +18,11 @@ In the ever-evolving world of software development, managing complex projects wi
 
 With a bird's-eye view of all related projects, code sharing and collaboration across teams become seamless, fostering a cohesive development environment. Monorepos also ensure synchronized releases and reduce versioning issues across projects.
 
-[npm 7](https://www.npmjs.com/package/npm/v/7.0.7) introduced [npm workspaces](https://docs.npmjs.com/cli/v9/using-npm/workspaces?v=true), which provide monorepo management capabilities. In this article, you'll learn all about npm workspaces and how to set up and implement one.
+[`npm` 7](https://www.npmjs.com/package/npm/v/7.0.7) introduced [npm workspaces](https://docs.npmjs.com/cli/v9/using-npm/workspaces?v=true), which provide monorepo management capabilities. In this article, you'll learn all about npm workspaces and how to set up and implement one.
 
 ## What Are npm Workspaces?
 
-[npm](https://www.npmjs.com/) is a popular package management tool for JavaScript. In 2020, npm introduced the much-awaited [workspaces feature](https://docs.npmjs.com/cli/v7/using-npm/workspaces), which gives you the ability to manage multiple packages from one single top-level package. With workspaces, you can develop and manage multiple independent packages and create dependencies between them.
+[`npm`](https://www.npmjs.com/) is a popular package management tool for JavaScript. In 2020, npm introduced the much-awaited [workspaces feature](https://docs.npmjs.com/cli/v7/using-npm/workspaces), which gives you the ability to manage multiple packages from one single top-level package. With workspaces, you can develop and manage multiple independent packages and create dependencies between them.
 
 For example, if you have `package-a` and `package-b` in a single top-level package with workspaces enabled, running `npm install` will symlink `package-a` and `package-b` directories inside a root-level `node_modules` directory. Then you can use `package-a` in `package-b` and vice versa without worrying about manually linking dependencies with `npm link`. This simplifies the management of a monorepo significantly.
 
@@ -48,7 +48,7 @@ npm run build --workspaces
 # Run build in all workspaces
 ~~~
 
-### Pros of npm Workspaces
+### Pros of `npm` Workspaces
 
 The following are some of the advantages of using npm workspaces:
 
@@ -60,7 +60,7 @@ With npm workspaces, you don't need to install third-party build tools such as [
 
 Using npm workspaces, you can install all the dependencies at the root-level workspace as long as all the workspaces are using the same version. If different workspaces use different versions of the same dependency, it gets installed in individual workspaces. At the same time, the individual workspaces are symlinked to the root-level `node_modules` directory. This ensures you don't waste space by installing the same dependency multiple times. It also helps you synchronize dependency versions throughout different packages.
 
-### Cons of npm Workspaces
+### Cons of `npm` Workspaces
 
 Even though npm workspaces make monorepo management more accessible, it still has a few downsides:
 
@@ -74,9 +74,9 @@ Additionally, there's no equivalent to Nx's affected mechanism where you can run
 
 Another disadvantage is that npm workspaces don't have native integration with frameworks like [React](https://react.dev/), [Vue](https://vuejs.org/), or [Vite](https://vitejs.dev/). This means you must manually create packages with these frameworks and configure them to integrate with npm workspaces. Compare this to a tool like Nx, which can create apps with different frameworks that work out of the box with one simple command.
 
-Additionally, npm workspaces also don't have integration with IDEs, and you have to use the CLI to use it.
+Additionally, `npm` workspaces also don't have integration with IDEs, and you have to use the CLI to use it.
 
-## Build a Monorepo with npm Workspaces
+## Build a Monorepo with `npm` Workspaces
 
 To follow along with this tutorial, you need to install the latest version of [Node.js](https://nodejs.org/en) and [npm](https://npmjs.com). The npm workspace was introduced in npm version 7, so make sure you have the latest version of npm installed by running `npm -v`:
 
@@ -101,7 +101,7 @@ mkdir npm-workspace-demo && cd npm-workspace-demo
 npm init -y
 ~~~
 
-To use npm workspaces, you don't need to follow a certain directory structure; you're free to structure your workspace as you see fit. For this tutorial, create two directories: `apps` to hold the React apps and `packages` to hold the shared package:
+To use `npm` workspaces, you don't need to follow a certain directory structure; you're free to structure your workspace as you see fit. For this tutorial, create two directories: `apps` to hold the React apps and `packages` to hold the shared package:
 
 ~~~{.bash caption=">_"}
 mkdir apps packages
@@ -124,7 +124,7 @@ Edit the `package.json` file of `app1` and change the name field to the followin
 }
 ~~~
 
-Even though it's not mandatory, scoping the packages with `@npm-workspace-demo` ensures no conflict with existing packages in the npm registry.
+Even though it's not mandatory, scoping the packages with `@npm-workspace-demo` ensures no conflict with existing packages in the `npm` registry.
 
 Do the same in the `package.json` of `app2`:
 
@@ -270,7 +270,7 @@ Finally, open `package.json` in the same directory and add the following entries
 "types": "./dist/index.d.ts",
 ~~~
 
-This simply tells npm which files to export. After the components are compiled, the resulting JavaScript file is stored in `dist/components.<format>.js`, which is imported into the React apps.
+This simply tells `npm` which files to export. After the components are compiled, the resulting JavaScript file is stored in `dist/components.<format>.js`, which is imported into the React apps.
 
 Rename the `dependencies` key to `peerDependencies` and change the `name` field to include the scope:
 
@@ -290,7 +290,7 @@ Finally, open the `package.json` file of the root workspace and add the followin
 }
 ~~~
 
-This tells npm that everything under the `packages` and `apps` directories is an npm workspace. Note that the workspace's name is inferred from the `name` field of the corresponding `package.json` file.
+This tells `npm` that everything under the `packages` and `apps` directories is an `npm` workspace. Note that the workspace's name is inferred from the `name` field of the corresponding `package.json` file.
 
 Now run `npm install` in the root of the project to install the dependencies of all the workspaces.
 
@@ -298,7 +298,7 @@ Now run `npm install` in the root of the project to install the dependencies of 
 
 As mentioned previously, the dependencies of all the workspaces are stored in the root-level `node_modules` directory and linked from there as long as all the workspaces use the same version of the dependencies. If different workspaces use different versions of a particular dependency, it will be installed in the individual workspaces with the appropriate versions.
 
-For the `components` library to compile, you need to install a few dependencies. You can use the `--workspace` flag of `npm` to run npm commands scoped to a specific workspace.
+For the `components` library to compile, you need to install a few dependencies. You can use the `--workspace` flag of `npm` to run `npm` commands scoped to a specific workspace.
 
 Run the following command to install `vite-plugin-dts` and `vite-tsconfig-paths` into the `components` workspace:
 
@@ -345,7 +345,7 @@ function App() {
 export default App
 ~~~
 
-Here, the `Header` component is imported from `@npm-workspace-demo/components`. Note that the syntax is the same as what you'd write for a module installed from the npm registry.
+Here, the `Header` component is imported from `@npm-workspace-demo/components`. Note that the syntax is the same as what you'd write for a module installed from the `npm` registry.
 
 Do the same thing for `app2.` This time, change the text to `Hello World from app2`:
 
@@ -382,9 +382,7 @@ Run `app1` and make sure that it works:
 npm run dev --workspace @npm-workspace-demo/app1
 ~~~
 
-<div class="wide">
 ![Screenshot of app1]({{site.images}}{{page.slug}}/j6sKizL.png)
-</div>
 
 And then make sure `app2` works as well:
 
@@ -392,21 +390,14 @@ And then make sure `app2` works as well:
 npm run dev --workspace @npm-workspace-demo/app2
 ~~~
 
-<div class="wide">
 ![Screenshot of app2]({{site.images}}{{page.slug}}/aTosrRc.png)
-</div>
 
 You can find the complete code for this tutorial on [GitHub](https://github.com/heraldofsolace/npm-workspaces-demo).
 
 ## Conclusion
 
-npm is one of the most commonly used Node.js package managers, and the workspaces feature marks its entry into the field of monorepos. With workspaces, you can manage multiple Node.js packages in one single repo and run npm tasks in individual projects from the main project, making it an easy-to-use monorepo management tool.
+`npm` is one of the most commonly used Node.js package managers, and the workspaces feature marks its entry into the field of monorepos. With workspaces, you can manage multiple Node.js packages in one single repo and run `npm` tasks in individual projects from the main project, making it an easy-to-use monorepo management tool.
 
-Even though npm workspaces are an excellent option for small monorepos, it's not mature enough to use in large, complex monorepos. The lack of defining task dependencies, result caching, and affected mechanism makes it an inferior choice to other tools like Nx or Turborepo when it comes to managing a complex js monorepo with a large number of projects and/or a lot of interdependencies. And if you need to incorporate other languages or backend services, an NPM based solution will be a limitation. For monorepos builds that support NPM and many other tools, take a look at [Earthly](http://earthly.dev). It can help keep your monorepo builds fast as your code base grows.
+Even though `npm` workspaces are an excellent option for small monorepos, it's not mature enough to use in large, complex monorepos. The lack of defining task dependencies, result caching, and affected mechanism makes it an inferior choice to other tools like Nx or Turborepo when it comes to managing a complex js monorepo with a large number of projects and/or a lot of interdependencies. And if you need to incorporate other languages or backend services, an NPM based solution will be a limitation. For monorepos builds that support NPM and many other tools, take a look at [Earthly](http://earthly.dev). It can help keep your monorepo builds fast as your code base grows.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
