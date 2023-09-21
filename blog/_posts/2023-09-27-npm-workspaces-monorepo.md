@@ -388,6 +388,8 @@ npm is one of the most commonly used Node.js package managers, and the workspace
 
 Even though npm workspaces are an excellent option for small monorepos, it's not mature enough to use in large, complex monorepos. The lack of defining task dependencies, result caching, and affected mechanism makes it an inferior choice to other tools like Nx or Turborepo when it comes to managing a complex js monorepo with a large number of projects and/or a lot of interdependencies. And if you need to incorporate other languages or backend services, an NPM based solution will be a limitation. For monorepos builds that support NPM and many other tools, take a look at [Earthly](http://earthly.dev). It can help keep your monorepo builds fast as your code base grows.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -397,4 +399,3 @@ Even though npm workspaces are an excellent option for small monorepos, it's not
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
