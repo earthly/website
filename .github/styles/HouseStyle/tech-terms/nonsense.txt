@@ -126,10 +126,9 @@ Vue
 deduped
 Vercel
 
-<<<<<<< HEAD
 Pentesting
-=======
+
 Nrwl
 Neovim
 Axios
->>>>>>> 8a1505dc963628db8f2cf654dde9505493bbeceb
+include_html

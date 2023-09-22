@@ -72,7 +72,7 @@ I'll make sure it's installed:
 protoc --version
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 libprotoc 3.19.4
 ~~~
 
@@ -85,7 +85,7 @@ Then I can use it to generate the go struct for the message type:
     --proto_path=.
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 
 Please specify a program using absolute path or make sure the program is available in your PATH system variable
 --go_out: protoc-gen-go: Plugin failed with status code 1.
@@ -338,7 +338,7 @@ $ go run cmd/server/main.go
 
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 # github.com/adamgordonbell/cloudservices/activity-log/internal/server
 internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_v1.Activity_LogServer in argument to api_v1.RegisterActivity_LogServer:
         *grpcServer does not implement api_v1.Activity_LogServer (missing api_v1.mustEmbedUnimplementedActivity_LogServer method)
@@ -360,7 +360,7 @@ grpcurl -plaintext -d  '{ "description": "christmas eve bike class" }' \
  localhost:8080 api.v1.Activity_Log/Insert
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 ERROR:
   Code: Unimplemented
   Message: method Insert not implemented
@@ -429,7 +429,7 @@ $ grpcurl -plaintext -d  \
   localhost:8080 api.v1.Activity_Log/Insert
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 {
   "id": 1
 }
@@ -441,7 +441,7 @@ And even better, you can introspect against the service and see what gRPC method
 grpcurl -plaintext localhost:8080 describe
 ~~~
 
-~~~{.protobuf .merge-code caption="Output"}
+~~~{.protobuf .merge-code}
 api.v1.Activity_Log is a service:
 service Activity_Log {
   rpc Insert ( .api.v1.Activity ) returns ( .api.v1.InsertResponse );
@@ -465,7 +465,7 @@ But, even with reflection off, you can make specific rpc, calls if you have the 
     localhost:8080 api.v1.Activity_Log/Retrieve
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 {
   "id": 1,
   "time": "1970-01-01T00:00:00Z",
@@ -479,7 +479,7 @@ And if you don't like `grpcurl` then `grpc_cli`, which comes with the gRPC packa
 grpc_cli ls localhost:8080 -l
 ~~~
 
-~~~{.protobuf .merge-code caption="Output"}
+~~~{.protobuf .merge-code}
 filename: activity-log/api/v1/activity.proto
 package: api.v1;
 service Activity_Log {
@@ -694,7 +694,7 @@ $ grpcurl -plaintext -d '{ "id": 5 }' \
   localhost:8080 api.v1.Activity_Log/Retrieve 
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 ERROR:
   Code: Unknown
   Message: id was not found Id not found
@@ -732,7 +732,7 @@ $ grpcurl -plaintext -d '{ "id": 5 }' \
   localhost:8080 api.v1.Activity_Log/Retrieve 
 ~~~
 
-~~~{.bash .merge-code caption="Output"}
+~~~{.bash .merge-code}
 ERROR:
   Code: NotFound
   Message: id was not found Id not found

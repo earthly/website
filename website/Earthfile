@@ -60,7 +60,7 @@ update:
 build:
   FROM +base-or-cache-image
   CACHE _site
-  COPY --dir _data _sass _styles _layouts _includes assets signup .
+  COPY --dir _data _sass _styles _layouts _includes _news assets signup .
   COPY *.md *.js *.html *.yml *.json *.rb _redirects Gemfile Gemfile.lock robots.txt .
   RUN --no-cache --secret YOUTUBE_API_KEY ruby youtubeVideos.rb "$YOUTUBE_API_KEY"
   RUN bundle update

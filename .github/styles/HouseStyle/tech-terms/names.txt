@@ -263,3 +263,7 @@ ses
 Segun
 
 thinus
+DORA
+Starship
+Powerlevel
+Powerlevel10k

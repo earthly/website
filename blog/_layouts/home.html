@@ -1,12 +1,22 @@
 ---
 layout: home-archive
 hero_post: earthly-cloud-free-tier-launch
-featured_post_a: earthly-satellites-ga
-featured_post_b: earthly-open-source
-featured_post_c: soc-type-one
-featured_post_d: golang-errors
-featured_post_e: Flux-vs-Argo-CD
-featured_post_f: dos-gaming-in-docker
+featured_posts_1:
+  - earthly-satellites-ga
+  - earthly-open-source
+  - soc-type-one
+featured_posts_2:
+  - golang-errors
+  - Flux-vs-Argo-CD
+  - dos-gaming-in-docker
+indepth_posts: 
+  - awk-examples
+  - jq-select
+  - bash-variables
+  - what-is-nix
+  - bazel-build
+  - monorepo-tools
+
 ---
 
 {% assign entries_layout = page.entries_layout | default: 'grid' %}
@@ -44,19 +54,9 @@ featured_post_f: dos-gaming-in-docker
   Featured
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% assign featured_post_a = site.posts | where:"slug", layout.featured_post_a %}
-  {% for post in featured_post_a %}
-  {% include archive-single.html type=entries_layout %}
-  {% endfor %}
-
-  {% assign featured_post_b = site.posts | where:"slug", layout.featured_post_b %}
-  {% for post in featured_post_b %}
-  {% include archive-single.html type=entries_layout %}
-  {% endfor %}
-
-  {% assign featured_post_c = site.posts | where:"slug", layout.featured_post_c %}
-  {% for post in featured_post_c %}
-  {% include archive-single.html type=entries_layout %}
+  {% for slug in layout.featured_posts_1 %}
+    {% assign post = site.posts | where:"slug", slug | first %}
+    {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>
 
@@ -104,18 +104,18 @@ featured_post_f: dos-gaming-in-docker
   Popular
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% assign featured_post_d = site.posts | where:"slug", layout.featured_post_d %}
-  {% for post in featured_post_d %}
+  {% for slug in layout.featured_posts_2 %}
+  {% assign post = site.posts | where:"slug", slug | first %}
   {% include archive-single.html type=entries_layout %}
   {% endfor %}
+</div>
 
-  {% assign featured_post_e = site.posts | where:"slug", layout.featured_post_e %}
-  {% for post in featured_post_e %}
-  {% include archive-single.html type=entries_layout %}
-  {% endfor %}
-
-  {% assign featured_post_f = site.posts | where:"slug", layout.featured_post_f %}
-  {% for post in featured_post_f %}
-  {% include archive-single.html type=entries_layout %}
+<h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
+  In Depth
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for slug in layout.indepth_posts %}
+    {% assign post = site.posts | where:"slug", slug | first %}
+    {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>

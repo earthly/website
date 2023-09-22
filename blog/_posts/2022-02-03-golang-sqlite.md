@@ -152,7 +152,7 @@ By the way, I rarely select data using the sqlite3 client. Instead, I like to us
 sqlite-utils activities.db "select * from activities" --table
 ~~~
 
-~~~{.ini .merge-code caption="output"}
+~~~{.ini .merge-code}
   id  time                  description
 ----  --------------------  -----------------------------------------
    1  2021-12-09T16:34:04Z  christmas eve bike class
@@ -168,7 +168,7 @@ You can also set `.mode box` in your [`.sqliterc`](https://sqlite.org/cli.html#c
 > sqlite-utils dump activities.db
 ~~~
 
-~~~{.sql .merge-code caption="output"}
+~~~{.sql .merge-code}
 BEGIN TRANSACTION;
 CREATE TABLE [activities] (
 id INTEGER NOT NULL PRIMARY KEY,
@@ -310,10 +310,11 @@ And I can test my insert code with curl:
 
 ~~~{.bash caption=">_"}
  curl -X POST -s localhost:8080 -d \    
- '{"activity": {"description": "christmas eve bike class", "time":"2021-12-09T16:34:04Z"}}'
+ '{"activity": {"description": "christmas eve bike class", 
+ "time":"2021-12-09T16:34:04Z"}}'
 ~~~
 
-~~~{.bash .merge-code caption="output"}
+~~~{.bash .merge-code}
 {"id":5}
 ~~~
 
@@ -323,7 +324,7 @@ A quick check with `sqlite-utils` shows that my results were written to the db:
 > sqlite-utils activities.db "select * from activities" --table
 ~~~
 
-~~~{.texinfo .merge-code caption="Output"}
+~~~{.texinfo .merge-code}
   id  time                       description
 ----  -------------------------  -----------------------------------------
    1  2021-12-09 16:34:04+00:00  christmas eve bike class
@@ -549,7 +550,7 @@ With that list method threaded through to `/list` I can start pulling out lists 
 > curl -X GET -s localhost:8080/list -d '{"offset": 1}' | jq .
 ~~~
 
-~~~{.json .merge-code caption="Output"}
+~~~{.json .merge-code}
 [
   {
     "time": "2022-01-09T16:56:23Z",
@@ -570,7 +571,7 @@ And then calling it with my command-line client:
 go run cmd/client/main.go --list
 ~~~
 
-~~~{.ini .merge-code caption="Output"}
+~~~{.ini .merge-code}
 ID:3    "sledding with nephew" .     2022-01-9
 ID:2    "cross country skiing "      2022-01-2
 ID:1    "christmas eve bike class"   2021-12-24
@@ -627,6 +628,7 @@ Next, I'm planning to explore gRPC and protocol buffers, along with considering 
 
 And if you want to be notified about the next installment, sign up for the newsletter:
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/embedded-newsletter.html %}
+
 [^1]: [`bbkane_`](https://www.reddit.com/user/bbkane_/) pointed out to me that SQlite now has a [STRICT mode](https://www.sqlite.org/stricttables.html). It doesn't support DateTime so far, but perhaps it one day will.
 [^2]: There is a machine translated pure Go SQLITE implementation that saves you from needing GCC, although it is slower and probably less extensively tested. Thanks again `bbkane_`
