@@ -507,3 +507,7 @@ Felix Kinaro:
     name    : "Felix Kinaro"
     bio     : "Felix is a linux and network administrator. Always tinkering"
     avatar  : "/assets/images/authors/felix-kinaro.jpg"
+Abhinav Upadhyay:
+    name    : "Abhinav Upadhyay"
+    bio     : "Abhinav Upadhyay is a versatile software engineer with experience in Java, Python, Go, Rust, C, Linux, and machine learning. He has served as a DevOps and software engineer, as well as an ML engineer focusing on anomaly detection and clustering using deep learning. Abhinav is also a skilled technical writer, maintaining a popular blog where he shares insights on programming techniques and solutions."
+    avatar  : "/assets/images/authors/abhinav-upadhyay.jpg"

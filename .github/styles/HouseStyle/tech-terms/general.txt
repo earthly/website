@@ -505,6 +505,8 @@ ast
 lineno
 unparse
 Cloudinary
+unsanitized
+eval
 Graylog
 Logrotate
 logrotate

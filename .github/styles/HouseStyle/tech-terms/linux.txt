@@ -119,3 +119,4 @@ systemctl
 journalctl
 sbin
 deserialize
+zshrc

@@ -593,7 +593,7 @@ There are two things I want to add to the activity tracker next. First, since al
 
 Hopefully, you've learned something as well. If you want to be notified about the next installment, sign up for the newsletter:
 
-{% include cta/embedded-newsletter.html %}
+{% include_html cta/embedded-newsletter.html %}
 
 [^1]: One of the first things I learned was to call it GoLang and not Go, or I'd end up with advice on an augmented reality game and not the programming language.
 
