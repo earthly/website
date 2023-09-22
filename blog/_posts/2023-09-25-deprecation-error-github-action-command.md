@@ -39,13 +39,13 @@ The `save-state` was used to persist data across different steps in the same job
 
 It had the following syntax:
 
-~~~{.bash caption=">_"}
+~~~
 echo "::save-state name=<state_name>::<state_value>"
 ~~~
 
 For example, you could persist a Go version environment variable as shown below:
 
-~~~{.bash caption=">_"}
+~~~
 echo "::save-state name=build_version::$VERSION"
 ~~~
 
@@ -57,13 +57,13 @@ The `set-output` was used to set the output for a workflow job. This output woul
 
 An example of using this command is shown below:
 
-~~~{.bash caption=">_"}
+~~~
 echo "::set-output name=<output_name>::<output_value>"
 ~~~
 
 For example, you could set an output of an already defined timestamp variable as shown below:
 
-~~~{.bash caption=">_"}
+~~~
 echo "::set-output name=build_timestamp::$TIMESTAMP"
 ~~~
 
@@ -77,7 +77,7 @@ The `set-env` command was used to set environment variables that could be used i
 
 It had the following syntax:
 
-~~~{.bash caption=">_"}
+~~~
 echo ::set-env:: name="<env_name>::<env_value>
 ~~~
 
@@ -85,7 +85,7 @@ The `add-path` command was used to add a directory to PATH to make it available 
 
 It had the following syntax:
 
-~~~{.bash caption=">_"}
+~~~
 echo "::add-path::/usr/local/mytool"
 ~~~
 
@@ -113,13 +113,13 @@ These environment files offer a highly secure and user-friendly method of managi
 
 An example of how they can be used to set environment variables is shown below:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 echo "{key}={value}" >> "$GITHUB_ENV"
 ~~~
 
 They also support the use of multiline with the syntax
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 {name}<<{delimiter}
 {value}
 {delimiter}
@@ -146,7 +146,7 @@ An example of this is the step below that saves a multiline encoded data as an e
 
 The content that will be saved in the environment file will look as shown below:
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 ENCODED_SECRET<<EOF
 bXlfc2VjcmV0X2tleQ==
 EOF
