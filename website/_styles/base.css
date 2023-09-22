@@ -259,7 +259,7 @@ main.wave-main.homepage {
 }
 
 .highlight-category {
-  @apply cursor-pointer pb-2 text-[#6B7280] lg:text-xl;
+  @apply cursor-pointer pb-2 text-[#6B7280] text-sm lg:text-xl;
 }
 
 .highlight-category.active {
@@ -305,4 +305,50 @@ main.wave-main.homepage {
   opacity: 1;
   overflow: unset;
   padding-block: 16px;
+}
+
+.news-content {
+  font-size: 18px;
+  margin-top: 40px;
+}
+
+.news-content p {
+  margin-block: 24px;
+}
+
+.news-content a {
+  text-decoration: underline;
+}
+
+.news-content .news-quote {
+  color: #2d7e5d;
+  font-weight: 700;
+  margin-block: 32px;
+  padding-left: 24px;
+  position: relative;
+}
+
+.news-content .news-quote::before {
+  width: 20px;
+  height: 20px;
+  content: url(/assets/svg/quotes-green.svg);
+  position: absolute;
+  left: 0;
+}
+
+.news-content .news-about-block {
+  border-radius: 7px;
+  border: 1.5px solid #d1d6d9;
+  background: #f9fafc;
+  margin-top: 48px;
+  padding: 24px 24px 32px;
+}
+
+.news-content .news-about-block strong:first-of-type {
+  width: 100%;
+  color: #475569;
+  display: inline-block;
+  font-size: 24px;
+  line-height: 32px;
+  margin-bottom: 16px;
 }

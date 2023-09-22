@@ -23,3 +23,6 @@ include:
 plugins:
   - jekyll-feed
   - jekyll-inline-svg
+collections:
+  news:
+    output: true

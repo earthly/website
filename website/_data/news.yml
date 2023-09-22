@@ -1,0 +1,106 @@
+- title: Two-time founder Vlad A. Ionescu on finding success after repeated entrepreneurial failures
+  source: The Business of Open Source
+  category: Podcast
+  thumbnail: https://images.transistor.fm/file/transistor/images/show/10529/thumb_1656512000-artwork.jpg
+  link: https://www.emilyomier.com/podcast/vlad-a-ionescu
+  createdAt: 2023-08-09 00:00:00
+
+- title: Interview With Vlad A. Ionescu
+  source: The Effective Developer
+  category: Podcast
+  thumbnail: https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded400/4655365/4655365-1586927150747-d34409b753af3.jpg
+  link: https://podcasters.spotify.com/pod/show/effective-developer/episodes/67---Interview-With-Vlad-A--Ionescu-e26or8q
+  createdAt: 2023-07-14 00:00:00
+
+- title: Removing Complexity For The Developer Community
+  source: Tech & Main Presents
+  category: Podcast
+  thumbnail: https://s3-us-west-2.amazonaws.com/anchor-generated-image-bank/production/podcast_uploaded_nologo400/565515/565515-1579606981875-c66b7780e32ee.jpg
+  link: https://podcasters.spotify.com/pod/show/techandmain/episodes/Removing-Complexity-For-The-Developer-Community--Vlad-A--Ionescu-e265974
+  createdAt: 2023-06-25 00:00:00
+
+- title: Exploring Trailblazing Business Models in the Age of Artificial Intelligence
+  source: The Jeff Bullas Show
+  category: Podcast
+  thumbnail: https://ssl-static.libsyn.com/p/assets/c/a/9/5/ca956ce97147d8aa/height_90_width_90_podcast-logo-02.png
+  link: https://www.jeffbullas.com/podcasts/exploring-ai-business-models-166/
+  createdAt: 2023-06-01 00:00:00
+
+- title: Vlad Ionescu
+  source: Coffee and Open Source
+  category: Podcast
+  thumbnail: https://img.youtube.com/vi/0T9DF75lFmg/maxresdefault.jpg
+  link: https://www.coffeeandopensource.com/guest/vlad-ionescu.html
+  createdAt: 2023-05-30 00:00:00
+
+- title: Earthly wants to reinvent continuous integration to make it faster and cheaper
+  subtitle: Earthly Technologies is predicated on the idea that traditional CI is too slow and expensive, and it wants to change that.
+  source: Tech Crunch
+  category: Media Coverage
+  thumbnail: https://techcrunch.com/wp-content/uploads/2023/02/GettyImages-1312072591.jpg?w=1390&crop=1
+  link: https://techcrunch.com/2023/02/23/earthly-wants-to-reinvent-continuous-integration-to-make-it-faster-and-cheaper/
+  #featured: true
+  createdAt: 2023-02-23 15:00:00
+
+- title: Programming Language Tooling with Adam Gordon Bell
+  source: Ruby Rogues
+  category: Podcast
+  thumbnail: https://redcircle.com/_next/image?url=https%3A%2F%2Fmedia.redcircle.com%2Fimages%2F2022%2F12%2F23%2F0%2F27bbe82f-bce1-481c-a4bb-cc4cc1ed95e8_-1e2f-4546-bc63-26ccabaac500_image-import-fail.jpg&w=3840&q=75
+  link: https://topenddevs.com/podcasts/ruby-rogues/episodes/programming-language-tooling-with-adam-gordon-bell-ruby-561
+  createdAt: 2022-07-31 00:00:00
+
+- title: Fixing the CI/CD experience with Vlad A. Ionescu
+  source: DevXPod
+  category: Podcast
+  thumbnail: https://storage.buzzsprout.com/variants/4daxs8kk0sjatherse0weihime2w/f6fd9b4ca4e468e7e11c8350463c894b252ee834d352e0a8d889b97ac83aedef.jpg
+  link: https://www.buzzsprout.com/1895030/10907567
+  createdAt: 2022-07-22 00:00:00
+
+- title: Earthly, a CI/CD Framework that Can Run Anywhere
+  source: Open Source Startup Podcast
+  category: Podcast
+  thumbnail: https://ik.imagekit.io/launchnotes/production/tr:w-1640,c-at_max,f-auto/h4pdy8q4n81fef4cuu8h68guc2gg
+  link: https://podcasters.spotify.com/pod/show/ossstartuppodcast/episodes/E42-Earthly--a-CICD-Framework-that-Can-Run-Anywhere-e1kubdf
+  createdAt: 2022-07-11 00:00:00
+
+- title: Earthly Builds with Adam Gordon Bell
+  source: Software Engineering Daily
+  category: Podcast
+  thumbnail: https://i0.wp.com/softwareengineeringdaily.com/wp-content/uploads/2022/06/Group-226-4.png?resize=730%2C389
+  link: https://softwareengineeringdaily.com/2022/07/01/earthly-builds-with-adam-gordon-bell/
+  createdAt: 2022-07-01 00:00:00
+
+- title: Funding Open-Source Projects
+  source: Programming Throwdown
+  category: Podcast
+  thumbnail: https://images.transistor.fm/file/transistor/images/show/19501/full_1615905424-artwork.jpg
+  link: https://www.programmingthrowdown.com/episodes/132-funding-open-source-projects/
+  createdAt: 2022-04-26 00:00:00
+
+- title: Achieve Repeatable Builds Of Your Software On Any Machine With Earthly
+  source: The Python Podcast.__init__
+  category: Podcast
+  thumbnail: https://assets.fireside.fm/file/fireside-images/podcasts/images/a/a8ff81d7-d84b-4c87-872a-dcde96c0b97b/cover_medium.jpg?v=0
+  link: https://www.pythonpodcast.com/earthly-repeatable-build-tool-episode-351/
+  createdAt: 2022-02-06 00:00:00
+
+- title: "Dev Tool Time with Adam Gordon Bell"
+  source: Dev Tool Time
+  category: Podcast
+  thumbnail: https://img.youtube.com/vi/oPaPhFX7SeM/maxresdefault.jpg
+  link: https://www.youtube.com/watch?v=oPaPhFX7SeM
+  createdAt: 2021-10-05 00:00:00
+
+- title: "Earthly: Build Automation with Vlad Ionescu"
+  source: Software Engineering Daily
+  category: Podcast
+  thumbnail: https://i0.wp.com/softwareengineeringdaily.com/wp-content/uploads/2021/02/EarthlyTech.png?zoom=2&resize=730%2C389
+  link: https://softwareengineeringdaily.com/2021/03/01/earthly-with-vlad-ionescu/
+  createdAt: 2021-03-01 00:00:00
+
+- title: "Cleaning up build systems and gathering computer history"
+  source: The Stack Overflow Podcast
+  category: Podcast
+  thumbnail: https://cdn.stackoverflow.co/images/jo7n4k8s/production/6f6591e18674cee2e570564767f3f8ca14c19158-3000x1575.png
+  link: https://stackoverflow.blog/2020/12/11/podcast-294-cleaning-up-build-systems-and-gathering-computer-history/
+  createdAt: 2020-12-10 00:00:00

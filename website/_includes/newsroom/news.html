@@ -1,0 +1,109 @@
+<div class="max-w-7xl mx-auto px-4 lg:px-10">
+  <div class="flex gap-6 lg:gap-10 justify-center mt-4">
+    <p id="highlight-category-0" class="highlight-category active">All</p>
+    <p id="highlight-category-1" class="highlight-category">Press Release</p>
+    <p id="highlight-category-2" class="highlight-category">Media Coverage</p>
+    <p id="highlight-category-3" class="highlight-category">Podcast</p>
+  </div>
+
+  <div class="gap-5 grid md:grid-cols-2 lg:grid-cols-3 mt-6">
+    {% assign newsData = site.data.news %}
+    {% for item in site.news %}
+      {% assign newsData = newsData | push: item %}
+    {% endfor %}
+
+    {% assign news = newsData | sort: 'createdAt' %}
+
+    {% for item in news reversed %}
+      {% if item.category == 'Press Release' %}
+        <a id="news-{{ forloop.index }}" href="{{ item.link }}" class="{% if forloop.index > 6 %}hidden{% endif %}" data-category="{{ item.category }}">
+      {% elsif (item.category == 'Media Coverage' or item.category == 'Podcast') %}
+        <a id="news-{{ forloop.index }}" href="{{ item.link }}" target="_blank" class="{% if forloop.index > 6 %}hidden{% endif %}" data-category="{{ item.category }}">
+      {% endif %}
+        <div class="h-full border border-[#D1D6D9] cursor-pointer group pb-8 pt-6 px-7 rounded-lg">
+          <div class="flex flex-wrap">
+            <p class="mr-1 text-sm uppercase">{{ item.source }} -</p>
+            <time class="text-sm" datetime="{{ date | date_to_xmlschema }}">{{ item.createdAt | date: "%B %-d, %Y" }}</time>
+          </div>
+
+          <p class="font-bold mt-4 text-[#475569] text-xl">{{ item.title }}</p>
+
+          <div class="w-fit decoration-[#2d7e5d] flex items-center mt-6 group-hover:underline">
+            <p class="font-bold text-[#2d7e5d] text-lg">
+              {% if (item.category == 'Press Release' or item.category == 'Media Coverage') %}
+                Read more
+              {% elsif item.category == 'Podcast' %}
+                Listen
+              {% endif %}
+            </p>
+            <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+          </div>
+        </div>
+      </a>
+    {% endfor %}
+  </div>
+
+  <div id="load-more-button" class="flex justify-center mt-10 {% if news.size <= 6 %}hidden{% endif %}">
+    <p class="border border-[#D1D6D9] cursor-pointer px-10 py-3 rounded-full text-[#6B7280] text-xl" onclick="loadMore()">Load more</p>
+  </div>
+</div>
+  
+<script>
+  var allNews = document.querySelectorAll('[id^="news"]');
+  var news = 6;
+
+  var currentTab = 0;
+
+  const tabs = document.querySelectorAll('[id^="highlight-category"]');
+  tabs.forEach(tab => {
+    tab.addEventListener("click", e => {
+      const id = +e.target.id.replace("highlight-category-", "")
+
+      if (id !== currentTab) {
+        document.getElementById(`highlight-category-${currentTab}`).classList.remove('active')
+        currentTab = id
+        document.getElementById(`highlight-category-${currentTab}`).classList.add('active')
+
+        switch (document.getElementById(`highlight-category-${currentTab}`).innerText) {
+          case 'All':
+            allNews = document.querySelectorAll('[id^="news"]')
+            break
+          case 'Press Release':
+            allNews = document.querySelectorAll('[id^="news"][data-category="Press Release"]')
+            document.querySelectorAll('[id^="news"]:not([data-category="Press Release"])').forEach(x => x.classList.add('hidden'))
+            break
+          case 'Media Coverage':
+            allNews = document.querySelectorAll('[id^="news"][data-category="Media Coverage"]')
+            document.querySelectorAll('[id^="news"]:not([data-category="Media Coverage"])').forEach(x => x.classList.add('hidden'))
+            break
+          case 'Podcast':
+            allNews = document.querySelectorAll('[id^="news"][data-category="Podcast"]')
+            document.querySelectorAll('[id^="news"]:not([data-category="Podcast"])').forEach(x => x.classList.add('hidden'))
+            break
+          default:
+            break
+        }
+
+        allNews.forEach((x, i) => {
+          if (i < 6) x.classList.remove('hidden')
+          else x.classList.add('hidden')
+        })
+
+        news = 6
+        if (allNews.length <= 6) document.getElementById('load-more-button').classList.add('hidden')
+        else document.getElementById('load-more-button').classList.remove('hidden')
+      }
+    })
+  })
+
+  function loadMore() {
+    news += 6
+
+    allNews.forEach(item => {
+      const id = +item.id.replace("news-", "")
+      if (id <= news) item.classList.remove('hidden')
+    })
+
+    if (news >= allNews.length) document.getElementById('load-more-button').classList.add('hidden')
+  }
+</script>
