@@ -505,6 +505,8 @@ ast
 lineno
 unparse
 Cloudinary
+unsanitized
+eval
 Graylog
 Logrotate
 logrotate
@@ -512,5 +514,8 @@ bundlers
 waitlist
 introspector
 Jenkinsfiles
-
 kcgen
+dealbreakers
+Pinia
+Vitest
+parallelly

@@ -261,3 +261,10 @@ Sedaris
 Schumer
 ses
 Segun
+Aniket
+Bhattacharyea
+thinus
+DORA
+Starship
+Powerlevel
+Powerlevel10k

@@ -44,7 +44,7 @@ In development, you will use Docker to host a MongoDB instance locally. Start by
 $ docker pull mongo:4.0.4
 ~~~
 
-~~~{.merge-code caption="Output"}
+~~~{.merge-code caption=""}
 4.0.4: Pulling from library/mongo
 7b8b6451c85f: Downloading 36.19MB/43.41MB
 ab4d1096d9ba: Download complete
