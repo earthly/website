@@ -126,6 +126,8 @@ Vue
 deduped
 Vercel
 
+Pentesting
+
 Nrwl
 Neovim
 Axios
