@@ -311,6 +311,8 @@ Exploring and mastering advanced Git commands can greatly benefit developers by 
 
 By delving into these powerful commands, developers gain the ability to navigate complex branching strategies, handle large-scale codebases more efficiently, and collaborate effectively with team members. Also, with these tools, developers can confidently tackle intricate Git scenarios, ensuring smoother code management and facilitating a more productive development process.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -320,4 +322,3 @@ By delving into these powerful commands, developers gain the ability to navigate
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
