@@ -339,9 +339,3 @@ Exploring and mastering advanced Git commands can greatly benefit developers by 
 By delving into these powerful commands, developers gain the ability to navigate complex branching strategies, handle large-scale codebases more efficiently, and collaborate effectively with team members. Also, with these tools, developers can confidently tackle intricate Git scenarios, ensuring smoother code management and facilitating a more productive development process.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
