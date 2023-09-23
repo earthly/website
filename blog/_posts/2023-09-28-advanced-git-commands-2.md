@@ -142,7 +142,7 @@ git checkout
 
 Let's see some use cases of `git checkout`:
 
-### Switching To An Existing Branch
+### Switching To an Existing Branch
 
 Let's say you have an existing branch called `another-branch` and want to switch to that branch. You can use the following command:
 
