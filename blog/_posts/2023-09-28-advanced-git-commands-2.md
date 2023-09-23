@@ -35,7 +35,7 @@ git remote
 ~~~
 
 <div class="wide">
-![showing remotes names associated with the repository]({{site.images}}{{page.slug}}/x0ODzpJ.png)
+![Showing remotes names associated with the repository]({{site.images}}{{page.slug}}/x0ODzpJ.png)
 </div>
 
 The output shows the remote names associated with season-of_docs repository which are `oyedeletemitope` and `origin` are remote names associated with this repository.
@@ -49,7 +49,7 @@ git remote -v
 This will show you each remote's name, the repository's URL, and the fetch and push URLs like so:
 
 <div class="wide">
-![result]({{site.images}}{{page.slug}}/x0ODzpJ.png)
+![Result]({{site.images}}{{page.slug}}/x0ODzpJ.png)
 </div>
 
 To connect your local repository with a remote repository, you use the Git remote add command:
@@ -87,7 +87,7 @@ Based on the outcome of your tests, you provide feedback to Git using either `gi
 Git continues this process, automatically selecting commits for you to test and adjusting the search range until it pinpoints the specific commit that introduced the bug.
 
 <div class="wide">
-![how the git bisect works]({{site.images}}{{page.slug}}/vNDp0lX.jpg)
+![How the git bisect works]({{site.images}}{{page.slug}}/vNDp0lX.jpg)
 </div>
 
 ~~~{.bash caption=">_"}
@@ -142,7 +142,7 @@ git checkout
 
 Let's see some use cases of `git checkout`:
 
-### Switching to an Existing Branch
+### Switching To An Existing Branch
 
 Let's say you have an existing branch called `another-branch` and want to switch to that branch. You can use the following command:
 
@@ -183,7 +183,7 @@ git branch
 This command will display a list of branches with an asterisk (*) indicating the current branch you are on:
 
 <div class="wide">
-![displaying the list of branches]({{site.images}}{{page.slug}}/Ktwgmn5.png)
+![Displaying the list of branches]({{site.images}}{{page.slug}}/Ktwgmn5.png)
 </div>
 
 To create a new branch, you can use the following syntax:
