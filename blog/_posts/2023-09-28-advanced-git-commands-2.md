@@ -10,62 +10,68 @@ internal-links:
  - just an example
 ---
 
-The last [article](https://earthly.dev/blog/advanced-git-commands/) discussed ten advanced Git commands you should know as a developer. 
+The last [article](https://earthly.dev/blog/advanced-git-commands/) discussed ten advanced Git commands you should know as a developer.
 
 In this article, we take a look at ten more advanced commands including bisect, reset, and archive.
 
-## Git remote
+## Git Remote
 
 [Git remote](https://git-scm.com/docs/git-remote) can be used to list, add, remove, and update remote repositories. Git remote allows you to create shortcuts to remote repositories. These shortcuts are called "remote names". You can use remote names to refer to remote repositories in other Git commands. Think of it as a bookmark to other directories instead of links. The diagram below further explains the git remote.
 
-![git remote command](https://imgur.com/n97KMiO)
+<div class="wide">
+![git remote command]({{site.images}}{{page.slug}}/n97KMiO.jpg)
+</div>
 
 The diagram above shows two remote connections from `my repo` into the `main` repo and another developer's repo. The remote names for these connections are `main` and `Atello`.
 Instead of referencing the full URLs of these remote repositories in other Git commands, you can use the remote names `origin` and `Atello`.
 
-To see the remote names of you current repository, use this this command:
+To see the remote names of you current repository, use this command:
 
-```bash
+~~~
 git remote
-```
-![showing remotes names associated with the repository](https://imgur.com/x0ODzpJ)
+~~~
+
+<div class="wide">
+![showing remotes names associated with the repository]({{site.images}}{{page.slug}}/x0ODzpJ.png)
+</div>
 
 The output shows the remote names associated with season-of_docs repository which are `oyedeletemitope` and `origin` are remote names associated with this repository.
 
 To view more detailed information about the remotes, including their URLs, you can use:
 
-```bash
+~~~
 git remote -v
-```
+~~~
 
 This will show you each remote's name, the repository's URL, and the fetch and push URLs like so:
 
-![result](https://imgur.com/x0ODzpJ)
-
+<div class="wide">
+![result]({{site.images}}{{page.slug}}/x0ODzpJ.png)
+</div>
 
 To connect your local repository with a remote repository, you use the Git remote add command:
 
-```bash
+~~~
 git remote add <name> <remote_url>
-```
+~~~
 
 To remove a remote, you can run the following command:
 
-```bash
+~~~
 git remote remove [name]
-```
+~~~
 
 To update the URL of a remote, you can run the following command:
 
-```bash
+~~~
 git remote set-url [name] [new_url]
-```
+~~~
 
 To incorporate changes from a remote repository into your local repository, you can use the `git pull` command:
 
-```bash
+~~~
 git pull <remote_name> <branch_name>
-```
+~~~
 
 ## Git Bisect
 
@@ -77,27 +83,29 @@ Based on the outcome of your tests, you provide feedback to Git using either `gi
 
 Git continues this process, automatically selecting commits for you to test and adjusting the search range until it pinpoints the specific commit that introduced the bug.
 
-![how the git bisect works](https://imgur.com/vNDp0lX)
+<div class="wide">
+![how the git bisect works]({{site.images}}{{page.slug}}/vNDp0lX.jpg)
+</div>
 
-```bash
+~~~
 git bisect start
-```
+~~~
 
 This will start the bisect process and check out the commit halfway between the good and bad commits.
 
-You will then need to test the commit that is checked out. If the commit does not have the bug, you can mark it as “good”.
+You will then need to test the commit that is checked out. If the commit does not have the bug, you can mark it as "good".
 
 Using this command:
 
-```bash
+~~~
 git bisect good <known_good_commit>
-```
+~~~
 
-If the commit does have the bug, you can mark it as “bad” using this command:
+If the commit does have the bug, you can mark it as "bad" using this command:
 
-```bash
+~~~
 git bisect bad <known_bad_commit>
-```
+~~~
 
 Git bisect will check out the commit halfway between the good and bad commits, and you will repeat the process.
 
@@ -109,32 +117,35 @@ This process will continue until git bisect narrows down the range of commits to
 
 Here's how git fetch works:
 
-```bash
+~~~
 git fetch <remote_name>
-```
+~~~
 
 When you run `git fetch`, Git contacts the remote repository specified by `<remote_name>` (the default remote name assigned is usually "origin.") and retrieves all the new branches, commits, and other objects that exist in the remote repository but are not present in your local repository.
 
-![git fetch origin](https://imgur.com/8OLObm9)
+<div class="wide">
+![git fetch origin]({{site.images}}{{page.slug}}/8OLObm9.png)
+</div>
 
-Unlike `git pull`, which automatically merges the fetched changes into your current branch,` git fetch` does not modify your working branch or introduce any changes. Instead, it updates the remote-tracking branches to allow you to inspect the fetched changes and decide how to integrate them later.
+Unlike `git pull`, which automatically merges the fetched changes into your current branch,`git fetch` does not modify your working branch or introduce any changes. Instead, it updates the remote-tracking branches to allow you to inspect the fetched changes and decide how to integrate them later.
 
 ## Git Checkout
 
 [git checkout](https://git-scm.com/docs/git-checkout) is a versatile command in Git that allows you to navigate between branches, switch to a specific commit, or restore files to a previous state. It is a fundamental command for managing your Git repository's working directory.
 
-```bash
+~~~
 git checkout
-```
-Let’s see some use cases of `git checkout`:
+~~~
+
+Let's see some use cases of `git checkout`:
 
 ### Switching to an Existing Branch
 
 Let's say you have an existing branch called `another-branch` and want to switch to that branch. You can use the following command:
 
-```bash
+~~~
 git checkout another-branch
-```
+~~~
 
 This command will switch your working directory to the `another-branch` branch.
 
@@ -142,9 +153,9 @@ This command will switch your working directory to the `another-branch` branch.
 
 Suppose you want to create a new branch called `test` and switch to it. You can use the `-b` flag with `git checkout` to create and switch to the new branch in one step.
 
-```bash
+~~~
 git checkout -b test
-```
+~~~
 
 This command will create and switch to the `test` branch based on your current branch (usually the branch you are currently on).
 
@@ -152,9 +163,9 @@ This command will create and switch to the `test` branch based on your current b
 
 Sometimes, if you need to examine or work on a specific commit, you can use `git checkout` to switch to that commit. For example
 
-```bash
+~~~
 git checkout <your commit>
-```
+~~~
 
 This command will place you in a detached `HEAD` state, where you are not on a specific branch but directly on the commit.
 
@@ -162,31 +173,35 @@ This command will place you in a detached `HEAD` state, where you are not on a s
 
 The [git branch](https://git-scm.com/docs/git-branch) command is used in Git to manage branches within a repository. It allows you to create, list, delete, and perform various operations related to branches. Here are some common use cases and syntax for the git branch:
 
-```bash
+~~~
 git branch
-```
+~~~
 
 This command will display a list of branches with an asterisk (*) indicating the current branch you are on:
 
-![displaying the list of branches](https://imgur.com/Ktwgmn5)
+<div class="wide">
+![displaying the list of branches]({{site.images}}{{page.slug}}/Ktwgmn5.png)
+</div>
 
 To create a new branch, you can use the following syntax:
 
-```bash
+~~~
 git branch <new_branch_name>
-```
+~~~
 
 For example, to create a branch named "test":
 
-```bash
+~~~
 git branch test
-```
+~~~
 
 ## Git Reset
 
 The [git reset](https://git-scm.com/docs/git-reset) command is used to manipulate the commit history by moving the branch pointer to a specific commit. It allows you to undo changes, unstage files, and modify the state of the repository. The `git reset` command has different options and can be used in various ways.
 
-![git reset](https://imgur.com/gRSZul3)
+<div class="wide">
+![git reset]({{site.images}}{{page.slug}}/gRSZul3.jpg)
+</div>
 
 Some of these commands work side by side with each other. A typical example is the `git branch` used alongside the `git checkout` command and the `git bisect` used alongside the `git reset` command.
 
@@ -198,15 +213,17 @@ A soft reset does not change the working directory or the index. It only updates
 
 Imagine having a repository and you wanted to perform a soft reset. You would use the following command:
 
-```bash
+~~~
 git reset --soft 8c019e7
-```
+~~~
 
-Let’s see what happens with git status:
+Let's see what happens with git status:
 
-![git reset soft](https://imgur.com/pz86Pau)
+<div class="wide">
+![git reset soft]({{site.images}}{{page.slug}}/pz86Pau.png)
+</div>
 
-You’ll notice that in the git status the file has been indexed and ready to be committed. 
+You'll notice that in the git status the file has been indexed and ready to be committed.
 
 ### Mixed Reset
 
@@ -214,17 +231,17 @@ A mixed reset is similar to a soft reset but also removes the changes you have s
 
 To perform a mixed reset, you would use the following command:
 
-```bash
+~~~
 git reset --mixed 8c019e7
-```
+~~~
 
-You’ll notice it says `unstaged changes`.
+You'll notice it says `unstaged changes`.
 
-![git reset mixed](https://imgur.com/8BijHrc)
+<div class="wide">
+![git reset mixed]({{site.images}}{{page.slug}}/8BijHrc.png)
+</div>
 
  And if we check the status we can see that we have a modified file which we can add and make a commit if we wanted to.
-
-
 
 ### Hard Reset
 
@@ -232,22 +249,27 @@ A hard reset is the most destructive mode of `git reset`. It removes the changes
 
 To perform a hard reset, you would use the following command:
 
-```bash
+~~~
  git reset --hard 8c019e7 
-```
-![git reset hard](https://imgur.com/Vld0GSX)
+~~~
 
-You should notice that the changes disappear in the file itself and the head is now pointing at that commit. If we run a git status we’ll see that there's nothing to commit.
+<div class="wide">
+![git reset hard]({{site.images}}{{page.slug}}/Vld0GSX.png)
+</div>
 
-![git status](https://imgur.com/oE08Cxg)
+You should notice that the changes disappear in the file itself and the head is now pointing at that commit. If we run a git status we'll see that there's nothing to commit.
+
+<div class="wide">
+![git status]({{site.images}}{{page.slug}}/oE08Cxg.png)
+</div>
 
 ## Git Archive
 
 The [git archive](https://git-scm.com/docs/git-archive) command in Git allows you to create a compressed archive (e.g., ZIP or TAR) of a specific commit, a branch, or the entire repository. It extracts the repository's contents at a particular state without including Git-specific metadata. This command is useful when exporting a clean snapshot of your project for distribution or deployment. Here's how to use `git archive`:
 
-```bash
+~~~
 git archive --format=<format> --output=<output_file> <commit_or_branch>
-```
+~~~
 
 Breaking down the options and parameters:
 
@@ -259,15 +281,15 @@ Breaking down the options and parameters:
 
 ## Git Help
 
-The [git help](https://git-scm.com/docs/git-help) command in Git is used to access the built-in documentation and get help on various Git commands and topics. It provides information about Git commands, concepts, configuration options, and more. Let’s check out several ways in which we can use the git help command.
+The [git help](https://git-scm.com/docs/git-help) command in Git is used to access the built-in documentation and get help on various Git commands and topics. It provides information about Git commands, concepts, configuration options, and more. Let's check out several ways in which we can use the git help command.
 
 ### For General Git Help
 
 To get a list of common Git commands and a brief description of each, you can run:
 
-```bash
+~~~
 git help
-```
+~~~
 
 This will display the main help page, which provides an overview of available commands and links to more specific documentation.
 
@@ -275,23 +297,25 @@ This will display the main help page, which provides an overview of available co
 
 Shown in the image below is the result of the git help command, which shows command git commands for various situations and also subcommands also:
 
-![git help command](https://imgur.com/ca6733J)
+<div class="wide">
+![git help command]({{site.images}}{{page.slug}}/ca6733J.png)
+</div>
 
 If you want detailed information about a specific Git command, you can use `git help` followed by the command name. For example:
 
-```bash
+~~~
 git help commit
-```
+~~~
 
 This will display the documentation for the commit command, including its usage, options, and examples.
 
 ### Search for Help Topics
 
-You can search for help topics related to a specific keyword or topic using the` -g` flag. For instance:
+You can search for help topics related to a specific keyword or topic using the`-g` flag. For instance:
 
-```bash
+~~~
 git help -g branch
-```
+~~~
 
 This will show a list of help topics related to the keyword "branch", such as branch management, branch creation, and more.
 
@@ -299,15 +323,15 @@ This will show a list of help topics related to the keyword "branch", such as br
 
 If you prefer to access the Git documentation in a web browser, you can use:
 
-```bash
+~~~
 git help --web
-```
+~~~
 
 This will open the Git manual in your default web browser, allowing you to navigate and search the documentation more conveniently.
 
 ## Conclusion
 
-Exploring and mastering advanced Git commands can greatly benefit developers by streamlining their version control workflows. 
+Exploring and mastering advanced Git commands can greatly benefit developers by streamlining their version control workflows.
 
 By delving into these powerful commands, developers gain the ability to navigate complex branching strategies, handle large-scale codebases more efficiently, and collaborate effectively with team members. Also, with these tools, developers can confidently tackle intricate Git scenarios, ensuring smoother code management and facilitating a more productive development process.
 
@@ -317,8 +341,5 @@ By delving into these powerful commands, developers gain the ability to navigate
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
