@@ -19,7 +19,7 @@ In Kubernetes, a deployment strategy is an approach to managing the rollout and 
 
 Kubernetes provides various deployment strategies, each designed to meet different requirements and scenarios.
 
-### Prerequisites:
+### Prerequisites
 
 * Basic understanding of Kubernetes and [its Deployments](https://kubernetes.io/docs/concepts/workloads/controllers/deployment/).
 * Basic understanding of [Kubernetes services](https://kubernetes.io/docs/concepts/services-networking/service/)
@@ -35,7 +35,7 @@ This type of Kubernetes deployment comes `out of the box`. Kubernetes provides a
 Step 1: Create a Deployment
 To begin, you define a Kubernetes Deployment manifest (usually in a YAML file) that describes your application and its desired state, including the container image, replicas, and other configuration options. For example:
 
-```yaml
+~~~
 #deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -57,26 +57,28 @@ spec:
         ports:
         - containerPort: 80
 
-```
+~~~
+
 Here you need to update the container registry and image with proper values.
 
 Step 2: Apply the Deployment
 Use the `kubectl apply` command to create or update the Deployment:
 
-```bash
+~~~
 kubectl apply -f deployment.yaml
-```
+~~~
 
 Step 3: Monitor the Deployment
 You can monitor the progress of the rolling update using the `kubectl rollout status` command:
 
-```bash
+~~~
 kubectl rollout status deployment my-app-deployment
-```
+~~~
+
 Step 4: Perform the Rolling Update
 To perform the rolling update, you can update the image version in the Deployment manifest to the new version. For example, change the image tag from `latest` to a specific version:
 
-```yaml
+~~~
 #deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -102,32 +104,34 @@ spec:
         image: your-registry/your-app-image:v2.0.0
         ports:
         - containerPort: 80
-```
+~~~
 
 Step 5: Apply the Update
 Apply the updated Deployment manifest to trigger the rolling update:
 
-```bash
+~~~
 kubectl apply -f deployment.yaml
-```
+~~~
 
 Step 6: Monitor the Rolling Update
 Monitor the rolling update's progress using the same `kubectl rollout status` command as before:
 
-```bash
+~~~
 kubectl rollout status deployment my-app-deployment
-```
+~~~
 
 Kubernetes will now gradually update the pods in the Deployment by terminating the old instances and creating new ones with the updated image. The rolling update will be controlled to maintain the specified number of replicas during the process, ensuring the application remains available.
 
 ### Advantages and Disadvantages of Rolling Deployment
 
 Advantages of rolling deployments:
+
 * No downtime
 * Easy to implement
 * Can be used with any type of application
 
 Disadvantages of rolling deployments:
+
 * Can be slow, especially if you have a large number of pods
 * Can be difficult to troubleshoot if there are problems with the new version of the application
 
@@ -140,9 +144,10 @@ When you are ready to deploy a new version of your application, you first deploy
 Kubernetes makes it relatively straightforward to implement blue-green deployment using its native features like `Services` and `Deployments`. Here's how you can do it:
 
 ### Step 1: Create Blue and Green Deployments
+
 Create two separate Deployment manifests - one for the current live version (blue) and another for the new version (green). Both deployments should have the same labels, so they can be accessed through the same Service. For example:
 
-```yaml
+~~~
 # blue-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -165,9 +170,9 @@ spec:
         image: your-registry/your-app-image:1.0.0
         ports:
         - containerPort: 80
-```
+~~~
 
-```yaml
+~~~
 # green-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -190,14 +195,15 @@ spec:
         image: your-registry/your-app-image:2.0.0
         ports:
         - containerPort: 80
-```
+~~~
 
 Notice here the green deployment has different `version` label and different image tag.
 
 ### Step 2: Create a Service
+
 Next, you need to create a Service that will serve as the entry point for accessing your application. This Service will route traffic to the current live version (blue). The selector in the Service should match the labels of the blue Deployment. For example:
 
-```yaml
+~~~
 apiVersion: v1
 kind: Service
 metadata:
@@ -210,41 +216,48 @@ spec:
   - protocol: TCP
     port: 80
     targetPort: 80
-```
+~~~
+
 ### Step 3: Deploy Blue Version
 
 Apply the blue Deployment and the Service to deploy the current live version:
 
-```bash
+~~~
 kubectl apply -f blue-deployment.yaml
 kubectl apply -f service.yaml
-```
+~~~
+
 ### Step 4: Test Blue Version
 
 Verify that the blue version is working correctly and serving traffic as expected.
-```bash
+
+~~~
 kubectl get deployment
 kubectl get service
-```
+~~~
+
 Further steps can be done from your side to verify traffic flow from service resource to deployment resource to the running pod.
 
 ### Step 5: Deploy Green Version
+
 Apply the green Deployment to deploy the new version:
 
-```bash
+~~~
 kubectl apply -f green-deployment.yaml
-```
+~~~
 
 ### Step 6: Switch Traffic to Green Version
+
 Update the Service's selector to match the labels of the green Deployment:
 
-```bash
+~~~
 kubectl patch service my-app-service -p '{"spec":{"selector":{"version":"green"}}}'
-```
+~~~
 
 Now, the Service will route traffic to the green deployment, making the new version live (green), while the blue environment remains available.
 
 ### Step 7: Test Green Version
+
 Verify that the green version is working correctly and serving traffic as expected.
 
 At this point, you have completed the blue-green deployment. If any issues arise with the green version, you can quickly switch back to the blue version by updating the Service's selector to match the labels of the blue Deployment again.
@@ -269,9 +282,10 @@ Disadvantages of blue-green deployments:
 A Recreate Deployment can lead to a temporary downtime during the update process, as all old instances of your application are completely replaced with the new version. Here's how you can implement the "Recreate" deployment strategy in Kubernetes:
 
 ### Step 1: Create a Deployment Manifest
+
 Create a Deployment manifest YAML file that describes your application and its desired state. This manifest should include the specifications for both the old version `v1` and the new version `new-version` of your application. Here's a basic example:
 
-```yaml
+~~~
 #deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -292,20 +306,23 @@ spec:
         image: your-registry/your-app-image:v1
         ports:
         - containerPort: 80
-```
+~~~
 
 ### Step 2: Apply the Deployment
+
 Apply the Deployment manifest using the `kubectl apply` command:
 
-```bash
+~~~
 kubectl apply -f deployment.yaml
-```
+~~~
+
 ### Step 3: Monitor the Rollout
+
 Monitor the progress of the rollout using the `kubectl rollout status` command:
 
-```bash
+~~~
 kubectl rollout status deployment my-app-deployment
-```
+~~~
 
 ### Step 4: Update the Deployment with Recreate Strategy
 
@@ -313,7 +330,7 @@ To implement the "Recreate" strategy, you need to update the Deployment with the
 
 Edit the Deployment manifest to update the image to the new version and specify the deployment strategy:
 
-```yaml
+~~~
 #deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -336,13 +353,13 @@ spec:
         image: your-registry/your-app-image:new-version  # Updated image version
         ports:
         - containerPort: 80
-```
+~~~
 
 Apply the changes:
 
-```bash
+~~~
 kubectl apply -f deployment.yaml
-```
+~~~
 
 ### Step 5: Monitor the Rollout Again
 
@@ -372,7 +389,7 @@ Kubernetes provides native features like Services and Deployments to implement c
 
 Create another Deployment manifest for your stable version of the application. This will be the stable Deployment. It should have the same number of replicas as your full desired number of instances. For example:
 
-```yaml
+~~~
 # stable-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -393,13 +410,13 @@ spec:
         image: your-registry/your-app-image:1.0.0  # Current stable version image
         ports:
         - containerPort: 80
-```
-
+~~~
 
 ### Step 2: Create a Service
+
 Create a Service that will be used as the entry point for accessing your application. This Service should be a "LoadBalancer" or a "NodePort" type, depending on your infrastructure setup. It will route traffic to the stable Deployment. For example:
 
-```yaml
+~~~
 #service.yaml
 apiVersion: v1
 kind: Service
@@ -413,20 +430,20 @@ spec:
     port: 80
     targetPort: 80
   type: LoadBalancer  # or NodePort
-```
+~~~
 
 Apply the stable deployment and the service then monitor the sable Deployment to ensure that it is functioning correctly and serving traffic as expected.
 
-```bash
+~~~
 kubectl apply -f stable-deployment.yaml
 kubectl apply -f service.yaml
-```
+~~~
 
 ### Step 3: Create Canary Deployment
 
 Create a Deployment manifest for the new version of your application. This will be the canary Deployment. You can set the number of replicas for this Deployment to a small percentage of your overall desired number of instances. For example:
 
-```yaml
+~~~
 # canary-deployment.yaml
 apiVersion: apps/v1
 kind: Deployment
@@ -447,24 +464,24 @@ spec:
         image: your-registry/your-app-image:2.0.0  # New version image
         ports:
         - containerPort: 80
-```
+~~~
 
 ### Step 4: Apply and Test Canary Deployment
 
 Apply the canary Deployment and monitor to ensure that it is functioning correctly and serving traffic as expected. Perform appropriate testing to validate the new version.
 
-```bash
+~~~
 kubectl apply -f canary-deployment.yaml
-```
-
+~~~
 
 ### Step 5: Gradually Increase Traffic to Canary
 
 Update the Service configuration to gradually route more traffic to the canary Deployment. You can use Kubernetes' weight property for this:
 
-```bash
+~~~
 kubectl patch svc my-app-service -p '{"spec":{"ports":[{"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"weight":20}]}}'
-```
+~~~
+
 In this example, the weight of the canary Deployment is set to 20, which means it will receive 20% of the incoming traffic.
 
 ### Step 6: Monitor Canary Deployment
@@ -476,11 +493,13 @@ Keep monitoring the canary Deployment to ensure there are no issues as it receiv
 If everything looks good, continue increasing the traffic to the canary Deployment by updating the Service's weight accordingly.
 
 ### Step 8: Complete the Deployment
+
 Once you are confident that the canary Deployment is stable and performs well, update the Service configuration to direct all traffic to the canary Deployment:
 
-```bash
+~~~
 kubectl patch svc my-app-service -p '{"spec":{"ports":[{"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"weight":100}]}}'
-```
+~~~
+
 The canary Deployment will now receive 100% of the incoming traffic, and the stable Deployment can be safely scaled down or removed.
 
 By following these steps, you can implement a canary deployment strategy in Kubernetes to test and gradually roll out new versions of your application while minimizing the risk of introducing issues to all users.
@@ -498,7 +517,7 @@ Disadvantages of canary deployments:
 * Can be more complex to implement than a rolling deployment
 * Requires more resources than a rolling deployment
 
-# Conclusion
+## Conclusion
 
 The choice of deployment strategy depends on factors like the desired update speed, tolerance for downtime, risk tolerance, and the need for testing new versions before full rollout. Each strategy has its advantages and limitations, so it's essential to select the one that best suits your application and business requirements.
 
@@ -508,10 +527,9 @@ If you need to minimize downtime and deploy different versions at the same time,
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
