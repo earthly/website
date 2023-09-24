@@ -6,7 +6,10 @@ toc: true
 author: Muhammad Badawy
 
 internal-links:
- - just an example
+ - deployment strategies
+ - strategies for deployment in kubernetes
+ - deployment in kubernetes
+ - how to do deployment in kubernetes
 ---
 
 Kubernetes is a container orchestration platform that helps you deploy, manage, and scale containerized applications. One of the key features of Kubernetes is its ability to choose between different deployment strategies. With the right strategy you can easily roll out new versions of your application based on business needs and application requirements.
@@ -529,7 +532,3 @@ If you need to minimize downtime and deploy different versions at the same time,
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
