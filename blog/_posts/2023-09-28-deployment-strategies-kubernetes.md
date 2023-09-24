@@ -504,6 +504,8 @@ The choice of deployment strategy depends on factors like the desired update spe
 
 If you need to minimize downtime and deploy different versions at the same time, then a blue-green deployment or a canary deployment may be a good choice. If you need a simple and easy-to-implement deployment strategy, then a rolling deployment may be a better option.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -513,4 +515,3 @@ If you need to minimize downtime and deploy different versions at the same time,
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
