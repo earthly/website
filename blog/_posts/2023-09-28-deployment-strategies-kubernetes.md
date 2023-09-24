@@ -38,8 +38,7 @@ This type of Kubernetes deployment comes `out of the box`. Kubernetes provides a
 Step 1: Create a Deployment
 To begin, you define a Kubernetes Deployment manifest (usually in a YAML file) that describes your application and its desired state, including the container image, replicas, and other configuration options. For example:
 
-~~~
-#deployment.yaml
+~~~{.yml caption="deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -59,7 +58,6 @@ spec:
         image: your-registry/your-app-image:latest
         ports:
         - containerPort: 80
-
 ~~~
 
 Here you need to update the container registry and image with proper values.
@@ -67,22 +65,21 @@ Here you need to update the container registry and image with proper values.
 Step 2: Apply the Deployment
 Use the `kubectl apply` command to create or update the Deployment:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f deployment.yaml
 ~~~
 
 Step 3: Monitor the Deployment
 You can monitor the progress of the rolling update using the `kubectl rollout status` command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl rollout status deployment my-app-deployment
 ~~~
 
 Step 4: Perform the Rolling Update
 To perform the rolling update, you can update the image version in the Deployment manifest to the new version. For example, change the image tag from `latest` to a specific version:
 
-~~~
-#deployment.yaml
+~~~{.yml caption="deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -92,8 +89,10 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxSurge: 1  # Maximum number of pods that can be created beyond the desired count
-      maxUnavailable: 1  # Maximum number of pods that can be unavailable at a time
+      maxSurge: 1  
+      # Maximum number of pods that can be created beyond the desired count
+      maxUnavailable: 1  
+      # Maximum number of pods that can be unavailable at a time
   selector:
     matchLabels:
       app: my-app
@@ -112,14 +111,14 @@ spec:
 Step 5: Apply the Update
 Apply the updated Deployment manifest to trigger the rolling update:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f deployment.yaml
 ~~~
 
 Step 6: Monitor the Rolling Update
 Monitor the rolling update's progress using the same `kubectl rollout status` command as before:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl rollout status deployment my-app-deployment
 ~~~
 
@@ -150,8 +149,7 @@ Kubernetes makes it relatively straightforward to implement blue-green deploymen
 
 Create two separate Deployment manifests - one for the current live version (blue) and another for the new version (green). Both deployments should have the same labels, so they can be accessed through the same Service. For example:
 
-~~~
-# blue-deployment.yaml
+~~~{.yml caption="blue-deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -175,8 +173,7 @@ spec:
         - containerPort: 80
 ~~~
 
-~~~
-# green-deployment.yaml
+~~~{.yml caption="green-deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -206,7 +203,7 @@ Notice here the green deployment has different `version` label and different ima
 
 Next, you need to create a Service that will serve as the entry point for accessing your application. This Service will route traffic to the current live version (blue). The selector in the Service should match the labels of the blue Deployment. For example:
 
-~~~
+~~~{.yml caption="blue-deployment.yaml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -225,7 +222,7 @@ spec:
 
 Apply the blue Deployment and the Service to deploy the current live version:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f blue-deployment.yaml
 kubectl apply -f service.yaml
 ~~~
@@ -234,7 +231,7 @@ kubectl apply -f service.yaml
 
 Verify that the blue version is working correctly and serving traffic as expected.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl get deployment
 kubectl get service
 ~~~
@@ -245,7 +242,7 @@ Further steps can be done from your side to verify traffic flow from service res
 
 Apply the green Deployment to deploy the new version:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f green-deployment.yaml
 ~~~
 
@@ -253,8 +250,9 @@ kubectl apply -f green-deployment.yaml
 
 Update the Service's selector to match the labels of the green Deployment:
 
-~~~
-kubectl patch service my-app-service -p '{"spec":{"selector":{"version":"green"}}}'
+~~~{.bash caption=">_"}
+kubectl patch service my-app-service -p \
+'{"spec":{"selector":{"version":"green"}}}'
 ~~~
 
 Now, the Service will route traffic to the green deployment, making the new version live (green), while the blue environment remains available.
@@ -288,8 +286,7 @@ A Recreate Deployment can lead to a temporary downtime during the update process
 
 Create a Deployment manifest YAML file that describes your application and its desired state. This manifest should include the specifications for both the old version `v1` and the new version `new-version` of your application. Here's a basic example:
 
-~~~
-#deployment.yaml
+~~~{.yml caption="deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -315,7 +312,7 @@ spec:
 
 Apply the Deployment manifest using the `kubectl apply` command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f deployment.yaml
 ~~~
 
@@ -323,7 +320,7 @@ kubectl apply -f deployment.yaml
 
 Monitor the progress of the rollout using the `kubectl rollout status` command:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl rollout status deployment my-app-deployment
 ~~~
 
@@ -333,8 +330,7 @@ To implement the "Recreate" strategy, you need to update the Deployment with the
 
 Edit the Deployment manifest to update the image to the new version and specify the deployment strategy:
 
-~~~
-#deployment.yaml
+~~~{.yml caption="deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
@@ -353,14 +349,15 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: your-registry/your-app-image:new-version  # Updated image version
+        image: your-registry/your-app-image:new-version  
+        # Updated image version
         ports:
         - containerPort: 80
 ~~~
 
 Apply the changes:
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f deployment.yaml
 ~~~
 
@@ -392,14 +389,14 @@ Kubernetes provides native features like Services and Deployments to implement c
 
 Create another Deployment manifest for your stable version of the application. This will be the stable Deployment. It should have the same number of replicas as your full desired number of instances. For example:
 
-~~~
-# stable-deployment.yaml
+~~~{.yml caption="stable-deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app-stable
 spec:
-  replicas: 8  # Set the full desired number of replicas for the stable Deployment
+  replicas: 8  
+  # Set the full desired number of replicas for the stable Deployment
   selector:
     matchLabels:
       app: my-app
@@ -410,7 +407,8 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: your-registry/your-app-image:1.0.0  # Current stable version image
+        image: your-registry/your-app-image:1.0.0  
+        # Current stable version image
         ports:
         - containerPort: 80
 ~~~
@@ -419,8 +417,7 @@ spec:
 
 Create a Service that will be used as the entry point for accessing your application. This Service should be a "LoadBalancer" or a "NodePort" type, depending on your infrastructure setup. It will route traffic to the stable Deployment. For example:
 
-~~~
-#service.yaml
+~~~{.yml caption="service.yaml"}
 apiVersion: v1
 kind: Service
 metadata:
@@ -437,7 +434,7 @@ spec:
 
 Apply the stable deployment and the service then monitor the sable Deployment to ensure that it is functioning correctly and serving traffic as expected.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f stable-deployment.yaml
 kubectl apply -f service.yaml
 ~~~
@@ -446,14 +443,14 @@ kubectl apply -f service.yaml
 
 Create a Deployment manifest for the new version of your application. This will be the canary Deployment. You can set the number of replicas for this Deployment to a small percentage of your overall desired number of instances. For example:
 
-~~~
-# canary-deployment.yaml
+~~~{.yml caption="canary-deployment.yaml"}
 apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: my-app-canary
 spec:
-  replicas: 2  # Set a small number of replicas for the canary Deployment
+  replicas: 2  
+  # Set a small number of replicas for the canary Deployment
   selector:
     matchLabels:
       app: my-app
@@ -464,7 +461,8 @@ spec:
     spec:
       containers:
       - name: my-app-container
-        image: your-registry/your-app-image:2.0.0  # New version image
+        image: your-registry/your-app-image:2.0.0  
+        # New version image
         ports:
         - containerPort: 80
 ~~~
@@ -473,7 +471,7 @@ spec:
 
 Apply the canary Deployment and monitor to ensure that it is functioning correctly and serving traffic as expected. Perform appropriate testing to validate the new version.
 
-~~~
+~~~{.bash caption=">_"}
 kubectl apply -f canary-deployment.yaml
 ~~~
 
@@ -481,8 +479,11 @@ kubectl apply -f canary-deployment.yaml
 
 Update the Service configuration to gradually route more traffic to the canary Deployment. You can use Kubernetes' weight property for this:
 
-~~~
-kubectl patch svc my-app-service -p '{"spec":{"ports":[{"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"weight":20}]}}'
+~~~{.bash caption=">_"}
+kubectl patch svc my-app-service -p '{"spec":{"ports":\
+[{"port":80,"targetPort":80,"protocol":"TCP","name":"http",\
+"nodePort":null,"port":80,"targetPort":80,"protocol":"TCP",\
+"name":"http","nodePort":null,"weight":20}]}}'
 ~~~
 
 In this example, the weight of the canary Deployment is set to 20, which means it will receive 20% of the incoming traffic.
@@ -499,8 +500,11 @@ If everything looks good, continue increasing the traffic to the canary Deployme
 
 Once you are confident that the canary Deployment is stable and performs well, update the Service configuration to direct all traffic to the canary Deployment:
 
-~~~
-kubectl patch svc my-app-service -p '{"spec":{"ports":[{"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"port":80,"targetPort":80,"protocol":"TCP","name":"http","nodePort":null,"weight":100}]}}'
+~~~{.bash caption=">_"}
+kubectl patch svc my-app-service -p '{"spec":{"ports":\
+[{"port":80,"targetPort":80,"protocol":"TCP","name":"http",\
+"nodePort":null,"port":80,"targetPort":80,"protocol":"TCP",\
+"name":"http","nodePort":null,"weight":100}]}}'
 ~~~
 
 The canary Deployment will now receive 100% of the incoming traffic, and the stable Deployment can be safely scaled down or removed.
