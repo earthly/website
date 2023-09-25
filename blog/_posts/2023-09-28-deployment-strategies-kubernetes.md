@@ -18,6 +18,8 @@ Each strategy has its own advantages and disadvantages. So how do you choose the
 
 ## Deployment Strategies in Kubernetes
 
+![Strategies]({{site.images}}{{page.slug}}/strategy.png)\
+
 In Kubernetes, a deployment strategy is an approach to managing the rollout and updates of applications in a cluster. It defines how changes to the application are applied, ensuring a smooth transition with minimal disruption to the application's availability.
 
 Kubernetes provides various deployment strategies, each designed to meet different requirements and scenarios.
@@ -531,8 +533,3 @@ The choice of deployment strategy depends on factors like the desired update spe
 If you need to minimize downtime and deploy different versions at the same time, then a blue-green deployment or a canary deployment may be a good choice. If you need a simple and easy-to-implement deployment strategy, then a rolling deployment may be a better option.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
