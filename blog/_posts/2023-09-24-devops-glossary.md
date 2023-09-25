@@ -17,7 +17,7 @@ So here's my DevOps glossary in no particular order.
 
 **Incident:** It's not an 'outage,' it's an unscheduled exercise in Incident Response, an impromptu team-building activity leading to a profoundly underwhelming Root Cause Analysis report. It's basically a 'Whodunit?' but everyone knows it was Steve.
 
-**Site Reliability Engineer:** A rebranded systems engineer with pager induced insomnia. They talk about post-mortems more than medical corners and make twice as much.
+**Site Reliability Engineer:** A rebranded systems engineer with pager induced insomnia. They talk about post-mortems more than medical coroner and make twice as much.
 
 **Platform Engineer:** A sysadmin reborn by mastering Go and trading in 3 a.m. pager duty for noon YAML sessions. Can now say 'cloud-native' and 'serverless' with a straight face - which is worth a 2x salary bump, now isn't it?
 
