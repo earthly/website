@@ -77,7 +77,7 @@ After importing the necessary types and functions, you can set up your database 
 
 ## Setting Up the Database for Persistence with Diesel
 
-![Database]({{site.images}}{{page.slug}}/database.png)
+![Database]({{site.images}}{{page.slug}}/database.png)\
 
 Diesel provides a CLI tool that makes setting up persistence and interacting with the database easier.
 
