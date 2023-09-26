@@ -33,7 +33,7 @@ Head to [the Rust installations page](https://www.rust-lang.org/tools/install) t
 
 Once you've set up your Rust workspace with [Cargo](https://www.makeuseof.com/cargo-and-crates-with-third-party-packages-in-rust/), add the Rocket and Diesel packages to the `dependencies.toml` file that Cargo created during the project initialization:
 
-~~~
+~~~{.toml caption="dependencies.toml"}
 [dependencies]
 diesel = { version = "1.4.5", features = ["sqlite"] }
 dotenv = "0.15.0"
@@ -51,8 +51,7 @@ You'll use the `serde` and `serde_json` crates for JSON serialization and deseri
 
 Here's the list of imports and directives you'll need to build your API:
 
-~~~
-// main.rs
+~~~{.rs caption="main.rs"}
 #![feature(proc_macro_hygiene, decl_macro)]
 
 #[macro_use]
@@ -82,7 +81,7 @@ Diesel provides a CLI tool that makes setting up persistence and interacting wit
 
 Run this command in the terminal of your working directory to install the Diesel CLI tool:
 
-~~~
+~~~{.bash caption=">_"}
 cargo install diesel_cli --features sqlite
 ~~~
 
@@ -90,7 +89,7 @@ After installing the tool, create an environment variables file and declare a `D
 
 Here's a command you can run on your terminal to create the file and insert the database URL for an SQLite database.
 
-~~~
+~~~{.bash caption=">_"}
 echo DATABASE_URL=database.db > .env
 ~~~
 
@@ -98,13 +97,13 @@ In this case, `database.db` is the database URL relative to your current working
 
 Next, use the `diesel setup` command to set up your database. Diesel will connect to the database to ensure the URL is correct.
 
-~~~
+~~~{.bash caption=">_"}
 diesel setup
 ~~~
 
 Then, set up auto migration for easier persistence on the database with the `migration generate` command that takes the table name as an argument. Setting up automatic migrations help with easier database entries.
 
-~~~
+~~~{.bash caption=">_"}
 diesel migration generate create_students
 ~~~
 
@@ -112,7 +111,7 @@ On running the command, Diesel will create a directory with two files: `up.sql` 
 
 Open the `up.sql` file and paste the SQL statement to create your app's table(s).
 
-~~~
+~~~{.sql caption="up.sql"}
 -- Your SQL goes here
 
 CREATE TABLE "students"
@@ -126,7 +125,7 @@ CREATE TABLE "students"
 
 Add the SQL statement that drops your created tables in the `down.sql` file.
 
-~~~
+~~~{.sql caption="down.sql"}
 -- down.sql
 
 -- This file should undo anything in `up.sql`
@@ -135,15 +134,13 @@ DROP TABLE "students"
 
 After editing the `up.sql` and `down.sql` files, run the `migration run` command to run pending migrations for the database connection.
 
-~~~
+~~~{.bash caption=">_"}
 diesel migration run
 ~~~
 
 You'll find a `[schema.rs](http://schema.rs)` file in your project's `src` directory containing code for interacting with the database tables.
 
-~~~
-// schema.rs
-
+~~~{.rs caption="schema.rs"}
 // @generated automatically by Diesel CLI.
 
 diesel::table! {
@@ -162,8 +159,7 @@ You must declare structs for data serialization, migrations, and deserialization
 
 Here are the structs for the CRUD operations:
 
-~~~
-// models.rs
+~~~{.rs caption="models.rs"}
 #[derive(Queryable, Serialize)]
 pub struct Student {
     pub id: i32,
@@ -201,8 +197,7 @@ Your POST request handler function will retrieve JSON data from the client, pars
 
 Here's the function signature of the POST request handler function:
 
-~~~
-// main.rs
+~~~{.rs caption="main.rs"}
 #[post("/student", format = "json", data = "<new_student>")]
 pub fn create_student(new_student: Json<NewStudent>) -> Json<JsonValue> {
    
@@ -215,8 +210,7 @@ The `#[post("/student", format = "json", data = "<new_student>")]` line is a Roc
 
 Here's the full function that establishes a database connection and inserts the data into the database:
 
-~~~
-// main.rs
+~~~{.rs caption="main.rs"}
 #[post("/student", format = "json", data = "<new_student>")]
 pub fn create_student(new_student: Json<NewStudent>) -> Json<JsonValue> {
     let connection = establish_connection();
@@ -247,8 +241,7 @@ In your `main` function, you'll ignite a rocket instance with the `ignite` funct
 
 Finally, you'll call the `launch` function on your rocket instance to start the server.
 
-~~~
-// main.rs
+~~~{.rs caption="main.rs"}
 fn main() {
         rocket::ignite().mount("/", routes![
         create_student,
@@ -264,8 +257,10 @@ On running your project with the `cargo run` command, the rocket should start a 
 
 Here's a CURL request that sends a POST request with a JSON payload to the `student` endpoint:
 
-~~~
-curl -X POST http://localhost:8000/student -H 'Content-Type: application/json' -d '{"first_name": "John", "last_name": "Doe", "age": 17}'
+~~~{.bash caption=">_"}
+curl -X POST http://localhost:8000/student -H \
+'Content-Type: application/json' -d \
+'{"first_name": "John", "last_name": "Doe", "age": 17}'
 ~~~
 
 Here's the result of running the CURL request:
@@ -279,8 +274,7 @@ Here's the result of running the CURL request:
 Your GET request handler function will return all the entries in the database as JSON to the client.
 Here's the function signature of the GET request handler function:
 
-~~~
-// main.rs
+~~~{.rs caption="main.rs"}
 #[get("/students")]
 pub fn get_students() -> Json<JsonValue> {
 
@@ -291,13 +285,13 @@ The `get_students`  function doesn't take in any values and returns a `Json` obj
 
 Here's the full function that establishes a database connection and retrieves the data from the database:
 
-~~~
-// main.rs
+~~~{.rs caption="main.rs"}
 #[get("/students")]
 pub fn get_students() -> Json<JsonValue> {
     let connection = establish_connection();
 
-    let students = student.load::<Student>(&connection).expect("Error loading students");
+    let students = student.load::<Student>(&connection)\
+    .expect("Error loading students");
 
     Json(JsonValue::from(json!({
         "students": students,
@@ -309,7 +303,7 @@ The `get_students` function retrieves all the `Student` entries from the databas
 
 Add the `get_students` function to your `routes!` to register the handler function on the rocket instance and run your application.
 
-~~~
+~~~{.rs caption="main.rs"}
 fn main() {
         rocket::ignite().mount("/", routes![
         get_students,
@@ -323,7 +317,7 @@ On running your app, you should be able to hit the `/student` endpoint with a GE
 
 Here's the CURL request that hits the `/student` endpoint and retrieves entries in the database:
 
-~~~
+~~~{.bash caption=">_"}
 curl http://localhost:8000/students
 ~~~
 
@@ -339,9 +333,10 @@ Your PUT request handler function will update an entry in the database after sea
 
 Here's the function signature of the GET request handler function:
 
-~~~
+~~~{.rs caption="main.rs"}
 #[put("/students/<id>", data = "<update_data>")]
-pub fn update_student(id: i32, update_data: Json<UpdateStudent>) -> Json<JsonValue> {
+pub fn update_student(id: i32, update_data: Json<UpdateStudent>)\
+ -> Json<JsonValue> {
   
 }
 ~~~
@@ -350,12 +345,14 @@ The `update_student` function takes in the `id` and a `Json` object of the `Upda
 
 Here's the full function that establishes a database connection and updates values in the database:
 
-~~~
+~~~{.rs caption="main.rs"}
 #[put("/students/<id>", data = "<update_data>")]
-pub fn update_student(id: i32, update_data: Json<UpdateStudent>) -> Json<JsonValue> {
+pub fn update_student(id: i32, update_data: Json<UpdateStudent>) ->\
+ Json<JsonValue> {
     let connection = establish_connection();
 
-    // Use the `update` method of the Diesel ORM to update the student's record
+    // Use the `update` method of the Diesel ORM to update 
+    // the student's record
     let _updated_student = diesel::update(student.find(id))
         .set(&update_data.into_inner())
         .execute(&connection)
@@ -374,7 +371,7 @@ The `update_student` function returns a message containing the ID of the updated
 
 Add the `update_students` function to your `routes!` to register the handler function on the rocket instance and run your application.
 
-~~~
+~~~{.rs caption="main.rs"}
 fn main() {
         rocket::ignite().mount("/", routes![
         get_students,
@@ -388,8 +385,10 @@ On running your app, you should be able to hit the `/students/<id>` endpoint wit
 
 Here's a CURL request that sends a `PUT` request to the server:
 
-~~~
-curl -X PUT http://localhost:8000/students/1 -H 'Content-Type: application/json' -d '{"first_name": "Jane", "last_name": "Doe", "age": 18}'
+~~~{.bash caption=">_"}
+curl -X PUT http://localhost:8000/students/1 -H \
+'Content-Type: application/json' -d \
+'{"first_name": "Jane", "last_name": "Doe", "age": 18}'
 ~~~
 
 Here's the result of the update operation attempt for the row with the `id` equal to 1.
@@ -404,7 +403,7 @@ Your DELETE request handler function will delete an entry from the database afte
 
 Here's the function signature of the DELETE request handler function:
 
-~~~
+~~~{.rs caption="main.rs"}
 #[delete("/students/<id>")]
 pub fn delete_student(id: i32) -> Json<JsonValue> {
         
@@ -415,12 +414,13 @@ The `delete_student` function takes in the `id`  of the entity you want to delet
 
 Here's the full function that establishes a database connection and deletes values from the database:
 
-~~~
+~~~{.rs caption="main.rs"}
 #[delete("/students/<id>")]
 pub fn delete_student(id: i32) -> Json<JsonValue> {
     let connection = establish_connection();
 
-    diesel::delete(student.find(id)).execute(&connection).expect(&format!("Unable to find student {}", id));
+    diesel::delete(student.find(id)).execute(&connection)./
+    expect(&format!("Unable to find student {}", id));
 
     Json(JsonValue::from(json!({
         "status": "success",
@@ -435,7 +435,7 @@ The `delete_student` function returns a message containing the ID of the deleted
 
 Add the `delete_student` function to your `routes!` to register the handler function on the rocket instance and run your application.
 
-~~~
+~~~{.rs caption="main.rs"}
 fn main() {
         rocket::ignite().mount("/", routes![
         get_students,
@@ -450,7 +450,7 @@ On running your app, you should be able to hit the `/students/<id>` endpoint wit
 
 Here's a CURL request that sends a `DELETE` request to the `/students/<id>` endpoint on the server:
 
-~~~
+~~~{.bash caption=">_"}
 curl -X DELETE http://localhost:8000/students/1
 ~~~
 
@@ -472,4 +472,3 @@ You can check out [Rocket](http://rocket.rs) and [Diesel's](http://diesel.rs) do
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
