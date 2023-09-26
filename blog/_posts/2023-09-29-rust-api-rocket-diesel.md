@@ -45,7 +45,7 @@ rocket = "0.4.11"
 serde_derive = "1.0.163"
 ~~~
 
-You've specified that you want to use version `0.5.4` of the [Rocket crate]<https://rocket.rs>) and version `1.4.5` of the [Diesel crate](https://diesel.rs) with its `sqlite` feature.
+You've specified that you want to use version `0.5.4` of the [Rocket crate](https://rocket.rs) and version `1.4.5` of the [Diesel crate](https://diesel.rs) with its `sqlite` feature.
 
 You'll use the `serde` and `serde_json` crates for JSON serialization and deserialization.
 
@@ -76,6 +76,8 @@ mod schema;
 After importing the necessary types and functions, you can set up your database and build your API.
 
 ## Setting Up the Database for Persistence with Diesel
+
+![Database]({{site.images}}{{page.slug}}/database.png)
 
 Diesel provides a CLI tool that makes setting up persistence and interacting with the database easier.
 
@@ -138,7 +140,7 @@ After editing the `up.sql` and `down.sql` files, run the `migration run` command
 diesel migration run
 ~~~
 
-You'll find a `[schema.rs](http://schema.rs)` file in your project's `src` directory containing code for interacting with the database tables.
+You'll find a [`schema.rs`](http://schema.rs) file in your project's `src` directory containing code for interacting with the database tables.
 
 ~~~{.rs caption="schema.rs"}
 // @generated automatically by Diesel CLI.
@@ -185,7 +187,7 @@ pub struct UpdateStudent {
 }
 ~~~
 
-The request handler functions will return the `Student` struct. You'll use the `NewStudent` for data migration and the `UpdateStudent` struct for update operations. The DELETE operation doesn't need a struct since you'll delete entries from the database with the `id`
+The request handler functions will return the `Student` struct. You'll use the `NewStudent` for data migration and the `UpdateStudent` struct for update operations. The DELETE operation doesn't need a struct since you'll delete entries from the database with the `id`.
 
 Here you've successfully set up the database, and you can start building your API that interacts with the database of Diesel.
 
@@ -467,8 +469,3 @@ You've learned how to build a CRUD REST API with Rust's Rocket and Diesel librar
 You can check out [Rocket](http://rocket.rs) and [Diesel's](http://diesel.rs) documentation to learn more about these libraries for more advanced operations like using WebSockets and defining custom middleware.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
