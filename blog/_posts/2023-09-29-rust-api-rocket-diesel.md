@@ -455,6 +455,8 @@ You’ve learned how to build a CRUD REST API with Rust's Rocket and Diesel libr
 
 You can check out [Rocket](http://rocket.rs) and [Diesel’s](http://diesel.rs) documentation to learn more about these libraries for more advanced operations like using WebSockets and defining custom middleware.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -464,4 +466,3 @@ You can check out [Rocket](http://rocket.rs) and [Diesel’s](http://diesel.rs) 
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
