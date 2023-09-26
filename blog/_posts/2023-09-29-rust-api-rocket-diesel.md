@@ -7,7 +7,11 @@ author: Ukeje Goodness
 editor: Muhammad Badawy
 
 internal-links:
- - just an example
+ - building apis
+ - building with rust rocket and diesel
+ - building apis with the help of rust
+ - rust rocket and diesel
+ - apis with rust
 ---
 
 Rust is a formidable contender in the backend development scene, drawing attention for its unparalleled emphasis on speed, memory safety, and concurrency. Rust's popularity has propelled it to the forefront of high-performance application development, making it an irresistible choice for those seeking performance and security in their codebase.
@@ -468,5 +472,4 @@ You can check out [Rocket](http://rocket.rs) and [Diesel's](http://diesel.rs) do
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
