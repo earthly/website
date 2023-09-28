@@ -6,7 +6,11 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - test and run gitHub actions
+ - how to run github actions locally
+ - using github actions locally
+ - testing github actions locally
+ - how does github actions run locally
 ---
 
 [GitHub Actions](https://docs.github.com/en/actions) is GitHub's approach to automating development workflows, enabling you to create, build, test, and deploy software. Additionally, with GitHub Actions, you can build automation around GitHub's offerings, such as triaging GitHub issues and creating GitHub releases.
@@ -343,8 +347,4 @@ A different approach to testing GitHub Actions locally is to write your workflow
 
 * [ ] Add in Author page
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
