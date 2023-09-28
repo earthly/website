@@ -21,49 +21,49 @@ Before installing `act`, you need to have Docker ([Docker Desktop](https://www.d
 
 You'll also need to [clone this repository](https://github.com/krharsh17/hello-react.git) with the following command:
 
-```bash
+~~~
 git clone https://github.com/krharsh17/hello-react.git
-```
+~~~
 
 This repository contains a sample React app that was created using [Vite](https://vitejs.dev/) and defines three GitHub Actions workflows. You'll use them later when exploring the `act` CLI.
 
-### Install act
+### Install `act`
 
 Once you've cloned the repository, it's time to install `act` on your system. The specific instructions for various operating systems are available in the [official GitHub documentation](https://github.com/nektos/act#installation).
 
 If you're on a Mac, you can use [Homebrew](https://brew.sh/) to install it by running the following command in your terminal:
 
-```bash
+~~~
 brew install act
-```
+~~~
 
 To ensure `act` was installed correctly, run the following command:
 
-```bash
+~~~
 act --version
-```
+~~~
 
 This should print the version of the installed `act` tool:
 
-```bash
+~~~
 act version 0.2.49
-```
+~~~
 
 This indicates that the tool was installed correctly, and you can proceed to testing the workflows.
 
 > Make sure that Docker is running on the system when using the `act` tool.
 
-### Explore act
+### Explore `act`
 
 `act` offers a user-friendly interface for running workflows. You can begin by running the following default command to run all workflows that are triggered by a [GitHub push event](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#push):
 
-```bash
+~~~
 act
-```
+~~~
 
 If this is the first time you're running the tool, it asks you to choose the default Docker image you'd like to use:
 
-```bash
+~~~
 % act
 ? Please choose the default image you want to use with act:
 
@@ -75,13 +75,13 @@ Default image and other options can be changed manually in ~/.actrc (please refe
   Large
 > Medium
   Micro
-```
+~~~
 
 If you want to build complex workflows that make use of multiple actions and other features from GitHub Actions, you should choose the `Large size image`. However, using this image takes up a large amount of your system's resources. In most cases, the medium-sized image is the optimal choice. You can always switch between the image types by updating your `.actrc` file (more on this later).
 
 After you select the image type, you'll notice that all three workflows are triggered (take note of the prefix of each line of the logs):
 
-```bash
+~~~
 [Create Release/release       ] 🚀  Start image=catthehacker/ubuntu:act-latest
 [Create Production Build/build] 🚀  Start image=catthehacker/ubuntu:act-latest
 [Run tests/test               ] 🚀  Start image=catthehacker/ubuntu:act-latest
@@ -89,7 +89,7 @@ After you select the image type, you'll notice that all three workflows are trig
 [Run tests/test               ]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
 [Create Production Build/build]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
 ...
-```
+~~~
 
 All three workflows are triggered because they define the `push` event as their trigger. Some workflows may complete running successfully, while some may fail (due to a lack of some extra configuration that you may need to add to run them locally). In the next section, you'll learn how to use the `act` tool to test various types of workflows.
 
@@ -103,13 +103,13 @@ One of the basic options provided by `act` is `-l`. The `-l` flag enables you to
 
 Run the following command in the sample repository to view a list of all the jobs in it:
 
-```bash
+~~~
 % act -l
 Stage  Job ID   Job name  Workflow name            Workflow file       Events
 0      build    build     Create Production Build  build-for-prod.yml  push  
 0      release  release   Create Release           create-release.yml  push  
 0      test     test      Run tests                run-tests.yml       push  
-```
+~~~
 
 This code defines the ID and name of the job, the name of the workflow it belongs to, and its file, as well as the events that can trigger it. In repos that have a large number of workflows, this command is helpful to quickly list and find workflows.
 
@@ -117,9 +117,9 @@ This code defines the ID and name of the job, the name of the workflow it belong
 
 `act` also enables you to trigger workflows on the basis of the event that they're triggered by. As you learned previously, simply running `act` implements all workflows that are set to be triggered by the `push` event. To run workflows associated with any other event, you can run `act <event name>`. Or to run all workflows set to be triggered on a pull request, you can run the following command:
 
-```bash
+~~~
 act pull_request
-```
+~~~
 
 You'll notice that the tool doesn't print anything because the sample repo doesn't have any eligible workflows.
 
@@ -127,13 +127,13 @@ You'll notice that the tool doesn't print anything because the sample repo doesn
 
 Apart from running workflows on the basis of their trigger event, you can also run a specific job directly using the `-j` flag followed by the name of the job. For instance, to run the `test` job, you can use the following command:
 
-```bash
+~~~
 act -j test
-```
+~~~
 
 This runs the `test` job and prints its output on the terminal. Your output looks like this:
 
-```bash
+~~~
 [Run tests/test] 🚀  Start image=catthehacker/ubuntu:act-latest
 [Run tests/test]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
 [Run tests/test] using DockerAuthConfig authentication for docker pull
@@ -170,19 +170,19 @@ This runs the `test` job and prints its output on the terminal. Your output look
 | 
 [Run tests/test]   ✅  Success - Main Run tests
 [Run tests/test] 🏁  Job succeeded
-```
+~~~
 
 #### Do a Dry Run
 
 `act` also allows you to do a dry run of your workflows, meaning you can check the workflow configuration for correctness. However, it doesn't take into account whether the jobs and steps mentioned in the workflow will work at runtime. That means you can't fully rely on dry runs to know if your workflow will perform as expected when deployed. However, it's a good way to find and fix any silly syntactical mistakes. To see this in action, run the following command:
 
-```bash
+~~~
 act -j release -n
-```
+~~~
 
 Here's what your output looks like:
 
-```bash
+~~~
 *DRYRUN* [Create Release/release] 🚀  Start image=catthehacker/ubuntu:act-latest
 *DRYRUN* [Create Release/release]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
 *DRYRUN* [Create Release/release]   🐳  docker create image=catthehacker/ubuntu:act-latest platform= entrypoint=["tail" "-f" "/dev/null"] cmd=[]
@@ -193,11 +193,11 @@ Here's what your output looks like:
 *DRYRUN* [Create Release/release] ⭐ Run Main Create Release
 *DRYRUN* [Create Release/release]   ✅  Success - Main Create Release
 *DRYRUN* [Create Release/release] 🏁  Job succeeded
-```
+~~~
 
 This shows that the workflow is syntactically correct. However, if you try running this workflow using the `act -j release` command, you'll face the following error:
 
-```bash
+~~~
  % act -j release   
 [Create Release/release] 🚀  Start image=catthehacker/ubuntu:act-latest
 [Create Release/release]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
@@ -216,7 +216,7 @@ This shows that the workflow is syntactically correct. However, if you try runni
 [Create Release/release] exitcode '1': failure
 [Create Release/release] 🏁  Job failed
 Error: Job 'release' failed
-```
+~~~
 
 This failure occurred because the **Parameter token or opts.auth is required** and was not provided. This value is provided to GitHub Actions workflows by the GitHub Actions Runner automatically on the cloud. However, you need to pass it in manually when using `act`, which you'll learn how to do in the next section.
 
@@ -226,17 +226,17 @@ Some actions in the GitHub Actions workflows, such as interacting with a GitHub 
 
 To do so, you can pass it in using the `-s` option with the variable name `GITHUB_TOKEN`. You can either directly input your token in the command line or make use of the `gh` CLI by GitHub to retrieve and supply the token on the fly using the following command:
 
-```bash
+~~~
 act -j release -s GITHUB_TOKEN="$(gh auth token)"
-```
+~~~
 
 #### Pass Secrets
 
 In the same way you used the `-s` flag to pass in the GitHub token, you can use it to pass other variables as well. Try running the following command to invoke the `release` job and pass in the release description using secrets:
 
-```bash
+~~~
 act -j release -s GITHUB_TOKEN="$(gh auth token)" -s RELEASE_DESCRIPTION="Yet another release"
-```
+~~~
 
 > Running this command may not work for you since your GitHub token doesn't have permission to create releases in the repo you've cloned. To fix that, fork the repo and then clone your fork. After which, this command runs successfully.
 
@@ -246,7 +246,7 @@ There are workflows that generate or consume artifacts, such as build outputs or
 
 However, when it comes to executing and testing workflows locally, there isn't a GitHub Actions runtime available. That means if you try to run the `build` job in the sample repo, it will fail:
 
-```bash
+~~~
 % act -j build
 [Create Production Build/build] 🚀  Start image=catthehacker/ubuntu:act-latest
 [Create Production Build/build]   🐳  docker pull image=catthehacker/ubuntu:act-latest platform= username= forcePull=true
@@ -267,11 +267,11 @@ However, when it comes to executing and testing workflows locally, there isn't a
 [Create Production Build/build] exitcode '1': failure
 [Create Production Build/build] 🏁  Job failed
 Error: Job 'build' failed
-```
+~~~
 
 The error message says `ACTION_RUNTIME_TOKEN` is missing. This token provides the workflow instance with access to the GitHub Actions Runner runtime, where it can upload and download files. You can give your local runner environment this ability by passing in the `--artifact-server-path` flag. Here's what the output looks like when you pass in a path using this flag:
 
-```bash
+~~~
 % act -j build --artifact-server-path /tmp/artifacts
 INFO[0000] Start server on http://192.168.1.105:34567   
 [Create Production Build/build] 🚀  Start image=catthehacker/ubuntu:act-latest
@@ -301,30 +301,30 @@ INFO[0000] Start server on http://192.168.1.105:34567
 | Artifact artifact has been successfully uploaded!
 [Create Production Build/build]   ✅  Success - Main Archive production artifacts
 [Create Production Build/build] 🏁  Job succeeded
-```
+~~~
 
 The `act` runner is now able to upload the production app artifacts to a storage location on the server. This option can help you test and develop workflows that rely on upload and download actions to complete their process.
 
-### The .actrc File
+### The `.actrc` File
 
 If you find yourself regularly passing too many options into the `act` CLI, you can make use of the `.actrc` file to define the default options and their values that are passed every time the `act` CLI is called. You might recall that during your initial `act` usage, you selected the default container image for local runner execution. The option that you chose was stored in the `actrc` file and is passed into `act` with every call. This is what the `.actrc` file looked like after you chose the default image:
 
-```actrc
+~~~
 -P ubuntu-latest=catthehacker/ubuntu:act-latest
-```
+~~~
 
 You can use this file to load a set of environment variables by default every time you run the `act` CLI, such as passing in the `GITHUB_TOKEN` variable from the `gh` CLI automatically:
 
-```actrc
+~~~
 -P ubuntu-latest=catthehacker/ubuntu:act-latest
 -s GITHUB_TOKEN="$(gh auth token)"
-```
+~~~
 
 You can, of course, set more default options using this file. Feel free to explore the [docs](https://github.com/nektos/act#example-commands) for available options that you can set as defaults when running the `act` CLI.
 
 This completes the tutorial on `act`. You can find all the code used here [in this GitHub repo](https://github.com/krharsh17/hello-react).
 
-## Limitations of act
+## Limitations of `act`
 
 While `act` is a great tool for setting up a local GitHub Actions workflow development environment, you might run into some issues when working with it. Following are some of the limitations you should be aware of before you get started with it in a project:
 
@@ -333,19 +333,18 @@ While `act` is a great tool for setting up a local GitHub Actions workflow devel
 * **Limited OS support:** `act` primarily supports Linux-based containers. Support for Windows and macOS based platforms is [under discussion](https://github.com/nektos/act/issues/97), but it's unclear how long it will take to implement those.
 * **Workflow dependency resolution:** Handling workflow dependencies can be challenging with `act`. If your workflow includes cross-repository dependencies or relies on the behavior of other workflows, `act` may not fully support these scenarios. In such a situation, it's best to set up a test GitHub repo with such workflows and test them on it.
 * **Custom actions and workflows:** `act` may not fully support custom actions or workflows that are not part of the official GitHub Actions ecosystem. Due to this, some actions may not behave as expected when run locally. If you notice such a situation, it's best to move to a dedicated GitHub repo to be able to access the complete GitHub Actions runner environment when testing.
-* **Limited debugging features:** While `act` provides a way to run workflows locally, it doesn't offer the same debugging capabilities as running actions on GitHub, where you can access logs, artifacts, and other diagnostic information easily. You only get the logs that are printed on the terminal as output, and there's no way to access the intermediate or final artifacts of a workflow. Once again, for workflows that heavily rely on these features, it might be best to switch to a dedicated remote testing GitHub repository. 
+* **Limited debugging features:** While `act` provides a way to run workflows locally, it doesn't offer the same debugging capabilities as running actions on GitHub, where you can access logs, artifacts, and other diagnostic information easily. You only get the logs that are printed on the terminal as output, and there's no way to access the intermediate or final artifacts of a workflow. Once again, for workflows that heavily rely on these features, it might be best to switch to a dedicated remote testing GitHub repository.
 
-A different approach to testing GitHub Actions locally is to write your workflow as an [Earthfile](/) that you run inside GitHub Actions. Earthly’s Earthfile’s can always be run locally due to containerization. 
+A different approach to testing GitHub Actions locally is to write your workflow as an [Earthfile](/) that you run inside GitHub Actions. Earthly's Earthfile's can always be run locally due to containerization.
 
 {% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add in Author page
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
