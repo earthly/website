@@ -337,6 +337,8 @@ While `act` is a great tool for setting up a local GitHub Actions workflow devel
 
 A different approach to testing GitHub Actions locally is to write your workflow as an [Earthfile](/) that you run inside GitHub Actions. Earthly’s Earthfile’s can always be run locally due to containerization. 
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -347,4 +349,3 @@ A different approach to testing GitHub Actions locally is to write your workflow
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
