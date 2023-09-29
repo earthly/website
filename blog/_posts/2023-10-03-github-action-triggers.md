@@ -575,13 +575,13 @@ jobs:
       - name: Send email
         uses: dawidd6/action-send-mail@v3.8.0
         with:
-          server_address: ${{ secrets.SERVER_ADDRESS }}
-          server_port: ${{ secrets.SERVER_PORT }}
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          server_address: {% raw %}${{ secrets.SERVER_ADDRESS }}{% endraw %}
+          server_port: {% raw %}${{ secrets.SERVER_PORT }}{% endraw %}
+          username: {% raw %}${{ secrets.MAIL_USERNAME }}{% endraw %}
+          password: {% raw %}${{ secrets.MAIL_PASSWORD }}{% endraw %}
           subject: New Tag Created
-          to: ${{ vars.EMAIL_RECIPIENTS }}
-          from: ${{ vars.EMAIL_SENDER }}
+          to: {% raw %}${{ vars.EMAIL_RECIPIENTS }}{% endraw %}
+          from: {% raw %}${{ vars.EMAIL_SENDER }}{% endraw %}
           html_body: file://emails/new_release.html
 ~~~
 
@@ -615,7 +615,7 @@ jobs:
       - name: Mark Stale Branches
         uses: crs-k/stale-branches@v3.0.0
         with:
-          repo-token: ${{ secrets.GITHUB_TOKEN }}
+          repo-token: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
           days-before-stale: 30
           days-before-delete: 90
 ~~~
@@ -690,18 +690,18 @@ jobs:
       - name: Jira Login
         uses: atlassian/gajira-login@v3
         env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: {% raw %}${{ secrets.JIRA_BASE_URL }}{% endraw %}
+          JIRA_USER_EMAIL: {% raw %}${{ secrets.JIRA_USER_EMAIL }}{% endraw %}
+          JIRA_API_TOKEN: {% raw %}${{ secrets.JIRA_API_TOKEN }}{% endraw %}
       # Create the new Jira ticket
       - name: Create Jira ticket
         id: create_jira_ticket
         uses: atlassian/gajira-create@v3
         with:
           project: TEST
-          issuetype: ${{ inputs.issuetype }}
-          summary: ${{ inputs.summary }}
-          description: ${{ inputs.description }}
+          issuetype: {% raw %}${{ inputs.issuetype }}{% endraw %}
+          summary: {% raw %}${{ inputs.summary }}{% endraw %}
+          description: {% raw %}${{ inputs.description }}{% endraw %}
 ~~~
 
 This workflow, when executed, creates a Jira task using the provided inputs and secret values. These secret values are inputted in the UI if the workflow is triggered using the `workflow_dispatch` trigger. Following is a screenshot of the UI for this particular workflow:
@@ -724,12 +724,13 @@ jobs:
     # Pass in the path to the workflow file to call
     uses: ivankahl/github-actions-demo/.github/workflows/workflow_call_dispatch_create-jira-ticket.yml@master
     secrets:
-      JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-      JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-      JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+      JIRA_BASE_URL: {% raw %}${{ secrets.JIRA_BASE_URL }}{% endraw %}
+      JIRA_USER_EMAIL: {% raw %}${{ secrets.JIRA_USER_EMAIL }}{% endraw %}
+      JIRA_API_TOKEN: {% raw %}${{ secrets.JIRA_API_TOKEN }}{% endraw %}
     with:
       issuetype: Task
-      summary: "Review Opened Pull Request: ${{ github.event.pull_request.title }}"
+      summary: "Review Opened Pull Request: \
+      {% raw %}${{ github.event.pull_request.title }}{% endraw %}"
 ~~~
 
 When referring to the workflow to call, you must include the repository name, the path to the workflow file in the repository, and the branch containing the workflow file (in this case, `main`).
