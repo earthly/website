@@ -35,7 +35,9 @@ Start by uploading artifacts from GitHub Actions workflows. You need to [fork th
 
 To get started, click on **Add file > Create new file** on the home page of the forked repo:
 
+<div class="wide">
 ![Adding a new file to the repo]({{site.images}}{{page.slug}}/UsmtQbk.png)
+</div>
 
 On the new file page that opens, set the file's location and name as `.github/workflows/node.js.yaml` and add the following code to it:
 
@@ -114,11 +116,15 @@ Commit this file to your repo and wait for the workflow run to be completed.
 
 This is what the GitHub Actions runs page will look like when it completes:
 
+<div class="wide">
 ![Workflow runs page]({{site.images}}{{page.slug}}/Df5GvyR.png)
+</div>
 
 Click on the run to view its details:
 
+<div class="wide">
 ![Workflow run details]({{site.images}}{{page.slug}}/526Vt3o.png)
+</div>
 
 You can view the uploaded artifact at the bottom of the page, under the **Artifacts** section.
 
@@ -215,31 +221,41 @@ git push origin v0.0.1
 
 This creates a new tag on your forked repo. Go to the **Actions** tab to see the newly triggered workflow run:
 
+<div class="wide">
 ![Newly triggered workflow run]({{site.images}}{{page.slug}}/6hYF97b.png)
+</div>
 
 #### How to Access the Artifacts
 
 You can look into the logs of the two jobs to understand how the upload and download worked. Here are the upload logs from the build job:
 
+<div class="wide">
 ![Upload logs]({{site.images}}{{page.slug}}/THlckxH.png)
+</div>
 
 Similar to the previous run, the `upload-artifacts` job uploads the artifacts to the `build/` folder.
 
 Here are the download logs from the release job:
 
+<div class="wide">
 ![Download logs]({{site.images}}{{page.slug}}/fDoAlVh.png)
+</div>
 
 The `download-artifacts` job first looks for the artifact to download using its name (*ie* `Build`) and sets up the directory structure for it (*ie* creates the destination path `build/` where the downloaded files are stored), counts the number of files to download, and then downloads them. You can further explore the logs of the other steps to see how the files were packaged and added to the new release.
 
 You'll also notice that the uploaded files from the build job are available as artifacts on the workflow run page:
 
+<div class="wide">
 ![Workflow run artifacts]({{site.images}}{{page.slug}}/gALcTcP.png)
+</div>
 
 However, the `build.zip` file created in the release job is not available because it was not uploaded using the `upload-artifacts` action.
 
 Navigate to the **Releases** page to see the newly created release with the `build.zip` file listed in its assets:
 
+<div class="wide">
 ![Release details]({{site.images}}{{page.slug}}/6VKJXqO.png)
+</div>
 
 This demonstrates that the artifacts were successfully downloaded from the GitHub runtime and uploaded to GitHub releases. The workflow created in this tutorial can be used as a simple workflow for creating releases on your Node.js-based projects. You can learn more about the upload and download actions from the GitHub documentation ([upload-artifacts](https://github.com/actions/upload-artifact#readme) and [download-artifacts](https://github.com/actions/download-artifact#readme)).
 
@@ -254,8 +270,7 @@ With these new tricks up your sleeve, you're officially an expert at using GitHu
 * [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
 * [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
