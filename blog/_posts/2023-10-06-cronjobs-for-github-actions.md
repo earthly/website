@@ -93,7 +93,7 @@ Head back to your forked repo and click on **Add file > Create new file**:
 
 Name this file `load-test-config-home.js` and paste the following code in it:
 
-~~~
+~~~{.js caption="load-test-config-home.js"}
 import http from 'k6/http';
 import { sleep } from 'k6';
 
@@ -101,13 +101,16 @@ export const options = {
   duration: '1m',
   vus: 50,
   thresholds: {
-    http_req_failed: ['rate<0.01'], // to check that http errors are less than 1%
-    http_req_duration: ['p(95)<500'], // to check that 95 percent of response times are below 500ms
+    http_req_failed: ['rate<0.01'], 
+    // to check that http errors are less than 1%
+    http_req_duration: ['p(95)<500'], 
+    // to check that 95 percent of response times are below 500ms
   },
 };
 
 export default function () {
-  const res = http.get('https://gh-actions-cron.onrender.com/');   // <================ Enter your deployed app's URL here
+  const res = http.get('https://gh-actions-cron.onrender.com/');   
+  // <================ Enter your deployed app's URL here
   sleep(1);
 }
 ~~~
@@ -118,7 +121,7 @@ This script imports the required functions and modules from K6 and defines a set
 
 Now, it's time to write the workflow. Create a new file (using the same method as shown previously) at `.github/workflows/` and name it `load-test.yaml`. Save the following code in it:
 
-~~~
+~~~{.yaml caption="load-teste.yaml"}
 name: Load test
 on:
   schedule:
@@ -145,7 +148,7 @@ At the top of the workflow file, you'll notice a `schedule` node under the `on` 
 
 A cron expression is a string of five characters, each representing a frequency of reoccurrence in a particular period (such as minutes in an hour, hours in a day, or days in a month). Here's what the five characters in a cron expression signify:
 
-~~~
+~~~{ caption=""}
 ┌───────────── minute of the hour (0 - 59)
 │ ┌───────────── hour of the day (0 - 23)
 │ │ ┌───────────── day of the month (1 - 31)
@@ -204,7 +207,7 @@ To understand this better, consider a scenario where you need to add another loa
 
 Start by creating another file, `load-test-config-fact.js`, in your repo and save the following contents in it:
 
-~~~
+~~~{.js caption="load-test-config-fact.js"}
 import http from 'k6/http';
 import { sleep } from 'k6';
 
@@ -212,20 +215,23 @@ export const options = {
   duration: '1m',
   vus: 50,
   thresholds: {
-    http_req_failed: ['rate<0.01'], // http errors should be less than 1%
-    http_req_duration: ['p(95)<500'], // 95 percent of response times must be below 500ms
+    http_req_failed: ['rate<0.01'], 
+    // http errors should be less than 1%
+    http_req_duration: ['p(95)<500'], 
+    // 95 percent of response times must be below 500ms
   },
 };
 
 export default function () {
-  const res = http.get('https://gh-actions-cron.onrender.com/fact');   // <================ Enter your deployed app's URL with the fact endpoint here
+  const res = http.get('https://gh-actions-cron.onrender.com/fact');   
+  // <================ Enter your deployed app's URL with the fact endpoint here
   sleep(1);
 }
 ~~~
 
 This defines a similar config file as you defined earlier but for the `/fact` endpoint. Next, update the `.github/workflows/load-test.yaml` file to make it look like this:
 
-~~~
+~~~{.yaml caption="load-test.yaml"}
 name: Load test
 on:
   schedule:
@@ -277,7 +283,7 @@ Doing that is simple; you just need to add the `workflow_dispatch` trigger to th
 
 Now, you can use [the GitHub API](https://docs.github.com/en/free-pro-team@latest/rest/actions/workflows?apiVersion=2022-11-28#create-a-workflow-dispatch-event) to create a workflow dispatch event using the following curl call:
 
-~~~
+~~~{.bash caption=""}
 curl -L \
   -X POST \
   -H "Accept: application/vnd.github+json" \
@@ -289,13 +295,13 @@ curl -L \
 
 You can [create a new GitHub token (legacy)](https://docs.github.com/en/enterprise-server@3.6/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens) in your profile or use the command `gh auth token` to retrieve a token via the [GitHub CLI](https://cli.github.com/) and set the values for your GitHub profile and repo name in the command. You need to save this command in a Bash script file with a name (and location) like `~/load-test.sh`. Finally, you can use the following command to open up your local system's crontab:
 
-~~~
+~~~{.bash caption=""}
 crontab -e
 ~~~
 
 Then add your Bash script to be executed every minute by adding the following line in your crontab file:
 
-~~~
+~~~{.bash caption=""}
 */1 * * * * sh ~/load-test.sh
 ~~~
 
