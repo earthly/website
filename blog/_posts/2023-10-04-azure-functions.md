@@ -6,7 +6,10 @@ toc: true
 author: Osinachi Chukwujama
 
 internal-links:
- - just an example
+ - building first serverless application
+ - serverless application with azure 
+ - how to build your first serverless application with azure functions
+ - azure functions to build first serverless application
 ---
 
 Serverless architecture simplifies the process of building and deploying applications by removing the need to manage servers. You just need to write your application's business logic in different functions.
@@ -57,7 +60,8 @@ This command sets the functions runtime as Node.js and the common language as Ty
 If the command works as expected, your output looks like this:
 
 ~~~{ caption="Output"}
-The new Node.js programming model is in public preview. Learn more at https://aka.ms/AzFuncNodeV4
+The new Node.js programming model is in public preview. 
+Learn more at https://aka.ms/AzFuncNodeV4
 Writing package.json
 Writing .funcignore
 Writing tsconfig.json
@@ -140,7 +144,8 @@ cd serverless-functions && npm i custom-uuid
 Next up, you need to define a function to fetch game sessions so that the second player can see the details of the coin flip they're getting themselves into. Define a new function using the following command:
 
 ~~~{.bash caption=">_"}
-func new --name FetchGameSession --template HTTPTrigger \--authlevel anonymous
+func new --name FetchGameSession --template HTTPTrigger \
+--authlevel anonymous
 ~~~
 
 Now that you've defined the function, there's no way to retrieve the gamecode created by the `CreateGameSession` function. You have to add a storage mechanism or state management to enable this functionality.
@@ -169,23 +174,33 @@ keyvault="coinflipkeyvault$RANDOM"
 az group create --name $resourceGroup --location $location
 
 # Create the storage account
-az storage account create --name $storageAccount --location $location --resource-group $resourceGroup --sku Standard_LRS
+az storage account create --name $storageAccount --location $location \
+--resource-group $resourceGroup --sku Standard_LRS
 
 # Create the functions app
-az functionapp create --name $functionApp --resource-group $resourceGroup --storage-account $storageAccount --consumption-plan-location $location --functions-version 4 –worker-runtime node –os-type Linux –runtime-version 16
+az functionapp create --name $functionApp --resource-group $resourceGroup \
+--storage-account $storageAccount --consumption-plan-location $location \
+--functions-version 4 –worker-runtime node –os-type Linux –runtime-version 16
 
 # Create the database account
-az cosmosdb create --name $databaseAccount --resource-group $resourceGroup --default-consistency-level Eventual --locations regionName="East US" failoverPriority=0 isZoneRedundant=False
+az cosmosdb create --name $databaseAccount --resource-group $resourceGroup \
+--default-consistency-level Eventual --locations regionName="East US" \
+failoverPriority=0 isZoneRedundant=False
 
 # Create the Cosmos DB database
-az cosmosdb sql database create --account-name $databaseAccount --name $database --resource-group $resourceGroup
+az cosmosdb sql database create --account-name $databaseAccount --name \
+$database --resource-group $resourceGroup
 
 # Create a container within the database
-az cosmosdb sql container create --account-name $databaseAccount --resource-group $resourceGroup --database-name $database --name $databaseContainer --partition-key-path "/gamecode" --throughput 400
+az cosmosdb sql container create --account-name $databaseAccount \
+--resource-group $resourceGroup --database-name $database --name \
+$databaseContainer --partition-key-path "/gamecode" --throughput 400
 
 # Query the endpoint and key of their database account
-endpoint=$(az cosmosdb show --name $databaseAccount --resource-group $resourceGroup --query documentEndpoint --output tsv)
-key=$(az cosmosdb keys list --name $databaseAccount --resource-group $resourceGroup --query primaryMasterKey --output tsv)
+endpoint=$(az cosmosdb show --name $databaseAccount --resource-group \
+$resourceGroup --query documentEndpoint --output tsv)
+key=$(az cosmosdb keys list --name $databaseAccount --resource-group \
+$resourceGroup --query primaryMasterKey --output tsv)
 
 echo $endpoint
 echo $key
@@ -524,9 +539,12 @@ The following command sets the Cosmos DB URL and key as secrets of the functions
 
 ~~~{.bash caption=">_"}
 functionsappname=$(az functionapp list --query "[0].name" -o tsv)
-az functionapp config appsettings set --resource-group coinflip-rg --name $functionsappname --settings "CosmosEndpoint=https://coinflipdbacc13692.documents.azure.com:443/"
-az functionapp config appsettings set --resource-group coinflip-rg --name $functionsappname --settings "CosmosKey=VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA=="
-az functionapp config appsettings set --resource-group coinflip-rg --name $functionsappname --settings "CosmosDBConnection='AccountEndpoint=https://coinflipdbacc13692.documents.azure.com:443/;AccountKey=VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA=='"
+az functionapp config appsettings set --resource-group coinflip-rg \
+--name $functionsappname --settings "CosmosEndpoint=https://coinflipdbacc13692.documents.azure.com:443/"
+az functionapp config appsettings set --resource-group coinflip-rg \
+--name $functionsappname --settings "CosmosKey=VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA=="
+az functionapp config appsettings set --resource-group coinflip-rg \
+--name $functionsappname --settings "CosmosDBConnection='AccountEndpoint=https://coinflipdbacc13692.documents.azure.com:443/;AccountKey=VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA=='"
 ~~~
 
 ### Deploy Your Functions Using CI/CD on GitHub
@@ -578,9 +596,13 @@ on: [push]
 #
 # 2. Change these variables for your configuration:
 env:
-  AZURE_FUNCTIONAPP_NAME: "<YOUR_FUNCTIONAPP_NAME>" # set this to your function app name on Azure
-  AZURE_FUNCTIONAPP_PACKAGE_PATH: "serverless-functions" # set this to the path to your function app project, defaults to the repository root
-  NODE_VERSION: "16.x" # set this to the node version to use (e.g. '8.x', '10.x', '12.x')
+  AZURE_FUNCTIONAPP_NAME: "<YOUR_FUNCTIONAPP_NAME>" 
+  # set this to your function app name on Azure
+  AZURE_FUNCTIONAPP_PACKAGE_PATH: "serverless-functions" 
+  # set this to the path to your function app project, defaults to 
+  # the repository root
+  NODE_VERSION: "16.x" 
+  # set this to the node version to use (e.g. '8.x', '10.x', '12.x')
 
 jobs:
   build-and-deploy:
@@ -611,7 +633,8 @@ jobs:
           app-name: ${{ env.AZURE_FUNCTIONAPP_NAME }}
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
-# For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
+# For more samples to get started with GitHub Action workflows to 
+# deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
 ~~~
 
 Replace the content of the `<YOUR_FUNCTIONAPP_NAME>` with the name of your `functionapp`. You can obtain this by running `az functionapp list --query "[0].name" --resource-group coinflip-rg -o tsv`.
@@ -619,8 +642,11 @@ Replace the content of the `<YOUR_FUNCTIONAPP_NAME>` with the name of your `func
 Because the GitHub deployment uses ZIP deployment to deploy your function, you need to delete an app setting from your application. The current deployment is set to a URL pointing to a blob in the storage account you created earlier. Remove the URL setting by running the following command:
 
 ~~~{.bash caption=">_"}
-functionsappname=$(az functionapp list –resource-group coinflip-rg --query "[0].name" -o tsv)
-az functionapp config appsettings delete --name $functionsappname --setting-names WEBSITE_RUN_FROM_PACKAGE --resource-group coinflip-rg
+functionsappname=$(az functionapp list –resource-group \
+coinflip-rg --query "[0].name" -o tsv)
+az functionapp config appsettings delete --name \
+$functionsappname --setting-names WEBSITE_RUN_FROM_PACKAGE \
+--resource-group coinflip-rg
 ~~~
 
 Now, commit the new workflow file and push it to GitHub. The function app is redeployed anytime you push to GitHub. On successful deployment, you should have the following screen on your GitHub Actions page:
@@ -796,6 +822,3 @@ If you're looking for a way to improve the speed, consistency, and ease of use o
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links

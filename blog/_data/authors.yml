@@ -511,3 +511,7 @@ Abhinav Upadhyay:
     name    : "Abhinav Upadhyay"
     bio     : "Abhinav Upadhyay is a versatile software engineer with experience in Java, Python, Go, Rust, C, Linux, and machine learning. He has served as a DevOps and software engineer, as well as an ML engineer focusing on anomaly detection and clustering using deep learning. Abhinav is also a skilled technical writer, maintaining a popular blog where he shares insights on programming techniques and solutions."
     avatar  : "/assets/images/authors/abhinav-upadhyay.jpg"
+Osinachi Chukwujama:
+    name    : "Osinachi Chukwujama"
+    bio     : "Osinachi Chukwujama is a web developer and technical writer. He enjoys building backend applications and utilizing cloud computing. He plays the organ and creates casual animations when he isn't coding."
+    avatar  : "/assets/images/authors/osinachi-chukwujama.jpg"
