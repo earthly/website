@@ -26,7 +26,14 @@
       </a>
     </div>
 
-    <p class="text-center xl:text-left text-slate-400">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a></p>
+    <!-- Gavin, homepage-hero-install-no-login-test, 20230926: Added div, p inside existed -->
+    <div id="homepage-hero-install-no-login-control">
+      <p class="text-center xl:text-left text-slate-400">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a></p>
+    </div>
+    <!-- Gavin, homepage-hero-install-no-login-test, 20230926: Added div -->
+    <div id="homepage-hero-install-no-login-test" style="display: none;">
+      <p class="text-center xl:text-left text-slate-400 text-sm">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="underline" href="https://earthly.dev/get-earthly" onclick="homepageHeroInstallNoLoginClick()">Install Earthly w/o logging in</a></p>
+    </div>
 
     <div class="absolute bottom-0 right-0 hidden min-[1800px]:flex" style="margin-bottom: -64px; top: 88px;">
       {% svg assets/svg/earthly-animation.svg class="h-full absolute -right-32" %}
@@ -45,6 +52,13 @@
     analytics.track('homepage-get-started-free-click', {
       category: 'Get Started Free Click',
       label: 'homepage-get-started-free-click'
+    });
+  }
+
+  function homepageHeroInstallNoLoginClick() {
+    analytics.track('homepage-hero-install-no-login-click', {
+      category: 'Install No Login Click',
+      label: 'homepage-hero-install-no-login-click'
     });
   }
 </script>
