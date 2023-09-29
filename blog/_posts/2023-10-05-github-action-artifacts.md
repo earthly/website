@@ -6,18 +6,22 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - downloading artifacts
+ - uploading artifacts
+ - downloading artifacts with github actions
+ - uploading artifacts with github actions
 ---
+
 If you've worked with projects hosted on GitHub, you're probably aware of [GitHub Actions](https://github.com/features/actions). GitHub Actions is GitHub's recommended way of setting up build automation and workflows from your GitHub-hosted repo. It supports multiple triggers and operations, including uploading and downloading artifacts.
 
 Artifacts represent the final or intermediate products of these build pipelines. In a build pipeline, the artifacts typically consist of executable binaries created at its end. Conversely, a test pipeline might generate artifacts in the form of test logs and results as files. These artifacts can then be used to update statuses across pull requests or commits. Some more use cases where uploading/downloading artifacts might come in handy include the following:
 
-* **Test results and coverage reports:** to review test outcomes, track code coverage trends, and share test reports with your team
-* **Deployment packages:** to store the deployable assets and facilitate subsequent deployment steps or manual releases
-* **Logs and diagnostics:** for troubleshooting and investigating issues that occur during the workflow runs
-* **Generated documentation or reports:** to make these accessible for review, dissemination, or archiving
-* **Storage of intermediate results:** to allow subsequent steps or workflows to access and use the data
-* **Sharing of artifacts across workflows or jobs**
+* **Test results and coverage reports:** to review test outcomes, track code coverage trends, and share test reports with your team.
+* **Deployment packages:** to store the deployable assets and facilitate subsequent deployment steps or manual releases.
+* **Logs and diagnostics:** for troubleshooting and investigating issues that occur during the workflow runs.
+* **Generated documentation or reports:** to make these accessible for review, dissemination, or archiving.
+* **Storage of intermediate results:** to allow subsequent steps or workflows to access and use the data.
+* **Sharing of artifacts across workflows or jobs.**
 
 In this article, you'll learn how to use artifacts with GitHub Actions to capture data from workflows and how to upload and download them as necessary using the [`actions/upload-artifact@v3`](https://github.com/actions/upload-artifact) and [`actions/download-artifact@v3`](https://github.com/actions/download-artifact) actions.
 
@@ -203,19 +207,19 @@ Commit this config file to your repo. Since you changed the trigger for the work
 
 To do that, clone your repo by running the following command (after replacing `<username>` with your GitHub username):
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/<username>/gh-actions-upload-download.git
 ~~~
 
 Inside the cloned repo, run the following command to create a tag:
 
-~~~
+~~~{.bash caption=">_"}
 git tag -a v0.0.1 -m "Version 0.0.1"
 ~~~
 
 Finally, run this command to push the tag:
 
-~~~
+~~~{.bash caption=">_"}
 git push origin v0.0.1
 ~~~
 
@@ -269,9 +273,5 @@ With these new tricks up your sleeve, you're officially an expert at using GitHu
 
 ## Outside Article Checklist
 
-* [ ] Add in Author page
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
