@@ -515,3 +515,8 @@ Osinachi Chukwujama:
     name    : "Osinachi Chukwujama"
     bio     : "Osinachi Chukwujama is a web developer and technical writer. He enjoys building backend applications and utilizing cloud computing. He plays the organ and creates casual animations when he isn't coding."
     avatar  : "/assets/images/authors/osinachi-chukwujama.jpg"
+Ivan Kahl:
+    name    : "Ivan Kahl"
+    bio     : "Ivan Kahl is a software developer based in Johannesburg, South Africa. While he specializes in .NET and AWS, he is an eager learner who loves to explore other technologies."
+    avatar  : "/assets/images/authors/ivan-kahl.jpg"
+    
