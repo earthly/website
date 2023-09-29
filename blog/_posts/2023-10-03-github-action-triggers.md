@@ -25,15 +25,11 @@ Git References are the building blocks of branches and tags. When you create a n
 
 In GitHub Actions, you can use the `create` trigger to start a workflow when a Git Reference is created:
 
-<div class="wide">
 ![The `create` trigger is fired when a new branch is created]({{site.images}}{{page.slug}}/bLzECkA.png)
-</div>
 
 The `create` trigger is also fired when a new tag is created in the repository:
 
-<div class="wide">
 ![The `create` trigger is fired when a new tag is created in the repo]({{site.images}}{{page.slug}}/TI88gEC.png)
-</div>
 
 The following workflow file is activated by the `create` trigger to send an email whenever a new tag is created in the repository:
 
@@ -45,23 +41,26 @@ on:
 
 jobs:
   send_email:
-    if: ${{ contains(github.ref, 'refs/tags/') }}
+    if: {% raw %}${{ contains(github.ref, 'refs/tags/') }}{% endraw %}
     runs-on: ubuntu-latest
     steps:
       - name: Send email
         uses: dawidd6/action-send-mail@v3.8.0
         with:
-          server_address: ${{ secrets.SERVER_ADDRESS }}
-          server_port: ${{ secrets.SERVER_PORT }}
-          username: ${{ secrets.MAIL_USERNAME }}
-          password: ${{ secrets.MAIL_PASSWORD }}
+          server_address: {% raw %}${{ secrets.SERVER_ADDRESS }}{% endraw %}
+          server_port: {% raw %}${{ secrets.SERVER_PORT }}{% endraw %}
+          username: {% raw %}${{ secrets.MAIL_USERNAME }}{% endraw %}
+          password: {% raw %}${{ secrets.MAIL_PASSWORD }}{% endraw %}
           subject: New Tag Created
-          to: ${{ vars.EMAIL_RECIPIENTS }}
-          from: ${{ vars.EMAIL_SENDER }}
+          to: {% raw %}${{ vars.EMAIL_RECIPIENTS }}{% endraw %}
+          from: {% raw %}${{ vars.EMAIL_SENDER }}{% endraw %}
           body: |
             Hi there,
 
-            This is just to let you know that a new tag called ${{ github.ref_name }} in the [${{ github.repository }}](https://github.com/${{ github.repository }}) repository.
+            This is just to let you know that a new tag called \
+            {% raw %}${{ github.ref_name }}{% endraw %} in the \ 
+            [{% raw %}${{ github.repository }}{% endraw %}] \ 
+            (https://github.com/{% raw %}${{ github.repository }}{% endraw %}) repository.
 
             That's all for now!
 
@@ -97,9 +96,9 @@ jobs:
       - name: Jira Login
         uses: atlassian/gajira-login@v3
         env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: {% raw %}${{ secrets.JIRA_BASE_URL }}{% endraw %}
+          JIRA_USER_EMAIL: {% raw %}${{ secrets.JIRA_USER_EMAIL }}{% endraw %}
+          JIRA_API_TOKEN: {% raw %}${{ secrets.JIRA_API_TOKEN }}{% endraw %}
       # Find the Jira issue ID in the branch name
       - name: Find Jira Key in Branch Name
         id: find_issue_key
@@ -110,8 +109,8 @@ jobs:
       - name: Comment on issue
         uses: atlassian/gajira-comment@v3
         with:
-          issue: ${{ steps.find_issue_key.outputs.issue }}
-          comment: The ${{ github.event.ref }} branch was deleted in GitHub.
+          issue: {% raw %}${{ steps.find_issue_key.outputs.issue }}{% endraw %}
+          comment: The {% raw %}${{ github.event.ref }}{% endraw %} branch was deleted in GitHub.
 ~~~
 
 In this code, the workflow makes sure that the `delete` trigger is for a branch using the `if` property. Then it logs into Jira using an API token and finds the ticket key in the branch name. The workflow adds a comment to that Jira ticket mentioning that the branch was deleted in GitHub.
@@ -141,12 +140,15 @@ jobs:
       - name: Send Slack Message
         uses: archive/github-actions-slack@v2.7.0
         with:
-          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}
-          slack-channel: ${{ vars.SLACK_CHANNEL }}
+          slack-bot-user-oauth-access-token: 
+          {% raw %}${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}{% endraw %}
+          slack-channel: {% raw %}${{ vars.SLACK_CHANNEL }}{% endraw %}
           slack-text: |
             Hi there 👋🏻
 
-            A new deployment has been created in the ${{ github.repository }} repository on the `${{ github.ref }}` branch/tag (SHA: `${{ github.sha }}`).
+            A new deployment has been created in the {% raw %}${{ github.repository }}{% endraw %} /
+            repository on the `{% raw %}${{ github.ref }}{% endraw %}` branch/tag \
+            (SHA: `{% raw %}${{ github.sha }}{% endraw %}`).
 ~~~
 
 When you create a new deployment, you can deploy a branch, tag, or commit.
@@ -179,9 +181,11 @@ jobs:
         uses: archive/github-actions-slack@v2.7.0
         with:
           slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}
-          slack-channel: ${{ vars.SLACK_CHANNEL }}
+          slack-channel: {% raw %}${{ vars.SLACK_CHANNEL }}{% endraw %}
           slack-text: |
-            The deployment in the ${{ github.repository }} repository on the `${{ github.ref }}` branch/tag (SHA: `${{ github.sha }}`) now has the status: `${{ github.event.deployment_status.state }}`.
+            The deployment in the {% raw %}${{ github.repository }}{% endraw %} repository on \
+            the `{% raw %}${{ github.ref }}{% endraw %}` branch/tag (SHA: `{% raw %}${{ github.sha }}{% endraw %}`) \
+            now has the status: `{% raw %}${{ github.event.deployment_status.state }}{% endraw %}`.
 ~~~
 
 This workflow posts a status update message to a Slack channel every time the status of a deployment changes. This is useful for monitoring whether a deployment is successful.
@@ -211,9 +215,9 @@ jobs:
       - name: Jira Login
         uses: atlassian/gajira-login@v3
         env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: {% raw %}${{ secrets.JIRA_BASE_URL }}{% endraw %}
+          JIRA_USER_EMAIL: {% raw %}${{ secrets.JIRA_USER_EMAIL }}{% endraw %}
+          JIRA_API_TOKEN: {% raw %}${{ secrets.JIRA_API_TOKEN }}{% endraw %}
       # Create the new Jira ticket
       - name: Create Jira ticket
         id: create_jira_ticket
@@ -221,24 +225,25 @@ jobs:
         with:
           project: TEST
           issuetype: Bug
-          summary: ${{ github.event.issue.title }}
-          description: ${{ github.event.issue.body }}
+          summary: {% raw %}${{ github.event.issue.title }}{% endraw %}
+          description: {% raw %}${{ github.event.issue.body }}{% endraw %}
       # Add the Jira ticket ID in the issue
       - name: Update issue body
         uses: actions/github-script@v6.4.1
         env:
-          owner: ${{ github.repository_owner }}
-          repo: ${{ github.event.repository.name }}
-          issue_number: ${{ github.event.issue.number }}
-          body: ${{ github.event.issue.body }}
-          jira_ticket_id: ${{ steps.create_jira_ticket.outputs.issue }}
+          owner: {% raw %}${{ github.repository_owner }}{% endraw %}
+          repo: {% raw %}${{ github.event.repository.name }}{% endraw %}
+          issue_number: {% raw %}${{ github.event.issue.number }}{% endraw %}
+          body: {% raw %}${{ github.event.issue.body }}{% endraw %}
+          jira_ticket_id: {% raw %}${{ steps.create_jira_ticket.outputs.issue }}{% endraw %}
         with:
           script: |
             github.rest.issues.update({
               owner: process.env.owner,
               repo: process.env.repo,
               issue_number: process.env.issue_number,
-              body: process.env.body + "\n\n---\n\n**Jira Ticket ID:** " + process.env.jira_ticket_id
+              body: process.env.body + "\n\n---\n\n**Jira Ticket ID:** " + \
+              process.env.jira_ticket_id
             })
 ~~~
 
@@ -264,31 +269,31 @@ on:
 
 jobs:
   create_jira_comment:
-    if: ${{ !github.event.issue.pull_request }}
+    if: {% raw %}${{ !github.event.issue.pull_request }}{% endraw %}
     runs-on: ubuntu-latest
     steps:
       # Authenticate with Jira first
       - name: Jira Login
         uses: atlassian/gajira-login@v3
         env:
-          JIRA_BASE_URL: ${{ secrets.JIRA_BASE_URL }}
-          JIRA_USER_EMAIL: ${{ secrets.JIRA_USER_EMAIL }}
-          JIRA_API_TOKEN: ${{ secrets.JIRA_API_TOKEN }}
+          JIRA_BASE_URL: {% raw %}${{ secrets.JIRA_BASE_URL }}{% endraw %}
+          JIRA_USER_EMAIL: {% raw %}${{ secrets.JIRA_USER_EMAIL }}{% endraw %}
+          JIRA_API_TOKEN: {% raw %}${{ secrets.JIRA_API_TOKEN }}{% endraw %}
       # Retrieve ticket ID from the issue body
       - name: Get Jira Ticket ID
         id: get_jira_ticket_id
         uses: atlassian/gajira-find-issue-key@v3
         with:
-          string: ${{ github.event.issue.body }}
+          string: {% raw %}${{ github.event.issue.body }}{% endraw %}
       # Create the new Jira comment
       - name: Create Jira comment
         uses: atlassian/gajira-comment@v3
         with:
-          issue: ${{ steps.get_jira_ticket_id.outputs.issue }}
+          issue: {% raw %}${{ steps.get_jira_ticket_id.outputs.issue }}{% endraw %}
           comment: |
-            ${{ github.event.comment.user.login }} said: 
+            {% raw %}${{ github.event.comment.user.login }}{% endraw %} said: 
             
-            ${{ github.event.comment.body }}
+            {% raw %}${{ github.event.comment.body }}{% endraw %}
 ~~~
 
 This workflow gets triggered by any new comments that are created on an issue. It does this by subscribing to the `created` activity type on the `issue_comment` trigger. When the workflow runs, it also checks to make sure that the comment was left on an issue and not a pull request. The reason for this is that issues and pull requests are very similar in certain places, such as the API, and you can access comments on both using the same webhook or event. The workflow then logs into Jira, uses the body of the current issue to find the Jira ticket ID, and then adds a comment to that Jira ticket with the contents of the GitHub comment in the Jira comment.
@@ -328,13 +333,16 @@ jobs:
           server_port: ${{ secrets.SERVER_PORT }}
           username: ${{ secrets.MAIL_USERNAME }}
           password: ${{ secrets.MAIL_PASSWORD }}
-          subject: GitHub Pages Build Executed with Status of ${{ github.event.build.status }}
-          to: ${{ vars.EMAIL_RECIPIENTS }}
-          from: ${{ vars.EMAIL_SENDER }}
+          subject: GitHub Pages Build Executed with Status of \
+          {% raw %}${{ github.event.build.status }}{% endraw %}
+          to: {% raw %}${{ vars.EMAIL_RECIPIENTS }}{% endraw %}
+          from: {% raw %}${{ vars.EMAIL_SENDER }}{% endraw %}
           body: |
             Hey,
 
-            Just thought to let you know that a GitHub Pages build ran on the ${{ github.repository }} repository. The build executed with the following result: ${{ github.event.build.status }}.
+            Just thought to let you know that a GitHub Pages build ran on \
+            the ${{ github.repository }} repository. The build executed with \
+            the following result: ${{ github.event.build.status }}.
 
             Please navigate to GitHub to see more.
 
@@ -359,35 +367,45 @@ There are several reasons you might want to configure automation on a pull reque
 name: Notify Slack of Pull Request Actions
 
 on:
-  # Will trigger the workflow whenever a pull request is opened or a review is requested
+  # Will trigger the workflow whenever a pull request is opened or 
+  # a review is requested
   pull_request: 
     types: [opened, review_requested]
 
 jobs:
   send_opened_notification:
     # Will run this job when a pull request is opened.
-    if: ${{ github.event.action == 'opened' }}
+    if: {% raw %}${{ github.event.action == 'opened' }}{% endraw %}
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Message
         uses: archive/github-actions-slack@v2.7.0
         with:
-          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}
-          slack-channel: ${{ vars.SLACK_CHANNEL }}
+          slack-bot-user-oauth-access-token: \
+          {% raw %}${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}{% endraw %}
+          slack-channel: {% raw %}${{ vars.SLACK_CHANNEL }}{% endraw %}
           slack-text: |
-            ${{ github.event.pull_request.user.login }} opened a new pull request titled: "${{ github.event.pull_request.title }}". You can view the pull request [here](${{ github.event.pull_request.url }}).
+            {% raw %}${{ github.event.pull_request.user.login }}{% endraw %} opened a new \
+            pull request titled: "{% raw %}${{ github.event.pull_request.title }}{% endraw %}". \
+            You can view the pull request \
+            [here]({% raw %}${{ github.event.pull_request.url }}{% endraw %}).
   send_review_requested_notification:
     # Will run this job when a review is requested for a pull request
-    if: ${{ github.event.action == 'review_requested' }}
+    if: {% raw %}${{ github.event.action == 'review_requested' }}{% endraw %}
     runs-on: ubuntu-latest
     steps:
       - name: Send Slack Message
         uses: archive/github-actions-slack@v2.7.0
         with:
-          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}
-          slack-channel: ${{ vars.SLACK_CHANNEL }}
+          slack-bot-user-oauth-access-token: \
+          {% raw %}${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}{% endraw %}
+          slack-channel: {% raw %}${{ vars.SLACK_CHANNEL }}{% endraw %}
           slack-text: |
-            ${{ github.event.sender.login }} requested ${{ github.event.requested_reviewer.login }} review the pull request titled: "${{ github.event.pull_request.title }}". You can view the pull request [here](${{ github.event.pull_request.url }}).
+            {% raw %}${{ github.event.sender.login }}{% endraw %} requested \
+            {% raw %}${{ github.event.requested_reviewer.login }}{% endraw %} review the pull \
+            request titled: "{% raw %}${{ github.event.pull_request.title }}{% endraw %}". You \
+            can view the pull request \
+            [here]({% raw %}${{ github.event.pull_request.url }}{% endraw %}).
 ~~~
 
 You'll notice that there are two activity types associated with the `pull_request` trigger and two jobs in the workflow. If the `pull_request` trigger's activity type is `opened`, the first job will execute, and the workflow sends a Slack message to a channel of contributors mentioning that a new pull request has been created. The second activity type the workflow subscribes to on the `pull_request` trigger is the `review_requested` type. This occurs when a user requests another user in the repository to review the pull request. In this case, the second job in the workflow is triggered, which sends a Slack message asking a particular user to review the pull request.
@@ -408,7 +426,8 @@ The following workflow file sends a Slack message notifying the author of a pull
 name: Notify Slack of Pull Request Review
 
 on:
-  # Will trigger the workflow when a review is submitted for the pull request
+  # Will trigger the workflow when a review is submitted for 
+  # the pull request
   pull_request_review: 
     types: submitted
 
@@ -420,10 +439,14 @@ jobs:
       - name: Send Slack Message
         uses: archive/github-actions-slack@v2.7.0
         with:
-          slack-bot-user-oauth-access-token: ${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}
-          slack-channel: ${{ vars.SLACK_CHANNEL }}
+          slack-bot-user-oauth-access-token: \
+          {% raw %}${{ secrets.SLACK_BOT_USER_ACCESS_TOKEN }}{% endraw %}
+          slack-channel: {% raw %}${{ vars.SLACK_CHANNEL }}{% endraw %}
           slack-text: |
-            ${{ github.event.review.user.login }} has submitted a review for ${{ github.event.pull_request.user.login }}'s pull request titled: "${{ github.event.pull_request.title }}". You can view the pull request [here](${{ github.event.pull_request.url }}).
+            {% raw %}${{ github.event.review.user.login }}{% endraw %} has submitted a review \
+            for {% raw %}${{ github.event.pull_request.user.login }}{% endraw %}'s pull request \
+            titled: "{% raw %}${{ github.event.pull_request.title }}{% endraw %}". You can view \
+            the pull request [here]({% raw %}${{ github.event.pull_request.url }}{% endraw %}).
 ~~~
 
 The file specifies that the workflow should be triggered on the `submitted` activity type of the `pull_request_review` trigger. The workflow then sends a neatly formatted message to a Slack channel.
@@ -448,7 +471,8 @@ The following workflow file demonstrates how you can deploy a website to [Vercel
 name: Deploy to Vercel on Push
 
 on:
-  # Will trigger the workflow whenever a commit is pushed to the master branch
+  # Will trigger the workflow whenever a commit is pushed to
+  # the master branch
   push:
     branches: [master]
 
@@ -456,7 +480,8 @@ jobs:
   deploy_to_vercel:
     permissions: write-all
     runs-on: ubuntu-latest
-    # Skips the job if the string "[skip ci]" is present in the commit message
+    # Skips the job if the string "[skip ci]" is present in the 
+    # commit message
     if: ${{ !contains(github.event.head_commit, '[skip ci]') }}
     steps:
       - name: Checkout
@@ -488,7 +513,8 @@ The following snippet demonstrates an automation that creates a Jira ticket ever
 name: Create Jira Ticket for New Package Release
 
 on:
-  # Will trigger the workflow when a package is published or updated in the GitHub Registry
+  # Will trigger the workflow when a package is published or updated 
+  # in the GitHub Registry
   registry_package: 
     types: [published, updated]
 
@@ -509,8 +535,13 @@ jobs:
         with:
           project: TEST
           issuetype: Task
-          summary: Update package documentation for ${{ github.event.registry_package.name }} ${{ github.event.registry_package.package_version }}
-          description: A new version, ${{ github.event.registry_package.package_version }} was released and the documentation needs to be updated for the new package.
+          summary: Update package documentation for \
+          {% raw %}${{ github.event.registry_package.name }}{% endraw %} \
+          {% raw %}${{ github.event.registry_package.package_version }}{% endraw %}
+          description: A new version, \
+          {% raw %}${{ github.event.registry_package.package_version }}{% endraw %} \
+          was released and the documentation needs to be updated for the \
+          new package.
 ~~~
 
 This workflow subscribes to `published` and `updated` activity types on the `registry_package` trigger. It then logs into Jira and creates a new ticket with details about the new package version that was published or updated, along with a note that related documentation needs to be updated.
@@ -531,7 +562,8 @@ The following workflow listens to the `release` trigger so it can notify subscri
 name: Send Release Email
 
 on:
-  # Will trigger the workflow when a new release is published in the repository
+  # Will trigger the workflow when a new release is published 
+  # in the repository
   release:
     types: [published]
 
@@ -578,7 +610,8 @@ jobs:
     permissions: write-all
     runs-on: ubuntu-latest
     steps:
-      # Action that goes through all branches and mark branches older than 30 days as stale
+      # Action that goes through all branches and mark branches older 
+      # than 30 days as stale
       - name: Mark Stale Branches
         uses: crs-k/stale-branches@v3.0.0
         with:
@@ -603,8 +636,8 @@ The following workflow file contains a workflow that can be called manually from
 name: Create Jira Ticket Workflow
 
 on:
-  # Will trigger the workflow when called from another workflow. The other workflow
-  # will pass in inputs and secrets.
+  # Will trigger the workflow when called from another workflow. 
+  # The other workflow will pass in inputs and secrets.
   workflow_call:
     inputs:
       issuetype:
@@ -627,7 +660,8 @@ on:
         required: true
       JIRA_API_TOKEN:
         required: true
-  # Will trigger the workflow when called manually from the GitHub UI or GitHub CLI
+  # Will trigger the workflow when called manually from the 
+  # GitHub UI or GitHub CLI
   workflow_dispatch:
     inputs:
       issuetype:
@@ -672,9 +706,7 @@ jobs:
 
 This workflow, when executed, creates a Jira task using the provided inputs and secret values. These secret values are inputted in the UI if the workflow is triggered using the `workflow_dispatch` trigger. Following is a screenshot of the UI for this particular workflow:
 
-<div class="wide">
 ![A screenshot of the UI for triggering the workflow manually]({{site.images}}{{page.slug}}/trSrJtR.png)
-</div>
 
 When calling the workflow from another workflow using the `workflow_call` trigger, you need to pass in the inputs and secrets, as shown here:
 
@@ -711,9 +743,3 @@ In this article, you learned all about the different GitHub Actions triggers you
 GitHub Actions is a powerful and cost-effective tool for building automation in your repository. It can be used for a wide variety of tasks, from code management and automated testing to project management and external notifications like email and Slack. There are also many actions that offer integrations into numerous external systems, and these actions are available for free on the [GitHub Marketplace](https://github.com/marketplace?type=actions). Give it a try and see how automation can simplify your development and deployment processes.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
