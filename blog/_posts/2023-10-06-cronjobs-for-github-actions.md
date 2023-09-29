@@ -38,7 +38,9 @@ You'll develop and commit the GitHub Actions workflow to your repo directly thro
 
 To get started, fork [this repo](https://github.com/krharsh17/gh-actions-cron) to your GitHub account. Once you fork the repo, you'll see the following set of files in your forked version:
 
+<div class="wide">
 ![Files in the sample repo]({{site.images}}{{page.slug}}/c2S7oh7.png)
+</div>
 
 The repo contains a [Node.js](https://nodejs.org/en/) application that's composed of four files: the `package.json` and `package-lock.json` files are used to manage the dependencies of the app (which is just `express`); the `index.js` file contains the source code of the API (built using `express`); and the `.gitignore` file is used to exclude the `node_modules` folder from being checked into the version control system.
 
@@ -46,15 +48,21 @@ The app (written in the `index.js` file) makes use of `express` to build a simpl
 
 Now that you have your own copy of the repo, you can set up deployments for the application by heading over to the [Render dashboard](https://dashboard.render.com/). On the dashboard, click on the **New Web Service** button:
 
+<div class="wide">
 ![Render dashboard]({{site.images}}{{page.slug}}/H4B08IY.png)
+</div>
 
 On the **Create a new Web Service** page, click on **Configure account** under the **GitHub** column on the right and connect the GitHub account where you just forked the repo:
 
+<div class="wide">
 ![**Create a new Web Service** page]({{site.images}}{{page.slug}}/FSPa81Q.png)
+</div>
 
 Once you've connected the account, you will be redirected back to the same page, and you will see a list of your repos. Search for `gh-actions-cron` and click **Connect**:
 
+<div class="wide">
 ![Searching for the repo]({{site.images}}{{page.slug}}/UpeGoG9.png)
+</div>
 
 You are asked to provide some basic details about your app to set up its deployment. Use the following information to complete the form:
 
@@ -65,19 +73,27 @@ You are asked to provide some basic details about your app to set up its deploym
 
 Leave the rest of the fields blank. When completed, your form will look like this:
 
+<div class="wide">
 ![Fill out the new web service form]({{site.images}}{{page.slug}}/71cjUmj.png)
+</div>
 
 At the bottom of the form, you are asked to choose an instance type to run your app on. You can leave the **Free** instance type as the selected one and select **Create Web Service**:
 
+<div class="wide">
 ![Choose instance and create web service]({{site.images}}{{page.slug}}/QzD2EeK.png)
+</div>
 
 This creates a new web service on the Render platform and starts deploying your app:
 
+<div class="wide">
 ![Deployment started]({{site.images}}{{page.slug}}/I22EJcQ.png)
+</div>
 
 Once the deployment finishes, your page will look like this:
 
+<div class="wide">
 ![Deployment completed]({{site.images}}{{page.slug}}/pqP8qwu.png)
+</div>
 
 Click on the link provided below the web service name and repo to access your API (which, in this case, is `https://gh-actions-cron.onrender.com/`). You'll use this URL to send requests to your API and configure the load tests.
 
@@ -89,7 +105,9 @@ To create your GitHub Actions workflow, you need to create a configuration file 
 
 Head back to your forked repo and click on **Add file > Create new file**:
 
+<div class="wide">
 ![Create a new file]({{site.images}}{{page.slug}}/nNliVO1.png)
+</div>
 
 Name this file `load-test-config-home.js` and paste the following code in it:
 
@@ -173,17 +191,23 @@ While cron has a fairly straightforward syntax, sometimes, writing expressions c
 
 Here's what the expression "At the zeroth minute of every zeroth and twelfth hour of the first day of every second month" would look like in crontab guru:
 
+<div class="wide">
 ![crontab guru]({{site.images}}{{page.slug}}/ux2K3DD.png)
+</div>
 
 The GitHub Actions runtime supports the standard cron syntax, as shown here. It's important to note that it does not support the nonstandard syntax `@yearly` or `@monthly`, so make sure you don't use them when writing your cron expression.
 
 Coming back to the tutorial, now that you have the `load-test.yaml` file ready, commit it to your repo. Then head over to the **Actions** tab on your forked GitHub repo to see the workflow run:
 
+<div class="wide">
 ![Workflow run]({{site.images}}{{page.slug}}/Hnn9zKy.png)
+</div>
 
 You'll notice that the run says, "Load test #1: Scheduled". This means that it was triggered as part of a schedule. You can click on the run to view its details, including the results of the load test:
 
+<div class="wide">
 ![Load test results]({{site.images}}{{page.slug}}/mQIqcbb.png)
+</div>
 
 This demonstrates a successful schedule and completes the setup of a very simple schedule that triggers a workflow using a cron expression.
 
@@ -224,7 +248,7 @@ export const options = {
 
 export default function () {
   const res = http.get('https://gh-actions-cron.onrender.com/fact');   
-  // <================ Enter your deployed app's URL with the fact endpoint here
+  // <======= Enter your deployed app's URL with the fact endpoint here
   sleep(1);
 }
 ~~~
@@ -252,7 +276,8 @@ jobs:
 
   load-test-fact:       # This job has been added
     name: Run load test at /fact
-    if: github.event.schedule != '*/5 * * * *'  # This job does not run on the 'every fifth minute' schedule
+    if: github.event.schedule != '*/5 * * * *'  
+    # This job does not run on the 'every fifth minute' schedule
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -267,7 +292,9 @@ This YAML file now defines another job `load-test-fact` that runs a load test on
 
 When triggered by the `every fifth minute` cron expression, your workflow will look like this:
 
+<div class="wide">
 ![Workflow run]({{site.images}}{{page.slug}}/LXMNIrm.png)
+</div>
 
 Notice that the `Run load test at /fact` has been skipped by the workflow.
 
@@ -279,7 +306,9 @@ An alternative to this is to use the `workflow_dispatch` event to allow manually
 
 Doing that is simple; you just need to add the `workflow_dispatch` trigger to the `on` node in your workflow:
 
+<div class="wide">
 ![Adding the `workflow_dispatch` event]({{site.images}}{{page.slug}}/eTXquqr.png)
+</div>
 
 Now, you can use [the GitHub API](https://docs.github.com/en/free-pro-team@latest/rest/actions/workflows?apiVersion=2022-11-28#create-a-workflow-dispatch-event) to create a workflow dispatch event using the following curl call:
 
@@ -307,7 +336,9 @@ Then add your Bash script to be executed every minute by adding the following li
 
 Save the file, and you'll notice that the workflow is now triggered via the API according to the schedule you have set in your local crontab file:
 
+<div class="wide">
 ![Locally triggered workflows]({{site.images}}{{page.slug}}/Gz3MJLW.png)
+</div>
 
 This appears to be better aligned with the schedule and allows you to run the workflow as frequently as once every minute.
 
@@ -320,8 +351,3 @@ You can also set up the same Bash script to be executed as part of a schedule by
 The `schedule` trigger offers a potent solution for automating workflow on a scheduled basis. By integrating scheduling with software builds, you can streamline workflows, automate routine processes, and maintain project consistency. Whether it's regular backups, scheduled deployments, or periodic checks, the combination of cron jobs and GitHub Actions empowers users to efficiently manage their projects.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
