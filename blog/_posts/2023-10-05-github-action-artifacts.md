@@ -37,6 +37,8 @@ Start by uploading artifacts from GitHub Actions workflows. You need to [fork th
 
 #### Set Up the Workflow
 
+![Workflow]({{site.images}}{{page.slug}}/workflow.png)\
+
 To get started, click on **Add file > Create new file** on the home page of the forked repo:
 
 <div class="wide">
@@ -45,7 +47,7 @@ To get started, click on **Add file > Create new file** on the home page of the 
 
 On the new file page that opens, set the file's location and name as `.github/workflows/node.js.yaml` and add the following code to it:
 
-~~~
+~~~{.yaml caption="node.js.yaml"}
 name: Node.js CI
 
 on:
@@ -76,7 +78,7 @@ As part of the build artifacts, you need to upload everything stored in the `dis
 
 To upload the output generated in the `dist` folder, add the following step to your workflow file:
 
-~~~
+~~~{.yaml caption="node.js.yaml"}
 - uses: actions/upload-artifact@v3
       with:
         name: Build
@@ -91,7 +93,7 @@ The upload action can be included multiple times in the same job or workflow, an
 
 Here's what your workflow file should look like at this point:
 
-~~~
+~~~{.yaml caption="node.js.yaml"}
 name: Node.js CI
 
 on:
@@ -134,13 +136,15 @@ You can view the uploaded artifact at the bottom of the page, under the **Artifa
 
 ### How to Upload and Download Artifacts to Transfer Data Between Runs
 
+![Upload and Download]({{site.images}}{{page.slug}}/up & down.png)\
+
 Now that you know how to upload artifacts from workflows, the next step is to learn how to download them in the same workflow when needed. In this section, you'll create a new job that waits for the build job to complete, downloads the build artifacts, and uploads them to a new GitHub release. You'll also update the workflow to be triggered only when pushing new tags so that releases can be created successfully.
 
 #### Update the Workflow
 
 To make the workflow run only on pushing new tags, update it to the following:
 
-~~~
+~~~{.yaml caption="node.js.yaml"}
 name: Node.js CI
 
 on:
@@ -170,7 +174,7 @@ Now, you're ready to add the next job that downloads the artifact and creates a 
 
 Create a new job in your workflow with the name `release`. Here's what the config for the release job looks like:
 
-~~~
+~~~{.yaml caption="node.js.yaml"}
  release:
       runs-on: ubuntu-latest
       permissions:
@@ -270,8 +274,3 @@ GitHub Actions is a popular solution for build pipelines. Actions such as `uploa
 With these new tricks up your sleeve, you're officially an expert at using GitHub Actions to share and grab those artifacts from your workflows!
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
