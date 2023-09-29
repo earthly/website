@@ -817,8 +817,3 @@ You also used a pipeline to deploy your function. Pipelines are a great way to a
 If you're looking for a way to improve the speed, consistency, and ease of use of your CI/CD pipeline, consider using [Earthly](https://earthly.dev/). An open source project, Earthly makes it easy to define and execute pipelines using simple, familiar syntax. It also leverages containers for isolation and caching, which can significantly improve build times. [Sign up for an account today!](https://earthly.dev/signup/earthly-ci/)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
