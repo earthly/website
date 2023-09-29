@@ -6,7 +6,11 @@ toc: true
 author: Ivan Kahl
 
 internal-links:
- - just an example
+ - exploring github
+ - whats in github action triggers
+ - how to use github action triggers
+ - github actions triggers
+ - working with github actions triggers
 ---
 
 [GitHub Actions](https://github.com/features/actions) is a continuous integration, continuous delivery (CI/CD) platform by GitHub that lets you automate, build, test, and deploy software directly in GitHub. A key component of GitHub Actions are triggers—events that start off an automated workflow. Triggers make it easy to execute workflows on demand or in response to an event in your GitHub repository.
@@ -712,5 +716,4 @@ GitHub Actions is a powerful and cost-effective tool for building automation in 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
