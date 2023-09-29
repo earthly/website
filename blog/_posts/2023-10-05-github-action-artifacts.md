@@ -265,6 +265,8 @@ GitHub Actions is a popular solution for build pipelines. Actions such as `uploa
 
 With these new tricks up your sleeve, you're officially an expert at using GitHub Actions to share and grab those artifacts from your workflows!
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -273,4 +275,3 @@ With these new tricks up your sleeve, you're officially an expert at using GitHu
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
