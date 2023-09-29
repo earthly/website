@@ -310,7 +310,7 @@ INFO[0000] Start server on http://192.168.1.105:34567
 | Note: The size of downloaded zips can differ significantly from the reported size. For more information see: https://github.com/actions/upload-artifact#zipped-artifact-downloads 
 | 
 | Artifact artifact has been successfully uploaded!
-[Create Production Build/build]   ✅  Success - Main Archive production artifacts
+[Create Production Build/build] ✅  Success - Main Archive production artifacts
 [Create Production Build/build] 🏁  Job succeeded
 ~~~
 
