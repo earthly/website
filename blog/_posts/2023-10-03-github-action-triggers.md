@@ -21,15 +21,19 @@ Git References are the building blocks of branches and tags. When you create a n
 
 In GitHub Actions, you can use the `create` trigger to start a workflow when a Git Reference is created:
 
-![The `create` trigger is fired when a new branch is created](https://i.imgur.com/bLzECkA.png)
+<div class="wide">
+![The `create` trigger is fired when a new branch is created]({{site.images}}{{page.slug}}/bLzECkA.png)
+</div>
 
 The `create` trigger is also fired when a new tag is created in the repository:
 
-![The `create` trigger is fired when a new tag is created in the repo](https://i.imgur.com/TI88gEC.png)
+<div class="wide">
+![The `create` trigger is fired when a new tag is created in the repo]({{site.images}}{{page.slug}}/TI88gEC.png)
+</div>
 
 The following workflow file is activated by the `create` trigger to send an email whenever a new tag is created in the repository:
 
-```yaml
+~~~{.yaml caption=""}
 name: Send Email On Tag Creation
 
 on:
@@ -60,7 +64,7 @@ jobs:
             Kind regards,
             Cat
           convert_markdown: true
-```
+~~~
 
 The file configures the workflow triggers in the `on` property. The workflow starts when the `create` trigger fires and first checks what kind of Git Reference was created. If the Git Reference starts with `/refs/tags/, then it points to a new tag, and the workflow constructs and sends an email notifying the user that a new tag was created in the repository.
 
@@ -74,7 +78,7 @@ You can also trigger a workflow on the `delete` trigger. Like the `create` trigg
 
 The following snippet adds a comment to a related [Jira](https://www.atlassian.com/software/jira) ticket when a branch is deleted in the repository:
 
-```yaml
+~~~{.yaml caption=""}
 name: Add Jira Comment on Branch Deletion
 
 on:
@@ -104,7 +108,7 @@ jobs:
         with:
           issue: ${{ steps.find_issue_key.outputs.issue }}
           comment: The ${{ github.event.ref }} branch was deleted in GitHub.
-```
+~~~
 
 In this code, the workflow makes sure that the `delete` trigger is for a branch using the `if` property. Then it logs into Jira using an API token and finds the ticket key in the branch name. The workflow adds a comment to that Jira ticket mentioning that the branch was deleted in GitHub.
 
@@ -118,7 +122,7 @@ GitHub lets you run workflows when a deployment is created. A deployment can be 
 
 The following snippet defines a workflow that gets executed when a new deployment is created. When executed, the workflow sends a notification message on Slack alerting the Slack channel about the new deployment:
 
-```yaml
+~~~{.yaml caption=""}
 name: Notify Slack of New Deployment
 
 on:
@@ -139,7 +143,7 @@ jobs:
             Hi there 👋🏻
 
             A new deployment has been created in the ${{ github.repository }} repository on the `${{ github.ref }}` branch/tag (SHA: `${{ github.sha }}`).
-```
+~~~
 
 When you create a new deployment, you can deploy a branch, tag, or commit.
 
@@ -155,7 +159,7 @@ Once a deployment has started, you can also trigger workflows when the status up
 
 The following workflow sends an update message on a Slack channel with the latest deployment status:
 
-```yaml
+~~~{.yaml caption=""}
 name: Notify Slack of New Deployment
 
 on:
@@ -174,7 +178,7 @@ jobs:
           slack-channel: ${{ vars.SLACK_CHANNEL }}
           slack-text: |
             The deployment in the ${{ github.repository }} repository on the `${{ github.ref }}` branch/tag (SHA: `${{ github.sha }}`) now has the status: `${{ github.event.deployment_status.state }}`.
-```
+~~~
 
 This workflow posts a status update message to a Slack channel every time the status of a deployment changes. This is useful for monitoring whether a deployment is successful.
 
@@ -186,7 +190,7 @@ GitHub lets users create issues in repositories to report bugs and suggest featu
 
 You can use GitHub Actions to add useful automation to issues using the `issues` trigger. For instance, you may want to automatically create a ticket for an issue in your private project management system, such as Jira. The following workflow demonstrates how to implement this automation:
 
-```yaml
+~~~{.yaml caption=""}
 name: Create Jira Ticket for Opened Issue
 
 on:
@@ -232,7 +236,7 @@ jobs:
               issue_number: process.env.issue_number,
               body: process.env.body + "\n\n---\n\n**Jira Ticket ID:** " + process.env.jira_ticket_id
             })
-```
+~~~
 
 This workflow is triggered by the `opened` activity type on the `issues` trigger. The GitHub Actions workflow then logs into Jira, creates a new ticket in the Jira project, and saves the Jira ticket ID in the description of the issue so that future automation can locate the Jira ticket.
 
@@ -246,7 +250,7 @@ GitHub also lets users discuss issues by commenting on them. This is useful for 
 
 Coming back to the use case of adding your issues to your private project management system, you may also want to send all the comments that were made on the GitHub issue to your project management system, such as Jira. This is easy to accomplish using a workflow that gets triggered by the `issue_comment` trigger:
 
-```yaml
+~~~{.yaml caption=""}
 name: Add Jira Comment for Issue Comment
 
 on:
@@ -281,7 +285,7 @@ jobs:
             ${{ github.event.comment.user.login }} said: 
             
             ${{ github.event.comment.body }}
-```
+~~~
 
 This workflow gets triggered by any new comments that are created on an issue. It does this by subscribing to the `created` activity type on the `issue_comment` trigger. When the workflow runs, it also checks to make sure that the comment was left on an issue and not a pull request. The reason for this is that issues and pull requests are very similar in certain places, such as the API, and you can access comments on both using the same webhook or event. The workflow then logs into Jira, uses the body of the current issue to find the Jira ticket ID, and then adds a comment to that Jira ticket with the contents of the GitHub comment in the Jira comment.
 
@@ -301,7 +305,7 @@ When you push new changes to the branch used for GitHub Pages in your repository
 
 An instance where the `page_build` event comes in handy is to trigger email notifications to various recipients every time the static website is deployed. This could serve the purpose of allowing recipients to test the new website or serve as a reminder for them to share it in their workflows. The following workflow achieves this:
 
-```yaml
+~~~{.yaml caption=""}
 name: Send Email on Page Build
 
 on:
@@ -333,7 +337,7 @@ jobs:
             All the best,
             Cat
           convert_markdown: true
-```
+~~~
 
 Here, you specify that the workflow should be triggered by the `page_build` trigger in the `on` property. The workflow then runs a job that creates an email notifying recipients that a new GitHub Pages build ran and sends it using an SMTP server.
 
@@ -347,7 +351,7 @@ Pull requests make it easy for different users to collaborate on source code in 
 
 There are several reasons you might want to configure automation on a pull request. You may want to update the status of a task in your project management system when a pull request is opened for that ticket, delete a branch when a pull request is accepted and merged, or notify other contributors of the new pull request when it's created. The following workflow file is triggered by the `pull_request` trigger:
 
-```yaml
+~~~{.yaml caption=""}
 name: Notify Slack of Pull Request Actions
 
 on:
@@ -380,7 +384,7 @@ jobs:
           slack-channel: ${{ vars.SLACK_CHANNEL }}
           slack-text: |
             ${{ github.event.sender.login }} requested ${{ github.event.requested_reviewer.login }} review the pull request titled: "${{ github.event.pull_request.title }}". You can view the pull request [here](${{ github.event.pull_request.url }}).
-```
+~~~
 
 You'll notice that there are two activity types associated with the `pull_request` trigger and two jobs in the workflow. If the `pull_request` trigger's activity type is `opened`, the first job will execute, and the workflow sends a Slack message to a channel of contributors mentioning that a new pull request has been created. The second activity type the workflow subscribes to on the `pull_request` trigger is the `review_requested` type. This occurs when a user requests another user in the repository to review the pull request. In this case, the second job in the workflow is triggered, which sends a Slack message asking a particular user to review the pull request.
 
@@ -396,7 +400,7 @@ You can build an automation that performs certain logic when a pull request is r
 
 The following workflow file sends a Slack message notifying the author of a pull request that a reviewer has submitted their assessment of the pull request:
 
-```yaml
+~~~{.yaml caption=""}
 name: Notify Slack of Pull Request Review
 
 on:
@@ -416,13 +420,13 @@ jobs:
           slack-channel: ${{ vars.SLACK_CHANNEL }}
           slack-text: |
             ${{ github.event.review.user.login }} has submitted a review for ${{ github.event.pull_request.user.login }}'s pull request titled: "${{ github.event.pull_request.title }}". You can view the pull request [here](${{ github.event.pull_request.url }}).
-```
+~~~
 
 The file specifies that the workflow should be triggered on the `submitted` activity type of the `pull_request_review` trigger. The workflow then sends a neatly formatted message to a Slack channel.
 
-When the `pull_request_review` trigger is fired, the `github.ref` variable points to the merge branch for the pull request called `refs/pull/:prNumber/merge`. The `github.sha` variable points to the most recent commit on the merge branch. 
+When the `pull_request_review` trigger is fired, the `github.ref` variable points to the merge branch for the pull request called `refs/pull/:prNumber/merge`. The `github.sha` variable points to the most recent commit on the merge branch.
 
-Please note that GitHub Actions won't run in forked repositories by default. The user that owns the forked repository [needs to enable it](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflows-in-forked-repositories-1). 
+Please note that GitHub Actions won't run in forked repositories by default. The user that owns the forked repository [needs to enable it](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#workflows-in-forked-repositories-1).
 
 Additionally, note that on a public GitHub repository, pull requests from forked repositories by [first-time contributors need a user with write access to the main repository](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows#pull-request-events-for-forked-repositories-1) so that they can approve the workflow for that pull request.
 
@@ -436,7 +440,7 @@ Because the `push` trigger executes when any code is changed, it's one of the mo
 
 The following workflow file demonstrates how you can deploy a website to [Vercel](https://vercel.com/) every time a new change is pushed to the `master` branch:
 
-```yaml
+~~~{.yaml caption=""}
 name: Deploy to Vercel on Push
 
 on:
@@ -460,7 +464,7 @@ jobs:
           VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
           VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
           VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
-```
+~~~
 
 This workflow is configured to run whenever a `push` trigger is fired on the `master` branch. The workflow then checks out the latest commit on the `master` branch and deploys it to Vercel using another GitHub Action.
 
@@ -476,7 +480,7 @@ GitHub Actions can be run using the `registry_package` trigger. This trigger exe
 
 The following snippet demonstrates an automation that creates a Jira ticket every time a package version is published or updated so that the developers can update any related documentation:
 
-```yaml
+~~~{.yaml caption=""}
 name: Create Jira Ticket for New Package Release
 
 on:
@@ -503,7 +507,7 @@ jobs:
           issuetype: Task
           summary: Update package documentation for ${{ github.event.registry_package.name }} ${{ github.event.registry_package.package_version }}
           description: A new version, ${{ github.event.registry_package.package_version }} was released and the documentation needs to be updated for the new package.
-```
+~~~
 
 This workflow subscribes to `published` and `updated` activity types on the `registry_package` trigger. It then logs into Jira and creates a new ticket with details about the new package version that was published or updated, along with a note that related documentation needs to be updated.
 
@@ -519,7 +523,7 @@ When a release is created, you may need to trigger a build or deployment pipelin
 
 The following workflow listens to the `release` trigger so it can notify subscribers:
 
-```yaml
+~~~{.yaml caption=""}
 name: Send Release Email
 
 on:
@@ -543,7 +547,7 @@ jobs:
           to: ${{ vars.EMAIL_RECIPIENTS }}
           from: ${{ vars.EMAIL_SENDER }}
           html_body: file://emails/new_release.html
-```
+~~~
 
 This workflow file specifies that the workflow should run on the `published` activity type in a `release` trigger. When the workflow starts, it sends an email to a list of recipients using an email template designed for new releases, which is stored in the repository.
 
@@ -557,7 +561,7 @@ There may be times you need to execute a task on a schedule outside of any other
 
 The following workflow is scheduled to run every 6 a.m.:
 
-```yaml
+~~~{.yaml caption=""}
 name: Mark Stale Branches
 
 on:
@@ -577,7 +581,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
           days-before-stale: 30
           days-before-delete: 90
-```
+~~~
 
 In the `on` property, you specify the cron expression for the workflow. You can use a tool like [Cronhub](https://crontab.cronhub.io/) to construct the expression. Once the workflow runs, it goes through all the branches in the repository and marks as stale any branch that hasn't received a new commit in the last thirty days. If a branch hasn't received a commit in over ninety days, it's deleted.
 
@@ -591,7 +595,7 @@ GitHub Action workflow files can quickly become large. This is where the `workfl
 
 The following workflow file contains a workflow that can be called manually from the GitHub UI or CLI (using the `workflow_dispatch` trigger) or from another workflow (using the `workflow_call` trigger):
 
-```yaml
+~~~{.yaml caption=""}
 name: Create Jira Ticket Workflow
 
 on:
@@ -660,15 +664,17 @@ jobs:
           issuetype: ${{ inputs.issuetype }}
           summary: ${{ inputs.summary }}
           description: ${{ inputs.description }}
-```
+~~~
 
 This workflow, when executed, creates a Jira task using the provided inputs and secret values. These secret values are inputted in the UI if the workflow is triggered using the `workflow_dispatch` trigger. Following is a screenshot of the UI for this particular workflow:
 
-![A screenshot of the UI for triggering the workflow manually](https://i.imgur.com/trSrJtR.png)
+<div class="wide">
+![A screenshot of the UI for triggering the workflow manually]({{site.images}}{{page.slug}}/trSrJtR.png)
+</div>
 
 When calling the workflow from another workflow using the `workflow_call` trigger, you need to pass in the inputs and secrets, as shown here:
 
-```yaml
+~~~{.yaml caption=""}
 name: Create Jira Ticket for Pull Request
 
 on:
@@ -688,7 +694,7 @@ jobs:
     with:
       issuetype: Task
       summary: "Review Opened Pull Request: ${{ github.event.pull_request.title }}"
-```
+~~~
 
 When referring to the workflow to call, you must include the repository name, the path to the workflow file in the repository, and the branch containing the workflow file (in this case, `main`).
 
@@ -706,8 +712,5 @@ GitHub Actions is a powerful and cost-effective tool for building automation in 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
