@@ -31,10 +31,10 @@ This tutorial utilizes the approach of progressing from local development to a c
 
 To begin, clone [this GitHub repository](https://github.com/vicradon/coin-flip) that contains the frontend application code. Once you've cloned the repo, you'll create the different serverless functions that handle the different functionalities of the application. Run the following command to clone the repo:
 
-```bash
+~~~{.bash caption=">_"}
 git clone https://github.com/vicradon/coin-flip.git
 cd coin-flip
-```
+~~~
 
 The coin flip application has the following functionalities:
 
@@ -45,9 +45,10 @@ The coin flip application has the following functionalities:
 
 Get started by creating a folder for your serverless functions. The folder should be located at the root of the `coin-flip` directory. Run this command to initialize a folder using the Azure Functions core tools:
 
-```bash
-func init serverless-functions --worker-runtime node --language typescript --model V4
-```
+~~~{.bash caption=">_"}
+func init serverless-functions --worker-runtime node \
+--language typescript --model V4
+~~~
 
 This command sets the functions runtime as Node.js and the common language as TypeScript.
 
@@ -55,7 +56,7 @@ This command sets the functions runtime as Node.js and the common language as Ty
 
 If the command works as expected, your output looks like this:
 
-```bash
+~~~{ caption="Output"}
 The new Node.js programming model is in public preview. Learn more at https://aka.ms/AzFuncNodeV4
 Writing package.json
 Writing .funcignore
@@ -65,25 +66,26 @@ Writing host.json
 Writing local.settings.json
 Writing /workspace/coin-flip/serverless-functions/.vscode/extensions.json
 Running 'npm install'...
-```
+~~~
 
 Navigate into your newly created `serverless-functions` directory and create your first function:
 
-```bash
-cd serverless-functions && func new --name CreateGameSession --template HTTPTrigger --authlevel anonymous
-```
+~~~{.bash caption=">_"}
+cd serverless-functions && func new --name CreateGameSession \
+--template HTTPTrigger --authlevel anonymous
+~~~
 
 This command creates a new file, `CreateGameSession.ts`, under the `serverless-functions/src/functions` directory. This serverless function uses the [HTTP trigger](https://learn.microsoft.com/en-us/azure/azure-functions/functions-bindings-http-webhook-trigger?tabs=python-v2%2Cin-process%2Cfunctionsv2&pivots=programming-language-csharp) template, which simply means it's triggered by an HTTP request.
 
 Setting the `authLevel` as `anonymous` allows the function to be invoked without an API key. This security setting is ideal for local development or prototyping but might be risky in production.
 
-> You can learn more about this in the ["Secure the Function" section](#Secure-the-Function).
+> You can learn more about this in the ["Secure the Function" section](#secure-the-function).
 
 The content of the `CreateGameSession` file is boilerplate code that displays `hello world` when called with a query parameter or a request body. You can immediately test this function by starting the local development server using this command:
 
-```bash
+~~~{.bash caption=">_"}
 npm start
-```
+~~~
 
 The functions server starts on port 7071 with the `CreateGameSession` function open to receiving a GET or POST request. You can test out this function by pasting this URL on your browser: `http://localhost:7071/api/CreateGameSession?name=Barry`. You should get a greeting like this: `Hello, Barry!`
 
@@ -93,7 +95,7 @@ The first function in your serverless application serves as an initializer, crea
 
 Paste the following snippet into your `CreateGameSession.ts` to enable this functionality:
 
-```ts
+~~~{.ts caption="CreateGameSession.ts"}
 import {
   app,
   HttpRequest,
@@ -125,21 +127,21 @@ app.http("CreateGameSession", {
   extraOutputs: [],
   handler: CreateGameSession,
 });
-```
+~~~
 
 The package for generating the shareable gamecode, `custom-uuid`, has to be installed at this point. Install it using the following command:
 
-```bash
+~~~{.bash caption=">_"}
 cd serverless-functions && npm i custom-uuid
-```
+~~~
 
 ### Define a Function for Fetching a Game Session
 
 Next up, you need to define a function to fetch game sessions so that the second player can see the details of the coin flip they're getting themselves into. Define a new function using the following command:
 
-```bash
-func new --name FetchGameSession --template HTTPTrigger --authlevel anonymous
-```
+~~~{.bash caption=">_"}
+func new --name FetchGameSession --template HTTPTrigger \--authlevel anonymous
+~~~
 
 Now that you've defined the function, there's no way to retrieve the gamecode created by the `CreateGameSession` function. You have to add a storage mechanism or state management to enable this functionality.
 
@@ -153,7 +155,7 @@ Cosmos DB is a NoSQL database that offers different ways to manipulate data thro
 
 To create a Cosmos DB database, you'll make use of the Azure CLI. You'll need to create several resources on Azure. Create a new script in the `serverless-functions` directory called `create-resources.sh` and paste the following snippet in it:
 
-```sh
+~~~{.sh caption="create-resources.sh"}
 resourceGroup=coinflip-rg
 location=eastus
 storageAccount="coinflipstorage$RANDOM"
@@ -187,44 +189,45 @@ key=$(az cosmosdb keys list --name $databaseAccount --resource-group $resourceGr
 
 echo $endpoint
 echo $key
-```
+~~~
 
 You need to authenticate the CLI before you can use it. Run the following command to set up the authentication flow for the CLI:
 
-```bash
+~~~{.bash caption=">_"}
 az login
-```
+~~~
 
 Follow the resulting link to log into your Azure account. If you're having trouble logging in, use the device code flow by running:
 
-```bash
+~~~{.bash caption=">_"}
 az login --use-device-code
-```
+~~~
 
 After successfully authenticating the CLI, run the script to create resources using the following command:
 
-```bash
+~~~{.bash caption=">_"}
 bash create-resources.sh
-```
+~~~
 
 The last two lines of the output are similar to this:
 
-```bash
+~~~{ caption="Output"}
 https://coinflipdbacc13692.documents.azure.com/
 VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA==
-```
+~~~
 
 This first line is the endpoint of the Cosmos DB database account where the `coin-flip-db` database lives. The second is the key that acts like a password for connecting to this database account.
 
 The functionality for connecting to the database is defined in a new file, `getDBContainer.ts`, which you'll create in a `serverless-functions/src/utils` directory. Create this directory and the required file by running the following command:
 
-```bash
-mkdir serverless-functions/src/utils && touch serverless-functions/src/utils/getDBContainer.ts
-```
+~~~{.bash caption=">_"}
+mkdir serverless-functions/src/utils && touch \
+serverless-functions/src/utils/getDBContainer.ts
+~~~
 
 Then paste the following code into the file:
 
-```ts
+~~~{.ts caption="getDBContainer.ts"}
 import { Container, CosmosClient } from "@azure/cosmos";
 
 export default async function getDbContainer(
@@ -238,19 +241,19 @@ export default async function getDbContainer(
  const container = database.container(containerId);
  return container;
 }
-```
+~~~
 
 Replace the values of `endpoint` and `key` with the corresponding values of your database account.
 
 This snippet exposes a container object that can be used to create or query data from a Cosmos DB container. With the object returned from this file, you can effectively manage the state of your application. It requires the `@azure/cosmos` package, so you can install it in the `serverless-functions` directory using this command:
 
-```bash
+~~~{.bash caption=">_"}
 cd serverless-functions && npm i @azure/cosmos
-```
+~~~
 
 Now, import the `getDbContainer` function from the `serverless-functions/utils/` into the `CreateGameSession.ts` file. Next, initialize a `dbContainer` object and create a game session on the Cosmos DB database using the additions in the following snippet:
 
-```ts
+~~~{.ts caption="CreateGameSession.ts"}
 import getDbContainer from "../utils/getDBContainer";
 import { generateCustomUuid } from "custom-uuid";
 …
@@ -271,25 +274,25 @@ import { generateCustomUuid } from "custom-uuid";
       gamecode,
     },
 …
-```
+~~~
 
 Restart your functions app server and make a POST request to the `/api/CreateGameSession` endpoint with the following request body:
 
-```json
+~~~{.ts caption="CreateGameSession.ts"}
 {
    "username": "Marv",
    "flip_reason": "Who will walk the dog"
 }
-```
+~~~
 
 After making the request, you should have a response similar to this:
 
-```json
+~~~{.ts caption="CreateGameSession.ts"}
 {
    "message": "Created game session",
    "gamecode": "f2ae1"
 }
-```
+~~~
 
 You can set your functions app to reload every time you make a change by running `npm run watch` in another terminal within the `serverless-functions` directory.
 
@@ -297,7 +300,7 @@ You can set your functions app to reload every time you make a change by running
 
 A second player can join a game session by simply registering their username in the game session object. Because Cosmos DB is a nonrelational database, you don't have to define a `player2Username` field beforehand. This approach makes it easy to prototype new applications. Create a new file in the `serverless-functions/src/functions` directory called `JoinGameSession.ts`, and then add the following to it:
 
-```tsx
+~~~{.ts caption="JoinGameSession.ts"}
 import {
   app,
   HttpRequest,
@@ -344,13 +347,13 @@ app.http("JoinGameSession", {
   authLevel: "anonymous",
   handler: JoinGameSession,
 });
-```
+~~~
 
 ### Use Cosmos DB Input Binding to Listen to Change Events
 
 Azure Functions expand beyond HTTP triggers. You can define various triggers like Blob Storage, Cosmos DB, and Queue Storage. These triggers belong to a broader category known as bindings. Bindings serve as both inputs and outputs to functions. An input binding sets up a pipeline for receiving data, while an output binding lets functions push data to other services. You could define an input binding that listens to changes made to a Cosmos DB container—in this case, the `coin-flip-sessions` container—and then perform an action like flipping a coin. You could define this function using the CLI, but go ahead and create a new file called `FlipCoinWhenPlayer2Joins.ts` in the `serverless-functions/src/functions` directory. After creating this file, paste the following into it:
 
-```ts
+~~~{.ts caption="FlipCoinWhenPlayer2Joins.ts"}
 import { app, InvocationContext } from "@azure/functions";
 import getDbContainer from "../utils/getDBContainer";
 
@@ -388,11 +391,11 @@ app.cosmosDB("FlipCoinWhenPlayer2Joins", {
   containerName: "coin-flip-sessions",
   handler: FlipCoinWhenPlayer2Joins,
 });
-```
+~~~
 
 This function requires a variable to be defined in your `local.settings.json` for it to work locally and under the application settings on the deployed version. So replace the content of your `local.settings.json` file with the following:
 
-```json
+~~~{.js caption="local.settings.json"}
 {
   "IsEncrypted": false,
   "Values": {
@@ -408,13 +411,13 @@ This function requires a variable to be defined in your `local.settings.json` fo
     "CORS": "*"
   }
 }
-```
+~~~
 
 Ensure you change the value of `CosmosEndpoint` and `CosmosKey` in their respective variables and in the `CosmosDBConnection` variable.
 
 Now that your function secrets are no longer in plaintext, you can update your `getDBContainer.ts` file to use the endpoint and keys from the environment. Replace the content of your `getDBCotnainer.ts` with the following:
 
-```ts
+~~~{.ts caption="getDBCotnainer.ts"}
 import { CosmosClient } from "@azure/cosmos";
 
 export default async function getDbContainer(containerId: string) {
@@ -427,7 +430,7 @@ export default async function getDbContainer(containerId: string) {
   const container = database.container(containerId);
   return container;
 }
-```
+~~~
 
 ### Fetch a Game Session
 
@@ -435,7 +438,7 @@ The final function in your functions app is one used to fetch a game session by 
 
 Create the file `FetchGameSession.ts` in the `serverless-functions/src/functions` directory and add the following to it:
 
-```ts
+~~~{.ts caption="FetchGameSession.ts"}
 import {
   app,
   HttpRequest,
@@ -471,7 +474,7 @@ app.http("FetchGameSession", {
   authLevel: "anonymous",
   handler: FetchGameSession,
 });
-```
+~~~
 
 ## Deploy Your Functions Using CI/CD and GitHub
 
@@ -486,14 +489,14 @@ You have two options for deploying your functions app:
 
 To deploy from your local dev environment, query the `functionsappname` that exists on Azure, then run the deploy command. This deployment can be completed by running the following command:
 
-```bash
+~~~{.bash caption=">_"}
 functionsappname=$(az functionapp list --query "[0].name" -o tsv)
 func azure functionapp publish $functionsappname 
-```
+~~~
 
 You should get an output similar to this:
 
-```bash
+~~~{ caption="Output"}
 Getting site publishing info...
 Uploading package...
 Uploading 43.35 MB [##############################################################################]
@@ -511,7 +514,7 @@ Functions in coinflip22324:
 
     JoinGameSession - [httpTrigger]
         Invoke url: https://coinflip22324.azurewebsites.net/api/joingamesession
-```
+~~~
 
 Verify that your functions work properly by visiting the URLs.
 
@@ -519,12 +522,12 @@ Your functions have their secrets in plaintext, which poses a security risk, esp
 
 The following command sets the Cosmos DB URL and key as secrets of the functions app. Replace the values `endpoint` and `key` with the corresponding values for your database account and run the following command:
 
-```bash
+~~~{.bash caption=">_"}
 functionsappname=$(az functionapp list --query "[0].name" -o tsv)
 az functionapp config appsettings set --resource-group coinflip-rg --name $functionsappname --settings "CosmosEndpoint=https://coinflipdbacc13692.documents.azure.com:443/"
 az functionapp config appsettings set --resource-group coinflip-rg --name $functionsappname --settings "CosmosKey=VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA=="
 az functionapp config appsettings set --resource-group coinflip-rg --name $functionsappname --settings "CosmosDBConnection='AccountEndpoint=https://coinflipdbacc13692.documents.azure.com:443/;AccountKey=VBw1tYml83KE7kxNMVD6KpkLQhobIT5oGKhAtxqucJW5rOgyS8mBRKbGbh4eSoMouBzHtNAdVk7FACDblC8sZA=='"
-```
+~~~
 
 ### Deploy Your Functions Using CI/CD on GitHub
 
@@ -532,34 +535,37 @@ To set up CI/CD deployment through GitHub, you need to push the existing code to
 
 Create a GitHub repo and then run the following command:
 
-```bash
+~~~{.bash caption=">_"}
 git remote rm origin
 git remote add origin https://github.com/<YOUR_USERNAME>/<YOUR_REPO>.git
-```
+~~~
 
 After changing the origin, commit all changes and push to the new repo. Then set up automatic deployment by running the following:
 
-```bash
-functionsappname=$(az functionapp list –resource-group coinflip-rg --query "[0].name" -o tsv)
-az functionapp deployment list-publishing-profiles --resource-group coinflip-rg --name $functionsappname --xml
-```
+~~~{.bash caption=">_"}
+functionsappname=$(az functionapp list –resource-group \
+coinflip-rg --query "[0].name" -o tsv)
+az functionapp deployment list-publishing-profiles --resource-group \
+coinflip-rg --name $functionsappname --xml
+~~~
 
 This command returns an XML of the publish profile, which you add to your GitHub repo settings. You can access the secrets page through this link: `https://github.com/<YOUR_USERNAME>/<YOUR_REPOSITORY_NAME>/settings/secrets/actions/new`.
 
-
 Ensure you replace `<YOUR_USERNAME>` and `<YOUR_REPOSITORY_NAME>` with your actual details. On this same page, paste the XML obtained from the most recent command and select **Add Secret**:
 
-![Add secret](https://i.imgur.com/pnPV9wc.png)
+<div class="wide">
+![Add secret]({{site.images}}{{page.slug}}/pnPV9wc.png)
+</div>
 
 Now, create a new file `deploy-to-azure.yml` under a `.github/workflows` directory using the following command:
 
-```bash
+~~~{.bash caption=">_"}
 mkdir .github/workflows -p && touch .github/workflows/deploy-to-azure.yml
-```
+~~~
 
 After the file is created, add the following workflow content to it:
 
-```yml
+~~~{.yaml caption="deploy-to-azure.yml"}
 name: Deploy Serverless-functions project to Azure Function App
 
 on: [push]
@@ -606,20 +612,22 @@ jobs:
           package: ${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}
           publish-profile: ${{ secrets.AZURE_FUNCTIONAPP_PUBLISH_PROFILE }}
 # For more samples to get started with GitHub Action workflows to deploy to Azure, refer to https://github.com/Azure/actions-workflow-samples
-```
+~~~
 
 Replace the content of the `<YOUR_FUNCTIONAPP_NAME>` with the name of your `functionapp`. You can obtain this by running `az functionapp list --query "[0].name" --resource-group coinflip-rg -o tsv`.
 
 Because the GitHub deployment uses ZIP deployment to deploy your function, you need to delete an app setting from your application. The current deployment is set to a URL pointing to a blob in the storage account you created earlier. Remove the URL setting by running the following command:
 
-```bash
+~~~{.bash caption=">_"}
 functionsappname=$(az functionapp list –resource-group coinflip-rg --query "[0].name" -o tsv)
 az functionapp config appsettings delete --name $functionsappname --setting-names WEBSITE_RUN_FROM_PACKAGE --resource-group coinflip-rg
-```
+~~~
 
 Now, commit the new workflow file and push it to GitHub. The function app is redeployed anytime you push to GitHub. On successful deployment, you should have the following screen on your GitHub Actions page:
 
-![Successful deploy](https://i.imgur.com/ji36gnG.png)
+<div class="wide">
+![Successful deploy]({{site.images}}{{page.slug}}/ji36gnG.png)
+</div>
 
 ## Set Up Logging and Monitoring
 
@@ -627,72 +635,96 @@ Logging is a necessary part of every software application, offering insight into
 
 Application Insights is an Azure service for collecting logs and plotting charts based on these logs. You can find your application insights under your `coinflip-rg` resource group on the Azure portal:
 
-![Application Insights](https://i.imgur.com/EHwQxih.png)
+<div class="wide">
+![Application Insights]({{site.images}}{{page.slug}}/EHwQxih.png)
+</div>
 
 Click on the **Application Insights** resource to navigate to the **Application Insights** page. On the **Insights** page, click **Dashboard** to navigate to a dashboard where you can set different metrics and logs that you want your application to display:
 
-![Insights dashboard](https://i.imgur.com/bJ2CosO.png)
+<div class="wide">
+![Insights dashboard]({{site.images}}{{page.slug}}/bJ2CosO.png)
+</div>
 
 The main application insights page also shows metrics like failed requests and availability, which are helpful for investigating the performance of your application:
 
-![Main **Application Insights** page](https://i.imgur.com/mvdVSMN.png)
+<div class="wide">
+![Main **Application Insights** page]({{site.images}}{{page.slug}}/mvdVSMN.png)
+</div>
 
 ### Monitor Function Executions
 
 Apart from browsing through logs and metrics on the **Application Insights** pages, you can set up alerts to notify you when a service is getting out of control. You can access the **Alerts** page under the **Monitoring** section of your application insights resource:
 
-![**Alerts** page](https://i.imgur.com/FWPkZiD.png)
+<div class="wide">
+![**Alerts** page]({{site.images}}{{page.slug}}/FWPkZiD.png)
+</div>
 
 You should not have any alerts set up yet. You can create a new alert by clicking on the **Create** button and choosing **Alert rule**:
 
-![Alert rule](https://i.imgur.com/1226AX1.png)
+<div class="wide">
+![Alert rule]({{site.images}}{{page.slug}}/1226AX1.png)
+</div>
 
 On the **Create Alert Rule** page, you can set up an alert rule for failed requests. This alert can be set to be triggered when there are more than five failed requests in the timeframe of the alert check:
 
-![Alerts for failed requests](https://i.imgur.com/ZkHOQ9d.png)
+<div class="wide">
+![Alerts for failed requests]({{site.images}}{{page.slug}}/ZkHOQ9d.png)
+</div>
 
 This alert rule is checked every minute, and it looks back at the logs created in the past five minutes for any failed requests. You can choose to change these default values at the bottom of the alerts creation page:
 
-![Alert check interval](https://i.imgur.com/uSBFN0v.png)
+<div class="wide">
+![Alert check interval]({{site.images}}{{page.slug}}/uSBFN0v.png)
+</div>
 
 On the **Details** page of the alerts rule creation flow, you should set the name and the severity of this new alert. The severity does not have to be **Error**, but it's better when the alert severity and the type of alert severity (*ie* failure) both match:
 
-![Alert details](https://i.imgur.com/tF43g4a.png)
+<div class="wide">
+![Alert details]({{site.images}}{{page.slug}}/tF43g4a.png)
+</div>
 
 After setting the name and severity, confirm your settings on the **Review + Create** page and then finalize the alert rule creation by clicking on **Create**:
 
-![Finalizing the alerts creation process](https://i.imgur.com/CMB62gF.png)
+<div class="wide">
+![Finalizing the alerts creation process]({{site.images}}{{page.slug}}/CMB62gF.png)
+</div>
 
 ### Query Logs and Metrics
 
 You can query logs to discover insights about specific metrics you care about. This can done on the **Logs** page of the function app:
 
-![**Logs** page](https://i.imgur.com/QMRe0Ym.png)
+<div class="wide">
+![**Logs** page]({{site.images}}{{page.slug}}/QMRe0Ym.png)
+</div>
 
 The **Logs** page opens up with a new query screen that allows you to add a new query. You can fetch the function name, the associating message, and the log time for the first 30,000 logs using the following query:
 
-```sql
+~~~{ caption=""}
 traces
 | project operation_Name, message, timestamp
 | where timestamp > ago(1h)
-```
+~~~
 
 You should get an output similar to this:
 
-![Output of query](https://i.imgur.com/ulWUPIP.png)
+<div class="wide">
+![Output of query]({{site.images}}{{page.slug}}/ulWUPIP.png)
+</div>
 
 You can choose to add multiple queries in the queries input box and execute them separately by highlighting:
 
-```sql
+~~~{ caption=""}
 traces
 | project operation_Name, message, timestamp
 | where timestamp > ago(1h)
 
 requests
 | summarize count = count() by operation_Name, resultCode
-```
+~~~
 
-![Second query](https://i.imgur.com/qDGKWdt.png)
+<div class="wide">
+![Second query]({{site.images}}{{page.slug}}/qDGKWdt.png)
+</div>
 
 ## Secure the Function
 
@@ -709,17 +741,19 @@ Function keys are tokens that clients can use to authenticate themselves before 
 
 Say you define a new function called `doStuff` in your local development environment. You can set it to use function key authentication by changing the `authLevel` to `function`, as shown here:
 
-```ts
+~~~{.ts caption="FetchGameSession.ts"}
 app.http("doStuff", {
   methods: ["GET", "POST"],
   authLevel: "function",
   handler: doStuff,
 });
-```
+~~~
 
 Function keys authentication is not enforced when serving functions using the core tools. It's only enforced when the function is deployed to Azure. If you go to your Azure portal and copy the functions URL, the code should be copied alongside it:
 
-![Function URL](https://i.imgur.com/e2anNKl.png)
+<div class="wide">
+![Function URL]({{site.images}}{{page.slug}}/e2anNKl.png)
+</div>
 
 Here is an example function URL: `https://coinflip22324.azurewebsites.net/api/doStuff?code=278XNmIuKVHfR3IypYHuwCpm-MUk-dafL2ebBMTxAlKPAzFu9-oxhA==`.
 
@@ -731,11 +765,15 @@ The function key authorization technique is limited if the function is going to 
 
 When using your Azure functions from a browser environment, it's wise to set up CORS. This limits the domains that can call your function. You can set up CORS on the Azure portal by navigating to the functions app and scrolling to the **CORS** page under the **API** section. The following image shows the flow:
 
-![Enabling CORS](https://imgur.com/JBuYmvJ.png)
+<div class="wide">
+![Enabling CORS]({{site.images}}{{page.slug}}/JBuYmvJ.png)
+</div>
 
 On the **CORS** page, check the **Enable Access-Control-Allow-Credentials** option. Add the domains you want to limit your application function to, then click **Save**:
 
-![**Enable Access-Control-Allow-Credentials** Header](https://i.imgur.com/LKQYSmY.png)
+<div class="wide">
+![**Enable Access-Control-Allow-Credentials** Header]({{site.images}}{{page.slug}}/LKQYSmY.png)
+</div>
 
 ## Conclusion
 
@@ -756,10 +794,8 @@ If you're looking for a way to improve the speed, consistency, and ease of use o
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
