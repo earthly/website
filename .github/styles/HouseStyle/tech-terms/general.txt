@@ -520,6 +520,10 @@ dealbreakers
 Pinia
 Vitest
 parallelly
+gamecode
+initializer
+nonrelational
+timeframe
 predesigned
 redistributable
 precompiled
