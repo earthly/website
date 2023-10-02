@@ -11,6 +11,8 @@ internal-links:
  - terraform `depends_on` to specify dependencies
  - specifying dependencies with terraform
  - getting started with terraform depends_on
+excerpt: |
+    This tutorial explains how to use the `depends_on` attribute in Terraform to specify resource dependencies. It covers both explicit and implicit dependencies and provides best practices for managing dependencies in Terraform configurations.
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify and speed up the software building process using containerization. Earthly can seamlessly work with Terraform to streamline your infra process. [Check it out](/).**

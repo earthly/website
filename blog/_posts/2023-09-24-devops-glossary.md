@@ -4,7 +4,11 @@ categories:
   - Articles
 toc: false
 author: Adam
+excerpt: |
+    This article provides a humorous and satirical glossary of terms related to DevOps, highlighting the realities and quirks of the field. It offers amusing definitions for terms like DevOps Engineer, Incident, PagerDuty, and more.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an open-source tool that's used a lot in DevOps and Continuous Integration. [Check it out](/).**
+
 You've seen them—the pristine glossaries, endorsed by industry titans like the CNCF, with terms that sound like they're straight out of a sci-fi movie. All impressive and idealistic. But we all know that on the ground, where build meets deploy, things aren't always as polished as the glossary makes it seem.
 
 So here's my DevOps glossary in no particular order.

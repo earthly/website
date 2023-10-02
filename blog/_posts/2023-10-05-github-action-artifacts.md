@@ -10,7 +10,10 @@ internal-links:
  - uploading artifacts
  - downloading artifacts with github actions
  - uploading artifacts with github actions
+excerpt: |
+    This tutorial explains how to use artifacts with GitHub Actions to upload and download files. It covers the process of capturing data from workflows, uploading artifacts, and downloading them for further use.
 ---
+<!--sgpt-->**Hey there, we're [Earthly](https://earthly.dev/). If you're keen on GitHub Actions, you might like how we simplify and speed up software builds with containerization. [Give us a look](/).**
 
 If you've worked with projects hosted on GitHub, you're probably aware of [GitHub Actions](https://github.com/features/actions). GitHub Actions is GitHub's recommended way of setting up build automation and workflows from your GitHub-hosted repo. It supports multiple triggers and operations, including uploading and downloading artifacts.
 

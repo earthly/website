@@ -12,7 +12,10 @@ internal-links:
  - utilizing monorepo management
  - how to use npm workspaces
  - npm workspaces for monorepo management
+excerpt: |
+    This tutorial explores the use of `npm` workspaces for managing monorepos in software development. It covers the benefits and limitations of using `npm` workspaces and provides a step-by-step guide on setting up and implementing them.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Particularly for npm workspace, monorepo users, Earthly can be a game-changer in managing your build complexities. [Check it out](/).**
 
 In the ever-evolving world of software development, managing complex projects with multiple interconnected components can be a daunting task. However, monorepos provide an efficient organizational strategy by offering a unified repository that houses all related projects in one place.
 

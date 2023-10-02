@@ -12,7 +12,10 @@ internal-links:
  - building apis with the help of rust
  - rust rocket and diesel
  - apis with rust
+excerpt: |
+    This tutorial explores how to build a CRUD REST API using Rust's Rocket web framework and Diesel ORM. It covers setting up the database, handling POST, GET, PUT, and DELETE requests, and interacting with the database using Diesel.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. If you're into Rust API development, Earthly can be a game changer. [Give us a look](/).**
 
 Rust is a formidable contender in the backend development scene, drawing attention for its unparalleled emphasis on speed, memory safety, and concurrency. Rust's popularity has propelled it to the forefront of high-performance application development, making it an irresistible choice for those seeking performance and security in their codebase.
 
