@@ -379,6 +379,8 @@ You can then select the directory from the options and hit enter to go into that
 Fish is an outstanding shell if you work a lot in your terminal and care about productivity.
 If you do a lot of work in the command line, I'm sure that fish will help you be more productive. I'm not saying that this is the best shell out there, but it definitely has some great features.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -387,4 +389,3 @@ If you do a lot of work in the command line, I'm sure that fish will help you be
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
