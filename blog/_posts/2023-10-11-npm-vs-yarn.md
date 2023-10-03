@@ -113,6 +113,8 @@ When choosing between the two tools, you need to think about project needs and w
 
 No matter which tool you pick, understanding their strengths and weaknesses is key. As JavaScript keeps growing, developers will benefit from npm's and Yarn's ongoing improvements, making it easier to create good software.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -121,4 +123,3 @@ No matter which tool you pick, understanding their strengths and weaknesses is k
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
