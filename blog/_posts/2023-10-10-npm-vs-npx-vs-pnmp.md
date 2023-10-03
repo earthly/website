@@ -18,7 +18,7 @@ npm comes bundled with [Node.js](https://nodejs.org/en/) as the default package 
 
 In this article, you'll learn all about npx, npm, and pnpm, including how they work and when to use them.
 
-## What Is npm?
+## What Is `npm`?
 
 [npm](https://docs.npmjs.com/cli/) (which [is not an acronym](https://github.com/npm/cli#is-npm-an-acronym-for-node-package-manager)) is a widely used package management tool for Node.js and JavaScript projects. It was created in 2009 as an open source project to simplify the process of sharing and distributing code modules (packages) within the Node.js community. Over time, npm has become a central component of the JavaScript ecosystem, enabling the installation, management, and integration of third-party libraries, tools, and scripts.
 
@@ -69,6 +69,8 @@ Some of the prominent use cases of pnpm include the following:
 
 ## Comparing `npx`, `npm`, and `pnpm`
 
+![Comparison]({{site.images}}{{page.slug}}/comparison.png)\
+
 As you've probably already concluded, npx is a utility tool for executing Node.js packages, setting up tools for one-time use, and bypassing globally installed packages. Meanwhile, npm and pnpm are full-fledged package management solutions for JavaScript-based projects.
 
 ### When to Use and Not Use `npx`
@@ -85,7 +87,7 @@ In comparison, npx might not be a good tool to choose in the following situation
 * **Continuous integration (CI) environments:** CI environments require a stable set of dependencies to run your build as intended. Relying on npx to fetch the latest version of a tool during the build adds performance overhead to your builds (due to the network dependency) and increases the chances of a broken build as the tool pulled during the build might have changes that you're unaware of. You can use versions with npx commands, but the network overhead still remains, so it's best not to use npx in CI if possible.
 * **Performance-critical operations:** Similar to the CI point from before, npx relies on the network to pull in packages and scripts, so it's best not to depend on it for performance-critical tasks.
 
-### When to Use and Not Use npm
+### When to Use and Not Use `npm`
 
 npm is a great solution in the following situations:
 
@@ -101,6 +103,8 @@ However, there are situations where npm may not be well-suited, including the fo
 * **Large-scale monorepos:** npm is great for simple projects, but it doesn't provide any special provisions for managing large-scale monorepos. If your project houses multiple apps and each requires active dependency management, npm might be too much of a hassle for you. A solution like pnpm suits this use case better.
 
 ### When to Use and Not Use `pnpm`
+
+![When to Use]({{site.images}}{{page.slug}}/image.png)\
 
 pnpm is quite similar to npm in terms of functionalities. However, the key difference lies in how it manages the problem of disk space consumption and duplicate packages. If you're looking for a solution that uses less disk space than npm, pnpm is the way to go. In this section, you'll learn of a few more use cases in which pnpm is best suited:
 
@@ -118,8 +122,3 @@ If you're looking for something conventional and easy to get started with, npm i
 Once you understand how to make the best use of these tools, you'll be able to navigate your JavaScript projects with ease.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
