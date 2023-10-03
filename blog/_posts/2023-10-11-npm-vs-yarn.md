@@ -17,6 +17,8 @@ In this comparison piece, you'll learn all about the differences between npm and
 
 ## Comparing Yarn and npm
 
+![Comparing]({{site.images}}{{page.slug}}/comparing.png)\
+
 Let's briefly highlight and define a few of the key differences between Yarn and npm you'll learn about here:
 
 * **Performance:** Installation speed, dependency resolution, and overall performance of the two tools.
@@ -27,6 +29,8 @@ Let's briefly highlight and define a few of the key differences between Yarn and
 * **Overall stability and reliability:** The stability, maturity, and overall reliability of the two tools. Evaluation of factors like historical performance, bug reports, and the frequency of updates and bug fixes to gauge their stability and reliability.
 
 ### Performance
+
+![Performance]({{site.images}}{{page.slug}}/performance.png)\
 
 Performance is one of the most important factors when it comes to choosing a developer tool. While npm is the default, ready-to-use tool that comes bundled with Node.js projects, it often loses out to its competitors when it comes to performance.
 
@@ -116,9 +120,3 @@ When choosing between the two tools, you need to think about project needs and w
 No matter which tool you pick, understanding their strengths and weaknesses is key. As JavaScript keeps growing, developers will benefit from npm's and Yarn's ongoing improvements, making it easier to create good software.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-
