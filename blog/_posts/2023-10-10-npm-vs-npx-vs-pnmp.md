@@ -6,7 +6,10 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - npx vs. npm vs. pnpm
+ - comparison for javascript projects
+ - comparison between npx, npm and pnpm
+ - npx, npm and pnpm javascript projects
 ---
 
 If you've worked with JavaScript-based projects, you've likely used [npm](https://www.npmjs.com/), [npx](https://docs.npmjs.com/cli/v7/commands/npx/), or [pnpm](https://pnpm.io) to manage your project's dependencies and scripts. Each of these tools offers a unique set of features that are suited to different types and scales of projects.
@@ -120,6 +123,3 @@ Once you understand how to make the best use of these tools, you'll be able to n
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
