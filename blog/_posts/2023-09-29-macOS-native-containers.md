@@ -8,11 +8,6 @@ internal-links:
  - just an example
 ---
 
-
-Steps:
-- https://macoscontainers.org/
-- brew install 
-
 macOS traditionally did not natively support containers, which are lightweight, standalone, executable software packages that include everything needed to run a software application. You can run Linux containers on macOS, in a VM. But you could never run native containers, which used the host OS, the way you could on Linux or even on Windows.
 
 Here at Earthly this has always been inconvenient. We'd love for people to use Earthly for XCode builds. We'd love to mac Satellites where Swift and Objective-C builds for macOS and iOS can be done. I'm sure we will get there at some point, and maybe mac containers will be part of how we do it.
@@ -110,136 +105,84 @@ Browsing through the commits, these mainly add support for darwin in the myriad 
 ```
 <figcaption>[Commits](https://github.com/containerd/containerd/compare/main...macOScontainers:containerd:macos)</figcaption>
 
+## Running macOS Containers
+
+After doing all that – and making sure I have github docker repository creditentials - I can start up a macOS native container just like this:
+
+```
+> docker run --rm -it ghcr.io/macoscontainers/macos-jail/ventura:latest echo "Hello"
+
+WARNING: The requested image's platform (unknown) does not match the detected host platform (darwin/arm64/v8) and no specific platform was requested
+Hello
+```
+
+I can pop into a shell. ZSH is not quite working, but bash works fine.
+
+```
+❯ docker run --rm -it ghcr.io/macoscontainers/macos-jail/ventura:latest /bin/bash
+
+WARNING: The requested image's platform (unknown) does not match the detected host platform (darwin/arm64/v8) and no specific platform was requested
+
+The default interactive shell is now zsh.
+To update your account to use zsh, please run `chsh -s /bin/zsh`.
+For more details, please visit https://support.apple.com/kb/HT208050.
+bash-3.2# pwd
+/
+bash-3.2# whoami
+root
+```
+
+Because this is all implemented in terms of `chroot`, its probably possible to break out of the container using [chroot escapes](https://book.hacktricks.xyz/linux-hardening/privilege-escalation/escaping-from-limited-bash) and its possible to see ( and kill ) processes running on host (`ps -e`). Never the less, this is very cool accomplishment.
+
+## The Container Image
+
+The macOS container project provides three base containers, one each for ventura, bigsure and monetery and they are huge. The Ventura image I'm using is 7.37 GB. This is probably to be expected as macOS has not been designed with containerization in mind. 
+
+( If fact, if all the errors trying to find .so shared libraries I'm gettting inside the container are any indication - these containers are going to just keep getting bigger. )
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5820.png --alt {{ base images }} %}
+<figcaption>Base macOS images</figcaption>
+</div>
 
 
+## What Doesn't Work
+
+I started playing with macOS containers with hopes of installing some things with homebrew, building a redis container, doing an X code build and then hooking the whole thing up to Earthly. 
+
+I wasn't able to actually get any of that done. It's still early days on this project and so I'm since tempered my expectations.
+
+Here are some things that don't yet work.
 
 
+### You can't run linux containers
 
-## Enable System Integrity Protection
-To reenable SIP, do the following:
+To use macOS Containers I needed to stop docker desktop and start `dockerd` and `containerd` forks with brew. These forks do not support running linux containers - because they are native macos, and therefore I can't run a linux container and a macOS container at the same time.
 
-- Restart your computer in Recovery mode.
-- Launch Terminal from the Utilities menu.
-- Run the command `csrutil enable`.
-- Restart your computer.
-
-> brew install docker docker-buildx macOScontainers/formula/dockerd
-==> Pouring docker-buildx--0.11.2.arm64_ventura.bottle.tar.gz
-==> Caveats
-docker-buildx is a Docker plugin. For Docker to find this plugin, symlink it:
-  mkdir -p ~/.docker/cli-plugins
-  ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
-
-zsh completions have been installed to:
-  /opt/homebrew/share/zsh/site-functions
-==> Summary
-🍺  /opt/homebrew/Cellar/docker-buildx/0.11.2: 25 files, 57.8MB
-==> Running `brew cleanup docker-buildx`...
-==> Installing dockerd from macoscontainers/formula
-==> Installing dependencies for macoscontainers/formula/dockerd: macoscontainers/formula/bindfs, macoscontainers/formula/containerd and macoscontainers/formula/rund
-==> Installing macoscontainers/formula/dockerd dependency: macoscontainers/
-==> ./configure --with-fuse2
-==> make
-==> make install
-🍺  /opt/homebrew/Cellar/bindfs/1.17.4: 8 files, 151.9KB, built in 7 seconds
-==> Installing macoscontainers/formula/dockerd dependency: macoscontainers/
-==> go build -o bin/ ./cmd...
-🍺  /opt/homebrew/Cellar/containerd/0.0.1: 9 files, 77.8MB, built in 19 seconds
-==> Installing macoscontainers/formula/dockerd dependency: macoscontainers/
-==> go build -o bin/ ./cmd/containerd-shim-rund-v1.go
-🍺  /opt/homebrew/Cellar/rund/0.0.3: 6 files, 16.8MB, built in 10 seconds
-==> Installing macoscontainers/formula/dockerd
-==> cp vendor.mod go.mod
-==> cp vendor.sum go.sum
-==> go build -o bin/ ./cmd/dockerd
-==> Caveats
-Start Docker service with:
-sudo brew services start dockerd
-
-To start macoscontainers/formula/dockerd now and restart at startup:
-  sudo brew services start macoscontainers/formula/dockerd
-Or, if you don't want/need a background service you can just run:
-  /opt/homebrew/opt/dockerd/bin/dockerd --config-file /opt/homebrew/etc/docker/daemon.json
-==> Summary
-🍺  /opt/homebrew/Cellar/dockerd/0.0.2: 9 files, 73.2MB, built in 22 seconds
-==> Running `brew cleanup dockerd`...
-==> Caveats
-==> docker-buildx
-docker-buildx is a Docker plugin. For Docker to find this plugin, symlink it:
-  mkdir -p ~/.docker/cli-plugins
-  ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
-
-zsh completions have been installed to:
-  /opt/homebrew/share/zsh/site-functions
-==> dockerd
-Start Docker service with:
-sudo brew services start dockerd
-
-To start macoscontainers/formula/dockerd now and restart at startup:
-  sudo brew services start macoscontainers/formula/dockerd
-Or, if you don't want/need a background service you can just run:
-  /opt/homebrew/opt/dockerd/bin/dockerd --config-file /opt/homebrew/etc/docker/daemon.json
-
-
-❯ sudo brew services start containerd
-
-Password:
-Warning: Taking root:admin ownership of some containerd paths:
-  /opt/homebrew/Cellar/containerd/0.0.1/bin
-  /opt/homebrew/Cellar/containerd/0.0.1/bin/containerd
-  /opt/homebrew/opt/containerd
-  /opt/homebrew/opt/containerd/bin
-  /opt/homebrew/var/homebrew/linked/containerd
-This will require manual removal of these paths using `sudo rm` on
-brew upgrade/reinstall/uninstall.
-==> Successfully started `containerd` (label: homebrew.mxcl.containerd)
-
-❯ sudo brew services start dockerd
-
-Password:
-Warning: Taking root:admin ownership of some dockerd paths:
-  /opt/homebrew/Cellar/dockerd/0.0.2/bin
-  /opt/homebrew/Cellar/dockerd/0.0.2/bin/dockerd
-  /opt/homebrew/opt/dockerd
-  /opt/homebrew/opt/dockerd/bin
-  /opt/homebrew/var/homebrew/linked/dockerd
-This will require manual removal of these paths using `sudo rm` on
-brew upgrade/reinstall/uninstall.
-==> Successfully started `dockerd` (label: homebrew.mxcl.dockerd)
-
-❯ mkdir -p ~/.docker/cli-plugins
-❯ ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
-
-
-ECHO $GH_ACCESS |  docker login ghcr.io -u adamgordonbell  --password-stdin  
-
-
-
-## You can't run linux containers
-
+```
 > docker run --rm -it alpine /bin/sh
 Unable to find image 'alpine:latest' locally
 latest: Pulling from library/alpine
 docker: no matching manifest for darwin/arm64/v8 in the manifest list entries.
 See 'docker run --help'.
+```
 
+This - I think - should be resolved if the macOS changes are upstreamed. See [this buildkit PR and related prereqs](https://github.com/moby/buildkit/pull/4059).
 
-## You can't copy?
+## You Can't Copy?
 
-[+] Building 1.4s (7/8)                                                                                                                                                                        docker:default
- => [internal] load build definition from simple.Dockerfile                                                                                                                                              0.0s
- => => transferring dockerfile: 241B                                                                                                                                                                     0.0s
- => [internal] load metadata for ghcr.io/macoscontainers/macos-jail/ventura:latest                                                                                                                       0.6s
- => [auth] macoscontainers/macos-jail/ventura:pull token for ghcr.io                                                                                                                                     0.0s
- => [internal] load .dockerignore                                                                                                                                                                        0.0s
- => => transferring context: 2B                                                                                                                                                                          0.0s
- => [internal] load build context                                                                                                                                                                        0.0s
- => => transferring context: 29B                                                                                                                                                                         0.0s
- => CACHED [1/3] FROM ghcr.io/macoscontainers/macos-jail/ventura:latest@sha256:e2e480b375688538d1d8c37251f87e029a49d751d68ad80d4ae27f27c0278481                                                          0.0s
- => ERROR [2/3] COPY test.txt /test.txt                                                                                                                                                                  0.5s
-------
- > [2/3] COPY test.txt /test.txt:
-------
+Using `docker build` to build my own image based on ventura did work with as many RUNs as I needed. Unfortunely neither COPY nor ADD worked, so getting files in the image was a challenge.
+
+```
+FROM ghcr.io/macoscontainers/macos-jail/ventura:latest
+COPY test.txt /test.txt
+```
+Build like so:
+```
+docker build -t macos:simple -f simple.Dockerfile .
+```
+And failure:
+```
 simple.Dockerfile:2
 --------------------
    1 |     FROM ghcr.io/macoscontainers/macos-jail/ventura:latest
@@ -248,7 +191,20 @@ simple.Dockerfile:2
    4 |     # COPY /etc/passwd /etc/passwd
 --------------------
 ERROR: failed to solve: failed to copy files: cross-device link
+```
 
+### Can't install Xcode
 
-## Questions
-- How does this docker talk to buildkitd?
+The most straight-forward usecase for this image is containerized xcode builds. This is not quite ready because it's currently not possible to install xcode into the base image. This issue may be soon resolved though and is under active work [on github](https://github.com/macOScontainers/rund/issues/16).
+
+### Can't use with Earthly
+
+To be able to use macOS containers with Earthly, the buildkit changes would need to be upstreamed into buildkit and then into `Earthly/buildkit`, then a buildkit build for macOS would need to be build. We are a couple steps away from that happening but I think we will get there eventaully.
+
+## Overall
+
+Overall macOS Containers is an ambitous project that has made a lot of progress. `slonopotamus` has working base images, forks of containerd, buildkit and his own runc shim that all work. That is impressive!
+
+But much work remaining. All the spit and polish of making things work well inside a mac container will be work. Getting the buy in to upstream changes into the mentioned projects will be work. And doing all this while convincing users to disable SIP and not catching Apple's ire for distributed parts of their operating system - well - a lot need to get right to make this work.
+
+But that is why its a great time to jump in and help `slonopotamus` with this project. Try out [macOS containers](https://github.com/macOScontainers/) and contribute where you can.
