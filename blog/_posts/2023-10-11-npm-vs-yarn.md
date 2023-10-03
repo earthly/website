@@ -6,7 +6,9 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - knots of package management
+ - comparison between npm and yarn
+ - npm and yarn for package management
 ---
 
 If you've worked on a [Node.js](https://nodejs.org/en/) project before, you're likely already familiar with [npm](https://docs.npmjs.com/cli/), the bundled package management tool for Node.js. And there's a good chance you've started disliking how npm handles things like disk space management and concurrent installation. In such cases, you may have explored an alternative tool called [Yarn](https://yarnpkg.com/), which does the same thing but handles a few concepts more efficiently.
@@ -119,7 +121,4 @@ No matter which tool you pick, understanding their strengths and weaknesses is k
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
