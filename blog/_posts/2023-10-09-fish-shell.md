@@ -23,7 +23,9 @@ There are other shells as well, and these shells were developed after the bash s
 2. `fish`
 3. `nushell`
 
+<div class="wide">
 ![Image Credits: Behind 'Hello World' on Linux notes]({{site.images}}{{page.slug}}/lgozFIn.png)
+</div>
 
 ## Why Learn a New Shell?
 
@@ -61,7 +63,9 @@ Tab-based completion is also very powerful with fish shell. For example, I was d
 kill ssh<tab>
 ~~~
 
+<div class="wide">
 ![process-kill]({{site.images}}{{page.slug}}/BY2RGSi.gif)
+</div>
 
 #### Helpful Flag Options
 
@@ -72,13 +76,17 @@ For example, consider `git` command output.
 git <tab>
 ~~~
 
+<div class="wide">
 ![git]({{site.images}}{{page.slug}}/7YHcrN4.gif)
+</div>
 
 ### Fish Syntax Highlighting
 
 Syntax highlighting will give you colorful syntax and sometimes indications if you're typing a wrong command or a correct command that doesn't exist in the system now.
 
+<div class="wide">
 ![highlight]({{site.images}}{{page.slug}}/SAl1V3X.gif)
+</div>
 
 ### Setting Aliases
 
@@ -126,7 +134,9 @@ To view the git logs in a colorful manner, I use the following alias in my syste
 alias glo 'git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
 ~~~
 
+<div class="wide">
 ![alias]({{site.images}}{{page.slug}}/D4imVif.gif)
+</div>
 
 ### Setting Abbreviations
 
@@ -141,7 +151,9 @@ This way, your history will look cleaner when you're traversing through your his
 
 Even if you don't put a space, the command will expand itself first, and then run.
 
+<div class="wide">
 ![abbr]({{site.images}}{{page.slug}}/gVid01k.gif)
+</div>
 
 ### Setting Variables
 
@@ -178,7 +190,9 @@ You can simply type `exit` on the terminal to move out of private mode.
 
 The easiest way to customize your fish shell if you want a GUI-based customization is web-based. Invoke `fish_config` or `fish_config browse` command via your terminal, and it'll open up a page in your default browser. You can use this page to customize your fish shell.
 
+<div class="wide">
 ![prompt_fish.png]({{site.images}}{{page.slug}}/x5kFYoU.png)
+</div>
 
 GUI-based customization is good because it allows you to change colors and shows you how it looks on the console when modifying itself.
 
@@ -190,7 +204,9 @@ Fish support customization through CLI. You can use `fish_config` command to cus
 To customize your prompt, you can use `fish_config prompt show` command to get all the prompts, and based on your choice, you can use `fish_config prompt save <prompt-name>` to save the prompt.
 You can also choose and update themes with the `theme` sub-command. For example, to show all the themes, you can use `fish_config theme show`
 
+<div class="wide">
 ![fish_config_theme_show.png]({{site.images}}{{page.slug}}/eC5AlEp.png)
+</div>
 
 ## Functions in Fish
 
@@ -280,7 +296,9 @@ This will write the function at the configuration directory of fish and now if y
 
 You can also see this function in the web-based view if you prefer to look at things in the browser.
 
+<div class="wide">
 ![browser_fn.png]({{site.images}}{{page.slug}}/6Mc1M8E.png)
+</div>
 
 ## Some Caveats of Using the Fish Shell
 
@@ -368,13 +386,17 @@ EDITOR
 
 You can update the value from `code` to `nvim`
 
+<div class="wide">
 ![vared.gif]({{site.images}}{{page.slug}}/fZI1yoO.gif)
+</div>
 
 #### `cdh`
 
 `cdh`  is very handy for moving to directories you've recently visited. It'll open up an interactive menu and ask you to choose the directory you want to enter.
 
+<div class="wide">
 ![fish_cdh.png]({{site.images}}{{page.slug}}/uYksSJk.png)
+</div>
 
 You can then select the directory from the options and hit enter to go into that directory.
 
@@ -389,5 +411,3 @@ If you do a lot of work in the command line, I'm sure that fish will help you be
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
