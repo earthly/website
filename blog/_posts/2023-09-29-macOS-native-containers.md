@@ -6,7 +6,10 @@ toc: true
 author: Adam
 internal-links:
  - just an example
+excerpt: |
+    macOS traditionally did not support native containers, but a community initiative has started to develop containerized macOS, which could be useful for CI XCode builds and local macOS development. While still in the early stages, macOS containers show promise for improving performance and eliminating the need for a Linux VM on macOS.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. If you're a macOS user exploring containerization, Earthly is worth a look. [Check us out](/).**
 
 macOS traditionally has not natively supported containers. You can run Linux containers on macOS in a VM. But you could never run native containers, which used the host OS, the way you could on Linux or even on Windows.
 
