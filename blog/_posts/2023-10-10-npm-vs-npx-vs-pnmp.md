@@ -55,7 +55,7 @@ pnpm uses a unique approach called [store linking](https://pnpm.io/faq#why-does-
 
 To use pnpm, you need to install it globally using npm or Yarn:
 
-~~~
+~~~{.bash caption=">_"}
 npm i -g pnpm
 ~~~
 
