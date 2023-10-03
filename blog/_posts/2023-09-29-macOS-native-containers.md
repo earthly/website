@@ -25,7 +25,7 @@ But first - with all this talk of Linux containers, Windows Containers, and macO
 Let me draw something...
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2970.png --alt {{  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2970.png --alt {{ What is a container? }} %}
 <figcaption>What is a container?</figcaption>
 </div>
 
@@ -119,7 +119,7 @@ Browsing through the commits, these mainly add support for darwin in the myriad 
 
 <figcaption>[Commits](https://github.com/containerd/containerd/compare/main...macOScontainers:containerd:macos)</figcaption>
 
-## Running macOS Containers
+## Running `macOS` Containers
 
 After doing all that – and making sure I have GitHub docker repository credentials - I can start up a macOS native container just like this:
 
@@ -167,7 +167,7 @@ I wasn't able to get any of that done. It's still early days on this project and
 
 Here are some things that don't yet work.
 
-### You can't run linux containers
+### You Can't Run Linux Containers
 
 To use macOS Containers, I needed to stop the docker desktop and start `dockerd` and `containerd` forks with brew. These forks do not support running Linux containers - because they are native macOS, so I can't run a Linux container and a macOS container simultaneously.
 
@@ -211,11 +211,11 @@ ERROR: failed to solve: failed to copy files: cross-device link
 
 ### Can't Install Xcode
 
-The most straightforward use-case for this image is containerized Xcode builds. This is not quite ready because it's currently not possible to install Xcode into the base image. Kepp your eyes on this issue [on github](https://github.com/macOScontainers/rund/issues/16).
+The most straightforward use-case for this image is containerized Xcode builds. This is not quite ready because it's currently not possible to install Xcode into the base image. Keep your eyes on this issue [on github](https://github.com/macOScontainers/rund/issues/16).
 
-### Can't use with Earthly
+### Can't Use With Earthly
 
-To use macOS containers with Earthly,  buildkit changes would need to be upstreamed into buildkit and then into `Earthly/buildkit`. Then a buildkit build for macOS would need to be built. We are a few steps away from that happening, but we will get there eventually.
+To use macOS containers with Earthly, buildkit changes would need to be upstreamed into buildkit and then into `Earthly/buildkit`. Then a buildkit build for macOS would need to be built. We are a few steps away from that happening, but we will get there eventually.
 
 ### Get Involved and Shape the Future of macOS Containers
 
@@ -232,3 +232,5 @@ If you want to go deeper into macOS Containers, here's how you can do that:
 - **Base Image Tweaking:** If you are familiar with macOS and its structure of .`.so` and `.dylib` and associated OS files, then perhaps you can help build a more complete base image for macOS.
 
 So yeah, it's early days for macOS containers, but it has promise, and I hope we can one day use it with Earthly satellites.
+
+{% include_html cta/bottom-cta.html %}

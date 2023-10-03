@@ -29,6 +29,8 @@ Palahniuk
 Elmore
 Bellard
 Butterick
+slonopotamus
+Monetery
 Strunk
 Corbett
 Gowers
