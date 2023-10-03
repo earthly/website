@@ -114,6 +114,8 @@ If you're looking for something conventional and easy to get started with, npm i
 
 Once you understand how to make the best use of these tools, you'll be able to navigate your JavaScript projects with ease.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -123,4 +125,3 @@ Once you understand how to make the best use of these tools, you'll be able to n
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
