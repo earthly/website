@@ -13,9 +13,7 @@ internal-links:
  - features of fish shell
 ---
 
-## What Is a Shell?
-
-Essentially, it's the place where you execute all your terminal commands. A shell goes beyond this simple definition – and you can create sub-shells to run your scripts and whatnot – but from a user perspective, I would like to keep it simple and think of it as a place where you invoke all your commands using your keyboard via text input.
+What Is a Shell? Essentially, it's the place where you execute all your terminal commands. A shell goes beyond this simple definition – and you can create sub-shells to run your scripts and whatnot – but from a user perspective, I would like to keep it simple and think of it as a place where you invoke all your commands using your keyboard via text input.
 There are many types of shells out there. Bash is one of the oldest, and it ships by default in most Linux distributions.
 There are other shells as well, and these shells were developed after the bash shell. Some of the more common ones include:
 
@@ -41,7 +39,7 @@ Fish shell is a friendly and interactive shell you can use for daily tasks. Besi
 
 For Debian-based distros, you can install fish shell by running the following command.
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt install fish
 ~~~
 
@@ -59,12 +57,12 @@ Fish provides you with very smart autosuggestion as you type in the terminal. Yo
 
 Tab-based completion is also very powerful with fish shell. For example, I was done with working with ssh-agent, and I wanted to kill the process. Now I had to find the PID associated with the `ssh-agent`. One way to do that would be to use `ps` command in conjunction with grep, but with fish you can just type the name of the process.
 
-~~~
+~~~{.bash caption=">_"}
 kill ssh<tab>
 ~~~
 
 <div class="wide">
-![process-kill]({{site.images}}{{page.slug}}/BY2RGSi.gif)
+![`process-kill`]({{site.images}}{{page.slug}}/BY2RGSi.gif)
 </div>
 
 #### Helpful Flag Options
@@ -72,12 +70,12 @@ kill ssh<tab>
 Unix commands have a lot of flags, and it's good because they give you a lot of flexibility. With time, it becomes hard to recall all the flags of each command. Fish generates descriptive completion considering man-pages into account. This gives you an excellent descriptive message for each command.
 For example, consider `git` command output.
 
-~~~
+~~~{.bash caption=">_"}
 git <tab>
 ~~~
 
 <div class="wide">
-![git]({{site.images}}{{page.slug}}/7YHcrN4.gif)
+![`git`]({{site.images}}{{page.slug}}/7YHcrN4.gif)
 </div>
 
 ### Fish Syntax Highlighting
@@ -85,22 +83,22 @@ git <tab>
 Syntax highlighting will give you colorful syntax and sometimes indications if you're typing a wrong command or a correct command that doesn't exist in the system now.
 
 <div class="wide">
-![highlight]({{site.images}}{{page.slug}}/SAl1V3X.gif)
+![`highlight`]({{site.images}}{{page.slug}}/SAl1V3X.gif)
 </div>
 
 ### Setting Aliases
 
 Setting aliases in fish shell is the same as setting aliases in bash. You can set aliases in fish shell by using `alias` command.
 
-~~~
+~~~{.bash caption=">_"}
 alias cat='bat -pP'
 ~~~
 
-This is a simple alias that I use, and it gives me syntax highlighting when I use `cat` command.  
+This is a simple alias that I use, and it gives me syntax highlighting when I use `cat` command.
 While this sounds similar to bash, I really like that the alias command in fish shell provides you the flag to save the alias permanently without opening your `~/.config/fish/config.fish` file.
 For example, You're on a remote instance and want to set a permanent alias for `kubectl` command. You can do that by running the following command.
 
-~~~
+~~~{.bash caption=">_"}
 alias -s k kubectl
 ~~~
 
@@ -108,11 +106,11 @@ Under the hood, this command will create a function named `k`, which will be sto
 
 You can look at this function by invoking the following command.
 
-~~~
+~~~{.bash caption=">_"}
 $ type k
 ~~~
 
-~~~
+~~~{.bash caption=">_"}
 k is a function with definition
 # Defined in /root/.config/fish/functions/k.fish @ line 1
 function k --wraps=kubectl --description 'alias k kubectl'
@@ -122,7 +120,7 @@ end
 
 If you have a longer command for which you want to create an alias, you can enclose it within brackets.
 
-~~~
+~~~{.bash caption=">_"}
 alias -s kgp 'kubectl get pods'
 ~~~
 
@@ -130,19 +128,21 @@ Note that we are enclosing our command inside single quotes.
 
 To view the git logs in a colorful manner, I use the following alias in my system.
 
-~~~
-alias glo 'git log --pretty=format:"%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" --abbrev-commit'
+~~~{.bash caption=">_"}
+alias glo 'git log --pretty=format:"%Cred%h%Creset \
+-%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset" \
+--abbrev-commit'
 ~~~
 
 <div class="wide">
-![alias]({{site.images}}{{page.slug}}/D4imVif.gif)
+![`alias`]({{site.images}}{{page.slug}}/D4imVif.gif)
 </div>
 
 ### Setting Abbreviations
 
 Abbreviations are unique to fish shell. To set abbreviations, you can use the following syntax. The recommended way is to add the abbreviations in your ~/.config/fish/config.fish file.
 
-~~~
+~~~{.bash caption=">_"}
 abbr --add gst 'git status'
 ~~~
 
@@ -152,7 +152,7 @@ This way, your history will look cleaner when you're traversing through your his
 Even if you don't put a space, the command will expand itself first, and then run.
 
 <div class="wide">
-![abbr]({{site.images}}{{page.slug}}/gVid01k.gif)
+![`abbr`]({{site.images}}{{page.slug}}/gVid01k.gif)
 </div>
 
 ### Setting Variables
@@ -160,13 +160,13 @@ Even if you don't put a space, the command will expand itself first, and then ru
 In fish, You might need to set environment variables at some point in time.
 When you install go on a new system, you're required to set the GOPATH environment variable. You can set the same in fish using the following command.
 
-~~~
+~~~{.bash caption=">_"}
 set -U GOPATH ~/go
 ~~~
 
 You can use `-l` flag to set local environment variables, which will only persist till the life of the current shell.
 
-~~~
+~~~{.bash caption=">_"}
 set -l VAR foo
 ~~~
 
@@ -178,7 +178,7 @@ I use this whenever I need to share my terminal with someone during a meeting.
 
 Sometimes, it's also helpful when passing a token/secret to any command as an argument. For example, I'll run the following command in private mode because this involves passing a secret password as an argument.
 
-~~~
+~~~{.bash caption=">_"}
 docker login -u randomuser -p randompassword
 ~~~
 
@@ -191,7 +191,7 @@ You can simply type `exit` on the terminal to move out of private mode.
 The easiest way to customize your fish shell if you want a GUI-based customization is web-based. Invoke `fish_config` or `fish_config browse` command via your terminal, and it'll open up a page in your default browser. You can use this page to customize your fish shell.
 
 <div class="wide">
-![prompt_fish.png]({{site.images}}{{page.slug}}/x5kFYoU.png)
+![`prompt_fish`]({{site.images}}{{page.slug}}/x5kFYoU.png)
 </div>
 
 GUI-based customization is good because it allows you to change colors and shows you how it looks on the console when modifying itself.
@@ -205,7 +205,7 @@ To customize your prompt, you can use `fish_config prompt show` command to get a
 You can also choose and update themes with the `theme` sub-command. For example, to show all the themes, you can use `fish_config theme show`
 
 <div class="wide">
-![fish_config_theme_show.png]({{site.images}}{{page.slug}}/eC5AlEp.png)
+![`fish_config_theme_show`]({{site.images}}{{page.slug}}/eC5AlEp.png)
 </div>
 
 ## Functions in Fish
@@ -216,11 +216,12 @@ In every programming language, how you define functions are one of the most inte
 
 These functions come built-in with fish shell. You can see the list of built-in functions by running `functions` command.
 
-~~~
+~~~{.bash caption=">_"}
 $ functions 
 # truncated output
-N_, abbr, alias, bg, cat, cd, cdh, contains_seq, diff, dirh, dirs, disown, down-or-search, e,
-edit_command_buffer, export, fg, fish_add_path, fish_breakpoint_prompt, fish_clipboard_copy,
+N_, abbr, alias, bg, cat, cd, cdh, contains_seq, diff, dirh, dirs, \
+disown, down-or-search, e, edit_command_buffer, export, fg, \
+fish_add_path, fish_breakpoint_prompt, fish_clipboard_copy, \
 fish_clipboard_paste, fish_command_not_found, fish_commandline_append,
 ~~~
 
@@ -228,7 +229,7 @@ fish_clipboard_paste, fish_command_not_found, fish_commandline_append,
 
 You can write custom function in fish shell. I wrote a custom function to create a new directory and cd into it.
 
-~~~
+~~~{.bash caption=">_"}
 function mkcd 
     mkdir $argv && cd $argv
 end
@@ -236,7 +237,7 @@ end
 
 I often used this when I needed a temporary place to test something.
 
-~~~
+~~~{.bash caption=">_"}
 mkcd some_dir_name
 ~~~
 
@@ -244,9 +245,9 @@ There's also an easy way to write this in fish shell. You can use the `funced` c
 
 Let's see how it works with an example. Let's write a function that prints the active connection that our system is connected to. Let's call the function `connection`
 
-Let's start writing it.  
+Let's start writing it.
 
-~~~
+~~~{.bash caption=">_"}
 funced conn
 ~~~
 
@@ -256,7 +257,7 @@ This will open up an editor in your system.
 
 You'll have the following template ready with you.
 
-~~~
+~~~{.bash caption=">_"}
 function conn
 
 end
@@ -264,7 +265,7 @@ end
 
 Now you'll have to fill this template to complete the function. You can do a lot of this here, using text manipulation to get output or a simple command that will show you something. Let's use `nmcli` command to show all our device's active network connections.
 
-~~~
+~~~{.bash caption=">_"}
 # Defined via `source`
 function conn
     nmcli connection show --active
@@ -274,7 +275,7 @@ end
 I've added a simple command showing us the active connection when you type `conn` on your terminal.
 To test it out, save the file and close the editor. You can type `conn` in your terminal to test the above function.
 
-~~~
+~~~{.bash caption=">_"}
 $ conn
 NAME             UUID                                  TYPE      DEVICE
 Aruba            4be15729-63ec-4e2a-83d7-63a9615da59b  wifi      wlp0s20f3
@@ -287,7 +288,7 @@ This is the output of the `conn` command. Now, if you think your function needs 
 
 If you think the results are as expected, then you can use `funcsave conn` to save this function.
 
-~~~
+~~~{.bash caption=">_"}
 $ funcsave conn
 funcsave: wrote /home/k7/.config/fish/functions/conn.fish
 ~~~
@@ -297,7 +298,7 @@ This will write the function at the configuration directory of fish and now if y
 You can also see this function in the web-based view if you prefer to look at things in the browser.
 
 <div class="wide">
-![browser_fn.png]({{site.images}}{{page.slug}}/6Mc1M8E.png)
+![`browser_fn`]({{site.images}}{{page.slug}}/6Mc1M8E.png)
 </div>
 
 ## Some Caveats of Using the Fish Shell
@@ -308,7 +309,7 @@ In bash, you can use !! to repeat the last command and !$ to get the last argume
 
 You can use the following [function](https://fishshell.com/docs/current/cmds/abbr.html#examples) to make `!!` work in fish shell.
 
-~~~
+~~~{.bash caption=">_"}
 function last_history_item
     echo $history[1]
 end
@@ -321,9 +322,9 @@ If you want to add `sudo` to you current command then you can use `Alt + S`
 
 ### Brace Expansion
 
-In bash shell, we use `$(command)` and whatever is under this is replaced by the actual value of the command but in fish shell that is not supported. You must use the same thing without the `$` sign.  
+In bash shell, we use `$(command)` and whatever is under this is replaced by the actual value of the command but in fish shell that is not supported. You must use the same thing without the `$` sign.
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo apt install linux-tools-$(uname -r)
 fish: $(...) is not supported. In fish, please use '(uname)'.
 sudo apt install linux-tools-$(uname -r)
@@ -332,7 +333,7 @@ sudo apt install linux-tools-$(uname -r)
 Look at the unambiguous error message that fish shell gives you. It tells you that you can't use `$(...)` in fish shell. You have to use `'(...)'` instead.
 Let's try to run the same command with `'(...)'` instead of `$(...)`.
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo apt install linux-tools-(uname -r)
 Reading package lists... Done
 Building dependency tree... Done
@@ -359,7 +360,7 @@ Bash is not going anywhere. I've not seen a single instance where fish or any ot
 
 Above, we talked about exporting variables with `-x`, but fish also supports `export` syntax to be compatible with bash. To set you EDITOR variable to nvim, you can also use the bash syntax.
 
-~~~
+~~~{.bash caption=">_"}
 export EDITOR=nvim
 ~~~
 
@@ -370,7 +371,7 @@ from an implementation perspective, it used [set](https://github.com/fish-shell/
 This is yet another useful function that will help in updating your `PATH`
 for example, say you installed Go programming language on your system, and to add go bin directory to the path, you can use the following:
 
-~~~
+~~~{.bash caption=">_"}
 fish_add_path -U ~/go/bin
 ~~~
 
@@ -378,7 +379,7 @@ fish_add_path -U ~/go/bin
 
 `vared` stands for variable edit. Let's set a variable using `set` command. For example, `set -x EDITOR code`. Now let's say you want to switch your EDITOR to `nvim` you can invoke the `vared EDITOR` command here. It'll open up an interactive EDITOR where you can update the value.
 
-~~~
+~~~{.bash caption=">_"}
 $ vared EDITOR
 EDITOR
 > code
@@ -387,15 +388,15 @@ EDITOR
 You can update the value from `code` to `nvim`
 
 <div class="wide">
-![vared.gif]({{site.images}}{{page.slug}}/fZI1yoO.gif)
+![`vared`]({{site.images}}{{page.slug}}/fZI1yoO.gif)
 </div>
 
 #### `cdh`
 
-`cdh`  is very handy for moving to directories you've recently visited. It'll open up an interactive menu and ask you to choose the directory you want to enter.
+`cdh` is very handy for moving to directories you've recently visited. It'll open up an interactive menu and ask you to choose the directory you want to enter.
 
 <div class="wide">
-![fish_cdh.png]({{site.images}}{{page.slug}}/uYksSJk.png)
+![`fish_cdh`]({{site.images}}{{page.slug}}/uYksSJk.png)
 </div>
 
 You can then select the directory from the options and hit enter to go into that directory.
@@ -406,8 +407,3 @@ Fish is an outstanding shell if you work a lot in your terminal and care about p
 If you do a lot of work in the command line, I'm sure that fish will help you be more productive. I'm not saying that this is the best shell out there, but it definitely has some great features.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
