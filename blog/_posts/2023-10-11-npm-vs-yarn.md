@@ -90,7 +90,7 @@ Yarn, while relatively new when compared to npm, has gained significant populari
 
 Overall, Yarn and npm are both quite stable and well-maintained tools, so the choice between them comes down to other factors, such as performance and disk space management.
 
-## When to Use npm
+## When To Use `npm`
 
 Now that you know the key differences between the tools, here's a quick list of situations in which you should consider using npm:
 
@@ -115,11 +115,10 @@ No matter which tool you pick, understanding their strengths and weaknesses is k
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
