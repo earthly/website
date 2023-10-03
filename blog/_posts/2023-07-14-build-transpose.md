@@ -16,7 +16,7 @@ excerpt: |
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shares lessons from a Proof-of-Concept [Earthfile generator](https://github.com/earthly/build-transpose/) project.**
 
-<!-- Curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out](https://earthly.dev/). -->
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Z8ShM-SFxzM?si=EWRLrUr8yRaLHpjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## A Newbs's Guide to Applying Large Language Models
 
