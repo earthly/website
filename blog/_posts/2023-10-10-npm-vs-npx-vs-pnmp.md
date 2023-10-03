@@ -28,7 +28,7 @@ Some of the prominent use cases of npm include the following:
 * **Run npm scripts:** In `package.json`, you can define custom scripts under the `scripts` field. npm allows you to run them using the command `npm run <script-name>`. For example, `"start": "node index.js"` in your `package.json` lets you run `npm run start` to start your application.
 * **Publish npm packages:** If you're developing an npm package locally, you can make use of the `npm publish` command to publish it to the Node.js package registry and make it available for public use.
 
-## What Is npx?
+## What Is `npx`?
 
 [npx](https://docs.npmjs.com/cli/v7/commands/npx/), a node package runner, is a command line tool introduced in npm version 5.2.0. It addresses the need to run packages and binaries from the command line without the need for global installations. npx was created to simplify the process of using tools that are not globally installed or that come bundled with packages, making it a valuable addition to the npm ecosystem.
 
@@ -44,7 +44,7 @@ Some of the prominent use cases of npx include the following:
 
 The ability to avoid global package installations is helpful because it prevents your system from getting cluttered, allows you to easily install and run packages (especially for temporary use cases), and ensures that you can use the latest version of a package. However, it also introduces a network dependency into your development process, which is a factor worth considering before using npx in your development workflows.
 
-## What Is pnpm?
+## What Is `pnpm`?
 
 [pnpm](https://pnpm.io/pnpm-cli) is a package manager for JavaScript projects that aims to improve upon the traditional package management approaches of npm and [Yarn](https://yarnpkg.com/). It was developed in response to the issues of disk space consumption and duplicate packages that can occur when using npm or Yarn.
 
@@ -52,9 +52,9 @@ pnpm uses a unique approach called [store linking](https://pnpm.io/faq#why-does-
 
 To use pnpm, you need to install it globally using npm or Yarn:
 
-```bash
+~~~
 npm i -g pnpm
-```
+~~~
 
 After installation, you can use pnpm commands in your projects instead of npm commands.
 
@@ -64,11 +64,11 @@ Some of the prominent use cases of pnpm include the following:
 * **Managing dependencies and package versions:** One of the key use cases of pnpm is to enable installing packages using `pnpm add <package-name>`. When installing packages, you can specify versions like `@latest` or `@1.0.0`.
 * **Running pnpm scripts:** Similar to npm, you can define and run scripts in your `package.json`. Instead of running `npm run start`, run `pnpm start`. Additionally, if pnpm finds no script with the name supplied to it, it will then execute the command directly as a shell script. This means that you can run `pnpm webpack` to run webpack in your project even if it's not defined as part of any script in your `package.json` file.
 
-## Comparing npx, npm, and pnpm
+## Comparing `npx`, `npm`, and `pnpm`
 
 As you've probably already concluded, npx is a utility tool for executing Node.js packages, setting up tools for one-time use, and bypassing globally installed packages. Meanwhile, npm and pnpm are full-fledged package management solutions for JavaScript-based projects.
 
-### When to Use and Not Use npx
+### When to Use and Not Use `npx`
 
 npx is a great solution to use for the following:
 
@@ -87,7 +87,7 @@ In comparison, npx might not be a good tool to choose in the following situation
 npm is a great solution in the following situations:
 
 * **When implementing dependency management:** Because it ships out of the box with Node.js, npm is the first dependency management tool you'll use to install everything for your project, even other dependency management tools. It's a simple and lightweight tool, which makes it an easy-to-use dependency management solution for smaller projects.
-* **When working with Node.js projects:** If you're working on a Node.js project that doesn't involve too many third-party frameworks and dependencies, npm is easy to get started with. 
+* **When working with Node.js projects:** If you're working on a Node.js project that doesn't involve too many third-party frameworks and dependencies, npm is easy to get started with.
 * **When you have to run a lot of npm scripts:** If you're working on a project that relies on a large number of npm scripts, npm may be a good solution for both dependency management and build lifecycle management in one place.
 
 However, there are situations where npm may not be well-suited, including the following:
@@ -97,7 +97,7 @@ However, there are situations where npm may not be well-suited, including the fo
 * **Low on disk space:** npm is notorious for hogging up disk space with its dependencies. If you're on a system that's low on storage, pnpm or Yarn's pnpm mode might be better as it can efficiently manage disk storage.
 * **Large-scale monorepos:** npm is great for simple projects, but it doesn't provide any special provisions for managing large-scale monorepos. If your project houses multiple apps and each requires active dependency management, npm might be too much of a hassle for you. A solution like pnpm suits this use case better.
 
-### When to Use and Not Use pnpm
+### When to Use and Not Use `pnpm`
 
 pnpm is quite similar to npm in terms of functionalities. However, the key difference lies in how it manages the problem of disk space consumption and duplicate packages. If you're looking for a solution that uses less disk space than npm, pnpm is the way to go. In this section, you'll learn of a few more use cases in which pnpm is best suited:
 
@@ -118,10 +118,8 @@ Once you understand how to make the best use of these tools, you'll be able to n
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
