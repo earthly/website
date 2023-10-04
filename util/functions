@@ -36,6 +36,9 @@ latest-image() { #Requires IMAGE_DOWNLOADS
     echo "$IMAGE_DOWNLOADS$(ls -Art "$IMAGE_DOWNLOADS" | tail -n 1)"; 
 }
 
+article_counts() {
+    ls ./blog/_posts | cut -d'-' -f1,2 | sort | uniq -c | awk '{print $2" "$1}'
+}
 ## imgur image download helpers
 
 # matches:
