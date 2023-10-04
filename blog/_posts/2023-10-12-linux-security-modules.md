@@ -7,7 +7,9 @@ author: Anurag Kumar
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - security modules
+ - linux security modules
+ - linus system security
 ---
 
 Linux is used by millions of people around the world. It is the most popular operating system if measured by active devices. It is used in almost every industry and is used in almost every type of device. With this wide usage of Linux, comes the responsibility of keeping the system secure. In this blog, We will be talking about the Linux Security Module and how we can use it to secure our system.
@@ -460,6 +462,3 @@ In this blog, we have talked about Linux security modules and how they can be us
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
