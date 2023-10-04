@@ -454,6 +454,8 @@ AppArmor is a great tool to secure our system, but it has some limitations. Some
 
 In this blog, we have talked about Linux security modules and how they can be used to secure our system. We have also talked about AppArmor which is one of the most popular LSMs that is being used in Linux. We looked at two examples of network andand file-based AppArmor profiles. In addition to that, we listed some of the limitations of AppArmor.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -461,4 +463,3 @@ In this blog, we have talked about Linux security modules and how they can be us
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
