@@ -1,11 +1,9 @@
 ---
-title: "macOS containers - Putting Them to the Test"
+title: "macOS Containers - The Rise of Native Containerization"
 categories:
   - Articles
 toc: true
 author: Adam
-internal-links:
- - just an example
 excerpt: |
     macOS traditionally did not support native containers, but a community initiative has started to develop containerized macOS, which could be useful for CI XCode builds and local macOS development. While still in the early stages, macOS containers show promise for improving performance and eliminating the need for a Linux VM on macOS.
 ---
