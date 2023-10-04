@@ -43,7 +43,7 @@ Let's define some of that:
 | pivot root  | A method to change the root directory in Linux, useful in containers to isolate the filesystem. |
 | docker runtime | The software that manages and runs containers based on Docker images. |
 
-Containers, in this definition, are all based on Linux system calls and so need to run inside Windows.
+Containers, in this definition, are all based on Linux system calls and so need to run inside Linux.
 
 But you can run those same containers on Windows or macOS inside of a Linux VM. This is what Docker Desktop on Mac and Windows does - and it does it reasonably seamlessly.
 
