@@ -104,7 +104,7 @@ mkdir -p ~/.docker/cli-plugins
 ln -sfn /opt/homebrew/opt/docker-buildx/bin/docker-buildx ~/.docker/cli-plugins/docker-buildx
 ~~~
 
-The reason you need to stop Docker Desktop is interesting. The standard version of `dockerD`, the docker deamon, does not support the `darwin` platform. So macOS containers forked `dockerd` ( along with `containerd` and `runc` and `buildkitd`) to add support for darwin.
+The reason you need to stop Docker Desktop is interesting. The standard version of `dockerd`, the docker deamon, does not support the `darwin` platform. So macOS containers forked `dockerd` ( along with `containerd` and `runc` and `buildkitd`) to add support for darwin.
 
 Browsing through the commits, these mainly add support for darwin in the myriad places required.
 
