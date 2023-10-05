@@ -20,6 +20,8 @@ Linux security modules are [kernel modules](<https://linux-kernel-labs.github.io
 
 ## History and Evolution of LSMs
 
+![History]({{site.images}}{{page.slug}}/history.png)\
+
 Linux security module (LSM) was added in the kernel in [version](https://en.wikipedia.org/wiki/Linux_Security_Modules#History) 2.6. LSM is a standard and it has different implementations. One of the first implementations was [SElinux](https://selinuxproject.org/) which was developed by NSA and later other implementations were also developed. Other notable implementations include [AppArmor](https://apparmor.net/), [smack](https://docs.kernel.org/admin-guide/LSM/Smack.html), etc. In this article, we will talk about `AppArmor`.
 
 ## Why Do We Need LSMs?
@@ -38,7 +40,7 @@ DAC permissions are standard Linux permissions that we use and encounter daily. 
 Here's an image illustrating DAC permissions:
 
 <div class="wide">
-![Image link]({{site.images}}{{page.slug}}/PkhTj9m.png)
+![Image link]({{site.images}}{{page.slug}}/PkhTj9m.png)\
 </div>
 
 In the example above, the owner can read and write the file (`rw-`), the group can read the file (`r--`), and others can also read the file (`r--`).
@@ -71,19 +73,20 @@ In this example, we will install a tool called [`bat`](https://github.com/sharkd
 
 To install the `bat` command, we can pick the binary for our system from the [GitHub releases page](https://github.com/sharkdp/bat/releases/tag/v0.23.0):
 
-~~~
+~~~{.bash caption=">_"}
+
 curl -LO https://github.com/sharkdp/bat/releases/download/v0.23.0/bat_0.23.0_amd64.deb
 ~~~
 
 After installing it, we will have to unpack it on our system:
 
-~~~
+~~~{.bash caption=">_"}
 sudo dpkg -i bat_0.23.0_amd64.deb
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 [sudo] password for k7:
 (Reading database ... 179774 files and directories currently installed.)
 Preparing to unpack bat_0.23.0_amd64.deb ...
@@ -94,14 +97,14 @@ Processing triggers for man-db (2.10.2-1) ...
 
 Next, we need to install the `apparmor-utils` that provides the `aa-genprof`:
 
-~~~
+~~~{.bash caption=">_"}
 sudo apt update
 sudo apt install apparmor-utils
 ~~~
 
 Once installed, we can use the [`aa-enabled`](https://manpages.ubuntu.com/manpages/focal/en/man1/aa-enabled.1.html) command to confirm that the AppArmor software is enabled. The command will output `Yes` if it is enabled.  
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo aa-enabled
 Yes
 ~~~
@@ -110,13 +113,13 @@ Next, we will generate a profile with the `aa-genprof` command for the `bat` com
 
 Invoke the command below to generate the profile for the bat binary:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo aa-genprof /usr/bin/bat
 ~~~
 
 The command above will ask us to select an option whether to scan the application activity or finish the profile with a baseline profile:
 
-~~~
+~~~{ caption="Output"}
 Please start the application to be profiled in
 another window and exercise its functionality now.
 
@@ -134,13 +137,13 @@ Input F for noninteractive mode.
 
 In the above step, we've generated an AppArmor profile. The profile that was created will be in the `/etc/apparmor.d` directory in the  `usr.bin.bat` file. Let's check the content of this file:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo cat /etc/apparmor.d/usr.bin.bat 
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 # Last Modified: Fri May  5 20:06:38 2023
 abi <abi/3.0>,
 
@@ -156,21 +159,21 @@ include <tunables/global>
 
 Please note that on its own the profile does not have any effect, we will add the configuration to deny the `bat` command to read the /etc/group file by editing this profile as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 deny /etc/group rw,
 ~~~
 
 Here's an image illustrating the profile the whole profile:
 
 <div class="wide">
-![image]({{site.images}}{{page.slug}}/gMNtdRe.png)
+![image]({{site.images}}{{page.slug}}/gMNtdRe.png)\
 </div>
 
 We will be explaining the content of this profile in detail in the upcoming section.
 
- We can check whether the profile is enforced or not by running `sudo aa-status`:
+We can check whether the profile is enforced or not by running `sudo aa-status`:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo aa-status
 # truncated output
 34 profiles are in enforce mode.
@@ -183,37 +186,37 @@ $ sudo aa-status
 
 Right now, when we execute the bat command on the /etc/group files, we will get a permission denied error which indicates that the profile is enforced:
 
-~~~
+~~~{.bash caption=">_"}
 $ bat /etc/group
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 [bat error]: '/etc/group': Permission denied (os error 13)
 ~~~
 
 We are unable to read the file even though we have read access to the file as a user:
 
-~~~
+~~~{.bash caption=">_"}
 $ ls -la /etc/group
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 -rw-r--r-- 1 root root 895 Nov 21 20:48 /etc/group
 ~~~
 
 We'll be able to read the content of the file if we use any other command (like `cat`, `head`, `tail` etc):
 
-~~~
+~~~{.bash caption=">_"}
 $ head /etc/group
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 # truncated output 
 root:x:0:
 daemon:x:1:
@@ -228,7 +231,7 @@ Profiles in AppArmor are a set of rules that restrict what an application or a p
 
 Let's consider the profile that we created earlier for the `bat` command:
 
-~~~
+~~~{.bash caption=">_"}
 # Last Modified: Fri May  5 20:06:38 2023
 abi <abi/3.0>,
 
@@ -245,25 +248,25 @@ deny /etc/group rw,
 
 The first line is a comment that tells us when this profile was last modified:
 
-~~~
+~~~{.bash caption=">_"}
 # Last Modified: Fri May  5 20:06:38 2023
 ~~~
 
 After this, we include the `abi` file:
 
-~~~
+~~~{.bash caption=">_"}
 abi <abi/3.0>,
 ~~~
 
 This is a file that contains the version of the AppArmor profile. This is used by the Apparmor kernel module to check the version of the profile.
 
-~~~
+~~~{.bash caption=">_"}
 include <tunables/global>
 ~~~
 
 The file also includes the `tunables/global` file. This file contains the global tunables that are used by the AppArmor kernel module to adjust the level of enforcement. However, from the policy author's perspective, it doesn't matter much as it's auto-generated.
 
-~~~
+~~~{.bash caption=">_"}
 /usr/bin/bat {
   include <abstractions/base>
 
@@ -281,13 +284,13 @@ Now let's take another example where we will attempt to write a profile to block
 
 To begin, we will use `aa-genprof` command to generate the profile for the `wget` command:
 
-~~~
+~~~{.bash caption=">_"}
 sudo aa-genprof $(which wget)
 ~~~
 
 The command above will prompt us whether to scan the application activity or finish the profile with a baseline profile as shown earlier:
 
-~~~
+~~~{.bash caption=">_"}
 Please start the application to be profiled in
 another window and exercise its functionality now.
 
@@ -303,20 +306,23 @@ allowed or denied.
 
 This time around, we want to proceed with an interactive prompt, so we will open up another terminal as indicated in the instruction above and invoke the `wget` command:
 
-~~~
+~~~{.bash caption=">_"}
+
 $ wget https://github.com/sharkdp/bat/releases/download/v0.23.0/bat_0.23.0_amd64.deb
 # truncated output
 Length: 2285756 (2.2M) [application/octet-stream]
 Saving to: 'bat_0.23.0_amd64.deb'
 
-bat_0.23.0_amd64.deb             100%[=========================================================>]   2.18M  --.-KB/s    in 0.07s   
+bat_0.23.0_amd64.deb             
+100%[============================>]   2.18M  --.-KB/s    in 0.07s   
 
-2023-05-05 19:12:02 (30.5 MB/s) - 'bat_0.23.0_amd64.deb' saved [2285756/2285756]
+2023-05-05 19:12:02 (30.5 MB/s) - 'bat_0.23.0_amd64.deb' 
+saved [2285756/2285756]
 ~~~
 
 We downloaded the `bat` binary using the `wget` command. Now let's go back to the terminal where we were generating the profile using the `aa-genprof` command. If we type `S` which is short for scan then we'll be asked to allow or deny a specific file:
 
-~~~
+~~~{.bash caption=">_"}
 [(S)can system log for AppArmor events] / (F)inish
 Reading log entries from /var/log/syslog.
 Complain-mode changes:
@@ -327,26 +333,29 @@ New Mode: r
 Severity: unknown
 
  [1 - /etc/wgetrc r,]
-(A)llow / [(D)eny] / (I)gnore / (G)lob / Glob with (E)xtension / (N)ew / Audi(t) / Abo(r)t / (F)inish
+(A)llow / [(D)eny] / (I)gnore / (G)lob / Glob with (E)xtension 
+/ (N)ew / Audi(t) / Abo(r)t / (F)inish
 Adding deny /etc/wgetrc r, to profile.
 ~~~
 
 We'll deny this and AppArmor will write this path to the profile that it's generating. It will again ask us for a bunch of other files. we can deny all of them and then we'll be asked to save the profile. When we finish the action we'll see the following message:
 
-~~~
+~~~{.bash caption=">_"}
 = Changed Local Profiles =
 
-The following local profiles were changed. Would we like to save them?
+The following local profiles were changed. 
+Would we like to save them?
 
  [1 - /usr/bin/wget]
-(S)ave Changes / Save Selec(t)ed Profile / [(V)iew Changes] / View Changes b/w (C)lean profiles / Abo(r)t
+(S)ave Changes / Save Selec(t)ed Profile / [(V)iew Changes] 
+/ View Changes b/w (C)lean profiles / Abo(r)t
 ~~~
 
 Now that the profile is ready we can view the profile by typing `V` and then we can save the profile by typing `S`.
 
 Let's check the profile that was generated:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo cat /etc/apparmor.d/usr.bin.wget
 # Last Modified: Fri May  5 19:14:38 2023
 abi <abi/3.0>,
@@ -372,7 +381,8 @@ In essence, this AppArmor profile restricts the `wget` command from reading vari
 
 Now let's try to download the `bat` command binaries again:
 
-~~~
+~~~{.bash caption=">_"}
+
 $ wget https://github.com/sharkdp/bat/releases/download/v0.23.0/bat_0.23.0_amd64.deb
 Failed to Fopen file /etc/wgetrc
 wget: Cannot read /etc/wgetrc (Permission denied).
@@ -389,7 +399,7 @@ Once we're done experimenting with the AppArmor profiles we can use the `apparmo
 
 Please note that the profile will still be there in the `/etc/apparmor.d` directory but it's not loaded hence it's not effective. To verify this, we can use the `aa-status` command.
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo apparmor_parser --remove /etc/apparmor.d/usr.bin.wget
 $ sudo aa-status | grep wget
 ~~~
@@ -397,6 +407,8 @@ $ sudo aa-status | grep wget
 Since we didn't get any output from the above commence it means that the profile is not loaded.
 
 ## AppArmor Modes
+
+![Modes]({{site.images}}{{page.slug}}/modes.png)\
 
 There are two modes when it comes AppArmor:
 
@@ -412,14 +424,14 @@ If we have a profile that is in enforce mode, and we want to change it to compla
 
 Let's see how it works:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo aa-complain /etc/apparmor.d/usr.bin.bat 
 Setting /etc/apparmor.d/usr.bin.bat to complain mode.
 ~~~
 
 Now if we look at the profile, we'll notice there's a `complain` flag next to the `/usr/bin/bat` program:
 
-~~~
+~~~{.bash caption=">_"}
 # Last Modified: Fri May  5 20:06:38 2023
 abi <abi/3.0>,
 
@@ -438,7 +450,7 @@ Similarly, we can use `aa-enforce` to change the mode from complain mode to enfo
 
 Here's a high-level syntax of `aa-enforce` command:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo aa-enforce <path-of-the-profile>
 ~~~
 
@@ -457,8 +469,3 @@ AppArmor is a great tool to secure our system, but it has some limitations. Some
 In this blog, we have talked about Linux security modules and how they can be used to secure our system. We have also talked about AppArmor which is one of the most popular LSMs that is being used in Linux. We looked at two examples of network andand file-based AppArmor profiles. In addition to that, we listed some of the limitations of AppArmor.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
