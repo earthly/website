@@ -359,6 +359,8 @@ The email with your subject should be sent!
 This tutorial introduces you to the power of real-time data streaming applications using Kafka and Asyncio. You've walked through a practical example that fetches real-time job submissions from the Reddit API, processes them asynchronously, and streams them to a Kafka topic for downstream processing.
 This application is just the tip of the iceberg for what can be achieved with Kafka and Asyncio. In a business context, these technologies can be used for marketing and sentiment analysis, trend analysis and predictions, social media analytics, and much more. As you gain more experience with these technologies, you'll find they are powerful tools for handling Big Data and performing real-time analytics. The final code can be [found in this repository](https://github.com/wamaithaNyamu/Kafka-Earthly).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -367,4 +369,3 @@ This application is just the tip of the iceberg for what can be achieved with Ka
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
