@@ -11,7 +11,10 @@ internal-links:
  - using github actions locally
  - testing github actions locally
  - how does github actions run locally
+excerpt: |
+    This tutorial explains how to test and run GitHub Actions locally using a tool called `act`. It covers the installation of `act`, exploring its features, and discusses the limitations of using `act` for local GitHub Actions development.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software easier and faster through containerization. Especially handy for GitHub Actions users - you can run and test your workflows locally. [Give us a look](/).**
 
 [GitHub Actions](https://docs.github.com/en/actions) is GitHub's approach to automating development workflows, enabling you to create, build, test, and deploy software. Additionally, with GitHub Actions, you can build automation around GitHub's offerings, such as triaging GitHub issues and creating GitHub releases.
 

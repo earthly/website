@@ -11,7 +11,10 @@ internal-links:
  - introduction to fish shell
  - learning fish shell
  - features of fish shell
+excerpt: |
+    Fish Shell is a user-friendly and interactive shell that can be used for daily tasks and scripting. It offers features like auto suggestions, tab-based completion, syntax highlighting, setting aliases and abbreviations, customization options, and the ability to write custom functions.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. If you're into Fish Shell, you might appreciate how Earthly simplifies the build processes. [Give it a look](/).**
 
 What Is a Shell? Essentially, it's the place where you execute all your terminal commands. A shell goes beyond this simple definition – and you can create sub-shells to run your scripts and whatnot – but from a user perspective, I would like to keep it simple and think of it as a place where you invoke all your commands using your keyboard via text input.
 There are many types of shells out there. Bash is one of the oldest, and it ships by default in most Linux distributions.
