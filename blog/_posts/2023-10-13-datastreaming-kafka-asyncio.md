@@ -288,7 +288,7 @@ Create a `consumer.py` file that will contain the consumer code.
 
 Start by importing the necessary libraries:
 
-~~~{.python caption="producer.py"}
+~~~{.python caption="consumer.py"}
 import asyncio
 from kafka import KafkaConsumer
 import smtplib
@@ -301,7 +301,7 @@ from email.mime.text import MIMEText
 
 We then create a Kafka consumer and specify the Kafka topic we want to consume from:
 
-~~~{.python caption="producer.py"}
+~~~{.python caption="consumer.py"}
 consumer = KafkaConsumer(
     'jobs',
     bootstrap_servers=['localhost:9092'],
@@ -317,7 +317,7 @@ Kafka delivers each message in the topics to one consumer in each consumer group
 
 Next, we set up the email configuration:
 
-~~~{.python caption="producer.py"}
+~~~{.python caption="consumer.py"}
 sender_email = "YOUR_EMAIL@gmail.com"
 sender_password = "YOUR_PASSWORD"
 receiver_email = "THEIR_EMAIL@gmail.com"
@@ -327,7 +327,7 @@ Replace "YOUR_EMAIL@gmail.com" and "YOUR_PASSWORD" with your Gmail email and pas
 
 We then define a function send_email to send an email notification:
 
-~~~{.python caption="producer.py"}
+~~~{.python caption="consumer.py"}
 def send_email(subject, body):
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -346,7 +346,7 @@ This function creates a new email with the given subject and body and sends it t
 
 Finally, we consume and process messages from Kafka:
 
-~~~{.python caption="producer.py"}
+~~~{.python caption="consumer.py"}
 async def consume_data():
     print("consumer data called",consumer)
 
