@@ -12,7 +12,7 @@ internal-links:
  - how syslog works
 ---
 
-## What is Syslog
+## What Is Syslog
 
 Syslog is a standard protocol for sending log messages from one system to another or within the same host. It is used by servers, routers, switches, and firewalls. Syslog messages contain information about events that occur on the device, such as errors, warnings, and status changes. It ensures comprehensive visibility into the health and performance of a system by providing a standardized method for collecting, storing, and transmitting log messages from various devices and applications.
 
