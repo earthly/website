@@ -395,4 +395,3 @@ This tutorial introduces you to the power of real-time data streaming applicatio
 This application is just the tip of the iceberg for what can be achieved with Kafka and Asyncio. In a business context, these technologies can be used for marketing and sentiment analysis, trend analysis and predictions, social media analytics, and much more. As you gain more experience with these technologies, you'll find they are powerful tools for handling Big Data and performing real-time analytics. The final code can be [found in this repository](https://github.com/wamaithaNyamu/Kafka-Earthly).
 
 {% include_html cta/bottom-cta.html %}
-
