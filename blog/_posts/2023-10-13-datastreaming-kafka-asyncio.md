@@ -7,7 +7,10 @@ author: Wamaitha Nyamu
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - real time data streaming applications
+ - data streaming applications with kafka and asyncio
+ - how to build applications with kafka and asyncio
+ - building streaming applications
 ---
 
 ## A Practical Tutorial in Python
@@ -365,7 +368,4 @@ This application is just the tip of the iceberg for what can be achieved with Ka
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
