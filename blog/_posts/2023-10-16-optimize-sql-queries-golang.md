@@ -7,7 +7,10 @@ author: Ukeje Goodness
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - optimizing sql queries
+ - sql queries with code examples
+ - sql queries in go
+ - code examples in go
 ---
 
 SQL databases are ubiquitous in modern applications, powering everything from simple web apps to complex enterprise software. SQL databases are designed to store and retrieve data efficiently.
@@ -439,6 +442,3 @@ If you're searching for tools you can use to optimize your SQL queries in your G
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
