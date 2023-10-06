@@ -433,6 +433,8 @@ This comprehensive exploration has equipped you with diverse strategies to optim
 
 If you're searching for tools you can use to optimize your SQL queries in your Go programs, GORM is an excellent tool for working with SQL databases. You can also check out Go's built-in `database/sql` tool if you prefer working with built-in tools.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -440,4 +442,3 @@ If you're searching for tools you can use to optimize your SQL queries in your G
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
