@@ -538,3 +538,9 @@ tunables
 apparmor
 rlimits
 andand
+downtimes
+npx
+prebundled
+coroutines
+passcode
+nvim

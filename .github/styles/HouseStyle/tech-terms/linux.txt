@@ -120,3 +120,7 @@ journalctl
 sbin
 deserialize
 zshrc
+npx
+vared
+cdh
+fn
