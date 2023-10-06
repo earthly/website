@@ -10,7 +10,10 @@ internal-links:
  - introduction to syslog
  - what is syslog
  - how syslog works
+excerpt: |
+    Syslog is a standard protocol used for sending log messages between systems or within the same host, providing comprehensive visibility into system health and performance. It has a client-server architecture, with clients sending log messages to the syslog daemon, which parses and stores them based on a configuration file.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containers. If you're dealing with Syslog fundamentals, our tool could enhance your build processes. [Give us a try](/).**
 
 ## What Is Syslog
 
