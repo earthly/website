@@ -35,13 +35,13 @@ You can learn more about building applications with GORM from this [article on b
 
 To get started, run this command in the terminal to initialize a new Go project in your working directory:
 
-~~~
+~~~{.bash caption=">_"}
 go mod init OptimizeSQL
 ~~~
 
 Then, install the GORM ORM and the Postgres driver as dependencies for your package with these commands:
 
-~~~
+~~~{.bash caption=">_"}
 go get -u gorm.io/gorm
 go get gorm.io/driver/postgres
 ~~~
@@ -50,7 +50,7 @@ These packages will help you interact with the database from your Go app.
 
 Run these commands to create a new Go project and a `main.go` file for the programs in this article
 
-~~~
+~~~{.bash caption=">_"}
 go  mod init
 
 touch main.go && echo package main >> main.go
@@ -61,7 +61,7 @@ The `go mod init` command initializes a Go project and the  `touch main.go && ec
 
 Here's how you can import the Postgres driver and GORM ORM for use in your program:
 
-~~~
+~~~{.go caption="main.go"}
 import (
   "gorm.io/driver/postgres"
   "gorm.io/gorm"
@@ -72,7 +72,7 @@ You'll need to connect to your database to execute queries. Here's how to use th
 
 First, define a struct for the fields of your database connection string:
 
-~~~
+~~~{.go caption="main.go"}
 type Config struct {
     Host     string
     Port     string
@@ -85,10 +85,12 @@ type Config struct {
 
 Create a function that establishes a database connection using the configuration structure provided above. Inside this function, ensure the connection string is formatted correctly:
 
-~~~
+~~~{.go caption="main.go"}
 
 func NewConnection(config *Config) (*gorm.DB, error) {
-    dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s sslmode=%s", config.Host, config.Port, config.User, config.Password, config.DBName, config.SSLMode)
+    dsn := fmt.Sprintf("host=%s port=%s user=%s password=%s dbname=%s \
+    sslmode=%s", config.Host, config.Port, config.User, config.Password, \
+    config.DBName, config.SSLMode)
     db, err := gorm.Open(postgres.Open(dsn), &gorm.Config{
         NamingStrategy: schema.NamingStrategy{
             SingularTable: true,
@@ -110,7 +112,7 @@ The `NewConnection` function creates a new database connection by using a pointe
 
 The function then constructs a (DSN (Data Source Name))[https://www.connectionstrings.com/dsn/] string using the configuration information with the `fmt.Sprintf()` function to format the string with the variables provided.
 
-The `[gorm.Open](http://gorm.Open)` function creates a new database connection with the Postgres database driver. If the connection is successful, the function returns the `gorm.DB` object (the database instance object) and a `nil` error. If there is an error, the function returns a nil `gorm.DB` object and the error.
+The [`gorm.Open`](http://gorm.Open) function creates a new database connection with the Postgres database driver. If the connection is successful, the function returns the `gorm.DB` object (the database instance object) and a `nil` error. If there is an error, the function returns a nil `gorm.DB` object and the error.
 
 You'll need to populate your database with data to execute the examples in this tutorial. You can find the program and the schema struct for populating the database table on this [GitHub gist](https://gist.github.com/Goodnessuc/798829c0975a150af66a36a1cfdc8714).
 
@@ -122,7 +124,7 @@ The plan shows how Postgres will access and combine data from various tables and
 
 Take the following SQL Query as an example:
 
-~~~
+~~~{ caption=""}
 SELECT customer_id, COUNT(*) AS total_orders
 FROM orders
 GROUP BY customer_id;
@@ -132,7 +134,7 @@ The SQL query retrieves the count of orders for each customer from the `orders` 
 
 When you run the query, the database engine generates a query execution plan outlining the steps for the query execution. Here's what a query execution plan might look like on your database engine:
 
-~~~
+~~~{ caption=""}
 Aggregate (Cost: 100)
 -> Sort (Cost: 50)
    -> Hash Join (Cost: 20)
@@ -157,13 +159,13 @@ You'll use the `CREATE INDEX` statement to create indexes on a table in PostgreS
 
 Here's the syntax for creating indexes for your Postgres databases
 
-~~~
+~~~{ caption=""}
 CREATE INDEX index_name ON table_name (column_name [, column_name]...);
 ~~~
 
 Here's an example of an index creation statement:
 
-~~~
+~~~{ caption=""}
 CREATE INDEX userindex ON users (name, age); 
 ~~~
 
@@ -171,11 +173,13 @@ The SQL statement creates an index named `userindex` on the `name` and `age` col
 
 Here's an example query function that retrieves the `username` and `age` fields from the database based on age criteria
 
-~~~
+~~~{.go caption="main.go"}
+
 func FindHumanByAge(db *gorm.DB, minAge int) ([]Human, error) {
     start := time.Now()
     var person []Human
-    err := db.Raw("SELECT username, age  FROM human WHERE age > ?", minAge).Scan(&person).Error
+    err := db.Raw("SELECT username, age  FROM human WHERE age > ?",\
+     minAge).Scan(&person).Error
     if err != nil {
         return nil, err
     }
@@ -206,7 +210,7 @@ Here's the result from running the function before indexing:
 
 You can create indexes from your Go code with GORM as shown below:
 
-~~~
+~~~{.go caption="main.go"}
 import (
     "fmt"
     "time"
@@ -261,6 +265,8 @@ You mustn't overcomplicate the indexing process for better results.
 
 ## Query Simplification as a Method of Optimizing SQL Queries
 
+![Optimizing]({{site.images}}{{page.slug}}/optimizing.png)\
+
 Query Simplification is crucial in optimizing SQL queries for improved database performance. Simplifying queries helps reduce the time taken to execute queries, reduce errors, and enhance readability.
 
 Query simplification optimizes SQL queries by transforming complex or convoluted queries into more straightforward and efficient forms. The goal of query simplification is to improve query performance by reducing query execution time, minimizing resource usage, and enhancing the overall readability and maintainability of the query.
@@ -271,10 +277,12 @@ Generally, there are many techniques for simplifying SQL queries, including remo
 
 Here's a SQL query that's relatively complex and can use simplification to improve performance:
 
-~~~
+~~~{.go caption="main.go"}
 func complex(db *gorm.DB) ([]Human, error) {
     var humans []Human
-    query := `SELECT username, age, email FROM human WHERE height > 0.15 AND (username IS NOT NULL OR age IS NOT NULL OR email IS NOT NULL) ORDER BY username DESC, age ASC LIMIT 100;`
+    query := `SELECT username, age, email FROM human WHERE height > \
+    0.15 AND (username IS NOT NULL OR age IS NOT NULL OR email IS NOT NULL) \
+    ORDER BY username DESC, age ASC LIMIT 100;`
     result := db.Raw(query).Scan(&humans)
     if result.Error != nil {
         return nil, result.Error
@@ -303,7 +311,7 @@ Here's the output and time it takes to run the query:
 
 Here's a simplified, shorter version of the query with the same functionality:
 
-~~~
+~~~{.go caption="main.go"}
 
 func simplified(db *gorm.DB) ([]Human, error) {
     var humans []Human
@@ -373,7 +381,7 @@ Most database packages, including GORM, provide functionality for connection poo
 
 Here's how you can implement connection pooling for your Go app:
 
-~~~
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -437,8 +445,3 @@ This comprehensive exploration has equipped you with diverse strategies to optim
 If you're searching for tools you can use to optimize your SQL queries in your Go programs, GORM is an excellent tool for working with SQL databases. You can also check out Go's built-in `database/sql` tool if you prefer working with built-in tools.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
