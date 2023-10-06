@@ -14,7 +14,7 @@ internal-links:
 excerpt: |
     This article introduces Nx, a powerful build tool for managing monorepos. It explains the benefits of using Nx, such as seamless code sharing, efficient task management, caching, and extensibility, and provides a step-by-step guide on how to create and manage a monorepo with Nx.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization, ideal for managing Nx monorepos. [Give us a try](/).**
+**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization, ideal for managing monorepos. [Give us a try](/).**
 
 Imagine you have a collection of distinct but interrelated projects. For instance, you might have an app with its own [React](https://react.dev/) frontend and [Node.js](https://nodejs.org/en/) backend, or two different [Angular](https://angular.io/) applications sharing a common collection of components. Monorepos offer an effective solution to organize these distinct but interrelated projects into a single repository.
 
