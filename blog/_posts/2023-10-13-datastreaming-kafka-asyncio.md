@@ -13,15 +13,17 @@ internal-links:
  - building streaming applications
 ---
 
-## A Practical Tutorial in Python
-
 Asynchronous programming allows multiple operations to run concurrently, significantly improving the efficiency of data processing applications. [Apache Kafka](https://kafka.apache.org/), a distributed streaming platform, enables real-time data streaming, processing, and storage, facilitating large-scale, real-time data analytics.
+
+## A Practical Tutorial in Python
 
 [Asyncio](https://docs.python.org/3/library/asyncio.html) is a Python library for writing single-threaded concurrent code using coroutines, multiplexing I/O access over sockets and other resources, running network clients and servers, and other related primitives.
 
 In this tutorial, you will build a data streaming project using Kafka and Asyncio, leveraging the Reddit API to fetch real-time job submissions. You will cover setting up a Kafka cluster, configuring the Reddit API, creating a Kafka producer, processing the data asynchronously, and sending the data to a Kafka topic for downstream processing by a consumer.
 
+<div class="wide">
 ![project-architecture](https://user-images.githubusercontent.com/84702057/264901040-deb53c64-a2c6-4c60-9463-a5156d818308.png)
+</div>
 
 ## Prerequisites
 
@@ -47,21 +49,38 @@ You also need to install some Python libraries.
 
 Create a `requirements.txt` file that lists all the libraries you need for the project and add the following to the file:
 
-~~~
+~~~{ caption="requirements.txt"}
 # Libraries required for the Python project
-asyncio==3.4.3  # Asynchronous I/O library for concurrent code execution.
-certifi==2022.12.7  # Provides a collection of root certificates for secure SSL/TLS connections.
-charset-normalizer==3.1.0  # Charset detection and normalisation library for working with character encodings.
-fake-useragent==1.1.3  # Generates fake User-Agent strings for web scraping or automation tasks.
-idna==3.4  # Library to support the Internationalized Domain Names in Applications (IDNA) protocol.
-kafka-python==2.0.2  # Python client for Apache Kafka, a distributed streaming platform.
-praw==7.7.0  # Python Reddit API Wrapper for interacting with the Reddit API.
-prawcore==2.3.0  # Low-level library for accessing the Reddit API used by praw.
-requests==2.28.2  # HTTP library for making requests to web servers.
-update-checker==0.18.0  # Library for checking whether a package is up-to-date.
-urllib3==1.26.15  # HTTP client library for making HTTP requests with various features.
-websocket-client==1.5.1  # WebSocket client implementation for Python to enable WebSocket communication.
-python-dotenv=1.0.0 # A module for managing environment variables and configuration options in Python applications
+asyncio==3.4.3  
+# Asynchronous I/O library for concurrent code execution.
+certifi==2022.12.7  
+# Provides a collection of root certificates for secure SSL/TLS connections.
+charset-normalizer==3.1.0  
+# Charset detection and normalisation library for working with character 
+# encodings.
+fake-useragent==1.1.3  
+# Generates fake User-Agent strings for web scraping or automation tasks.
+idna==3.4  
+# Library to support the Internationalized Domain Names in Applications 
+# (IDNA) protocol.
+kafka-python==2.0.2  
+# Python client for Apache Kafka, a distributed streaming platform.
+praw==7.7.0  
+# Python Reddit API Wrapper for interacting with the Reddit API.
+prawcore==2.3.0  
+# Low-level library for accessing the Reddit API used by praw.
+requests==2.28.2  
+# HTTP library for making requests to web servers.
+update-checker==0.18.0  
+# Library for checking whether a package is up-to-date.
+urllib3==1.26.15  
+# HTTP client library for making HTTP requests with various features.
+websocket-client==1.5.1  
+# WebSocket client implementation for Python to enable WebSocket 
+# communication.
+python-dotenv=1.0.0 
+# A module for managing environment variables and configuration options 
+# in Python applications
 ~~~
 
 It's recommended you create a virtual environment before installing the Python libraries. Virtual environments help avoid conflicts with the libraries you might have installed in your system.
@@ -80,7 +99,7 @@ To set up the cluster, use the following steps:
 
 **Extract the Archive:** Extract the file's contents once the download is complete. You can extract the content On a Unix-based system like Linux or MacOS in the terminal as shown below:
 
-~~~
+~~~{.bash caption=">_"}
 tar -xzf kafka_2.13-3.5.1.tgz
 ~~~
 
@@ -90,7 +109,7 @@ This command will create the directory `kafka_2.13-3.5.1` with the Kafka files.
 
 Apache Kafka uses [ZooKeeper](https://zookeeper.apache.org/) to store configurations for topics and permissions. Zookeeper is a service that maintains configuration, provides distributed synchronization, and is shipped together with Kafka. You need to start ZooKeeper before you start Kafka. Navigate into the Kafka directory and start the ZooKeeper service:
 
-~~~
+~~~{.bash caption=">_"}
 cd kafka_2.13-3.5.1 
 bin/zookeeper-server-start.sh config/zookeeper.properties
 ~~~
@@ -99,7 +118,7 @@ ZooKeeper will start running in the foreground and log messages to the console.
 
 On a new terminal window/tab, navigate into the Kafka directory again and start the Kafka server:
 
-~~~
+~~~{.bash caption=">_"}
 cd kafka_2.13-3.5.1
 bin/kafka-server-start.sh config/server.properties
 ~~~
@@ -118,7 +137,9 @@ Navigate to the Reddit App Preferences [page](https://www.reddit.com/prefs/apps)
 
 Scroll down to the **Developed Applications** section and click on the **Create App** or **Create Another App** button:
 
+<div class="wide">
 ![createApps](https://user-images.githubusercontent.com/84702057/264906150-fb66d212-7bbd-4352-959b-334c8b07851b.png)
+</div>
 
 Fill out the form with the following details:
 
@@ -134,7 +155,9 @@ Fill out the form with the following details:
 
 Click on the "Create app" button at the bottom of the form.
 
+<div class="wide">
 ![fill-application-form](https://user-images.githubusercontent.com/84702057/264906381-0ad59707-70e6-4ea3-a8d9-f94060592404.png)
+</div>
 
 After you've created the app, Reddit will provide you with a `client_id` and a `client_secret`. The `client_id` is under the web app icon, and the `client_secret` is labeled **secret**
 
@@ -150,7 +173,7 @@ Create a `producer.py` file using your chosen text editor. The file will contain
 
 We'll start by importing the necessary libraries.
 
-~~~
+~~~{.python caption="producer.py"}
 import praw
 from fake_useragent import UserAgent
 import asyncio
@@ -171,7 +194,7 @@ As a security practice, you'll use the `dotenv` library to read environment vari
 
 Create a file named `.env` in the same directory as your Python scripts. In the `.env` file, store your Reddit API credentials like this:
 
-~~~
+~~~{.env caption=""}
 CLIENT_ID="YOUR_CLIENT_ID"
 CLIENT_SECRET="YOUR_CLIENT_SECRET"
 ~~~
@@ -180,7 +203,7 @@ Replace `"YOUR_CLIENT_ID"` and `"YOUR_CLIENT_SECRET"` with your actual Reddit AP
 
 Add the following code to the `producer.py` file:
 
-~~~
+~~~{.python caption="producer.py"}
 # Generate a random userAgent
 ua = UserAgent()
 userAgent = ua.random
@@ -191,7 +214,7 @@ load_dotenv()
 
 Next, fetch the 10 "hot" job postings from Reddit:
 
-~~~
+~~~{.python caption="producer.py"}
 data = []
 
 for submission in reddit.subreddit("jobs").hot(limit=10):
@@ -207,7 +230,7 @@ Here, you are creating a list of dictionaries where each dictionary represents a
 
 Next, create a Kafka producer:
 
-~~~
+~~~{.python caption="producer.py"}
 producer =KafkaProducer(bootstrap_servers=['localhost:9092'])
 ~~~
 
@@ -215,7 +238,7 @@ The `bootstrap_servers=['localhost:9092']` argument specifies the host and port 
 
 Next, define two functions, `process_data` and `main`, to process the data asynchronously:
 
-~~~
+~~~{.python caption="producer.py"}
 async def process_data(data):
     await asyncio.sleep(1)
     return data
@@ -238,7 +261,7 @@ The `await` syntax is used to pause the execution of the main function until all
 
 Finally, send the processed data to a Kafka topic named 'jobs' that will be created in the consumer code:
 
-~~~
+~~~{.python caption="producer.py"}
 main_data = asyncio.run(main())
 for x in main_data:
     print("x is ",x)
@@ -253,7 +276,9 @@ That's it for the producer! It fetches job postings from Reddit, processes them,
 
 The screenshot below shows that the producer fetched data from the Reddit API and printed them to the std output.
 
+<div class="wide">
 ![kafka-producer-working](https://user-images.githubusercontent.com/84702057/264906834-30c50a31-2285-4e0e-b568-cfa30fda7ef4.png)
+</div>
 
 ## Building the Kafka Consumer
 
@@ -263,7 +288,7 @@ Create a `consumer.py` file that will contain the consumer code.
 
 Start by importing the necessary libraries:
 
-~~~
+~~~{.python caption="producer.py"}
 import asyncio
 from kafka import KafkaConsumer
 import smtplib
@@ -276,7 +301,7 @@ from email.mime.text import MIMEText
 
 We then create a Kafka consumer and specify the Kafka topic we want to consume from:
 
-~~~
+~~~{.python caption="producer.py"}
 consumer = KafkaConsumer(
     'jobs',
     bootstrap_servers=['localhost:9092'],
@@ -292,7 +317,7 @@ Kafka delivers each message in the topics to one consumer in each consumer group
 
 Next, we set up the email configuration:
 
-~~~
+~~~{.python caption="producer.py"}
 sender_email = "YOUR_EMAIL@gmail.com"
 sender_password = "YOUR_PASSWORD"
 receiver_email = "THEIR_EMAIL@gmail.com"
@@ -302,7 +327,7 @@ Replace "YOUR_EMAIL@gmail.com" and "YOUR_PASSWORD" with your Gmail email and pas
 
 We then define a function send_email to send an email notification:
 
-~~~
+~~~{.python caption="producer.py"}
 def send_email(subject, body):
     message = MIMEMultipart()
     message["From"] = sender_email
@@ -321,7 +346,7 @@ This function creates a new email with the given subject and body and sends it t
 
 Finally, we consume and process messages from Kafka:
 
-~~~
+~~~{.python caption="producer.py"}
 async def consume_data():
     print("consumer data called",consumer)
 
@@ -336,10 +361,13 @@ loop.run_until_complete(consume_data())
 
 For each message in the Kafka topic, we decode it from bytes to strings and send an email notification with the message as the body.
 
-While authenticating with the  `smptlib` library, you might get the following error, even when the credentials are valid:
+While authenticating with the `smptlib` library, you might get the following error, even when the credentials are valid:
 
-~~~
-smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and Password not accepted. Learn more at\n5.7.8 https://support.google.com/mail/?p=BadCredentials k19-20020a1709061c1300b00982d0563b11sm7790611ejg.197 - gsmtp
+~~~{ caption=""}
+smtplib.SMTPAuthenticationError: (535, b'5.7.8 Username and \
+Password not accepted. Learn more at\n5.7.8 
+https://support.google.com/mail/?p=BadCredentials 
+k19-20020a1709061c1300b00982d0563b11sm7790611ejg.197 - gsmtp
 ~~~
 
 This error typically occurs when you're trying to send an email using Gmail and the "Less secure app access" setting is turned OFF in your Google Account settings. Google considers SMTP clients like the one used in your Python script less secure than Google apps and apps that support OAuth 2.0, so it prevents them from logging in by default.
@@ -351,11 +379,15 @@ That's it for the consumer! It listens for new messages in the Kafka topic and s
 
 Run the two files to stream your data from the producer to the consumer. Preferably, run them in two terminal instances for better and cleaner results:
 
+<div class="wide">
 ![consumerProducer](https://user-images.githubusercontent.com/84702057/264906964-0881b897-c620-4374-bf59-63fde631d87a.png)
 Producer and consumer applications are running!
+</div>
 
+<div class="wide">
 ![email-successfully-sent](https://user-images.githubusercontent.com/84702057/264907070-80aff1c9-cb3e-4905-8be3-ca1cec0db261.png)
 The email with your subject should be sent!
+</div>
 
 ## Conclusion
 
@@ -363,9 +395,4 @@ This tutorial introduces you to the power of real-time data streaming applicatio
 This application is just the tip of the iceberg for what can be achieved with Kafka and Asyncio. In a business context, these technologies can be used for marketing and sentiment analysis, trend analysis and predictions, social media analytics, and much more. As you gain more experience with these technologies, you'll find they are powerful tools for handling Big Data and performing real-time analytics. The final code can be [found in this repository](https://github.com/wamaithaNyamu/Kafka-Earthly).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
 
