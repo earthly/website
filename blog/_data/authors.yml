@@ -519,4 +519,7 @@ Ivan Kahl:
     name    : "Ivan Kahl"
     bio     : "Ivan Kahl is a software developer based in Johannesburg, South Africa. While he specializes in .NET and AWS, he is an eager learner who loves to explore other technologies."
     avatar  : "/assets/images/authors/ivan-kahl.jpg"
-    
+Wamaitha Nyamu:
+    name    : "Wamaitha Nyamu"
+    bio     : "Wamaitha is a Software Engineer, Techpreneur and Technical Writer. When she is not coding she enjoys reading and listening to music."
+    avatar  : "/assets/images/authors/wamaitha.jpeg"
