@@ -21,7 +21,9 @@ Both [Nomad](https://github.com/hashicorp/nomad) and [Kubernetes](https://github
 
 That's especially true in the case of Kubernetes. The [engineering costs of self-hosting](https://tasdikrahman.me/2020/11/27/to-self-host-or-to-not-self-host-your-kubernetes-cluster/) are very likely to outweigh those of a managed service.
 
-![Nomad website guidance](https://i.imgur.com/bpff70C.png)
+<div class="wide">
+![Nomad website guidance]({{site.images}}{{page.slug}}/bpff70C.png)
+</div>
 
 Nomad provides a [clear download link](https://www.hashicorp.com/products/nomad/pricing) for its self-managed versions, along with a [helpful set of links and tutorials](https://www.nomadproject.io/downloads) to help you get started. You can download binaries for Windows, macOS, and Linux. Or it can be installed as a package, and there's guidance for doing that on macOS and several Linux varieties.
 
@@ -31,7 +33,9 @@ Nomad can be used on major cloud providers, but it [takes time to set up](https:
 
 Kubernetes is also easy to download and install, and offers guidance on its site to do so, although it isn't immediately clear which of the several options available is the best choice for a beginner.
 
-![Using kubectl from the command line to create pods](https://i.imgur.com/TNdcKWQ.png)
+<div class="wide">
+![Using kubectl from the command line to create pods]({{site.images}}{{page.slug}}/TNdcKWQ.png)
+</div>
 
 There are various tasks to be worked through when self-hosting with Kubernetes, including virtual machine (VM) creation and provisioning. You'll also need to get to know [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) for cluster management. kubectl is a command line utility for working with Kubernetes and is central to many of its workflows.
 
@@ -42,7 +46,9 @@ To summarize, you can get started quickly with Nomad, and it's easy to self-host
 
 ## Ease of Use
 
-![Nomad's web interface, showing the **Jobs** screen, courtesy of HashiCorp](https://i.imgur.com/IJWo0df.png)
+<div class="wide">
+![Nomad's web interface, showing the **Jobs** screen, courtesy of HashiCorp]({{site.images}}{{page.slug}}/IJWo0df.png)
+</div>
 
 Nomad comes with several features ready to use. In addition to [a CLI](https://www.nomadproject.io/docs/commands), there's also a web-based UI for managing and monitoring clusters.
 
@@ -101,8 +107,5 @@ Another tool to be aware of is [Earthly](https://earthly.dev/). It's a CI/CD fra
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links

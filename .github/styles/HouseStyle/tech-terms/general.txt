@@ -546,3 +546,5 @@ prebundled
 coroutines
 passcode
 nvim
+multicluster
+noncontainerized
