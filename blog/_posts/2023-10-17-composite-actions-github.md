@@ -6,7 +6,10 @@ toc: true
 author: Ikeh Akinyemi
 
 internal-links:
- - just an example
+ - composite actions in github
+ - understanding github actions
+ - using github actions
+ - using composite actions
 ---
 
 [GitHub Actions](https://github.com/features/actions) offers a robust set of tools for a number of tasks, but there's an advanced feature that warrants attention for its potential to optimize workflows: [composite actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
@@ -254,7 +257,9 @@ As you've previously learned, the steps are the actionable items in the workflow
 
    Now, as a final step after understanding and implementing each section of this workflow, you can push the workflow to GitHub. This triggers the workflow to be executed, achieving the following results:
 
-![GitHub Action]({{site.images}}{{page.slug}}/PwIlMU4.png)
+<div class="wide">
+![GitHub Action](https://imgur.com/PwIlMU4.png)
+</div>
 
 ## Same Repository vs. Multiple in One Repository
 
@@ -328,13 +333,13 @@ In this deep dive, you've demystified the intricacies of composite actions withi
 
 You can learn more about the GitHub Actions YAML syntax on the [GitHub Docs](https://docs.github.com/en/actions/creating-actions/metadata-syntax-for-github-actions). Additionally, links to the GitHub repositories are available here: [composite-github-action](https://github.com/Ikeh-Akinyemi/composite-github-action) and [cat-nova-special](https://github.com/Ikeh-Akinyemi/cat-nova-special).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
