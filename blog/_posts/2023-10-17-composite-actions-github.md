@@ -268,7 +268,7 @@ As you've previously learned, the steps are the actionable items in the workflow
    Now, as a final step after understanding and implementing each section of this workflow, you can push the workflow to GitHub. This triggers the workflow to be executed, achieving the following results:
 
 <div class="wide">
-![GitHub Action](https://imgur.com/PwIlMU4.png)
+![GitHub Action]({{site.images}}{{page.slug}}/PwIlMU4.png)
 </div>
 
 ## Same Repository vs. Multiple in One Repository
