@@ -67,6 +67,8 @@ Nomad is fundamentally simpler than Kubernetes and easier to install and work wi
 
 ## Ecosystem
 
+![Ecosystem]({{site.images}}{{page.slug}}/ecosystem.png)\
+
 Nomad aims for simplicity, and its core is run as a [single binary with no external services required](https://www.nomadproject.io/docs/nomad-vs-kubernetes). It integrates well with HashiCorp's other tools, including [Consul](https://www.consul.io) and [Vault](https://www.vaultproject.io). Vault provides security and secrets management, while Consul lets you automate networking tasks in the cloud.
 
 [Nomad's community](https://www.nomadproject.io/community) includes a forum, and HashiCorp provides some training materials. There are webinars, and you can ask its team questions during office hours. Overall, though, there's not as much as there is with Kubernetes, and much of it is controlled by HashiCorp. However, since Nomad is simpler, that's less of an issue.
@@ -80,6 +82,8 @@ In addition, there are many [plug-ins and tools](https://cult.honeypot.io/reads/
 Overall, there's more to Kubernetes's ecosystem when compared to Nomad's. However, given the additional complexity of the Kubernetes tool, you'll be more dependent on support than with HashiCorp's simpler product.
 
 ## Ideal Use Cases
+
+![Use Cases]({{site.images}}{{page.slug}}/usecases.png)\
 
 Nomad is more than a container orchestration tool, and it can handle other kinds of workloads. Aside from containers, it can manage other types of applications, including noncontainerized [legacy apps](https://www.codemotion.com/magazine/backend/nomad-kubernetes-but-without-the-complexity/). It's also used for edge workload management and batch processing workloads.
 
@@ -104,9 +108,3 @@ If you need extensive features or if you think you may need them in the future, 
 Another tool to be aware of is [Earthly](https://earthly.dev/). It's a CI/CD framework that runs everywhere. Using it gives you builds that are containerized, repeatable, and language-agnostic. It's simple but powerful, so check it out to see how it can help you.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-
