@@ -6,7 +6,10 @@ toc: true
 author: James Konik
 
 internal-links:
- - just an example
+ - nomad vs kubernetes
+ - use nomad or kubernetes
+ - using kubernetes
+ - using kubernetes or nomad for containers
 ---
 
 Containers make it easy to deploy software, and container orchestration tools help you manage the complexity as you deploy more of them. But how do you know which container orchestration tool is right for you?
@@ -106,6 +109,4 @@ Another tool to be aware of is [Earthly](https://earthly.dev/). It's a CI/CD fra
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
