@@ -25,9 +25,9 @@ In this section, you'll learn how to efficiently use composite actions for a str
 
 Start by creating a new repository on GitHub. This repository serves as the foundation for your actions. Then clone the repo to your local machine:
 
-```bash
+~~~
 $ git clone git@github.com:Ikeh-Akinyemi/composite-github-action.git
-```
+~~~
 
 > Make sure you update the repository link to the one you created.
 
@@ -35,9 +35,9 @@ $ git clone git@github.com:Ikeh-Akinyemi/composite-github-action.git
 
 Once you've cloned your repo to your local machine, create an `action.yml` file within the repository's root directory. This file houses the definition and components of your composite action:
 
-```bash
+~~~
 $ touch action.yml
-```
+~~~
 
 By convention, this file is placed at the root of a repository. However, it's not mandatory for the file to be named `action.yml` or to be at the top level. You can have multiple composite actions in a single repository by placing them in separate directories, each with its own `action.yml` file.
 
@@ -47,10 +47,10 @@ Now, it's time to progressively build the `action.yml` file for a Database Migra
 
 Start by defining the name and description of the action:
 
-```yaml
+~~~
 name: "Database Migration"
 description: "Migrate a Postgres service spinned up for testing purposes."
-```
+~~~
 
 This metadata provides a clear identity and purpose for the action.
 
@@ -58,7 +58,7 @@ This metadata provides a clear identity and purpose for the action.
 
 Then define the inputs that the action requires. These inputs provide flexibility, allowing users to customize the action's behavior based on their specific needs:
 
-```yaml
+~~~
 inputs:
   database_url:
     description: "Connection string for the database. Follows the format: postgres://[user[:password]@][host][:port][/dbname][?options]"
@@ -68,7 +68,7 @@ inputs:
     description: "Path or URL to migration files. Can be local, a GitHub repo using 'github://<owner>/<repo>?dir=<directory>', or other formats supported by golang-migrate."
     required: true
     default: "file://db/migrations"
-```
+~~~
 
 Here, two inputs are defined: `database_url` and `migration_files_path`. Both have default values, but they can be overridden when the action is used.
 
@@ -76,12 +76,12 @@ Here, two inputs are defined: `database_url` and `migration_files_path`. Both ha
 
 Next, you need to specify the outputs that the action produces. Outputs allow the action to return data that can be consumed by subsequent steps in a workflow:
 
-```yaml
+~~~
 outputs:
   migration_report:
     description: "Reports the status of the database migration"
     value: ${{ steps.database-migration-report.outputs.report }}
-```
+~~~
 
 This `migration_report` output captures the result of the database migration, which can be used for logging or decision-making in subsequent workflow steps.
 
@@ -89,7 +89,7 @@ This `migration_report` output captures the result of the database migration, wh
 
 Finally, define the sequence of steps the action executes. Each step can run commands or invoke other actions:
 
-```yaml
+~~~
 runs:
   using: "composite"
   steps:
@@ -108,7 +108,7 @@ runs:
       id: database-migration-report
       run: if [ $? -eq 0 ]; then echo "report=Migrated database successfully" >> $GITHUB_OUTPUT; else echo "report=Failed to migrate database" >> $GITHUB_OUTPUT; fi
       shell: bash
-```
+~~~
 
 This code performs the following actions:
 
@@ -126,18 +126,18 @@ With this structure, you've successfully defined a composite action that can be 
 
 Once your file is ready for a database migration composite action, you need to push the newly created composite action to GitHub to make it available for use:
 
-```bash
+~~~
 $ git add .
 $ git commit -m "Publish composite action"
 $ git push origin main
-```
+~~~
 
 For better management and to facilitate its use in workflows, tag the action with a version, like `v1`, `v2`, etc.:
 
-```bash
+~~~
 $ git tag -a v1 -m "Initial release of db migration action"
 $ git push origin v1
-```
+~~~
 
 This versioning approach ensures that you can reference specific versions of your action in workflows, allowing for controlled updates and compatibility management. However, it's not mandatory to use git tags; you can also reference a specific commit or branch.
 
@@ -151,13 +151,13 @@ To seamlessly integrate the composite action into a workflow, it's crucial that 
 
 Every workflow starts with a name and a set of triggering events. This metadata provides context and determines when the workflow should be executed:
 
-```yaml
+~~~
 name: Test running composite github action
 
 on:
   push:
     branches: [ main ]
-```
+~~~
 
 Here, the workflow is aptly named `Test running composite github action`. It's set to be triggered on a `push` event specifically targeting the `main` branch. This ensures that the workflow runs whenever code is pushed against the `main` branch.
 
@@ -165,12 +165,12 @@ Here, the workflow is aptly named `Test running composite github action`. It's s
 
 The heart of the workflow is its jobs. Each job represents a unit of work and runs in a specific environment:
 
-```yaml
+~~~
 jobs:
   database-migration-ci:
     name: A job to spin up a Postgres service and migrate it.
     runs-on: ubuntu-latest
-```
+~~~
 
 Here, a job named `database-migration-ci` is defined. The descriptive name indicates its purpose: to spin up a Postgres service and handle its migration. The job is configured to run on the latest version of Ubuntu.
 
@@ -180,7 +180,7 @@ Some workflows require [external services](https://docs.github.com/en/actions/us
 
 Spin up a [PostgreSQL service](https://docs.github.com/en/actions/using-containerized-services/creating-postgresql-service-containers) using a Docker image with specific environment variables set for authentication:
 
-```yaml
+~~~
     services:
       postgres:
         image: postgres:15
@@ -195,7 +195,7 @@ Spin up a [PostgreSQL service](https://docs.github.com/en/actions/using-containe
           --health-retries 5
         ports:
           - 5432:5432
-```
+~~~
 
 This configuration is crucial for the subsequent steps. And the health checks ensure that the service is fully operational before the workflow progresses. The port mapping ensures that the service is accessible on the expected port, `5432`.
 
@@ -205,56 +205,56 @@ As you've previously learned, the steps are the actionable items in the workflow
 
 1. **Check out the repository**
 
-To work with the codebase, it's essential to have the repository's content:
+   To work with the codebase, it's essential to have the repository's content:
 
-```yaml
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v3
-```
+   ~~~
+       steps:
+         - name: Checkout repository
+           uses: actions/checkout@v3
+   ~~~
 
-The `actions/checkout@v3` action fetches the content of the current repository, making it available for the following steps.
+   The `actions/checkout@v3` action fetches the content of the current repository, making it available for the following steps.
 
 2. **Migrate the database**
 
-With the environment set, the next task is to migrate the database:
+   With the environment set, the next task is to migrate the database:
 
-```yaml
-     steps:
-      ...
-      - id: postgres-migration
-        name: Migrate Postgres DB
-        uses: Ikeh-Akinyemi/composite-github-action@v1
-        with:
-          database_url: 'postgres://root:c16bc0af8840ef353a2a51e06b9ef568@localhost:5432/earthly_db?sslmode=disable'
-          migration_files_source: 'file://db/migrations'
-```
+   ~~~
+        steps:
+         ...
+         - id: postgres-migration
+           name: Migrate Postgres DB
+           uses: Ikeh-Akinyemi/composite-github-action@v1
+           with:
+             database_url: 'postgres://root:c16bc0af8840ef353a2a51e06b9ef568@localhost:5432/earthly_db?sslmode=disable'
+             migration_files_source: 'file://db/migrations'
+   ~~~
 
-This step invokes the previously defined composite action by referencing it in the workflow. The naming convention for composite actions typically follows the format `{owner}/{repo}@{ref}`. Here, `owner` is the username of a personal or organization GitHub account, `repo` is the name of the repository, and `ref` can be a tag, a commit SHA, or a branch name.  For instance, `Ikeh-Akinyemi/composite-github-action@v1` points to version one of the composite action in the `Ikeh-Akinyemi/composite-github-action` repository. Instead of `v1`, you can also use commit SHA, such as `Ikeh-Akinyemi/composite-github-action@4a3ddaf9b2914638ca2be9f4b21af5d01d9d3e22`, or a branch name as in `Ikeh-Akinyemi/composite-github-action@main`. The [docs](https://docs.github.com/en/actions/learn-github-actions/finding-and-customizing-actions#using-release-management-for-your-custom-actions) provide a good overview of all the approaches.
+   This step invokes the previously defined composite action by referencing it in the workflow. The naming convention for composite actions typically follows the format `{owner}/{repo}@{ref}`. Here, `owner` is the username of a personal or organization GitHub account, `repo` is the name of the repository, and `ref` can be a tag, a commit SHA, or a branch name. For instance, `Ikeh-Akinyemi/composite-github-action@v1` points to version one of the composite action in the `Ikeh-Akinyemi/composite-github-action` repository. Instead of `v1`, you can also use commit SHA, such as `Ikeh-Akinyemi/composite-github-action@4a3ddaf9b2914638ca2be9f4b21af5d01d9d3e22`, or a branch name as in `Ikeh-Akinyemi/composite-github-action@main`. The [docs](https://docs.github.com/en/actions/learn-github-actions/finding-and-customizing-actions#using-release-management-for-your-custom-actions) provide a good overview of all the approaches.
 
-Make sure you adjust the `uses` value to match the GitHub username, repository, and version where your composite action is located. By passing in the necessary inputs using the `with` field, you can see the power of composite actions in action, transforming complex tasks into a singular, streamlined step.
+   Make sure you adjust the `uses` value to match the GitHub username, repository, and version where your composite action is located. By passing in the necessary inputs using the `with` field, you can see the power of composite actions in action, transforming complex tasks into a singular, streamlined step.
 
-The `migration_files_source` points to the `db/migrations` directory. Instead of detailing the SQL migration scripts here, you can find the necessary migration files in this [GitHub repository](https://github.com/Ikeh-Akinyemi/cat-nova-special/tree/main/db/migrations). Ensure you have the `db/migrations` folder set up in your root directory and that it contains the required `000001_init_db.up.sql` and `000001_init_db.down.sql` files.
+   The `migration_files_source` points to the `db/migrations` directory. Instead of detailing the SQL migration scripts here, you can find the necessary migration files in this [GitHub repository](https://github.com/Ikeh-Akinyemi/cat-nova-special/tree/main/db/migrations). Ensure you have the `db/migrations` folder set up in your root directory and that it contains the required `000001_init_db.up.sql` and `000001_init_db.down.sql` files.
 
-With the migration scripts sourced from the repository, you can proceed to the next step of the workflow.
+   With the migration scripts sourced from the repository, you can proceed to the next step of the workflow.
 
 3. **Report the migration status**
 
-After migration, it's beneficial to capture its outcome:
+   After migration, it's beneficial to capture its outcome:
 
-```yaml
-    steps:
-      ...
-      - name: Report migration status
-        run: echo report-status ${{ steps.postgres-migration.outputs.migration_report }}
-        shell: bash
-```
+   ~~~
+       steps:
+         ...
+         - name: Report migration status
+           run: echo report-status ${{ steps.postgres-migration.outputs.migration_report }}
+           shell: bash
+   ~~~
 
-Using the `id` defined in the previous step, this step fetches the migration report output from the composite action and echoes it, providing visibility into the migration's success or failure.
+   Using the `id` defined in the previous step, this step fetches the migration report output from the composite action and echoes it, providing visibility into the migration's success or failure.
 
-Now, as a final step after understanding and implementing each section of this workflow, you can push the workflow to GitHub. This triggers the workflow to be executed, achieving the following results:
+   Now, as a final step after understanding and implementing each section of this workflow, you can push the workflow to GitHub. This triggers the workflow to be executed, achieving the following results:
 
-![GitHub Action](https://i.imgur.com/PwIlMU4.png)
+![GitHub Action]({{site.images}}{{page.slug}}/PwIlMU4.png)
 
 ## Same Repository vs. Multiple in One Repository
 
@@ -266,15 +266,15 @@ If your composite action is in the same repository as your workflow, you don't n
 
 For example, if your composite action's `action.yml` is in the root of your repository, you can reference it in your workflow like this:
 
-```yaml
+~~~
 uses: ./
-```
+~~~
 
 If it's inside a directory named `my-composite-action`, then it would look like this:
 
-```yaml
+~~~
 uses: ./my-composite-action
-```
+~~~
 
 ### Multiple Composite Actions in One Repository
 
@@ -282,7 +282,7 @@ If you have multiple composite actions in a single repository, each composite ac
 
 For instance, if you have two composite actions named `action-one` and `action-two`, your repository structure might look like this:
 
-```bash
+~~~
 repository-root
 |-- action-one
 |   |-- action.yml
@@ -290,29 +290,29 @@ repository-root
 |   |-- action.yml
 |-- .github/workflows
 |   |-- main.yml
-```
+~~~
 
 In your workflow (`main.yml`), you can reference each composite action by its directory path:
 
-```yaml
+~~~
 steps:
   - name: Use Action One
     uses: ./action-one
 
   - name: Use Action Two
     uses: ./action-two
-```
+~~~
 
 If these composite actions are in a different repository, you would reference them with the full `username/repository@version` format, followed by the directory path:
 
-```yaml
+~~~
 steps:
   - name: Use Action One from External Repo
     uses: username/repository/action-one@v1
 
   - name: Use Action Two from External Repo
     uses: username/repository/action-two@v1
-```
+~~~
 
 More details on the reference pattern can be found on [Github](https://docs.github.com/en/actions/using-workflows/reusing-workflows#calling-a-reusable-workflow). The full format is `{owner}/{repo}/.github/workflows/{filename}@{ref}`
 
@@ -330,12 +330,11 @@ You can learn more about the GitHub Actions YAML syntax on the [GitHub Docs](htt
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Run mark down linter (`lint`)
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
