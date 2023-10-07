@@ -94,6 +94,8 @@ If you need extensive features or if you think you may need them in the future, 
 
 Another tool to be aware of is [Earthly](https://earthly.dev/). It's a CI/CD framework that runs everywhere. Using it gives you builds that are containerized, repeatable, and language-agnostic. It's simple but powerful, so check it out to see how it can help you.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -104,4 +106,3 @@ Another tool to be aware of is [Earthly](https://earthly.dev/). It's a CI/CD fra
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
