@@ -133,6 +133,8 @@ Navigating the intricate web of software dependency management is akin to master
 
 That's where tools ranging from build tools like [Earthly](https://earthly.dev/) to dependency managers like Apache Ivy can help. They enable you to combat the myriad of challenges and improve your dependency management workflow. By understanding and utilizing these tools and practices, you can fortify your software projects, ensuring they remain robust, secure, and consistently updated in an ever-evolving tech ecosystem.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -141,4 +143,3 @@ That's where tools ranging from build tools like [Earthly](https://earthly.dev/)
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
