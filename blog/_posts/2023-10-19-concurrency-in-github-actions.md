@@ -174,19 +174,27 @@ However, it's worth noting that this functionality is limited to self-hosted run
 
 To view runner and job status, click on **Settings** from your repository or the GitHub Enterprise main page:
 
+<div class="wide">
 ![GitHub **Settings**]({{site.images}}{{page.slug}}/DSStBMR.jpeg)
+</div>
 
 Next, expand the **Actions** item on the left panel and click on **Runners**. The main panel displays a list of all your self-hosted or enterprise-level runners. You can view the job activity of each runner by clicking on an individual runner's name:
 
+<div class="wide">
 ![Runners settings]({{site.images}}{{page.slug}}/QlDCgMy.jpeg)
+</div>
 
 The next window reveals a list of queued and in-progress jobs. Similarly to the previous screen, you can get more information about a specific job by clicking on its name:
 
+<div class="wide">
 ![Screenshot of the individual job]({{site.images}}{{page.slug}}/rJkwZ01.jpeg)
+</div>
 
 Once you click on the job's name, it takes you to the **Actions** section, where you can access details related to your job runs. This includes the usage details and the workflow file the job belongs to:
 
+<div class="wide">
 ![Job usage details]({{site.images}}{{page.slug}}/8LP1NrQ.jpeg)
+</div>
 
 You can use this data to inform and fine-tune your concurrency strategy. You should ask yourself questions like the following: Are jobs failing because you're running out of concurrency slots? How long do jobs take to run? Are there any unnecessary, redundant, or dead workflows you should be removing?
 
@@ -237,21 +245,29 @@ If you want to limit workflows to a single run per user, you can use the `github
 concurrency: ci-${{ github.actor }}
 ~~~
 
+<div class="wide">
 ![Forked branch snippet]({{site.images}}{{page.slug}}/3Hsid8C.jpeg)
+</div>
 
 This is what your master branch would look like:
 
+<div class="wide">
 ![Master branch code snippet]({{site.images}}{{page.slug}}/IMaG9R3.jpeg)
+</div>
 
 > **Please note:** You can find your `Workflow`/`Actions` file in the `/.github/workflows/` folder of your repository.
 
 After you push or run both workflows, one should be in progress (or queued), and the other should be pending:
 
+<div class="wide">
 ![Workflow progress]({{site.images}}{{page.slug}}/Hnqzbp0.jpeg)
+</div>
 
 Clicking on the pending job's name takes you to a screen with the following message:
 
+<div class="wide">
 ![Learn more about concurrency]({{site.images}}{{page.slug}}/eamQHaP.jpeg)
+</div>
 
 This workflow only starts processing once the workflow on the top of the concurrency group queue has been executed.
 
@@ -263,6 +279,8 @@ There are numerous ways to control and optimize the concurrency of your [GitHub 
 
 Go modules make managing packages in the Go programming language easier.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -271,4 +289,3 @@ Go modules make managing packages in the Go programming language easier.
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
