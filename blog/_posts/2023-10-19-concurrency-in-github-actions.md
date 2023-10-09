@@ -266,7 +266,7 @@ This is what your master branch would look like:
 After you push or run both workflows, one should be in progress (or queued), and the other should be pending:
 
 <div class="wide">
-![Workflow progress]({{site.images}}{{page.slug}}/Hnqzbp0.jpeg)
+![Workflow progress]({{site.images}}{{page.slug}}/Hnqzbp0.jpeg)\
 </div>
 
 Clicking on the pending job's name takes you to a screen with the following message:
