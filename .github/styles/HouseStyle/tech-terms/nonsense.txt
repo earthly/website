@@ -123,3 +123,4 @@ include_html
 cowsay
 nvim
 neovim
+Equifax
