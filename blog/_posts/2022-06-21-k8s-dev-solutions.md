@@ -116,8 +116,6 @@ The main reason to choose MicroK8s is that it comes with any of the features you
 
 ## Complexity of Setup
 
-![Complexity general image]({{site.images}}{{page.slug}}/complexity.jpg)\
-
 Once you know what platforms each tool supports and you've made sure that it matches the platform and environment you have, you also need to look into how complex the setup is. If the tool has everything you need it to have but it's too complex to set up, then it's no longer the right choice for you. Or perhaps you're looking for something to implement organization-wide; in which case, the complexity of the setup may be one of the most important factors.
 
 ### Minikube
