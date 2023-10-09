@@ -53,35 +53,35 @@ Take, for example, [setup-dotnet](https://github.com/actions/setup-dotnet), whic
 
 If you choose to use the `input` option, your code will look like this:
 
-```YAML
+~~~
 uses: actions/setup-dotnet@v3.0.1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
           cache: true
      
-```
+~~~
 
 Or if you elect to use the `cache` option, your code would look more like this:
 
-``` YAML
+~~~{.YAML caption=""}
  uses: actions/setup-dotnet@v3.0.1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}      
       - uses: actions/cache@v3
         with:
          path: ~/.nuget/packages
-```
+~~~
 
 Ultimately, you can decide how much control you want over how your dependencies and reusable files are cached.
 
 Since .NET only uses NuGet as its package manager, there isn't much configuration required. However, languages like [Java](https://www.java.com/) (`setup-java`) and [Node.js](https://nodejs.org/en/) (`setup-node`) have multiple package managers to choose from, and their `cache` options accept the type of package manager as a value:
 
-```yaml
+~~~
 - uses: actions/setup-node@v3
   with:
     node-version: 20
     cache: 'npm'
-```
+~~~
 
 You can reduce the time needed to execute workflows and enhance concurrency efficiency by properly utilizing caching.
 
@@ -111,13 +111,13 @@ You can control the concurrency of your orchestrations by creating dependent wor
 
 Additionally, dependent workflows can be executed sequentially, which is important when dealing with workflows that share references. For instance, if you want to create a (unit test) workflow that runs only after a deployment is complete, the first few lines of your workflow file will look like this:
 
-```
+~~~
 on:
   workflow_run:
     workflows: [Deploy]
     types: [completed]
 
-```
+~~~
 
 The workflow dependencies are specified in the third line: (`workflows:[Deploy]`). You can have multiple references here, but only one needs to meet the activity type (on the next line) to trigger the current workflow. The `types` parameter specifies what sort of workflow state should trigger your workflow (*ie* `completed`, `in-progress`, or `requested`).
 
@@ -131,7 +131,7 @@ These job/workflow matrices can generate up to 256 job executions per workflow r
 
 Without matrices, you'd have to create a unique job for each variable you want to perform a task on. This would be wasteful if all the variables/entities fell under a single category. For instance, instead of defining separate jobs for each job runner you need to launch, you can simply define and use an array for all the variables the job needs to perform a task on:
 
-```yaml
+~~~
 jobs: 
   build-and-test: #<job_id>
     strategy:
@@ -139,22 +139,22 @@ jobs:
         os: [ubuntu-latest, windows-latest, macos-latest]
 
     runs-on: ${{ matrix.os }}     
-```
+~~~
 
 GitHub Actions parallelly runs the jobs in this example (for the latest version of Windows, Ubuntu, and macOS). Matrix strategies are particularly useful when you're running a job with (or on) builders or software with multiple version types, as they make testing easier.
 
 The matrix strategy generates a job for each variable in the array. By default, these jobs are run in parallel. However, you can limit the number of concurrent jobs that are running using the `max-parallel` keyword:
 
-```yaml
+~~~
 jobs: 
   build-and-test: #<job_id>
     strategy:
-      max-parallel: 1	
+      max-parallel: 1    
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
         
-	runs-on: ${{ matrix.os }}
-```
+    runs-on: ${{ matrix.os }}
+~~~
 
 Adding `max-parallel: 1` ensures that there is only a single job running at any given time.
 
@@ -174,19 +174,19 @@ However, it's worth noting that this functionality is limited to self-hosted run
 
 To view runner and job status, click on **Settings** from your repository or the GitHub Enterprise main page:
 
-![GitHub **Settings**](https://i.imgur.com/DSStBMR.jpeg)
+![GitHub **Settings**]({{site.images}}{{page.slug}}/DSStBMR.jpeg)
 
 Next, expand the **Actions** item on the left panel and click on **Runners**. The main panel displays a list of all your self-hosted or enterprise-level runners. You can view the job activity of each runner by clicking on an individual runner's name:
 
-![Runners settings](https://i.imgur.com/QlDCgMy.jpeg)
+![Runners settings]({{site.images}}{{page.slug}}/QlDCgMy.jpeg)
 
 The next window reveals a list of queued and in-progress jobs. Similarly to the previous screen, you can get more information about a specific job by clicking on its name:
 
-![Screenshot of the individual job](https://i.imgur.com/rJkwZ01.jpeg)
+![Screenshot of the individual job]({{site.images}}{{page.slug}}/rJkwZ01.jpeg)
 
 Once you click on the job's name, it takes you to the **Actions** section, where you can access details related to your job runs. This includes the usage details and the workflow file the job belongs to:
 
-![Job usage details](https://i.imgur.com/8LP1NrQ.jpeg)
+![Job usage details]({{site.images}}{{page.slug}}/8LP1NrQ.jpeg)
 
 You can use this data to inform and fine-tune your concurrency strategy. You should ask yourself questions like the following: Are jobs failing because you're running out of concurrency slots? How long do jobs take to run? Are there any unnecessary, redundant, or dead workflows you should be removing?
 
@@ -233,25 +233,25 @@ Along with the `concurrency` keyword, you need to define concurrency groups usin
 
 If you want to limit workflows to a single run per user, you can use the `github.actor` expression. This scenario might arise when dealing with a repository or project featuring numerous branches. To disable concurrency and limit your runs to a single workflow execution, you would need to add the following line to the top of each YAML/YML workflow file:
 
-```yaml
+~~~
 concurrency: ci-${{ github.actor }}
-```
+~~~
 
-![Forked branch snippet](https://i.imgur.com/3Hsid8C.jpeg)
+![Forked branch snippet]({{site.images}}{{page.slug}}/3Hsid8C.jpeg)
 
 This is what your master branch would look like:
 
-![Master branch code snippet](https://i.imgur.com/IMaG9R3.jpeg)
+![Master branch code snippet]({{site.images}}{{page.slug}}/IMaG9R3.jpeg)
 
 > **Please note:** You can find your `Workflow`/`Actions` file in the `/.github/workflows/` folder of your repository.
 
 After you push or run both workflows, one should be in progress (or queued), and the other should be pending:
 
-![Workflow progress](https://i.imgur.com/Hnqzbp0.jpeg)
+![Workflow progress]({{site.images}}{{page.slug}}/Hnqzbp0.jpeg)
 
 Clicking on the pending job's name takes you to a screen with the following message:
 
-![Learn more about concurrency](https://i.imgur.com/eamQHaP.jpeg)
+![Learn more about concurrency]({{site.images}}{{page.slug}}/eamQHaP.jpeg)
 
 This workflow only starts processing once the workflow on the top of the concurrency group queue has been executed.
 
@@ -265,11 +265,10 @@ Go modules make managing packages in the Go programming language easier.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
