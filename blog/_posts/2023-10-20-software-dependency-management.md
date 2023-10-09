@@ -24,6 +24,8 @@ Efficient dependency management is crucial to building robust, secure, and effic
 
 ## Major Challenges Associated with Software Dependency Management
 
+![Challenges]({{site.images}}{{page.slug}}/challenges.png)\
+
 To resolve your software dependency management issues, it's crucial to first understand them fully. This knowledge will help you effectively address any problems that may arise.
 
 Following are some of the most common software dependency management challenges you may face:
@@ -64,6 +66,8 @@ Each of these challenges requires vigilant management, strategic planning, and t
 
 ## Ramifications of Poor Software Dependency Management
 
+![Poor]({{site.images}}{{page.slug}}/poor.png)\
+
 The negative impact that software dependency management challenges can have on an organization is significant. Following are some of the ramifications you can expect if you don't take software dependency management seriously:
 
 ### Compatibility Issues: Errors and Breakdown
@@ -89,6 +93,8 @@ Over an extended period, inadequate software dependency management can introduce
 In essence, just as a well-maintained vehicle runs smoothly and requires fewer repairs, a software system with well-managed dependencies is easier to maintain, securer, and more adaptable to change.
 
 ## Tools to Improve Your Software Dependency Management Workflows
+
+![Tools]({{site.images}}{{page.slug}}/tools.png)\
 
 Now that you know some of the bad things that can happen due to poor software dependency management, let's take a look at some tools that can help you achieve effective and efficient management of your software dependencies.
 
@@ -120,6 +126,8 @@ If you're using other languages or ecosystems, you can't use Maven for build aut
 
 ### OWASP Dependency-Check: Dependency Analyzer
 
+![Analyzer]({{site.images}}{{page.slug}}/analyze.png)\
+
 Dependency analyzers examine project dependencies to identify known vulnerabilities associated with the versions of the dependencies in your project.
 
 For instance, the [OWASP Dependency-Check](https://owasp.org/www-project-dependency-check/) identifies vulnerabilities in project dependencies by comparing them against the [National Vulnerability Database (NVD)](https://nvd.nist.gov/vuln/data-feeds) hosted by the National Institute of Standards and Technology (NIST). Once it identifies a [Common Platform Enumeration (CPE)](https://nvd.nist.gov/products/cpe) identifier for a given dependency, it will generate a report linking to the associated [Common Vulnerabilities and Exposures (CVE)](https://cve.mitre.org/) entries. This is great if you have high-security concerns for your project. Even if you don't, using OWASP Dependency-Check is a good place to start if you want to ensure your dependencies are safe for production use.
@@ -137,8 +145,3 @@ Navigating the intricate web of software dependency management is akin to master
 That's where tools ranging from build tools like [Earthly](https://earthly.dev/) to dependency managers like Apache Ivy can help. They enable you to combat the myriad of challenges and improve your dependency management workflow. By understanding and utilizing these tools and practices, you can fortify your software projects, ensuring they remain robust, secure, and consistently updated in an ever-evolving tech ecosystem.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
