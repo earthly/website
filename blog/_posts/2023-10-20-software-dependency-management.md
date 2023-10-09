@@ -6,7 +6,10 @@ toc: true
 author: Rexford A. Nyarko
 
 internal-links:
- - just an example
+ - understanding software dependency management
+ - how to manage software dependency
+ - managing software dependency
+ - what is software dependency
 ---
 
 At its core, dependency management involves managing numerous pieces of software (*ie* codebases, libraries, frameworks, or other modules) that a specific project depends on for proper functioning. However, as any experienced developer knows, dependency management can be very challenging. From versioning conflicts and security vulnerabilities to the maintenance of consistent performance across diverse environments, dependency management isn't for the faint of heart.
@@ -139,7 +142,3 @@ That's where tools ranging from build tools like [Earthly](https://earthly.dev/)
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
