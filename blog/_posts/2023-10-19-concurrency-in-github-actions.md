@@ -6,7 +6,9 @@ toc: true
 author: Mdu Sibisi
 
 internal-links:
- - just an example
+ - concurrency in github
+ - making most in github actions
+ - using concurrency in github actions
 ---
 
 The `concurrency` keyword was introduced to [GitHub Actions](https://earthly.dev/blog/github-actions-and-docker/) in early 2021. While there are other ways to control and restrict the number of jobs running (per workflow) at any given time, the `concurrency` keyword is a cleaner solution that can be applied at both the job and workflow levels. Paired with techniques such as workflow triggers, job matrixes, and caching, GitHub Actions gives you all you need to develop a comprehensive concurrency strategy.
@@ -285,7 +287,4 @@ Go modules make managing packages in the Go programming language easier.
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
