@@ -55,7 +55,7 @@ Take, for example, [setup-dotnet](https://github.com/actions/setup-dotnet), whic
 
 If you choose to use the `input` option, your code will look like this:
 
-~~~
+~~~{.YAML caption=""}
 uses: actions/setup-dotnet@v3.0.1
         with:
           dotnet-version: ${{ env.DOTNET_VERSION }}
@@ -78,7 +78,7 @@ Ultimately, you can decide how much control you want over how your dependencies 
 
 Since .NET only uses NuGet as its package manager, there isn't much configuration required. However, languages like [Java](https://www.java.com/) (`setup-java`) and [Node.js](https://nodejs.org/en/) (`setup-node`) have multiple package managers to choose from, and their `cache` options accept the type of package manager as a value:
 
-~~~
+~~~{.YAML caption=""}
 - uses: actions/setup-node@v3
   with:
     node-version: 20
@@ -113,7 +113,7 @@ You can control the concurrency of your orchestrations by creating dependent wor
 
 Additionally, dependent workflows can be executed sequentially, which is important when dealing with workflows that share references. For instance, if you want to create a (unit test) workflow that runs only after a deployment is complete, the first few lines of your workflow file will look like this:
 
-~~~
+~~~{.YAML caption=""}
 on:
   workflow_run:
     workflows: [Deploy]
@@ -133,7 +133,7 @@ These job/workflow matrices can generate up to 256 job executions per workflow r
 
 Without matrices, you'd have to create a unique job for each variable you want to perform a task on. This would be wasteful if all the variables/entities fell under a single category. For instance, instead of defining separate jobs for each job runner you need to launch, you can simply define and use an array for all the variables the job needs to perform a task on:
 
-~~~
+~~~{.YAML caption=""}
 jobs: 
   build-and-test: #<job_id>
     strategy:
@@ -147,7 +147,7 @@ GitHub Actions parallelly runs the jobs in this example (for the latest version 
 
 The matrix strategy generates a job for each variable in the array. By default, these jobs are run in parallel. However, you can limit the number of concurrent jobs that are running using the `max-parallel` keyword:
 
-~~~
+~~~{.YAML caption=""}
 jobs: 
   build-and-test: #<job_id>
     strategy:
@@ -243,7 +243,7 @@ Along with the `concurrency` keyword, you need to define concurrency groups usin
 
 If you want to limit workflows to a single run per user, you can use the `github.actor` expression. This scenario might arise when dealing with a repository or project featuring numerous branches. To disable concurrency and limit your runs to a single workflow execution, you would need to add the following line to the top of each YAML/YML workflow file:
 
-~~~
+~~~{.bash caption=">_"}
 concurrency: ci-${{ github.actor }}
 ~~~
 
