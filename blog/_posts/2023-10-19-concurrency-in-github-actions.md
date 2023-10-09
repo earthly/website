@@ -19,6 +19,8 @@ A well-implemented concurrency strategy can lead to faster job and workflow exec
 
 ## How to Control and Optimize Concurrency in GitHub Actions
 
+![Optimize]({{site.images}}{{page.slug}}/optimize.png)\
+
 Concurrency describes the process of running multiple overlapping and/or unrelated jobs simultaneously—in parallel. Using the `concurrency` key, along with an [expression](https://docs.github.com/en/actions/learn-github-actions/expressions) or a string value, workflows and jobs can be assigned to specific concurrency groups.
 
 By default, GitHub Actions tries to run as many concurrent jobs as possible. It can generate and execute as many as 256 jobs per workflow run. However, this isn't ideal for many use cases or workflows. For example, you may face reference clashes, locking glitches, and version disparities if you don't properly manage the concurrency of your workflows.
@@ -204,6 +206,8 @@ By answering these questions, you can refine your workflows and optimize concurr
 
 ## Using Concurrency Groups
 
+![Groups]({{site.images}}{{page.slug}}/group.png)\
+
 [Concurrency groups](https://docs.github.com/en/actions/using-jobs/using-concurrency) in GitHub Actions let you control the parallelism of your pipelines on both a job and a workflow level. Only a single workflow or job in a concurrency group can run at any given time. Concurrency groups can go as far as allowing you to disable concurrency. But why would you want to?
 
 ### Why You Need Concurrency Groups
@@ -282,9 +286,3 @@ There are numerous ways to control and optimize the concurrency of your [GitHub 
 Go modules make managing packages in the Go programming language easier.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-
