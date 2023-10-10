@@ -626,6 +626,8 @@ You can find the demo solution [in the `solution` branch of this GitHub reposito
 
 Finally, If you have a monorepo the extends beyond python, using languages like go or Rust that Pants supports less well, then you should take a look at [Earthly](/). It's open source and works with your existing build tools.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -633,4 +635,3 @@ Finally, If you have a monorepo the extends beyond python, using languages like 
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
