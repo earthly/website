@@ -19,6 +19,8 @@ In this article, you'll learn about [Pants](https://www.pantsbuild.org/). You'll
 
 ## Monorepo Tools
 
+![Tools]({{site.images}}{{page.slug}}/tools.png)\
+
 Monorepos have some benefits over multiple repositories, such as easier code reuse, better dependency management, and faster cross-project collaboration. Since all the relevant components are in the same repository, you can test and refactor them more efficiently.
 
 However, monorepos also have some drawbacks, such as limited access control for each project, frequent merging conflicts, and difficult versioning. Setting up and organizing the project to meet common standards, such as linting, testing, and building, can also be challenging and time-consuming.
@@ -53,6 +55,8 @@ To learn more about Pants, check out this [article](https://earthly.dev/blog/pan
 
 ## Using Pants to Build and Manage a Python Monorepo
 
+![Manage]({{site.images}}{{page.slug}}/manage.png)\
+
 For this tutorial, assume that you are providing development support for a company that wants to convert one of its application repositories to an efficiently working monorepo.
 
 The company has a chat application that consists of two modules: `Content Builder` and `Profanity Masker`.
@@ -78,19 +82,20 @@ You need the following for this tutorial:
 
 Run the following command in your home directory to clone the repository for the chat application:
 
-~~~
+~~~{.bash caption=">_"}
+
 git clone https://github.com/SystemCraftsman/pants-python-monorepo-demo.git
 ~~~
 
 Navigate to the project directory in a terminal window:
 
-~~~
+~~~{.bash caption=">_"}
 cd pants-python-monorepo-demo
 ~~~
 
 The project structure is as follows:
 
-~~~
+~~~{ caption=""}
 ├── LICENSE
 ├── README.md
 ├── chatapp
@@ -114,25 +119,26 @@ In order to configure this repository as a monorepo with Pants, you first need t
 
 You can install the Pants CLI using the Homebrew package installer:
 
-~~~
+~~~{.bash caption=">_"}
 brew install pantsbuild/tap/pants
 ~~~
 
 If you are using Linux, you can run the following command to install the Pants CLI:
 
-~~~
-curl --proto '=https' --tlsv1.2 -fsSL https://static.pantsbuild.org/setup/get-pants.sh | bash
+~~~{.bash caption=">_"}
+curl --proto '=https' --tlsv1.2 -fsSL \
+https://static.pantsbuild.org/setup/get-pants.sh | bash
 ~~~
 
 After the installation, run the following command to verify it's installed successfully:
 
-~~~
+~~~{.bash caption=">_"}
 which pants
 ~~~
 
 On a macOS system, the output should be as follows:
 
-~~~
+~~~{.bash caption=">_"}
 /usr/local/bin/pants
 ~~~
 
@@ -140,30 +146,38 @@ On a macOS system, the output should be as follows:
 
 In the `pants-python-monorepo-demo`, run the following command to initialize the project as a Pants project:
 
-~~~
+~~~{.bash caption=">_"}
 pants
 ~~~
 
 The command should present a prompt similar to the following:
 
-~~~
-No Pants configuration was found at or above YOUR_HOME_DIRECTORY/pants-python-monorepo-demo.
-Would you like to configure YOUR_HOME_DIRECTORY/pants-python-monorepo-demo as a Pants project? (Y/n): 
+~~~{.bash caption=">_"}
+No Pants configuration was found at or above 
+YOUR_HOME_DIRECTORY/pants-python-monorepo-demo.
+Would you like to configure 
+YOUR_HOME_DIRECTORY/pants-python-monorepo-demo as a Pants project? (Y/n): 
 ~~~
 
 Press `Y` and `ENTER` on your keyboard and wait for the `pants` command to add the relevant files to your project.
 
 The output should be similar to the following:
 
-~~~
+~~~{ caption="Output"}
 Fetching latest stable Pants version since none is configured
-Creating YOUR_HOME_DIRECTORY/pants-python-monorepo-demo/pants.toml and configuring it to use Pants 2.16.0
+Creating YOUR_HOME_DIRECTORY/pants-python-monorepo-demo/pants.toml 
+and configuring it to use Pants 2.16.0
 01:34:41.71 [INFO] waiting for pantsd to start...
 01:34:46.77 [INFO] waiting for pantsd to start...
 01:34:49.03 [INFO] pantsd started
 01:34:49.13 [INFO] Initializing scheduler...
 01:34:49.63 [INFO] Scheduler initialized.
-01:34:49.68 [WARN] Please either set `enabled = true` in the [anonymous-telemetry] section of pants.toml to enable sending anonymous stats to the Pants project to aid development, or set `enabled = false` to disable it. No telemetry sent for this run. An explicit setting will get rid of this message. See https://www.pantsbuild.org/v2.16/docs/anonymous-telemetry for details.
+01:34:49.68 [WARN] Please either set `enabled = true` in the 
+[anonymous-telemetry] section of pants.toml to enable sending 
+anonymous stats to the Pants project to aid development, or set 
+`enabled = false` to disable it. No telemetry sent for this run. 
+An explicit setting will get rid of this message. 
+See https://www.pantsbuild.org/v2.16/docs/anonymous-telemetry for details.
 No goals specified.
 Use `pants help` to get help.
 Use `pants help goals` to list goals.
@@ -175,28 +189,28 @@ As you can see from the logs, the CLI also starts the Pants daemon called `pants
 
 In an IDE of your choice, open the `pants-python-monorepo-demo` project. In the root of the project, you should see the generated `pants.toml` file with the following content:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [GLOBAL]
 pants_version = "2.16.0"
 ~~~
 
 The next configuration you should apply involves telemetry usage. Pants allows you to share some anonymous telemetry with the development team. However, since this feature is unnecessary for this tutorial, incorporate the following configuration to the `pants.toml` file to disable it:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [anonymous-telemetry]
 enabled = false
 ~~~
 
 You should also set the repository root for the project. Because the project's root is the repository folder you are in, you can set it as `/`. Add the following configuration into your `pants.toml` file:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [source]
 root_patterns = ["/"]
 ~~~
 
 You should also set the interpreter version and the search path for the interpreters, which you can do by adding the following configurations to your file:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [python]
 interpreter_constraints = [">=3.9.*"]
 
@@ -209,7 +223,7 @@ search_path = [
 
 The `pants.toml` file should be as follows:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [GLOBAL]
 pants_version = "2.16.0"
 
@@ -242,7 +256,7 @@ Because this is a Python project, you should add the Python backend definition i
 
 Add the following configuration snippet under `[GLOBAL]`:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [GLOBAL]
 pants_version = "2.16.0"
 backend_packages.add = [
@@ -252,13 +266,14 @@ backend_packages.add = [
 
 Run the following command in the root of the project to initialize the `BUILD` files:
 
-~~~
+~~~{.bash caption=">_"}
 pants tailor ::
 ~~~
 
 The output should be as follows:
 
-~~~
+~~~{ caption="Output"}
+
 01:51:25.05 [INFO] Initialization options changed: reinitializing scheduler...
 01:51:35.47 [INFO] Scheduler initialized.
 Created BUILD:
@@ -277,13 +292,15 @@ Verify that four `BUILD` files are generated. One is in the root directory of th
 
 Navigate to the `BUILD` file in the `contentbuilder` directory and replace its content with the following snippet:
 
-~~~
-# This target sets the metadata for all the Python non-test files in this directory.
+~~~{ caption="BUILD"}
+# This target sets the metadata for all the Python non-test 
+# files in this directory.
 python_sources(
     name="lib",
 )
 
-# This target sets the metadata for all the Python test files in this directory.
+# This target sets the metadata for all the Python test 
+# files in this directory.
 python_tests(
     name="tests",
 )
@@ -294,29 +311,35 @@ You inform Pants that you have a `lib` directory, which serves as the source fol
 
 To update the `BUILD` file in the `profanitymasker` module, navigate to the `profanitymasker` directory and replace the `BUILD` file's content with the following configuration snippet:
 
-~~~
-# This target sets the metadata for all the Python non-test files in this directory.
+~~~{ caption="BUILD"}
+# This target sets the metadata for all the Python 
+# non-test files in this directory.
 python_sources(
     name="lib",
     dependencies=[":bad_words"],
 )
 
-# This target sets the metadata for all the Python test files in this directory.
+# This target sets the metadata for all the Python 
+# test files in this directory.
 python_tests(
     name="tests",
 )
 
-# This target teaches Pants about your JSON file, which allows other targets to depend on it.
+# This target teaches Pants about your JSON file, 
+# which allows other targets to depend on it.
 resource(
     name="bad_words",
     source="bad_words.json",
 )
 
-# This target allows you to build a `.whl` bdist and a `.tar.gz` sdist by auto-generating
+# This target allows you to build a `.whl` bdist and a 
+# `.tar.gz` sdist by auto-generating
 #  `setup.py`. See https://www.pantsbuild.org/docs/python-distributions.
 #
-# Because this target has no source code, Pants cannot infer dependencies. It depends on `:lib`,
-#  which means it will include all the non-test Python files in this directory and any of
+# Because this target has no source code, Pants cannot infer dependencies.
+# It depends on `:lib`,
+#  which means it will include all the non-test Python files in this 
+# directory and any of
 #  their dependencies.
 python_distribution(
     name="dist",
@@ -337,8 +360,9 @@ After you have the two modules configured, you should update the `BUILD` file in
 
 To do this, replace the content in the `BUILD` file with the following configuration snippet:
 
-~~~
-# This target sets the metadata for all the Python non-test files in this directory.
+~~~{ caption="BUILD"}
+# This target sets the metadata for all the Python non-test files in 
+# this directory.
 python_sources(
     name="lib",
 )
@@ -355,7 +379,7 @@ pex_binary(
 
 Finally, navigate to the repository root and replace the content of the `BUILD` file with the following content:
 
-~~~
+~~~{ caption="BUILD"}
 # A macro that turns every entry in this directory's requirements.txt into a
 # `python_requirement_library` target. Refer to
 # https://www.pantsbuild.org/docs/python-third-party-dependencies.
@@ -368,7 +392,7 @@ Once you have replaced all the `BUILD` file contents, verify your `BUILD` files 
 
 Run the following command for verification:
 
-~~~
+~~~{.bash caption=">_"}
 pants tailor --check ::
 ~~~
 
@@ -380,16 +404,16 @@ Now that you have the project configured and verified, you can run the tests to 
 
 The following command runs tests on the project:
 
-~~~
+~~~{.bash caption=">_"}
 pants test ::
 ~~~
 
 Once you run the tests, you should get an error message as follows:
 
-~~~
+~~~{ caption="Output"}
 ...output omitted...
-=================================== FAILURES ===================================
-______________________________ test_one_bad_word _______________________________
+=================== FAILURES =======================
+______________ test_one_bad_word ___________________
 
     def test_one_bad_word() -> None:
         masker = ProfanityMasker()
@@ -401,9 +425,9 @@ E         ?         ++++
 
 chatapp/profanitymasker/masker_test.py:6: AssertionError
 - generated xml file: /private/var/folders/0n/m2mcfrmj6h132v21j0jy26jm0000gn/T/pants-sandbox-hMKJOq/chatapp.profanitymasker.masker_test.py.tests.xml -
-=========================== short test summary info ============================
+================= short test summary info ==================
 FAILED chatapp/profanitymasker/masker_test.py::test_one_bad_word - AssertionE...
-========================= 1 failed, 1 passed in 0.35s ==========================
+============== 1 failed, 1 passed in 0.35s =================
 ...output omitted...
 ~~~
 
@@ -413,14 +437,15 @@ As you can see, the `masker_test` failed. To resolve this issue, navigate to the
 
 Run the test again by running the `pants test ::` command and verify that all tests pass:
 
-~~~
+~~~{ caption="Output"}
+
 ✓ chatapp/contentbuilder/builder_test.py:tests succeeded in 2.29s (memoized).
 ✓ chatapp/profanitymasker/masker_test.py:tests succeeded in 0.70s.
 ~~~
 
 To run a specific test, use the full path of a test instead:
 
-~~~
+~~~{.bash caption=">_"}
 pants test chatapp/contentbuilder/builder_test.py
 ~~~
 
@@ -450,7 +475,7 @@ Open the `pants.toml` file with the IDE of your choice and add the `"pants.backe
 
 After adding the value, the `GLOBAL` configuration should look as follows:
 
-~~~
+~~~{ caption="BUILD"}
 [GLOBAL]
 pants_version = "2.16.0"
 backend_packages.add = [
@@ -462,20 +487,26 @@ backend_packages.add = [
 
 Execute the following command to run the linter:
 
-~~~
+~~~{.bash caption=">_"}
 pants lint ::
 ~~~
 
 You should see some error messages:
 
-~~~
+~~~{ caption="Output"}
 ...output omitted...
-chatapp/contentbuilder/builder_test.py:6:80: E501 line too long (88 > 79 characters)
-chatapp/contentbuilder/builder_test.py:8:1: E302 expected 2 blank lines, found 1
-chatapp/contentbuilder/builder_test.py:10:80: E501 line too long (81 > 79 characters)
-chatapp/profanitymasker/masker.py:10:80: E501 line too long (86 > 79 characters)
-chatapp/profanitymasker/masker.py:14:80: E501 line too long (86 > 79 characters)
-chatapp/profanitymasker/masker_test.py:11:80: E501 line too long (82 > 79 characters)
+chatapp/contentbuilder/builder_test.py:6:80: E501 line too long 
+(88 > 79 characters)
+chatapp/contentbuilder/builder_test.py:8:1: E302 expected 2 blank 
+lines, found 1
+chatapp/contentbuilder/builder_test.py:10:80: E501 line too long 
+(81 > 79 characters)
+chatapp/profanitymasker/masker.py:10:80: E501 line too long 
+(86 > 79 characters)
+chatapp/profanitymasker/masker.py:14:80: E501 line too long 
+(86 > 79 characters)
+chatapp/profanitymasker/masker_test.py:11:80: E501 line too long 
+(82 > 79 characters)
 
 
 
@@ -489,7 +520,7 @@ You can either individually correct the styling of each file or employ a formatt
 
 To activate the `black` and `docformatter` formatter, add the following lines in the `backend_packages.add` configuration array:
 
-~~~
+~~~{ caption="BUILD"}
   "pants.backend.python.lint.black",
   "pants.backend.build_files.fmt.black",
   "pants.backend.python.lint.docformatter",
@@ -501,7 +532,7 @@ The `pants.backend.build_files.fmt.black` is an extra configuration for enabling
 
 The final configuration should be as follows:
 
-~~~
+~~~{ caption="BUILD"}
 [GLOBAL]
 pants_version = "2.16.0"
 backend_packages.add = [
@@ -521,7 +552,7 @@ As you activate the `black` formatter, it's advisable to delegate the management
 
 In the root directory of the project, create a file called `.flake8` with the following content:
 
-~~~
+~~~{ caption=".flake8"}
 [flake8]
 extend-ignore:
   E203,  # whitespace before ':' (conflicts with Black)
@@ -539,9 +570,10 @@ This time, you should see one formatting error because you solved the line lengt
 
 The error details should be as follows:
 
-~~~
+~~~{ caption="Output"}
 ...output omitted...
-chatapp/contentbuilder/builder_test.py:8:1: E302 expected 2 blank lines, found 1
+chatapp/contentbuilder/builder_test.py:8:1: E302 
+expected 2 blank lines, found 1
 ...output omitted...
 ✕ black failed.
 ✓ docformatter succeeded.
@@ -553,20 +585,20 @@ chatapp/contentbuilder/builder_test.py:8:1: E302 expected 2 blank lines, found 1
 
 Notice that the output suggests running `pants fmt` to fix the formatting. Run the command for the whole project:
 
-~~~
+~~~{.bash caption=">_"}
 pants fmt :: 
 ~~~
 
 You should see the following output:
 
-~~~
+~~~{ caption="Output"}
 + black made changes.
 ✓ docformatter made no changes.
 ~~~
 
 If you run the `pants lint ::` command again, you should see that `black` successfully formats the wrongly formatted test file:
 
-~~~
+~~~{ caption="Output"}
 ✓ black succeeded.
 ✓ docformatter succeeded.
 ✓ flake8 succeeded.
@@ -582,15 +614,16 @@ With Pants, you can create a [PEX (Python EXecutable)](https://github.com/pantsb
 
 To package your project with Pants, you should run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pants package chatapp/main.py
 ~~~
 
 You should have an output similar to the following:
 
-~~~
+~~~{ caption="Output"}
 03:19:46.24 [INFO] Completed: Building local_dists.pex
-03:19:56.03 [INFO] Completed: Building chatapp/pex_binary.pex with 2 requirements: setuptools<57,>=56.2.0, types-setuptools<58,>=56.2.0
+03:19:56.03 [INFO] Completed: Building chatapp/pex_binary.pex 
+with 2 requirements: setuptools<57,>=56.2.0, types-setuptools<58,>=56.2.0
 03:19:56.04 [INFO] Wrote dist/chatapp/pex_binary.pex
 ~~~
 
@@ -598,7 +631,7 @@ Notice that a file called `pex_binary.pex` is created under `dist/chatapp` direc
 
 Apart from packaging, you can also run the binary targets via Pants. Execute the following command to run the application as a binary:
 
-~~~
+~~~{.bash caption=">_"}
 pants run chatapp/main.py -- "This is a content"
 ~~~
 
@@ -606,8 +639,9 @@ The above command runs the `chatapp/main.py` script by passing the string parame
 
 Here's the output:
 
-~~~
-03:28:56.59 [INFO] Completed: Building lib.pex with 2 requirements: setuptools<57,>=56.2.0, types-setuptools<58,>=56.2.0
+~~~{ caption="Output"}
+03:28:56.59 [INFO] Completed: Building lib.pex with 2 
+requirements: setuptools<57,>=56.2.0, types-setuptools<58,>=56.2.0
 This is a content
 ~~~
 
@@ -617,7 +651,7 @@ In the phrase `"This is a text you idiot"`, replace "idiot" with profanity and r
 
 Your output should be as follows:
 
-~~~
+~~~{ caption="Output"}
 This is a text you ***
 ~~~
 
@@ -630,8 +664,3 @@ You can find the demo solution [in the `solution` branch of this GitHub reposito
 Finally, If you have a monorepo the extends beyond python, using languages like go or Rust that Pants supports less well, then you should take a look at [Earthly](/). It's open source and works with your existing build tools.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
