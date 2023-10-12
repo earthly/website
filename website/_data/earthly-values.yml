@@ -1,0 +1,44 @@
+- title: Versatility
+  description: Interoperability, Configurability, Extensibility
+  image: arrows-expand-full.svg
+  type: platform
+
+- title: Approachability
+  description: Readability, Intuitiveness, First-time ease of use
+  image: arrows-minimize.svg
+  type: platform
+
+- title: Reproducibility
+  description: Repeatability, Portability
+  image: arrows-split.svg
+  type: platform
+
+- title: Speed
+  description: Performance, Computation reusability
+  image: fastapi.svg
+  type: other
+
+- title: User Respect
+  description: Integrity, Transparency
+  image: handshake.svg
+  type: other
+
+- title: Consistency of Experience
+  description: Simplicity
+  image: arrows-rotate.svg
+  type: other
+
+- title: Expressiveness
+  description: Having more than one way to do the same thing
+  image: star.svg
+  type: non-value
+
+- title: Velocity
+  description: Evolving Earthly itself fast
+  image: velocity.svg
+  type: non-value
+
+- title: Opinionated
+  description: Strictly prescribing how Earthly can be used for the sake of simplicity
+  image: chat.svg
+  type: non-value

@@ -1,0 +1,35 @@
+<div class="w-full mb-2 mt-16">
+  <div class="px-6 lg:px-10 max-w-7xl m-auto">
+    <div class="bg-[#f1fbfe] flex flex-col items-center px-6 py-14 rounded-xl shadow-md">
+      <p class="font-semibold text-4xl text-center">Interested in Joining Earthly?</p>
+      <p class="font-semibold mt-2 text-[#6b7280] text-2xl text-center">Benefits include:</p>
+
+      <div class="w-full gap-x-24 grid md:grid-cols-2 mt-2 md:px-4 py-6">
+        <div>
+          {% for item in site.data.earthly-benefits limit: 4 %}
+            <div class="flex mt-4">
+              <img class="w-5 h-5 mt-1" src="assets/svg/check.svg" alt="Check" />
+              <p class="font-semibold ml-2 text-[#475569 text-lg tracking-tight">{{ item }}</p>
+            </div>
+          {% endfor %}
+        </div>
+
+        <div>
+          {% for item in site.data.earthly-benefits limit: 4 offset:4 %}
+            <div class="flex mt-4">
+              <img class="w-5 h-5 mt-1" src="assets/svg/check.svg" alt="Check" />
+              <p class="font-semibold ml-2 text-[#475569 text-lg tracking-tight">{{ item }}</p>
+            </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <a
+        href="https://jobs.earthly.dev/"
+        class="font-normal mt-12 px-8 md:px-16 py-6 text-xl md:text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
+      >
+        Vist our Jobs page
+      </a>
+    </div>
+  </div>
+</div>
