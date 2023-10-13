@@ -546,6 +546,12 @@ prebundled
 coroutines
 passcode
 nvim
+Heartbleed
+reputational
+Dependabot
+updaters
+Gitea
+Forgejo
 matrixes
 dotnet
 webbooks

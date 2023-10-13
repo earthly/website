@@ -527,3 +527,7 @@ Aykut Bulgu:
     name    : "Aykut Bulgu"
     bio     : "Aykut Bulgu has 15+ years of experience working as a software engineer, consultant, trainer, and technical content architect. He has worked on many enterprise projects—mainly Java— nd has expertise in JBoss middleware. He's an expert on Apache Kafka, Apache Camel, Kubernetes/OpenShift, and Strimzi (Kafka on Kubernetes). He helps organizations with technical content development and training via System Craftsman."
     avatar  : "/assets/images/authors/aykut-bulgu.jpg"
+Rexford A. Nyarko:
+    name    : "Rexford A. Nyarko"
+    bio     : "Rexford Nyarko is a solution architect with a background in software and network systems, cloud environments, server administration, and various database technologies. Rexford particularly enjoys explaining technical concepts to non-technical audiences."
+    avatar  : "/assets/images/authors/rexford.jpg"
