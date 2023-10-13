@@ -548,3 +548,4 @@ passcode
 nvim
 multicluster
 noncontainerized
+Docformatter
