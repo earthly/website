@@ -283,6 +283,8 @@ This type of concurrency restriction can be applied to all the projects (and the
 
 There are numerous ways to control and optimize the concurrency of your [GitHub Actions CI/CD pipeline](https://earthly.dev/blog/cicd-build-github-action-dockerhub/), and you can't rely on the GitHub Actions default concurrency behavior. It isn't good practice, and it can lead to system resource issues or deadlocking and sluggish pipelines.
 
-Go modules make managing packages in the Go programming language easier.
+You can optimize how GitHub Actions handles concurrency by creating dependent workflows and job matrices. Or you can simplify your builds and deployment by forgoing parallelism through concurrency groups.
+
+Ultimately, parallelism and concurrency are pivotal parts of the GitHub Actions framework, and they must be addressed one way or the other. If you are looking for a simpler way to approach concurrency in GitHut Actions consider [using Earthly with GitHub Actions](https://earthly.dev/earthly-github-actions)
 
 {% include_html cta/bottom-cta.html %}
