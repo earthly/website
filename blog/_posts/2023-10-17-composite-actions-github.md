@@ -12,7 +12,7 @@ internal-links:
  - using composite actions
 ---
 
-[GitHub Actions](https://github.com/features/actions) offers a robust set of tools for a number of tasks, but there's an advanced feature that warrants attention for its potential to optimize workflows: [composite actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
+GitHub Actions offers a robust set of tools for a number of tasks, but there's an advanced feature that warrants attention for its potential to optimize workflows: [composite actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
 
 Composite actions are designed to encapsulate a sequence of actions into a singular, reusable entity, enhancing the modularity and efficiency of workflows.
 
