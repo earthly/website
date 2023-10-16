@@ -853,6 +853,8 @@ Go and Chi both excel in terms of their speed and lightweight nature, making the
 
 The full source code for this tutorial is available in this [GitHub repo](https://github.com/milap-neupane/golang-chi-crud-api).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -861,4 +863,3 @@ The full source code for this tutorial is available in this [GitHub repo](https:
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
