@@ -7,7 +7,10 @@ author: Milap Neupane
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - just an example
+ - jbuilding first application with golang chi
+ - build apps with golang chi
+ - golang chi to build apps
+ - using golang chi
 ---
 
 ## Building Your First Application with Go and Chi
@@ -857,9 +860,5 @@ The full source code for this tutorial is available in this [GitHub repo](https:
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
