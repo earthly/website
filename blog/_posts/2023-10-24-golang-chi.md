@@ -32,7 +32,7 @@ Now that you know how the chi router works, you can start building the applicati
 
 Verify that the installation is successful by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 go version
 ~~~
 
@@ -42,7 +42,7 @@ After you've installed Go, you need to create a project structure and install th
 
 Start by creating a new project directory where you can build the project. Name the project something like `golang-chi-crud-api`:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir golang-chi-crud-api
 cd golang-chi-crud-api
 ~~~
@@ -51,13 +51,13 @@ Then it's time to initialize the Go module. The [Go module](https://go.dev/blog/
 
 You can manually create a `go.mod` file in the root directory and add the dependencies, or you can use the `go mod init` command to initialize the module. If you choose the second option, run the `go mod init` command in the root directory by specifying the module path:
 
-~~~
+~~~{.bash caption=">_"}
 go mod init github.com/milap-neupane/golang-chi-crud-api
 ~~~
 
 Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
 // Output
 go: creating new go.mod: module github.com/milap-neupane/golang-chi-crud-api
 ~~~
@@ -72,13 +72,13 @@ After running the `go mod init` command, you should see a `go.mod` file in your 
 
 Once the `go.mod` has been initialized, it's time to install the `chi router`. To install it as a dependency, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 go get -u github.com/go-chi/chi/v5
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 go: downloading github.com/go-chi/chi v1.5.4
 go: downloading github.com/go-chi/chi/v5 v5.0.8
 go: added github.com/go-chi/chi/v5 v5.0.8
@@ -94,7 +94,7 @@ In this tutorial, you'll be building a book application that allows create, read
 
 In JSON format, a book resource data model looks like this:
 
-~~~
+~~~{.json caption=""}
 {
     "id": 1,
     "title": "7 Habits of Highly Effective People",
@@ -110,7 +110,7 @@ To build the REST API, start with a simple health check endpoint that returns `2
 
 To build the endpoint, create a `main.go` file in the root directory and add the following code:
 
-~~~
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -136,7 +136,7 @@ You also create a new router using the [`chi.NewRouter`](https://pkg.go.dev/gith
 
 You can add a logging middleware to the router with the following:
 
-~~~
+~~~{.go caption="main.go"}
 r.Use(middleware.Logger)
 ~~~
 
@@ -144,7 +144,7 @@ The logger will log information about incoming requests like the request method,
 
 After that, you need to set up a route to the root path that listens for GET requests and returns an `OK` back to the client:
 
-~~~
+~~~{.go caption="main.go"}
     r.Get("/", func(w http.ResponseWriter, r *http.Request) {
         w.Write([]byte("OK"))
     })
@@ -152,32 +152,33 @@ After that, you need to set up a route to the root path that listens for GET req
 
 Then, start a server that listens on port 3000:
 
-~~~
- http.ListenAndServe(":3000", r)
+~~~{.go caption="main.go"}
+http.ListenAndServe(":3000", r)
 ~~~
 
 Run the server by running the `main.go` file:
 
-~~~
+~~~{.bash caption=">_"}
 go run main.go
 ~~~
 
 Then in a new terminal, run a `curl` command to get the "/" endpoint:
 
-~~~
+~~~{.bash caption=">_"}
 curl localhost:3000/
 ~~~
 
 Output:
 
-~~~
+~~~{ caption="Output"}
 OK
 ~~~
 
 This is the log you should see on the server:
 
-~~~
-"GET http://localhost:3000/ HTTP/1.1" from 127.0.0.1:57630 - 200 2B in 128.042µs
+~~~{.bash caption=">_"}
+"GET http://localhost:3000/ HTTP/1.1" from \
+127.0.0.1:57630 - 200 2B in 128.042µs
 ~~~
 
 The log shows the request method, path, the version of the HTTP used, the source IP address and port, the response status, the size of the response, and the time it takes the server to process the request.
@@ -190,8 +191,7 @@ To help keep the code organized, create a new file called `books.go`. In this fi
 
 Add the following function handlers to the BookHandler struct:
 
-~~~
-// books.go
+~~~{.go caption="book.go"}
 // Handlers for the router yet to be implemented
 package main
 
@@ -209,8 +209,7 @@ func (b BookHandler) DeleteBook(w http.ResponseWriter, r *http.Request) {}
 
 Then, in `main.go`, add the CRUD routes to the book resource by mounting the handler function that is defined above:
 
-~~~
-// main.go
+~~~{.go caption="main.go"}
 package main
 
 import (
@@ -247,26 +246,27 @@ Here, the `BookRoutes` function creates routes for the book resource. You use Ch
 
 In the following line of code, the route is mounted to the main route in the `main` function. This mount is required to link all the routes to a root path `/books`:
 
-~~~
+~~~{.go caption="main.go"}
  r.Mount("/books", BookRoutes())
 ~~~
 
 Run the program to make sure everything is working as expected:
 
-~~~
+~~~{.bash caption=">_"}
 go run *.go
 ~~~
 
 You can see the logs output because of the logging middleware previously added in the main function after making a curl request.
 
-~~~
+~~~{.bash caption=">_"}
 curl localhost:3000/books/
 ~~~
 
 This is what your output will look like:
 
-~~~
-# 2023/05/08 16:39:16 "GET http://localhost:3000/books/ HTTP/1.1" from 127.0.0.1:58592 - 000 0B in 716.042µs
+~~~{ caption="Output"}
+# 2023/05/08 16:39:16 "GET http://localhost:3000/books/ 
+HTTP/1.1" from 127.0.0.1:58592 - 000 0B in 716.042µs
 ~~~
 
 As you can see, the `curl` command doesn't return anything. You need to implement the handlers so that they create, update, delete, and list the resources.
@@ -279,8 +279,7 @@ You need a place to store these book resources before you can perform CRUD opera
 
 In the `models.go` file, create a `Book` struct and a slice of pointer to the `Book` struct:
 
-~~~
-// models.go
+~~~{.go caption="models.go"}
 package main
 
 type Book struct {
@@ -297,7 +296,7 @@ var books = []*Book{
         Title:            "7 habits of Highly Effective People",
         Author:           "Stephen Covey",
         PublishedDate:    "15/08/1989",
-        OriginalLanguage: "English",
+        OriginalLanguage: "English"
     },
 }
 
@@ -314,8 +313,7 @@ To return the books as a response in the `ListBooks` handler, you will encode th
 
 Open the `books.go` file and add the following code:
 
-~~~
-// books.go
+~~~{.go caption="books.go"}
 package main
 
 import (
@@ -341,8 +339,7 @@ If it's successful, you don't need to return anything because the `NewEncoder` a
 
 Similarly, to implement the Read, Write, Update, and Delete APIs, implement the other CRUD handlers. However, before you do that, you need to store, delete, update, list, and create book resources in `models.go`. These functions perform the CRUD operation in memory on the `books` global variable, which is a slice of pointer to the `Book` struct, that was previously defined as the `listBooks`function:
 
-~~~
-//models.go
+~~~{.go caption="books.go"}
     …
 
 func listBooks() []*Book {
@@ -354,7 +351,7 @@ This function returns a slice of pointers to Book structs. It simply returns the
 
 The `getBook` function:
 
-~~~
+~~~{.go caption="books.go"}
 func getBook(id string) *Book {
     for _, book := range books {
         if book.ID == id {
@@ -369,7 +366,7 @@ Given an ID as input, this function searches for a `book` with a matching ID in 
 
 The `storeBook` function:
 
-~~~
+~~~{.go caption="books.go"}
 func storeBook(book Book) {
     books = append(books, &book)
 }
@@ -379,7 +376,7 @@ This function adds a new `book` to the `books` collection. It takes a `Book` str
 
 The `deleteBook` function:
 
-~~~
+~~~{.go caption="books.go"}
 func deleteBook(id string) *Book {
     for i, book := range books {
         if book.ID == id {
@@ -395,7 +392,7 @@ This function removes a`book` from the `books` collection based on the provided 
 
 The `updateBook` function:
 
-~~~
+~~~{.go caption="books.go"}
 func updateBook(id string, bookUpdate Book) *Book {
     for i, book := range books {
         if book.ID == id {
@@ -413,7 +410,7 @@ These functions can be used in the `books.go` handlers to handle the different C
 
 **GetBooks Handler:**
 
-~~~
+~~~{.go caption="books.go"}
 func GetBooks(w http.ResponseWriter, r *http.Request) {
     id := chi.URLParam(r, "id")
     book := getBook(id)
@@ -432,7 +429,7 @@ The GetBooks handler reads the requested book ID from the URL using the `chi.URL
 
 **CreateBook Handler:**
 
-~~~
+~~~{.go caption="books.go"}
 
 func CreateBook(w http.ResponseWriter, r *http.Request) {
     var book Book
@@ -454,7 +451,7 @@ The CreateBook handler reads the request body by using the `json.NewDecoder` fun
 
 **UpdateBook Handler:**
 
-~~~
+~~~{.go caption="books.go"}
 
 func UpdateBook(w http.ResponseWriter, r *http.Request) {
     id := chi.URLParam(r, "id")
@@ -475,14 +472,13 @@ func UpdateBook(w http.ResponseWriter, r *http.Request) {
         return
     }
 }
-
 ~~~
 
 The UpdateBook handler is similar to CreateBook. It reads the request body and decodes it to the book variable. This variable is passed to `updateBook` along with the ID of the book that needs to be updated. The ID is read from the URL using the `chi.URLParam` method.
 
 **DeleteBook Handler:**
 
-~~~
+~~~{.go caption="books.go"}
 
 func DeleteBook(w http.ResponseWriter, r *http.Request) {
     id := chi.URLParam(r, "id")
@@ -493,7 +489,6 @@ func DeleteBook(w http.ResponseWriter, r *http.Request) {
     }
     w.WriteHeader(http.StatusNoContent)
 }
-
 ~~~
 
 The DeleteBook handler reads the book ID from the URL using `chi.URLParam`, and passes it to `deleteBook` function. The `w.WriteHeader` function is used to respond with a `StatusNoContent` header and no response body.
@@ -506,11 +501,9 @@ Thankfully, handling errors in chi is simple. You can use the `http` package's `
 
 There are useful HTTP status code constants (like `StatusNotFound` translated to 404) defined in the `http` package that you can use:
 
-~~~
-
+~~~{.go caption="books.go"}
 http.Error(w, "Book not found", http.StatusNotFound)
 return
-
 ~~~
 
 ## Test the Application
@@ -523,9 +516,7 @@ When you're unit testing your application, you want to mock any external depende
 
 To implement unit testing, you need to refactor and restructure the code a bit. In the `model.go` file, create an interface that the test cases will use to perform the storage operations:
 
-~~~
-
-// model.go
+~~~{.go caption="model.go"}
 package main
 
 type BookStorage interface {
@@ -535,23 +526,17 @@ Get(string)*Book
     Create(Book)
 Delete(string)*Book
 }
-
 ~~~
 
 Then create a struct that implements these functions that are defined by the interface:
 
-~~~
-
-// model.go
+~~~{.go caption="model.go"}
 type BookStore struct {}
-
 ~~~
 
 Implement all the CRUD operations as a method for the struct:
 
-~~~
-
-// model.go
+~~~{.go caption="model.go"}
 func (b BookStore) Get(id string) *Book {
     for _, book := range books {
         if book.ID == id {
@@ -588,15 +573,11 @@ func (b BookStore) Update(id string, bookUpdate Book) *Book {
     }
     return nil
 }
-
 ~~~
 
 Then in the `books.go` file (where all the endpoint handlers are), use the interface to access the storage:
 
-~~~
-
-// books.go
-
+~~~{.go caption="books.go"}
 package main
 
 import (
@@ -673,16 +654,13 @@ func (b BookHandler) DeleteBook(w http.ResponseWriter, r *http.Request) {
     }
     w.WriteHeader(http.StatusNoContent)
 }
-
 ~~~
 
 This gives you the option to change the storage for the handler when you're testing the function, enabling your tests to run faster.
 
 To test the endpoints, create a `books_test.go` file and create a fake implementation of the books storage:
 
-~~~
-
-// books_test.go
+~~~{.go caption="books_test.go"}
 package main
 
 import (
@@ -728,10 +706,7 @@ func (s fakeStorage) Update(*string,* Book) *Book {
 
 Then use this fake implementation for the unit test:
 
-~~~
-
-// books_test.go
-
+~~~{.go caption="books_test.go"}
 func TestGetBooksHandler(t *testing.T) {
     req := httptest.NewRequest(http.MethodGet, "/books/1", nil)
     w := httptest.NewRecorder()
@@ -751,7 +726,6 @@ func TestGetBooksHandler(t *testing.T) {
         t.Errorf("expected ABC got %v", string(data))
     }
 }
-
 ~~~
 
 Go provides an [`httptest` package](https://pkg.go.dev/net/http/httptest) that can be used to perform tests with any HTTP handler functions. And any HTTP handler method (*ie* `GetBooks`) requires `w http.ResponseWriter, r *http.Request` as a parameter. In this code, you build this parameter using the [NewRequest](https://pkg.go.dev/net/http/httptest#NewRequest) and [NewRecorder](https://pkg.go.dev/net/http/httptest#NewRecorder) functions.
@@ -760,28 +734,22 @@ You also build a `bookHandler` struct with `fakeStorage` and use this to call th
 
 Run the test using the following command:
 
-~~~
-
+~~~{.bash caption=">_"}
 go test ./... -v
-
 ~~~
 
-~~~
-
+~~~{ caption="Output"}
 === RUN   TestGetBooksHandler
 --- PASS: TestGetBooksHandler (0.00s)
 PASS
 ok      github.com/milap-neupane/golang-chi-crud-api    0.133s
-
 ~~~
 
 ### Integration Testing
 
 Integration testing is a type of test where you combine your components and test them without mocking, using the actual implementation. In addition, instead of testing just the handler function, you can test the response that starts the HTTP request. To do so, start a test server so that you can use the same router for the test and the main server, and refactor the code to move the route setup in a `setupServer` function:
 
-~~~
-
-// main.go
+~~~{.go caption="main.go"}
 package main
 
 func main() {
@@ -798,16 +766,13 @@ func setupServer() chi.Router {
     r.Mount("/books", BookRoutes())
     return r
 }
-
 ~~~
 
 Then start a server for testing using the same function. Create a new file called `books_integration_test.go` and run the test server.
 
 To test the list endpoint, use the `http` package `Get` function with the book URL. The server URL can be obtained from the test `httpServer`:
 
-~~~
-
-// books_integration_test.go
+~~~{.go caption="books_integration_test.go"}
 package main
 
 import (
@@ -835,7 +800,6 @@ func TestIntegrationGetBooksHandler(t *testing.T) {
         t.Errorf("expected 200 got: %v", resp.StatusCode)
     }
 }
-
 ~~~
 
 This example asserts that the response should be `200`. You can also add more assertions, such as the response body; just make sure you're running the `defer testServer.Close()` to ensure that the server shuts down gracefully (making sure any running process is complete) once the test is complete.
@@ -844,24 +808,21 @@ The `books` application doesn't use any database and is not dependent on any oth
 
 Run the test using the following command:
 
-~~~
-
+~~~{.bash caption=">_"}
 $ go test ./… -v
-
 ~~~
 
 Output:
 
-~~~
-
+~~~{ caption="Output"}
 === RUN   TestIntegrationGetBooksHandler
-2023/06/27 21:36:41 "GET <http://127.0.0.1:50605/books> HTTP/1.1" from 127.0.0.1:50606 - 200 144B in 154.375µs
+2023/06/27 21:36:41 "GET <http://127.0.0.1:50605/books> \
+HTTP/1.1" from 127.0.0.1:50606 - 200 144B in 154.375µs
 --- PASS: TestIntegrationGetBooksHandler (0.00s)
 === RUN   TestGetBooksHandler
 --- PASS: TestGetBooksHandler (0.00s)
 PASS
 ok      github.com/milap-neupane/golang-chi-crud-api    0.133s
-
 ~~~
 
 ## Deploy the Application
@@ -870,12 +831,10 @@ Now that you've built and tested your application, it's time to deploy the Go ap
 
 To do so, you can build the binary from one system to be deployed in a different system. The following command generates the binary for different operating systems:
 
-~~~
-
+~~~{.bash caption=">_"}
 GOARCH=amd64 GOOS=darwin go build *.go -o books-application-darwin
 GOARCH=amd64 GOOS=linux go build*.go -o books-application-linux
 GOARCH=amd64 GOOS=windows go build *.go -o books-application-windows
-
 ~~~
 
 This binary can be shipped to any infrastructure like AWS, GCP, Azure, or on-premise servers. Then you can deploy the Go binary in the following ways:
