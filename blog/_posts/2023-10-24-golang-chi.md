@@ -679,7 +679,7 @@ var fakeBooks = []*Book{{
     Title:            "7 Habits of Highly Effective People",
     Author:           "Stephen Covey",
     PublishedDate:    "15/08/1989",
-    OriginalLanguage: "English",
+    OriginalLanguage: "English"
 }}
 
 type fakeStorage struct {
@@ -860,5 +860,4 @@ The full source code for this tutorial is available in this [GitHub repo](https:
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
