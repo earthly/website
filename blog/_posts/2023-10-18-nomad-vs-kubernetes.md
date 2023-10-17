@@ -13,6 +13,7 @@ internal-links:
 excerpt: |
     This article compares the container orchestration tools Nomad and Kubernetes. Nomad is simpler and easier to use, while Kubernetes offers a broader set of features and is better suited for large-scale deployments.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can streamline your CI build processes whether you're using Nomad or Kubernetes. [Check it out](/).**
 
 Containers make it easy to deploy software, and container orchestration tools help you manage the complexity as you deploy more of them. But how do you know which container orchestration tool is right for you?
 
