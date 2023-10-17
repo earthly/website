@@ -11,7 +11,10 @@ internal-links:
  - sql queries with code examples
  - sql queries in go
  - code examples in go
+excerpt: |
+    This tutorial explores various techniques for optimizing SQL queries in Go applications using GORM and Postgres. It covers topics such as indexing, query simplification, caching, and connection pooling to improve query performance and scalability.
 ---
+**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. After working on SQL queries in Golang, maybe take a look at how Earthly can help to streamline your build process. [Give us a look](/).**
 
 SQL databases are ubiquitous in modern applications, powering everything from simple web apps to complex enterprise software. SQL databases are designed to store and retrieve data efficiently.
 

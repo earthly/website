@@ -857,7 +857,3 @@ Go and Chi both excel in terms of their speed and lightweight nature, making the
 The full source code for this tutorial is available in this [GitHub repo](https://github.com/milap-neupane/golang-chi-crud-api).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Optional: Find ways to break up content with quotes or images
