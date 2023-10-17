@@ -1,5 +1,5 @@
 ---
-title: "GoLang Chi - Your First Application"
+title: "Building Your First Application with Go and Chi"
 categories:
   - Tutorials
 toc: true
@@ -12,8 +12,6 @@ internal-links:
  - golang chi to build apps
  - using golang chi
 ---
-
-## Building Your First Application with Go and Chi
 
 Go, developed by Google in 2007, was a response to the increasing popularity of multicore processors. Existing programming languages such as Java, Python, and C++ were widely used but had certain limitations.
 
