@@ -38,7 +38,7 @@ The `go get` command is used to add, update, or remove packages as well as their
 
 The syntax for the `go get` command is the words `go` and `get`, followed by the package path:
 
-~~~
+~~~{.bash caption=">_"}
 go get [package_path]
 ~~~
 
@@ -46,7 +46,7 @@ go get [package_path]
 
 The `go install` command is used to build and install executables. It was introduced in [Go 1.17](https://go.dev/doc/go-get-install-deprecation), streamlining `go get` to the sole task of adding and modifying dependencies. To install an executable, run the `go install` command, followed by the package path:
 
-~~~
+~~~{.bash caption=">_"}
 go install [package_path]
 ~~~
 
@@ -54,7 +54,7 @@ go install [package_path]
 
 The `go mod init` command creates and initializes a new module. On execution of the command, a `go.mod` file is created to manage all project dependencies and versions:
 
-~~~
+~~~{.bash caption=">_"}
 go mod init [module_name]
 ~~~
 
@@ -62,7 +62,7 @@ go mod init [module_name]
 
 On execution of the `go mod tidy` command, the import statements of all project files are analyzed and the `go.mod` file is updated to include only the packages used in your code:
 
-~~~
+~~~{.bash caption=">_"}
 go mod tidy
 ~~~
 
@@ -70,7 +70,7 @@ go mod tidy
 
 The `go list` command lists packages and modules contained in your project. The `go list` command also accepts flags and arguments such as `-m` and `-m all`, which streamlines the command to packages in the current module:
 
-~~~
+~~~{.bash caption=">_"}
 go list
 ~~~
 
@@ -78,7 +78,7 @@ go list
 
 The `go mod vendor` command creates a self-contained project with all its dependencies stored locally. On execution of this command, a vendor folder containing copies or clones of all the packages used in the project is created:
 
-~~~
+~~~{.bash caption=">_"}
 go mod vendor
 ~~~
 
@@ -86,7 +86,7 @@ go mod vendor
 
 The `go mod verify` command verifies the integrity of the packages and dependencies by comparing the checksums in the `go.sum` file:
 
-~~~
+~~~{.bash caption=">_"}
 go mode verify
 ~~~
 
@@ -98,13 +98,13 @@ To initialize a new Go module, create a new folder on your device to store your 
 
 Then open a new terminal window targeting the recently created folder. Execute the `go mod init` command accompanied by your preferred module path, which functions as the module's identifier. It's recommended that the module path be the repository location of your source code:
 
-~~~
- go mod init example.com/package_management_in_go
+~~~{.bash caption=">_"}
+go mod init example.com/package_management_in_go
 ~~~
 
 After you run this command, you can expect a printout resembling the following to be displayed in your terminal:
 
-~~~
+~~~{ caption=">Output"}
 $ go mod init example.com/package_management_in_go 
 go: creating new go.mod: module example.com/package_management_in_go
 ~~~
@@ -121,13 +121,13 @@ As you begin to integrate new dependencies into your project, the `go.mod` dynam
 
 For the purpose of this article, the [gorm](https://pkg.go.dev/gorm.io/gorm) package is introduced as a dependency. To initiate this process, execute the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 go get gorm.io/gorm
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{ caption="Output"}
 $ go get gorm.io/gorm
 go: downloading gorm.io/gorm v1.25.4
 go: downloading github.com/jinzhu/now v1.1.5
@@ -158,13 +158,13 @@ In the previous example, you installed the gorm package. In this section, you'll
 
 To define a particular version of the gorm package for utilization, simply execute the following command within your terminal, attaching the corresponding version as a suffix:
 
-~~~
+~~~{.bash caption=">_"}
 go get gorm.io/gorm@v1.20.0
 ~~~
 
 Your output looks like this:
 
-~~~
+~~~{ caption="Output"}
 $ go get gorm.io/gorm@v1.20.0
 go: downgraded gorm.io/gorm v1.25.4 => v1.20.0
 ~~~
