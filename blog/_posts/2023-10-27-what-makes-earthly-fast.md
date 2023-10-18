@@ -26,7 +26,7 @@ Only the last two steps described above are actually affected by the changes of 
 
 In this article I'll walk through the types of situations in which Earthly is faster and also the ones it isn't, and I'll also talk about exactly how we achieve this.
 
-## In what situations is Earthly faster?
+## In What Situations is Earthly Faster?
 
 The word "build" can mean many things across many different contexts. When we say that it makes builds faster, we generally mean CI/CD builds.
 
@@ -56,7 +56,7 @@ Earthly is:
 * Usually not faster for local builds where you're iterating in a single programming language in a tight loop.
 * Often faster locally, when intending to run the same build as the CI.
 
-## How Earthly works
+## How Earthly Works
 
 Earthly makes things fast using a combination of techniques:
 
@@ -67,13 +67,13 @@ Earthly makes things fast using a combination of techniques:
 * Instantly available cache provided via remote runners (Earthly Satellites)
 * Other features to further optimize execution
 
-### Holistic layer caching
+### Holistic Layer Caching
 
 If you've used Dockerfiles before, you're probably already familiar with how layer caching works. Earthly takes that idea and expands its use cases such that it doesn't just apply to container images, but it also applies to building artifacts (regular files, generated source code, binaries, libraries etc) and executing tests (unit tests, linting, integration tests etc). This allows vastly wider use of the caching benefits in your builds.
 
 If you're unfamiliar with Dockerfile layer caching, you can think of it like a layered cake where you can reuse layers of the cake in future cakes (or future runs of the build), if the ingredients of that layer haven't changed. This mechanism allows Docker image builds to reuse work from previous runs, thus speeding up the build process. Earthly takes this same idea to the next level, by making it applicable to the entire build, and not just to the builds of container images.
 
-### Build graphs
+### Build Graphs
 
 Once layer caching can be used throughout the entire build, we're no longer limited to relatively simple build structures like we're used to in most Dockerfile builds. The structure of the build can become a graph, and it can get as complex as necessary.
 
@@ -81,7 +81,7 @@ For example, you might generate some protobuf definitions then reuse that genera
 
 Although these types of graphs are also available when building just images, because of the focused applicability of Dockerfiles, the ability to use layer caching at this scale is never achieved.
 
-### Well-known dependencies
+### Well-Known Dependencies
 
 In a complex build graph, if you understand what has changed, and the build's internal dependencies with high precision, then you can infer what to rebuild and, crucially, what not to rebuild.
 
@@ -91,7 +91,7 @@ This is particularly helpful when you have complex interdependencies between pro
 
 This is how Earthly can determine that it only needs to rebuild that one microservice you're working on, and not the other 6 components that are part of a complex build, but finally re-run the entire integration test that everything feeds into.
 
-### Automatic parallelization
+### Automatic Parallelization
 
 Earthly has a few key advantages that allow for automatic inference of parallelism.
 
@@ -103,7 +103,7 @@ With these restrictions in place, Earthly is able to automatically infer what ma
 
 Although this happens on a single machine only today, future versions of Earthly will permit executing these across compute clusters for added speed and scalability. We believe that this clustered version will yield another order of magnitude speed improvement for large enough builds.
 
-### Instantly available cache
+### Instantly Available Cache
 
 The caching techniques above would be for nothing, if Earthly did not have a way to pass on the stored cache between CI runs with high efficiency.
 
@@ -117,7 +117,7 @@ Although not immediately intuitive, the main reason to use Earthly Satellites to
 
 In addition, because Satellite builds can be triggered from both the CI and your laptop just as easily as running a local build, it allows for a very quick way to verify that your CI build works fine straight from your development machine, without having to commit any code to GitHub. It will also allow you to reuse cache with the CI and with other colleagues on the team.
 
-### Other features to further optimize execution
+### Other Features to Further Optimize Execution
 
 Besides the strategies described above, Earthly also has a number of additional features that allow for further tuning of performance in specific circumstances: cache mounts, auto-skip (coming soon), and remote caching.
 
@@ -131,14 +131,15 @@ An upcoming feature of Earthly is **auto-skip**. This feature short circuits lar
 
 Another feature is **remote caching**. This feature allows you to store Earthly cache in a container registry, such as DockerHub, AWS ECR, GCP AR, or GitHub Container Registry. While this gives you cheap caching, it does have the drawback that it requires uploading and downloading of the contents. It is slightly smarter than a traditional CI cache directory, however, in that it only uploads layers that are different, and it only downloads layers that will actually be used. For the fastest experience, Earthly Satellites outperforms remote caching by a wide margin.
 
-## How fast is fast?
+## How Fast Is Fast?
+
 We generally say that Earthly can get **up to** 2-20X faster compared to not using Earthly. These are the typical ranges that we hear from our customers. The reason this range is so wide is because it is highly dependent on the setup. It is difficult to come up with a single real-world benchmark that is fair toward the very high diversity of tools and languages that Earthly is being used with. In some cases, we even go way beyond 20X, if you compare an emulated cross-platform build vs a native build. We don't typically factor in emulation slowness as we don't think it is a fair comparison.
 
 While possible, it is rare that we hear Earthly not speeding up builds at least by 2X. In situations where Earthly is not a great fit - as highlighted above - the builds could also be slower. In our experience, these tend to be niche use-cases.
 
-The other thing to note is that the comparison is for entire CI runs, not just for a small portion of a run. While other tools might report X times faster Docker builds, or X times faster JS script builds, and so on it is important to understand that that speedup is for a smaller portion of the entire CI build, and thus it might not be quite so impactful when looking at the entire pipeline. In our material, we always compare the entire CI/CD pipeline speedup.
+The other thing to note is that the comparison is for entire CI runs, not just for a small portion of a run. While other tools might report X times faster Docker builds, or X times faster JS script builds, and so on it is important to understand that speedup is for a smaller portion of the entire CI build, and thus it might not be quite so impactful when looking at the entire pipeline. In our material, we always compare the entire CI/CD pipeline speedup.
 
-## The ROI of fast
+## The ROI of Fast
 
 Fast is great, but is it useful?
 
@@ -156,14 +157,12 @@ The reason I started writing this article is because many people we were talking
 
 Earthly addresses many of the inefficiencies found in traditional CI/CD pipelines. By leveraging techniques such as holistic layer caching, build graphs, and Earthly Satellites, it offers a more streamlined and efficient build process that rebuilds on what has actually changed. The results often show build times reduced by factors ranging from 2 to 20X. Beyond the obvious benefits of reduced infrastructure costs and faster feedback loops, our approach leads to improved developer productivity that you can measure. We operate in a developer landscape where efficiency and time are crucial. It's time we rethink how CI/CD should work and allow developers to focus more on coding and less on waiting.
 
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
