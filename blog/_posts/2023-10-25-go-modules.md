@@ -35,57 +35,57 @@ The `go get` command is used to add, update, or remove packages as well as their
 
 The syntax for the `go get` command is the words `go` and `get`, followed by the package path:
 
-```bash
+~~~
 go get [package_path]
-```
+~~~
 
 ### go install
 
 The `go install` command is used to build and install executables. It was introduced in [Go 1.17](https://go.dev/doc/go-get-install-deprecation), streamlining `go get` to the sole task of adding and modifying dependencies. To install an executable, run the `go install` command, followed by the package path:
 
-```bash
+~~~
 go install [package_path]
-```
+~~~
 
 ### go mod init
 
 The `go mod init` command creates and initializes a new module. On execution of the command, a `go.mod` file is created to manage all project dependencies and versions:
 
-```bash
+~~~
 go mod init [module_name]
-```
+~~~
 
 ### go mod tidy
 
 On execution of the `go mod tidy` command, the import statements of all project files are analyzed and the `go.mod` file is updated to include only the packages used in your code:
 
-```bash
+~~~
 go mod tidy
-```
+~~~
 
 ### go list
 
 The `go list` command lists packages and modules contained in your project. The `go list` command also accepts flags and arguments such as `-m` and `-m all`, which streamlines the command to packages in the current module:
 
-```bash
+~~~
 go list
-```
+~~~
 
 ### go mod vendor
 
 The `go mod vendor` command creates a self-contained project with all its dependencies stored locally. On execution of this command, a vendor folder containing copies or clones of all the packages used in the project is created:
 
-```bash
+~~~
 go mod vendor
-```
+~~~
 
 ### go mod verify
 
 The `go mod verify` command verifies the integrity of the packages and dependencies by comparing the checksums in the `go.sum` file:
 
-```bash
+~~~
 go mode verify
-```
+~~~
 
 Now that you've familiarized yourself with some of the core commands for Go modules, create and initialize a Go module.
 
@@ -95,16 +95,16 @@ To initialize a new Go module, create a new folder on your device to store your 
 
 Then open a new terminal window targeting the recently created folder. Execute the `go mod init` command accompanied by your preferred module path, which functions as the module's identifier. It's recommended that the module path be the repository location of your source code:
 
-```bash
+~~~
  go mod init example.com/package_management_in_go
-```
+~~~
 
 After you run this command, you can expect a printout resembling the following to be displayed in your terminal:
 
-```bash
+~~~
 $ go mod init example.com/package_management_in_go 
 go: creating new go.mod: module example.com/package_management_in_go
-```
+~~~
 
 This command equally generates a `go.mod` file designed to track your project dependencies and external packages. On generation, the file only includes your module name and Go version:
 
@@ -116,20 +116,20 @@ As you begin to integrate new dependencies into your project, the `go.mod` dynam
 
 For the purpose of this article, the [gorm](https://pkg.go.dev/gorm.io/gorm) package is introduced as a dependency. To initiate this process, execute the following command in your terminal:
 
-```bash
+~~~
 go get gorm.io/gorm
-```
+~~~
 
 Your output should look like this:
 
-```bash
+~~~
 $ go get gorm.io/gorm
 go: downloading gorm.io/gorm v1.25.4
 go: downloading github.com/jinzhu/now v1.1.5
 go: added github.com/jinzhu/inflection v1.0.0
 go: added github.com/jinzhu/now v1.1.5
 go: added gorm.io/gorm v1.25.4
-```
+~~~
 
 Additionally, the content of your `go.mod` automatically updates to reflect the gorm package. This update not only includes the gorm package itself but also encompasses its dependencies along with their respective versions. This update manifests as a requirement for your project like this:
 
@@ -149,16 +149,16 @@ In the previous example, you installed the gorm package. In this section, you'll
 
 To define a particular version of the gorm package for utilization, simply execute the following command within your terminal, attaching the corresponding version as a suffix:
 
-```bash
+~~~
 go get gorm.io/gorm@v1.20.0
-```
+~~~
 
 Your output looks like this:
 
-```bash
+~~~
 $ go get gorm.io/gorm@v1.20.0
 go: downgraded gorm.io/gorm v1.25.4 => v1.20.0
-```
+~~~
 
 On execution of the command, the `go.mod` and `go.sum` files automatically update to reflect the specified version:
 
@@ -188,9 +188,9 @@ Following [semantic versioning](https://semver.org) principles ensures that vers
 
 ### Regularly Update Your Dependencies
 
-You need to regularly update the dependencies of your project to their latest compatible versions. This practice ensures that your project remains current with security enhancements, bug fixes, new functionalities, and performance optimizations. 
+You need to regularly update the dependencies of your project to their latest compatible versions. This practice ensures that your project remains current with security enhancements, bug fixes, new functionalities, and performance optimizations.
 
-However, When you update dependencies, it's possible that the new versions of those dependencies may introduce changes that affect how your code functions, possibly changing its semantics. While it's important to regularly update dependencies for security and feature benefits, developers should exercise caution and follow Semantic Versioning principles to minimize unexpected changes in code semantics. 
+However, When you update dependencies, it's possible that the new versions of those dependencies may introduce changes that affect how your code functions, possibly changing its semantics. While it's important to regularly update dependencies for security and feature benefits, developers should exercise caution and follow Semantic Versioning principles to minimize unexpected changes in code semantics.
 
 ### Test and Maintain Module Compatibility
 
@@ -202,6 +202,8 @@ Go modules offer an effective resolution to the intricacies surrounding package 
 
 By fully embracing Go modules and diligently adhering to the best practices outlined in this article, you can confidently navigate the realm of package management, whether engaged in modest-scale projects or complex, large-scale applications.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -211,4 +213,3 @@ By fully embracing Go modules and diligently adhering to the best practices outl
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
