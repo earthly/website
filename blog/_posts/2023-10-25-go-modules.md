@@ -6,7 +6,10 @@ toc: true
 author: Israel Ulelu
 
 internal-links:
- - just an example
+ - what is go package management
+ - what is go package modules
+ - how to use go package modules
+ - how to use go package management 
 ---
 
 [Go](https://go.dev/), often referred to as Golang, is an open source programming language that offers a unique blend of attributes, including efficiency, performance, simplicity, and readability. Go also embraces the principle of reusability, promoting a programming model where developers can seamlessly organize, distribute, and recycle preexisting code. This process, facilitated by Go's package management system, encourages developers to effortlessly incorporate external packages and libraries into their projects. This approach considerably mitigates the need to reinvent the wheel for routine functionalities, streamlining the development process and promoting code efficiency.
@@ -218,6 +221,3 @@ By fully embracing Go modules and diligently adhering to the best practices outl
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
