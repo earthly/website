@@ -6,7 +6,10 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - practices for reusable workflows
+ - reusable workflows in gitHub actions
+ - how to reuse workflows in github actions
+ - workflows in github actions
 ---
 
 [GitHub Actions](https://github.com/features/actions) has emerged as a pioneer in the world of open source continuous integration, continuous delivery (CI/CD) platforms. Thanks to its ease of use and generous free tier, GitHub Actions is used across the industry in both open source and closed source projects.
@@ -205,6 +208,3 @@ If writing pipelines in this way is starting to seem cumbersome, then take a loo
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
