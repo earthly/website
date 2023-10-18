@@ -29,7 +29,7 @@ Go modules help with:
 
 In Go, package management is executed via the command line tool using the `go` command. Here are some frequently used commands integral to package management in Go:
 
-### go get
+### `go get`
 
 The `go get` command is used to add, update, or remove packages as well as their dependencies. It also updates the `go.mod` file to reflect the new dependencies.
 
@@ -39,7 +39,7 @@ The syntax for the `go get` command is the words `go` and `get`, followed by the
 go get [package_path]
 ~~~
 
-### go install
+### `go install`
 
 The `go install` command is used to build and install executables. It was introduced in [Go 1.17](https://go.dev/doc/go-get-install-deprecation), streamlining `go get` to the sole task of adding and modifying dependencies. To install an executable, run the `go install` command, followed by the package path:
 
@@ -47,7 +47,7 @@ The `go install` command is used to build and install executables. It was introd
 go install [package_path]
 ~~~
 
-### go mod init
+### `go mod init`
 
 The `go mod init` command creates and initializes a new module. On execution of the command, a `go.mod` file is created to manage all project dependencies and versions:
 
@@ -55,7 +55,7 @@ The `go mod init` command creates and initializes a new module. On execution of 
 go mod init [module_name]
 ~~~
 
-### go mod tidy
+### `go mod tidy`
 
 On execution of the `go mod tidy` command, the import statements of all project files are analyzed and the `go.mod` file is updated to include only the packages used in your code:
 
@@ -63,7 +63,7 @@ On execution of the `go mod tidy` command, the import statements of all project 
 go mod tidy
 ~~~
 
-### go list
+### `go list`
 
 The `go list` command lists packages and modules contained in your project. The `go list` command also accepts flags and arguments such as `-m` and `-m all`, which streamlines the command to packages in the current module:
 
@@ -71,7 +71,7 @@ The `go list` command lists packages and modules contained in your project. The 
 go list
 ~~~
 
-### go mod vendor
+### `go mod vendor`
 
 The `go mod vendor` command creates a self-contained project with all its dependencies stored locally. On execution of this command, a vendor folder containing copies or clones of all the packages used in the project is created:
 
@@ -79,7 +79,7 @@ The `go mod vendor` command creates a self-contained project with all its depend
 go mod vendor
 ~~~
 
-### go mod verify
+### `go mod verify`
 
 The `go mod verify` command verifies the integrity of the packages and dependencies by comparing the checksums in the `go.sum` file:
 
@@ -108,7 +108,9 @@ go: creating new go.mod: module example.com/package_management_in_go
 
 This command equally generates a `go.mod` file designed to track your project dependencies and external packages. On generation, the file only includes your module name and Go version:
 
-![`go mod` content](https://imgur.com/6bV8z9O.png)
+<div class="wide">
+![`go mod` content]({{site.images}}{{page.slug}}/6bV8z9O.png)
+</div>
 
 ## Introducing Dependencies
 
@@ -133,11 +135,15 @@ go: added gorm.io/gorm v1.25.4
 
 Additionally, the content of your `go.mod` automatically updates to reflect the gorm package. This update not only includes the gorm package itself but also encompasses its dependencies along with their respective versions. This update manifests as a requirement for your project like this:
 
-![`go mod` content after adding gorm](https://imgur.com/cqoW7D3.png)
+<div class="wide">
+![`go mod` content after adding gorm]({{site.images}}{{page.slug}}/cqoW7D3.png)
+</div>
 
 The `go.sum` file is equally generated on the addition of your first dependency. This file serves as a comprehensive record, capturing not only the dependencies themselves but also crucial information like version identifiers and cryptographic checksums:
 
-![`go.sum` content](https://imgur.com/ZgvCF2h.png)
+<div class="wide">
+![`go.sum` content]({{site.images}}{{page.slug}}/ZgvCF2h.png)
+</div>
 
 ## Modifying Dependencies
 
@@ -162,9 +168,13 @@ go: downgraded gorm.io/gorm v1.25.4 => v1.20.0
 
 On execution of the command, the `go.mod` and `go.sum` files automatically update to reflect the specified version:
 
-![`go mod` file after downgrade](https://imgur.com/5w6HrAR.png)
+<div class="wide">
+![`go mod` file after downgrade]({{site.images}}{{page.slug}}/5w6HrAR.png)
+</div>
 
-![`go sum` file after downgrade](https://imgur.com/33lXIBl.png)
+<div class="wide">
+![`go sum` file after downgrade]({{site.images}}{{page.slug}}/33lXIBl.png)
+</div>
 
 Now that you know how to create Go modules and efficiently manage dependencies and packages, let's take a look at a few tips and tricks that can help you along the way.
 
@@ -172,13 +182,13 @@ Now that you know how to create Go modules and efficiently manage dependencies a
 
 Outlined subsequently are a series of essential tips and recommended practices developers can use to effectively manage project packages with Go modules:
 
-### Package Files with Integrity
+### Package Files With Integrity
 
 When it comes to security, necessary attention should be given to the `go.sum` file to ensure package integrity. Vigilantly review changes in the `go.sum` file and, whenever feasible, steer clear of manually altering its contents.
 
 Additionally, you should perform periodic reviews of security advisories for your project's dependencies. By adhering to these practices, you bolster the safeguarding of your project's codebase and enhance its overall security.
 
-### Commit go.mod and go.sum to Your Version Control System
+### Commit `go.mod` and `go.sum` to Your Version Control System
 
 To maintain consistency and reproducibility across diverse environments, it's imperative that you commit both the project's `go.mod` and `go.sum` files to your version control system. This practice safeguards against discrepancies and ensures that the exact versions of dependencies are utilized, regardless of the development environment.
 
@@ -208,8 +218,6 @@ By fully embracing Go modules and diligently adhering to the best practices outl
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
