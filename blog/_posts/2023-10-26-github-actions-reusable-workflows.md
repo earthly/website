@@ -23,20 +23,20 @@ The key to reusable workflows is to fine-tune them to provide as many steps out 
 
 Creating reusable workflows is simple. You just need to choose the `workflow_call` trigger in the workflow you wish to reuse. Here's what the trigger would look like in the workflow file:
 
-```yaml
+~~~
 on:
   workflow_call
-```
+~~~
 
 Next, in the caller workflow (where you wish to call this reusable workflow), you need to use the `uses` keyword when defining a job in the workflow:
 
-```yaml
+~~~
 jobs:
   my_job_1:
     runs-on: ubuntu-latest
     steps:
     - uses: <your-profile-or-org-username>/<repo-name>/<reusable-workflow-name
-```
+~~~
 
 Reusable workflows not only boost efficiency but also promote best practices by enabling teams to create and use standardized templates effortlessly. Some of the most common ways reusable workflows are used include the following:
 
@@ -68,7 +68,7 @@ As discussed previously, the environment of the calling workflow and the called 
 
 Following is an example workflow that defines two input arguments and one output argument:
 
-```yaml
+~~~
 name: Add Numbers Workflow
 
 on:
@@ -111,7 +111,7 @@ jobs:
           sum=$((NUMBER1 + NUMBER2))
           echo "%{sum}"
           echo "SUM=${sum}" >> $GITHUB_OUTPUT
-```
+~~~
 
 Notice how this code sets a default value for the input arguments. This is a good practice as it allows your reusable workflow to start up without error, even in the case of missing input arguments. Additionally, the input and the output arguments carry a short description using the `description` node. This helps your team members understand what these arguments are meant to do.
 
@@ -149,7 +149,7 @@ You can also make use of [matrix strategies](https://docs.github.com/en/actions/
 
 Here's an example test workflow that uses the matrix strategy for the `add.yaml` workflow you saw earlier:
 
-```yaml
+~~~
 name: Test workflow
 
 on: 
@@ -165,13 +165,15 @@ jobs:
     with:
       number1: ${{ matrix.number1 }}
       number2: ${{ matrix.number2 }}   
-```
+~~~
 
 This workflow runs the `add.yaml` workflow for all possible combinations of `number1` and `number2` from the arrays defined in the `matrix` node. This allows you to test your workflow across a wide range of input values to see if it works correctly in all possible situations. Since reusable workflows depend on input and output arguments, it's relatively simple to test them via the matrix strategy, as shown here.
 
 Here's what a test run looks like:
 
-![Test runs](https://imgur.com/wQk0gvc.png)
+<div class="wide">
+![Test runs]({{site.images}}{{page.slug}}/wQk0gvc.png)
+</div>
 
 You can also set up `act` to test workflows locally by simulating a GitHub Actions Runner environment on your local machine and saving some of your remote GitHub Actions usage.
 
@@ -193,17 +195,15 @@ Encourage feedback from users of your reusable workflows and iterate on them bas
 
 ## Conclusion
 
-Reusable workflows make it convenient to isolate reusable logic from your CI/CD pipelines and reuse them across multiple repositories and pipelines. However, they can get quite tricky to track and manage if you aren't careful with them. 
+Reusable workflows make it convenient to isolate reusable logic from your CI/CD pipelines and reuse them across multiple repositories and pipelines. However, they can get quite tricky to track and manage if you aren't careful with them.
 
 If writing pipelines in this way is starting to seem cumbersome, then take a look at Earthly. It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
