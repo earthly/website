@@ -199,6 +199,8 @@ Reusable workflows make it convenient to isolate reusable logic from your CI/CD 
 
 If writing pipelines in this way is starting to seem cumbersome, then take a look at Earthly. It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -206,4 +208,3 @@ If writing pipelines in this way is starting to seem cumbersome, then take a loo
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
