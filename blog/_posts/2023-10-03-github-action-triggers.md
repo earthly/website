@@ -485,17 +485,17 @@ jobs:
     runs-on: ubuntu-latest
     # Skips the job if the string "[skip ci]" is present in the 
     # commit message
-    if: ${{ !contains(github.event.head_commit, '[skip ci]') }}
+    if: {% raw %}${{ !contains(github.event.head_commit, '[skip ci]') }}{% endraw %}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Deploy to Vercel
         uses: BetaHuhn/deploy-to-vercel-action@v1.9.12
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          VERCEL_TOKEN: {% raw %}${{ secrets.VERCEL_TOKEN }}{% endraw %}
+          VERCEL_ORG_ID: {% raw %}${{ secrets.VERCEL_ORG_ID }}{% endraw %}
+          VERCEL_PROJECT_ID: {% raw %}${{ secrets.VERCEL_PROJECT_ID }}{% endraw %}
 ~~~
 
 This workflow is configured to run whenever a `push` trigger is fired on the `master` branch. The workflow then checks out the latest commit on the `master` branch and deploys it to Vercel using another GitHub Action.
