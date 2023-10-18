@@ -216,8 +216,3 @@ Go modules offer an effective resolution to the intricacies surrounding package 
 By fully embracing Go modules and diligently adhering to the best practices outlined in this article, you can confidently navigate the realm of package management, whether engaged in modest-scale projects or complex, large-scale applications.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
