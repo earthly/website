@@ -6,7 +6,10 @@ toc: true
 author: Vlad
 
 internal-links:
- - just an example
+ - how is earthly fast
+ - what makes earthly fast
+ - earthly is fast
+ - fast earthly
 ---
 
 Earthly makes CI/CD builds faster by reusing computation from previous runs for parts of the build that have not changed. This can be a game changer in terms of developer productivity gained.
@@ -58,6 +61,8 @@ Earthly is:
 
 ## How Earthly Works
 
+![How]({{site.images}}{{page.slug}}/how.png)\
+
 Earthly makes things fast using a combination of techniques:
 
 * Holistic layer caching
@@ -82,6 +87,8 @@ For example, you might generate some protobuf definitions then reuse that genera
 Although these types of graphs are also available when building just images, because of the focused applicability of Dockerfiles, the ability to use layer caching at this scale is never achieved.
 
 ### Well-Known Dependencies
+
+![Known]({{site.images}}{{page.slug}}/known.png)\
 
 In a complex build graph, if you understand what has changed, and the build's internal dependencies with high precision, then you can infer what to rebuild and, crucially, what not to rebuild.
 
@@ -133,6 +140,8 @@ Another feature is **remote caching**. This feature allows you to store Earthly 
 
 ## How Fast Is Fast?
 
+![Fast]({{site.images}}{{page.slug}}/fast.png)\
+
 We generally say that Earthly can get **up to** 2-20X faster compared to not using Earthly. These are the typical ranges that we hear from our customers. The reason this range is so wide is because it is highly dependent on the setup. It is difficult to come up with a single real-world benchmark that is fair toward the very high diversity of tools and languages that Earthly is being used with. In some cases, we even go way beyond 20X, if you compare an emulated cross-platform build vs a native build. We don't typically factor in emulation slowness as we don't think it is a fair comparison.
 
 While possible, it is rare that we hear Earthly not speeding up builds at least by 2X. In situations where Earthly is not a great fit - as highlighted above - the builds could also be slower. In our experience, these tend to be niche use-cases.
@@ -140,6 +149,8 @@ While possible, it is rare that we hear Earthly not speeding up builds at least 
 The other thing to note is that the comparison is for entire CI runs, not just for a small portion of a run. While other tools might report X times faster Docker builds, or X times faster JS script builds, and so on it is important to understand that speedup is for a smaller portion of the entire CI build, and thus it might not be quite so impactful when looking at the entire pipeline. In our material, we always compare the entire CI/CD pipeline speedup.
 
 ## The ROI of Fast
+
+![ROI]({{site.images}}{{page.slug}}/roi.png)\
 
 Fast is great, but is it useful?
 
@@ -158,11 +169,3 @@ The reason I started writing this article is because many people we were talking
 Earthly addresses many of the inefficiencies found in traditional CI/CD pipelines. By leveraging techniques such as holistic layer caching, build graphs, and Earthly Satellites, it offers a more streamlined and efficient build process that rebuilds on what has actually changed. The results often show build times reduced by factors ranging from 2 to 20X. Beyond the obvious benefits of reduced infrastructure costs and faster feedback loops, our approach leads to improved developer productivity that you can measure. We operate in a developer landscape where efficiency and time are crucial. It's time we rethink how CI/CD should work and allow developers to focus more on coding and less on waiting.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
