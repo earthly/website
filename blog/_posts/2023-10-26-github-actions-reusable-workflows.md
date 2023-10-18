@@ -26,19 +26,20 @@ The key to reusable workflows is to fine-tune them to provide as many steps out 
 
 Creating reusable workflows is simple. You just need to choose the `workflow_call` trigger in the workflow you wish to reuse. Here's what the trigger would look like in the workflow file:
 
-~~~
+~~~{.yaml caption=""}
 on:
   workflow_call
 ~~~
 
 Next, in the caller workflow (where you wish to call this reusable workflow), you need to use the `uses` keyword when defining a job in the workflow:
 
-~~~
+~~~{.yaml caption=""}
 jobs:
   my_job_1:
     runs-on: ubuntu-latest
     steps:
-    - uses: <your-profile-or-org-username>/<repo-name>/<reusable-workflow-name
+    - uses: <your-profile-or-org-username>/<repo-name>/
+    <reusable-workflow-name
 ~~~
 
 Reusable workflows not only boost efficiency but also promote best practices by enabling teams to create and use standardized templates effortlessly. Some of the most common ways reusable workflows are used include the following:
@@ -71,7 +72,7 @@ As discussed previously, the environment of the calling workflow and the called 
 
 Following is an example workflow that defines two input arguments and one output argument:
 
-~~~
+~~~{.yaml caption=""}
 name: Add Numbers Workflow
 
 on:
@@ -152,7 +153,7 @@ You can also make use of [matrix strategies](https://docs.github.com/en/actions/
 
 Here's an example test workflow that uses the matrix strategy for the `add.yaml` workflow you saw earlier:
 
-~~~
+~~~{.yaml caption="add.yaml"}
 name: Test workflow
 
 on: 
@@ -203,8 +204,3 @@ Reusable workflows make it convenient to isolate reusable logic from your CI/CD 
 If writing pipelines in this way is starting to seem cumbersome, then take a look at Earthly. It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
