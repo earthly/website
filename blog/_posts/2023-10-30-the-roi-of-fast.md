@@ -27,6 +27,8 @@ Quick disclaimer: This post is written by me, Vlad A. Ionescu, founder and CEO o
 
 ## Return: CI/CD Infrastructure
 
+![Infrastructure]({{site.images}}{{page.slug}}/infra.png)\
+
 The most obvious and tangible benefit of a fast build is that your CI expenses go down significantly.
 
 Let's take a very conservative real-world example. Let's say you have a team of 30 developers, and each developer performs 5 builds per day. Let's also say that the CI has 5 parallel jobs as part of each build, and each of those jobs takes 25 minutes to complete. This works out to about 400k build minutes per month.
@@ -37,7 +39,7 @@ While that might seem significant, it's actually a small part of the whole story
 
 ## Return: Developer Time Saved
 
-[XKCD #303](https://xkcd.com/303/)
+![Image Credit: XKCD #303](https://imgs.xkcd.com/comics/compiling.png)
 
 In a [study conducted by Google and published in IEEE Software (Jaspan and Green, 2023)](https://www.computer.org/csdl/magazine/so/2023/04/10176199/1OAJyfknInm), the authors found that "even modest build latency improvements are helpful" with regards to improving developer productivity. The study was conducted in search for some speed threshold above which developers would stop switching tasks and stay in-context, and thus gain dramatically improved productivity. Sadly, no such threshold was identified, suggesting instead that the benefits follow the speed-up factor linearly.
 
@@ -61,6 +63,8 @@ Beyond these savings, Earthly also helps with CI/CD maintenance costs, as it all
 
 ## Return: Tighter Product Feedback Cycles
 
+![Feedback]({{site.images}}{{page.slug}}/feedback.png)\
+
 There is yet another component to the returns you get from faster builds that is harder to quantify. As I don't have a evidence or data for this argument, feel free to take this part with a grain of salt, as I walk you through a more qualitative benefit.
 
 Books such as The Lean Startup (Eric Ries), tell us that lines of code, code commits, or PRs don't give us product progress. Instead it's "validated learning" that really allow you to move forward, and this is possible through a build-measure-learn (BML) feedback cycle between the team executing on the product and the customer. Although the book is about early stage startups mainly, it also argues that new products, new features or, in general, new efforts within a company are like a startup within a bigger organization, and so the same applies to those cases too.
@@ -80,9 +84,11 @@ There is, however, an upfront cost of integrating Earthly into your existing set
 - Earthly works with existing language-specific tooling. Unlike ripping and replacing the whole stack, Earthly works by wrapping core tooling, instead of reinventing the wheel.
 - You don't have to adopt Earthly for everything in a big-bang. Earthly was designed to be adopted incrementally (possibly starting with the projects where slow build times hurt the most). This reduces the risk of migration.
 - This is a one-time cost. Once integrated, you benefit from it every day, every month without additional maintenance burden (not more than before anyway).
-- The general developer experience (DX) of Earthly is very polished (or at least that's what our users are telling us) - I admit that this last one is a rather subjective argument. Best way to find out if this is true is to give Earthly a shot ;-)
+- The general developer experience (DX) of Earthly is very polished (or at least that's what our users are telling us) - I admit that this last one is a rather subjective argument. Best way to find out if this is true is to give Earthly a shot 😉.
 
 ## Cost: Earthly Cloud Subscription
+
+![Cloud]({{site.images}}{{page.slug}}/cloud.png)\
 
 At Earthly, we believe that billing CI/CD by the build minute is fundamentally broken, because the slower the build gets, the more the vendor profits. It creates misaligned incentives. CI/CD tooling should be aligned to developer productivity (not to the opposite of it!).
 
