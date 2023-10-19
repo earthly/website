@@ -17,7 +17,7 @@ TLDR: In my totally bias role as one of Earthly's creators, I believe that with 
 - Developers will save substantial time, translating to an even greater value than mere infrastructure savings.
 - The acceleration in iteration enables swifter product improvements leading to substantial execution advantages in fast moving markets.
 
-In our previous blog post, we talked about [how Earthly achieves 2-20X faster builds](TODO link previous article). It is able to do that by addressing common inefficiencies, and utilizing techniques like holistic layer caching, build graphs, and Earthly Satellites.
+In our previous blog post, we talked about [how Earthly achieves 2-20X faster builds](https://earthly.dev/blog/what-makes-earthly-fast/). It is able to do that by addressing common inefficiencies, and utilizing techniques like holistic layer caching, build graphs, and Earthly Satellites.
 
 This is great - but how do you quantify the value of fast builds? Is a fast build something worth pursuing? What's your return on investment (ROI)?
 
@@ -97,6 +97,8 @@ For this reason, our pricing model uses the number of active users for the profi
 In our running example, we showed how a 2.5X build speed improvement can save you $23k in CI infrastructure, and $300k in developer time (conservative estimate) in a team of 30 people. For this setup, Earthly Cloud costs $19.7k per year. So in this case, you're covering the cost of Earthly without even asking for more budget (you just shift from existing CI infrastructure) - yet the benefits are 16X greater than that.
 
 ## Try Your Own Scenario
+
+![try]({{site.images}}{{page.slug}}/how.png)\
 
 If you want to play around with different scenarios like the one we just walked through in this article, we created [a calculator Google spreadsheet with formulas](https://docs.google.com/spreadsheets/d/1h5zK_oJZ2RHun64-epVIIWCJrgLSbYatoXsnK_I6QgI/edit#gid=1796614132). Just make a copy and play around with the numbers in the blue cells to see the equivalent possible savings.
 
