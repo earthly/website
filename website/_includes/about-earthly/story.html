@@ -1,0 +1,289 @@
+<div class="w-full">
+  <div class="flex items-center justify-between max-w-7xl mx-auto px-6 lg:px-10">
+    <div class="font-semibold text-3xl lg:text-4xl">Earthly’s Story</div>
+    <div class="flex gap-4 items-center">
+      <svg id="previous-button" width="17" height="17" viewBox="0 0 17 17" onclick="previousMilestone()">
+        <path
+          d="M0.381281 7.58123C0.0395737 7.92294 0.0395736 8.47696 0.381281 8.81867L5.94975 14.3871C6.29146 14.7288 6.84547 14.7288 7.18718 14.3871C7.52889 14.0454 7.52889 13.4914 7.18718 13.1497L2.23744 8.19995L7.18718 3.2502C7.52889 2.90849 7.52889 2.35447 7.18718 2.01277C6.84548 1.67106 6.29146 1.67106 5.94975 2.01277L0.381281 7.58123ZM17 7.32495L1 7.32495L1 9.07495L17 9.07495L17 7.32495Z"
+          fill="#CCCCCC"
+        />
+      </svg>
+
+      <p id="milestone-page" class="font-bold select-none text-xs">1 / 8</p>
+
+      <svg id="next-button" class="cursor-pointer" width="17" height="17" viewBox="0 0 17 17" fill="none" onclick="nextMilestone()">
+        <path
+          d="M16.6187 7.58123C16.9604 7.92294 16.9604 8.47696 16.6187 8.81867L11.0503 14.3871C10.7085 14.7288 10.1545 14.7288 9.81282 14.3871C9.47111 14.0454 9.47111 13.4914 9.81282 13.1497L14.7626 8.19995L9.81282 3.2502C9.47111 2.90849 9.47111 2.35447 9.81282 2.01277C10.1545 1.67106 10.7085 1.67106 11.0503 2.01277L16.6187 7.58123ZM-7.64949e-08 7.32495L16 7.32495L16 9.07495L7.64949e-08 9.07495L-7.64949e-08 7.32495Z"
+          fill="#2D7E5D"
+        />
+      </svg>
+    </div>
+  </div>
+
+  <div class="w-full h-0.5 bg-[#ccc] mt-8 relative">
+    <div class="absolute left-0 right-0 flex justify-between max-w-7xl -mt-[5px] mx-auto px-6 lg:px-10 milestones">
+      <div class="cursor-pointer flex flex-col items-center active-milestone" onclick="toggleMilestone(1)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Mar, 2020</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(2)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Apr, 2020</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(3)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Oct, 2020</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(4)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Feb, 2021</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(5)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Apr, 2022</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(6)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Feb, 2023</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(7)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Aug, 2023</p>
+      </div>
+      <div class="cursor-pointer flex flex-col items-center" onclick="toggleMilestone(8)">
+        <div class="w-3 h-3 bg-[#ccc] rounded-full"></div>
+        <p class="font-medium mt-2 text-[#475569] text-center text-xs tracking-tight">Oct, 2023</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-5 max-w-7xl mt-20 md:mt-12 mx-auto px-6 lg:px-10">
+    <div class="bg-[#f1fbfe] flex flex-col-reverse flex-1 md:flex-row pb-8 pt-6 px-6 rounded-xl milestone-details">
+      <div class="flex-1 mt-6 md:mt-0">
+        <p id="milestone-date" class="color-[#475569] font-semibold text-sm tracking-tight">March 12, 2020</p>
+
+        <p id="milestone-title" class="color-[#475569] font-semibold mt-2 text-2xl tracking-tight">Earthly’s first commits</p>
+
+        <ul id="milestone-list" class="font-semibold list-disc marker:text-[#2d7e5d]">
+          <li class="w-fit decoration-[#2d7e5d] ml-5 mt-4 hover:underline">
+            <a class="inline-block" href="https://github.com/earthly/earthly/commit/1346b2b86242a397fd63f5551f9eaf5a6dc2c9c1">
+              <div class="flex items-center">
+                <p class="font-bold text-[#2d7e5d] tracking-tight">Commit 1: License & Readme</p>
+                <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+              </div>
+            </a>
+          </li>
+          <li class="w-fit decoration-[#2d7e5d] ml-5 mt-4 hover:underline">
+            <a class="inline-block" href="https://github.com/earthly/earthly/commit/72cebdd5db0b418440f3d930e99ea825cfb871be">
+              <div class="flex items-center">
+                <p class="font-bold text-[#2d7e5d] tracking-tight">Commit 2</p>
+                <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+              </div>
+            </a>
+          </li>
+          <li class="w-fit decoration-[#2d7e5d] ml-5 mt-4 hover:underline">
+            <a class="inline-block" href="https://github.com/earthly/earthly/commit/7ac13eaf4968d0c80a2afb2249d17b6d76bb0cb2">
+              <div class="flex items-center">
+                <p class="font-bold text-[#2d7e5d] tracking-tight">Commit 3</p>
+                <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+              </div>
+            </a>
+          </li>
+          <li class="w-fit decoration-[#2d7e5d] ml-5 mt-4 hover:underline">
+            <a class="inline-block" href="https://github.com/earthly/earthly/commit/667cbe0241b73be17cef360694056e7b62c59b8b">
+              <div class="flex items-center">
+                <p class="font-bold text-[#2d7e5d] tracking-tight">Commit 4</p>
+                <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+              </div>
+            </a>
+          </li>
+          <li class="w-fit decoration-[#2d7e5d] ml-5 mt-4 hover:underline">
+            <a class="inline-block" href="https://github.com/earthly/earthly/commit/e9138508b6fa0179f69e6537899b35282045a651">
+              <div class="flex items-center">
+                <p class="font-bold text-[#2d7e5d] tracking-tight">Everything else</p>
+                <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+              </div>
+            </a>
+          </li>
+        </ul>
+
+        <p id="milestone-description" class="hidden mt-4 text-[#6b7280] text-lg tracking-tight"></p>
+
+        <a id="milestone-link" class="hidden inline-block mt-4" href="">
+          <div class="w-fit decoration-[#2d7e5d] flex items-center hover:underline">
+            <p class="font-bold text-[#2d7e5d]">Read more</p>
+            <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+          </div>
+        </a>
+      </div>
+
+      <div class="md:w-7/12 md:pl-10">
+        <img id="milestone-image" class="w-full md:h-[200px] object-cover object-top rounded-lg" src="assets/img/first-commit.png" alt="Earthly’s first commits" />
+      </div>
+    </div>
+
+    <div class="bg-[#f1fbfe] flex flex-col-reverse flex-1 hidden pb-8 pt-6 px-6 rounded-xl milestone-details">
+      <div class="flex-1 mt-6">
+        <p id="milestone-date" class="color-[#475569] font-semibold text-sm tracking-tight">February 2023</p>
+
+        <p id="milestone-title" class="color-[#475569] font-semibold mt-2 text-2xl tracking-tight">We launched Earthly 
+          CI
+        </p>
+
+        <p id="milestone-description" class="mt-4 text-[#6b7280] text-lg tracking-tight"><b>Earthly CI: Launching a 
+          new era for CI</b><br>Today we are launching Earthly CI, the world’s first CI/CD solution that merges 
+          together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run 
+          faster than a CI ever could before...</p>
+
+        <a id="milestone-link" class="inline-block mt-4" href="/blog/launching-earthly-ci">
+          <div class="w-fit decoration-[#2d7e5d] flex items-center hover:underline">
+            <p class="font-bold text-[#2d7e5d]">Read more</p>
+            <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+          </div>
+        </a>
+      </div>
+
+      <div>
+        <img id="milestone-image" class="w-full md:h-[200px] object-cover object-top rounded-lg" src="assets/img/launching-ci.webp" alt="Earthly CI: Launching a new era for CI" />
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const MILESTONES = [
+    { title: "Earthly’s first commits", date: "March 12, 2020", image: "first-commit.png", list: true },
+    {
+      title: "Vlad launched Earthly",
+      date: "April 2020",
+      description: "<b>Introducing Earthly: build automation for the container era</b><br>We live in an era of continuous delivery, containers, automation, rich set of programming languages, varying code structures (mono/poly-repos) and open-source...",
+      link: "https://vladaionescu.com/introducing-earthly-build-automation-for-the-container-era-55619c63c3e",
+      image: "earth.png"
+    },
+    {
+      title: "Earthly raised Seed funding",
+      date: "October 2020",
+      description: "<b>The world deserves better builds</b><br>Hello, developers of planet Earth! Earlier this year, we at Earthly embarked on a journey to bring better builds to the world. We started with a deep belief that builds should be...",
+      link: "/blog/the-world-deserves-better-builds/",
+      image: "high-voltage.png"
+    },
+    {
+      title: "We switched Earthly’s license to source available",
+      date: "February 2021",
+      description: "<b>Source-available</b><br>This article used to be titled “Every open-core company should be a source-available company”, however that aged poorly...",
+      link: "/blog/every-open-core-company-should-be-a-source-available-company/",
+      image: "source-available.png"
+    },
+    {
+      title: "We switched Earthly’s license back to open source",
+      date: "April 2022",
+      description: "<b>Earthly Switches to Open-source</b><br>We started Earthly with the mission of bringing better builds to the world and to become the standard CI/CD framework that allows pipeline development locally and running on any CI...",
+      link: "blog/earthly-open-source/",
+      image: "open-source.png"
+    },
+    {
+      title: "Earthly raised Seed + funding",
+      date: "February 2023",
+      description: "<b>Announcing Earthly’s $6.5M Seed+ round</b><br>The developer tools market is shifting towards modern development workflows that include complex build scripts, varying code layouts...",
+      link: "/blog/new-fundings-at-earthly/",
+      image: "seed-funding.png",
+      multiple: true
+    },
+    {
+      title: "We launched Earthly Cloud",
+      date: "August 2023",
+      description: "<b>Introducing Earthly Cloud</b><br>TLDR: We believe CI/CD is overdue for revolutionary improvements, in build consistency, speed, and ease of use, and that everyone should have access to it. Today we launch Earthly Cloud with a 6,000 build minutes/month free tier...",
+      link: "/blog/earthly-cloud-free-tier-launch/",
+      image: "earthly-cloud.png"
+    },
+    {
+      title: "We shut down Earthly CI",
+      date: "October 2023",
+      description: "<b>We built the fastest CI in the world. It failed. Here’s what we learned</b><br>Imagine you live in a world where no part of the build has to repeat unless the changes actually impacted it. A world in which all builds happened with automatic...",
+      link: "/blog/shutting-down-earthly-ci/",
+      image: "broken-bulb.png"
+    }
+  ]
+
+  var currentMilestone = 1
+
+  function toggleMilestone(index) {
+    const milestones = document.querySelectorAll(".milestones > div")
+
+    const nextButton = document.getElementById('next-button')
+    const nextButtonPath = document.querySelector('#next-button > path')
+    const previousButton = document.getElementById('previous-button')
+    const previousButtonPath = document.querySelector('#previous-button > path')
+
+    const milestoneData = MILESTONES[index - 1]
+
+    milestones.forEach((element, i) => {
+      if (i === index - 1) {
+        if (!element.classList.contains("active-milestone")) {
+          element.classList.add("active-milestone")
+
+          document.getElementById("milestone-page").innerText = index + " / " + MILESTONES.length
+          document.getElementById("milestone-date").innerText = milestoneData.date
+          document.getElementById("milestone-title").innerText = milestoneData.title
+
+          if (milestoneData.list) {
+            document.getElementById("milestone-list").classList.remove("hidden")
+            document.getElementById("milestone-description").classList.add("hidden")
+            document.getElementById("milestone-link").classList.add("hidden")
+          } else {
+            document.getElementById("milestone-list").classList.add("hidden")
+            document.getElementById("milestone-description").classList.remove("hidden")
+            document.getElementById("milestone-link").classList.remove("hidden")
+
+            document.getElementById("milestone-description").innerHTML = milestoneData.description
+
+            document.getElementById("milestone-link").href = milestoneData.link
+          }
+
+          document.getElementById("milestone-image").src = "assets/img/" + milestoneData.image
+          document.getElementById("milestone-image").alt = milestoneData.title
+        }
+
+        if (milestoneData.multiple) {
+          document.getElementsByClassName('milestone-details')[0].classList.remove('md:flex-row')
+          document.querySelector('.milestone-details > div').classList.remove('md:mt-0')
+          document.querySelector('.milestone-details > div:last-child').classList.remove('md:w-7/12', 'md:pl-10')
+          document.getElementsByClassName('milestone-details')[1].classList.remove('hidden')
+        } else {
+          document.getElementsByClassName('milestone-details')[0].classList.add('md:flex-row')
+          document.querySelector('.milestone-details > div').classList.add('md:mt-0')
+          document.querySelector('.milestone-details > div:last-child').classList.add('md:w-7/12', 'md:pl-10')
+          document.getElementsByClassName('milestone-details')[1].classList.add('hidden')
+        }
+      } else {
+        element.classList.remove("active-milestone")
+      }
+    })
+
+    if (index === 1) {
+      previousButtonPath.style.fill = "#ccc"
+      previousButton.classList.remove('cursor-pointer')
+    } else {
+      previousButtonPath.style.fill = "#2d7e5d"
+      previousButton.classList.add('cursor-pointer')
+    }
+
+    if (index === MILESTONES.length) {
+      nextButtonPath.style.fill = "#ccc"
+      nextButton.classList.remove('cursor-pointer')
+    } else {
+      nextButtonPath.style.fill = "#2d7e5d"
+      nextButton.classList.add('cursor-pointer')
+    }
+
+    currentMilestone = index
+  }
+
+  function nextMilestone() {
+    if (currentMilestone < MILESTONES.length) toggleMilestone(currentMilestone + 1)
+  }
+
+  function previousMilestone() {
+    if (currentMilestone > 1) toggleMilestone(currentMilestone - 1)
+  }
+</script>
