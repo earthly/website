@@ -57,8 +57,8 @@
     </div>
   </div>
 
-  <div class="max-w-7xl mt-20 md:mt-12 mx-auto px-6 lg:px-10">
-    <div class="bg-[#f1fbfe] flex flex-col-reverse md:flex-row pb-8 pt-6 px-6 rounded-xl">
+  <div class="flex flex-col md:flex-row gap-5 max-w-7xl mt-20 md:mt-12 mx-auto px-6 lg:px-10">
+    <div class="bg-[#f1fbfe] flex flex-col-reverse flex-1 md:flex-row pb-8 pt-6 px-6 rounded-xl milestone-details">
       <div class="flex-1 mt-6 md:mt-0">
         <p id="milestone-date" class="color-[#475569] font-semibold text-sm tracking-tight">March 12, 2020</p>
 
@@ -121,6 +121,27 @@
         <img id="milestone-image" class="w-full md:h-[200px] object-cover object-top rounded-lg" src="assets/img/first-commit.png" alt="Earthly’s first commits" />
       </div>
     </div>
+
+    <div class="bg-[#f1fbfe] flex flex-col-reverse flex-1 hidden pb-8 pt-6 px-6 rounded-xl milestone-details">
+      <div class="flex-1 mt-6">
+        <p id="milestone-date" class="color-[#475569] font-semibold text-sm tracking-tight">February 2023</p>
+
+        <p id="milestone-title" class="color-[#475569] font-semibold mt-2 text-2xl tracking-tight">Earthly CI: Launching a new era for CI</p>
+
+        <p id="milestone-description" class="mt-4 text-[#6b7280] text-lg tracking-tight">Hello world! We have partnered up with some cool people in Silicon Valley 1 to fix the world of software builds. So today we are launching Earthly CI, the world’s first CI/CD solution that merges together a CI and a build system...</p>
+
+        <a id="milestone-link" class="inline-block mt-4" href="/blog/launching-earthly-ci">
+          <div class="w-fit decoration-[#2d7e5d] flex items-center hover:underline">
+            <p class="font-bold text-[#2d7e5d]">Read more</p>
+            <img class="ml-1" src="assets/svg/chevron-green.svg" alt="Chevron" />
+          </div>
+        </a>
+      </div>
+
+      <div>
+        <img id="milestone-image" class="w-full md:h-[200px] object-cover object-top rounded-lg" src="assets/img/launching-ci.webp" alt="Earthly CI: Launching a new era for CI" />
+      </div>
+    </div>
   </div>
 </div>
 
@@ -160,7 +181,8 @@
       date: "February 2023",
       description: "<b>Announcing Earthly’s $6.5M Seed+ round:</b><br>The developer tools market is shifting towards modern development workflows that include complex build scripts, varying code layouts...",
       link: "/blog/new-fundings-at-earthly/",
-      image: "seed-funding.png"
+      image: "seed-funding.png",
+      multiple: true
     },
     {
       title: "We launched Earthly Cloud",
@@ -215,6 +237,18 @@
 
           document.getElementById("milestone-image").src = "assets/img/" + milestoneData.image
           document.getElementById("milestone-image").alt = milestoneData.title
+        }
+
+        if (milestoneData.multiple) {
+          document.getElementsByClassName('milestone-details')[0].classList.remove('md:flex-row')
+          document.querySelector('.milestone-details > div').classList.remove('md:mt-0')
+          document.querySelector('.milestone-details > div:last-child').classList.remove('md:w-7/12', 'md:pl-10')
+          document.getElementsByClassName('milestone-details')[1].classList.remove('hidden')
+        } else {
+          document.getElementsByClassName('milestone-details')[0].classList.add('md:flex-row')
+          document.querySelector('.milestone-details > div').classList.add('md:mt-0')
+          document.querySelector('.milestone-details > div:last-child').classList.add('md:w-7/12', 'md:pl-10')
+          document.getElementsByClassName('milestone-details')[1].classList.add('hidden')
         }
       } else {
         element.classList.remove("active-milestone")
