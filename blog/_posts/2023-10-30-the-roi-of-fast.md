@@ -6,7 +6,9 @@ toc: true
 author: Vlad
 
 internal-links:
- - just an example
+ - return on investment of fast
+ - investment of fast
+ - take on investment of fast
 ---
 
 TLDR: In my totally bias role as one of Earthly's creators, I believe that with Earthly:
@@ -108,5 +110,4 @@ As we've explored in this article, the ROI of fast builds is multifaceted. It's 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
