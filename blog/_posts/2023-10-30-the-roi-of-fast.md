@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-TLDR: In my totally bias role as one of Earthly’s creators, I believe that with Earthly:
+TLDR: In my totally bias role as one of Earthly's creators, I believe that with Earthly:
 
 - You'll directly cut down on build expenses as builds run faster.
 - Developers will save substantial time, translating to an even greater value than mere infrastructure savings.
@@ -23,7 +23,7 @@ While the first thing some people think about when quantifying performance is th
 
 Quick disclaimer: This post is written by me, Vlad A. Ionescu, founder and CEO of Earthly, someone who has chosen to dedicate a significant amount of time to solving the problem of slow builds. I therefore realize how this article can come across as very biased. It definitely is biased, but hopefully the evidence-driven presentation can help you think about this topic in your own way.
 
-## Return: CI/CD infrastructure
+## Return: CI/CD Infrastructure
 
 The most obvious and tangible benefit of a fast build is that your CI expenses go down significantly.
 
@@ -33,14 +33,13 @@ If Earthly speeds up your build by 2.5X (a very common result among Earthly cust
 
 While that might seem significant, it's actually a small part of the whole story. Developer productivity is really where most of the returns come from.
 
-## Return: Developer time saved
+## Return: Developer Time Saved
 
- 
 [XKCD #303](https://xkcd.com/303/)
 
 In a [study conducted by Google and published in IEEE Software (Jaspan and Green, 2023)](https://www.computer.org/csdl/magazine/so/2023/04/10176199/1OAJyfknInm), the authors found that "even modest build latency improvements are helpful" with regards to improving developer productivity. The study was conducted in search for some speed threshold above which developers would stop switching tasks and stay in-context, and thus gain dramatically improved productivity. Sadly, no such threshold was identified, suggesting instead that the benefits follow the speed-up factor linearly.
 
-> While it’s disappointing to not have an ideal target number, it’s also an opportunity. Every change to build latency can increase the likelihood of developers staying on task, although if there are longer build latencies, one would need a proportionally larger change to see an impact.
+> While it's disappointing to not have an ideal target number, it's also an opportunity. Every change to build latency can increase the likelihood of developers staying on task, although if there are longer build latencies, one would need a proportionally larger change to see an impact.
 
 GitHub, has also previously [talked about CI speed](https://github.blog/2022-12-08-experiment-the-hidden-costs-of-waiting-on-slow-build-times/). This blog post takes for granted the fact that CI build time improvements are directly translatable to developer time saved.
 
@@ -58,7 +57,7 @@ The total savings result in about 2.5 FTEs worth of value. This doesn't mean you
 
 Beyond these savings, Earthly also helps with CI/CD maintenance costs, as it allows you to run CI builds on your laptop, thus significantly improving the dev/test feedback cycle when developing or debugging the CI. We haven't even included this part in our math.
 
-## Return: Tighter product feedback cycles
+## Return: Tighter Product Feedback Cycles
 
 There is yet another component to the returns you get from faster builds that is harder to quantify. As I don't have a evidence or data for this argument, feel free to take this part with a grain of salt, as I walk you through a more qualitative benefit.
 
@@ -74,14 +73,14 @@ The benefit of faster BML cycles allows you to ship solutions faster, get feedba
 
 There is, however, an upfront cost of integrating Earthly into your existing setup. While this is a real amount of effort, it is lower than you might think at first glance, for the following reasons:
 
-* Learning and understanding Earthly is very easy, as it reuses concepts that developers are already aware of if they use Docker: the syntax is instantly familiar, and many Dockerfiles can be reused.
-* Iterating on the build is faster that before, thanks to the fact that you can run CI pipelines on your computer.
-* Earthly works with existing language-specific tooling. Unlike ripping and replacing the whole stack, Earthly works by wrapping core tooling, instead of reinventing the wheel.
-* You don't have to adopt Earthly for everything in a big-bang. Earthly was designed to be adopted incrementally (possibly starting with the projects where slow build times hurt the most). This reduces the risk of migration.
-* This is a one-time cost. Once integrated, you benefit from it every day, every month without additional maintenance burden (not more than before anyway).
-* The general developer experience (DX) of Earthly is very polished (or at least that's what our users are telling us) - I admit that this last one is a rather subjective argument. Best way to find out if this is true is to give Earthly a shot ;-)
+- Learning and understanding Earthly is very easy, as it reuses concepts that developers are already aware of if they use Docker: the syntax is instantly familiar, and many Dockerfiles can be reused.
+- Iterating on the build is faster that before, thanks to the fact that you can run CI pipelines on your computer.
+- Earthly works with existing language-specific tooling. Unlike ripping and replacing the whole stack, Earthly works by wrapping core tooling, instead of reinventing the wheel.
+- You don't have to adopt Earthly for everything in a big-bang. Earthly was designed to be adopted incrementally (possibly starting with the projects where slow build times hurt the most). This reduces the risk of migration.
+- This is a one-time cost. Once integrated, you benefit from it every day, every month without additional maintenance burden (not more than before anyway).
+- The general developer experience (DX) of Earthly is very polished (or at least that's what our users are telling us) - I admit that this last one is a rather subjective argument. Best way to find out if this is true is to give Earthly a shot ;-)
 
-## Cost: Earthly Cloud subscription
+## Cost: Earthly Cloud Subscription
 
 At Earthly, we believe that billing CI/CD by the build minute is fundamentally broken, because the slower the build gets, the more the vendor profits. It creates misaligned incentives. CI/CD tooling should be aligned to developer productivity (not to the opposite of it!).
 
@@ -89,7 +88,7 @@ For this reason, our pricing model uses the number of active users for the profi
 
 In our running example, we showed how a 2.5X build speed improvement can save you $23k in CI infrastructure, and $300k in developer time (conservative estimate) in a team of 30 people. For this setup, Earthly Cloud costs $19.7k per year. So in this case, you're covering the cost of Earthly without even asking for more budget (you just shift from existing CI infrastructure) - yet the benefits are 16X greater than that.
 
-## Try your own scenario
+## Try Your Own Scenario
 
 If you want to play around with different scenarios like the one we just walked through in this article, we created [a calculator Google spreadsheet with formulas](https://docs.google.com/spreadsheets/d/1h5zK_oJZ2RHun64-epVIIWCJrgLSbYatoXsnK_I6QgI/edit#gid=1796614132). Just make a copy and play around with the numbers in the blue cells to see the equivalent possible savings.
 
@@ -107,7 +106,6 @@ As we've explored in this article, the ROI of fast builds is multifaceted. It's 
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
