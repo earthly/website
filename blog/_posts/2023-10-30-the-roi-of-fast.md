@@ -100,6 +100,8 @@ From my admittedly biased viewpoint as one of the creators of Earthly, I've alwa
 
 As we've explored in this article, the ROI of fast builds is multifaceted. It's not just about dollars saved but about the compounded benefits that ripple through an organization, from individual developers to the business's bottom line. So, the next time you find yourself waiting for a build to complete, think about the bigger picture. In the end, the pursuit of faster builds is not just about speed; it's about harnessing that speed to drive innovation, responsiveness, and growth.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -108,4 +110,3 @@ As we've explored in this article, the ROI of fast builds is multifaceted. It's 
   - Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
