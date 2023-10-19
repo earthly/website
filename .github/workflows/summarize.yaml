@@ -44,7 +44,7 @@ jobs:
         git restore ./blog/_posts/2029-01-01-checklist.md
 
         npm install -g markdownlint-cli
-        markdownlint --fix "./blog/_posts/*.md" && false
+        markdownlint --fix "./blog/_posts/*.md" || true
 
       env:
         OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
