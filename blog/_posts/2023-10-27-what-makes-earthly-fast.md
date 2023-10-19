@@ -88,7 +88,7 @@ Although these types of graphs are also available when building just images, bec
 
 ### Well-Known Dependencies
 
-![Known]({{site.images}}{{page.slug}}/known.png)\
+![known]({{site.images}}{{page.slug}}/known.png)\
 
 In a complex build graph, if you understand what has changed, and the build's internal dependencies with high precision, then you can infer what to rebuild and, crucially, what not to rebuild.
 
@@ -160,7 +160,7 @@ The most important component of Earthly's return-on-investment (ROI) is the deve
 
 Besides the developer time saved, imagine what fast feedback cycles does to the general velocity of feature delivery for your team. How you can ship faster, in tighter feedback loops with your customers (internal or external), and what that does to the bottom line of your business. This part is harder to quantify, so I'm not going to try to.
 
-I wrote an entire article about the [ROI of fast builds](TODO link), if you want to read more.
+I wrote an entire article about the [ROI of fast builds](https://earthly.dev/blog/the-roi-of-fast/), if you want to read more.
 
 ## Conclusion
 
