@@ -88,8 +88,6 @@ Although these types of graphs are also available when building just images, bec
 
 ### Well-Known Dependencies
 
-![known]({{site.images}}{{page.slug}}/known.png)\
-
 In a complex build graph, if you understand what has changed, and the build's internal dependencies with high precision, then you can infer what to rebuild and, crucially, what not to rebuild.
 
 Compared to a Bash script, or to the YAML of a CI system, Earthly has the unique advantage that it understands dependencies well. Similar to how a Dockerfile understands which layer uses which source files, thanks to the COPY operations, Earthly takes that same idea to the next level via the build graph. Besides understanding which source file is used in each build target, it also understands how the build targets depend on each other.
