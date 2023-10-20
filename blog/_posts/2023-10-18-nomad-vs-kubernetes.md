@@ -39,9 +39,11 @@ Nomad can be used on major cloud providers, but it [takes time to set up](https:
 
 Kubernetes is also easy to download and install, and offers guidance on its site to do so, although it isn't immediately clear which of the several options available is the best choice for a beginner.
 
-<div class="wide">
-![Using kubectl from the command line to create pods]({{site.images}}{{page.slug}}/TNdcKWQ.png)
-</div>
+~~~{.bash caption=">_"}
+> kubectl create -f ./pod.json
+~~~
+
+<figcaption>Using kubectl from the command line to create pods</figcaption>
 
 There are various tasks to be worked through when self-hosting with Kubernetes, including virtual machine (VM) creation and provisioning. You'll also need to get to know [kubectl](https://kubernetes.io/docs/reference/kubectl/kubectl/) for cluster management. kubectl is a command line utility for working with Kubernetes and is central to many of its workflows.
 

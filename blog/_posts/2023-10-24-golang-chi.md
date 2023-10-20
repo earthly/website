@@ -662,6 +662,7 @@ This gives you the option to change the storage for the handler when you're test
 To test the endpoints, create a `books_test.go` file and create a fake implementation of the books storage:
 
 ~~~{.go caption="books_test.go"}
+{% raw %}
 package main
 
 import (
@@ -702,7 +703,7 @@ func (s fakeStorage) Create(_ Book) {
 func (s fakeStorage) Update(*string,* Book) *Book {
     return fakeBooks[1]
 }
-
+{% endraw %}
 ~~~
 
 Then use this fake implementation for the unit test:
