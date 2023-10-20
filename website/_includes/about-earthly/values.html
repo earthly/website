@@ -1,0 +1,62 @@
+<div class="w-full mb-16">
+  <div class="px-6 lg:px-10 pt-4 max-w-7xl m-auto">
+    <div class="mt-16 text-3xl lg:text-4xl font-semibold">
+      Earthly’s Platform Values
+    </div>
+
+    <div class="text-[#6b7280] text-xl lg:text-2xl pt-2 pb-10">
+      Design principles that we want to stay true to as we continue to evolve
+      Earthly.
+    </div>
+
+    <div class="gap-5 grid md:grid-cols-3">
+      {% assign values = site.data.earthly-values | where: "type","platform" %}
+      {% for item in values %}
+        <div class="bg-[#f9fafc] flex flex-col items-center p-6 rounded-md shadow-md">
+          <img class="w-16 h-16" src="assets/svg/{{ item.image }}" alt="" />
+          <p class="font-semibold mt-2 text-[#475569] text-2xl text-center tracking-tighter">{{ item.title }}</p>
+          <p class="mt-4 text-[#6b7280] text-lg text-center tracking-tight">{{ item.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <div class="mt-16 text-3xl lg:text-4xl font-semibold">
+      Other Values
+    </div>
+
+    <div class="text-[#6b7280] text-xl lg:text-2xl pt-2 pb-10">
+      Values that we want to embody but are of lower priority than our Platform
+      Values.
+    </div>
+
+    <div class="gap-5 grid md:grid-cols-3">
+      {% assign otherValues = site.data.earthly-values | where: "type","other" %}
+      {% for item in otherValues %}
+        <div class="bg-[#f9fafc] flex flex-col items-center p-6 rounded-md shadow-md">
+            <img class="w-16 h-16" src="assets/svg/{{ item.image }}" alt="" />
+          <p class="font-semibold mt-2 text-[#475569] text-2xl text-center tracking-tighter">{{ item.title }}</p>
+          <p class="mt-4 text-[#6b7280] text-lg text-center tracking-tight">{{ item.description }}</p>
+        </div>
+      {% endfor %}
+    </div>
+
+    <!-- <div class="mt-16 text-3xl lg:text-4xl font-semibold">
+      Non-Values
+    </div>
+
+    <div class="text-[#6b7280] text-xl lg:text-2xl pt-2 pb-10">
+      Values that we are consciously deprioritizing and sacrificing.
+    </div>
+
+    <div class="gap-5 grid md:grid-cols-3">
+      {% assign nonValues = site.data.earthly-values | where: "type","non-value" %}
+      {% for item in nonValues %}
+        <div class="bg-[#f9fafc] flex flex-col items-center p-6 rounded-md shadow-md">
+            <img class="w-16 h-16" src="assets/svg/{{ item.image }}" alt="" />
+          <p class="font-semibold mt-2 text-[#475569] text-2xl text-center tracking-tighter">{{ item.title }}</p>
+          <p class="mt-4 text-[#6b7280] text-lg text-center tracking-tight">{{ item.description }}</p>
+        </div>
+      {% endfor %}
+    </div> -->
+  </div>
+</div>

@@ -14,9 +14,9 @@ internal-links:
 excerpt: |
     Learn how to manage dependencies in Python projects using Poetry, a package manager that simplifies the process. From creating virtual environments to adding and removing dependencies, this tutorial covers all the essentials. Plus, discover how to publish your Python project as a package on PyPI.
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software building using containerization. Earthly, combined with Poetry, can make your Python project builds smoother and faster. [Check it out](/).**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/V5rKVrVhEh8?si=pjVLAbmavw1YjwSy" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FfbGrSDXtHU?si=gn5YQnyO7qKPcna2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+**We're [Earthly](https://earthly.dev/). We streamline software building using containerization. Earthly, combined with Poetry, can make your Python project builds smoother and faster. [Check it out](/).**
 
 Python is a versatile language used for various applications. However, managing dependencies, the [packages](/blog/setup-typescript-monorepo) a project relies on can be a complex and time-consuming task. With the growth of the Python ecosystem, developers need to manage a large number of packages and dependencies and ensure that they are compatible with each other.
 

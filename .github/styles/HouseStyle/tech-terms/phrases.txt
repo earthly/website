@@ -56,3 +56,4 @@ zstd
 ack
 
 nc
+dsn
