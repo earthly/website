@@ -1,7 +1,7 @@
 ---
 title: "A biased take on the ROI of fast"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Vlad
 

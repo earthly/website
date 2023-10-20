@@ -1,7 +1,7 @@
 ---
 title: "What makes Earthly fast"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Vlad
 
