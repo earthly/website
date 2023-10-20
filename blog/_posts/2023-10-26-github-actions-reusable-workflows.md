@@ -11,10 +11,7 @@ internal-links:
  - how to reuse workflows in github actions
  - workflows in github actions
 ---
-
-[GitHub Actions](https://github.com/features/actions) has emerged as a pioneer in the world of open source continuous integration, continuous delivery (CI/CD) platforms. Thanks to its ease of use and generous free tier, GitHub Actions is used across the industry in both open source and closed source projects.
-
-Among the plethora of features that it offers, [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) are particularly helpful in modern software projects. Reusable workflows act as blueprints for CI/CD pipelines, allowing developers to quickly scaffold processes and accelerate their software delivery significantly.
+GitHub Actions [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) are particularly helpful in modern software projects. Reusable workflows act as blueprints for CI/CD pipelines, allowing developers to quickly scaffold processes and accelerate their software delivery significantly.
 
 In this guide, you'll learn more about reusable workflows, what they offer, the challenges associated with them, and some best practices you should keep in mind to make the best use of reusable workflows.
 
@@ -201,6 +198,6 @@ Encourage feedback from users of your reusable workflows and iterate on them bas
 
 Reusable workflows make it convenient to isolate reusable logic from your CI/CD pipelines and reuse them across multiple repositories and pipelines. However, they can get quite tricky to track and manage if you aren't careful with them.
 
-If writing pipelines in this way is starting to seem cumbersome, then take a look at Earthly. It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
+If writing pipelines in this way is starting to seem cumbersome, then take a look at [Earthly](/). It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
 
 {% include_html cta/bottom-cta.html %}
