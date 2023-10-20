@@ -8,6 +8,7 @@ layout: default
 
 {% include home/layout.html template='faster-builds/hero.html' %}
 {% include home/layout.html template='faster-builds/call-to-action.html' %}
+{% include home/layout.html template='faster-builds/featured.html' %}
 {% include home/layout.html template='cloud/why.html' %}
 
 {% include home/layout.html template='faster-builds/benefits-title.html' %}
