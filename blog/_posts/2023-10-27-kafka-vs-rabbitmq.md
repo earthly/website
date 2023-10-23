@@ -34,9 +34,7 @@ Kafka and RabbitMQ have unique features that make them useful for the same and v
 
 ## Key Features of  Kafka
 
-<div class="wide">
-![Image]({{site.images}}{{page.slug}}/G0p4wAB.png)
-</div>\
+![Image]({{site.images}}{{page.slug}}/G0p4wAB.png)\
 
 1. **Kafka's Distributed Messaging System**: Kafka's distributed messaging system allows for data to be spread across multiple nodes, meaning it can handle large amounts of data and scale horizontally. This characteristic makes it ideal for use cases that require high throughput and low latency.
 2. **Kafka's Publish-Subscribe Model**: Kafka's publish-subscribe model allows multiple producers to publish data on a topic that numerous consumers can consume. This makes Kafka ideal for use cases such as real-time data processing, stream processing, and log aggregation as it offers the flexibility, scalability, fault tolerance, and real-time data dissemination capabilities needed.
@@ -45,9 +43,7 @@ Kafka and RabbitMQ have unique features that make them useful for the same and v
 
 ## Key Features of RabbitMQ
 
-<div class="wide">
-![Image]({{site.images}}{{page.slug}}/8xDLwCd.png)
-</div>\
+![Image]({{site.images}}{{page.slug}}/8xDLwCd.png)\
 
 1. **Messaging Platform and Protocols Support**: RabbitMQ provides a flexible and reliable messaging platform that supports multiple protocols, including the Advanced Message Queuing Protocol (AMQP), Simple Text Oriented Messaging Protocol (STOMP), Message Queuing Telemetry Transport (MQTT), HTTP, WebSockets, and AMQP over WebSockets, making it suitable for use cases involving different clients and systems.
 
@@ -161,9 +157,3 @@ You've learned about RabbitMQ and Kafka, their features, how they approach messa
 Ultimately, your decision between RabbitMQ and Kafka should depend on factors such as performance, scalability, fault tolerance, and the nature of your application's data and messaging requirements. Evaluating these factors will help you choose the messaging system that best aligns with your use case.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
