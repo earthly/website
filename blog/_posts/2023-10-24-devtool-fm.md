@@ -10,7 +10,7 @@ Vlad was on [devtools.FM](https://www.devtools.fm/episode/71)!
 
 He talked about the hardest part of startups:
 
-> The go-to market part of a company is always the hardest. Maybe unless you're building rockets, self-driving cars or something, it's, it's almost always the, the go-to market that is harder than the tech.
+> The go-to-market part of a company is always the hardest. Maybe unless you're building rockets, self-driving cars or something, it's almost always the go-to-market that is harder than the tech.
 
 He also discussed pricing:
 
