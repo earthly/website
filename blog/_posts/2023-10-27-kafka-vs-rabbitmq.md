@@ -3,7 +3,8 @@ title: "Kafka vs RabbitMQ: What Are the Differences?"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Zubair Idris Aweda
+editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - just an example
@@ -26,20 +27,24 @@ Apache Kafka is a distributed streaming platform designed to handle high volumes
 
 On the other hand, RabbitMQ is a message broker that enables systems to communicate using message protocols like [Advanced Message Queuing Protocol (AMQP)](https://en.wikipedia.org/wiki/Advanced_Message_Queuing_Protocol), [Message Queuing Telemetry Transport (MQTT)](https://mqtt.org/), and [Streaming Text Oriented Messaging Protocol (STOMP)](https://en.wikipedia.org/wiki/Streaming_Text_Oriented_Messaging_Protocol). RabbitMQ leverages a queuing model where multiple consumers can access the messages.
 
-Kafka and RabbitMQ have unique features that make them useful for the same and varying use cases. In this article, you’ll get a deep dive into their features to gain insights on which of them you should use for your app.
+Kafka and RabbitMQ have unique features that make them useful for the same and varying use cases. In this article, you'll get a deep dive into their features to gain insights on which of them you should use for your app.
 
 ## Key Features of  Kafka
 
-![Image](https://imgur.com/G0p4wAB.png)\
+<div class="wide">
+![Image]({{site.images}}{{page.slug}}/G0p4wAB.png)
+</div>\
 
-1. **Kafka’s Distributed Messaging System**: Kafka's distributed messaging system allows for data to be spread across multiple nodes, meaning it can handle large amounts of data and scale horizontally. This characteristic makes it ideal for use cases that require high throughput and low latency.
-2. **Kafka’s Publish-Subscribe Model**: Kafka's publish-subscribe model allows multiple producers to publish data on a topic that numerous consumers can consume. This makes Kafka ideal for use cases such as real-time data processing, stream processing, and log aggregation as it offers the flexibility, scalability, fault tolerance, and real-time data dissemination capabilities needed.
+1. **Kafka's Distributed Messaging System**: Kafka's distributed messaging system allows for data to be spread across multiple nodes, meaning it can handle large amounts of data and scale horizontally. This characteristic makes it ideal for use cases that require high throughput and low latency.
+2. **Kafka's Publish-Subscribe Model**: Kafka's publish-subscribe model allows multiple producers to publish data on a topic that numerous consumers can consume. This makes Kafka ideal for use cases such as real-time data processing, stream processing, and log aggregation as it offers the flexibility, scalability, fault tolerance, and real-time data dissemination capabilities needed.
 3. **High Throughput and Low Latency**: Kafka is designed to handle large amounts of data in real-time, which means that it can process data quickly and with low latency. This makes it ideal for use cases such as real-time data processing, stream processing, and log aggregation.
 4. **Client Libraries:** Kafka has a variety of client libraries for languages including Java, C/C++, Python, Ruby, and more. This makes it easy to integrate Kafka into your existing infrastructure.
 
 ## Key Features of RabbitMQ
 
-![Image](https://imgur.com/8xDLwCd.png)\
+<div class="wide">
+![Image]({{site.images}}{{page.slug}}/8xDLwCd.png)
+</div>\
 
 1. **Messaging Platform and Protocols Support**: RabbitMQ provides a flexible and reliable messaging platform that supports multiple protocols, including the Advanced Message Queuing Protocol (AMQP), Simple Text Oriented Messaging Protocol (STOMP), Message Queuing Telemetry Transport (MQTT), HTTP, WebSockets, and AMQP over WebSockets, making it suitable for use cases involving different clients and systems.
 
@@ -51,24 +56,28 @@ Kafka and RabbitMQ have unique features that make them useful for the same and v
 
 Kafka and RabbitMQ have different architecture and scalability, messaging paradigms, fault tolerance, and reliability.
 
-Here’s an overview of some of the significant differences between Kafka and RabbitMQ to enable you to make informed decisions when choosing the ideal messaging solution for your project’s specific requirements:
+Here's an overview of some of the significant differences between Kafka and RabbitMQ to enable you to make informed decisions when choosing the ideal messaging solution for your project's specific requirements:
 
 ### Architecture and Scalability
 
-Kafka’s architecture revolves around a distributed pub-sub model that handles high throughput, fault-tolerant, horizontally scalable messaging.
+Kafka's architecture revolves around a distributed pub-sub model that handles high throughput, fault-tolerant, horizontally scalable messaging.
 
-Kafka relies on a partitioned, replicated storage mechanism where messages are stored in topics and divided into partitions. Kafka’s distributed design allows it to handle large message volumes while maintaining consistent performance and scalability.
+Kafka relies on a partitioned, replicated storage mechanism where messages are stored in topics and divided into partitions. Kafka's distributed design allows it to handle large message volumes while maintaining consistent performance and scalability.
 
-![Kafka architecture. Image credits: tutorialspot](https://imgur.com/xydOVnz.png)
+<div class="wide">
+![Kafka architecture. Image credits: tutorialspot]({{site.images}}{{page.slug}}/xydOVnz.png)
+</div>
 
 RabbitMQ, on the other hand, is built upon the Advanced Message Queuing Protocol (AMQP) that implements a broker-based model. AMQP follows a traditional queue-based approach where messages are routed through exchanges and delivered to consumers. RabbitMQ provides a flexible and extensible architecture that suits various messaging patterns. Its pluggable design integrates different protocols and messaging paradigms, making it versatile.
 
-![RabbitMQ architecture. Image credits: Erlang Solutions](https://imgur.com/6ZVpXbM.png)
+<div class="wide">
+![RabbitMQ architecture. Image credits: Erlang Solutions]({{site.images}}{{page.slug}}/6ZVpXbM.png)
+</div>
 
 ### RabbitMQ and Kafka Messaging Paradigms
 
-Kafka excels at handling real-time data streams, making it excellent for event-driven architecture. Kafka’s support for pub-sub, point-to-point, and stream processing messaging paradigms.
-With Kafka’s [log-based storage](https://medium.com/@pnk.tanwar/log-structured-storage-engines-a0c6e78273c), Kafka enables message replays that allow consumers to consume messages at their pace. This makes Kafka well-suited for use cases such as real-time analytics, event sourcing, and data pipelines.
+Kafka excels at handling real-time data streams, making it excellent for event-driven architecture. Kafka's support for pub-sub, point-to-point, and stream processing messaging paradigms.
+With Kafka's [log-based storage](https://medium.com/@pnk.tanwar/log-structured-storage-engines-a0c6e78273c), Kafka enables message replays that allow consumers to consume messages at their pace. This makes Kafka well-suited for use cases such as real-time analytics, event sourcing, and data pipelines.
 
 RabbitMQ focuses on providing a wide range of messaging patterns, including publish-subscribe, point-to-point, request-reply, and work queues. RabbitMQ emphasizes message durability and guarantees reliable delivery by persisting messages to disk. RabbitMQ's support for various exchange types and routing mechanisms enables complex routing scenarios, making it an excellent choice for sophisticated messaging workflows like working with various exchanges types and routing mechanisms.
 
@@ -85,7 +94,7 @@ RabbitMQ also provides clustering mechanisms that allow multiple brokers to inte
 
 Kafka and RabbitMQ are robust and feature-rich open-source messaging systems, but they differ fundamentally, making them suitable for specific use cases.
 
-Here are some of the specific  use cases for Kafka and RabbitMQ:
+Here are some of the specific use cases for Kafka and RabbitMQ:
 
 ### **Kafka Use Cases**
 
@@ -103,15 +112,15 @@ RabbitMQ focuses on message queuing, delivering messages asynchronously between 
 
 1. **Asynchronous Communication**: RabbitMQ's message queuing capabilities make it an excellent choice for building decoupled and asynchronous systems by enabling loose coupling between components and facilitating fault tolerance and scalability. Applications that require reliable message delivery, like order processing systems, email notifications, and task scheduling systems, can leverage RabbitMQ to ensure message persistence and guaranteed delivery. Facebook uses RabbitMQ to implement its real-time chat system. This allows Facebook users to communicate with each other in real time.
 
-2. **Microservices Communication**: RabbitMQ serves as a robust communication backbone for microservices architectures. RabbitMQ enables seamless communication between microservices, allowing them to exchange messages, perform actions, and respond to events. By decoupling services through message queues, RabbitMQ enhances microservice-based systems’ scalability, resilience, and maintainability. Twitter uses RabbitMQ to implement communication between its microservices. This allows Twitter to scale its platform horizontally and to add new features quickly and easily.
+2. **Microservices Communication**: RabbitMQ serves as a robust communication backbone for microservices architectures. RabbitMQ enables seamless communication between microservices, allowing them to exchange messages, perform actions, and respond to events. By decoupling services through message queues, RabbitMQ enhances microservice-based systems' scalability, resilience, and maintainability. Twitter uses RabbitMQ to implement communication between its microservices. This allows Twitter to scale its platform horizontally and to add new features quickly and easily.
 
 3. **Internet of Things (IoT) Data Ingestion**: RabbitMQ's lightweight footprint and support for multiple protocols make it a popular choice for IoT data ingestion. RabbitMQ can handle large volumes of sensor data generated by IoT devices and ensure reliable delivery to backend systems for processing and analysis. Smart manufacturing, logistics, and agriculture industries leverage RabbitMQ to build scalable and efficient IoT data pipelines.
 
 ## Choosing Between Kafka and RabbitMQ
 
-Choosing between Kafka and RabbitMQ requires careful consideration of various factors, including scalability, fault-tolerance, your app’s messaging requirements, and more.
+Choosing between Kafka and RabbitMQ requires careful consideration of various factors, including scalability, fault-tolerance, your app's messaging requirements, and more.
 
-Here’s a comprehensive comparison table that highlights the features of the messaging systems to provide you with an indispensable resource to aid your selection:
+Here's a comprehensive comparison table that highlights the features of the messaging systems to provide you with an indispensable resource to aid your selection:
 
 | Technical Features | Kafka | RabbitMQ |
 | --- | --- | --- |
@@ -140,22 +149,20 @@ Kafka and RabbitMQ offer broad integration and multi-language support, allowing 
 
 Kafka is an excellent choice for scalability, fault-tolerance, and distributed streaming; otherwise, for moderate workloads, high availability, and message queuing, RabbitMQ is a suitable option.
 
-You must carefully evaluate your project’s requirements to weigh the advantages and disadvantages of the system and make an informed decision.
+You must carefully evaluate your project's requirements to weigh the advantages and disadvantages of the system and make an informed decision.
 
 ## Conclusion
 
-You’ve learned about RabbitMQ and Kafka, their features, how they approach message queueing, and their use cases. Both RabbitMQ and Kafka are robust messaging systems that can facilitate efficient and reliable communication between distributed systems.
+You've learned about RabbitMQ and Kafka, their features, how they approach message queueing, and their use cases. Both RabbitMQ and Kafka are robust messaging systems that can facilitate efficient and reliable communication between distributed systems.
 
 Ultimately, your decision between RabbitMQ and Kafka should depend on factors such as performance, scalability, fault tolerance, and the nature of your application's data and messaging requirements. Evaluating these factors will help you choose the messaging system that best aligns with your use case.
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
