@@ -157,6 +157,8 @@ You've learned about RabbitMQ and Kafka, their features, how they approach messa
 
 Ultimately, your decision between RabbitMQ and Kafka should depend on factors such as performance, scalability, fault tolerance, and the nature of your application's data and messaging requirements. Evaluating these factors will help you choose the messaging system that best aligns with your use case.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -165,4 +167,3 @@ Ultimately, your decision between RabbitMQ and Kafka should depend on factors su
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
