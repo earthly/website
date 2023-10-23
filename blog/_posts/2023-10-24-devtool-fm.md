@@ -14,7 +14,7 @@ He talked about the hardest part of startups:
 
 He also discussed pricing:
 
-> So we've taken a very different stance with regards to pricing. We said, okay, compute should be built at cost. We make zero profit from, from compute, and instead you will give us more money for the seat. And this will represent a more realistic of value of what you actually pay for
+> So we've taken a very different stance with regards to pricing. We said, okay, compute should be billed at cost. We make zero profit from compute, and instead you will give us more money for the seat. And this will represent a more realistic value of what you actually pay for
 
 And a bunch more. Check it out on [devtools.fm](https://www.devtools.fm/episode/71)
 
