@@ -577,4 +577,4 @@ If you would like to try generating the above graphs, all the code (and data) ca
 
 {% include_html cta/bottom-cta.html %}
 
-[^1]: https://www.nssl.noaa.gov/education/svrwx101/winter/faq/
+[^1]: <https://www.nssl.noaa.gov/education/svrwx101/winter/faq/>

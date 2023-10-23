@@ -331,6 +331,7 @@ In the `main` function, we create a new buffer using the `bytes.Buffer` function
 Next, we read the JSON data from a file using the `os.ReadFile` function. We use the `json.Unmarshal` function to unmarshal the JSON data into a slice of maps. The maps represent the rows of the CSV file, and the keys represent the columns.
 
 <div class="notice--info">
+
 ### Maps and Slice of Maps in Golang
 
 In Go, **maps** are a built-in data structure that associates data in key-value pairs. A map provides constant-time access to its elements, based on their keys. A slice provides a way to reference a subset of an array or map without getting the whole map.

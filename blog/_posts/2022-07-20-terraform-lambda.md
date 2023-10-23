@@ -144,6 +144,7 @@ Apply complete! Resources: 0 added, 0 changed, 0 destroyed.
 ~~~
 
 <div class="notice--info">
+
 ## Side Note: AWS Provider
 
 The AWS provider will need a way to talk to your AWS account. If you don't have AWS credentials properly setup you may get an error like this:
@@ -238,6 +239,7 @@ resource "aws_ecr_repository" "foo" {
 <figcaption>Figure ECR: Terraform Doc's sample ECR resource definition</figcaption>
 
 <div class="notice--info notice--big">
+
 ## Understanding Terraform Resources
 
 A resource is a declarative bit of HCL describing a piece of infrastructure. In the first line, you can see the keyword `resource` followed by `aws_ecr_repository` and `foo`. This is how you declare a terraform resource. The first string is the resource type, `aws_ecr_repository` in this example and the second thing is the name you want to give it. The name is for your own reference and I'll be using it to refer to specific resources from within other resources coming very soon.

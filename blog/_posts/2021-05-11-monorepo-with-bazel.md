@@ -19,7 +19,9 @@ excerpt: |
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
 
 <div class="notice--info">
+
 ### Update: September, 2022
+
 Read our [interview series with Bazel experts on when to use Bazel](/blog/bazel-build/).
 </div>
 A *[monorepo](/blog/monorepo-vs-polyrepo)* is perhaps what you would expect from the name: a single code repository for your entire codebase.

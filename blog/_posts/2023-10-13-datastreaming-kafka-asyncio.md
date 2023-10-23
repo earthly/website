@@ -326,7 +326,7 @@ sender_password = "YOUR_PASSWORD"
 receiver_email = "THEIR_EMAIL@gmail.com"
 ~~~
 
-Replace "YOUR_EMAIL@gmail.com" and "YOUR_PASSWORD" with your Gmail email and password. If you use a different email provider, you should change the SMTP server and port in the `send_email` function.
+Replace "<YOUR_EMAIL@gmail.com>" and "YOUR_PASSWORD" with your Gmail email and password. If you use a different email provider, you should change the SMTP server and port in the `send_email` function.
 
 We then define a function send_email to send an email notification:
 

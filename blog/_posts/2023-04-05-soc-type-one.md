@@ -35,6 +35,6 @@ From a non-functional standpoint, SOC 2 Type 1 compliance means that we have est
 
 Our commitment to security doesn't end with SOC 2 Type 1. We are already working towards achieving SOC 2 Type 2 compliance, which we plan to accomplish by Fall 2023. This will further validate that we maintain the highest levels of security, ensuring that our users can continue to rely on and trust Earthly.
 
-*To request a copy of our SOC 2 Type 1 report, contact security@earthly.dev.*
+*To request a copy of our SOC 2 Type 1 report, contact <security@earthly.dev>.*
 
 {% include_html cta/bottom-cta.html %}

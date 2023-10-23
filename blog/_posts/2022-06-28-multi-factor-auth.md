@@ -45,6 +45,7 @@ Now if I break another YubiKey, or brick my phone, I can always generate codes u
 (This article is not security advice, I'm not qualified to give that, but again, be careful where you store your MFA secret key or what's the point of having it!)
 
 <div class="notice--info">
+
 ### Side Note: You Shouldn't Use SMS as a Authentication Factor
 
 In the past, the most common form of 2FA/MFA was SMS based one-time codes. This form of auth is simple to use, since people have their phones on them all the time. But it has a severe disadvantages in that [SIM Swapping](https://blog.mozilla.org/en/internet-culture/mozilla-explains/mozilla-explains-sim-swapping/) can be used by criminals to social engineer the phone company into letting them take control of your phone number. If they do this, they can intercept your texts, and all is lost.

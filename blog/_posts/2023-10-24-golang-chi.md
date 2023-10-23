@@ -11,7 +11,10 @@ internal-links:
  - build apps with golang chi
  - golang chi to build apps
  - using golang chi
+excerpt: |
+    This tutorial explains how to build a REST API application using Go and Chi, a lightweight and composable router. It covers topics such as setting up the environment, creating routes for CRUD operations, handling errors, and testing the application.
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building and managing your Golang and Chi projects simpler and faster with containerization. If you want to streamline your build process in continuous integration, it's worth checking out Earthly. [Give us a look](/).**
 
 Go, developed by Google in 2007, was a response to the increasing popularity of multicore processors. Existing programming languages such as Java, Python, and C++ were widely used but had certain limitations.
 

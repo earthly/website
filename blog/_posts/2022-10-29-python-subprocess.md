@@ -86,6 +86,7 @@ In the above output:
 - If the output of the command is captured, the `stdout` attribute contains the output; if we do not capture the output, `stdout` is `None`.
 
 <div class="notice--big--primary">
+
 ### Subprocess Popen Constructor
 
 In the subprocess module, the [Popen class](https://docs.python.org/3/library/subprocess.html#subprocess.Popen) handles the creation and management of subprocesses. However, the `run()` function is recommended for invoking subprocesses and suffices for most common use cases.
@@ -367,6 +368,7 @@ subprocess timed out
 ~~~
 
 <div class="notice--info">
+
 ### ⏰ The `TimeoutExpired` Exception Doesn't Kill the Child Process
 
 The `TimeoutExpired` exception raised—when a subprocess fails to complete executing within a specified duration—does not implicitly kill the child process. If there are many such subprocesses in a Python script, it would help to kill the child processes after they've timed out.

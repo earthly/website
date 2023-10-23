@@ -412,6 +412,7 @@ Now, if I test this locally, in its docker container, I hit a new problem:
 My Lambda is running under a specific role with specific permissions when running in AWS. But here, locally inside a container, it doesn't know who it is. I can fix this for local testing by giving my program access to my `.aws/config` and `.aws/credentials`.
 
 <div class="notice--warning">
+
 ### ❗ Careful With Secrets
 
 Whenever you are working with secrets and building docker images, its important to ensure you aren't capturing the secrets in an image layer or log file. You don't want your secrets to end up contained an image and then be pushed to the registry.

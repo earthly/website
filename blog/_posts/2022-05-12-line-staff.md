@@ -59,6 +59,7 @@ Someone at Thoughtworks sold Dominion Energy on the idea that Thoughtworks could
 On the other hand, if someone in billing complains about you and you work on the internal dev team at Duke, your boss will deflect that, and life will go on. Market pressures don't apply to internal teams, which can be both good and bad. The internal customer has one vendor (you), and you, in turn, have one customer. It's not better than working at a consulting company, but it is different. Each has career advantages and disadvantages. And I'll get to that shortly but first, let me beat this distinction to death.
 
 <div class="notice">
+
 ### Profit Center vs. Cost Center
 
 A similar concept I've heard used a lot is Profit Center vs. Cost Center. I found this phrasing less clear because it's never obvious what a profit center is and what a cost center is. Everyone wants to present themselves as a profit center. The concepts are similar, though.
@@ -143,7 +144,9 @@ Retiring to a staff role is a typical pattern I've seen. You used to work at Tho
 The line of business a company is in, and the type of people it employs affect what it values and what it's expectations are. A tech company where the average employee is 28 years old will have different values than an accounting firm where the average age is 47 years. If you value working with people for decades more than you value a kombucha keg, then a slower-moving industry might be a better fit for you. A developer at a utility company will get paid less than a [unicorn startup](https://twitter.com/fast), but most utility companies expect you to work there for decades. My local utility company has lower total comp but also has a union and a pension, and they are generally aware that any investment they make in you can be recouped over your career there rather than over the time it takes your shares to vest. For some people, that is a great trade to make.
 
 <div class="notice">
+
 ### Warning: Some Industries Suck
+
 Culturally, the tech companies I've worked at have all assumed that good employees want to do a good job. As a result, employees are empowered and valued. But unfortunately, I don't think this is the case everywhere.
 
 My one role as a staff developer was at a place where I felt there was an implicit assumption that people disliked their work and needed to be strongly directed.

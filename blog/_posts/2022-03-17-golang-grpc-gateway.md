@@ -210,6 +210,7 @@ You can find the code for the above gRPC proxy on [GitHub](https://github.com/ad
 Let's move on to the next gRPC gateway example.
 
 <div class="notice--info">
+
 ### Proxy Alternatives - Kong gRPC-gateway
 
 A stand-in alternative to the above is the KONG [gRPC-gateway](https://docs.konghq.com/hub/kong-inc/grpc-gateway/). Using it as an API gateway, you can get an equivalent proxy setup for you by enabling the grpc-gateway plugin and configuring things correctly.
@@ -253,7 +254,8 @@ func main() {
 The big change is calling `RegisterActivity_LogHandlerServer` instead of `RegisterActivity_LogHandlerFromEndpoint`, which takes the backend implementation of a GRPC service instead of a network location of an existing instance. So I hand it an instance of the ActivityService implementation, and no network calls are needed to serve requests.
 
 <div class="notice--info">
-### SideNote: SQLite:
+
+### SideNote: SQLite
 
 My [toy example](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway) is using SQLite, which probably isn't a great fit for this solution because it involves multiple services writing to the database. With a network-based database, however, this could work quite well.
 </div>
@@ -576,6 +578,7 @@ tlsCreds, err := credentials.NewClientTLSFromFile("../activity-log/certs/ca.pem"
 And with that change, my gRPC client and server can communicate over TLS, and my server can also respond to REST requests.
 
 <div class="notice--info">
+
 ### Side Note: Fixing the Proxy
 
 The proxy created in the first step is now no longer needed because I can answer REST requests directly in the service. But also, its now broken, because – much like the client – it was connecting insecurely and without knowledge of the CA I created.

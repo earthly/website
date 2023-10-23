@@ -150,7 +150,9 @@ AttributeError: can't set attribute
 - But you *cannot* have mutable named tuple instances.
 
 <div class="notice--info">
+
 #### 📌 A Note on `_replace()`
+
 <br>
 Using the `_replace()` method, you can get a *shallow copy* of a named tuple instance where the value of a particular field is replaced with an updated value. As an example, create a shallow copy of the `book2` instance with a modified `title` field:
 
@@ -244,7 +246,9 @@ The `_field_defaults` attribute is a dictionary of containing the fields with de
 Though we can add literal defaults in named tuples, it can be hard to maintain if there are too many fields.
 
 <div class="notice--info">
+
 #### 📑 Initializing Default Values With Default Factory
+
 <br>
 Both data classes and named tuples support setting literal defaults. With Python data classes, you can also use `default_factory` to use any callable to initialize a field with default values.
   
@@ -403,7 +407,9 @@ BookNT(title='Six of Crows', author='Leigh Bardugo', genre='Fantasy', standalone
 ~~~
 
 <div class="notice--big--primary">
+
 #### 🏷️ All NamedTuple Types Are Tuple Subclasses
+
 <br>
 Consider the following code snippet:
 
@@ -462,7 +468,9 @@ Size of BookNT named tuple: 296
 ~~~
 
 <div class="notice--info">
+
 #### 🔖 Named Tuples and Tuples Have the Same Memory Footprint
+
 <br>
 The size of any named tuple instance is the same as that of a simple tuple. Let's verify this:
 

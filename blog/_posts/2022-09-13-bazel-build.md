@@ -454,21 +454,15 @@ If I had less than a million lines of code or I was worried about the adoption c
 [^1]: Quotes have been edited for clarity.
       Thank you Oscar, Son, Jason, Andreas, Jens, and Julien for letting me pick your brains about builds.
 
-[^2]:    <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0610.png" alt="Oscar Boykin">
        [P. Oscar Boykin](https://twitter.com/posco) is a Bazel contributor, Senior Research Engineer at Netflix, and former physicist, who has worked on Bazel projects at Twitter, Stripe, and Netflix.
 
-[^3]:  <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0910.png" alt="Son Luong Ngoc">
        [Son Luong Ngoc](https://twitter.com/sluongng) is a Dev Ops Engineer at [Qarik group](https://qarik.com/), where he specializes in MonoRepo and Bazel migrations. Before Qarik group he helped booking.com handle the challenges of larger mono-repo.
 
-[^4]:   <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1050.png" alt="Jason Steving">
        [Jason Steving](https://www.linkedin.com/in/jasonsteving/) is an ML Compiler Engineer on the TensorFlow team at Google and is the creator of [Claro-lang](https://www.clarolang.com).
 
-[^5]:  <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1250.png" alt="Andreas Herrmann">
        [Andreas Herrmann](https://www.tweag.io/team/) is a physicist turned software engineer. He leads the Bazel team at Tweag, and maintains Tweag's open source Bazel rule sets and the capability package. 
 
-[^6]:  <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/0270.png" alt="Jens Rantil">
       [Jens Rantil](https://mobile.twitter.com/JensRantil) is a
       Senior Software Engineer at Normative and former Staff Site Reliability Engineer at Tink.
 
-[^7]: <img class="h-24 md:w-24" style="border-radius: 50%;" src="{{site.images}}{{page.slug}}/1510.png" alt="Julien Perrochet">
       [Julien Perrochet](https://j3t.ch/) is an independent consultant at Perrochet Reactive Systems. Julien was formerly a Principal Software Engineer at OpenSystems where he was responsible for, among other things, build engineering.

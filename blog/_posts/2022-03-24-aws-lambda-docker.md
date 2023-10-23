@@ -277,6 +277,7 @@ $ curl https://5f8lt8irs0.execute-api.us-east-1.amazonaws.com/default/container-
 ~~~
 
 <div class="notice--info">
+
 ### Side Note: Home Path
 
 If you are spawning processes and running things in a shell inside your container, inside your lambda, be aware that the home directory, as of March, 2022 is not properly configured and you will get an error like this:

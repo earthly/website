@@ -31,6 +31,7 @@ Finally, it is appropriate for use cases in which text is provided as an input s
 In this article, you'll learn more about how this powerful tool can help you, from simple find and replace commands to more complex use cases.
 
 <div class="notice--info">
+
 ## A Note for `macOS` Users
 
 The `sed` on macOS is a BSD `sed`. This version of `sed` has some variations from GNU `sed` on Linux distros. You can learn more about [the differences between the two versions in this breakdown](https://riptutorial.com/sed/topic/9436/bsd-macos-sed-vs--gnu-sed-vs--the-posix-sed-specification).
