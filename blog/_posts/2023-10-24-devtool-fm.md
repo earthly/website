@@ -2,11 +2,8 @@
 title: "Earthly On devtools.FM"
 categories:
   - News
-toc: true
 author: Adam
 topcta: false
-excerpt: |
-    It's not that passion doesn't matter, but rather that Vlad had to learn to build things that inspired passion from both the market and the builders.
 ---
 
 Vlad was on [devtools.FM](https://www.devtools.fm/episode/71)!
