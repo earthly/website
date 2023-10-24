@@ -1,6 +1,6 @@
 <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
 <script>
-  // Uncomment for testing
+  // Uncomment uuidv4() for testing / Uncomment getAnalyticCookie() for production
   //var earthlyID = uuidv4();
   var earthlyID = getAnalyticCookie();
 
@@ -27,8 +27,8 @@
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
       // console.log("Features loaded");
       
-      // Gavin, homepage-hero-install-no-login-test, 20230926: Configured for homepage-hero-install-no-login-test
-      if(document.getElementById("homepage-hero-install-no-login-control")){
+      // Example
+      /*if(document.getElementById("homepage-hero-install-no-login-control")){
         //console.log("control element rendered");
         
         const testOn = gb.isOn("homepage-hero-install-no-login")
@@ -40,6 +40,6 @@
           document.getElementById("homepage-hero-install-no-login-test").style.display = "none";
         }
       }
-    });
+    });*/
   });
 </script>
