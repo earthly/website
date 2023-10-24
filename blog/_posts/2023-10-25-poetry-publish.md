@@ -180,7 +180,6 @@ Either way, the key is to tell `poetry publish` to use `--repository testpypi` a
 
 ```
 > poetry publish --build --repository testpypi -n
-poetry publish --build
 There are 2 files ready for publishing. Build anyway? (yes/no) [no] y 
 Building mergefast (0.1.1)
   - Building sdist
@@ -219,7 +218,7 @@ Then I can always test the latest test published package on a clean container li
 > earthly +test-pypi-install
 +test-pypi-install | --> COPY +build/dist dist
 +test-pypi-install | --> expandargs ls ./dist/*.tar.gz
-+test-pypi-install | --> RUN ppip install --index-url https://test.pypi.org/simple/ mergefast
++test-pypi-install | --> RUN pip install --index-url https://test.pypi.org/simple/ mergefast
 ...
 +test-pypi-install| --> COPY tests .
 +test-pypi-install | --> RUN python test.py
@@ -227,7 +226,27 @@ Then I can always test the latest test published package on a clean container li
 +test-pypi-install | mergefast took 27.499190239999734 seconds
 ```
 
+# The final poetry publish
 
+And now that we have tested our package end to end, we can publish it with a simple `poetry publish --build`
 
+```
+> poetry publish --build
+There are 2 files ready for publishing. Build anyway? (yes/no) [no] y 
+Building mergefast (0.1.1)
+  - Building sdist
+  - Built mergefast-0.1.1.tar.gz
+  - Building wheel
+  - Built mergefast-0.1.1-py3-none-any.whl
+
+Publishing mergefast (0.1.1) to PyPI
+ - Uploading mergefast-0.1.1-py3-none-any.whl 100%
+ - Uploading mergefast-0.1.1.tar.gz 100%
+
+```
+
+For a simple package like this, this whole teesting workflow might be overkill. But if your package has users and you want to make sure you don't break their worflow I think it makes sense to sanity test your packages. 
+
+There is not a lot of ways for packging to o wrong with a single file package, but in the next article we'll look at how to package a c extension, and then testing end to end is really warranted.
 
 [^1]: That actual package shown here is being published as `mergefast`, because it's python only implementation is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
