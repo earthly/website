@@ -4,9 +4,8 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-
-internal-links:
- - just an example
+sidebar:
+  nav: "pypi"
 ---
 
 In covering [publishing my mergefast package with setuptools]() and [publishig it with poetry]() I lied about something: that is was actually a fast way to merge. The python code I showed can't compete with just resorting the list. ( See [TimSort]() for a lengthly explanation. )
@@ -23,20 +22,19 @@ PyObject* merge( PyObject*, PyObject* );
 
 We also have a bind.h, where there are a lot of little details to get right. Lets go slowly through them, as this is where I initially got stuck.
 
-
 ### 1. Declaring our function in a null-terminated list
 
 ```c
 #include "core.h"
 
 PyMethodDef merge_funcs[] = {
-	{
-		"merge", /* function name */
-		(PyCFunction)merge,
-		METH_VARARGS,
-		"merge two sorted lists" /* function docs */
-	},
-	{ NULL }
+    {
+        "merge", /* function name */
+        (PyCFunction)merge,
+        METH_VARARGS,
+        "merge two sorted lists" /* function docs */
+    },
+    { NULL }
 };
 ```
 
@@ -44,7 +42,7 @@ PyMethodDef merge_funcs[] = {
 - Each `PyMethodDef` structure represents a method that will be made available in our Python module. We just have one for now.
 - The structure has the following elements:
   - `"merge"`: The name of the function as it will appear in Python.
-  - `(PyCFunction)merge`: The actual C function that implements this method. 
+  - `(PyCFunction)merge`: The actual C function that implements this method.
   - `METH_VARARGS`: A flag indicating the calling convention of our function. In this case, it suggests that our function accepts any number of arguments packed into a tuple.
   - `"merge two sorted lists"`: A documentation string for the function.
 - The `{ NULL }` entry serves as a sentinel, signaling the end of the method definitions.
@@ -53,15 +51,15 @@ PyMethodDef merge_funcs[] = {
 
 ```c
 PyModuleDef merge_mod = {
-	PyModuleDef_HEAD_INIT,
-	"core", /* library name */
-	"core module", /* module docs */
-	-1,
-	merge_funcs,
-	NULL,
-	NULL,
-	NULL,
-	NULL
+    PyModuleDef_HEAD_INIT,
+    "core", /* library name */
+    "core module", /* module docs */
+    -1,
+    merge_funcs,
+    NULL,
+    NULL,
+    NULL,
+    NULL
 };
 ```
 
@@ -73,19 +71,19 @@ PyModuleDef merge_mod = {
   - `"core module"`: A documentation string for our module.
   - `-1`: Refers to the size of the module state in bytes, with `-1` indicating module-level state only.
   - `merge_funcs`: The previously defined array of methods.
-- The remaining `NULL` optional values. 
+- The remaining `NULL` optional values.
 
 ### 3. Defining our init function
 
 ```c
 PyMODINIT_FUNC PyInit_core( void )
 {
-	return PyModule_Create( &merge_mod );
+    return PyModule_Create( &merge_mod );
 }
 ```
 
 - This function is the initialization function for our module.
-- It's crucial as Python calls this function when the module is imported. 
+- It's crucial as Python calls this function when the module is imported.
 - `PyMODINIT_FUNC` is a macro that ensures that the function has the correct return type and visibility to be used as a module initialization function.
 - `PyInit_core`: The name of this function is significant. If our module is named "core", then the initialization function must be named `PyInit_core`.
 - Within this function, we use `PyModule_Create` to create and return a new module object based on our `merge_mod` definition above.
@@ -104,7 +102,7 @@ merge_module = Extension(
 ```
 
 1. **`"mergefast.core"`**:
-   
+
    This is the name of the extension module we are building. `mergefast.core` will be a submodule of `mergefast`.
 
 2. **`sources=["mergefast/bind.c", "mergefast/core.c"]`**:
@@ -128,9 +126,9 @@ setup(
 )
 ```
 
-Most of this is straight-forward. The first two lines, we are naming our package and versioning it. `ext_modules=[merge_module]` tells setuptools to compiler our `mergefast.core` package previously defined. 
+Most of this is straight-forward. The first two lines, we are naming our package and versioning it. `ext_modules=[merge_module]` tells setuptools to compiler our `mergefast.core` package previously defined.
 
-The third line, `packages=find_packages()`, is a bit trickier.  The find_packages() function is a utility from setuptools that automatically discovers all Python packages in your project directory. This is essential for getting our `__init__.py` file into the final package. 
+The third line, `packages=find_packages()`, is a bit trickier. The find_packages() function is a utility from setuptools that automatically discovers all Python packages in your project directory. This is essential for getting our `__init__.py` file into the final package.
 
 Our `__init__.py` imports core, so `import mergefast.merge` works and without `find_packages()` it won't be included in our package.
 
@@ -191,11 +189,13 @@ copying build/lib.macosx-13-arm64-cpython-311/mergefast/core.cpython-311-darwin.
 ```
 
 And then we test run our c based merge
+
 ```
 python tests/test.py
 timsort took 2.2706818750011735 seconds
 merge took 2.0606187919911463 seconds
 ```
+
 And we are faster then timsort!
 
 ## Binary Package Woes
@@ -211,7 +211,7 @@ running build_py
 creating 'dist/mergefast-1.1.3-cp311-cp311-macosx_13_0_arm64.whl'
 ```
 
-The created wheel file is `mergefast-1.1.3-cp311-cp311-macosx_13_0_arm64.whl` 
+The created wheel file is `mergefast-1.1.3-cp311-cp311-macosx_13_0_arm64.whl`
 
 Because the c extension functionality is closely tied to the python version, this shared object file is just for 3.11 `cp311-cp311`. And because this wheel contains native code, its specific to the OS and archecture its compiled for `macosx_13` and `arm64`.
 
@@ -240,17 +240,18 @@ A common approach for this is a github actions matrix build across the various c
           - vers: auto64
             os: windows-2019
 ```
+
 <figcaption>matrix wheel build of [poloaroid](https://github.com/Daggy1234/polaroid/blob/main/.github/workflows/publish.yml) package.</figcaption>
 
 We are going to skip all that for now by doing a source build.
 
 ## Source Build to the Rescue
 
-When you run pip install, pip tries to choose the best distribution format for the package you're installing, and its decision is based on several factors. 
+When you run pip install, pip tries to choose the best distribution format for the package you're installing, and its decision is based on several factors.
 
 Pip prefers wheels because they are the binary distribution format for Python packages, which means they often contain pre-compiled code, allowing for faster installations without requiring a build step on the end-user's machine.
 
-If no compatible wheel is found on the package index (like PyPI), pip will fall back to using the source distribution. The compilation will then be performed on the end machine at time of installation. 
+If no compatible wheel is found on the package index (like PyPI), pip will fall back to using the source distribution. The compilation will then be performed on the end machine at time of installation.
 
 There are downsides to this, such as long installtion time, and the requirement that the end user have a c compiler around. But with our simple code that ( and having the python.h header file around) is about the only constraint on the build and the upside is we don't need to do a complicated build process. so let's do it.
 
@@ -262,6 +263,7 @@ producing mergefast-1.1.3.tar.gz
 ```
 
 We can test this package with a `pip install dist/mergefast-1.1.3.tar.gz`. I, of course, do this Earthly, for reprodiciblity sake:
+
 ```
 test-dist-install:
     FROM python:3.11-buster
@@ -274,6 +276,7 @@ test-dist-install:
 ```
 
 Which gives:
+
 ```
  Building wheel for mergefast (pyproject.toml) did not run successfully.
   │ exit code: 1
@@ -287,7 +290,7 @@ Which gives:
 
 Failure! You can see that on installation pip runs the `bdist_wheel` process which works ok, until we try to include our header file core.h.  
 
-You see, the python `sdist` process knows to include all the python files in a package into the source distribution, but it really has no idea about what other files are needed to build the project. In my perfect worl, it would be able to infer from some heuristics and the fact I told it in setup.py that to include_dirs=["mergefast"]. That's not the world we live in though, so setuptools supports a `MANIFEST.in` file, where you describe all the extra files your package needs. 
+You see, the python `sdist` process knows to include all the python files in a package into the source distribution, but it really has no idea about what other files are needed to build the project. In my perfect worl, it would be able to infer from some heuristics and the fact I told it in setup.py that to include_dirs=["mergefast"]. That's not the world we live in though, so setuptools supports a `MANIFEST.in` file, where you describe all the extra files your package needs.
 
 ```
 include mergefast/*.c
@@ -306,18 +309,19 @@ With that in place, installing from a source distribution works:
 ```
 
 Now all I need to do is publish:
+
 ```
 > poetry publish -n
 Publishing mergefast (1.1.3) to pypi
  - Uploading mergefast-1.1.3.tar.gz 100%
 ```
+
 And just like that, 20 steps later, I have my python extension up on pypi.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9880.png --alt {{  }} %}
 <figcaption>[Finally!](https://pypi.org/project/mergefast/)</figcaption>
 </div>
-
 
 ## Conclusion
 
@@ -330,7 +334,6 @@ It goes to show that behind the ease of `pip install` there is lots of unsexy bu
 And if you want to stay up to date on this, subscribe to the newsletter. I'm probably going to attempt a python extension in Rust soon.
 
 {% include_html cta/bottom-cta.html %}
-
 
 [^1]: It's possible to tell poetry to build via setuptools. And configure in pyproject.toml
 

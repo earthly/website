@@ -253,3 +253,19 @@ bazel:
       url: /monorepo-tools/
     - title: "Pants for Python - Interview"
       url: /pants-build/
+pypi:
+  - title: Python Packaging
+  - title: Python Packaging
+    children:
+      - title: "Setup Tools PyPi Package"
+        url: /create-python-package/
+      - title: "Poetry Build and Publish to PyPi"
+        url: /poetry-publish/
+      - title: "C Extension Package to PyPi"
+        url: /python-c-extension
+  - title: Background
+    children:
+      - title: Beating TimSort at Merging
+        url: /python-timsort-merge//
+      - title: "Using Poetry in Python"
+        url: /python-poetry/
