@@ -250,3 +250,5 @@ For a simple package like this, this whole teesting workflow might be overkill. 
 There is not a lot of ways for packging to o wrong with a single file package, but in the next article we'll look at how to package a c extension, and then testing end to end is really warranted.
 
 [^1]: That actual package shown here is being published as `mergefast`, because it's python only implementation is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
+
+{% include_html cta/bottom-cta.html %}

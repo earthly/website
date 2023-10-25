@@ -325,11 +325,11 @@ All the code for mergefast, and its earlier python implementation `mergeslow` ar
 
 I hope this three parts ( 1,2, 3) series was interesting. This last stage, the python extention packaging was a little trickier then I thought it would be but now that I've walked myself through it all makes a good amount of sense.
 
+It goes to show that behind the ease of `pip install` there is lots of unsexy but needed packging, building and distribution work happening.  ( Take a look at the pip packaging code for a lib like [tensorflow](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/pip_package) sometime. )
 
+And if you want to stay up to date on this, subscribe to the newsletter. I'm probably going to attempt a python extension in Rust soon.
 
-
-Insert here:
-https://chat.openai.com/c/51d7ce67-cbc8-4177-acda-6ba63d7033ff
+{% include_html cta/bottom-cta.html %}
 
 
 [^1]: It's possible to tell poetry to build via setuptools. And configure in pyproject.toml

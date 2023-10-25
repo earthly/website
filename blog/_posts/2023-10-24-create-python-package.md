@@ -414,3 +414,5 @@ IF you want to skip ahead, my code is on [GitHub](https://github.com/earthly/mer
 [^1]: That actual package shown here is being published as `mergeslow`, because it's python only implementation is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
 
 [^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details.
+
+{% include_html cta/bottom-cta.html %}
