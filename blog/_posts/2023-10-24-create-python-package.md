@@ -78,21 +78,21 @@ See https://pypi.org/help/#project-name for more information.
 
 This forced my to look for a new name and its a good thing I did because it turns out `PyMerge` is a horrible name. When selecting a name for your package, follow these rules set forth by the Python Packaging Authority (PyPA):
 
-- *Keep It Short & Descriptive:* Names should be short, but also give a clear idea of what the package does. For example, requests is a popular library that makes HTTP requests.
+- **Keep It Short & Descriptive:** Names should be short, but also give a clear idea of what the package does. For example, requests is a popular library that makes HTTP requests.
 
-- *Avoid Underscores:* Although underscores are allowed, dashes are more common in package names. However, note that the actual module or package inside might use underscores (e.g., the package dateutil on PyPI corresponds to the date_util module when imported in Python).
+- **Avoid Underscores:** Although underscores are allowed, dashes are more common in package names. However, note that the actual module or package inside might use underscores (e.g., the package dateutil on PyPI corresponds to the date_util module when imported in Python).
 
-- *Avoid Uppercase Letters:* Lowercase names are conventional for package names. This makes them easy to type and avoids ambiguity on case-sensitive file systems.
+- **Avoid Uppercase Letters:** Lowercase names are conventional for package names. This makes them easy to type and avoids ambiguity on case-sensitive file systems.
 
-- *Check for Name Availability:* Before finalizing a name, search on PyPI to ensure that the name isn't already taken. Even if it's available, avoid names that are too similar to existing packages to prevent confusion.
+- **Check for Name Availability:** Before finalizing a name, search on PyPI to ensure that the name isn't already taken. Even if it's available, avoid names that are too similar to existing packages to prevent confusion.
 
-- *Avoid Generic Names:* Names that are too generic can be misleading. For example, a package named data would be too vague.
+- **Avoid Generic Names:** Names that are too generic can be misleading. For example, a package named data would be too vague.
 
-- *Prefixes/Suffixes:* If your package is an extension or related to another package, consider using a prefix or suffix. For instance, flask- is a common prefix for Flask extensions (e.g., flask-login).
+- **Prefixes/Suffixes:** If your package is an extension or related to another package, consider using a prefix or suffix. For instance, flask- is a common prefix for Flask extensions (e.g., flask-login).
 
-- *Avoid "Py" Prefix:* While many packages use the "py" prefix to indicate they are Python packages (e.g., pyspark, pytz), it's become somewhat redundant since the package will be on PyPI, and it's understood that it's for Python. However, it's not a strict rule, and some popular packages still use it.
+- **Avoid "Py" Prefix:** While many packages use the "py" prefix to indicate they are Python packages (e.g., pyspark, pytz), it's become somewhat redundant since the package will be on PyPI, and it's understood that it's for Python. However, it's not a strict rule, and some popular packages still use it.
 
-- *Convey Main Benefit or Feature:* If possible, the name should convey the main benefit or feature of the package. For a merge algorithm that's faster, words like "fast", "speed", "quick", "swift", or "turbo" could be part of the name.
+- **Convey Main Benefit or Feature:** If possible, the name should convey the main benefit or feature of the package. For a merge algorithm that's faster, words like "fast", "speed", "quick", "swift", or "turbo" could be part of the name.
 
 So, you can see `PyMerge` broke almost all of these rules and so I settled on the name `mergefast`[^1] which meets all the rules.
 
@@ -116,19 +116,13 @@ setup(
 ## Source Dists and Wheels
 
 ~~~{.bash caption=">_"}
-python3 setup.py sdist
-~~~
-
-Or the newer recommended `python build`
-
-~~~{.bash caption=">_"}
-python -m build --sdist
+> python3 setup.py sdist
 ~~~
 
 Or the newer recommended `python build` [^2]
 
 ~~~{.bash caption=">_"}
-python -m build --sdist
+> python -m build --sdist
 ~~~
 
 ~~~
