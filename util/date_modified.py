@@ -5,6 +5,18 @@ import yaml
 # Path to the posts directory
 POSTS_DIR = "blog/_posts/"
 
+for filename in os.listdir(POSTS_DIR):
+    if filename.endswith(".md"):
+        filepath = os.path.join(POSTS_DIR, filename)
+        with open(filepath, 'r') as file:
+            content = file.readlines()
+        # Remove lines starting with "last_modified_at"
+        content = [line for line in content if not line.strip().startswith("last_modified_at:")]
+        
+        # Write the modified content back to the file
+        with open(filepath, 'w') as file:
+            file.writelines(content)
+
 # Iterate over all markdown files in the directory
 for filename in os.listdir(POSTS_DIR):
     if filename.endswith(".md"):
