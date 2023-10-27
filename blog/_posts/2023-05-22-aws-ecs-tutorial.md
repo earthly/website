@@ -13,6 +13,7 @@ internal-links:
  - Containers
 excerpt: |
     Learn how to run your containers on Amazon using AWS ECS. This tutorial will guide you through the process of creating an ECS cluster, deploying a containerized application, and accessing it using the public IP address.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly can make building your containers, before they get to AWS ECS, even easier. [Check it out](/).**
 

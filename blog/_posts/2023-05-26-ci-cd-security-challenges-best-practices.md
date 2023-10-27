@@ -13,6 +13,7 @@ internal-links:
  - Github
 excerpt: |
     Learn about the challenges and best practices for securing your CI/CD pipeline in this informative article. Discover how to mitigate security risks and ensure the reliability and integrity of your software development and deployment process.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an ideal tool for boosting the security and efficiency of your CI/CD pipelines. [Check it out](/).**
 

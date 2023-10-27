@@ -6,6 +6,7 @@ toc: false
 author: Adam
 excerpt: |
     This article provides a humorous and satirical glossary of terms related to DevOps, highlighting the realities and quirks of the field. It offers amusing definitions for terms like DevOps, blameless postmortems, incident, and more.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a hit with DevOps circles and could be a valuable addition to your CI toolkit. [Check it out](/).**
 

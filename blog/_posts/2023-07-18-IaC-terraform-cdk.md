@@ -15,6 +15,7 @@ internal-links:
  - Cloud Development
 excerpt: |
     This article introduces the Terraform CDKTF, a programmatic way to create infrastructure as code (IaC). It explains the basics of CDKTF, its core components, and how to deploy an AWS stack using TypeScript. The article also provides best practices for using CDKTF and highlights the benefits of incorporating testing and continuous integration into your infrastructure provisioning process.
+last_modified_at: 2023-07-19
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows you how to use the Terraform CDK**

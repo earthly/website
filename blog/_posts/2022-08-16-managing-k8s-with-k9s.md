@@ -13,6 +13,7 @@ internal-links:
 topic: kubernetes
 excerpt: |
     Learn how to manage your Kubernetes cluster more efficiently with K9s, a terminal UI tool that simplifies common `kubectl` commands and provides a faster and easier way to interact with your cluster. Install K9s on Linux, explore its features, and discover how it can help you fetch cluster metrics and manage your resources with ease.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up building software using containerization – perfect if you're into managing Kubernetes resources. [Give us a try](/).**
 

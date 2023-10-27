@@ -11,6 +11,7 @@ internal-links:
  - Linux
  - Command
  - Echo
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're working with Linux commands like `echo`... `echo`, Earthly can automate your build process making it even more efficient. [Check it out](/).**
 

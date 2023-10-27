@@ -11,6 +11,7 @@ internal-links:
  - make tutorial
 excerpt: |
     Learn how to automate the software building process using `make`, a powerful tool that saves time and resources. This article covers the basics of writing a Makefile, important components of `make`, and provides examples of using `make` with different technologies.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using `make` for your builds, you'll love how Earthly can streamline the process even further. [Check it out](/).**
 

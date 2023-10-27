@@ -11,6 +11,7 @@ excerpt: |
 bottomcta: false
 internal-links:
   - intercal
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly helps you avoid YAML hell. [Check it out](/).**
 

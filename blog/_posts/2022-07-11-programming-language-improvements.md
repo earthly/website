@@ -8,6 +8,7 @@ sidebar:
   nav: "thoughts"
 excerpt: |
     Discover how programming language tooling has evolved over time and why newer languages like Go and Rust have gained popularity due to their comprehensive tooling and developer experience. Learn about innovations such as batteries-included standard libraries, third-party package repositories, documentation support, cross-platform development, package managers, and code formatters that have improved the usability of programming languages.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We help you build software faster and simpler using containerization. While talking about tooling, Earthly is a great complement that can optimize your dev experience. [Check it out](/).**
 

@@ -10,6 +10,7 @@ internal-links:
  - what makes earthly fast
  - earthly is fast
  - earthly performing fast
+last_modified_at: 2023-10-20
 ---
 
 Earthly makes CI/CD builds faster by reusing computation from previous runs for parts of the build that have not changed. This can be a game changer in terms of developer productivity gained.

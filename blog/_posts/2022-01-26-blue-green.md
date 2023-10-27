@@ -10,6 +10,7 @@ internal-links:
  - blue green
 excerpt: |
     Learn how blue/green deployments can eliminate downtime and errors when updating applications, and discover best practices and tools to streamline the process.
+last_modified_at: 2023-08-17
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about blue/green deployments. Earthly is a powerful build tool for streamlining a deployment processes. [Check us out](/).**
 

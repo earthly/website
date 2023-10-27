@@ -13,6 +13,7 @@ internal-links:
  - YAML
 excerpt: |
     Learn how to manage sensitive data in Kubernetes using secrets. This tutorial covers creating secrets, using them as environment variables or volume mounts, and pulling images from private Docker repositories using secrets.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. If you like Kubernetes for running containers and services, you might like Earthly for buildings them. [Check it out](/).**
 

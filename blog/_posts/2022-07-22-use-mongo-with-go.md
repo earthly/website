@@ -13,6 +13,7 @@ internal-links:
  - Database
 excerpt: |
     Learn how to use MongoDB with Go in this tutorial. Discover how to connect to a MongoDB Atlas cluster, perform CRUD operations, and query the database using the Go MongoDB driver.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is when MongoDB is a good fit. If you are looking for a simpler approach to building software then [check us out](/).**
 

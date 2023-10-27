@@ -14,6 +14,7 @@ internal-links:
   - tunnel proxy
 topic: cli
 funnel: 2
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Ngrok clone with AWS and Earthly. [Check out Earthly](/).**
 

@@ -10,6 +10,7 @@ internal-links:
  - reusable workflows in gitHub actions
  - how to reuse workflows in github actions
  - workflows in github actions
+last_modified_at: 2023-10-20
 ---
 GitHub Actions [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) are particularly helpful in modern software projects. Reusable workflows act as blueprints for CI/CD pipelines, allowing developers to quickly scaffold processes and accelerate their software delivery significantly.
 

@@ -15,6 +15,7 @@ internal-links:
  - News Articles
 excerpt: |
     Learn how to build a news categorization classifier using NewsAPI, NLP, and Logistic Regression. Discover the steps to preprocess text data, train and test a logistic regression model, and predict the category of news articles.
+last_modified_at: 2023-07-11
 ---
 
 **We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows you how to build a news classifier with NewsAPI, NLP, and Logistic Regression**

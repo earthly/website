@@ -7,7 +7,6 @@ sidebar:
   nav: github-actions
 author: James Olaogun
 editor: Bala Priya C
-last_modified_at: 2023-06-26
 internal-links:
  - Github Actions
  - Deployment
@@ -16,6 +15,7 @@ internal-links:
  - Docker Container
 excerpt: |
     Learn how to automate the process of developing, testing, building, and deploying Docker containers using GitHub Actions. This tutorial will guide you through the steps of creating a workflow, setting up a runner, running GitHub Actions locally, and setting up the build and test stages. Save time and improve the quality of your software with this powerful automation tool.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 

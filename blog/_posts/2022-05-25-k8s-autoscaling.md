@@ -10,6 +10,7 @@ internal-links:
  - autoscaling
 excerpt: |
     
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. While you're managing resources with Kubernetes autoscaling, we're here to make the build process efficient. [Check us out](/).**
 

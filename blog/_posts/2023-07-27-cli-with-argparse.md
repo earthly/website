@@ -14,6 +14,7 @@ internal-links:
  - command line interface
 excerpt: |
     This tutorial explores how to build a Command-Line Interface (CLI) application using the `argparse` module in Python. It covers topics such as defining and parsing command-line arguments, error handling, help messages, choices in command-line arguments, and advanced features like sorting and filtering tasks.
+last_modified_at: 2023-08-28
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. If you're interested in a simple and containerized approach to building Python code, then [check us out](/).**

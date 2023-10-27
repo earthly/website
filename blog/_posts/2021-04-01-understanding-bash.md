@@ -13,6 +13,7 @@ internal-links:
 
 excerpt: |
     Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software easier and quicker using containerization. If you're into bash scripting, you'll get the value of Earthly right away. Why not [give it a try](/)?**
 

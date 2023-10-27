@@ -15,6 +15,7 @@ internal-links:
  - C++
 excerpt: |
     Learn how to cross-compile binaries for different architectures using CMake and GCC in this tutorial. Discover the process of building a simple C++ program and then cross-compiling it for ARM64-based devices, along with troubleshooting tips for common issues.
+last_modified_at: 2023-07-19
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article covers cross-compiling binaries using CMake and GCC. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile`, then [check us out](/).**

@@ -13,6 +13,7 @@ internal-links:
  - Deployments
 excerpt: |
     Learn how to use canary deployments in Kubernetes to mitigate the risks of application updates and ensure zero downtime for your users. This article explains the concept of canary deployments, how they work in Kubernetes, and how to implement them in your CI/CD pipeline.
+last_modified_at: 2023-08-17
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly is a fantastic tool to help manage and streamline your build process. Once you've got canary builds in place, [give it a look](/).**
 

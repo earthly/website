@@ -14,6 +14,7 @@ internal-links:
  - apis with rust
 excerpt: |
     This tutorial explores how to build a CRUD REST API using Rust's Rocket web framework and Diesel ORM. It covers setting up the database, handling POST, GET, PUT, and DELETE requests, and interacting with the database using Diesel.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify the build process and speed it up using containerization. If you're knee-deep in Rust API development, Earthly can be your ally. It's popular with Rust enthusiasts! [Give it a try](/).**
 

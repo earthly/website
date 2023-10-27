@@ -14,6 +14,7 @@ internal-links:
  - Linux
 excerpt: |
     Learn how to strategically use the `sleep` command in shell scripting to introduce delays and control the timing of actions in your Linux scripts. Discover its various use cases, alternatives, and how it can help you simulate delays and test your applications under different conditions.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
 

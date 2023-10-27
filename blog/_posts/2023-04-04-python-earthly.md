@@ -8,6 +8,7 @@ topic: python
 funnel: 3
 excerpt: |
     Learn how Earthly can simplify dependency management in Python projects, ensuring consistency across different environments and streamlining the build and deployment process. Say goodbye to the "it works on my machine" problem and focus on the core functionality of your application.
+last_modified_at: 2023-07-11
 ---
 <!-- markdownlint-disable MD036 -->
 

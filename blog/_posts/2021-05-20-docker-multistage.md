@@ -15,6 +15,7 @@ topic: docker
 funnel: 2
 excerpt: |
     Learn how to optimize your Docker images and create production-grade images using multistage builds. Discover the core concepts of multistage builds, the challenges they present, and a better way to do multi-stage builds with Earthly.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Docker Multistage Builds. Earthly can greatly enhance the process of creating Docker multistage builds. [Check us out](/).**
 

@@ -9,6 +9,7 @@ internal-links:
  - developer experience
 excerpt: |
     Learn about the importance of Developer Experience (DX) and how it can impact different roles within an organization. Discover how Alice, Bob, and Carlos each prioritize DX in their respective roles as a Product Manager, Internal Tools Lead, and Director of Engineering, and how it has transformed their products, improved team collaboration, and accelerated development.
+last_modified_at: 2023-08-15
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler. Let us enhance your team's build DX. [Give it a shot](/).**
 

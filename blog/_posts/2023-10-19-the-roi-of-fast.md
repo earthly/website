@@ -9,6 +9,7 @@ internal-links:
  - return on investment of fast
  - investment of fast
  - take on investment of fast
+last_modified_at: 2023-10-20
 ---
 
 TLDR: In my totally bias role as one of Earthly's creators, I believe that with Earthly:

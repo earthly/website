@@ -7,6 +7,7 @@ internal-links:
  - live coding
 excerpt: |
     Learn how to absorb tacit knowledge and improve your programming skills by watching experienced developers code in real-time. Discover a list of popular streamers and YouTubers who share their expertise in various programming languages, including Golang, and gain valuable insights from their live coding sessions.
+last_modified_at: 2023-07-14
 ---
 **Meet [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're keen on honing your coding skills, Earthly can be a game-changer for streamlining your build process. [Give us a try](/).**
 

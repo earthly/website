@@ -13,6 +13,7 @@ internal-links:
  - how to manage python monorepo
 excerpt: |
     This tutorial explains how to use Pants, a monorepo tool, to build, configure, and manage a Python monorepo. It covers setting up the project, defining the backend and creating the necessary BUILD files, running tests, linting and formatting the code, and packaging and running the application.
+last_modified_at: 2023-10-17
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Just like Pants, Earthly is a powerful tool for managing monorepo builds. [Check it out](/).**
 

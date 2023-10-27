@@ -13,6 +13,7 @@ internal-links:
  - ClusterIP
 excerpt: |
     Learn how to create and use services in Kubernetes to improve the communication and scalability of your containerized applications. This article covers the different types of services, such as ClusterIP, Headless, NodePort, and LoadBalancer, and provides step-by-step instructions on how to define and configure them using YAML files. Whether you're a beginner or an experienced developer, this guide will help you understand and leverage the power of services in Kubernetes.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Kubernetes services. If you are looking for a simpler approach to building services then [check us out](/).**
 

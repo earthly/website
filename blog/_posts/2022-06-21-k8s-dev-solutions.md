@@ -13,6 +13,7 @@ internal-links:
  - Kubernetes Development
 excerpt: |
     Looking to develop applications locally using Kubernetes? Check out this article comparing the top local Kubernetes development solutions, including minikube, kind, K3s, kubeadm, Docker Desktop, and MicroK8s. Learn about their platform support, setup complexity, flexibility, and community support to help you choose the best option for your needs.
+last_modified_at: 2023-10-09
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Earthly could be exactly what you need to optimize your build process. Why not [give it a look](/)?**
 

@@ -13,6 +13,7 @@ internal-links:
  - Variable Hiding
 excerpt: |
     Learn how to use closures and decorators in Python to hide variables, modify function behavior, and add functionality to existing functions or classes. This guide provides examples and explanations of closures and decorators, as well as their practical applications in Python programming.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly works great with Python projects. [Check it out](/).**
 

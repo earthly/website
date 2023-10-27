@@ -9,6 +9,7 @@ internal-links:
  - just an example
 excerpt: |
     Join us in celebrating one year of Write With Us! We've had the pleasure of working with over 25 talented tech writers on over 70 technical tutorials. If you're an experienced writer looking to expand your audience or a beginner eager to learn and improve, we'd love to hear from you!
+last_modified_at: 2023-07-14
 ---
 <div class="notice--info notice--big">
 
