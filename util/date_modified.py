@@ -2,9 +2,17 @@ import os
 import subprocess
 import yaml
 
+
+# Goal: Set last_modified_at for all blog posts using git data
+# Problem: Well, now that I've used this script once, the last modified date per git is
+#          the very commit where I set the last modified date, for all blog posts. 
+#          To avoid that, I guess we'd have to exclude the git commits where this script is run.
+
+
 # Path to the posts directory
 POSTS_DIR = "blog/_posts/"
 
+# remove last_modified_at
 for filename in os.listdir(POSTS_DIR):
     if filename.endswith(".md"):
         filepath = os.path.join(POSTS_DIR, filename)
@@ -17,18 +25,17 @@ for filename in os.listdir(POSTS_DIR):
         with open(filepath, 'w') as file:
             file.writelines(content)
 
-# Iterate over all markdown files in the directory
+# set last_modified_at using git dates
 for filename in os.listdir(POSTS_DIR):
     if filename.endswith(".md"):
         filepath = os.path.join(POSTS_DIR, filename)
         
-        # Get last modified date from Git (Note: This may not work as expected since these files are not in a git repository. We'll fallback to current date if git fails.)
+        # Get last modified date from Git
         try:
             date = subprocess.check_output(["git", "log", "-1", "--format=%ad", "--date=short", "--", filepath]).decode('utf-8').strip()
         except:
-            date = "Unknown"  # Placeholder if the git command fails
+            date = "Unknown"  
         
-        # Read the file
         with open(filepath, 'r') as file:
             content = file.readlines()
             delimiter_count = content.count('---\n')
