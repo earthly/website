@@ -14,6 +14,7 @@ internal-links:
  - Docker
 excerpt: |
     Learn how to efficiently manipulate and process text data in Linux with a variety of powerful commands, including sed, grep, awk, tr, wc, cut, sort, tac, bat, fd, uniq, and xargs. These commands will help you search, filter, transform, and analyze text data, saving you time and effort in your daily workflow.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly might help streamline your text processing pipeline and make your projects easier to manage. [Check it out](/).**
 

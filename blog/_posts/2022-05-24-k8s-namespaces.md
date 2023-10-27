@@ -9,6 +9,7 @@ internal-links:
  - k8s namespaces
 excerpt: |
     Learn how and when to use Kubernetes namespaces to isolate workloads and manage resources more efficiently in your Kubernetes cluster. Discover the benefits of namespaces and how to create and manage them effectively.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
 

@@ -12,6 +12,7 @@ internal-links:
  - npx, npm and pnpm javascript projects
 excerpt: |
     This article compares npx, npm, and pnpm, three popular tools for managing JavaScript projects. It discusses their features, use cases, and when to use or not use each tool.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). Making building software in containers simpler and faster. Earthly is great for npm, npx, and pnmp users as it streamlines CI build processes. [Check it out](/).**
 

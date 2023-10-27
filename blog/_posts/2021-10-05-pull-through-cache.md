@@ -11,6 +11,7 @@ internal-links:
 - docker cost
 excerpt: |
     Learn how to save money and improve your developer workflow by setting up a pull-through cache for Docker Hub. This article provides step-by-step instructions and tips for configuring and hosting your own cache, helping you avoid rate limits and reduce costs.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about setting up a pull-through cache for Docker Hub. Earthly is a powerful build tool that can greatly enhance your developer workflow when working with Docker containers. [Check us out](/).**
 

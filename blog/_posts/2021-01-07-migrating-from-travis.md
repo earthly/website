@@ -12,6 +12,7 @@ topic: ci
 funnel: 2
 excerpt: |
     Learn about the recent migration of open-source projects off of Travis CI and discover alternative options for hosting your builds, such as Circle CI and GitHub Actions. Find out why this migration is important for the open-source community and how you can minimize the effort of moving your builds in the future.
+last_modified_at: 2023-07-11
 ---
 
 Starting in early December, a mad dash has been underway to migrate open-source projects off of Travis CI. What happened and where should you move your project to?

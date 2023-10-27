@@ -4,7 +4,6 @@ categories:
   - Tutorials 
 toc: true 
 author: Brandon
-last_modified_at: 2023-06-29
 sidebar:
   nav: monorepos
 
@@ -15,6 +14,7 @@ topic: monorepo
 funnel: 2
 excerpt: |
     Learn how to successfully build a monorepo in Go, where each module independently manages its own build, test, and release cycles. Discover the benefits of using a monorepo and how to import local Go modules. Plus, explore efficient caching and versioning strategies for monorepo builds.
+last_modified_at: 2023-07-11
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**

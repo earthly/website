@@ -13,6 +13,7 @@ internal-links:
  - features of fish shell
 excerpt: |
     Fish Shell is a user-friendly and interactive shell that can be used for daily tasks and scripting. It offers features like auto suggestions, tab-based completion, syntax highlighting, setting aliases and abbreviations, customization options, and the ability to write custom functions.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. If you're into Fish Shell, you might appreciate how Earthly simplifies the build processes. [Give it a look](/).**
 

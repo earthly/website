@@ -7,7 +7,6 @@ sidebar:
   nav: github-actions
 author: Keanan Koppenhaver
 editor: Mustapha Ahmad Ayodeji
-last_modified_at: 2023-06-26
 internal-links:
  - Terraform
  - Github Actions
@@ -15,6 +14,7 @@ internal-links:
  - Pipelines
 excerpt: |
     Learn how to automate your Terraform pipelines using GitHub Actions, creating powerful and reliable workflows for managing infrastructure as code. This tutorial guides you through the process of setting up Terraform Cloud, configuring your GitHub repository, and running your GitHub Actions workflow to provision and maintain your infrastructure.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
 

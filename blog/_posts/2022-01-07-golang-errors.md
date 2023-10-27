@@ -8,9 +8,9 @@ bottomcta: false
 internal-links:
  - just an example
 topic: go
-last_modified_at: 2023-04-17
 excerpt: |
     Learn how to effectively handle errors in Go with this informative article. Discover the basics of error handling in Go, strategies for robust code, and techniques for defining and wrapping errors. Improve your error handling skills and make your Go programs more reliable and debuggable.
+last_modified_at: 2023-10-03
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simple way to build then [check us out](/).**
 

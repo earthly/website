@@ -10,6 +10,7 @@ internal-links:
  - bazel
 excerpt: |
     Learn about the benefits and challenges of using Bazel, Google's open-source monorepo build system, from experts who have experience with it. Discover when to use Bazel, its history, case studies, migration tips, and the future of this powerful build tool.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to monorepos then [check us out](/).**
 

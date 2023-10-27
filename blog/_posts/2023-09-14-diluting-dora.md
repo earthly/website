@@ -12,6 +12,7 @@ internal-links:
  - how engineering best practices are bastardized
 excerpt: |
     Learn the ways marketers and consultants exploit DORA metrics. This blog post highlights ethical from unethical practices around the use of DORA metrics and offers guidance for tech experts. Learn how to protect the integrity of DORA metrics and make informed decisions.
+last_modified_at: 2023-09-13
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 

@@ -12,6 +12,7 @@ internal-links:
  - runnning github actions on timer
 excerpt: |
     This tutorial explains how to use cron jobs to schedule and run GitHub Actions workflows on a timer. It covers setting up the cron expressions, creating the workflows, and considerations for using cron in GitHub Actions.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and expedite software builds using containerization. If you're using GitHub Actions for automating cron jobs, you'll find Earthly to be a useful companion. [Check it out](/).**
 

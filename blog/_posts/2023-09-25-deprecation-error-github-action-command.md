@@ -13,6 +13,7 @@ internal-links:
  - set-output save-state add-path set-env workflow commands
 excerpt: |
     This tutorial explains how to resolve deprecation errors in GitHub Actions caused by the `set-output`, `save-state`, `add-path`, and `set-env` workflow commands. It provides step-by-step instructions for fixing the errors and warnings and introduces the use of environment files as an alternative.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. Earthly can be a great addition to your toolbox, especially when dealing with CI build processes like GitHub Actions. [Check it out](/).**
 

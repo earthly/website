@@ -13,6 +13,7 @@ internal-links:
  - concate
 excerpt: |
     Learn how to concatenate lists in Python using different methods, such as the `+` operator and the `extend()` function. Discover the best practices for combining lists and optimize performance in various scenarios.
+last_modified_at: 2023-07-14
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Ko6OESfhxbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

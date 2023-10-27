@@ -10,6 +10,7 @@ internal-links:
 bottomcta: false
 excerpt: |
     Learn how to balance social confidence and epistemic confidence in order to succeed in your career. Find out why being confidently uncertain can be a valuable mindset, and discover tips on how to navigate uncertainty with confidence.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give us a go](/).**
 

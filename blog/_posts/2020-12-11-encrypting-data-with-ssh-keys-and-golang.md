@@ -10,6 +10,7 @@ internal-links:
   - encryption
 excerpt: |
     Learn how to generate public/private key pairs, encrypt and decrypt data using RSA encryption in Golang. This tutorial provides step-by-step instructions and sample code to help you understand the process and implement it in your own projects.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We simplify the build process of software using containerization. It's a great tool for managing complex CI/CD pipelines, especially when security matters. [Check it out](/).**
 

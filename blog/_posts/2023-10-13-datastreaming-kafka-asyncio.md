@@ -13,6 +13,7 @@ internal-links:
  - building streaming applications
 excerpt: |
     This tutorial explores how to build real-time data streaming applications using Kafka and Asyncio. It covers setting up a Kafka cluster, fetching data from the Reddit API, processing the data asynchronously, and sending it to a Kafka topic for downstream processing.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're dealing with data streaming using Kafka asyncio, Earthly could be a game-changer for you. [Check it out](/).**
 

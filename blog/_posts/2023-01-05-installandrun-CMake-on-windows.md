@@ -12,6 +12,7 @@ internal-links:
  - Automation
 excerpt: |
     Learn how to install and run CMake on Windows, a powerful tool for build automation, testing, packaging, and software installation. Discover the pros and cons of using CMake and how it can enhance your development workflow.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're into CMake and automation, Earthly could be just the tool you need. [Check it out](/).**
 

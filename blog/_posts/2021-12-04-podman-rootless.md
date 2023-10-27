@@ -12,6 +12,7 @@ internal-links:
 last_modified_at: 2023-04-17
 excerpt: |
     Learn about Podman, a rootless Docker alternative that implements Open Container Initiative (OCI) standards. Discover its benefits, such as improved security and the ability to create and manage pods, and find out why it may be a compelling choice for developers and companies.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We simplify software building using containerization. Earthly works great using Podman, making builds repeatable, portable, and understandable. [Check it out](/).**
 

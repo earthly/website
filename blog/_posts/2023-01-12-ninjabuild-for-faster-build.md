@@ -12,6 +12,7 @@ internal-links:
  - Build System
 excerpt: |
     Learn how to use Ninja, a fast build system, to speed up the building of your software projects. Discover its advantages, limitations, and how to implement a Ninja build for your C++ projects.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. It's a different approach then you'll find in Ninja and you may want to [check it out](/).**
 

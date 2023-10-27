@@ -9,6 +9,7 @@ internal-links:
  - just an example
 excerpt: |
     Learn how to write effective technical tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). Simplifying software builds is our jam. Working on a Golang project? Earthly can ramp up your development workflow. [Give it a whirl](/)!**
 

@@ -11,6 +11,7 @@ internal-links:
  - azure
 excerpt: |
     Learn the basics of continuous integration, the differences between CI and CD, and common CI tools in this informative article. Discover how CI can help developers catch bugs earlier, increase productivity, and deliver higher-quality releases.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Got a continuous integration process in place? Earthly can boost it with faster iterations and simpler debugging. [Check it out](/).**
 

@@ -10,6 +10,7 @@ internal-links:
 topic: kubernetes
 excerpt: |
     Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up containerized software builds. If you're into Kubernetes best practices, Earthly would be a great addition to your toolbox. [Check it out](/).**
 

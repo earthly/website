@@ -12,6 +12,7 @@ internal-links:
  - linus system security
 excerpt: |
     This blog post discusses Linux Security Modules (LSMs) and how they can be used to enhance the security of Linux systems. It specifically focuses on AppArmor, one of the popular LSMs, and provides examples of creating profiles to restrict file and network access.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization, which can be a game-changer when working with Linux Security Modules. [Check us out](/).**
 

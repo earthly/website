@@ -14,6 +14,7 @@ internal-links:
 topic: kubernetes
 excerpt: |
     Learn how to monitor your Kubernetes cluster using Grafana and Prometheus. This tutorial will guide you through the process of setting up your own monitoring dashboard, visualizing internal state metrics, and accessing Grafana dashboards for resource monitoring.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify software building using containerization. Earthly can streamline your Kubernetes container building process. [Check it out](/).**
 

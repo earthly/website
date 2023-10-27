@@ -12,6 +12,7 @@ internal-links:
  - what is software dependency
 excerpt: |
     This article explores the challenges of software dependency management, including versioning conflicts, security vulnerabilities, and performance consistency. It also introduces tools like Earthly, Dependabot, Gradle, and OWASP Dependency-Check that can help improve software dependency management workflows.
+last_modified_at: 2023-10-17
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containers. Struggling with software dependency management? Earthly could be a game changer. [Check it out](/).**
 

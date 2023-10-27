@@ -15,6 +15,7 @@ topic: make
 last_modified_at: 2023-04-17
 excerpt: |
     Learn how to run Makefiles on Windows with different options like Chocolatey, Cygwin, NMAKE, CMake, and Windows Subsystem for Linux. Discover the strengths and weaknesses of each approach and find the best solution for your needs.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about `make` and `Makefile`s but if you're interested in a different approach to building software then [check us out](/).**
 

@@ -12,6 +12,7 @@ internal-links:
  - using kubernetes or nomad for containers
 excerpt: |
     This article compares the container orchestration tools Nomad and Kubernetes. Nomad is simpler and easier to use, while Kubernetes offers a broader set of features and is better suited for large-scale deployments.
+last_modified_at: 2023-10-20
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can streamline your CI build processes whether you're using Nomad or Kubernetes. [Check it out](/).**
 

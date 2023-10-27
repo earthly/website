@@ -11,6 +11,7 @@ internal-links:
  - lambda
 excerpt: |
     Learn how to set up your first AWS Lambda deployment for a Node application in this tutorial. Discover how to leverage AWS Lambda to execute backend applications without worrying about server configurations or maintenance.
+last_modified_at: 2023-08-17
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds. Earthly works great with Node.js. [Check it out](/).**
 

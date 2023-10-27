@@ -12,6 +12,7 @@ internal-links:
  - uploading artifacts with github actions
 excerpt: |
     This tutorial explains how to use artifacts with GitHub Actions to upload and download files. It covers the process of capturing data from workflows, uploading artifacts, and downloading them for further use.
+last_modified_at: 2023-10-06
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're into GitHub Actions, you'll love how Earthly can enhance your CI build processes. [Check it out](/).**
 

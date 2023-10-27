@@ -12,6 +12,7 @@ internal-links:
  - Cluster
 excerpt: |
     Learn how to set up distributed tracing in Kubernetes with SigNoz, an open-source Metrics, Tracing, and Logging tool for distributed systems. This article explains what distributed tracing is, how it works, and provides step-by-step instructions on how to configure and use SigNoz on your Kubernetes cluster.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check it out](/).**
 

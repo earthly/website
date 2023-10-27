@@ -8,6 +8,7 @@ published: true
 bottomcta: false
 excerpt: |
     In this article, the author shares their opinionated approach to interviewing engineers. They discuss the importance of problem-solving skills, the need for a "spark" in candidates, and the significance of culture fit. The article also provides insights into their specific interviewing process and offers tips for improving your own.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. As an engineer, using Earthly can help you optimize your build process and manage complex software projects more efficiently. [Check us out](/).**
 

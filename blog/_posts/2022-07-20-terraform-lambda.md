@@ -11,6 +11,7 @@ internal-links:
  - terraform import
 excerpt: |
     Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, and API Gateway, and tests the infrastructure by destroying and recreating it.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about importing existing infrastructure into Terraform. Earthly is a powerful build tool that any infrastructure as code project might benefit from. [Check it out](/).**
 

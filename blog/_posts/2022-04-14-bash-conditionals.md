@@ -12,6 +12,7 @@ internal-links:
  - flow control
 excerpt: |
     Learn how to use conditionals in Bash to improve your scripting skills and automate tasks. This comprehensive guide covers everything from test commands and operators to conditional statements and case statements. Whether you're a beginner or an experienced Bash user, this article will help you level up your Bash programming skills.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using conditionals in Bash. Earthly is a powerful build tool that Bash users should get to know. [Check us out](/).**
 
