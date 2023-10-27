@@ -535,3 +535,7 @@ Israel Ulelu:
     name    : "Israel Ulelu"
     bio     : "Israel Ulelu is a seasoned Senior Software Engineer with a passion for technical writing and open source. With over five years of experience in the industry, Israel has honed his skills in developing robust software solutions and has made valuable contributions to various aspects of technology. Israel’s ability to bridge the gap between complex technical concepts and accessible explanations has made him a trusted resource for developers seeking practical."
     avatar  : "/assets/images/authors/israel.jpg"
+Zubair Idris Aweda:
+    name    : "Zubair Idris Aweda"
+    bio     : "Zubair Idris Aweda is a highly motivated and results-driven software engineer with experience in full-stack web development."
+    avatar  : "/assets/images/authors/zubair-idris.jpg"
