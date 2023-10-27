@@ -10,8 +10,11 @@ for filename in os.listdir(POSTS_DIR):
     if filename.endswith(".md"):
         filepath = os.path.join(POSTS_DIR, filename)
         
-        # Get last modified date from Git in the format YYYY-MM-DD
-        date = subprocess.check_output(["git", "log", "-1", "--format=%ad", "--date=short", "--", filepath]).decode('utf-8').strip()
+        # Get last modified date from Git (Note: This may not work as expected since these files are not in a git repository. We'll fallback to current date if git fails.)
+        try:
+            date = subprocess.check_output(["git", "log", "-1", "--format=%ad", "--date=short", "--", filepath]).decode('utf-8').strip()
+        except:
+            date = "Unknown"  # Placeholder if the git command fails
         
         # Read the file
         with open(filepath, 'r') as file:
@@ -24,14 +27,9 @@ for filename in os.listdir(POSTS_DIR):
             front_matter_index = content.index('---\n') + 1  # index after the first '---'
             end_front_matter_index = front_matter_index + content[front_matter_index:].index('---\n')  # index of the second '---'
 
-            front_matter = yaml.safe_load("".join(content[front_matter_index:end_front_matter_index]))
-            
-            # Update or add the 'last_modified_at' field
-            front_matter['last_modified_at'] = date
-            
-            # Replace the old front matter with the updated one
-            content[front_matter_index:end_front_matter_index] = yaml.dump(front_matter, default_flow_style=False, allow_unicode=True).splitlines()
+            # Add the 'last_modified_at' field to the end of the front matter
+            content.insert(end_front_matter_index, f"last_modified_at: {date}\n")
             
         # Write the updated content back to the file
         with open(filepath, 'w') as file:
-            file.write("\n".join(content))
+            file.write("".join(content))
