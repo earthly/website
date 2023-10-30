@@ -8,20 +8,18 @@ sidebar:
   nav: "pypi"
 ---
 
-# Intro
-
 Python has a vibrant open source ecosystem and that has been one of the keys to its popularity. As a Python developer, you can create reusable tools and code and easily share them with others. Packaging and publishing your Python code properly enables other developers to easily install and use your code in their own projects. This allows you to contribute back to the community while also building your reputation.
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{ Our Goal Today is to get this package onto PyPi  }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{ Our Goal Today is to get this package onto PyPi }} %}
 <figcaption>Our Goal Today is to get this package onto PyPi</figcaption>
 </div>
 
 In this article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index). Learning these skills will you level up your ability to produce professional, sharable Python software.
 
-# Merge Lists Code
+## Merge Lists Code
 
-In an earlier article, I wrote about how to [merge sorted lists](/blog/python-timsort-merge/). This is the python merge code: 
+In an earlier article, I wrote about how to [merge sorted lists](/blog/python-timsort-merge/). This is the python merge code:
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
@@ -49,15 +47,15 @@ def merge(list1, list2):
 
 ~~~
 
-Lets get that up on pypi using setuptools.
+Lets get that up on PyPI using `setuptools`.
 
 ( In [Part Two](/blog/poetry-publish/), we'll package it with Poetry and in [Part Three](/blog/python-c-extension/), we'll port the C version of the code to PyPi.)
 
 First step is to find a name for our package.
 
-# Choosing A Package Name
+## Choosing A Package Name
 
-Orginally, I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
+Originally, I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
 
 You can check what already in use by searching around on [PyPI](https://pypi.org/). If you push a package that's already been taken you'll get this:
 
@@ -71,7 +69,7 @@ The name being in used forced me to look for a new name and its a good thing I d
 
 - **Keep It Short & Descriptive:** Names should be short, but also give a clear idea of what the package does. For example, requests is a popular library that makes HTTP requests.
 
-- **Avoid Underscores:** Although underscores are allowed, dashes are more common in package names. However, note that the actual module or package inside might use underscores (e.g., the package dateutil on PyPI corresponds to the date_util module when imported in Python).
+- **Avoid Underscores:** Although underscores are allowed, dashes are more common in package names. However, note that the actual module or package inside might use underscores (e.g., the package `dateutil` on PyPI corresponds to the `date_util` module when imported in Python).
 
 - **Avoid Uppercase Letters:** Lowercase names are conventional for package names. This makes them easy to type and avoids ambiguity on case-sensitive file systems.
 
@@ -81,7 +79,7 @@ The name being in used forced me to look for a new name and its a good thing I d
 
 - **Prefixes/Suffixes:** If your package is an extension or related to another package, consider using a prefix or suffix. For instance, flask- is a common prefix for Flask extensions (e.g., flask-login).
 
-- **Avoid "Py" Prefix:** While many packages use the "py" prefix to indicate they are Python packages (e.g., pyspark, pytz), it's become somewhat redundant since the package will be on PyPI, and it's understood that it's for Python. However, it's not a strict rule, and some popular packages still use it.
+- **Avoid `Py` Prefix:** While many packages use the "py" prefix to indicate they are Python packages (e.g., pyspark, pytz), it's become somewhat redundant since the package will be on PyPI, and it's understood that it's for Python. However, it's not a strict rule, and some popular packages still use it.
 
 - **Convey Main Benefit or Feature:** If possible, the name should convey the main benefit or feature of the package. For a merge algorithm that's faster, words like "fast", "speed", "quick", "swift", or "turbo" could be part of the name.
 
@@ -91,9 +89,9 @@ So, you can see `PyMerge` broke almost all of these rules and so I settled on th
 
 ### Setup Your Package Structure
 
-Once you've got a package name choosen, adjust your file structure to match: 
+Once you've got a package name chosen, adjust your file structure to match:
 
-~~~
+~~~{.ini}
 mergefast
 ├── README.md
 ├── mergefast
@@ -103,7 +101,7 @@ mergefast
 
 ~~~
 
-Here I've created a `mergefast` folder in my project and created a blank `__init__.py` and then added my `core.py` from above to this folder. 
+Here I've created a `mergefast` folder in my project and created a blank `__init__.py` and then added my `core.py` from above to this folder.
 
 (`setup.py` we cover next.)
 </div>
@@ -140,7 +138,7 @@ You can also do this with `python build` [^2]
 > python -m build --sdist
 ~~~
 
-~~~
+~~~{.merge-code caption="Output"}
 running sdist
 ...
 copying mergefast.egg-info/top_level.txt -> mergefast-0.1.3/mergefast.egg-info
@@ -153,7 +151,7 @@ removing 'mergefast-0.1.3' (and everything under it)
 
 A `tar.gz` distribution will be produced:
 
-~~~
+~~~{.ini}
 mergefast
 ├── README.md
 ├── dist
@@ -182,7 +180,7 @@ Or the newer version of the command
 python -m build --wheel
 ~~~
 
-~~~
+~~~{.merge-code caption="Output"}
 * Creating virtualenv isolated environment...
 * Installing packages in isolated environment... (setuptools >= 40.8.0, wheel)
 * Getting build dependencies for wheel...
@@ -201,7 +199,7 @@ Successfully built mergefast-0.1.3-py3-none-any.whl
 
 This gives you a wheel:
 
-~~~{.bash caption=">_"}
+~~~{.ini}
 .
 ├── Earthfile
 ├── README.md
@@ -216,7 +214,7 @@ This gives you a wheel:
 │   └── top_level.txt
 ├── setup.py
 ~~~
-
+<!-- vale HouseStyle.ListStart = NO -->
 The name of the generated wheel (`mergefast-0.1.3-py3-none-any.whl`) file tells us a lot about the package:
 
 - **mergefast**: This is the package name.
@@ -228,14 +226,14 @@ The name of the generated wheel (`mergefast-0.1.3-py3-none-any.whl`) file tells 
 - **none:** The package does not contain any compiled extensions or is not ABI-specific. ( In [part three](/python-c-extension), you'll see this vary lead to some complications).
 
 - **any:** This denotes the platform. "Any" means the package is platform-independent. ( This will come up in why we build a [Python C extension](/python-c-extension) as well. )
-
+<!-- vale HouseStyle.ListStart = YES -->
 Because this wheel works with any platform and any version of Python 3, our source tar is not necessarily needed by PyPi - our compiled wheel should work everywhere.
 
-But, let's test that. 
+But, let's test that.
 
-# Testing The Package
+## Testing the Package
 
-Ok, one of the tricky things about distributing your package to pypi is that once you upload it with a specific version number, you can't change it. The releases are , for practical purpoes, immutable.
+Ok, one of the tricky things about distributing your package to PyPI is that once you upload it with a specific version number, you can't change it. The releases are , for practical purposes, immutable.
 
 <div class="align-right">
 {% picture content-nocrop {{site.pimages}}{{page.slug}}/5400.png --img width="300px" --alt {{ You can Delete. But don't replace a package. }} %}
@@ -244,13 +242,13 @@ Ok, one of the tricky things about distributing your package to pypi is that onc
 
 ### Delete A Package?
 
-You can delete a released version, if its broken, or yank it, making it inaccessible. The thing you can't do is replace a version number once released. 
+You can delete a released version, if its broken, or yank it, making it inaccessible. The thing you can't do is replace a version number once released.
 
 ( There are some build-number based tricks you can find online, but PyPi expects immutable packages, so I'll avoid talking about tricks to side step immutability. )
 
 ## Testing: Pip Install Distribution Locally
 
-So you want to make sure your package works before you put it up on pypi. Ideally you'd want to make sure it works even on different host operating systems. But how can you test the package? Luckily there are several ways to test it.
+So you want to make sure your package works before you put it up on PyPI. Ideally you'd want to make sure it works even on different host operating systems. But how can you test the package? Luckily there are several ways to test it.
 
 We can test the source distribution locally, after using pip install:
 
@@ -264,7 +262,7 @@ We can test the source distribution locally, after using pip install:
 Then we can test it with [`test.py`](https://github.com/earthly/mergefast/blob/main/mergefast/tests/test.py) or just jump into the python repl and test it out.
 
 ~~~{.bash caption=">_"}
-python test.py
+> python test.py
 timsort took 5.440176733998669 seconds
 mergefast took 3.710623259001295 seconds
 ~~~
@@ -272,13 +270,14 @@ mergefast took 3.710623259001295 seconds
 We can test the `whl` the same way.
 
 ~~~{.bash caption=">_"}
-pip install mergefast-0.1.3.tar.gz
-python test.py
+> pip install mergefast-0.1.3.tar.gz
+...
+> python test.py
 timsort took 5.440176733998669 seconds
 mergefast took 3.710623259001295 seconds
 ~~~
 
-And everything seems to work! But how do we verify that this package is not dependent on some local configuration that I've forgotten to include? It's easy actually to take things a bit further.
+And everything seems to work! But how do we verify that this package is not dependent on some local configuration that I've forgotten to include? It's easy to take things a bit further.
 
 ## Earthfile Test
 
@@ -321,25 +320,23 @@ test-dist-whl-install:
     RUN python test.py
 ~~~
 
-And with that I have a truly solid way to test before I push it to pypi.
+And with that I have a truly solid way to test before I push it to PyPI.
 
 ## Twine PyPi Push
 
-Ok, let's push it. To push our package, we are going to use [twine](https://pypi.org/project/twine/).
+Ok, let's push it. To push our package, we are going to use [twine](https://PyPI.org/project/twine/).
 
-First thing to do is head to pypi and setup an API key.
-
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4660.png --alt {{  }} %}
-<figcaption>Head over to [PyPi]() and register an account.</figcaption>
-</div>
-
+First thing to do is head to PyPI and setup an API key.
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5110.png --alt {{  }} %}
-<figcaption></figcaption>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4660.png --alt {{ Head over to PyPi and register an account. }} %}
+<figcaption>Head over to [PyPi](https://pypi.org/) and register an account.</figcaption>
 </div>
 
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5110.png --alt {{ Create API Token }} %}
+<figcaption>Create API Token</figcaption>
+</div>
 
 Install twine:
 
@@ -378,7 +375,7 @@ twine-publish:
 
 ## Round Trip Testing
 
-And with that, our package is on pypi. We can test it by removing our on package and reinstalling from pypi:
+And with that, our package is on PyPI. We can test it by removing our on package and reinstalling from PyPI:
 
 ~~~{.bash caption=">_"}
 pip uninstall mergefast --yes
@@ -400,7 +397,7 @@ test-pypi-install:
     RUN python test.py
 ~~~
 
-And with that we have a published package. There is more to cover though. Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three,  we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
+And with that we have a published package. There is more to cover though. Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three, we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
 
 If you want to skip ahead, my code is on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
 
@@ -409,3 +406,4 @@ If you want to skip ahead, my code is on [GitHub](https://github.com/earthly/mer
 [^1]: That actual package shown here is being published as `mergeslow`, because well .. it is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
 
 [^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details.
+(END)

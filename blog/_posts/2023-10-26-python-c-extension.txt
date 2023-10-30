@@ -99,6 +99,7 @@ merge_module = Extension(
     include_dirs=["mergefast"],
     extra_compile_args=["-O3"]
 )
+
 ~~~
 
 1. **`"mergefast.core"`**:
@@ -134,6 +135,7 @@ Our `__init__.py` imports core, so `import mergefast.merge` works and without `f
 
 ~~{.python caption="__init__.py"}
 from mergefast.core import merge_int, merge_float, merge_latin, merge
+
 ~~~
 
 ( Without that, our package will work fine locally as a project location based package in poetry, but `import mergefast` won't work when install as a package. Highlighting the value of testing the package installation process, shown in the previous article. )
