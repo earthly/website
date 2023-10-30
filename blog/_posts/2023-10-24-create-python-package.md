@@ -337,6 +337,10 @@ First thing to do is head to PyPI and setup an API key.
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5110.png --alt {{ Create API Token }} %}
 <figcaption>Create API Token</figcaption>
 </div>
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1580.png --alt {{ Get Your Token }} %}
+<figcaption>Get Your API Token</figcaption>
+</div>
 
 Install twine:
 
@@ -375,7 +379,7 @@ twine-publish:
 
 ## Round Trip Testing
 
-And with that, our package is on PyPI. We can test it by removing our on package and reinstalling from PyPI:
+And with that, our package is on PyPI as [mergefast](https://pypi.org/project/mergefast/). We can test it by removing our on package and reinstalling from PyPI:
 
 ~~~{.bash caption=">_"}
 pip uninstall mergefast --yes
@@ -397,7 +401,7 @@ test-pypi-install:
     RUN python test.py
 ~~~
 
-And with that we have a published package. There is more to cover though. 
+And with that we have a published package, that we've tested end to end. There is more to cover though. 
 
 Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three, we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
 
