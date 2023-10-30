@@ -297,7 +297,7 @@ In `test-dist-tar-install` I start from a python base image, copy from my [build
 
 Then I can test the package installation at any time by running `earthly +test-dist-tar-install` and seeing the test pass:
 
-~~~
+~~~{caption="Earthly Output"}
 +test-dist-tar-install | --> COPY +build/dist dist
 +test-dist-tar-install | --> expandargs ls ./dist/*.tar.gz
 +test-dist-tar-install | --> RUN pip install "$TARFILE"
@@ -397,13 +397,14 @@ test-pypi-install:
     RUN python test.py
 ~~~
 
-And with that we have a published package. There is more to cover though. Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three, we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
+And with that we have a published package. There is more to cover though. 
 
-If you want to skip ahead, my code is on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
+Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three, we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
+
+Also, if you want to just skip ahead to the final solution, my code is on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
 
 {% include_html cta/bottom-cta.html %}
 
 [^1]: That actual package shown here is being published as `mergeslow`, because well .. it is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
 
-[^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details.
-(END)
+[^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details on why this way should be prefered.
