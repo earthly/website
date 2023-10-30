@@ -10,7 +10,18 @@ sidebar:
 
 # Intro
 
-# My code
+Python has a vibrant open source ecosystem and that has been one of the keys to its popularity. As a Python developer, you can create reusable tools and code and easily share them with others. Packaging and publishing your Python code properly enables other developers to easily install and use your code in their own projects. This allows you to contribute back to the community while also building your reputation.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{ Our Goal Today is to get this package onto PyPi  }} %}
+<figcaption>Our Goal Today is to get this package onto PyPi</figcaption>
+</div>
+
+In this article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index). Learning these skills will you level up your ability to produce professional, sharable Python software.
+
+# Merge Lists Code
+
+In an earlier article, I wrote about how to [merge sorted lists](/blog/python-timsort-merge/). This is the python merge code: 
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
@@ -38,37 +49,17 @@ def merge(list1, list2):
 
 ~~~
 
-# Registrying on pypi and pypi staging
+Lets get that up on pypi using setuptools.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4660.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4830.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
+( In [Part Two](/blog/poetry-publish/), we'll package it with Poetry and in [Part Three](/blog/python-c-extension/), we'll port the C version of the code to PyPi.)
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4890.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
-
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5400.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
-
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
+First step is to find a name for our package.
 
 # Choosing A Package Name
 
-Orginally I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
+Orginally, I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
 
-When I orginally used twine to push it I got this:
+You can check what already in use by searching around on [PyPI](https://pypi.org/). If you push a package that's already been taken you'll get this:
 
 ~~~
 HTTP Error 403: The user 'adamgordonbell' isn't allowed to upload to ↩
@@ -76,7 +67,7 @@ project 'PyMerge'.
 See https://pypi.org/help/#project-name for more information.
 ~~~
 
-This forced my to look for a new name and its a good thing I did because it turns out `PyMerge` is a horrible name. When selecting a name for your package, follow these rules set forth by the Python Packaging Authority (PyPA):
+The name being in used forced me to look for a new name and its a good thing I did because it turns out `PyMerge` is a horrible name. When selecting a name for your package, follow these rules set forth by the Python Packaging Authority (PyPA):
 
 - **Keep It Short & Descriptive:** Names should be short, but also give a clear idea of what the package does. For example, requests is a popular library that makes HTTP requests.
 
@@ -96,30 +87,54 @@ This forced my to look for a new name and its a good thing I did because it turn
 
 So, you can see `PyMerge` broke almost all of these rules and so I settled on the name `mergefast`[^1] which meets all the rules.
 
-# Setup.py and Twine package publishing
+<div class="notice--info">
 
-## Setup.py
+### Setup Your Package Structure
+
+Once you've got a package name choosen, adjust your file structure to match: 
+
+~~~
+mergefast
+├── README.md
+├── mergefast
+│   ├── __init__.py
+│   └── core.py
+├── setup.py
+
+~~~
+
+Here I've created a `mergefast` folder in my project and created a blank `__init__.py` and then added my `core.py` from above to this folder. 
+
+(`setup.py` we cover next.)
+</div>
+
+## Creating a Distribution With SetupTools
+
+There are a couple of different paths you can go down when creating a distribution in python. We are going to be using `setuptools`.
+
+Setup tools comes bundled with Python by default, so all we need to do to start is create a `setup.py` file.
 
 ~~~{.python caption="setup.py"}
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(
     name='mergefast',
     version='0.1.3',
-    packages=find_packages(),
-    description='A simple package for merging lists.',
-    author='Adam Gordon Bell',
-    author_email='adam@earthly.dev'
+    py_modules=['mergefast']
 )
 ~~~
 
-## Source Dists and Wheels
+This is most minimal setup.py we can create. More details like description and author can also be added.
+
+## Source Distribution
+
+Next create a source distribution `sdist`:
 
 ~~~{.bash caption=">_"}
 > python3 setup.py sdist
 ~~~
 
-Or the newer recommended `python build` [^2]
+You can also do this with `python build` [^2]
 
 ~~~{.bash caption=">_"}
 > python -m build --sdist
@@ -127,28 +142,7 @@ Or the newer recommended `python build` [^2]
 
 ~~~
 running sdist
-running egg_info
-creating mergefast.egg-info
-writing mergefast.egg-info/PKG-INFO
-writing dependency_links to mergefast.egg-info/dependency_links.txt
-writing top-level names to mergefast.egg-info/top_level.txt
-writing manifest file 'mergefast.egg-info/SOURCES.txt'
-reading manifest file 'mergefast.egg-info/SOURCES.txt'
-writing manifest file 'mergefast.egg-info/SOURCES.txt'
-running check
-creating mergefast-0.1.3
-creating mergefast-0.1.3/mergefast
-creating mergefast-0.1.3/mergefast.egg-info
-creating mergefast-0.1.3/tests
-copying files to mergefast-0.1.3...
-copying README.md -> mergefast-0.1.3
-copying pyproject.toml -> mergefast-0.1.3
-copying setup.py -> mergefast-0.1.3
-copying mergefast/__init__.py -> mergefast-0.1.3/mergefast
-copying mergefast/core.py -> mergefast-0.1.3/mergefast
-copying mergefast.egg-info/PKG-INFO -> mergefast-0.1.3/mergefast.egg-info
-copying mergefast.egg-info/SOURCES.txt -> mergefast-0.1.3/mergefast.egg-info
-copying mergefast.egg-info/dependency_links.txt -> mergefast-0.1.3/mergefast.egg-info
+...
 copying mergefast.egg-info/top_level.txt -> mergefast-0.1.3/mergefast.egg-info
 copying tests/__init__.py -> mergefast-0.1.3/tests
 copying tests/test.py -> mergefast-0.1.3/tests
@@ -156,6 +150,8 @@ Writing mergefast-0.1.3/setup.cfg
 Creating tar archive
 removing 'mergefast-0.1.3' (and everything under it)
 ~~~
+
+A `tar.gz` distribution will be produced:
 
 ~~~
 mergefast
@@ -171,6 +167,8 @@ mergefast
 ├── setup.py
 
 ~~~
+
+### Building the `whl`
 
 We can do the same thing to produce a wheel, which is compiled version of the package.
 
@@ -188,49 +186,7 @@ python -m build --wheel
 * Creating virtualenv isolated environment...
 * Installing packages in isolated environment... (setuptools >= 40.8.0, wheel)
 * Getting build dependencies for wheel...
-running egg_info
-creating mergefast.egg-info
-writing mergefast.egg-info/PKG-INFO
-writing dependency_links to mergefast.egg-info/dependency_links.txt
-writing top-level names to mergefast.egg-info/top_level.txt
-writing manifest file 'mergefast.egg-info/SOURCES.txt'
-reading manifest file 'mergefast.egg-info/SOURCES.txt'
-writing manifest file 'mergefast.egg-info/SOURCES.txt'
-* Installing packages in isolated environment... (wheel)
-* Building wheel...
-running bdist_wheel
-running build
-running build_py
-creating build
-creating build/lib
-creating build/lib/tests
-copying tests/__init__.py -> build/lib/tests
-copying tests/test.py -> build/lib/tests
-creating build/lib/mergefast
-copying mergefast/__init__.py -> build/lib/mergefast
-copying mergefast/core.py -> build/lib/mergefast
-installing to build/bdist.macosx-13-arm64/wheel
-running install
-running install_lib
-creating build/bdist.macosx-13-arm64
-creating build/bdist.macosx-13-arm64/wheel
-creating build/bdist.macosx-13-arm64/wheel/tests
-copying build/lib/tests/__init__.py -> build/bdist.macosx-13-arm64/wheel/tests
-copying build/lib/tests/test.py -> build/bdist.macosx-13-arm64/wheel/tests
-creating build/bdist.macosx-13-arm64/wheel/mergefast
-copying build/lib/mergefast/__init__.py -> build/bdist.macosx-13-arm64/wheel/mergefast
-copying build/lib/mergefast/core.py -> build/bdist.macosx-13-arm64/wheel/mergefast
-running install_egg_info
-running egg_info
-writing mergefast.egg-info/PKG-INFO
-writing dependency_links to mergefast.egg-info/dependency_links.txt
-writing top-level names to mergefast.egg-info/top_level.txt
-reading manifest file 'mergefast.egg-info/SOURCES.txt'
-writing manifest file 'mergefast.egg-info/SOURCES.txt'
-Copying mergefast.egg-info to build/bdist.macosx-13-arm64/wheel/mergefast-0.1.3-py3.11.egg-info
-running install_scripts
-creating build/bdist.macosx-13-arm64/wheel/mergefast-0.1.3.dist-info/WHEEL
-creating '/Users/adam/sandbox/mergefast/mergefast/dist/.tmp-9qcuhgte/mergefast-0.1.3-py3-none-any.whl' and adding 'build/bdist.macosx-13-arm64/wheel' to it
+...
 adding 'mergefast/__init__.py'
 adding 'mergefast/core.py'
 adding 'tests/__init__.py'
@@ -251,7 +207,8 @@ This gives you a wheel:
 ├── README.md
 ├── build
 ├── dist
-│   └── mergefast-0.1.3-py3-none-any.whl
+│   ├── mergefast-0.1.3-py3-none-any.whl
+│   └── mergefast-0.1.3.tar.gz
 ├── mergefast.egg-info
 │   ├── PKG-INFO
 │   ├── SOURCES.txt
@@ -260,25 +217,40 @@ This gives you a wheel:
 ├── setup.py
 ~~~
 
-The Wheel `whl` generated tells us a lot about the package:
+The name of the generated wheel (`mergefast-0.1.3-py3-none-any.whl`) file tells us a lot about the package:
 
-mergefast: This is the package name.
+- **mergefast**: This is the package name.
 
-0.1.3: This is the version number of the package.
+- **0.1.3:** This is the version number of the package.
 
-py3: This indicates that the package is compatible with Python 3. It doesn't specify an exact version, so the package is expected to work with any Python 3 version. If it were py2.py3, that would mean it's compatible with both Python 2 and Python 3.
+- **py3:** This indicates that the package is compatible with Python 3. The package is expected to work with any Python 3 version. If it were py2.py3, that would mean it's compatible with both Python 2 and Python 3.
 
-none: This refers to the ABI (Application Binary Interface). "None" means that the package does not contain any compiled extensions or is not ABI-specific. If the package contained compiled code specific to a certain ABI, you would see a different tag here.
+- **none:** The package does not contain any compiled extensions or is not ABI-specific. ( In [part three](/python-c-extension), you'll see this vary lead to some complications).
 
-any: This denotes the platform. "Any" means the package is platform-independent. If the package contained compiled binaries specific to a platform, you might see something like manylinux1_x86_64 (for a specific Linux standard on 64-bit).
+- **any:** This denotes the platform. "Any" means the package is platform-independent. ( This will come up in why we build a [Python C extension](/python-c-extension) as well. )
 
-We'll get into generating wheels for compiled extensions in the next article, but for now It's interesting to note that this wheel because its python only can be used on any python3 installation. And that is great for users of our package on pypi. We don't even need the source distribution as fallback.
+Because this wheel works with any platform and any version of Python 3, our source tar is not necessarily needed by PyPi - our compiled wheel should work everywhere.
+
+But, let's test that. 
 
 # Testing The Package
 
-Ok, one of the tricky things about distributing your package to pypi that you should know is that once upload a package to pypi with a version number you cannot change it.
+Ok, one of the tricky things about distributing your package to pypi is that once you upload it with a specific version number, you can't change it. The releases are , for practical purpoes, immutable.
 
-You can remove it, using the delete button in pypi and there are some otehr tricks but basically once its up there is up there. So you want to make suer you package works before you put it up on pypi. Ideally you'd want to make sure it works even on differnt host operating systems. But how can you test the package? Luckily there are several ways to test it.
+<div class="align-right">
+{% picture content-nocrop {{site.pimages}}{{page.slug}}/5400.png --img width="300px" --alt {{ You can Delete. But don't replace a package. }} %}
+<figcaption>You can Delete. But don't replace a package.</figcaption>
+</div>
+
+### Delete A Package?
+
+You can delete a released version, if its broken, or yank it, making it inaccessible. The thing you can't do is replace a version number once released. 
+
+( There are some build-number based tricks you can find online, but PyPi expects immutable packages, so I'll avoid talking about tricks to side step immutability. )
+
+## Testing: Pip Install Distribution Locally
+
+So you want to make sure your package works before you put it up on pypi. Ideally you'd want to make sure it works even on different host operating systems. But how can you test the package? Luckily there are several ways to test it.
 
 We can test the source distribution locally, after using pip install:
 
@@ -306,11 +278,11 @@ timsort took 5.440176733998669 seconds
 mergefast took 3.710623259001295 seconds
 ~~~
 
-And everything seems to work! But how do we verify that this package is not dependent on some local setup or file that I've forgotten to include? It's easy actually to take things a bit further.
+And everything seems to work! But how do we verify that this package is not dependent on some local configuration that I've forgotten to include? It's easy actually to take things a bit further.
 
 ## Earthfile Test
 
-The easiet way to test the package across environments is before pushing to pypi is to use containers. I like to use Earthly for this. All I need to do is wrap the steps we've already covered up into an Earthfile target:
+The easiet way to test the package in a repeatable way across architectures and platforms is to use containers. I like to use Earthly for this. All I need to do is wrap the steps we've already covered up into an Earthfile target:
 
 ~~~{.dockerfile caption="Earthfile"}
 test-dist-tar-install:
@@ -337,7 +309,7 @@ Then I can test the package installation at any time by running `earthly +test-d
 +test-dist-tar-install | mergefast took 27.499190239999734 seconds
 ~~~
 
-I can use the same extact process to test the wheel:
+I can use the same process to test the wheel:
 
 ~~~{.dockerfile caption="Earthfile"}
 test-dist-whl-install:
@@ -353,14 +325,27 @@ And with that I have a truly solid way to test before I push it to pypi.
 
 ## Twine PyPi Push
 
-Ok, let's push it. To push our package we are going to use [twine](https://pypi.org/project/twine/).
+Ok, let's push it. To push our package, we are going to use [twine](https://pypi.org/project/twine/).
 
-First thing to do is head back to pypi and setup an API key.
+First thing to do is head to pypi and setup an API key.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4660.png --alt {{  }} %}
+<figcaption>Head over to [PyPi]() and register an account.</figcaption>
+</div>
+
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5110.png --alt {{  }} %}
 <figcaption></figcaption>
 </div>
+
+
+Install twine:
+
+~~~{.bash caption=">_"}
+pip install twine
+~~~
 
 Setup ENVs for twine with you API Key:
 
@@ -369,31 +354,29 @@ export TWINE_USERNAME=__token__
 export TWINE_PASSWORD=**************
 ~~~
 
-Install twine:
-
-~~~{.bash caption=">_"}
-pip install twine
-~~~
-
 Then use twine to upload:
 
 ~~~{.bash caption=">_"}
 twine upload --repository-url https://upload.pypi.org/legacy/ dist/*
 ~~~
 
-Todo: output
-For ease of publishing in the future, I put this whole thing in my Earthfile:
+~~~
+Uploading distributions to https://upload.pypi.org/legacy/
+Uploading mergefast-0.1.3-py3-none-any.whl
+Uploading mergefast-0.1.3.tar.gz
+View at https://pypi.org/project/mergefast/0.1.3/
+~~~
 
-Todo: Add secrets
+For ease of publishing in the future, I put this whole thing in my Earthfile:
 
 ~~~{.dockerfile caption="Earthfile"}
 twine-publish:
     FROM +build
     COPY +build/dist dist
-    RUN twine upload --repository-url https://test.pypi.org/legacy/ dist/*
+    RUN --secret TWINE_PASSWORD twine upload --repository-url https://test.pypi.org/legacy/ -u "__token__" -p $TWINE_PASSWORD dist/* 
 ~~~
 
-## Testing Again
+## Round Trip Testing
 
 And with that, our package is on pypi. We can test it by removing our on package and reinstalling from pypi:
 
@@ -407,7 +390,7 @@ python test.py
  mergeslow took 2.71025900331295 seconds
 ~~~
 
-Of course, I put this all as a target in in the Earthfile for ease of testing:
+Of course, I put this all in my Earthfile as well, for ease of testing:
 
 ~~~{.dockerfile caption="Earthfile"}
 test-pypi-install:
@@ -417,12 +400,12 @@ test-pypi-install:
     RUN python test.py
 ~~~
 
-And with that we have a published package. There is more to cover though. Next up is publishing with Poetry, which simplifies some of this process, publishing to test.pypi.com and publishing python extensions which use C. Native code does complicate things.
+And with that we have a published package. There is more to cover though. Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three,  we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
 
-IF you want to skip ahead, my code is on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
+If you want to skip ahead, my code is on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
 
 {% include_html cta/bottom-cta.html %}
 
-[^1]: That actual package shown here is being published as `mergeslow`, because it's python only implementation is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
+[^1]: That actual package shown here is being published as `mergeslow`, because well .. it is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
 
 [^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details.
