@@ -7,11 +7,17 @@ author: Adam
 sidebar:
   nav: "pypi"
 ---
-[Last time](/blog/create-python-package) I showed you how to publish a package to PyPI using setup.py. But if you are using poetry, and [you should be](/blog/python-poetry/), then there is an even easier way. Let me walk you all the way through it, including how to push to `test.pypi.org` for testing purposes. But if you want to skip ahead, know you just have to run `poetry publish --build` on a properly configured poetry project.
+[Last time](/blog/create-python-package), I walked through packaging a simple Python module using setuptools and setup.py to generate distributions and publish them to PyPI.
+
+Now in Part 2, I'll show you how the Poetry dependency manager and build system simplifies parts of this process. We'll use the same merge sort example code from [Part 1](/blog/create-python-package), but package and distribute it with Poetry instead of setuptools.
+
+Like in Part 1, we'll test the package locally, but we'll also use TestPyPI before publishing to the main package index. Poetry streamlines building and uploading distributions, but the overall workflow remains similar.
+
+By the end, you'll see how both setuptools and Poetry can accomplish the task of packaging and publishing Python projects. To quickly package a Poetry project, just run `poetry publish --build` on a properly configured project. But let's go through the details step-by-step.
 
 ## Code
 
-Just like last time, I have this python code I want to get on PyPI as a package:
+To move our code to Poetry, first we need the same example code from Part 1 that we want to package::
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
@@ -48,7 +54,7 @@ To create a poetry project for this:
 Created package mergefast in mergefast
 ~~~
 
-Doing that creates the structure for my package:
+Doing that creates the structure for my package. Compared to using setuptools directly, Poetry has already initialized the configuration needed to build distributions.
 
 ~~~{.ini}
 .

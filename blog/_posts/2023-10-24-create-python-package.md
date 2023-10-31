@@ -10,16 +10,20 @@ sidebar:
 
 Python has a vibrant open source ecosystem and that has been one of the keys to its popularity. As a Python developer, you can create reusable tools and code and easily share them with others. Packaging and publishing your Python code properly enables other developers to easily install and use your code in their own projects. This allows you to contribute back to the community while also building your reputation.
 
+In this 3-part series, we'll cover packaging a simple Python script using setuptools and twine, then an alternative method using poetry, then we will extend what we learn to a C module, and finally we will publish it to PyPI. 
+
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{ Our Goal Today is to get this package onto PyPi }} %}
 <figcaption>Our Goal Today is to get this package onto PyPi</figcaption>
 </div>
 
-In this article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index). Learning these skills will you level up your ability to produce professional, sharable Python software.
+In this first article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index) using setuptools and twine. Learning these skills will you level up your ability to produce professional, sharable Python software.
 
 ## Merge Lists Code
 
-In an earlier article, I wrote about how to [merge sorted lists](/blog/python-timsort-merge/). This is the python merge code:
+To start, we'll use the following simple Python code snippet as an example to package:
+
+(See earlier article about [merge sorted lists](/blog/python-timsort-merge/) for background.) 
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
@@ -403,9 +407,13 @@ test-pypi-install:
 
 And with that we have a published package, that we've tested end to end. There is more to cover though.
 
-Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three, we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
+If you want to just skip ahead to the final solution, the full code is available on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
 
-Also, if you want to just skip ahead to the final solution, my code is on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
+In the [next article](/blog/poetry-publish) in this series, we'll cover:
+
+- Publishing the package with Poetry
+- Pushing to test.pypi.com for testing 
+- Creating and packaging a Python C extension ([in part 3](/blog/python-c-extension/))
 
 {% include_html cta/bottom-cta.html %}
 
