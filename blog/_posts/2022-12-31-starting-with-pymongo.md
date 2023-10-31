@@ -12,6 +12,7 @@ internal-links:
  - Cluster
 excerpt: |
     Learn how to get started with PyMongo, the official MongoDB driver for Python. This tutorial covers setting up a remote MongoDB database using MongoDB Atlas, connecting to the database with PyMongo, and performing CRUD operations on the database.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Working with Python? Earthly can streamline your MongoDB application development process. [Check it out](/).**
 

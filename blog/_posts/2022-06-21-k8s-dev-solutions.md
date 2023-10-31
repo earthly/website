@@ -13,6 +13,7 @@ internal-links:
  - Kubernetes Development
 excerpt: |
     Looking to develop applications locally using Kubernetes? Check out this article comparing the top local Kubernetes development solutions, including minikube, kind, K3s, kubeadm, Docker Desktop, and MicroK8s. Learn about their platform support, setup complexity, flexibility, and community support to help you choose the best option for your needs.
+last_modified_at: 2023-10-09
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Earthly could be exactly what you need to optimize your build process. Why not [give it a look](/)?**
 
@@ -115,8 +116,6 @@ MicroK8s again supports the three main operating systems, and you will find easy
 The main reason to choose MicroK8s is that it comes with any of the features you would normally use in a Kubernetes installation, even allowing you to enable a registry to use. Performance is okay but not amazing, with the [microservice demo](https://github.com/GoogleCloudPlatform/microservices-demo.git) deploying in a few minutes.
 
 ## Complexity of Setup
-
-![Complexity general image]({{site.images}}{{page.slug}}/complexity.jpg)\
 
 Once you know what platforms each tool supports and you've made sure that it matches the platform and environment you have, you also need to look into how complex the setup is. If the tool has everything you need it to have but it's too complex to set up, then it's no longer the right choice for you. Or perhaps you're looking for something to implement organization-wide; in which case, the complexity of the setup may be one of the most important factors.
 

@@ -13,6 +13,7 @@ internal-links:
  - Pods
 excerpt: |
     Learn about Linux capabilities and how they allow for fine-grained control over the privileges of running processes. Discover how to use capabilities in Docker containers and Kubernetes, and understand the importance of setting the right capabilities for your containerized workloads.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give us a try](/).**
 

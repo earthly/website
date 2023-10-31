@@ -14,6 +14,7 @@ internal-links:
  - Scalability
 excerpt: |
     Learn how to use Docker images with Bazel to enhance scalability and simplify the development process. This article explores the integration of Docker and Bazel, provides a step-by-step tutorial, and highlights the benefits of using these tools together.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 

@@ -13,6 +13,7 @@ topic: python
 funnel: 2
 excerpt: |
     Learn how to beat TimSort at merging sorted lists in Python by creating a C extension. Discover the performance advantages of merging lists compared to sorting them, and explore the special comparisons used by TimSort for different data types.
+last_modified_at: 2023-10-18
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9fcWnAf6rEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
@@ -117,7 +118,7 @@ The bulk of the C Extension, whose performance I'm going to cover in a minute, i
 
 ~~~
 
-<figcaption>C merge ([full and final version on GitHub](https://github.com/earthly/pymerge/blob/main/merge.c))</figcaption>
+<figcaption>C merge ([full and final version on GitHub](https://github.com/earthly/mergefast/blob/v1/mergefast/merge.c))</figcaption>
 
 The nice thing about C extensions in Python is that they are easy to use. Once compiled, I can just `import merge` and use my new merge method:
 
@@ -229,7 +230,7 @@ The default `merge` beats Timsort for heterogeneous lists, and the specialized v
 
 There, I have beat Timsort for merging sorting lists, although I had to pull in some code from TimSort itself to get here. I'm not sure how valuable this is: if you need to go fast, you might not choose Python, but it was a fun learning project.
 
-Also, I learned that dropping down to C isn't as scary as it sounds. The build steps are a bit more involved, but with the included [Earthfile](https://github.com/earthly/pymerge/blob/main/Earthfile), the build is a one-liner and works cross-platform. You can find the code [on GitHub](https://github.com/earthly/pymerge) and an intro to [Earthly](https://earthly.dev/) on this very site, and with that example, you can build your own C extension reasonably quickly.
+Also, I learned that dropping down to C isn't as scary as it sounds. The build steps are a bit more involved, but with the included [Earthfile](https://github.com/earthly/mergefast/blob/v1/Earthfile), the build is a one-liner and works cross-platform. You can find the code [on GitHub](https://github.com/earthly/mergefast) and an intro to [Earthly](https://earthly.dev/) on this very site, and with that example, you can build your own C extension reasonably quickly.
 
 The surprising thing, though, is how good Timsort still is. It wasn't designed for merging sorted lists but for sorting real-world data. It turns out real-world data is often partially sorted, just like our use case.
 

@@ -12,6 +12,9 @@ internal-links:
  - dynamic linking
  - linking functions
  - how linking works
+excerpt: |
+    This article explains the concepts of static and dynamic linking in programming. It discusses the differences between the two methods, their advantages and disadvantages, and provides guidance on when to choose each approach.
+last_modified_at: 2023-10-06
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article explains what Static and Dynamic Linking are. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**

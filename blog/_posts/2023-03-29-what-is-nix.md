@@ -11,6 +11,7 @@ internal-links:
  - Package Manager
 excerpt: |
     Learn what Nix is and how it can revolutionize software development with its unique approach to package management and operating system configuration. Discover how Nix brings the power of purely functional programming to build systems and ensures reproducibility and control over software dependencies.
+last_modified_at: 2023-07-19
 ---
 **Hey, we're [Earthly](https://earthly.dev/). We simplify and speed up software builds through containerization. Earthly aligns well with Nix's approach but also adds efficiencies in managing builds. It's worth a peek, especially for Nix users. [Check us out](/).**
 

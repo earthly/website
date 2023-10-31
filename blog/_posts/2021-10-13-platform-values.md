@@ -11,6 +11,7 @@ excerpt: |
 as_related: true
 topic: earthly
 funnel: 3
+last_modified_at: 2023-07-11
 ---
 
 As creators of [a new approach to build automation](https://earthly.dev), we have always strived to create products that we ourselves would have wished we had. While this may sound easier than it actually is, the reality of the matter is that as creators it is hard to put ourselves in the shoes of a first-time user.

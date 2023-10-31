@@ -12,6 +12,7 @@ topic: engineering
 funnel: 2
 excerpt: |
     Learn how Earthly Compute, a remote code execution as a service, was built to handle bursty workloads and provide secure and fast remote execution for Earthly Satellites and Earthly CI. Discover the challenges faced and the optimizations made to save compute time and improve efficiency.
+last_modified_at: 2023-08-23
 ---
 _Earthly Compute is an internal service that customers use indirectly via [Earthly Satellites](https://earthly.dev/earthly-satellites). Now that Satellites been publicly announced, we have some stuff ~~to get off their chests~~ that we can finally share._
 

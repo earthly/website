@@ -10,6 +10,9 @@ internal-links:
  - earthly ci failed
  - learning from failures
  - fastest ci failed
+excerpt: |
+    Earthly CI, touted as the fastest CI system, is shutting down due to a lack of market demand and difficulty in convincing users to switch from existing CIs. The company will refocus on Earthly and Earthly Satellites, which offer build consistency and speed without the need for migration.
+last_modified_at: 2023-10-06
 ---
 
 ### TLDR

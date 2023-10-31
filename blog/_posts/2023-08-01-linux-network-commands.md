@@ -13,6 +13,7 @@ internal-links:
  - comprehensive guide
 excerpt: |
     This comprehensive guide explores various Linux networking commands that allow users to configure, monitor, and troubleshoot network connections. It covers essential commands like `ping`, `ifconfig`, `ip`, `netstat`, and advanced commands like `tcpdump`, `nmap`, and `iperf`, providing readers with the knowledge and skills to effectively manage and troubleshoot network issues in Linux systems.
+last_modified_at: 2023-08-28
 ---
 <!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
 

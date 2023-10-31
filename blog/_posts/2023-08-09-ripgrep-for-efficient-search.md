@@ -15,6 +15,7 @@ internal-links:
 excerpt: | 
      This article will cover what the ripgrep command-line tool does, what its key features are, how to install it, and how to use its basic and advanced options.
 
+last_modified_at: 2023-08-15
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article discusses using the `ripgrep` command-line tool. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**

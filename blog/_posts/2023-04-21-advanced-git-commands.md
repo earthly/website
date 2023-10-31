@@ -13,6 +13,7 @@ internal-links:
  - Terminal
 excerpt: |
     Learn ten advanced Git commands that every developer should know. These commands, such as Git Rebase, Git Grep, and Git Diff, can greatly improve your workflow and help you better manage your Git repositories.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. If your build workflow could use a boost, Earthly might be your secret weapon. [Give it a whirl](/).**
 

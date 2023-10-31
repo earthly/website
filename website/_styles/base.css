@@ -352,3 +352,25 @@ main.wave-main.homepage {
   line-height: 32px;
   margin-bottom: 16px;
 }
+
+.community-counts .divider {
+  @apply w-40 h-px bg-[#475569];
+}
+
+@media screen and (min-width: 768px) {
+  .community-counts > div {
+    width: calc(25% - 16px);
+  }
+
+  .community-counts .divider {
+    @apply w-px h-16;
+  }
+}
+
+.active-milestone div {
+  @apply bg-[#2d7e5d];
+}
+
+.active-milestone p {
+  @apply text-black;
+}

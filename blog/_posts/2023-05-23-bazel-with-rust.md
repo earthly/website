@@ -15,6 +15,7 @@ internal-links:
  - Build
 excerpt: |
     Learn how to use Bazel with Rust to simplify the build and deployment process of your applications. This article provides a step-by-step guide on setting up Bazel, building a Rust application, and running tests, helping you streamline your development workflow and improve build efficiency.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
 

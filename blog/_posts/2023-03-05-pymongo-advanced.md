@@ -14,6 +14,7 @@ internal-links:
  - Schema
 excerpt: |
     Learn how to use advanced features of MongoDB with PyMongo, including schema validation, data modeling patterns, and advanced queries. This tutorial will help you optimize your MongoDB database and improve the efficiency of your applications.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containers. It can even make Python CI a breeze. [Check it out](/).**
 

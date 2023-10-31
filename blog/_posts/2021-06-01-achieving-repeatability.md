@@ -10,6 +10,7 @@ internal-links:
  - reliability
 excerpt: |
     Learn how to achieve repeatability in your continuous integration pipeline and improve the reliability, reproducibility, reusability, and speed of your builds. Discover best practices for test automation, adopting continuous integration, and fixing broken builds immediately.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool for achieving repeatability in your CI/CD pipeline. [Check it out](/).**
 

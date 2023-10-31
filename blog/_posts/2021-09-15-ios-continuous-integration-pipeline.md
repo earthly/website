@@ -11,6 +11,7 @@ internal-links:
  - io pipeline
 excerpt: |
     Learn how to set up a continuous integration pipeline for your iOS app using fastlane and GitHub Actions. Automate your build, test, and deployment phases to streamline your development process and focus on writing code.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster. If you're setting up an iOS continuous integration pipeline, you might find Earthly's capabilities useful in streamlining the server-side process. [Check it out](/).**
 

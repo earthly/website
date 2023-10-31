@@ -13,6 +13,7 @@ internal-links:
  - Commands
 excerpt: |
     Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly can simplify your Linux build process. [Check it out](/).**
 

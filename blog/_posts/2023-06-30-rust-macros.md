@@ -14,6 +14,7 @@ internal-links:
  - Efficient
 excerpt: |
     This article explores the power of macros in Rust, providing practical examples and best practices for using them effectively. Whether you're new to macros or looking to enhance your understanding, this article will help you harness the full potential of macros in your Rust projects.
+last_modified_at: 2023-07-19
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article presents practical examples for using macros in Rust. If you're interested in a different approach to building and packaging software then [check us out](/).**

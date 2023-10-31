@@ -12,7 +12,11 @@ internal-links:
  - building your first monorepo
  - turborepo
  - first monorepo with turborepo
+excerpt: |
+    This tutorial introduces Turborepo, a fast and high-performance build system for JavaScript and TypeScript monorepos. It explains the benefits of using Turborepo, such as fast builds, remote caching, flexible task configuration, and integration with existing package managers, while also highlighting its limitations.
+last_modified_at: 2023-10-06
 ---
+**We're [Earthly](https://earthly.dev/). We use containerization to simplify and speed up software building. If you're working with monorepos, Earthly can be a game-changer for your build process. [Check it out](/).**
 
 In recent years, monorepos have seen a boom in popularity. Many real-life software projects consist of smaller, individual components that often depend on each other.
 

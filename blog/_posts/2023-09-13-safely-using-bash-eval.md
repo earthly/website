@@ -12,6 +12,9 @@ internal-links:
  - what is dynamic code evaluation
  - power of dynamic code evaluation
  - how to use the power of dynamic code evaluation
+excerpt: |
+    This article explains the Bash `eval` command, its usage, risks, and vulnerabilities. It provides guidance on how to safely use `eval` by sanitizing user input and following best practices.
+last_modified_at: 2023-10-06
 ---
 
 **We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article explains how you can safely use the Bash `eval` command. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**

@@ -13,6 +13,7 @@ internal-links:
  - Multi-container
 excerpt: |
     Learn about the differences between Docker Compose and Kubernetes, two popular container orchestration tools. Discover their features and use cases to determine which one is right for your needs.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly can seamlessly complement your Docker Compose or Kubernetes workflows. It's all about making your containerized app builds smoother. [Check it out](/).**
 

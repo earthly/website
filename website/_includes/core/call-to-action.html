@@ -9,8 +9,8 @@
   >
     Get Started Free
   </a>
-  <div class="text-center text-slate-400 text-l">
-    Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a>
+  <div id="earthly-core-hero-install-no-login">
+    <p class="text-center xl:text-left text-slate-400 text-sm">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="underline" href="https://earthly.dev/get-earthly" onclick="earthlyCoreHeroInstallNoLoginClick()">Install Earthly w/o logging in</a></p>
   </div>
 </div>
 
@@ -19,6 +19,13 @@
     analytics.track('earthly-core-get-started-free-click', {
       category: 'Get Started Free Click',
       label: 'earthly-core-get-started-free-click'
+    });
+  }
+
+  function earthlyCoreHeroInstallNoLoginClick() {
+    analytics.track('earthly-core-hero-install-no-login-click', {
+      category: 'Install No Login Click',
+      label: 'earthly-core-hero-install-no-login-click'
     });
   }
 </script>

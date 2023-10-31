@@ -10,6 +10,7 @@ internal-links:
  - performance testing
 excerpt: |
     Learn how to implement continuous testing in your DevOps workflows using GitHub Actions. This tutorial covers the basics of continuous testing, including unit tests, API testing, end-to-end testing, and performance testing. Discover how to automate your testing process and improve the quality of your software releases.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We help streamline software building with containerization. If you're implementing continuous testing with GitHub Actions, Earthly can automate and simplify your build process. [Give it a look](/).**
 

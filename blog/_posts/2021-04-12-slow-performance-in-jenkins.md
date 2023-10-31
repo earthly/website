@@ -9,6 +9,7 @@ internal-links:
 topic: ci
 excerpt: |
     Learn how to address slow performance in Jenkins and significantly improve the performance of your continuous integration workflow. This guide provides tips and strategies for overcoming common Jenkins performance issues without necessarily upgrading your hardware.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We streamline software building with containerization. Earthly can optimize your Jenkins CI/CD pipeline and help address slow performance. [Check it out](/).**
 

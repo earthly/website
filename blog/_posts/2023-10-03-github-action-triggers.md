@@ -11,7 +11,11 @@ internal-links:
  - how to use github action triggers
  - github actions triggers
  - working with github actions triggers
+excerpt: |
+    GitHub Actions is a powerful CI/CD platform that allows you to automate various tasks in your GitHub repository. This article explores different triggers, such as `create`, `delete`, `deployment`, `issues`, `issue_comment`, `page_build`, `pull_request`, `pull_request_review`, `push`, `registry_package`, `release`, `schedule`, `workflow_call`, and `workflow_dispatch`, and provides examples of how to use them to create automated workflows.
+last_modified_at: 2023-10-18
 ---
+<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're dabbling with GitHub Actions, Earthly can simplify your continuous integration workflows. [Give it a whirl](/).**
 
 [GitHub Actions](https://github.com/features/actions) is a continuous integration, continuous delivery (CI/CD) platform by GitHub that lets you automate, build, test, and deploy software directly in GitHub. A key component of GitHub Actions are triggers—events that start off an automated workflow. Triggers make it easy to execute workflows on demand or in response to an event in your GitHub repository.
 
@@ -482,17 +486,17 @@ jobs:
     runs-on: ubuntu-latest
     # Skips the job if the string "[skip ci]" is present in the 
     # commit message
-    if: ${{ !contains(github.event.head_commit, '[skip ci]') }}
+    if: {% raw %}${{ !contains(github.event.head_commit, '[skip ci]') }}{% endraw %}
     steps:
       - name: Checkout
         uses: actions/checkout@v3
       - name: Deploy to Vercel
         uses: BetaHuhn/deploy-to-vercel-action@v1.9.12
         with:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
-          VERCEL_ORG_ID: ${{ secrets.VERCEL_ORG_ID }}
-          VERCEL_PROJECT_ID: ${{ secrets.VERCEL_PROJECT_ID }}
+          GITHUB_TOKEN: {% raw %}${{ secrets.GITHUB_TOKEN }}{% endraw %}
+          VERCEL_TOKEN: {% raw %}${{ secrets.VERCEL_TOKEN }}{% endraw %}
+          VERCEL_ORG_ID: {% raw %}${{ secrets.VERCEL_ORG_ID }}{% endraw %}
+          VERCEL_PROJECT_ID: {% raw %}${{ secrets.VERCEL_PROJECT_ID }}{% endraw %}
 ~~~
 
 This workflow is configured to run whenever a `push` trigger is fired on the `master` branch. The workflow then checks out the latest commit on the `master` branch and deploys it to Vercel using another GitHub Action.

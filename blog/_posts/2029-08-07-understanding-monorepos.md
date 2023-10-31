@@ -12,6 +12,7 @@ internal-links:
  - monorepos and build systems
 excerpt: |
     This article explores the benefits of monorepos and discusses high-performance build systems like Nx and Turborepo that can help improve the scalability and efficiency of monorepos. These build systems create a dependency tree, utilize caching, and enable parallel job execution to optimize the build process and reduce build times.
+last_modified_at: 2023-08-28
 ---
 
 

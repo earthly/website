@@ -7,9 +7,9 @@ author: James Walker
 internal-links:
  - mysql
 topic: docker
-last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use Docker to manage your MySQL database and simplify your deployment process. This article covers everything from planning your deployment to persisting data with volumes, and even creating a custom Docker image for your MySQL instance.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about data management for MySQL containers. If you're interested in a simple and containerized approach to building software then [check us out](/).**
 

@@ -14,6 +14,7 @@ internal-links:
  - Optimization
 excerpt: |
     Learn how to use Grafana Loki, a powerful log aggregation tool, to collect, store, and analyze log data in Kubernetes. Discover the benefits of log aggregation and how Grafana Loki can help improve visibility, enhance security, meet compliance requirements, monitor performance, and respond to incidents more effectively.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give it a look](/).**
 

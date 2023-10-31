@@ -13,6 +13,7 @@ internal-links:
  - Dependencies
 excerpt: |
     Learn how to build and deploy a Python app with Bazel, a build automation tool. This article provides a step-by-step guide on implementing Bazel for building Python apps and demonstrates how to create a Flask app using Bazel. If you're interested in simplifying your software builds and deployments, this article is a must-read.
+last_modified_at: 2023-07-11
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about Bazel. If you are looking for a simpler approach to monorepo builds then [check us out](/).**
 

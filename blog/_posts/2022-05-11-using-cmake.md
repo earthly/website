@@ -12,6 +12,7 @@ internal-links:
  - cmake
 excerpt: |
     Learn how to use CMake, a popular tool for building applications in the C++ community. This tutorial provides a step-by-step guide on using CMake to configure a build pipeline and compile a simple C++ application.
+last_modified_at: 2023-07-14
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using CMake for building your C++ apps, you'll love how Earthly manages dependencies and streamlines the build process. [Check it out](/).**
 

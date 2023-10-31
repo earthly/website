@@ -12,6 +12,7 @@ topic: kubernetes
 funnel: 2
 excerpt: |
     In this article, Corey Larson, lead architect at Earthly, shares his insights on the importance of making technology choices that align with the beaten path. He emphasizes the value of community support and long-term dividends, urging readers to avoid being "weird" unless there is a strong justification.
+last_modified_at: 2023-07-11
 ---
 _Here at Earthly, we are building an internal platform on AWS using EKS. I talked to our lead architect Corey Larson about the decisions and trade offs he is making as he designs our platform._
 

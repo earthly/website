@@ -13,6 +13,7 @@ internal-links:
  - aws cloudwatch service
 excerpt: |
    AWS CloudWatch is a comprehensive monitoring and observability service. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities.
+last_modified_at: 2023-08-15
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article covers getting started with AWS CloudWatch, which is a great for monitoring applications. If you're interested in a simple and containerized approach to building software then [check us out](/).**

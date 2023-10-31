@@ -9,9 +9,9 @@ internal-links:
 sidebar:
   nav: "makefile"
 topic: make
-last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use Makefiles in Visual Studio Code to simplify the build process for your software projects. This tutorial walks you through setting up a C++ project and demonstrates the power and flexibility of Makefiles.
+last_modified_at: 2023-07-24
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers, a perfect alternative to dealing with Makefiles. [Check it out](/).**
 

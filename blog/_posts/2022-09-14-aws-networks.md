@@ -14,6 +14,7 @@ internal-links:
  - EC2
 excerpt: |
     Learn the basics of AWS networking and how to set up your own virtual private cloud (VPC) from scratch. This tutorial covers regions, availability zones, subnets, internet gateways, and route tables, and includes step-by-step instructions for creating an EC2 instance and deploying a web server using Nginx.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster, which could be handy if you're working on AWS networking systems. Earthly can help automate your build process and make resource management easier. [Check it out](/).**
 

@@ -5,6 +5,7 @@ categories:
 author: Earthly
 excerpt: |
     Check out Adam's latest appearance on Ruby Rogues where he discusses language tooling, shares insights into programming topics, and talks about using Earthly for builds. If you're interested in command-line tools and want to save time, don't miss his previous episode where he shares must-know tools for developers in 2022.
+last_modified_at: 2023-07-14
 ---
 Adam was on [Ruby Rogues](https://topenddevs.com/podcasts/ruby-rogues/episodes/programming-language-tooling-with-adam-gordon-bell-ruby-561) discussing language tooling and using Earthly for builds.
 

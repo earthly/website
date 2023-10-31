@@ -7,9 +7,9 @@ author: Zara Cooper
 internal-links:
  - sed
 topic: cli
-last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use the `sed` command in the command line to search and manipulate text. Discover the benefits of using `sed` and explore various commands and techniques for find and replace operations.
+last_modified_at: 2023-07-11
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about `sed` and the best ways to use it. If you doing things at command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**

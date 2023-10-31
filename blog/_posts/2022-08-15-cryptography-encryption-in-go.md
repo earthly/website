@@ -12,6 +12,7 @@ internal-links:
  - Algorithm
 excerpt: |
     Learn how to implement cryptography and encryption in Go with this tutorial. Discover how to use hashing functions, encrypt and decrypt text, and generate cryptographically secure random values in your Go programs.
+last_modified_at: 2023-07-19
 ---
 **We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Working on a cryptography project in Go? Earthly can help ensure reproducibility. [Check us out](/).**
 
