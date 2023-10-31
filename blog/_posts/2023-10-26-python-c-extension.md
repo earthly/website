@@ -8,7 +8,7 @@ sidebar:
   nav: "pypi"
 ---
 
-In covering [publishing my mergefast package with setuptools](/blog/create-python-package/) and [publishing with poetry](/blog/poetry-publish/) I lied about something: that the python code I showed was actually a fast way to merge. The code I showed is slower than just resorting the whole list. ( See [TimSort]() for a lengthly explanation. )
+In covering [publishing my mergefast package with setuptools](/blog/create-python-package/) and [publishing with poetry](/blog/poetry-publish/) I lied about something: that the python code I showed was actually a fast way to merge. The code I showed is slower than just resorting the whole list. ( See [TimSort](/blog/python-timsort-merge) for an explanation. )
 
 I did this for a reason though. To make mergefast fast, we need to write it as a c extension, which significantly complicates publishing. But now we are ready to tackle publishing a c extension to PyPi.
 
@@ -19,6 +19,7 @@ To move our code to C, core.py is now going to become core.c ( and core.h ) and 
 ~~~{.c caption="core.h"}
 PyObject* merge( PyObject*, PyObject* );
 ~~~
+
 <figcaption>Here is a our header. ( [full source](https://github.com/earthly/mergefast/tree/v2/mergefast) )</figcaption>
 
 We also have a bind.c, where there are a lot of little details to get right. Lets go slowly through them, as this is where I initially got stuck.
@@ -44,7 +45,7 @@ PyMethodDef merge_funcs[] = {
 - The structure has the following elements:
   - `"merge"`: The name of the function as it will appear in Python.
   - `(PyCFunction)merge`: The actual C function that implements this method.
-  - `METH_VARARGS`: A flag indicating the calling convention of our function. 
+  - `METH_VARARGS`: A flag indicating the calling convention of our function.
   - `"merge two sorted lists"`: A documentation string for the function.
 - The `{ NULL }` entry serves as a sentinel, signaling the end of the method definitions.
 
@@ -112,15 +113,15 @@ merge_module = Extension(
 
    This is the name of the extension module we are building. `mergefast.core` will be a submodule of `mergefast`.
 
-2. **`sources=["mergefast/bind.c", "mergefast/core.c"]`**:
+1. **`sources=["mergefast/bind.c", "mergefast/core.c"]`**:
 
   These are the source files that need to be compiled to produce or extension.
 
-3. **`include_dirs=["mergefast"]`**:
+1. **`include_dirs=["mergefast"]`**:
 
    This specifies directories where the compiler should look for header files during the compilation process. Without this `core.h` won't be found.
 
-4. **`extra_compile_args=["-O3"]`**:
+1. **`extra_compile_args=["-O3"]`**:
 
    Here we are just using the `-O3` flag to apply high-level optimizations to improve performance. We are aiming for maximum execution speed.
   
@@ -146,11 +147,11 @@ from mergefast.core import merge_int, merge_float, merge_latin, merge
 
 ~~~
 
-Without that, our package will work fine locally as a project location based package in poetry, but `import mergefast` won't work when install as a package. 
+Without that, our package will work fine locally as a project location based package in poetry, but `import mergefast` won't work when install as a package.
 
 ( Highlighting the value of testing the package installation process. )
 
-# Build and Test in Place
+## Build and Test in Place
 
 With that setup.py setuptools code in place, we can compile and test our solution.
 
@@ -214,7 +215,7 @@ The created wheel file is `mergefast-1.1.3-cp311-cp311-macosx_13_0_arm64.whl`
 
 Because the c extension functionality is closely tied to the python version, this shared object file is just for 3.11 `cp311-cp311`. And because this wheel contains native code, its specific to the OS and architecture its compiled for (`macosx_13` and `arm64`).
 
-Want to pip install from PyPi on different systems, like not arm64 or not macosx? Good news: You just have to build a wheel for each system and then upload them all. But, there's a catch. Even with things like `manylinux`, you'll need the right machines. Virtual or real ones with the systems you're building for.
+Want to pip install from PyPi on different systems, like not arm64 or not macOS x? Good news: You just have to build a wheel for each system and then upload them all. But, there's a catch. Even with things like `manylinux`, you'll need the right machines. Virtual or real ones with the systems you're building for.
 
 Many use GitHub actions matrix builds to accomplish this:
 
@@ -290,7 +291,7 @@ Failure! You can see that on installation pip runs the `bdist_wheel` process whi
 
 ## MANIFEST.in
 
-You see, the python `sdist` process knows to include all the python files in a package into the source distribution, but it really has no idea about what other files are needed to build the project. In my perfect world, it would be able to infer from some heuristics to include_dirs=["mergefast"]. 
+You see, the python `sdist` process knows to include all the python files in a package into the source distribution, but it really has no idea about what other files are needed to build the project. In my perfect world, it would be able to infer from some heuristics to include_dirs=["mergefast"].
 
 That's not the world we live in though, so setuptools supports a `MANIFEST.in` file, where you describe all the extra files your package needs.
 
@@ -323,24 +324,24 @@ Publishing mergefast (1.1.3) to pypi
 And just like that we have our package on PyPi:
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9880.png --alt {{  }} %}
-<figcaption>[Finally!](https://pypi.org/project/mergefast/)</figcaption>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9880.png --alt {{ package on pypi }} %}
+<figcaption>[And it's up](https://pypi.org/project/mergefast/)</figcaption>
 </div>
 
 ( If you'd like to see how to test the package before pushing see the earlier article on [TestPyPi(/blog/poetry-publish).)
 
 ## Conclusion
 
-All the code for `mergefast`, and its earlier python implementation `mergeslow` are up on [github](https://github.com/earthly/mergefast). Of course, I have wrapped all these stages of building, local package installing, pushing to TestPyPi and pushing to actual PyPi inEarthfile targets. 
+All the code for `mergefast`, and its earlier python implementation `mergeslow` are up on [github](https://github.com/earthly/mergefast). Of course, I have wrapped all these stages of building, local package installing, pushing to TestPyPi and pushing to actual PyPi inEarthfile targets.
 
 That way I don't need to head back to this tutorial each time to remember how to run each step.
 
-I hope this three part series is useful. This last stage, the python extention packaging was a little trickier then I thought it would be, but now that I've walked myself through it all makes a good amount of sense.
+I hope this three part series is useful. This last stage, the python extension packaging was a little trickier then I thought it would be, but now that I've walked myself through it all makes a good amount of sense.
 
-It goes to show that behind the ease of `pip install` there is lots of unsexy but needed packging, building and distribution work happening.  
+It goes to show that behind the ease of `pip install` there is lots of unsexy but needed packaging, building and distribution work happening.  
 
-( Take a look at the pip packaging code for a lib like [tensorflow](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/pip_package) sometime to see how complex things can get. )
+( Take a look at the pip packaging code for a lib like [TensorFlow](https://github.com/tensorflow/tensorflow/tree/master/tensorflow/tools/pip_package) sometime to see how complex things can get. )
 
-And if you want to know abou the next article in the series, subscribe to the newsletter. I'm probably going to attempt a python extension in Rust soon.
+And if you want to know about the next article in the series, subscribe to the newsletter. I'm probably going to attempt a python extension in Rust soon.
 
 {% include_html cta/bottom-cta.html %}
