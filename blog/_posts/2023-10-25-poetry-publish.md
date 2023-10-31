@@ -7,13 +7,11 @@ author: Adam
 sidebar:
   nav: "pypi"
 ---
-# Intro
+[Last time](/blog/create-python-package) I showed you how to publish a package to PyPI using setup.py. But if you are using poetry, and [you should be](/blog/python-poetry/), then there is an even easier way. Let me walk you all the way through it, including how to push to `test.pypi.org` for testing purposes. But if you want to skip ahead, know you just have to run `poetry publish --build` on a properly configured poetry project.
 
-[Last time]() I showed you how to publish a package to pypi using setup.py. But if you are using poetry, and [I think you should be]() then there is an even easier way. Let me walk you all the way through it, including how to push to test.pypi for testing purposes. But if you want to skip ahead, know you just have to run `poetry publish --build` on a properly configured poetry project.
+## Code
 
-# Code
-
-Starting for the top, I have this python code I want to get on pypi:
+Just like last time, I have this python code I want to get on PyPI as a package:
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
@@ -44,13 +42,15 @@ def merge(list1, list2):
 To create a poetry project for this:
 
 ~~~{.bash caption=">_"}
-pip install poetry
-poetry new mergefast 
+> pip install poetry
+...
+> poetry new mergefast 
+Created package mergefast in mergefast
 ~~~
 
 Doing that creates the structure for my package:
 
-~~~{.bash caption=">_"}
+~~~{.ini}
 .
 ├── README.md
 ├── mergefast
@@ -60,21 +60,7 @@ Doing that creates the structure for my package:
     └── __init__.py
 ~~~
 
-Copying my code into `core.py` and adding my [test.py] into the project I get:
-
-~~~{.bash caption=">_"}
-.
-├── README.md
-├── mergefast
-│   ├── __init__.py
-│   └── core.py
-├── poetry.lock
-├── pyproject.toml
-└── tests
-    ├── __init__.py
-    └── test.py
-
-~~~
+For there I just need to copy my code into `core.py` and add my [test.py](https://github.com/earthly/mergefast/blob/v2/mergefast/tests/test.py) into the project.
 
 Let's look at the `pyproject.toml`:
 
@@ -83,7 +69,7 @@ Let's look at the `pyproject.toml`:
 name = "mergefast"
 version = "0.1.1"
 description = ""
-authors = ["Adam Gordon Bell <adam@corecursive.com>"]
+authors = ["Adam Gordon Bell <adam@earthly.dev>"]
 readme = "README.md"
 
 [tool.poetry.dependencies]
@@ -94,7 +80,7 @@ requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
 ~~~
 
-You can see that name, version and other details traditionally configured in a setup.py are already here. That makes building easy.
+You can see that name, version, and other details traditionally configured in a setup.py are already here. That makes building the distribution simple.
 
 ## Poetry Build
 
@@ -109,15 +95,15 @@ Building mergefast (0.1.1)
   - Built mergefast-0.1.1-py3-none-any.whl
 ~~~
 
-This will build both a source distribution and a wheel. To build each seperatatily use `poetry build --format sdist` and `poetry build --format wheel`.
+This will build both a source distribution and a wheel. To build each separately use `poetry build --format sdist` and `poetry build --format wheel`.
 
-## Testing The Package
+## Testing the Package
 
-Because of Poetry's focus on virtual environments, it's easy to test the package without even building it.
+Because of Poetry's focus on virtual environments, possible to test package without even building it.
 
 ~~~{.bash caption=">_"}
 > poetry shell
-Spawning shell within /Users/adam/Library/Caches/pypoetry/virtualenvs/mergefast-MrBSzehX-py3.11
+Spawning shell within /Users/adam/Library/Caches/pypoetry/virtualenvs/mergefast.
 > pip list
 Package            Version   Editable project location
 ------------------ --------- ---------------------------------------
@@ -135,51 +121,38 @@ mergefast          0.1.0     /Users/adam/sandbox/mergefast/mergefast
 
 <figcaption>Package installed as editable project package inside poetry shell</figcaption>
 
-We can also test the packages the same way as in the [previous article](), using `pip install mergefast-0.1.1.tar.gz` and using using an Earthfile to test installation in a clean container.
+We can also test the packages the same way as in the [setuptools based article](/blog/create-python-package/), using `pip install mergefast-0.1.1.tar.gz` and using an Earthfile to test installation in a clean container.
 
 That's a great practice. But another testing method available to us it is using `https://test.pypi.org/` to test the publish process end to end.
 
-## Using Test pypi
+## Using Test PyPi
 
-To use test pypi, go through the same registration and key creation process as on pypi.
-
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4660.png --alt {{  }} %}
-<figcaption></figcaption>
+<div class="align-right">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9020.png --picture --img width="300px" --alt {{ Create an account at test.pypy.org }} %}
+<figcaption>Create an account at test.pypy.org</figcaption>
 </div>
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4830.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
+[TestPyPI](test.pypi.org) is a separate instance of the Python Package Index (PyPI) designed specifically for testing and experimentation. It allows developers to practice the process of packaging and publishing their Python projects without affecting the main PyPI repository.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4890.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
+It's basically a staging release location we can use to test things out.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5400.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
+To use TestPyPI, go through the same registration and key creation process as on PyPI.
 
-<div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{  }} %}
-<figcaption></figcaption>
-</div>
+- Create an Account
+- Setup 2-Factor Auth
+- Create an API Key
 
-`poetry publish` can take your API token from `POETRY_PYPI_TOKEN_TESTPYPI`
+Once you have your API key, poetry can take your API token in `POETRY_PYPI_TOKEN_TESTPYPI`.
 
 ~~~{.bash caption=">_"}
 export POETRY_PYPI_TOKEN_TESTPYPI=pypi-redacted
 ~~~
 
-Or as a parameter:
+Or it can be passed as a parameter to `poetry publish`, if you indicate `--repository testpypi` :
 
 ~~~{.bash caption=">_"}
 poetry publish  --repository testpypi -u __token__ -p your_generated_token
 ~~~
 
-//Todo -- need to publish mergefast to test
 Either way, the key is to tell `poetry publish` to use `--repository testpypi` and your package will publish to [TestPyPi](https://test.pypi.org/project/mergefast/).
 
 ~~~{.bash caption=">_"}
@@ -198,11 +171,11 @@ Publishing mergefast (0.1.1) to PyPI
 ~~~
 
 <div class="wide">
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0900.png --alt {{  }} %}
-<figcaption>Published as `mergefast`[^1]</figcaption>
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9660.png --alt {{ Publishing `mergefast` }} %}
+<figcaption>Publishing `mergefast`[^1]</figcaption>
 </div>
 
-Once that package is up on test pypi, you can test it end to end with `pip install --index-url https://test.pypi.org/simple/ mergefast`. Or as I'm fond of doing wrapping the whole thing up in a Earthfile target, so I can test it end to end.
+Once that package is up on test PyPI, you can test it end to end with `pip install --index-url https://test.pypi.org/simple/ mergefast`. Or as I'm fond of doing wrapping the whole thing up in a Earthfile target, so I can test it end to end.
 
 ~~~{.dockerfile caption="Earthfile"}
 poetry-test-publish:
@@ -231,9 +204,9 @@ Then I can always test the latest test published package on a clean container li
 +test-pypi-install | mergefast took 27.499190239999734 seconds
 ~~~
 
-# The final poetry publish
+## The Final Poetry Publish
 
-And now that we have tested our package end to end, we can publish it with a simple `poetry publish --build`
+And now that we have tested our package end to end, we can publish it onto [PyPi.org](https://pypi.org/project/mergefast/) with a simple `poetry publish --build`
 
 ~~~{.bash caption=">_"}
 > poetry publish --build
@@ -250,10 +223,16 @@ Publishing mergefast (0.1.1) to PyPI
 
 ~~~
 
-For a simple package like this, this whole teesting workflow might be overkill. But if your package has users and you want to make sure you don't break their worflow I think it makes sense to sanity test your packages.
+And there you go, the package is published and you have a [repeatable process](https://github.com/earthly/mergefast/blob/v2/mergeslow/Earthfile) for doing so. For Python only packages, `poetry publish` is a simple way to go. No need for setuptools and `setup.py` at all.
 
-There is not a lot of ways for packging to o wrong with a single file package, but in the next article we'll look at how to package a c extension, and then testing end to end is really warranted.
+For a simple package like this, this whole testing workflow might be overkill. But if your package has users and you want to make sure you don't break their workflow I think it makes sense to sanity test your packages.
 
-[^1]: That actual package shown here is being published as `mergefast`, because it's python only implementation is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
+## Next Up: C Extensions
+
+Next up, let's tackle the c version of this code and publish a python c extension on to PyPi. Publishing a native extension is a bit trickier, but we now have the skills to easily tackle this problem. The testing setup we've established here, with Earthly and test.pypy.org and our knowledge of poetry and setup tools will all come together in [part three](/blog/python-c-extension/)
+
+There is not a lot of ways for packaging to wrong with a single file package, but in the next article, testing end to end is will really pay off.
+
+[^1]: That actual current version of `mergefast` is published in [packaging c extensions](/blog/python-c-extension/). This python only implementation is published as `mergeslow`. Both and full source is on [github](https://github.com/earthly/mergefast).
 
 {% include_html cta/bottom-cta.html %}

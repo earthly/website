@@ -122,3 +122,4 @@ py
 mergefast
 mergeslow
 util
+setuptools

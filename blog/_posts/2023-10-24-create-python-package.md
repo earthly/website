@@ -401,7 +401,7 @@ test-pypi-install:
     RUN python test.py
 ~~~
 
-And with that we have a published package, that we've tested end to end. There is more to cover though. 
+And with that we have a published package, that we've tested end to end. There is more to cover though.
 
 Next up, in part two, is [publishing with Poetry](/blog/poetry-publish), which simplifies some of this process, and publishing to [test.pypi.com](test.pypi.com). After that, in part three, we'll look at publishing [python extensions which use C](/blog/). Native code does complicate things.
 
@@ -411,4 +411,4 @@ Also, if you want to just skip ahead to the final solution, my code is on [GitHu
 
 [^1]: That actual package shown here is being published as `mergeslow`, because well .. it is slow. The fast version is published as `fastmerge` and covered in the third article on packaging c extensions. All code is on [github](https://github.com/earthly/mergefast).
 
-[^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details on why this way should be prefered.
+[^2]: See [this blog post](https://blog.ganssle.io/articles/2021/10/setup-py-deprecated.html#summary) for details on why this way should be preferred.
