@@ -7,8 +7,6 @@ author: Adam
 sidebar:
   nav: "pypi"
 ---
-https://console.anthropic.com/chat/2c18c217-c3dd-4c70-9caf-9775b9864ced
-
 [Last time](/blog/create-python-package), I walked through packaging a simple Python module using setuptools and setup.py to generate distributions and publish them to PyPI.
 
 Now in Part 2, I'll show you how the Poetry dependency manager and build system simplifies parts of this process. We'll use the same merge sort example code from [Part 1](/blog/create-python-package), but package and distribute it with Poetry instead of setuptools.
