@@ -65,9 +65,15 @@
         </a>
 
         <a href="https://earthly.dev/"
-            class="h-10 px-4 my-10 items-center flex w-40  text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg justify-center"
+            class="h-10 px-8 my-10 items-center flex w-fit text-xl py-4 text-center bg-[#d8e5df] hover:bg-[#c2cec8] rounded-lg justify-center"
             onclick="navMobileLearnEarthlyClick()">
-            Learn Earthly
+            Learn More
+        </a>
+
+        <a href="https://cloud.earthly.dev/login"
+            class="h-10 px-8 my-10 items-center flex w-fit text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg justify-center"
+            onclick="navMobileGetStartedFreeClick()">
+            Get Started Free
         </a>
 
 
@@ -112,6 +118,13 @@
     analytics.track('blog-nav-mobile-learn-earthly-click', {
       category: 'Learn Earthly Click',
       label: 'blog-nav-mobile-learn-earthly-click'
+    });
+  }
+
+  function navMobileGetStartedFreeClick() {
+    analytics.track('blog-nav-mobile-get-started-free-click', {
+      category: 'Get Started Free',
+      label: 'blog-nav-mobile-get-started-free-click'
     });
   }
 
