@@ -10,7 +10,7 @@ sidebar:
 
 Python has a vibrant open source ecosystem and that has been one of the keys to its popularity. As a Python developer, you can create reusable tools and code and easily share them with others. Packaging and publishing your Python code properly enables other developers to easily install and use your code in their own projects. This allows you to contribute back to the community while also building your reputation.
 
-In this 3-part series, we'll cover packaging a simple Python script using setuptools and twine, then an alternative method using poetry, then we will extend what we learn to a C module, and finally we will publish it to PyPI. 
+In this 3-part series, we'll cover packaging a simple Python script using setuptools and twine, then an alternative method using poetry, then we will extend what we learn to a C module, and finally we will publish it to PyPI.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{ Our Goal Today is to get this package onto PyPi }} %}
@@ -23,7 +23,7 @@ In this first article, I'll show you how to package your Python code into distri
 
 To start, we'll use the following simple Python code snippet as an example to package:
 
-(See earlier article about [merge sorted lists](/blog/python-timsort-merge/) for background.) 
+(See earlier article about [merge sorted lists](/blog/python-timsort-merge/) for background.)
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
@@ -416,7 +416,7 @@ If you want to just skip ahead to the final solution, the full code is available
 In the [next article](/blog/poetry-publish) in this series, we'll cover:
 
 - Publishing the package with Poetry
-- Pushing to test.pypi.com for testing 
+- Pushing to test.pypi.com for testing
 - Creating and packaging a Python C extension ([in part 3](/blog/python-c-extension/))
 
 {% include_html cta/bottom-cta.html %}

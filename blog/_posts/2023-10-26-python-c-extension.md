@@ -8,11 +8,11 @@ sidebar:
   nav: "pypi"
 ---
 
-In Article 1 of this series, I showed you how to [package and distribute pure Python code using setuptools and a setup.py file](/blog/create-python-package/). Then in Article 2, we looked at how the [Poetry tool simplifies this process](/blog/poetry-publish/) for pure Python packages. In this final article, we'll tackle distributing a Python package containing a C extension, which adds some extra complexity. 
+In Article 1 of this series, I showed you how to [package and distribute pure Python code using setuptools and a setup.py file](/blog/create-python-package/). Then in Article 2, we looked at how the [Poetry tool simplifies this process](/blog/poetry-publish/) for pure Python packages. In this final article, we'll tackle distributing a Python package containing a C extension, which adds some extra complexity.
 
 ## Why a C Extension
 
-In the previsous articles we published `mergefast` and I claimed the Python code shown was a performant merging algorithm. That was a fib - the pure Python implementation is actually slower then just resorting the list. ( [Background](/blog/python-timsort-merge). )
+In the previous articles we published `mergefast` and I claimed the Python code shown was a performant merging algorithm. That was a fib - the pure Python implementation is actually slower then just resorting the list. ( [Background](/blog/python-timsort-merge). )
 
 I did this to set up the need for a C extension. To make mergefast fast, we need to write it as a c extension, which significantly complicates publishing. But now we are ready to tackle publishing a C extension to PyPi.
 
@@ -349,7 +349,7 @@ And just like that we have our package on PyPi:
 
 ## Conclusion
 
-In this final article, we saw how packaging a C extension requires extra configuration compared to pure Python. All the code for `mergefast`, and its earlier python implementation `mergeslow` are up on [github](https://github.com/earthly/mergefast). 
+In this final article, we saw how packaging a C extension requires extra configuration compared to pure Python. All the code for `mergefast`, and its earlier python implementation `mergeslow` are up on [github](https://github.com/earthly/mergefast).
 
 Of course, I have wrapped all these stages of building, local package installing, pushing to TestPyPi and pushing to actual PyPi in Earthfile targets. That way I don't need to head back to this tutorial each time to remember how to run each step.
 
