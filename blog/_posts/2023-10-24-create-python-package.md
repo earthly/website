@@ -59,7 +59,7 @@ First step is to find a name for our package.
 
 ## Choosing A Package Name
 
-Originally, I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
+Before diving into how to choose a good name for your Python package, it's important to understand why the name matters in the first place. Originally, I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
 
 You can check what already in use by searching around on [PyPI](https://pypi.org/). If you push a package that's already been taken you'll get this:
 
@@ -69,7 +69,9 @@ project 'PyMerge'.
 See https://pypi.org/help/#project-name for more information.
 ~~~
 
-The name being in used forced me to look for a new name and its a good thing I did because it turns out `PyMerge` is a horrible name. When selecting a name for your package, follow these rules set forth by the Python Packaging Authority (PyPA):
+The name being in used forced me to look for a new name and its a good thing I did because it turns out `PyMerge` is a horrible name. The package name is the first impression of your package people get - it's worth investing time to get it right and ensure your project puts its best foot forward.
+
+When selecting a name for your package, follow these rules set forth by the Python Packaging Authority (PyPA):
 
 - **Keep It Short & Descriptive:** Names should be short, but also give a clear idea of what the package does. For example, requests is a popular library that makes HTTP requests.
 
@@ -328,7 +330,9 @@ And with that I have a truly solid way to test before I push it to PyPI.
 
 ## Twine PyPi Push
 
-Ok, let's push it. To push our package, we are going to use [twine](https://PyPI.org/project/twine/).
+Before we can publish our package to PyPI using [twine](https://PyPI.org/project/twine/), there are a couple prerequisite steps we need to complete - registering for an account on PyPI and creating an API token.
+
+While these steps may seem tedious, taking the time to get set up is required in order to securely publish packages to the Python Package Index. The registration and token creation process authenticates us with PyPI and allows us to upload our distributions.
 
 First thing to do is head to PyPI and setup an API key.
 

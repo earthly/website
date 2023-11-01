@@ -139,11 +139,13 @@ That's a great practice. But another testing method available to us it is using 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9020.png --picture --img width="300px" --alt {{ Create an account at test.pypy.org }} %}
 <figcaption>Create an account at test.pypy.org</figcaption>
 </div>
-[TestPyPI](test.pypi.org) is a separate instance of the Python Package Index (PyPI) designed specifically for testing and experimentation. It allows developers to practice the process of packaging and publishing their Python projects without affecting the main PyPI repository.
+Before publishing your package directly to PyPI, it's a good idea to test the entire packaging and distribution process on TestPyPI first.
+
+[TestPyPI](test.pypi.org) is a separate instance of the Python Package Index (PyPI) designed specifically for testing and experimentation. It allows us to practice the process of packaging and publishing our code without affecting the main PyPI repository.
 
 It's basically a staging release location we can use to test things out.
 
-To use TestPyPI, go through the same registration and key creation process as on PyPI.
+To use TestPyPI, we go through the same registration and key creation process as on PyPI.
 
 - Create an Account
 - Setup 2-Factor Auth
