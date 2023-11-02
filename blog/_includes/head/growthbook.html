@@ -1,15 +1,15 @@
 <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
 <script>
   // Uncomment uuidv4() for testing / Uncomment getAnalyticCookie() for production
-  var earthlyID = uuidv4();
-  //var earthlyID = getAnalyticCookie();
+  //var earthlyID = uuidv4();
+  var earthlyID = getAnalyticCookie();
 
   // Create a GrowthBook instance
   const gb = new growthbook.GrowthBook({
     apiHost: "https://cdn.growthbook.io",
     clientKey: "sdk-7wtJG1WYaaYBiQ",
     // Uncomment for testing
-    enableDevMode: true,
+    //enableDevMode: true,
     attributes: {
       id: earthlyID
     },
