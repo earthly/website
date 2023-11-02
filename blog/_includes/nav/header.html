@@ -75,11 +75,25 @@
                 class="border-l border-r w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]">
                 Blog
             </a>
-            <div class="inline-flex items-center px-2 xl:px-4">
+            <!-- Gavin, 20231101, blog-nav-two-buttons-test: added id -->
+            <div id="blog-nav-two-buttons-test-control-01" class="inline-flex items-center px-2 xl:px-4">
+              <a href="https://earthly.dev/"
+                  class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex"
+                  onclick="navLearnEarthlyClick()">
+                  Learn Earthly
+              </a>
+            </div>
+            <!-- Gavin, 20231101, blog-nav-two-buttons-test: whole div -->
+            <div id="blog-nav-two-buttons-test-test-01" style="display: none;" class="gap-4 inline-flex items-center px-2 xl:px-4">
                 <a href="https://earthly.dev/"
-                    class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex"
+                    class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center bg-[#d8e5df] hover:bg-[#c2cec8] rounded-lg inline-flex"
                     onclick="navLearnEarthlyClick()">
-                    Learn Earthly
+                    Learn More
+                </a>
+                <a href="https://cloud.earthly.dev/login"
+                    class="font-medium py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex"
+                    onclick="navGetStartedFreeClick()">
+                    Get Started Free
                 </a>
             </div>
             {% if jekyll.environment != "production" %}
@@ -97,6 +111,13 @@
         analytics.track('blog-nav-learn-earthly-click', {
           category: 'Learn Earthly Click',
           label: 'blog-nav-learn-earthly-click'
+        });
+      }
+
+      function navGetStartedFreeClick() {
+        analytics.track('blog-nav-get-started-free-click', {
+          category: 'Get Started Free Click',
+          label: 'blog-nav-get-started-free-click'
         });
       }
 
