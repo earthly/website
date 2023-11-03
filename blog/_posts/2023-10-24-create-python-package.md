@@ -59,7 +59,7 @@ First step is to find a name for our package.
 
 ## Choosing A Package Name
 
-Before diving into how to choose a good name for your Python package, it's important to understand why the name matters in the first place. Originally, I had called this package `PyMerge`. There a number of problems with that, including that this name has been taken already.
+Before diving into how to choose a good name for your Python package, it's important to understand why the name matters in the first place. Originally, I had called this package `PyMerge`. There are a number of problems with that, including that this name has been taken already.
 
 You can check what already in use by searching around on [PyPI](https://pypi.org/). If you push a package that's already been taken you'll get this:
 
