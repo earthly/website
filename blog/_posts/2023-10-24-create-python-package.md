@@ -299,7 +299,7 @@ test-dist-tar-install:
     RUN python test.py
 ~~~
 
-In `test-dist-tar-install` I start from a python base image, copy from my [build step]((https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile)), and then install the tar file we build and test it. ( Full Earthfile on [GitHub](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile). )
+In `test-dist-tar-install` I start from a python base image, copy from my [build step]((https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile)), and then install the tar file we build and test it. (Full Earthfile on [GitHub](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).)
 
 Then I can test the package installation at any time by running `earthly +test-dist-tar-install` and seeing the test pass:
 
