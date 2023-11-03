@@ -17,7 +17,7 @@ By the end, you'll see how both setuptools and Poetry can accomplish the task of
 
 ## Code
 
-To move our code to Poetry, first we need the same example code from Part 1 that we want to package::
+To move our code to Poetry, first we need the same example code from Part 1 that we want to package:
 
 ~~~{.python caption="core.py"}
 def merge(list1, list2):
