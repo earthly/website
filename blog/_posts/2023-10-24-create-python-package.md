@@ -53,7 +53,7 @@ def merge(list1, list2):
 
 Lets get that up on PyPI using `setuptools`.
 
-( In [Part Two](/blog/poetry-publish/), we'll package it with Poetry and in [Part Three](/blog/python-c-extension/), we'll port the C version of the code to PyPi.)
+(In [Part Two](/blog/poetry-publish/), we'll package it with Poetry and in [Part Three](/blog/python-c-extension/), we'll port the C version of the code to PyPi.)
 
 First step is to find a name for our package.
 
