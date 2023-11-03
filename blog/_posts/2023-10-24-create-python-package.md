@@ -239,7 +239,7 @@ But, let's test that.
 
 ## Testing the Package
 
-Ok, one of the tricky things about distributing your package to PyPI is that once you upload it with a specific version number, you can't change it. The releases are , for practical purposes, immutable.
+Ok, one of the tricky things about distributing your package to PyPI is that once you upload it with a specific version number, you can't change it. The releases are, for practical purposes, immutable.
 
 <div class="align-right">
 {% picture content-nocrop {{site.pimages}}{{page.slug}}/5400.png --img width="300px" --alt {{ You can Delete. But don't replace a package. }} %}
