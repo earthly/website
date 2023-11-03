@@ -345,7 +345,7 @@ And just like that we have our package on PyPi:
 <figcaption>[And it's up](https://pypi.org/project/mergefast/)</figcaption>
 </div>
 
-( If you'd like to see how to test the package before pushing see the earlier article on [TestPyPi(/blog/poetry-publish).)
+If you'd like to see how to test the package before pushing see the earlier article on [TestPyPi](/blog/poetry-publish).
 
 ## Conclusion
 
