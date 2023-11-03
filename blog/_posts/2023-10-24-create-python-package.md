@@ -250,7 +250,7 @@ Ok, one of the tricky things about distributing your package to PyPI is that onc
 
 You can delete a released version, if its broken, or yank it, making it inaccessible. The thing you can't do is replace a version number once released.
 
-( There are some build-number based tricks you can find online, but PyPi expects immutable packages, so I'll avoid talking about tricks to side step immutability. )
+(There are some build-number based tricks you can find online, but PyPi expects immutable packages, so I'll avoid talking about tricks to side step immutability.)
 
 ## Testing: Pip Install Distribution Locally
 
