@@ -11,7 +11,10 @@ internal-links:
  - earthly is fast
  - earthly performing fast
 last_modified_at: 2023-10-20
+excerpt: |
+    Earthly makes CI/CD builds faster by reusing computation from previous runs for unchanged parts of the build. It is particularly effective in speeding up CI builds that involve redundant tasks, monorepos, and polyrepos, while also improving local builds in certain circumstances.
 ---
+<!--sgpt-->**Check out [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Ideal for those who value quick, open-source tools for continuous integration. [Give us a try](/).**
 
 Earthly makes CI/CD builds faster by reusing computation from previous runs for parts of the build that have not changed. This can be a game changer in terms of developer productivity gained.
 

@@ -122,7 +122,9 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
   </tr>
   <tr>
     <td>~~~{.yaml}
+
 # Node service snipped from GHA yaml
+
   node_service_build:
     environment: "Actions Demo"
     runs-on: ubuntu-latest

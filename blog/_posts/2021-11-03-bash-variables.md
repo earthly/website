@@ -444,7 +444,9 @@ Also, if you're the type of person who's not afraid to solve problems in bash, t
 {% include_html cta/bottom-cta.html %}
 
 <div class="no_toc_section">
+
 ## Feedback
+
 </div>
 
 If you have any tips or tricks about variables in bash or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell).

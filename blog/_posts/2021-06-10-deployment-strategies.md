@@ -25,7 +25,9 @@ This is the most straightforward deployment strategy. It's been the default stra
 In a software-as-a-service world, with frequent updates, this strategy can really only work with the use of queues and asynchronous messaging architectures. For example, when upgrading a service that sends email, the mail will queue in an outbox waiting for the upgraded version to start up.
 
 <div class="no_toc_section">
+
 ### Pros
+
 </div>
 
 * Easy
@@ -33,7 +35,9 @@ In a software-as-a-service world, with frequent updates, this strategy can reall
 * Never need to run more than one version of the service in parallel
 
 <div class="no_toc_section">
+
 ### Cons
+
 </div>
 
 * Downtime to upgrade
@@ -44,14 +48,18 @@ In a software-as-a-service world, with frequent updates, this strategy can reall
 The recreate strategy above assumes you only have one instance of your service running at a time. But if you have several with a load balancer in front, you can improve the downtime story with a rolling update strategy. You start an instance of the new version, and once it's up, gracefully terminate one instance of the old version. Then continue this pattern until only new versions of the service are running. This strategy is ubiquitous in Kubernetes and other containerized production environments.
 
 <div class="no_toc_section">
+
 ### Pros
+
 </div>
 
 * Easy on Kubernetes
 * No Downtime on upgrade
 
 <div class="no_toc_section">
+
 ### Cons
+
 </div>
 
 * Multiple versions of same service active during the overlap
@@ -62,14 +70,18 @@ The recreate strategy above assumes you only have one instance of your service r
 A [blue-green deployment](/blog/blue-green/) requires a bit more resources: you need two identical production environments and a load balancer. One of these environments always receives 100% of the traffic while the other version sits idle. Updates are deployed to inactive version, and once it is successfully upgraded, traffic is switched over to it. These two environments are named blue and green, respectively, and traffic alternates back and forth from green to blue and then blue to green and so on. This means that the previously deployed version is always running on the idle environment, which simplifies rollbacks.
 
 <div class="no_toc_section">
+
 ### Pros
+
 </div>
 
 * Eliminates upgrade downtime
 * Very quick rollbacks
 
 <div class="no_toc_section">
-### Cons:
+
+### Cons
+
 </div>
 
 * More Resources
@@ -84,13 +96,17 @@ In the same way, a canary deployment does not prevent downtime, but limits its i
 Depending on how the canary traffic is chosen, a downside to this approach is that a specific subset of users may experience most of the production issues.
 
 <div class="no_toc_section">
+
 ### Pros
+
 </div>
 
 * Catch Problems Early
 
 <div class="no_toc_section">
+
 ### Cons
+
 </div>
 
 * Deployment complexity
@@ -105,19 +121,24 @@ In a shadow deployment, the new version of the service is started, and all traff
 The cost of this approach is in the implementation. A service mesh like Istio is probably needed to perform the actual request mirroring, and it gets more complex from there. If a new version of a user service backed by a relational database was shadow deployed, all users might be created twice, leading to untold ramifications. To embrace a shadow or mirrored deployment strategy, you have to think about the implications of duplicated requests, and any non-idempotent actions on downstream services may need to be mocked.
 
 <div class="no_toc_section">
+
 ### Pros
+
 </div>
 
 * Catch production problems without custom impact
 
 <div class="no_toc_section">
+
 ### Cons
+
 </div>
 
 * Deployment complexity
 * Architectural complexity
 
 <div class="no_toc_section">
+
 ## Summary
 
 There's a wide range of deployment methods, each with its pros and cons. The best strategy depends on your need to balance downtime cost and deployment complexity. If you're keen to streamline your build process before deployment, you might want to give [Earthly](https://www.earthly.dev/) a try.
