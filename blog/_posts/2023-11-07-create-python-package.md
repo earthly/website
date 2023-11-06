@@ -17,7 +17,7 @@ In this 3-part series, we'll cover packaging a simple Python script using setupt
 <figcaption>Our Goal Today is to get this package onto PyPi</figcaption>
 </div>
 
-In this first article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index) using setuptools and twine. Learning these skills will you level up your ability to produce professional, sharable Python software.
+In this first article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index) using setuptools and twine. **Learning these skills will help you level up your ability to produce professional, sharable Python software.**
 
 ## Merge Lists Code
 
@@ -413,11 +413,7 @@ And with that we have a published package, that we've tested end to end. There i
 
 If you want to just skip ahead to the final solution, the full code is available on [GitHub](https://github.com/earthly/mergefast/tree/main) and the Earthfile that pulls it all together is [there as well](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).
 
-In the [next article](/blog/poetry-publish) in this series, we'll cover:
-
-- Publishing the package with Poetry
-- Pushing to test.pypi.com for testing
-- Creating and packaging a Python C extension ([in part 3](/blog/python-c-extension/))
+In the [part two](/blog/poetry-publish), we'll cover: publishing the package with Poetry and using test.pypi.org for ease of testing. Then, [in part 3](/blog/python-c-extension/), we'll create and package a Python C extension.
 
 {% include_html cta/bottom-cta.html %}
 

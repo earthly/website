@@ -13,7 +13,7 @@ Now in Part 2, I'll show you how the Poetry dependency manager and build system 
 
 Like in Part 1, we'll test the package locally, but we'll also use TestPyPI before publishing to the main package index. Poetry streamlines building and uploading distributions, but the overall workflow remains similar.
 
-By the end, you'll see how both setuptools and Poetry can accomplish the task of packaging and publishing Python projects. To quickly package a Poetry project, just run `poetry publish --build` on a properly configured project. But let's go through the details step-by-step.
+By the end, **you'll see how both setuptools and Poetry can accomplish the task of packaging and publishing Python projects. But's it's easier with Poetry.** To quickly package a Poetry project, just run `poetry publish --build` on a properly configured project. But let's go through the details step-by-step.
 
 ## Code
 
