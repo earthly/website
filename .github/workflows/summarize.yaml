@@ -28,7 +28,7 @@ jobs:
     - name: Set up Python
       uses: actions/setup-python@v2
       with:
-        python-version: '3.x'  # This will get the latest version of Python 3
+        python-version: '3.11'  # This will get the latest version of Python 3
 
     - name: Create a new branch and make changes
       run: |

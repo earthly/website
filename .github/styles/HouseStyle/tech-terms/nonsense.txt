@@ -120,8 +120,10 @@ Nrwl
 Neovim
 Axios
 include_html
+pypi
 cowsay
 nvim
 neovim
 Equifax
 Jaspan
+
