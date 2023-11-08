@@ -6,11 +6,10 @@ toc: true
 author: Adam
 sidebar:
   nav: "pypi"
+topcta: false
 excerpt: |
     This tutorial series explains how to package and publish Python code on PyPI using setuptools and twine. It covers topics such as choosing a package name, creating distributions, testing the package locally, and publishing it to PyPI.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's a great tool for Python developers creating and managing packages. [Check it out](/).**
-
 Python has a vibrant open source ecosystem and that has been one of the keys to its popularity. As a Python developer, you can create reusable tools and code and easily share them with others. Packaging and publishing your Python code properly enables other developers to easily install and use your code in their own projects. This allows you to contribute back to the community while also building your reputation.
 
 In this 3-part series, we'll cover packaging a simple Python script using setuptools and twine, then an alternative method using poetry, then we will extend what we learn to a C module, and finally we will publish it to PyPI.

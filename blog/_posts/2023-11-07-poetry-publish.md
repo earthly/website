@@ -6,11 +6,10 @@ toc: true
 author: Adam
 sidebar:
   nav: "pypi"
+topcta: false
 excerpt: |
     This tutorial explains how to use the Poetry dependency manager and build system to package and publish Python projects. It covers the process of building distributions, testing the package locally, and publishing to TestPyPI and PyPI.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We're all about simplifying and speeding up the software build process with containerization. If you're into bash and Continuous Integration, you might find our open source build tool interesting. [Give us a look](/).**
-
 [Last time](/blog/create-python-package), I walked through packaging a simple Python module using setuptools and setup.py to generate distributions and publish them to PyPI.
 
 Now in Part 2, I'll show you how the Poetry dependency manager and build system simplifies parts of this process. We'll use the same merge sort example code from [Part 1](/blog/create-python-package), but package and distribute it with Poetry instead of setuptools.

@@ -6,11 +6,10 @@ toc: true
 author: Adam
 sidebar:
   nav: "pypi"
+topcta: false
 excerpt: |
     This tutorial series demonstrates how to package and distribute a Python C extension using setuptools and a setup.py file. It covers the process of integrating a C extension into Python, building the extension with setuptools, and distributing the package on PyPI.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software build processes using containerization. Working with Python C extensions? Earthly can come in handy. [Check it out](/).**
-
 In Article 1 of this series, I showed you how to [package and distribute pure Python code using setuptools and a setup.py file](/blog/create-python-package/). Then in Article 2, we looked at how the [Poetry tool simplifies this process](/blog/poetry-publish/) for pure Python packages. In this final article, we'll tackle distributing a Python package containing a C extension, which adds some extra complexity.
 
 ## Why a C Extension

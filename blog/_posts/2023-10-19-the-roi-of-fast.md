@@ -4,7 +4,8 @@ categories:
   - Articles
 toc: true
 author: Vlad
-
+funnel: 3
+topcta: false
 internal-links:
  - return on investment of fast
  - investment of fast
@@ -13,8 +14,6 @@ last_modified_at: 2023-10-20
 excerpt: |
     Fast builds with Earthly can lead to significant cost savings in CI/CD infrastructure and increased developer productivity, resulting in a 13X greater value. The intangible benefits of faster builds, such as tighter product feedback cycles and enhanced agility, can drive innovation and growth in a rapidly evolving tech landscape.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. Regardless of your current topic, if you're dealing with software builds, Earthly could be a game changer for you. [Check it out](/).**
-
 TLDR: In my totally bias role as one of Earthly's creators, I believe that with Earthly:
 
 - You'll directly cut down on build expenses as builds run faster.
