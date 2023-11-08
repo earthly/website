@@ -503,7 +503,9 @@ lol
 Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/awk-examples) make it easy to do whatever you need, and if you have to deal with JSON data [`jq`](/blog/jq-select) will make your life easier.
 
 <div class="no_toc_section">
+
 ## Conclusion
+
 </div>
 
 I hope this overview of string manipulation in bash gave you enough details to cover most of your use cases.
@@ -513,7 +515,9 @@ Also, if you're the type of person who's not afraid to solve problems in bash th
 {% include_html cta/bottom-cta.html %}
 
 <div class="no_toc_section">
+
 ## Feedback
+
 </div>
 
 If you have any clever tricks for handling strings in bash, or spot any problems with my examples, let me know on Twitter [`@AdamGordonBell`](https://twitter.com/adamgordonbell):

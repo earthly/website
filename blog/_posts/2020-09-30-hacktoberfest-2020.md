@@ -30,11 +30,11 @@ You can also qualify for the sticker by adding a working Earthfile file to anoth
 
 ## How Do I Claim my Sticker?
 
-Send an email to adam@earthly.com, with your address and link to your merged PRs. We reserve the right to decide whether a PR is contributing value. &nbsp;
+Send an email to <adam@earthly.com>, with your address and link to your merged PRs. We reserve the right to decide whether a PR is contributing value. &nbsp;
 
 ## Questions / Help ?
 
-If you have any questions, or if you need any assistance, we are on the [Gitter channel](https://gitter.im/earthly-room/community) to answer questions. &nbsp;Feel free to also email adam@earthly.dev. &nbsp;
+If you have any questions, or if you need any assistance, we are on the [Gitter channel](https://gitter.im/earthly-room/community) to answer questions. &nbsp;Feel free to also email <adam@earthly.dev>. &nbsp;
 
 Questions about a specific issue or PR are best left on that issue or PR.
 

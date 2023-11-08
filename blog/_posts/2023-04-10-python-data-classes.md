@@ -267,6 +267,7 @@ True
 We see that the comparison returns `True` (as expected). But we did not write the `__eq__` method either.
 
 <div class="notice--big--primary">
+
 ### Where Did `__init__` and Other Methods Come From?
 
 To reiterate, we did not write even the class constructor `__init__` method; we only specified the fields and the expected data types as type hints in the data class definition.
@@ -392,6 +393,7 @@ In a regular Python class, you can provide default values for fields in the `__i
 Data classes give this flexibility, too. However, you should be aware of caveats such as **setting mutable defaults for fields**.
 
 <div class="notice--big--primary">
+
 #### ⚠️ The Curious Case of Mutable Default Arguments in Python
 
 ![curious]({{site.images}}{{page.slug}}/3.png)\
@@ -510,7 +512,9 @@ Student(name='Jane', roll_no='CS1234', major='Computer Science', year='junior',�
 ~~~
 
 <div class="notice--info">
+
 #### ⚠️ Specify Default Fields After Non-Default Fields
+
 <br>
 As with arguments in a function call, data classes should include the fields *without* default values first, followed by the ones *with* default values.
   
