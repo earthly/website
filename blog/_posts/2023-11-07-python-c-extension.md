@@ -25,10 +25,10 @@ Let's get started...
 
 To start, let's look at the code we want to package up. In the previous articles we had some Python code that looked like:
 
-```
+~~~
 def merge(list1, list2):
   # standard merge sorted lists with pop algo
-```
+~~~
 
 By implementing this in C, we can achieve much faster performance than in Python. But, the specifics of the C porting aren't the point today. The packaging is.
 
