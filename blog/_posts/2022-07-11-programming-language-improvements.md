@@ -84,7 +84,8 @@ CPAN was launched in 1995 (based on CTAN), and by its height in 2003, it had est
 It's hard to find a commonly used programming language created after 2003 that didn't come with a third-party package repository of some sort. CPAN moved the line so that from then forward, a "real" programming language needed to have a strategy for third-party package management.
 
 <div class="notice notice--big">
-## Side Note: Backporting.
+
+## Side Note: Backporting
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8470.png --alt {{ Backporting }} %}
 
@@ -174,6 +175,7 @@ There are so many other things that I could list in this essay. Some things, lik
 (Tell me what I missed and/or got wrong, and I'll do an update.)
 
 <div class="notice--info">
+
 ### The Things That Didn't Spread
 
 There are also the things that language creators were sure would change the world, but yet never gained wider adoption, or only became a fundamental expectation in one particular niche.

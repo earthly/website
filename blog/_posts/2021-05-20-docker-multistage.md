@@ -152,7 +152,8 @@ COPY  +build/app/build /usr/share/nginx/html
 This is only scratching the surface of what the open source Earthly project can do. But once you have multiple stages in play, I'd recommend converting your Dockerfiles to Earthfiles.
 
 <div class="notice--info">
-### Using Earthly:
+
+### Using Earthly
 
 * Mac users: `brew install earthly`. ([Other platforms](/get-earthly))
 * Rename `Dockerfile` to `Earthfile`.

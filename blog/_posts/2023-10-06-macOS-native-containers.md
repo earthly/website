@@ -10,6 +10,8 @@ last_modified_at: 2023-10-04
 ---
 **We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containers. If you're a macOS user exploring containerization, Earthly is worth a look. [Check us out](/).**
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/RS9C_4O_Ohg?si=kOWcFxMvPqSNe2n4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+
 macOS traditionally has not natively supported containers. You can run Linux containers on macOS in a VM. But you could never run native containers, which used the host OS, the way you could on Linux or even on Windows.
 
 Here at Earthly, this has always been inconvenient. We'd love for people to use Earthly for XCode builds. We'd love to offer macOS Satellites. We'd love to help speed up your Swift and Objective-C builds for macOS, and iOS. Today, we might be a little closer to that reality.

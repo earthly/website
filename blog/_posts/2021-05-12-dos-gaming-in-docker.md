@@ -16,7 +16,8 @@ funnel: 2
 last_modified_at: 2023-07-14
 ---
 <div class="notice--info">
-### TLDR:
+
+### TLDR
 
 * Quick install [Earthly](/).
 * Run `earthly github.com/earthly/example-dos-gaming:main+doom` to start container.

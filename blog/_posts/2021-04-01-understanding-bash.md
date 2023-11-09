@@ -326,6 +326,7 @@ There is one significant difference between executing a script and typing the co
 For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside a script, it will print nothing to your screen.
 
 <div class="no_toc_section">
+
 ## Conclusion
 
 You're now equipped to dive into bash scripting. With knowledge of common shebangs, functions of `set`, improved error handling, and common developer pitfalls, you're armed and ready. Use your newfound skills to automate daily commands, parse the remote git URL, or batch rename files. With bash scripting, the possibilities are endless.

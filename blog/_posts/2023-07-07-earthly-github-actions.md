@@ -121,8 +121,11 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
     <th>EARTHLY CODE</th>
   </tr>
   <tr>
-    <td>~~~{.yaml}
-# Node service snipped from GHA yaml
+    <td>
+
+~~~{.yaml}
+# Node Service Snipped from GHA yaml
+
   node_service_build:
     environment: "Actions Demo"
     runs-on: ubuntu-latest
@@ -160,7 +163,9 @@ For the sake of conciseness, here is the code required to orchestrate the steps 
         working-directory: node_server
         run: npm test
 +
+
 ~~~
+
 ~~~{.dockerfile caption=""}
 # Dockerfile for node service
 FROM node:19-alpine3.16
@@ -176,21 +181,24 @@ ENTRYPOINT [ "node", "src/index.js" ]
 ~~~
 
 </td>
-<td>~~~{.dockerfile caption=""}
-# Node service Earthfile
+<td>
 
+~~~{.dockerfile caption=""}
+# Node service Earthfile
 VERSION 0.7
 FROM node:19-alpine3.16
 WORKDIR /node-server
 
 deps:
-  COPY package.json ./ 
+  COPY package.json ./
   RUN npm install
 
 build:
-  FROM +deps 
-  COPY src src 
+  FROM +deps
+  COPY src src
+
   # Overwrite quotes
+
   COPY ../quote_generator+artifact/quotes.txt quotes.txt
 
 test:
@@ -199,8 +207,8 @@ test:
 
 docker:
   ARG --required tag
-  FROM +build 
-  EXPOSE 8003 
+  FROM +build
+  EXPOSE 8003
   ENTRYPOINT ["node", "src/index.js"]
   SAVE IMAGE --push ezeev/earthly-node-example:$tag
 

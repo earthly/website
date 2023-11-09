@@ -5,6 +5,8 @@ categories:
 author: Adam
 topcta: false
 last_modified_at: 2023-10-23
+excerpt: |
+    Vlad appeared on devtools.FM and discussed the challenges of go-to-market strategies in startups, emphasizing that it is often harder than the technology itself. He also shared a unique pricing approach where compute is billed at cost, while the value is represented by the seat price.
 ---
 
 Vlad was on [devtools.FM](https://www.devtools.fm/episode/71)!

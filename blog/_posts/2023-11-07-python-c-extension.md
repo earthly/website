@@ -6,8 +6,10 @@ toc: true
 author: Adam
 sidebar:
   nav: "pypi"
+topcta: false
+excerpt: |
+    This tutorial series demonstrates how to package and distribute a Python C extension using setuptools and a setup.py file. It covers the process of integrating a C extension into Python, building the extension with setuptools, and distributing the package on PyPI.
 ---
-
 In Article 1 of this series, I showed you how to [package and distribute pure Python code using setuptools and a setup.py file](/blog/create-python-package/). Then in Article 2, we looked at how the [Poetry tool simplifies this process](/blog/poetry-publish/) for pure Python packages. In this final article, we'll tackle distributing a Python package containing a C extension, which adds some extra complexity.
 
 ## Why a C Extension
@@ -22,10 +24,10 @@ Let's get started...
 
 To start, let's look at the code we want to package up. In the previous articles we had some Python code that looked like:
 
-```
+~~~
 def merge(list1, list2):
   # standard merge sorted lists with pop algo
-```
+~~~
 
 By implementing this in C, we can achieve much faster performance than in Python. But, the specifics of the C porting aren't the point today. The packaging is.
 

@@ -23,6 +23,7 @@ Let's get started!
 ## Before We Begin
 
 <div class="notice--big--primary">
+
 ### 📋 Prerequisites
 
 This tutorial assumes a basic understanding of [Python data classes](/blog/python-data-classes/).
@@ -191,7 +192,9 @@ TypeError: __init__() takes 4 positional arguments but 5 were given
 The traceback reads that the constructor takes *only* four positional arguments; it cannot take in the fifth positional argument corresponding to the `roll_num` field. So now, the only way to initialize `roll_num` is to use the `generate_roll_num()` function. And that's the behavior we wanted, yes? Great. What's next?
 
 <div class="notice--info">
+
 ### A Note on Keyword-Only Arguments [In Python 3.10+]
+
 In all the examples thus far, we've passed in the values as positional arguments in the constructor.
 
 However, if you want to enforce that the users specify *only* keyword arguments to instantiate objects, you can set the `kw_only` parameter in the `@dataclass` decorator to `True`. This can help improve readability.
@@ -387,6 +390,7 @@ Jane Lee's tuition: 30000
 ~~~
 
 <div class="notice--big--primary">
+
 ### Setting `order=True` Facilitates Comparison. But How?
 
 We set `order=True` and specified the sorting index. Somehow the instance list was sorted, based on the `tuition` field, just the way we wanted. But how did it happen?
@@ -459,6 +463,7 @@ We can create `TA` objects and access the fields:
 ~~~
 
 <div class="notice--info">
+
 ### 📝 What You Should Know About Inheritance and Default Values for Fields
 
 In the `TA` example, we set default values for *all* fields in the child class (subclass), so we did not run into errors. But there's a caveat you should be aware of.
@@ -570,7 +575,9 @@ class StudentSlots:
 ### Comparing Memory Footprint
 
 <div class="notice--big--primary">
+
 #### 🧩 What I Learned About `sys.getsizeof()`
+
 <br>
 I've (almost always) used `sys.getsizeof()` to get size of objects in Python. But only recently I learned that it does *not* account for the sizes of objects that are referenced inside the specific object. Let me explain this with a simple example.
 
