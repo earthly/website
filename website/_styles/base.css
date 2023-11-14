@@ -378,3 +378,13 @@ main.wave-main.homepage {
 .active-milestone p {
   @apply text-black;
 }
+
+.faster-build-item li a {
+  @apply underline;
+}
+
+@media screen and (min-width: 1024px) {
+  .faster-build-item {
+    width: calc((100% - 40px) / 3);
+  }
+}
