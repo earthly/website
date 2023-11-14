@@ -1,0 +1,30 @@
+- title: Holistic Layer Caching
+  points:
+    - Expands Docker's layer caching to all build artifacts, not just container images.
+    - Reuses build components like generated code and binaries if unchanged, speeding up the build process.
+  image: "layer-caching.svg"
+
+- title: Build Graphs
+  points:
+    - Allows complex, interconnected build structures beyond simple Dockerfile setups.
+    - Reuses unchanged components within the build graph, avoiding unnecessary recompilation​.
+  image: "build-graphs.svg"
+
+- title: Well-Known Dependencies
+  points:
+    - Earthly understands and tracks build dependencies and changes.
+    - Determines the minimal rebuild scope, saving time by not rebuilding unchanged components​.
+  image: "well-known-dependencies.svg"
+
+- title: Automatic Parallelization
+  points:
+    - Infers parallelism in build processes based on clear interdependencies.
+    - Plan for future versions to run in compute clusters for increased speed and scalability.
+  image: "loop-automatic.svg"
+
+- title: Instantly Available Cache
+  points:
+    - A feature of <a href="/earthly-satellites">Earthly Satellites</a>.
+    - Provides cache sharing between CI runs without download/upload delays.
+    - Satellites offer high cache hit rates and facilitate cache reuse among team members outside of CI.
+  image: "instant-cache.svg"

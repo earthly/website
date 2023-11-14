@@ -12,10 +12,6 @@ layout: default
 {% include home/layout.html template='cloud/why.html' %}
 
 {% include home/layout.html template='faster-builds/benefits-title.html' %}
-<!-- {% include home/layout.html template='cloud/benefits-speed.html' %} -->
-{% include home/layout.html template='cloud/benefits-caching.html' %}
-{% include home/layout.html template='faster-builds/benefits-parallel.html' %}
-{% include home/layout.html template='faster-builds/benefits-turbocharger.html' %}
-{% include home/layout.html template='faster-builds/benefits-advanced-caching.html' %}
+{% include home/layout.html template='faster-builds/benefits-speed.html' %}
 
 {% include home/layout.html template='faster-builds/cta-button.html' %}
