@@ -7,6 +7,7 @@
 
 - title: Challenges with Monorepo Builds
   points:
+    - Monorepo builds are frequently inefficient because small changes in individual projects trigger rebuilds of the whole repo.
     - Large monorepos can lead to increased build and test times.
     - They require more compute resources, potentially increasing costs.
     - Managing builds in these complex environments can be challenging.
