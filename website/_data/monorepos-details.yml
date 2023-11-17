@@ -1,9 +1,3 @@
-- title: What is a Monorepo?
-  points:
-    - A monorepo is a development strategy where multiple projects are stored in a single repository.
-    - This approach contrasts with the more traditional polyrepo approach  – multiple, smaller repositories, usually one for each project.
-  image: what-is-monorepo.svg
-
 - title: Why Are Monorepos Gaining Popularity?
   points:
     - Having every project’s code in one place simplifies project management.

@@ -8,10 +8,10 @@ layout: default
 
 {% include monorepos/hero.html %}
 {% include monorepos/call-to-action.html %}
-{% include monorepos/featured.html %}
 {% include cloud/why.html %}
 
 {% include monorepos/details.html %}
 {% include monorepos/features.html %}
 
+{% include monorepos/featured.html %}
 {% include monorepos/cta-button.html %}
