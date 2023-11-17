@@ -1,0 +1,40 @@
+- title: Build Graphs
+  points:
+    - Monorepos often involve intricate and interconnected build structures. Changes in one part of the repo can impact several others.
+    - Earthly’s build graphs allow for managing these complex structures effectively.
+    - Reuses unchanged components within the build graph, avoiding unnecessary recompilation.
+  image: "build-graphs.svg"
+
+- title: Well-Known Dependencies
+  points:
+    - In monorepos, tracking dependencies can be challenging due to the intertwined nature of projects.
+    - Earthly understands and tracks build dependencies and changes.
+    - Determines the minimal rebuild scope, saving time by not rebuilding unchanged components.
+  image: "well-known-dependencies.svg"
+
+- title: Automatic Parallelization
+  points:
+    - Parallel processing for builds in a monorepo can significantly reduce build times across multiple projects
+    - Earthly infers parallelism in build processes based on clear interdependencies.
+    - Plan for future versions to run in compute clusters for increased speed and scalability.
+  image: "loop-automatic.svg"
+
+- title: Holistic Layer Caching
+  points:
+    - Expands Docker's layer caching to all build artifacts, not just container images.
+    - Reuses build components like generated code and binaries if unchanged, speeding up the build process.
+    - Particularly beneficial in monorepos, where multiple projects share common components.
+  image: layer-caching.svg
+
+- title: Instantly Available Cache
+  points:
+    - A feature of <a href="/earthly-satellites">Earthly Satellites</a>.
+    - Provides cache sharing between CI runs without download/upload delays.
+    - Satellites offer high cache hit rates and facilitate cache reuse among team members outside of CI.
+  image: instant-cache.svg
+
+- title: Modern Import System
+  points:
+    - Earthly can be used to reference and build targets from other directories in a monorepo or even other repositories.
+    - Helps foster effective reuse of common build logic, ensure uniformity, and minimize redundancy across projects, especially in a monorepo.
+  image: modern-import-system.svg
