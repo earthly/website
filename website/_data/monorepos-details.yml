@@ -1,21 +1,17 @@
-- title: What is a Monorepo?
-  points:
-    - A monorepo is a development strategy where multiple projects are stored in a single repository.
-    - This approach contrasts with the more traditional polyrepo approach - multiple, smaller repositories, usually one for each project.
-  image: what-is-monorepo.svg
-
 - title: Why Are Monorepos Gaining Popularity?
   points:
-    - Monorepos are a centralized source of truth. Everything from small libraries to entire applications can be found in one place, simplifying project management.
-    - Dependency management is easier in monorepos. With all code in one location, managing dependencies across projects becomes more straightforward.
-    - Monorepos can lead to improved collaboration. Teams can work more cohesively when all project assets are accessible in a single repository.
+    - Having every project’s code in one place simplifies project management.
+    - Monorepos enable easy reuse of developer infrastructure – like build and release scripts – and more straightforward dependency management across projects.
+    - Monorepos foster better team collaboration, with all project assets in one place.
   image: monorepos-popularity.svg
 
 - title: Challenges with Monorepo Builds
   points:
-    - As the repository grows, the time to build and test code can increase dramatically.
-    - Builds for larger repositories demand more compute resources, which can strain infrastructure and drive up costs.
-    - As more projects are added, the complexity of managing builds for the interconnected projects in the repository can escalate.
+    - Monorepo builds are frequently inefficient because small changes in individual projects trigger rebuilds of the whole repo.
+    - Large monorepos can lead to increased build and test times.
+    - They require more compute resources, potentially increasing costs.
+    - Managing builds in these complex environments can be challenging.
+    - Standard CI/CD systems often require workarounds or hacks to work effectively with monorepos.
   image: monorepo-challenges.svg
 
 - title: Overcoming Monorepo Build Challenges
