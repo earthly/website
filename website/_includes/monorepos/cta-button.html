@@ -1,0 +1,30 @@
+<div class="w-full mt-2">
+  <div class="px-6 lg:px-10 pt-4 max-w-7xl m-auto">
+    <div class="bg-[#f1fbff] flex flex-col items-center px-6 rounded-lg">
+      <p class="font-semibold pt-14 text-4xl text-center tracking-tight">
+        Get Started with Earthly Cloud now!
+      </p>
+
+      <p class="pt-6 text-center text-slate-400 text-xl">
+        Consistent, Fast Builds in the Cloud
+      </p>
+
+      <a
+        href="https://cloud.earthly.dev/login"
+        class="w-full max-w-md mb-20 mt-4 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
+        onclick="bottomCtaTryEarthlySatellitesClick()"
+      >
+        Get Started Free
+      </a>
+    </div>
+  </div>
+</div>
+
+<script>
+  function bottomCtaTryEarthlySatellitesClick() {
+    analytics.track("faster-builds-bottom-cta-get-started-free-click", {
+      category: "Get Started Free Click",
+      label: "faster-builds-bottom-cta-get-started-free-click",
+    });
+  }
+</script>

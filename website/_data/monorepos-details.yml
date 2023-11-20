@@ -1,0 +1,22 @@
+- title: Why Are Monorepos Gaining Popularity?
+  points:
+    - Having every project’s code in one place simplifies project management.
+    - Monorepos enable easy reuse of developer infrastructure – like build and release scripts – and more straightforward dependency management across projects.
+    - Monorepos foster better team collaboration, with all project assets in one place.
+  image: monorepos-popularity.svg
+
+- title: Challenges with Monorepo Builds
+  points:
+    - Monorepo builds are frequently inefficient because small changes in individual projects trigger rebuilds of the whole repo.
+    - Large monorepos can lead to increased build and test times.
+    - They require more compute resources, potentially increasing costs.
+    - Managing builds in these complex environments can be challenging.
+    - Standard CI/CD systems often require workarounds or hacks to work effectively with monorepos.
+  image: monorepo-challenges.svg
+
+- title: Overcoming Monorepo Build Challenges
+  points:
+    - <b>Incremental Builds:</b> Only rebuilding the parts of the repository that have changed.
+    - <b>Parallel Processing:</b> Breaking up builds into independent tasks and running those tasks in parallel, sometimes across multiple cores or machines.
+    - <b>Caching:</b> Storing and reusing build components, such as generated code and binaries, if their determinants haven’t changed.
+  image: overcoming-challenges.svg
