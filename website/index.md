@@ -1,8 +1,7 @@
 ---
 title: Earthly
 layout: default
-banner: <b>Introducing Earthly Cloud.</b> Consistent builds. Ridiculous speed. Next-gen developer experience. Works with any CI. Get 6,000 min/mth free with a verified credit card! (note that our non-credit card trial has been temporarily disabled) <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
-mobileBanner: <b>Introducing Earthly Cloud.</b> Get 6,000 min/mth free with a verified credit card! (note that our non-credit card trial has been temporarily disabled) <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
+banner: ⚠️ We are seeing unusual abuse activity in our free tier ⚠️ <b>We are temporarily requiring verifying the account with a credit card before being able to launch satellites. <a href="https://status.earthly.dev/">Status</a></b>
 ---
 
 <!-- Gavin, 20231109, A/B test homepage-hero-earthfile-image: added divs -->
