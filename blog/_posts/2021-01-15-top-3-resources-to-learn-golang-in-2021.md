@@ -9,7 +9,7 @@ excerpt: |
     Looking to learn GoLang? Check out this article for the top 3 resources recommended by an experienced developer. From interactive tours to in-depth explanations, these resources will help you get started and build familiarity with the language. Plus, there are bonus resources and recommendations for further learning. Don't miss out on this valuable guide!
 last_modified_at: 2023-08-28
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're learning Golang, Earthly can be a useful tool for streamlining your build process. [Check us out](/).**
+<!--sgpt-->**In this article, you'll discover key resources for learning GoLang. Go developers looking to improve their build processes will find Earthly particularly useful. [Find out how Earthly can assist you](/).**
 
 ## Why Learn Go
 
