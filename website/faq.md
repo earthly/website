@@ -75,18 +75,22 @@ For more information about when to use Bazel, check out our blog, where we have 
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="dagger">How is Earthly different from Dagger?<span class="hide"><a href="#dagger">¶</a></span></h2>
 
-Both [Dagger](https://dagger.io/) and Earthly are open-source CI/CD frameworks that use BuildKit and containerization to improve the CI workflow. With both tools, you can run the CI or CD process locally, which is a big step forward from the world of needing to work with a centralized build process.
+Both [Dagger](https://dagger.io/) and Earthly are open-source build frameworks that use BuildKit and containerization to improve the CI workflow. With both tools, you can run the CI or CD process locally, which is a big step forward from the world of needing to work with a centralized build process.
 
-The most fundamental difference between Earthly and Dagger is that through Earthly Cloud, Earthly forms a complete build automation platform optimized for the democratization of builds within the engineering team, and for unlocking team productivity at a level no CI/CD platform can match.
-
-In terms of build specification, Earthly and Dagger differ in the following ways:
+One of the most fundamental differences between Earthly and Dagger is the syntax of the build specification:
 
 - Earthly uses an `Earthfile` to specify a build in a format that takes inspiration from Dockerfiles, shell scripting, and Makefiles. As a result, if you know how to perform a step in your build process at the command line, you know how to do it in Earthly.
-- Dagger uses an SDK to configure build steps via general-purpose programming languages, such as Go and Python.
+- Dagger uses an SDK to configure build steps via general-purpose programming languages, such as Go, JavaScript, and Python.
 
-This difference means Earthly is more accessible to both experienced and first-time users. Many users can understand and make simple changes to Earthfiles without reading any documentation, which goes a long way toward democratizing builds within the engineering team. On the other hand, Dagger can require a considerable learning investment. This investment can pay off: there are forms of abstraction available in Dagger, which are harder to encode in Earthly. If you need those features, Dagger might be a great choice.
+This difference means Earthly is more accessible to both experienced and first-time users. Many users can understand and make simple changes to Earthfiles without reading any documentation, which goes a long way toward democratizing builds within the engineering team. On the other hand, Dagger can require a considerable learning investment.
 
-But overall, we believe Earthly's strong focus on [approachability](https://earthly.dev/blog/platform-values/#approachability) and ease of use is a fantastic match for most organizations.
+The fact that Dagger uses a general-purpose programming language has pros and cons. A benefit is that you can use the development tools specific to that language, such as IDEs and linters. A drawback is that the build specification is less accessible to the wider engineering team, especially if the engineering team uses a mix of programming languages (e.g. would the JS frontend team contribute to a build script written in Go?). If the build scripts are maintained by a dedicated team, then Dagger is a good choice. This approach might not scale well for bigger organizations.
+
+If the goal of adopting a build automation platform is to also democratize builds within the organization, allowing any engineer to understand and contribute to the build specification, then Earthly's focus on ease of use and readability is a good choice. This approach scales better with the engineering organization and helps to bring down collaboration barriers between teams.
+
+Another fundamental difference is that Earthly, through Earthly Cloud, can leverage fast remote runners with instantly available caching for delivering significant speed improvements, while Dagger Cloud only offers remote caching. While Earthly also supports remote caching, the technique is considered an inferior approach due to the added upload and download times of the cache contents on each run, which in many cases renders the build slower with the cache than without it. By contrast, remote runners with instantly available caching are always faster with the cache, and are often able to achieve an order of magnitude faster CI speeds. For a comparison between Earthly remote cache and remote runners see [Sharing Cache in the Earthly documentation](https://docs.earthly.dev/docs/caching#sharing-cache).
+
+Overall, we believe Earthly's strong focus on [approachability](https://earthly.dev/blog/platform-values/#approachability), ease of use, and speed make it a fantastic match for organizations big and small.
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="dockerfile">How is Earthly different from Dockerfiles?<span class="hide"><a href="#dockerfile">¶</a></span></h2>
 
