@@ -10,6 +10,7 @@ internal-links:
  - just an example
 topic: engineering
 funnel: 2
+topcta: false
 excerpt: |
     Learn how Earthly Compute, a remote code execution as a service, was built to handle bursty workloads and provide secure and fast remote execution for Earthly Satellites and Earthly CI. Discover the challenges faced and the optimizations made to save compute time and improve efficiency.
 last_modified_at: 2023-08-23

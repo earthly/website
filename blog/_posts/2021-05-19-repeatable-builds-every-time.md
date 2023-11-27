@@ -18,7 +18,7 @@ topic: earthly
 funnel: 3
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check us out](/).**
+**This article teaches you how to optimize build systems. If you use Docker and Makefiles, Earthly can streamline your build process with its containerized, scriptable approach. [Learn how Earthly integrates with your workflow](/).**
 
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->

@@ -13,7 +13,6 @@ excerpt: |
     This article explores the history of the build system Pants, from its early days at Google to its current version, Pants V2. It delves into the challenges faced by large tech organizations in managing builds and how Pants provides solutions for Python monorepos. If you're interested in understanding the background and development of build systems, this article is a must-read.
 last_modified_at: 2023-07-11
 ---
-
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mEx8NWm4830" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>

@@ -8,8 +8,7 @@ internal-links:
    - build automation
 topic: earthly
 funnel: 3
-# banner: Example - Page specific banner. <a href="https://earthly.dev/blog/" onclick="bannerLinkClick()">Banner Link</a>.
-# mobileBanner: Example - Page specific banner for mobile. <a href="https://earthly.dev/blog/" onclick="bannerLinkClick()">Banner Link</a>.
+topcta: false
 excerpt: |
     Introducing Earthly, a build automation tool for the container era. Learn how Earthly brings modern capabilities like reproducibility, determinism, and parallelization to your builds without the need for a complete rewrite.
 last_modified_at: 2023-07-11

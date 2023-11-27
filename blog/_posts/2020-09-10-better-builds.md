@@ -9,6 +9,7 @@ internal-links:
    - scala builds
 topic: earthly
 funnel: 3
+topcta: false
 excerpt: |
     Learn how to solve the problem of reproducible builds with Earthly, an open-source tool that encapsulates your build process in a Docker-like syntax. With Earthly, you can eliminate the pain of slow feedback and easily reproduce build failures, ensuring that your builds are not affected by environmental issues.
 last_modified_at: 2023-07-14

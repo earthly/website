@@ -12,7 +12,10 @@ excerpt: |
     Learn how to use Spinnaker, an open-source continuous delivery platform, to automate and standardize software releases to Kubernetes clusters. This tutorial provides step-by-step instructions on setting up Spinnaker, configuring providers and storage, and deploying applications with pipelines.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Pair it with Spinnaker for even smoother Kubernetes deployments. [Check it out](/).**
+<!--sgpt-->**This article explores how Spinnaker enhances Kubernetes. Use Spinnaker for continuous delivery? Earthly can refine your build processes with consistent and simultaneous builds. [Learn more](/).**
+
+**This article is about Spinnaker Kubernetes deployments. Summary:
+This blog post provides a comprehensive tutorial on using Spinnaker, an open-source continuous delivery platform, for automating Kubernetes deployments. [Check it out](/).**
 
 Kubernetes has become the standard for deploying and managing containerized applications, but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
 

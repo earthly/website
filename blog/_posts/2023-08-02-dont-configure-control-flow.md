@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-topcta: false
 bottomcta: false
 internal-links:
  - YAML

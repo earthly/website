@@ -6,6 +6,7 @@ categories:
   - News
 topic: earthly
 funnel: 3
+topcta: false
 excerpt: |
     Learn how Earthly is revolutionizing the build process with its self-contained, reproducible, and parallel approach. Say goodbye to slow, brittle builds and hello to a more efficient and user-friendly development experience.
 last_modified_at: 2023-07-14
