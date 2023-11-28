@@ -15,6 +15,9 @@ excerpt: |
     This article discusses ten more advanced Git commands, including git remote, git bisect, git fetch, git checkout, git branch, git reset, git archive, and git help. These commands provide developers with powerful tools for managing remote repositories, finding specific commits, retrieving changes from remote repositories, navigating branches, manipulating commit history, creating archives, and accessing Git documentation.
 last_modified_at: 2023-10-06
 ---
+**Explore advanced Git commands in this article. If you're a Git power user, Earthly can streamline your build process by integrating seamlessly with your version control workflows. [Check it out](/).**
+
+
 
 The last [article](https://earthly.dev/blog/advanced-git-commands/) discussed ten advanced Git commands you should know as a developer.
 

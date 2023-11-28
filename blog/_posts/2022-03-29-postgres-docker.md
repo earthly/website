@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Docker with Postgres to simplify data management and streamline the development process. This tutorial covers best practices for running PostgreSQL databases on Docker containers and includes step-by-step instructions for setting up and connecting to a PostgreSQL instance using Docker.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about data management for Postgres containers. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+**In this article, you'll learn to run PostgreSQL on Docker. If you manage PostgreSQL in Docker, Earthly simplifies and optimizes your database builds. [Learn more](/).**
 
 Relational databases have been an easy way to store relational data for the last few decades. Over the years, many popular database management systems have been created, but installing them can be tricky.
 

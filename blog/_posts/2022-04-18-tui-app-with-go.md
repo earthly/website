@@ -13,7 +13,7 @@ excerpt: |
     Learn how to build a terminal user interface (TUI) using Golang with the help of the Tview library. This tutorial covers the basics of creating a TUI, including widgets, forms, lists, and layouts, and provides a step-by-step guide to building a simple rolodex app.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
+**In this article, you'll discover how to create TUIs in Go. Earthly streamlines your build process and guarantees reproducibility as you craft TUIs with Go. [Explore Earthly](/).**
 
 <script zoom="2" id="asciicast-2UWD3NMXowmPCfTlwYjyFDJSF" src="https://asciinema.org/a/2UWD3NMXowmPCfTlwYjyFDJSF.js" async data-loop="true"  data-fit="none" data-autoplay="true" data-speed="2" data-size="small" data-start-at=04 ></script>
 

@@ -12,7 +12,7 @@ excerpt: |
     Learn about the different options for continuous integration with Bitbucket, including using Jenkins, integrating with cloud CI/CD tools like AWS, and utilizing Bitbucket's native CI/CD service, Bitbucket Pipelines. Discover the benefits and costs of each option to determine the best fit for your project.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and quicker with containerization. If you're looking for a tool to optimize your CI workflows, Earthly could be a great open-source option for you. [Check it out](/).**
+**Explore continuous integration options in this article. If you use Bitbucket for version control, Earthly can enhance your CI pipelines with consistent, reproducible builds. [Discover Earthly's benefits](/).**
 
 How do you rapidly deliver new features without delivering bugs at the same rate? By running automatic builds and tests on all of your code before it gets into a release. And that's exactly what continuous integration is.
 

@@ -16,8 +16,7 @@ excerpt: |
     This article explains the Bash `eval` command, its usage, risks, and vulnerabilities. It provides guidance on how to safely use `eval` by sanitizing user input and following best practices.
 last_modified_at: 2023-10-06
 ---
-
-**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article explains how you can safely use the Bash `eval` command. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
+**In this article, you'll discover how the Bash `eval` command can enhance your scripting. If you frequently use `eval`, Earthly can add reproducibility and isolation to your builds. [Explore Earthly](/).**
 
 <div class="wide">
 ![Terminal window]({{site.images}}{{page.slug}}/EbrSrlX.png)

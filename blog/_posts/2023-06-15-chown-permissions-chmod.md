@@ -15,8 +15,7 @@ excerpt: |
     Learn how to change file and directory ownership in Linux using the `chown` command. This article explains the importance of ownership in Linux, how permissions work, and provides examples of using `chown` to change ownership.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Linux file permissions and ownership. If you enjoy doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
+**Explore the essentials of Linux ownership management in this article. Familiar with `chown` for permissions? Discover how Earthly's containerized approach can upgrade your build process. [Learn more](/).**
 
 In Linux, file, and directory ownership is a core aspect of the operating system's security and file management model. Each file and directory has an *owner* and a *group* assigned to it. The owner of a file or directory is the user who created it, and the group is a collection of users who share the same permissions for that file or directory.
 

@@ -14,7 +14,7 @@ excerpt: |
     Learn how to benchmark your Kubernetes cluster against CIS benchmarks using Kube-Bench. This tutorial provides step-by-step instructions on installing and configuring Kube-Bench, running benchmarks via CLI, fixing WARN and FAIL benchmarks, and automating the process using Kubernetes jobs and cronjobs.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly could be a great addition to your toolkit. [Check it out](/).**
+**In this article, you'll learn about the CIS Kubernetes benchmarks. If you're dedicated to upholding strict security standards, Earthly simplifies your Kubernetes compliance process. [Take a look](/).**
 
 ## What Is CIS?
 

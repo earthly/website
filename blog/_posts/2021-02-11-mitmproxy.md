@@ -12,7 +12,7 @@ internal-links:
 topic: cli
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. We wrote this article because we are big fans of MITMProxy and poking around in the network stack. [Check us out](https://earthly.dev/)!**
+**This article teaches you how to use mitmproxy. If you want to improve your build processes, Earthly provides a containerized solution that works well with mitmproxy. [Learn how Earthly can improve your workflow](/).**
 
 ## Introduction
 

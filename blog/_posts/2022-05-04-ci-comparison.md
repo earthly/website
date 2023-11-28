@@ -16,7 +16,7 @@ excerpt: |
     In this article, we compare the free tiers of four popular CI/CD platforms - Github Actions, GitLab CI, Circle CI, and Travis CI. We evaluate their documentation, compute power, available disk space, free build minutes, and speed and performance. Find out which platform offers the most value for your CI/CD needs.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software building with containers for faster results. While you're comparing CI/CD platforms, consider adding Earthly to your workflow for optimized builds. [Give it a look](/).**
+**In this article, we compare CI/CD platforms. Earthly improves your builds with consistent, cache-optimized, and parallel containerization. [Discover Earthly's role](/).**
 
 ## How Much Can You Get For Free?
 

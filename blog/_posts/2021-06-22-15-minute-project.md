@@ -12,7 +12,7 @@ internal-links:
   - project-management
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify software builds using containers, making your software projects more streamlined and efficient - just like city planning. [Take a peek](/).**
+**Explore the parallels between city planning and software development in this article. Just as meticulous planning fosters thriving cities, Earthly introduces structured precision to your build environment. [Discover more about Earthly](/).**
 
 Like many others, 2020 encouraged me to find some new interests and hobbies to fill the time spent at home. At risk of sounding terribly boring, one of my newfound interests is that of city planning.
 

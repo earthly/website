@@ -14,7 +14,7 @@ excerpt: |
     This article explores the challenges of software dependency management, including versioning conflicts, security vulnerabilities, and performance consistency. It also introduces tools like Earthly, Dependabot, Gradle, and OWASP Dependency-Check that can help improve software dependency management workflows.
 last_modified_at: 2023-10-17
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containers. Struggling with software dependency management? Earthly could be a game changer. [Check it out](/).**
+**Explore the challenges of dependency management and tackle them head-on with Earthly, your ally for consistent builds and smoother workflows. [Learn how](/).**
 
 At its core, dependency management involves managing numerous pieces of software (*ie* codebases, libraries, frameworks, or other modules) that a specific project depends on for proper functioning. However, as any experienced developer knows, dependency management can be very challenging. From versioning conflicts and security vulnerabilities to the maintenance of consistent performance across diverse environments, dependency management isn't for the faint of heart.
 

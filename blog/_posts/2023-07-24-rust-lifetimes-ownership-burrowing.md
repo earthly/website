@@ -15,8 +15,7 @@ excerpt: |
     This article provides a comprehensive guide to Rust lifetimes, explaining ownership and borrowing in the language. It covers the basics of lifetimes, borrowing and references, as well as advanced topics like lifetime subtyping and higher-ranked trait bounds.
 last_modified_at: 2023-08-28
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and, therefore, faster – like Dockerfile and Makefile had a baby. This article is all about the Rust Lifetimes**.
+**In this article, we'll explore Rust lifetimes and how they ensure memory safety. If you use Rust's compile-time guarantees, Earthly can simplify your build process. [Learn how](/).**
 
 As a software developer, you're probably familiar with common memory-related bugs, such as [buffer overflows](https://en.wikipedia.org/wiki/Buffer_overflow), [use-after-free errors](https://encyclopedia.kaspersky.com/glossary/use-after-free/), and [data races](https://web.mit.edu/rust-lang_v1.25/arch/amd64_ubuntu1404/share/doc/rust/html/nomicon/races.html). These issues can cause a wide range of problems, including crashes, data corruption, and even security vulnerabilities.
 

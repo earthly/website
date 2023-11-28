@@ -12,7 +12,7 @@ excerpt: |
     Learn about the differences between container runtimes containerd and Docker in this informative article. Discover their features, how they work together, and what they can do individually, helping you make an informed decision for your containerized applications.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and speedier with containerization. If you're deep diving into Docker and `containerd`, you'd be interested in how Earthly can streamline your builds. [Check us out](/).**
+**In this article, you'll discover how Docker differs from containerd. If you use Docker to build images, Earthly can enhance your container builds with its reliable and simultaneous processes. [Learn more](/).**
 
 <!-- vale HouseStyle.Setup = NO -->
 You can't have a conversation about modern infrastructure technology without talking about containers. They provide a simple, secure way to package, distribute, and run applications, and because they run within an isolated namespace in a computer, failures within containers won't affect the entire computing environment. And they're lighter than VMs because they don't have to abstract physical resources or require an installed operating system.

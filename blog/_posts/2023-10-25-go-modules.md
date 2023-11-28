@@ -14,7 +14,7 @@ last_modified_at: 2023-10-20
 excerpt: |
     This article provides a comprehensive guide to Go package management and modules. It explains the benefits of using Go modules, introduces essential commands and workflows, and offers tips and best practices for efficient package management.
 ---
-<!--sgpt-->**Meet [Earthly](https://earthly.dev/). We simplify and speed up building software with containerization. If you're working with Go Modules, Earthly could be your perfect build tool companion for your Continuous Integration tasks. [Give us a look](/).**
+**Explore the nuances of Go package management with Earthly as your ally to ensure reproducible and efficient Go builds. [Learn how](/).**
 
 [Go](https://go.dev/), often referred to as Golang, is an open source programming language that offers a unique blend of attributes, including efficiency, performance, simplicity, and readability. Go also embraces the principle of reusability, promoting a programming model where developers can seamlessly organize, distribute, and recycle preexisting code. This process, facilitated by Go's package management system, encourages developers to effortlessly incorporate external packages and libraries into their projects. This approach considerably mitigates the need to reinvent the wheel for routine functionalities, streamlining the development process and promoting code efficiency.
 

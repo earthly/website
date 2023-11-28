@@ -15,8 +15,7 @@ excerpt: |
     Learn how to cross-compile programs for Raspberry Pi using a more powerful PC with this step-by-step tutorial. Discover how to set up the development environment, write a C++ program, and debug it using GDB.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers cross compiling. If you're someone who builds software often, you might want to [check us out](/) and see if Earthly can help you build faster and easier.**
+**Explore cross-compiling for Raspberry Pi in this article. Learn how Earthly simplifies building across architectures. [Learn how](/).**
 
 Thanks to its Debian-based OS, Raspberry Pi offers a robust developer experience. However, at times, it can be difficult to compile programs. For instance, maybe your project is large and your board doesn't have enough resources to compile it at a reasonable speed, especially if you're using a low-end board like the Raspberry Pi Zero. Or maybe your Virtual Network Computing (VNC) session is lagging, or the Raspberry Pi is in a location where it's not possible to attach a keyboard, mouse, or display. In these situations, you can use a readily available and efficient development machine, such as a laptop or another PC, to compile programs for the Raspberry Pi using a process known as cross-compilation.
 

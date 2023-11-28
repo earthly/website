@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Portainer, an open-source container management tool, to easily deploy and manage Docker containers without the need for complex command-line interfaces. With Portainer's graphical user interface, you can view and administer your containerized applications with ease.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. It's a great companion with tools like Docker and Kubernetes, for a smoother containerization workflow. [Give it a try](/).**
+**In this article, we guide you through setting up Portainer. If you're managing containerized environments, Earthly can streamline your build processes. [Learn more](/).**
 
 As a developer managing containerized applications can be daunting especially when it comes to using a command-line interface; administrating [docker](/blog/rails-with-docker) containers, writing complicating, and having to learn the various commands can be intimidating.
 

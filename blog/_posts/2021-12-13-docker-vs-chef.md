@@ -12,7 +12,7 @@ excerpt: |
     Learn the differences between Chef and Docker and how they can be used together in build and deployment pipelines. Discover the strengths of each tool and how they can enhance your infrastructure provisioning and containerization processes.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software builds with containerization. If you're into Chef and Docker, you'll love how Earthly enhances your build process. [Give us a look](/).**
+**In this article, you'll learn how to integrate Docker with Chef to streamline your CI/CD pipelines. Find out how Earthly can improve your build process with consistent, parallel builds. [Explore the integration](/).**
 
 [Docker](https://www.docker.com) and [Chef](https://www.chef.io) are two popular tools in the development world and are used extensively in build and deployment pipelines. However, even though they are used in similar contexts, the two are very different tools.
 

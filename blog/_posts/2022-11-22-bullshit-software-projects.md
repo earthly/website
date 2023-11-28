@@ -8,7 +8,7 @@ excerpt: |
     Discover the frustrations and challenges faced by software developers in the world of "bullshit work." From pointless projects to busy work and executive pet projects, this article sheds light on the absurd tasks that developers often encounter in their careers.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Give it a whirl](/).**
+**This article addresses the annoyance of meaningless tasks in software development. If you're tired of "busy work," Earthly can streamline your build process and cut out the needless tasks. [Check it out](/).**
 
 I was frying a couple of dozen walnut crunch when I first got in trouble at Tim Horton's.
 

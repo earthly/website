@@ -13,7 +13,7 @@ internal-links:
   - intercal
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly helps you avoid YAML hell. [Check it out](/).**
+**In this article, you'll discover the quirks and special features of different programming languages. Learn how Earthly's methodical approach to continuous integration (CI) builds can streamline your development workflow. [Find out how Earthly improves your builds](/).**
 
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 

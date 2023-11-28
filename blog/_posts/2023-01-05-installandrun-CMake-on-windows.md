@@ -14,7 +14,7 @@ excerpt: |
     Learn how to install and run CMake on Windows, a powerful tool for build automation, testing, packaging, and software installation. Discover the pros and cons of using CMake and how it can enhance your development workflow.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. If you're into CMake and automation, Earthly could be just the tool you need. [Check it out](/).**
+**In this article, we'll dive into CMake's features. If you appreciate CMake's neat separation of source and build directories, you'll like how Earthly's containerized build environments enhance this for clean and reliable builds. [Learn more](/).**
 
 CMake is an open source multiplatform tool that you can use to help with build automation, testing, packaging, and the installation of software. One of the main advantages of CMake is that it supports generating build scripts for a wide variety of platforms including [Windows](/blog/makefiles-on-windows), macOS, and Linux. This gives developers the flexibility they need when building a new project and hopefully helps speed up the build.
 

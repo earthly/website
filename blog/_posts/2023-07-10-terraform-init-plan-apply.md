@@ -14,8 +14,7 @@ excerpt: |
     Learn how to create and manage infrastructure with Terraform using the `terraform init`, `terraform plan`, and `terraform apply` commands. This article covers the basics of Terraform installation, configuration syntax, and the workflow for deploying and updating infrastructure.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is on the basics of Terraform but if you're interested in a different approach to building and packaging software then [check us out](/).**
+**Explore how Terraform manages multicloud environments in this article. See how Earthly enhances Terraform, simplifying your build processes with its containerized method. [Learn more here](/).**
 
 The rapid adoption of the multicloud paradigm has greatly increased the complexity of IT infrastructure management. Deploying virtual machines (VMs) and [Kubernetes](https://kubernetes.io/) on demand in any cloud is becoming the norm. The question is, how can you manage your infrastructure effectively?
 

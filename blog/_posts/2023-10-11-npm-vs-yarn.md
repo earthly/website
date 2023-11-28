@@ -13,7 +13,7 @@ excerpt: |
     This article compares npm and Yarn, two popular package management tools for Node.js projects. It discusses their differences in performance, dependency management, command line interface, configuration, tooling and integrations, and overall stability and reliability.
 last_modified_at: 2023-10-06
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We streamline and speed up building software using containers. If you're into npm or yarn, Earthly can enhance your CI build processes. [Give us a go](/).**
+**In this article, you'll discover how npm and Yarn differ. If you already use npm for scripting, consider trying Earthly for containerized, reproducible builds that can enhance your build process. [Explore Earthly](/).**
 
 If you've worked on a [Node.js](https://nodejs.org/en/) project before, you're likely already familiar with [npm](https://docs.npmjs.com/cli/), the bundled package management tool for Node.js. And there's a good chance you've started disliking how npm handles things like disk space management and concurrent installation. In such cases, you may have explored an alternative tool called [Yarn](https://yarnpkg.com/), which does the same thing but handles a few concepts more efficiently.
 

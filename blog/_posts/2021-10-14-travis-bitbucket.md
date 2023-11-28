@@ -11,7 +11,7 @@ excerpt: |
     Learn how to set up a continuous integration workflow using Travis CI and Bitbucket. This tutorial will guide you through the process of creating a simple REST API using Node.js and the Express framework, and then running tests on the application using Travis CI.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We streamline the build process using containerization. You're into Travis CI and Bitbucket? Perfect. Earthly can take your CI/CD workflow to the next level. [Give it a try](/).**
+**This article explains how to set up Travis CI. Use Earthly with Travis CI to make your CI/CD pipelines more efficient with reproducible and parallel builds. [Learn more](/).**
 
 CI/CD (continuous integration / continuous delivery) helps development teams optimize software quality tests before delivering committed changes into production. In this tutorial, you'll learn how to set up a continuous integration workflow using [Travis CI](https://www.travis-ci.com/) and [Bitbucket](https://bitbucket.org/).
 

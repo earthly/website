@@ -14,7 +14,7 @@ internal-links:
  - Django
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can help streamline your builds and amplify your productivity. [Give us a try](/).**
+**In this article, you'll learn about the latest PyScript release. If you're a Python developer eager to dive into web development, Earthly can streamline your PyScript builds. [Explore how](/).**
 
 <div class="wide">
 

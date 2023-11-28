@@ -16,7 +16,7 @@ excerpt: |
     Learn how to automate your Terraform pipelines using GitHub Actions, creating powerful and reliable workflows for managing infrastructure as code. This tutorial guides you through the process of setting up Terraform Cloud, configuring your GitHub repository, and running your GitHub Actions workflow to provision and maintain your infrastructure.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
+**In this article, you'll learn to combine GitHub Actions with Terraform for potent automation. Earthly complements your CI workflows, ensuring consistent and reproducible builds that enhance your automation's robustness. [Explore how](/).**
 
 GitHub Actions is a powerful tool that allows software developers to automate almost everything inside a GitHub repository. From running tests to linting your code, to automatically commenting on pull requests and issues, it's a complete solution that helps projects of all kinds to operate more efficiently.
 

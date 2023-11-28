@@ -15,8 +15,7 @@ excerpt: |
     In Go, one library stands out when simplifying database interactions. This library is called GORM. This article will dive deep into using the GORM library to perform database operations in Go.
 last_modified_at: 2023-08-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build, then [check us out](/).**
+**Explore the intricacies of GORM in Go through this article. Using GORM for database operations? Find out how Earthly's containerized build process can elevate your workflow. [Learn more](/).**
 
 In Go, one library stands out when simplifying database interactions. This library is called GORM, which stands for **Go Object-Relational Mapper**.
 

@@ -16,8 +16,7 @@ excerpt: |
     Learn how to automate common tasks in software development using shell scripts. From file backups to log analysis and system maintenance, this article provides step-by-step guides and introduces key concepts like variables, loops, and regular expressions.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about how to automate common tasks with shell scripts. If you're interested in a different approach to building and packaging software then [check us out](/).**
+**Explore the world of shell script automation in this article. Already using shell scripts? Discover how Earthly can elevate your build processes. [Learn more](/).**
 
 While performing various software development practices, it is common to repeat specific tasks. This repetition can lead to human error, which introduces the task to bugs and other security vulnerabilities. Also, doing repetitive tasks manually can be time-consuming and inefficient in software development. However, automation of tasks can help solve these problems.
 

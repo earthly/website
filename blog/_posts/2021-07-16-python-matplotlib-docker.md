@@ -10,7 +10,7 @@ excerpt: |
     Learn how to install `matplotlib` in a Docker container and quickly generate graphs and visualizations. Discover the differences between installing `matplotlib` in Alpine Linux and Ubuntu, and why the process can be slower in Alpine.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an ideal tool for dealing with your python container builds. [Check it out](/).**
+**In this article, we'll show you an easy way to install `matplotlib`. If you love `matplotlib`, Earthly can simplify your build process on any Linux distribution. [Discover how with Earthly](/).**
 
 `matplotlib` is an excellent library for creating graphs and visualizations in Python. For example, I used it to generate the performance graphs in [my merging article](/blog/python-timsort-merge), and internally, we use it now and again for visualizing any metrics we produce. It is a bit hard to install inside a docker container, though.
 

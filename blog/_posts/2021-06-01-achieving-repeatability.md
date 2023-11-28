@@ -12,7 +12,7 @@ excerpt: |
     Learn how to achieve repeatability in your continuous integration pipeline and improve the reliability, reproducibility, reusability, and speed of your builds. Discover best practices for test automation, adopting continuous integration, and fixing broken builds immediately.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool for achieving repeatability in your CI/CD pipeline. [Check it out](/).**
+**This article delves into Continuous Integration practices. If you're committed to improving your CI workflows, Earthly can assist with its consistent and parallel builds. [Discover Earthly's role](/).**
 
 <!-- vale HouseStyle.EG = NO -->
 > In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration "Wikipedia article on continuous integration")

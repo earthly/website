@@ -12,7 +12,7 @@ excerpt: |
     Learn the basics of Awk, a powerful text processing tool, in this informative article. Discover how to use Awk to manipulate and analyze data, calculate averages, and even score books based on reviews. Whether you're a beginner or an experienced programmer, this article will help you unlock the potential of Awk.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
+**Explore the fundamentals of Awk, a tool that simplifies text processing. Similarly, Earthly streamlines your build processes with ease and effectiveness. [Learn how](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yJek26lyXZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

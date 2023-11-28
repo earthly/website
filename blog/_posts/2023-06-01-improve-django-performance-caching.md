@@ -14,7 +14,7 @@ excerpt: |
     Learn how to improve the performance of your Django web application using caching techniques. This article covers everything from the basics of caching to advanced strategies, helping you optimize your application and provide a better user experience.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly could be your go-to tool for optimizing the build process of your Django application, ensuring faster and more efficient development. [Check it out](/).**
+**This article discusses optimizing Django caching. Use Earthly to simplify your Django app builds and boost performance reliability. [Discover more about Earthly](/).**
 
 Performance is a crucial aspect of web development that significantly impacts user experience. The speed and reliability of a website influence users' engagement and overall satisfaction with the site. Inadequate performance, such as slow page loading times or frequent crashes, can lead to reduced traffic and potential loss.
 

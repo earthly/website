@@ -16,7 +16,7 @@ excerpt: |
     Learn how to enhance the security of your Kubernetes cluster by using external secret operators (ESOs) with HashiCorp Vault. This tutorial will guide you through the process of setting up and configuring ESOs, allowing you to store your secrets securely outside of the cluster while still making them accessible to your applications.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using HashiCorp Vault, you might like Earthly. [Check it out](/).**
+**In this article, you'll learn how to secure Kubernetes secrets. Use Earthly to simplify your CI pipelines and build securely and efficiently. [Explore now](/).**
 
 Are you interested in learning more about Kubernetes security? While it's true that [Kubernetes](/blog/automate-micsvcs-in-k8s) secrets provide a secure way to manage sensitive data in your applications, it's also wise to consider additional security measures. In my previous articles, I've covered how to get started with [Kubernetes secrets](/blog/kubernetes-secrets/) and [how to secure them effectively](/blog/securing-kubernetes-secrets/) within the [cluster](/blog/kube-bench).
 

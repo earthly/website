@@ -17,8 +17,7 @@ excerpt: |
 
 last_modified_at: 2023-08-15
 ---
-
-**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article discusses using the `ripgrep` command-line tool. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
+**In this article, you'll learn to master `ripgrep` for lightning-fast searches. Earthly boosts your build process with similar efficiency. [Learn how](/).**
 
 The [`ripgrep`](https://docs.rs/crate/ripgrep/11.0.2/source/GUIDE.md) (`rg` for short) command is a command-line tool typically used to search a file for a specific text pattern. It is popular amongst developers and sysadmins for its speed and efficiency. One can make use of `ripgrep` for searching code snippets, analyzing log files, debugging issues, and various other purposes. Further, `ripgrep` is written in Rust, which provides high performance, memory safety, and increased concurrency with lightweight threads. Also, it uses optimized algorithms for searching large files quickly with intelligent defaults.
 

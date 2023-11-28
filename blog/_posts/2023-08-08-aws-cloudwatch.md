@@ -15,8 +15,7 @@ excerpt: |
    AWS CloudWatch is a comprehensive monitoring and observability service. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities.
 last_modified_at: 2023-08-15
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article covers getting started with AWS CloudWatch, which is a great for monitoring applications. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+**This article will teach you the essentials of AWS CloudWatch monitoring. If you use AWS CloudWatch to monitor your applications, Earthly can enhance your CI pipelines with reproducible builds. [Learn more](/).**
 
 In today's cloud-dominated digital landscape, the ability to monitor and track the performance of your applications is paramount. For those working with the Amazon Web Services (AWS) Cloud, [AWS CloudWatch](https://aws.amazon.com/cloudwatch/) is a comprehensive monitoring and observability service designed to meet this critical need. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities to enhance the reliability and efficiency of their applications.
 

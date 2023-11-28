@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use `make` with Python to automate tasks like running tests, installing dependencies, and cleaning builds. Discover the benefits of using `make` in your Python projects and how it can save you time and prevent errors.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers using Python with a `makefile`. `make` is sometimes overlooked by Python devs but it can be a pretty helpful tool.**
+**In this article, you'll learn how to automate Python builds with `make`. If you want to improve your Python build workflows, Earthly can elevate your `make` automation. [Learn more](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/w2UeLF7EEwk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

@@ -16,7 +16,7 @@ internal-links:
   - machine code
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software build processes with containerization. Earthly can enhance the reliability of your CI/CD process. [Check it out](/).**
+**Explore the nuances of building Docker images in this article. If you're a Docker enthusiast, discover how Earthly can upgrade your build process with advanced caching and parallel execution. [Learn how](/).**
 
 ## Introduction
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use Kubernetes persistent volumes to store data for stateful applications in your Kubernetes cluster. This article explains what persistent volumes are, why they're important, and how to create and manage them using kubectl.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're sailing the K8s seas, [check out Earthly](/).**
+**In this article, you'll learn about Kubernetes persistent volumes. For those running stateful applications on Kubernetes, Earthly can improve your build processes with consistent and reproducible builds. [Explore how](/).**
 
 Kubernetes [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes) provide data storage for stateful applications. They abstract a storage system's implementation from how it's consumed by your pods. A persistent volume could store data locally, on a network share, or in a block storage volume provided by a cloud vendor.
 

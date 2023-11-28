@@ -11,7 +11,7 @@ excerpt: |
     Learn why you should stop using pie charts and discover alternative plots that are easier to interpret. This article provides examples and code for creating horizontal bar charts, lollipop charts, and box plots using Python and Matplotlib.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. While you're exploring alternative plots, why not also explore a new way to build your Python projects? [Check it out](/).**
+**This article introduces creative alternatives for charting data. While not specifically tied to Earthly, Python and Matplotlib developers can use Earthly's reproducible builds to maintain consistent development settings. [Discover Earthly](/).**
 
 ## What's Wrong With Pie Charts
 

@@ -17,7 +17,7 @@ excerpt: |
     Learn how to automate the testing, building, and deployment processes of your applications using GitHub Actions and Docker deployments with AWS ECR. This tutorial provides step-by-step instructions on setting up the necessary tools and configuring the workflow to seamlessly deploy your applications to AWS ECR.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
+**In this article, we'll explore how to streamline CI/CD using GitHub Actions. Discover how Earthly can boost your Docker builds when you're integrating CI/CD pipelines with GitHub Actions and AWS ECR. [Learn how](/).**
 
 In this tutorial, we will explore the seamless integration of CI/CD workflows using GitHub Actions and Docker deployments with AWS ECR. By leveraging these technologies, you can automate the testing, building, and deployment processes of your applications. GitHub Actions provides a powerful platform for orchestrating development workflows, while Docker offers a consistent and portable environment for packaging and deploying applications. AWS ECR serves as a managed container registry, allowing you to store and retrieve Docker images efficiently. Together, these tools enable streamlined and scalable deployments. Let's get started by creating a GitHub Actions workflow for automating deployments to AWS ECR.
 

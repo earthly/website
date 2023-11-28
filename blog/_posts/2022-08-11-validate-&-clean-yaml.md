@@ -14,7 +14,7 @@ excerpt: |
     Learn how to validate and clean your YAML files using Kubeval and ValidKube. These tools help you spot misconfigurations and remove clutter from your files, ensuring the security and health of your Kubernetes cluster.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. With Earthly there is less YAML and more working software. [Check it out](/).**
+**Explore how Kubeval validates Kubernetes manifests and learn how Earthly can boost your CI pipelines with consistent, reproducible builds. [Check it out](/).**
 
 [Kubeval](https://www.kubeval.com/) is a [command line tool](/blog/golang-command-line) that validates Kubernetes manifests and YAML files using the Kubernetes API schema. Behind the scenes, Kubeval compares API schemas with objects provided in your YAML file to find any errors. Cleaning and validating your files is imperative because it helps you to spot misconfigurations that can introduce flaws to your cluster. All you have to do is run the Kubeval command which specifies your YAML file. Kubeval is a free and open-source project developed by [instrumenta](https://instrumenta.dev/).
 

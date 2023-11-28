@@ -12,7 +12,7 @@ excerpt: |
     Learn how to generate public/private key pairs, encrypt and decrypt data using RSA encryption in Golang. This tutorial provides step-by-step instructions and sample code to help you understand the process and implement it in your own projects.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify the build process of software using containerization. It's a great tool for managing complex CI/CD pipelines, especially when security matters. [Check it out](/).**
+**This article explores SSH key encryption. Learn how Earthly simplifies your build and test workflows with RSA encryption in Go. [Discover how](/).**
 
 We're currently working on a server for sharing secrets between developers and CI systems, and one of the features we decided to support is passwordless login via ssh keys. I had never used any of the public/private key encryption libraries in Go before, so I wanted to spend some time experimenting with them to familiarise myself with the libraries.
 

@@ -12,7 +12,7 @@ excerpt: |
     Learn how to run Python applications using Docker, a containerization tool that simplifies managing dependencies and allows for easy sharing of projects with other developers. This tutorial provides step-by-step instructions on setting up a Docker container, building a Python app, and running it within the container.
 last_modified_at: 2023-07-24
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about one solution to the complexities of Python development. If you're interested in a simple and containerized approach to building python code then [check us out](/).**
+**In this article, you'll learn how to Dockerize Python applications. If you use Docker for your Python projects, Earthly can simplify your build process and improve your CI/CD workflows. [Check it out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/4bGtb2L4-VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

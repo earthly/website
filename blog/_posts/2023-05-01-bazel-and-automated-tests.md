@@ -16,8 +16,7 @@ excerpt: |
     Learn how to improve your automated test suite using Bazel, an open source software tool. Bazel can speed up the testing process, save time and computing resources, and ensure reliable and scalable deployments.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
+**This article teaches you Bazel test automation. If you use Bazel for build automation, Earthly enhances it with reproducible, efficient containerized builds. [Explore more](/).**
 
 To ensure that your code works as expected even when you ship it to production, you need to integrate automated testing. Automated testing is critical for enterprise-grade software development and delivery. It saves you time and money by rapidly running tests and improves software quality by allowing engineers to run lengthy and time-consuming tests in the background.
 

@@ -18,7 +18,7 @@ topic: earthly
 funnel: 3
 last_modified_at: 2023-07-14
 ---
-**This article teaches you how to optimize build systems. If you use Docker and Makefiles, Earthly can streamline your build process with its containerized, scriptable approach. [Learn how Earthly integrates with your workflow](/).**
+**This article guides you through optimizing build systems. Frustrated with complex Makefiles and Dockerfiles? Earthly streamlines your build process, offering a uniform and sustainable method. [Discover Earthly's advantages](/).**
 
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->

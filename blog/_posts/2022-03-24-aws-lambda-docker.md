@@ -13,7 +13,7 @@ excerpt: |
     Learn how to run containers on AWS Lambda and leverage the scalability and cost-saving benefits of serverless computing. This article explores the process of setting up a containerized application in AWS Lambda, including creating a TypeScript Lambda function, testing it locally, pushing the image to AWS Elastic Container Registry (ECR), and deploying it as a Lambda function. Discover how to harness the power of containers and serverless computing for your applications on AWS.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article covers running containers in AWS Lambda, which is a great approach to prevent vendor lock-in. If you're interested in a simple and containerized approach to building software that prevents CI vendor lock in then [check us out](/).**
+**In this article, we'll dive into AWS Lambda containers. If you use AWS Lambda's container features, Earthly can streamline your build process for smooth deployment. [Discover how with Earthly](/).**
 
 Most of the code I've had running on AWS's cloud has been in docker containers, running in Kubernetes clusters. And from my perspective, AWS was invisible. All I needed to concern myself with was the intricacies of getting the YAML for `kubectl apply` right. Of course, the cluster's configuration was not my concern unless something went wrong, but I could then ping some Ops expert to help me out. But all that seems overkill for many tasks – the operational burden of maintaining Kubernetes is not free.
 

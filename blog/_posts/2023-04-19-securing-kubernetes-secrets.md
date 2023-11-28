@@ -15,7 +15,7 @@ excerpt: |
     Learn how to secure your Kubernetes secrets effectively by enabling encryption at rest, implementing role-based access control, and securing the ETCD data store. Protect your sensitive information and keep your secrets safe from unauthorized access.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
+**In this article, you'll master Kubernetes secrets security. Manage Kubernetes secrets confidently with Earthly's secure and repeatable build process. [Discover Earthly's role](/).**
 
 Storing application passwords, usernames, authentication tokens, and [SSH](/blog/encrypting-data-with-ssh-keys-and-golang) keys as secret objects when building in Kubernetes is safer than hard coding sensitive information into the application codebase. But here's the big question: Are these secrets secure? No, they aren't!
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn how to ensure the quality of your markdown files and documentation with linting tools. Discover various tools like markdownlint, mdspell, alex, write-good, textlint, proselint, and Vale that can help you catch formatting errors, spelling mistakes, grammar errors, and improve writing clarity. Find the right tool for your needs and automate their usage to maintain high-quality documentation.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Need to automate your documentation? Earthly can help by simplifying the build process in a CI environment. [Check us out](/).**
+**This article introduces prose linting tools. If you value precise software documentation, Earthly can integrate with Vale and markdownlint to automate and improve your CI builds. [Explore here](/).**
 
 Many linting, code formatting, and static analysis tools exist for code. You can use `eslint`, `gofmt`, or many other static analysis tools, combined with a great continuous integration process, and ensure that your code stays in good shape. But what about markdown files and documentation? How do you ensure you aren't committing spelling and grammar mistakes? How do you ensure your files are valid markdown and that the language you are using is clear and correct? You can do this and more with a documentation linter.
 

@@ -16,7 +16,7 @@ excerpt: |
     This article explains how to use interfaces in Go to design extensible and modular software. It covers the basics of interfaces, implementing interfaces, advanced interface techniques, and best practices for using interfaces.
 last_modified_at: 2023-08-28
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We can simplify and speed up your software builds with containerization. If you're working with interface design in Go, Earthly can be a great addition to your toolkit. [Check it out](/).**
+**In this article, discover the strength of Go interfaces. If you appreciate Go's modular design, you'll be thrilled to learn how Earthly's containerized build steps can refine your CI pipelines with comparable precision and efficiency. [Explore now](/).**
 
 Go, also known as Golang, is a simple and efficient programming language that's been adopted by many tech companies, including Uber, Twitch, and Microsoft. Similar to other programming languages such as Java and C++, Go supports interfaces, which provide a powerful mechanism for ensuring that class objects inherit a defined set of properties.
 

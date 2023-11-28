@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use the `with` keyword in Python to handle exceptions and ensure proper resource management. This article explains the concept of context managers and provides examples of creating your own classes and functions that support the `with` statement. Whether you're working with files, locks, or other types of connections, understanding the `with` statement is essential for writing clean and efficient Python code.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software building with containerization. If you're wrestling with complex Python CI/CD pipelines, you'll find Earthly can make your life a lot easier. [Check it out](/).**
+**In this article, you'll learn how Python's `with` keyword simplifies resource management. If you value the `with` statement as a Python developer, you'll appreciate Earthly's elegant and efficient build automation. [Check it out](/).**
 
 The `with` keyword in python is used for exception handling when working with certain resources like files or database connections. These resources may need to have additional actions performed if an exception is raised.
 

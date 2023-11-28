@@ -15,7 +15,7 @@ excerpt: |
     This article compares three popular container image build tools: Docker, Buildah, and kaniko. It explores their features, compatibility, and community support, helping readers make an informed decision about which tool is right for their needs. Whether you're new to containerization or looking for alternatives to Docker, this article provides valuable insights into the world of container image building.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about several different ways to build containers. If you're interested in a [simple way to build containers](/blog/docker-multistage) then [check us out](/).**
+**In this article, you'll discover tools for container images. If you value Docker's flexibility, try Earthly to make your container builds more reproducible and efficient with parallel workflows. [Explore here](/).**
 
 When you first start learning about containerization, you're probably going to use [Docker](https://www.docker.com). Docker wasn't the first tool to introduce the world to containerization; however, it's definitely the most popular. As you familiarize yourself with Docker and containerization in general, you may begin to run into use cases where Docker isn't the ideal tool.
 

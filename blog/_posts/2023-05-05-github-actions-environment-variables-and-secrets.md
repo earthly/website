@@ -16,7 +16,7 @@ excerpt: |
     Learn how to work with GitHub Actions environment variables and secrets in this tutorial. Discover when to use them, how to define them for different scopes, and even how to store sensitive information like certificates. Plus, find out how Earthly can simplify your GitHub Actions builds.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
+**This article explores GitHub Actions security. Manage your environment variables and secrets securely and make your builds repeatable with Earthly. [Learn more](/).**
 
 When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your CI/CD processes. These environmental variables and secrets also make it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
 

@@ -17,7 +17,7 @@ excerpt: |
     Learn how to optimize your Docker images and create production-grade images using multistage builds. Discover the core concepts of multistage builds, the challenges they present, and a better way to do multi-stage builds with Earthly.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Docker Multistage Builds. Earthly can greatly enhance the process of creating Docker multistage builds. [Check us out](/).**
+**Explore the advantages of Docker multistage builds in this article. Learn how Earthly enhances your build process through efficient layer caching and parallel execution, speeding up and stabilizing your CI pipelines. [Learn how](/).**
 
 At first glance, writing Dockerfiles appears to be a straightforward process. After all, most basic examples reflect the same set of steps. However, not all Dockerfiles are created equal. There is an optimal way of writing these files to produce the kind of Docker images you want for your final product. If you were to pop the hood, you'd see that Docker images actually consist of file system layers that correlate to the individual build steps involved in the creation of the image.
 

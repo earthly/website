@@ -8,7 +8,7 @@ excerpt: |
     Learn how to store your VS Code settings in Git to easily manage and share your customizations. Keep all your settings in one place and avoid breaking anything when customizing your VS Code experience.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about storing VS Code `Settings.json` in Git. But you should also [check out Earthly](/).**
+**In this article, you'll discover how to tailor VS Code to enhance your productivity. Earthly boosts your setup by simplifying build processes with its containerized method, ideal for VS Code users. [Learn more](/).**
 
 VS Code is very extensible and you can customize it in a thousand ways using many extensions.
 

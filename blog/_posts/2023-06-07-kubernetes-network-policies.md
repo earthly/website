@@ -16,7 +16,7 @@ excerpt: |
     Learn how to secure your Kubernetes cluster with network policies, which allow you to control and secure communication between pods and services. Discover the benefits of using network policies, such as improved security, compliance, resource optimization, and troubleshooting capabilities. Apply network policies in a demo to control traffic between namespaces and ensure the safety and integrity of your cluster.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check it out](/).**
+**This article teaches you Kubernetes Network Policy. Manage Kubernetes clusters more efficiently—Earthly streamlines your CI workflows with reproducible builds. [Discover how with Earthly](/).**
 
 Kubernetes Network Policy is a set of rules that define how network traffic flows within a Kubernetes cluster. It is used to control and secure communication between pods and services in a Kubernetes cluster.
 

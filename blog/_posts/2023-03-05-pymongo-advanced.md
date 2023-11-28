@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use advanced features of MongoDB with PyMongo, including schema validation, data modeling patterns, and advanced queries. This tutorial will help you optimize your MongoDB database and improve the efficiency of your applications.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containers. It can even make Python CI a breeze. [Check it out](/).**
+**This article teaches advanced MongoDB techniques. If you love MongoDB, Earthly simplifies your build process for complex data-driven applications. [Explore Earthly](/).**
 
 [MongoDB](https://www.mongodb.com/) is a powerful and flexible NoSQL database that has become increasingly popular in recent years due to its ability to handle large amounts of data and its support for a wide range of data types. [PyMongo](https://pymongo.readthedocs.io/en/stable/) is a Python library that provides a simple and efficient way to interact with [MongoDB](/blog/mongodb-docker) using the Python programming language.
 

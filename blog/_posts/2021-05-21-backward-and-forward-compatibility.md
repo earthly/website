@@ -15,7 +15,7 @@ excerpt: |
     This article explores best practices for maintaining backward and forward compatibility with Protocol Buffers. Learn how to manage your messages and make changes without breaking your system.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers protocol buffers and forward and backward compatibility. If you want to know more about building in containers then [check us out](/).**
+**In this article, you'll master the basics of Protocol Buffers. If you're handling data serialization across platforms, Earthly can streamline your protobuf compilation. [Discover how with Earthly](/).**
 
 Protocol Buffers serialize structured data so it can be efficiently stored or shared over a network. They were designed for internal use at Google in 2001 and released to the public under an open-source license in 2008.
 

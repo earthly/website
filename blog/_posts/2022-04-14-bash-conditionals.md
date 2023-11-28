@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use conditionals in Bash to improve your scripting skills and automate tasks. This comprehensive guide covers everything from test commands and operators to conditional statements and case statements. Whether you're a beginner or an experienced Bash user, this article will help you level up your Bash programming skills.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using conditionals in Bash. Earthly is a powerful build tool that Bash users should get to know. [Check us out](/).**
+**This article teaches you the essentials of Bash conditionals. If you appreciate Bash's power and precision, discover how Earthly's declarative syntax revolutionizes build automation. [Explore now](/).**
 
 [Bash (bourne again shell)](https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f.html) has been around since 1989 and owes its longevity to its usefulness and flexibility. While it's the default login and command shell for most [Linux](https://www.linux.org) distros, its value extends beyond that.
 
