@@ -122,6 +122,8 @@ And that's all you have to do to create a merge queue. Of course, you can play w
 
 In this article, you learned all about merge queues, including how they operate and when they're helpful. With this information, you're better equipped to decide if merge queues would be a valuable addition to your workflow and ho
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -130,4 +132,3 @@ In this article, you learned all about merge queues, including how they operate 
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
