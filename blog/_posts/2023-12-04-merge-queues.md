@@ -23,19 +23,25 @@ Generally speaking, merge queues are helpful for organizations with high-traffic
 
 To figure out if merge queues are a good fit for your organization, you need to understand how merges typically operate in Git. For instance, if you have a standard repository with a main branch, by default, creating and merging feature branches is relatively simple. You create a new branch from the main one, modify the code with your feature, create a pull request (PR), and if the code passes every check, you can bring your changes into the main branch:
 
+<div class="wide">
 ![Simple feature branch diagram, courtesy of Carlos Inocencio]({{site.images}}{{page.slug}}/Cv1tW5O.png)
+</div>
 
 > In this diagram (and the following diagrams), every "C" represents a commit in each branch.
 
 When multiple features are in development, each can be merged individually into the main branch regardless of when they were created, as long as they pass the merge checks established in the PR:
 
+<div class="wide">
 ![Two-feature branch diagram]({{site.images}}{{page.slug}}/vasjR9X.png)
+</div>
 
 As more feature branches are created, the possibility of two or more branches conflicting increases. One branch may delete a reference the other needs, causing conflicts in the main branch. Or, if you're running a continuous integration (CI) pipeline, it might not catch the conflict since each PR can merge back to the main branch, but they can implicitly conflict with each other. These types of conflicts are called [syntax and semantic errors](https://www.learncpp.com/cpp-tutorial/syntax-and-semantic-errors/) and are more common with larger groups working on the same codebase.
 
 One possible solution to this issue is to require every feature branch to be "up to date" (*ie* have a linear history) with the main branch before you try to merge it back. This setting ensures that the main branch will remain stable. In this scenario, a developer would have to [rebase the code](https://git-scm.com/docs/git-rebase), pass all the CI checks, and then merge their changes into main:
 
+<div class="wide">
 ![Two-feature branch rebase diagram]({{site.images}}{{page.slug}}/hXWRtVE.png)
+</div>
 
 The primary drawback of this approach is speed. As you run the CI checks for every merge into main, every developer must rebase to the latest head. If several developers try to do this, it becomes a race to rebase and merge before further changes occur.
 
@@ -49,7 +55,9 @@ When enough PRs have been added or enough time has passed since the last merge, 
 
 Once the merging process is complete, the group is merged into a new temporary branch created from the head of the main branch. If any of the PRs in the group fail the CI checks, they're removed from the group, and the rest of the PRs will continue with the merge process:
 
+<div class="wide">
 ![Merge queue diagram]({{site.images}}{{page.slug}}/f4lr5kk.png)
+</div>
 
 This automation means that your developers aren't responsible for constantly staying up to date with the current build of the main branch and can focus their time on modifying the code only when necessary.
 
@@ -95,7 +103,9 @@ Developer A checks out the code and develops a new feature. While that happens, 
 
 Unfortunately, what the two developers don't know is that even though their code is compatible with the main branch, they won't work with each other. When developer B merges to the main branch and developer A merges to the main branch, the resulting code will be incompatible because developer B changed a system that developer A's code depends on. Since developer A never pulled the code again, the app doesn't compile, even though both were "okay" in theory:
 
+<div class="wide">
 ![Two conflicting branches]({{site.images}}{{page.slug}}/P0ttBGW.png)
+</div>
 
 At this point, there are already two conflicting branches, but it's time to introduce developer C. Developer C was asked to deliver a fix for a bug, but the main branch is in an inoperable state, so they have to wait until the error is found, the code is rolled back, or a hotfix is deployed.
 
@@ -111,7 +121,9 @@ To avoid the previous scenario, let's implement a merge queue.
 
 If all three developers mark their code as ready to merge after they pass the initial checks against the main branch, the three PRs will be lined up in the queue where the checks are performed incrementally:
 
+<div class="wide">
 ![Merge queue removes failure]({{site.images}}{{page.slug}}/DqWzuZi.png)
+</div>
 
 Here, main+B passes, and main+B+A fails, which means A is removed and main+B+C passes. B and C are merged into the main branch, which never breaks, and developer A gets a log stating the reason for the removal of their PR. Rework and a production-down ticket are avoided, and the developers can keep working on new features instead of hunting down a bug.
 
@@ -130,8 +142,3 @@ In this article, you learned all about merge queues, including how they operate 
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-
