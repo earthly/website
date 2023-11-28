@@ -138,7 +138,3 @@ And that's all you have to do to create a merge queue. Of course, you can play w
 In this article, you learned all about merge queues, including how they operate and when they're helpful. With this information, you're better equipped to decide if merge queues would be a valuable addition to your workflow and how to easily add one.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
