@@ -8,3 +8,4 @@ website/build
 install.sh
 .vscode
 .secret
+get_new_cta.pkl

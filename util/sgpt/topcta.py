@@ -13,6 +13,9 @@ import guidance
 import concurrent.futures
 import pprint
 import re
+import pickle
+import portalocker
+
 
 # gpt-4-1106-preview is cheaper and with more context
 # But doesn't work with guidance's latest, so must revert back in CI
@@ -22,7 +25,25 @@ gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 rerun = True
-debug = True
+debug = False
+
+GLOBAL_CACHE = {}
+CACHE_FILE = 'get_new_cta.pkl'
+
+def load_cache():
+    global GLOBAL_CACHE
+    if os.path.exists(CACHE_FILE):
+        with open(CACHE_FILE, 'rb') as file:
+            GLOBAL_CACHE = pickle.load(file)
+    else:
+        GLOBAL_CACHE = {}
+
+def write_cache():
+    global GLOBAL_CACHE
+    with open(CACHE_FILE, 'wb') as file:
+        # Lock the file before writing
+        portalocker.lock(file, portalocker.LOCK_EX)
+        pickle.dump(GLOBAL_CACHE, file)
 
 def log(s : str):
     if debug:
@@ -79,26 +100,46 @@ def add_top_cta_if_conditions(filename, dryrun):
         first_paragraph = first_paragraph(rest_of_file) 
 
         if is_cta(first_paragraph) and rerun:
-            # print(f"Updating CTA:\t {filename}")
+            print(f"Updating CTA:\t {filename}")
             if not dryrun:
                 # Drop old leading paragraph
-                rest_of_file = rest_of_file.lstrip().split("\n\n", 1)[1]
+                rest_of_file = rest_of_file.lstrip().split("\n\n", 1)[1].strip()
                 add_new_cta(filename,frontmatter,rest_of_file)
         elif not is_cta(first_paragraph):
-            # print(f"Adding CTA:\t {filename}")
+            print(f"Adding CTA:\t {filename}")
             if not dryrun:
                 add_new_cta(filename,frontmatter,rest_of_file)
         else:
             print(f"Not Adding CTA:\t {filename}") 
 
 def add_new_cta(filename, frontmatter, rest_of_file):
-    file_content = Path(filename).read_text()
-    replace = build_cta(file_content) 
-    replace = make_shorter(replace)
-    replace = "**"+make_cleaner(replace)+"**"
-    new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
+    replace = get_new_cta_with_cache(filename,rest_of_file)
+    new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file
     with open(filename, 'w') as file:
         file.write(new_content)
+    print(f"Wrote:\t{filename}")
+
+def get_new_cta_with_cache(filename, rest_of_file) -> str:
+    global GLOBAL_CACHE
+    # Check if result is in cache
+    if filename in GLOBAL_CACHE:
+        print("Cache hit")
+        return GLOBAL_CACHE[filename]
+
+    # Call the original function and store the result in cache
+    result = get_new_cta(filename, rest_of_file)
+    GLOBAL_CACHE[filename] = result
+
+    # Write the updated cache to the file
+    write_cache()
+
+    return result
+
+def get_new_cta(filename, rest_of_file):
+    replace = build_cta(rest_of_file) 
+    replace = make_shorter(replace)
+    replace = "**"+make_cleaner(replace)+"**"
+    return replace
 
 earthly_facts = dedent("""
                 Here are some key things to know about Earthly and why it is used in tech:
@@ -298,6 +339,7 @@ def make_shorter(input: str) -> str:
     log(out.__str__())
     return out["answer"].strip()
 
+
 def make_cleaner(input: str) -> str:
     score = guidance(dedent('''
     {{#system~}}
@@ -315,6 +357,7 @@ def make_cleaner(input: str) -> str:
     return out["answer"].strip()
 
 def main():
+    load_cache()
     parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
     parser.add_argument('--dir', help='The directory containing the markdown files.')
     parser.add_argument('--file', help='The path to a single markdown file.')
@@ -335,13 +378,12 @@ def main():
                     path = os.path.join(root, file)
                     markdown_files.append(path)
 
-        # markdown_files = markdown_files[:50]
-
         # Dispatch the tasks using ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
             futures = [executor.submit(add_top_cta_if_conditions, file_path, args.dryrun) for file_path in markdown_files]
             print("Waiting...")
             concurrent.futures.wait(futures)  # Wait for all futures to complete
+        write_cache()
     elif args.file:
         add_top_cta_if_conditions(args.file, args.dryrun)
     else:
