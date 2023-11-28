@@ -6,7 +6,10 @@ toc: true
 author: Carlos Inocencio
 
 internal-links:
- - just an example
+ - learn about merge queues
+ - what is merge queues
+ - introduction to merge queues
+ -  merge queues for pull requests 
 last_modified_at: 2023-09-08
 ---
 
@@ -120,7 +123,7 @@ And that's all you have to do to create a merge queue. Of course, you can play w
 
 ## Conclusion
 
-In this article, you learned all about merge queues, including how they operate and when they're helpful. With this information, you're better equipped to decide if merge queues would be a valuable addition to your workflow and ho
+In this article, you learned all about merge queues, including how they operate and when they're helpful. With this information, you're better equipped to decide if merge queues would be a valuable addition to your workflow and how to easily add one.
 
 {% include_html cta/bottom-cta.html %}
 
@@ -131,4 +134,4 @@ In this article, you learned all about merge queues, including how they operate 
 * [ ] Verify look of article locally
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
