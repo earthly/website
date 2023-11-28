@@ -10,7 +10,7 @@ internal-links:
 last_modified_at: 2023-09-08
 ---
 
-# What Is a Merge Queue, and How to Use It
+## What Is a Merge Queue, and How to Use It
 
 Merge queues (or trains, if you use GitLab) are created in order to arrange multiple pull requests consecutively. Each pull request is individually reviewed before being merged into the target branch. GitHub and GitLab offer in-house solutions for this process, but there are also third-party companies, like [Mergify](https://mergify.com/), that offer this service.
 
@@ -20,19 +20,19 @@ Generally speaking, merge queues are helpful for organizations with high-traffic
 
 To figure out if merge queues are a good fit for your organization, you need to understand how merges typically operate in Git. For instance, if you have a standard repository with a main branch, by default, creating and merging feature branches is relatively simple. You create a new branch from the main one, modify the code with your feature, create a pull request (PR), and if the code passes every check, you can bring your changes into the main branch:
 
-![Simple feature branch diagram, courtesy of Carlos Inocencio](https://i.imgur.com/Cv1tW5O.png)
+![Simple feature branch diagram, courtesy of Carlos Inocencio]({{site.images}}{{page.slug}}/Cv1tW5O.png)
 
 > In this diagram (and the following diagrams), every "C" represents a commit in each branch.
 
 When multiple features are in development, each can be merged individually into the main branch regardless of when they were created, as long as they pass the merge checks established in the PR:
 
-![Two-feature branch diagram](https://i.imgur.com/vasjR9X.png)
+![Two-feature branch diagram]({{site.images}}{{page.slug}}/vasjR9X.png)
 
 As more feature branches are created, the possibility of two or more branches conflicting increases. One branch may delete a reference the other needs, causing conflicts in the main branch. Or, if you're running a continuous integration (CI) pipeline, it might not catch the conflict since each PR can merge back to the main branch, but they can implicitly conflict with each other. These types of conflicts are called [syntax and semantic errors](https://www.learncpp.com/cpp-tutorial/syntax-and-semantic-errors/) and are more common with larger groups working on the same codebase.
 
 One possible solution to this issue is to require every feature branch to be "up to date" (*ie* have a linear history) with the main branch before you try to merge it back. This setting ensures that the main branch will remain stable. In this scenario, a developer would have to [rebase the code](https://git-scm.com/docs/git-rebase), pass all the CI checks, and then merge their changes into main:
 
-![Two-feature branch rebase diagram](https://i.imgur.com/hXWRtVE.png)
+![Two-feature branch rebase diagram]({{site.images}}{{page.slug}}/hXWRtVE.png)
 
 The primary drawback of this approach is speed. As you run the CI checks for every merge into main, every developer must rebase to the latest head. If several developers try to do this, it becomes a race to rebase and merge before further changes occur.
 
@@ -46,7 +46,7 @@ When enough PRs have been added or enough time has passed since the last merge, 
 
 Once the merging process is complete, the group is merged into a new temporary branch created from the head of the main branch. If any of the PRs in the group fail the CI checks, they're removed from the group, and the rest of the PRs will continue with the merge process:
 
-![Merge queue diagram](https://i.imgur.com/f4lr5kk.png)
+![Merge queue diagram]({{site.images}}{{page.slug}}/f4lr5kk.png)
 
 This automation means that your developers aren't responsible for constantly staying up to date with the current build of the main branch and can focus their time on modifying the code only when necessary.
 
@@ -76,10 +76,10 @@ In addition to deciding when a PR is ready for the queue and how often your merg
 
 * **Build concurrency:** This is only relevant for high-traffic repositories. You need to define how many groups can run in parallel. Parallel runs allow for faster processing of PRs but are more complex since they introduce parallel changes back into the build process.
 * **Merge limits:** This was touched upon a bit before, but bears repeating. For most queue providers, you can configure the following aspects:
-    * **The minimum number of PRs to include in a group:** This helps avoid running the pipeline all the time and defeating the whole purpose of the groups.
-    * **The maximum number of PRs to include in the group:** It's important not to have too many changes at the same time to keep build time manageable.
-    * **Wait time:** If, after a specific time, the maximum number of PRs has not been reached, do not make everyone wait indefinitely.
-    * **Timeout time:** A lack of success status is likely an issue even if the pipeline has not explicitly failed for a PR in the queue. You should decide how long to wait for a PR to pass the whole test suite before declaring it a failure.
+  * **The minimum number of PRs to include in a group:** This helps avoid running the pipeline all the time and defeating the whole purpose of the groups.
+  * **The maximum number of PRs to include in the group:** It's important not to have too many changes at the same time to keep build time manageable.
+  * **Wait time:** If, after a specific time, the maximum number of PRs has not been reached, do not make everyone wait indefinitely.
+  * **Timeout time:** A lack of success status is likely an issue even if the pipeline has not explicitly failed for a PR in the queue. You should decide how long to wait for a PR to pass the whole test suite before declaring it a failure.
 * **Failure response:** A queue's default and most fundamental behavior is that after a PR has failed a test for any reason, the PR is removed from the queue. When the PR is removed, a reason must be given, and the rest of the queue should continue. You can change this behavior and allow for a failed PR to be included in the final merge as long as the last PR in the queue passes all the tests. This is a risky move, but it can reduce rework for your developers if the final result is valid anyway.
 
 These attributes are the most important aspects of configuring a queue for correct functioning. However, depending on the provider, you may have access to other parameters as well. You can find even more information about the types of additional configurations in GitHub's [official documentation](https://docs.github.com/en/repositories/configuring-branches-and-merges-in-your-repository/configuring-pull-request-merges/managing-a-merge-queue).
@@ -92,7 +92,7 @@ Developer A checks out the code and develops a new feature. While that happens, 
 
 Unfortunately, what the two developers don't know is that even though their code is compatible with the main branch, they won't work with each other. When developer B merges to the main branch and developer A merges to the main branch, the resulting code will be incompatible because developer B changed a system that developer A's code depends on. Since developer A never pulled the code again, the app doesn't compile, even though both were "okay" in theory:
 
-![Two conflicting branches](https://i.imgur.com/P0ttBGW.png)
+![Two conflicting branches]({{site.images}}{{page.slug}}/P0ttBGW.png)
 
 At this point, there are already two conflicting branches, but it's time to introduce developer C. Developer C was asked to deliver a fix for a bug, but the main branch is in an inoperable state, so they have to wait until the error is found, the code is rolled back, or a hotfix is deployed.
 
@@ -108,7 +108,7 @@ To avoid the previous scenario, let's implement a merge queue.
 
 If all three developers mark their code as ready to merge after they pass the initial checks against the main branch, the three PRs will be lined up in the queue where the checks are performed incrementally:
 
-![Merge queue removes failure](https://i.imgur.com/DqWzuZi.png)
+![Merge queue removes failure]({{site.images}}{{page.slug}}/DqWzuZi.png)
 
 Here, main+B passes, and main+B+A fails, which means A is removed and main+B+C passes. B and C are merged into the main branch, which never breaks, and developer A gets a log stating the reason for the removal of their PR. Rework and a production-down ticket are avoided, and the developers can keep working on new features instead of hunting down a bug.
 
@@ -122,14 +122,12 @@ And that's all you have to do to create a merge queue. Of course, you can play w
 
 In this article, you learned all about merge queues, including how they operate and when they're helpful. With this information, you're better equipped to decide if merge queues would be a valuable addition to your workflow and ho
 
-
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
