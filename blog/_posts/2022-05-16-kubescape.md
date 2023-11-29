@@ -10,7 +10,7 @@ excerpt: |
     Learn how to improve the security of your Kubernetes cluster with Kubescape, a free tool that scans for non-compliant YAML files and image vulnerabilities. Find out how to install Kubescape on Windows, macOS, and Linux, and discover how to analyze the scan results to identify and fix security risks.
 last_modified_at: 2023-07-19
 ---
-**This article discusses Kubescape Kubernetes security. Earthly ensures consistent and efficient builds for secure Kubernetes deployments. [Check it out](/).**
+**"This article examines the Kubescape security tool's features. Earthly provides Devops teams with reproducible builds in their CI workflows using Kubescape. [Learn more about Earthly](/)."**
 
 Kubescape is a free tool that improves Kubernetes security by scanning clusters and detecting YAML files that are not compliant with security standards such as the [National Security Agency](https://www.nsa.gov/)(NSA) guidelines. It also scans for image vulnerabilities. After scanning and analyzing your cluster it will output your cluster's risk analysis into a report in PDF or JSON format.
 

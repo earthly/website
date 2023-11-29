@@ -11,7 +11,7 @@ excerpt: |
     Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 last_modified_at: 2023-07-14
 ---
-**This article addresses the debate between Vagrant and Docker for consistent environments. Earthly optimizes the build process in conjunction with Docker. Earthly provides build optimization for Docker.**
+**"The article compares Vagrant and Docker. Earthly improves Docker builds by enabling parallel execution. [Learn more about Earthly](/)."**
 
 <!-- vale HouseStyle.OxfordComma = NO -->
 

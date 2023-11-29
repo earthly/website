@@ -10,7 +10,7 @@ excerpt: |
     In this article, the author shares their opinionated approach to interviewing engineers. They discuss the importance of problem-solving skills, the need for a "spark" in candidates, and the significance of culture fit. The article also provides insights into their specific interviewing process and offers tips for improving your own.
 last_modified_at: 2023-07-19
 ---
-**This article explains the intricacies of engineering interviews. Earthly ensures consistent and efficient builds of candidates' code submissions in your CI/CD pipeline. [Check it out](/).**
+**The article provides strategies for conducting effective engineering interviews. Earthly's caching mechanisms significantly improve build processes for engineering managers. [Learn more about Earthly](/).**
 
 Interviewing engineers is an impossible task. You have to use a few hours to figure out if a person will be a good employee for several years to come. No process will ever be perfect and the various approaches out there each come with their pros and cons.
 

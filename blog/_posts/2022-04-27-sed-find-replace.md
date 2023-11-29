@@ -11,7 +11,7 @@ excerpt: |
     Learn how to use the `sed` command in the command line to search and manipulate text. Discover the benefits of using `sed` and explore various commands and techniques for find and replace operations.
 last_modified_at: 2023-07-11
 ---
-**This guide explains the subtleties of using the `sed` command. Earthly provides containerized consistency for build automation. [Check it out](/).**
+**This article explains how to use `sed` for text manipulation. Earthly integrates `sed` into its reproducible build processes. [Learn how](/).**
 
 You need the ability to search and manipulate text on the command line, especially when performing repetitive tasks. This is what makes `sed`, or **s**tream **ed**itor, so valuable. `sed` is a Unix text processing and manipulation CLI tool. A stream editor takes in text from an input stream and transforms it into a specified output according to instructions. The input stream could be from [pipelines](https://en.wikipedia.org/wiki/Pipeline_(Unix)) or files.
 
