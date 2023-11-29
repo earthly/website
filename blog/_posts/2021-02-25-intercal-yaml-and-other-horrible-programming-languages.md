@@ -13,8 +13,6 @@ internal-links:
   - intercal
 last_modified_at: 2023-07-19
 ---
-**In this article, you'll discover the quirks and special features of different programming languages. Learn how Earthly's methodical approach to continuous integration (CI) builds can streamline your development workflow. [Find out how Earthly improves your builds](/).**
-
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 
 In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. INTERCAL is a bit unusual. For example, single quotes are called *sparks*, and double quotes are called *rabbit ears*, less than (<) is an *angle*, and a dash (-) is a *worm*. This makes the manual read like a word puzzle combined with an extended in-joke.

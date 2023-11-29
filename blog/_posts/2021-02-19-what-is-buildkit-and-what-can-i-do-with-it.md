@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use BuildKit, an open-source project that turns Dockerfiles into Docker images. Discover its history, how to install it, and how to build images using BuildKit directly. Explore different output types and gain insights into the inner workings of BuildKit.
 last_modified_at: 2023-07-19
 ---
-**In this article, discover BuildKit's powerful features. Learn how Earthly can boost your container builds with consistent, parallel workflows in your CI processes. [Explore Earthly](/).**
+**In this article, discover BuildKit's powerful features. Learn how Earthly can boost your builds using Buildkit. [Explore Earthly](/).**
 
 There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image. And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 

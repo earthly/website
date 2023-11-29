@@ -10,7 +10,7 @@ excerpt: |
     In this article, the author shares a personal experience of encountering a SQL error and how a non-verbal cue from a teammate helped them solve the problem. They discuss the value of non-verbal communication in remote work and the importance of using video cameras during meetings. The article also provides a solution to the SQL issue and highlights the significance of using an "order by" statement.
 last_modified_at: 2023-07-19
 ---
-**In this article, we delve into the subtleties of non-verbal teamwork. Just as you prize the exactness of SQL queries, you'll value Earthly's declarative syntax for its similar precision in build processes. [Discover how with Earthly](/).**
+**In this article, we delve into the subtleties of non-verbal teamwork. Earthly makes your builds more declarative and straight-forward. [Learn More](/).**
 
 <div class="narrow-code">
 

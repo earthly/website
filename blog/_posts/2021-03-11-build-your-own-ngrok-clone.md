@@ -16,7 +16,7 @@ topic: cli
 funnel: 2
 last_modified_at: 2023-07-14
 ---
-**Explore DIY ngrok alternatives in this article. Developers seeking to bypass ngrok's limitations will find that Earthly provides a route to efficient, reproducible builds. [Learn how](/).**
+**Explore DIY ngrok alternatives in this article. Earthly provides a route to efficient, reproducible builds. [Learn how](/).**
 
 <!-- vale WritingSuggestions.CorporateSpeak = NO -->
 

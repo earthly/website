@@ -13,7 +13,7 @@ excerpt: |
     
 last_modified_at: 2023-07-19
 ---
-**In this article, you'll master RPM package creation. If you know RPM packaging, Earthly simplifies and improves your build process with containers. [Discover Earthly's benefits](/).**
+**In this article, you'll master RPM package creation. Earthly simplifies and improves your build process with containers. [Discover Earthly's benefits](/).**
 
 <div class="narrow-code">
 

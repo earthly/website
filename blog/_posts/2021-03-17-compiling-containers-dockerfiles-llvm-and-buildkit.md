@@ -16,7 +16,7 @@ internal-links:
   - machine code
 last_modified_at: 2023-07-14
 ---
-**Explore the nuances of building Docker images in this article. If you're a Docker enthusiast, discover how Earthly can upgrade your build process with advanced caching and parallel execution. [Learn how](/).**
+**Explore the nuances of building Docker images in this article. Earthly can upgrade your build process with advanced caching of docker layers and parallel execution. [Learn how](/).**
 
 ## Introduction
 
