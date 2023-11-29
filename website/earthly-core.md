@@ -2,8 +2,9 @@
 title: Earthly
 description: Super simple build framework with consistent builds that you write once and run anywhere – on your laptop, remote, and in any CI.
 layout: default
-banner: <b>Introducing Earthly Cloud.</b> Consistent builds. Ridiculous speed. Next-gen developer experience. Works with any CI. Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
-mobileBanner: <b>Introducing Earthly Cloud.</b> Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
+# Example banner
+# banner: <b>Introducing Earthly Cloud.</b> Consistent builds. Ridiculous speed. Next-gen developer experience. Works with any CI. Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
+# mobileBanner: <b>Introducing Earthly Cloud.</b> Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
 ---
 
 {% include home/layout.html template='core/hero.html' %}
