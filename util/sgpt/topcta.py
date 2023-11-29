@@ -29,7 +29,7 @@ gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 rerun = True
 debug = False
 
-cache=True
+cache = True
 GLOBAL_CACHE = {}
 CACHE_FILE = 'get_new_cta.pkl'
 
@@ -183,8 +183,11 @@ def build_cta(content):
         {{~/system}}
 
         {{#user~}}
+        <content>
         {{content}}
-        Can you summarize this one paragraph?
+        </content>
+        You generate two sentence summaries from markdown content.
+        Can you summarize this entire article into one descriptive paragraph?
         {{~/user}}
 
         {{#assistant~}}
@@ -434,7 +437,8 @@ def make_cleaner(input: str) -> str:
     {{gen 'thinking' temperature=0 max_tokens=2000}}
     {{~/assistant}}
     {{#user~}} 
-    Please return the text of the best option, based on above thinking.
+    Identify the best option based on the previous analysis and return only the text of that option, without any additional context, explanation, or analysis. 
+    Please provide only the selected text.
     {{~/user}}
     {{#assistant~}}
     {{gen 'answer' temperature=0 max_tokens=500}}
@@ -486,7 +490,7 @@ def main():
                         markdown_files.append(path)
 
         markdown_files.sort()
-        markdown_files = markdown_files[:10]
+        markdown_files = markdown_files[:30]
 
         # Dispatch the tasks using ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
