@@ -8,7 +8,7 @@ excerpt: |
     This article provides a humorous and satirical glossary of terms related to DevOps, highlighting the realities and quirks of the field. It offers amusing definitions for terms like DevOps, blameless postmortems, incident, and more.
 last_modified_at: 2023-10-06
 ---
-**This article satirizes DevOps terminology and will resonate with anyone who's been awakened at 3 AM for an incident. Earthly streamlines your DevOps workflow. [Check it out](/).**
+**This article offers a satirical perspective on DevOps practices. Earthly provides a consistent build process for Docker users. [Check it out](/).**
 
 You've seen them—the pristine glossaries, endorsed by industry titans like the CNCF, with terms that sound like they're straight out of a sci-fi movie. All impressive and idealistic. But we all know that on the ground, where build meets deploy, things aren't always as polished as the glossary makes it seem.
 

@@ -11,7 +11,7 @@ excerpt: |
     Learn about the importance of Developer Experience (DX) and how it can impact different roles within an organization. Discover how Alice, Bob, and Carlos each prioritize DX in their respective roles as a Product Manager, Internal Tools Lead, and Director of Engineering, and how it has transformed their products, improved team collaboration, and accelerated development.
 last_modified_at: 2023-08-15
 ---
-**This article teaches you how to optimize developer experience. Earthly improves developer workflows through clear syntax and consistent builds. [Learn more](/).**
+**This article emphasizes the vital role of Developer Experience (DX) in boosting productivity and job satisfaction. Earthly improves DX with reliable and efficient build processes. [Learn more about Earthly](/).**
 
 Think of Developer Experience, or DX, as user experience but for developers. Instead of making things easier for the everyday user, DX is about making a developer's life easier when working with tools, libraries, and platforms.
 

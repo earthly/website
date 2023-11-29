@@ -15,7 +15,7 @@ excerpt: |
     Learn ten advanced Git commands that every developer should know. These commands, such as Git Rebase, Git Grep, and Git Diff, can greatly improve your workflow and help you better manage your Git repositories.
 last_modified_at: 2023-07-19
 ---
-**This article explains advanced Git commands. Earthly streamlines your build process by integrating with advanced Git workflows seamlessly. [Check it out](/).**
+**This article explores advanced Git commands. Earthly consistently builds your code the same way. [Check it out](/).**
 
 For many developers, truly harnessing the power of Git can be a daunting task. Git can seem intimidating when you first start using it. This is one of the reasons most developers limit themselves to using the standard push, pull, and merge commands.
 

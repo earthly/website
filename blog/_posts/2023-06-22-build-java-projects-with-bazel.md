@@ -16,7 +16,7 @@ excerpt: |
     Learn how to build Java projects with Bazel, an open-source automatic build tool that offers extensibility, scalability, and flexibility. This tutorial walks you through the process of configuring your workspace, creating a build file, adding dependencies, and building your project with Bazel.
 last_modified_at: 2023-07-19
 ---
-**This tutorial provides guidance on using Bazel with Java. Earthly ensures containerized consistency for Bazel builds. [Check it out](/).**
+**This article examines the combination of Bazel and Java. Earthly directly integrates with Bazel for Java project CI pipelines. [Learn more about Earthly](/).**
 
 If you're a Java developer, you'll have likely used ANT, Maven, or Gradle to build your projects. Many of these solutions have been around for decades, but Java's changed a lot over the years. While these tools are still serviceable, you may want something more conducive to the current speed of application development and deployment.
 

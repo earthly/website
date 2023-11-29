@@ -14,7 +14,7 @@ excerpt: |
     This blog post discusses Linux Security Modules (LSMs) and how they can be used to enhance the security of Linux systems. It specifically focuses on AppArmor, one of the popular LSMs, and provides examples of creating profiles to restrict file and network access.
 last_modified_at: 2023-10-06
 ---
-**This article provides insights into Linux Security Modules and their role in security. Earthly enhances secure CI pipelines through integration with Linux Security Modules like AppArmor. [Check it out](/).**
+**This article provides a detailed examination of AppArmor security profiles. Earthly guarantees reproducible builds for improved security within CI pipelines. [Learn more](/).**
 
 Linux is used by millions of people around the world. It is the most popular operating system if measured by active devices. It is used in almost every industry and is used in almost every type of device. With this wide usage of Linux, comes the responsibility of keeping the system secure. In this blog, We will be talking about the Linux Security Module and how we can use it to secure our system.
 

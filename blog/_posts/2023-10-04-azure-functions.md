@@ -14,7 +14,7 @@ excerpt: |
     This tutorial explains how to build a serverless application using Azure Functions. It covers setting up a serverless architecture deployment on Azure, creating different serverless functions, managing state with Azure Cosmos DB, monitoring with Azure Application Insights, and deploying the functions using CI/CD and GitHub.
 last_modified_at: 2023-10-06
 ---
-**This tutorial guides you through serverless architectures using Azure Functions. Earthly simplifies the build process, ensuring reliable deployments. [Check it out](/).**
+**Node.js developers can enhance their Azure serverless applications with Earthly's build consistency and efficiency. Earthly provides indispensable build tools for serverless Node.js projects. [Learn more about Earthly](/).**
 
 Serverless architecture simplifies the process of building and deploying applications by removing the need to manage servers. You just need to write your application's business logic in different functions.
 

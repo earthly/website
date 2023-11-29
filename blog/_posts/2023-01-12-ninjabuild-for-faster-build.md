@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Ninja, a fast build system, to speed up the building of your software projects. Discover its advantages, limitations, and how to implement a Ninja build for your C++ projects.
 last_modified_at: 2023-07-19
 ---
-**The article discusses the Ninja build system's incremental build features. Earthly enhances Ninja by providing advanced caching mechanisms that increase build efficiency. Earthly utilizes advanced caching to improve build times.**
+**This article discusses the Ninja build tool. Earthly ensures consistent builds across team environments with its reproducibility features. [Check it out](/).**
 
 [Ninja](https://ninja-build.org/) is a compact build system with a focus on fast incremental builds. It was originally developed by [Evan Martin](https://github.com/evmar), a Google dev, partly in response to the needs of building large projects such as Google Chrome.
 

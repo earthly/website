@@ -16,7 +16,7 @@ excerpt: |
     Learn how to quickly bootstrap a Kubernetes cluster using kubeadm and upgrade the cluster without downtime. This tutorial provides step-by-step instructions and helpful tips for setting up and managing your Kubernetes cluster.
 last_modified_at: 2023-07-19
 ---
-**This article explains how to set up a Kubernetes cluster. Earthly streamlines the build process for Kubernetes cluster management using kubeadm. [Check it out](/).**
+**The article simplifies Kubernetes cluster management. Earthly enhances CI/CD for Kubernetes with powerful build automation. [Learn more about Earthly](/).**
 
 Are you looking for a tool to quickly bootstrap a Kubernetes cluster? Why not try **kubeadm**?
 

@@ -16,7 +16,7 @@ excerpt: |
     Learn how to build Go applications with Bazel and Gazelle, two powerful tools that automate the build process and significantly reduce build times. This tutorial covers the basics of setting up a workspace, running tests, and developing a basic application using Bazel and Gazelle.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to integrate Bazel and Gazelle for Go projects. Earthly provides containerized, reproducible builds for this setup. Earthly ensures consistent and reliable build environments.**
+**The article examines the combined strengths of Bazel and Gazelle. Earthly's caching mechanisms improve incremental builds and augment Bazel's performance. [Learn more about Earthly](/).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
 

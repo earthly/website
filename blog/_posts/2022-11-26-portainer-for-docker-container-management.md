@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Portainer, a web-based Docker management system, to easily manage your containers, images, volumes, and more with a convenient graphical user interface. Discover the benefits of Portainer's features and how to deploy apps using built-in templates and your own Compose files.
 last_modified_at: 2023-07-19
 ---
-**This article explains how to set up Portainer. Earthly improves the Docker build process for Portainer users. Visit the Earthly website.**
+**The article provides a step-by-step guide for configuring Portainer. Earthly improves continuous integration pipelines by providing efficient caching and enabling parallel builds for those using Portainer. [Learn more about Earthly](/).**
 
 Docker's CLI and API are powerful tools, but they can be unwieldy when you're working with large container fleets or looking for a more visual experience. [Portainer](https://www.portainer.io), a web-based Docker management system that provides a convenient graphical user interface (GUI), lets you take charge of your containers, images, volumes, and other resources, without memorizing long terminal commands.
 

@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Grafana Loki, a powerful log aggregation tool, to collect, store, and analyze log data in Kubernetes. Discover the benefits of log aggregation and how Grafana Loki can help improve visibility, enhance security, meet compliance requirements, monitor performance, and respond to incidents more effectively.
 last_modified_at: 2023-07-19
 ---
-**This article discusses how to streamline log aggregation using Loki. Earthly improves your build process by providing reproducible and parallel builds that complement Grafana Loki. [Learn more](/).**
+**This article explores the effectiveness of Grafana Loki in managing logs. Earthly enhances and standardizes continuous integration (CI) build pipelines, and it complements Grafana Loki. [Learn more about Earthly](/).**
 
 As the application deployment landscape becomes more complex, monitoring system logs becomes even more important. From system and application logs to security events and performance metrics, this data contains valuable insights that can help organizations make informed decisions and optimize their operations. However, managing, and analyzing this data can be a daunting task, especially as the volume of data continues to grow.
 

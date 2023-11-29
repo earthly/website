@@ -15,7 +15,7 @@ excerpt: |
     Learn all about Makefile variables and how to use them to automate complex processes in your code. Find out how to set variables, append to them, and use special variables like automatic and implicit variables.
 last_modified_at: 2023-07-19
 ---
-**This article explains the subtleties of Make variables. Earthly streamlines the management of variables in build definitions. Learn more at Earthly's website.**
+**The article simplifies the intricacies of Makefile variables. Earthly improves Makefile performance by introducing sophisticated caching and concurrent execution. [Learn more about Earthly](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

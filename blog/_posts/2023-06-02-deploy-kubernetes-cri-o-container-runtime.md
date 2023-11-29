@@ -15,7 +15,7 @@ excerpt: |
     Learn how to deploy a Kubernetes cluster using the CRI-O container runtime. This tutorial provides step-by-step instructions for setting up the necessary components, configuring the cluster, and deploying your first application.
 last_modified_at: 2023-07-19
 ---
-**This article provides insights into deploying Kubernetes CRI-O. Earthly simplifies the container build workflow for Kubernetes clusters. [Learn more](/).**
+**This article explains how to deploy Kubernetes CRI-O. Earthly streamlines the build process for Kubernetes applications. [Learn more about Earthly](/).**
 
 Are you tired of managing your containerized applications manually? Do you want a more efficient and automated way to deploy and manage your applications? Look no further than Kubernetes!
 

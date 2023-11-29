@@ -14,7 +14,7 @@ excerpt: |
     Learn about the different monorepo build tools available, including Bazel, Pants, Nx, and Earthly. Discover their features, programming language support, learning curves, remote caching and execution capabilities, build introspection abilities, and versatility. Find the right tool for your organization's monorepo needs.
 last_modified_at: 2023-07-14
 ---
-**This article explores monorepo build tools. Earthly reduces monorepo complexity through containerized builds. [Check it out](/).**
+**The article examines monorepo build tools, highlighting Pants for Python. Earthly supports multiple languages, potentially simplifying your build process. [Check it out](/).**
 
 <!-- markdownlint-disable-file MD001 -->
 <!-- vale HouseStyle.OxfordComma = NO -->

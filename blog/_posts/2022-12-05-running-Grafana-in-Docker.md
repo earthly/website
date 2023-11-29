@@ -15,7 +15,7 @@ excerpt: |
     Learn how to implement Grafana in Docker containers to add observability to your infrastructure, making debugging and performance optimization easier. Discover the benefits of using Grafana, its use cases, and how to create and configure Grafana containers with persistent storage.
 last_modified_at: 2023-07-19
 ---
-**This article explains how to integrate Grafana into your infrastructure. Earthly optimizes Docker container builds for enhanced observability with Grafana. [Learn more about Earthly](/).**
+**This article discusses how to use Grafana within Docker containers. Earthly simplifies Docker container builds for Grafana. [Check it out](/).**
 
 When you have a potentially complex infrastructure, adding observability helps with easier [debugging](/blog/printf-debugging) and performance optimization.
 

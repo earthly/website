@@ -17,7 +17,7 @@ excerpt: |
     Learn how to use Bazel with Rust to simplify the build and deployment process of your applications. This article provides a step-by-step guide on setting up Bazel, building a Rust application, and running tests, helping you streamline your development workflow and improve build efficiency.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to integrate Bazel with Rust. Earthly ensures containerized consistency in Bazel builds. [Check it out](/).**
+**The article discusses integrating Bazel with Rust for improved build speeds. Earthly provides caching mechanisms that can accelerate build times for Rust developers. [Check it out](/).**
 
 Building and deploying software can be a complicated and time-consuming process, especially as applications grow in size and complexity. One tool that can help simplify this process is [Bazel](https://bazel.build), an open-source build tool developed by Google. [Bazel](/blog/bazel-build) is designed to make it easy to build and test large and complex codebases and is particularly well-suited for monorepos, which are codebases that contain multiple projects or components.
 

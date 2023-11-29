@@ -15,7 +15,7 @@ excerpt: |
     Learn the fundamentals of shell scripting functions and arguments in this comprehensive guide. Discover how to create functions, pass arguments, use variables, and return values in Bash scripts, along with best practices for writing efficient and reusable code.
 last_modified_at: 2023-07-19
 ---
-**This article discusses the advantages of Bash scripting functions. Earthly streamlines shell scripting with containerized build processes. [Check it out](/).**
+**This article explains Bash scripting functions. Earthly provides reproducible build capabilities that improve Bash scripting. [Learn more about Earthly](/).**
 
 When you think of automation, you might initially envision its application in physical implementations, such as Internet of Things (IoT) tools like lights and voice assistants. Or you may think of new AI automation tools or platforms like [Microsoft Flow](https://powerautomate.microsoft.com/en-us/blog/welcome-to-microsoft-flow/). But what if there was a closer, more versatile tool, and right at your very fingertips?
 

@@ -17,7 +17,7 @@ excerpt: |
     Learn how to use Bazel with TypeScript to build and test your projects faster and more efficiently. Discover the benefits of Bazel's advanced caching and parallelization features, and explore how to customize Bazel for your TypeScript project.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to use Bazel for TypeScript projects. Earthly ensures reproducible and parallel builds. Visit the Earthly website for more information.**
+**This article examines how Bazel and TypeScript work together for reliable builds. Earthly guarantees consistent and reproducible builds for Bazel users in different environments. [Learn more about Earthly](/).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is an open source project originally created by Google, refined, and tested for years to run heavy-duty, mission-critical services, and applications. It is a great choice for building, and testing projects. Bazel's advanced distributed caching execution creates fast incremental and customizable builds by only rebuilding what is necessary. It works across several languages and platforms, such as Java, Go, and JavaScript, and across operating systems, such as IOS, Android, Linux, and Windows.
 

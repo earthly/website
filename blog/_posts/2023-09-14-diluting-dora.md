@@ -14,7 +14,7 @@ excerpt: |
     Learn the ways marketers and consultants exploit DORA metrics. This blog post highlights ethical from unethical practices around the use of DORA metrics and offers guidance for tech experts. Learn how to protect the integrity of DORA metrics and make informed decisions.
 last_modified_at: 2023-09-13
 ---
-**The article discusses the improper application of DORA metrics within DevOps practices. Earthly provides transparent and reproducible builds. [Check it out](/).**
+**The article provides insight into the frequent missteps when applying DORA metrics. Earthly significantly improves the efficiency of CI builds, which is a crucial factor these metrics evaluate. [Learn more about Earthly](/).**
 
 Marketers and consultants are scummy. They try to make you think they have the answers to the problems you and your business are running into by telling half-truths that have a foundation in technical best practices, but they don't actually have the answers to these complex problems.
 

@@ -16,7 +16,7 @@ excerpt: |
     Learn how to convert a monolith recipe API into microservices using Django and Flask. This article covers the usage of RabbitMQ for communication between microservices and provides a step-by-step guide on Dockerizing the microservices.
 last_modified_at: 2023-07-19
 ---
-**This article discusses how to implement microservices with Django and Flask. Earthly streamlines the build processes for Docker-managed microservices. [Learn more about Earthly](/).**
+**This article explores the integration of microservices with Django. Earthly enhances the Docker Compose build process for containerized applications. [Check it out](/).**
 
 Microservices are a software architectural style where an application is composed of small, independently deployable services. Each microservice has a single, narrowly defined responsibility and communicates with other microservices through APIs.
 

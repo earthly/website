@@ -15,7 +15,7 @@ excerpt: |
     Learn how to effectively use the Python logging module to track and analyze events in your application. This comprehensive guide covers everything from basic logging to advanced techniques like rotating log files and structured JSON logging.
 last_modified_at: 2023-07-19
 ---
-**This article summarizes the key aspects of Python logging. Earthly significantly improves Python build processes through reproducible and parallel builds. [Check it out](/).**
+**Explore the fundamentals of Python logging. Earthly provides faster and more reliable containerized builds for Python developers. [Learn more about Earthly](/).**
 
 Logging is an essential part of software development, serving as a means to track and analyze events that occur within an application. By recording and storing these events, developers can gain valuable insight into the behavior of their code, identify, and diagnose issues, and optimize application performance. Effective logging is crucial for creating stable, reliable, and scalable applications.
 
