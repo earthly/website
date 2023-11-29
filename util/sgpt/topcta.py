@@ -170,6 +170,10 @@ earthly_facts = dedent("""
                 Earthly has lots to do with building containers, and CI things before production. It's often used to speed up building build artifacts.
                 You might not use Earhtly to build your database, but if you use a database, you might use earthly to build your applciations.
 
+                Earthly is primarily a build automation tool designed to simplify and standardize the process of building software across various environments.
+                While Earthly can be a part of a broader DevOps toolkit that includes these Kubernetes tools, it doesn't directly streamline or interact with the functionalities of Kubernetes or kubernetes tools. Each of these tools serves a different aspect of the containerized application lifecycle.
+                Earthly is used during the build and CI stages. Kubernetes is part of the runtime.
+
                 Overall, Earthly is a developer-focused build tool that leverages containers to provide reproducible, portable and parallel builds for modern applications. Its declarative Earthfile syntax and built-in caching help optimize build performance.
                 Earthly helps with continuous development but not with continuous deployment and works with any programming language.  
                 Earthly helps with build software on linux, using containers. It doesn't help with every SDLC process, but it improves build times which can help other steps indirectly.
@@ -395,7 +399,10 @@ def make_shorter(input: str) -> str:
     return out["answer"].strip()
 
 
+
 def make_cleaner(input: str) -> str:
+    def clean_string(s):
+        return s.strip('"*')
     score = guidance(dedent('''
     {{#system~}}
     You are William Zinsser. You improve writing by making it simpler and more active. You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
@@ -446,7 +453,7 @@ def make_cleaner(input: str) -> str:
     '''), llm=gpt4, silent=False, logging=True)
     out = score(examples=shorter_examples,input=input) 
     log(out.__str__())
-    return out["answer"].strip()
+    return clean_string(out["answer"].strip())
 
 def parse_date(date_str):
     try:
