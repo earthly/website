@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use MongoDB with Go in this tutorial. Discover how to connect to a MongoDB Atlas cluster, perform CRUD operations, and query the database using the Go MongoDB driver.
 last_modified_at: 2023-07-19
 ---
-**This article explains how to integrate MongoDB with Go. Earthly streamlines and speeds up build processes for Go developers using MongoDB. [Learn more](/).**
+**This article explores the integration of MongoDB in Go applications. Earthly simplifies the build process for Go developers working with MongoDB. [Check it out](/).**
 
 Recently, NoSQL Databases like [MongoDB](https://earthly.dev/blog/mongodb-docker/), LevelDB, Redis, and others have been preferred for building and deploying applications. [MongoDB](/blog/mongodb-docker) is one of the most popular and adopted NoSQL databases due to its simplicity and ease of use.
 

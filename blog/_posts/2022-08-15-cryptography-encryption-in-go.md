@@ -14,7 +14,7 @@ excerpt: |
     Learn how to implement cryptography and encryption in Go with this tutorial. Discover how to use hashing functions, encrypt and decrypt text, and generate cryptographically secure random values in your Go programs.
 last_modified_at: 2023-07-19
 ---
-**This article provides insights into Go cryptography. Earthly simplifies your Go build processes. [Check it out](/).**
+**The article summarizes Go cryptography techniques. Earthly streamlines and speeds up Go build pipelines. [Check it out](/).**
 
 One of the biggest concerns for modern web developers is security. Whether your goal is protecting a user's personal data, effectively authenticating a user's identity, or securing company databases, cryptography, and [encryption](/blog/encrypting-data-with-ssh-keys-and-golang) can help.
 

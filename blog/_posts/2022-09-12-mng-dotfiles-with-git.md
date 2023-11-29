@@ -15,7 +15,7 @@ excerpt: |
     Learn how to manage your dotfiles using Git and make your environment configuration easier to maintain and synchronize across multiple machines. Say goodbye to the hassle of manually reinstalling programs and customizing settings every time you switch computers.
 last_modified_at: 2023-07-19
 ---
-**This article explains how to manage dotfiles effectively. Earthly guarantees that your build environments are as precise as your custom configurations. [Learn more about Earthly](/).**
+**This article explains how to manage dotfiles using Git. Earthly provides consistent and efficient build processes for dotfile management. [Learn more about Earthly](/).**
 
 Have you ever found yourself in a situation where you had to format your computer and manually reinstall all the programs you were using? Or did you change machines and have to go to the page of each of the software you use and download and run the installer one by one? Or even customize some mouse/keyboard settings?
 

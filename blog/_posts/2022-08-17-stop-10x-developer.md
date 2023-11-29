@@ -11,7 +11,7 @@ excerpt: |
     In this article, the concept of the "10x developer" is dissected and examined. The author explores whether such developers truly exist and discusses the importance of skills being a limiting factor in order for them to have a significant impact. The article also suggests using more specific terms, such as "expert" or "specialist," instead of the vague "10x developer" label.
 last_modified_at: 2023-07-19
 ---
-**This article debunks the myth of 10x developers. Earthly streamlines build processes to enhance productivity. [Learn more](/).**
+**This article debunks the myth of the 10x developer. Earthly enhances precision and efficiency in software builds. [Check it out](/).**
 
 Here is part of a rather infamous Twitter thread:
 
