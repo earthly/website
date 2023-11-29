@@ -27,9 +27,9 @@ gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 rerun = True
-debug = True
+debug = False
 
-cache=False
+cache=True
 GLOBAL_CACHE = {}
 CACHE_FILE = 'get_new_cta.pkl'
 
@@ -267,35 +267,6 @@ def build_cta(content):
         log(out.__str__())
         log(f"Earthly Tie in:\n"+ tie_in_sentence)
         return tie_in_sentence
-
-#    def earthly_statement_repair(content) -> str:
-#         score = guidance(dedent("""
-#         {{#system~}}
-#         You: You are an expert on Earthly and use your background knowledge to assist with Earthly questions.
-#         <background>
-#         {{earthly_facts}}
-#         </background>
-
-#         Task: Given a statement about Earthly, you determine whether it makes sense.
-                                
-#         Example:
-#         Earthly enhances Podman's rootless container management for improved build pipelines.
-        
-#         Verdict:
-#         E
-        
-#         {{~/system}}
-#         {{#user~}}
-#         {{content}} 
-#         {{~/user}}
-#         {{#assistant~}}
-#         {{gen 'summary' max_tokens=100 temperature=0}}
-#         {{~/assistant}}
-#         """),llm=gpt4, silent=False)
-#         out = score(content=content, earthly_facts=earthly_facts)
-#         tie_in_sentence = out["summary"].strip().split(".",1)[0]
-#         log(f"Earthly Tie in:\n"+ tie_in_sentence)
-#         return tie_in_sentence
 
     summary = get_summary(content)
     article_sentence = this_article_sentence(summary)
