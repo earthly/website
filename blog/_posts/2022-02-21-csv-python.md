@@ -13,7 +13,7 @@ excerpt: |
     Learn how to read a CSV file in Python using both the `csv` and `pandas` libraries. Discover the different methods and possible delimiter issues, and find out how to overcome them.
 last_modified_at: 2023-07-14
 ---
-**Explore the essentials of CSV file handling in this article. If you're a Python developer working with data, Earthly can refine your CSV processing workflows. [Check it out](/).**
+**This article discusses the intricacies of managing CSV files. Earthly streamlines CSV processes for Python programmers. [Learn more about Earthly](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/H-hagjt65cE" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

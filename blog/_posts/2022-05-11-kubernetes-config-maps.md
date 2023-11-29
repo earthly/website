@@ -12,7 +12,7 @@ excerpt: |
     Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.
 last_modified_at: 2023-07-14
 ---
-**In this article, we'll dive into Kubernetes ConfigMaps. If you're struggling with ConfigMaps, Earthly simplifies your build process through consistent, containerized builds. [Discover how with Earthly](/).**
+**This article explains how to master Kubernetes ConfigMaps. Earthly ensures reproducible and isolated builds for Kubernetes ConfigMaps. [Check it out](/).**
 
 Most applications have configuration parameters that need to be provided at runtime. It's common to use command line arguments, environment variables, and static files to configure software deployed using traditional methods. These techniques are also available to containerized [Kubernetes](https://kubernetes.io/) workloads via the ConfigMap API object.
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn how to automate your microservice setup in Kubernetes using Earthly. This tutorial walks you through the process of creating a template, building and deploying your microservices, and automating the entire setup process.
 last_modified_at: 2023-07-14
 ---
-**Automating Kubernetes microservices is the focus of this article. Streamline your CI/CD pipeline and achieve more reliable deployments with Earthly if you're orchestrating microservices using Kubernetes. [Explore Earthly](/).**
+**This article discusses automating Kubernetes microservices. Earthly streamlines CI/CD pipelines for reliable deployments. [Check it out](/).**
 
 ## Introduction
 

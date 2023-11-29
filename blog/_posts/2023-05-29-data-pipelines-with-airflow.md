@@ -16,7 +16,7 @@ excerpt: |
     Learn how to automate your data pipelines and workflows using Apache Airflow. This powerful open-source platform simplifies task scheduling, monitoring, and collaboration, making it a must-have tool for data engineers.
 last_modified_at: 2023-07-19
 ---
-**This article breaks down the basics of Apache Airflow. Use Earthly to simplify your CI build processes when orchestrating data pipelines with Apache Airflow. [Learn how](/).**
+**This article introduces the fundamentals of Apache Airflow. Earthly simplifies continuous integration build processes for data pipelines using Apache Airflow. [Check it out](/).**
 
 Are you seeking a powerful, user-friendly platform to manage your data workflows? If so, Apache Airflow might be just what you need. Apache Airflow is a powerful, open-source platform for managing complex data workflows and machine learning tasks. Its Python-based architecture seamlessly integrates with other Python tools and its web-based interface simplifies monitoring and managing workflows. With features like task dependency management and retries, Airflow streamlines workflow management to improve efficiency for teams of any size.
 

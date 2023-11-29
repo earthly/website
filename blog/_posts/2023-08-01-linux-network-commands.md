@@ -15,7 +15,7 @@ excerpt: |
     This comprehensive guide explores various Linux networking commands that allow users to configure, monitor, and troubleshoot network connections. It covers essential commands like `ping`, `ifconfig`, `ip`, `netstat`, and advanced commands like `tcpdump`, `nmap`, and `iperf`, providing readers with the knowledge and skills to effectively manage and troubleshoot network issues in Linux systems.
 last_modified_at: 2023-08-28
 ---
-**In this article, you'll discover how Linux networking commands can empower your build process. Learn to leverage Earthly's containerized approach for more efficient and consistent builds. [Explore how](/).**
+**This article provides an overview of essential Linux networking commands. Earthly simplifies build processes through containerization. [Check it out](/).**
 
 As a Linux user, understanding networking commands allows you to take control of your network environment. Linux offers a robust and versatile networking stack that gives users extensive control and flexibility over their network environments. By mastering Linux networking commands, you gain the ability to configure network interfaces, troubleshoot connectivity issues, analyze network traffic and secure your network.
 

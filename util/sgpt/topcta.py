@@ -15,6 +15,8 @@ import pprint
 import re
 import pickle
 import portalocker
+from datetime import datetime
+
 
 
 # gpt-4-1106-preview is cheaper and with more context
@@ -25,9 +27,9 @@ gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 rerun = True
-debug = True
+debug = False
 
-cache=False
+cache=True
 GLOBAL_CACHE = {}
 CACHE_FILE = 'get_new_cta.pkl'
 
@@ -406,17 +408,35 @@ def make_cleaner(input: str) -> str:
     log(out.__str__())
     return out["answer"].strip()
 
+def parse_date(date_str):
+    try:
+        return datetime.strptime(date_str, '%Y-%m-%d').date()
+    except ValueError:
+        raise ValueError("Incorrect data format, should be YYYY-MM-DD")
+
+def is_file_newer_than(file_path, filter_date):
+    # Extract the date from the filename
+    date_str = file_path.split('/')[-1].split('-')[:3]
+    file_date = datetime.strptime('-'.join(date_str), '%Y-%m-%d').date()
+    return file_date > filter_date
+
 def main():
     load_cache()
     parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
     parser.add_argument('--dir', help='The directory containing the markdown files.')
     parser.add_argument('--file', help='The path to a single markdown file.')
     parser.add_argument('--dryrun', help='Dry run mode', action='store_true')
+    parser.add_argument('--after-date', help='Filter files modified after this date (format: YYYY-MM-DD)', type=str, default=None)
 
     args = parser.parse_args()
 
     if args.dryrun:
         print("Dryrun mode activated. No changes will be made.")
+    
+    if args.after_date:
+        filter_date = parse_date(args.after_date)
+    else:
+        filter_date = None
     
     markdown_files = []
 
@@ -426,10 +446,12 @@ def main():
             for file in files:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
-                    markdown_files.append(path)
+                    if not filter_date or is_file_newer_than(path, filter_date):
+                        markdown_files.append(path)
 
+        markdown_files.sort()
         # Dispatch the tasks using ThreadPoolExecutor
-        with concurrent.futures.ThreadPoolExecutor(max_workers=5) as executor:
+        with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
             futures = [executor.submit(add_top_cta_if_conditions, file_path, args.dryrun) for file_path in markdown_files]
             print("Waiting...")
             concurrent.futures.wait(futures)  # Wait for all futures to complete

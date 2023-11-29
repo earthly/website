@@ -18,7 +18,7 @@ excerpt: |
     Learn how to simplify your Go development process with Golang Workspaces. This article explores the concept of workspaces and how they can help you manage dependencies across multiple modules in your project, without the need for manual editing of `go.mod` files. Discover how to set up a workspace, make local changes to modules, and ensure that your changes are reflected across all dependent modules.
 last_modified_at: 2023-07-19
 ---
-**In this article, we delve into the subtleties of Go workspaces. Earthly simplifies your build process, whether you're managing several modules or beginning your journey. [Learn how](/).**
+**This article explains how to manage Go workspaces effectively. Earthly simplifies the multi-module build process for Go workspaces. [Check it out](/).**
 
 ## The Problem
 

@@ -14,7 +14,7 @@ excerpt: |
     Learn how to work with classes and objects in Python in this tutorial. Discover how to define attributes and methods, use class variables and methods, and create objects from tuples.
 last_modified_at: 2023-07-19
 ---
-**In this article, you'll master Python's Object-Oriented Programming essentials. If you're a Python developer ready to grasp OOP, Earthly simplifies your build processes for complex, object-oriented projects. [Learn how](/).**
+**This article explains the basics of object-oriented programming in Python. Earthly simplifies the build processes for complex Python projects. [Learn more about Earthly](/).**
 
 If you're a developer looking to level up your Python skills, adding OOP to your Python box can be helpful. This tutorial will help you get started with object-oriented programming in Python.
 

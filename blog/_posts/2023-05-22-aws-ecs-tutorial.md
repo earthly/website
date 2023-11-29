@@ -15,7 +15,7 @@ excerpt: |
     Learn how to run your containers on Amazon using AWS ECS. This tutorial will guide you through the process of creating an ECS cluster, deploying a containerized application, and accessing it using the public IP address.
 last_modified_at: 2023-07-14
 ---
-**In this article, you'll learn how to use Amazon ECS. If you manage containers with Docker and Amazon ECS, Earthly can simplify your builds. It offers reproducible and parallel builds. [Check it out](/).**
+**This article provides insights into Amazon ECS usage. Earthly improves Docker and Amazon ECS workflows by enabling reproducible and parallel builds. [Check it out](/).**
 
 Containerization is the process of bundling the components of an application (*ie* files, libraries, and application code) into a single package that can be run consistently on any infrastructure. Containerization continues to grow in popularity because it's portable, has built-in fault tolerance, and is easily scalable.
 

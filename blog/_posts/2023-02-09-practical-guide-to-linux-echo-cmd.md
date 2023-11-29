@@ -13,7 +13,7 @@ internal-links:
  - Echo
 last_modified_at: 2023-07-19
 ---
-**In this article, we'll explore the `echo` command. If you often use `echo` in scripting, Earthly can refine your build processes. [Try Earthly](/).**
+**This article explains the intricacies of the `echo` command in shell scripting. Earthly streamlines build processes that rely on `echo`. [Learn more](/).**
 
 **Linux** is one of the most popular operating systems. It has a powerful command-line interface that allows various commands to be passed as instructions to be executed by the computer. The `echo` command is one of the most commonly used Linux commands.
 

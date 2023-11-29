@@ -15,7 +15,7 @@ excerpt: |
      With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog.
 last_modified_at: 2023-08-12
 ---
-**In this article, you'll explore AWS CloudFormation's features and how Earthly's containerized approach can boost your build processes, complementing CloudFormation's strengths. [Learn more](/).**
+**This article explains how to use AWS CloudFormation. Earthly streamlines AWS CloudFormation build processes through containerization. [Check it out](/).**
 
 [AWS CloudFormation](https://aws.amazon.com/cloudformation/) is a foundational service that enables users to create and manage their cloud infrastructure in a programmable and repeatable way. With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog. Simply define your desired infrastructure state in a JSON or YAML template, and CloudFormation will help you orchestrate all aspects of provisioning and deploying those resources.
 

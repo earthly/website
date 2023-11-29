@@ -14,7 +14,7 @@ excerpt: |
     Learn how to secure your Kubernetes cluster by applying security contexts to pods and containers. This article explains the concept of security contexts, their implementation in Kubernetes, and provides a step-by-step guide on how to apply them to enhance the overall security of your cluster.
 last_modified_at: 2023-07-19
 ---
-**This article teaches you Kubernetes security contexts. Sleep better knowing Earthly helps secure your Kubernetes deployments with best practices. [Explore now](/).**
+**This article examines the importance of Kubernetes security contexts. Earthly ensures your Kubernetes deployments adhere to security best practices. [Check it out](/).**
 
 <div class="wide">
 ![K8s Security Context]({{site.images}}{{page.slug}}/FB9gnth.png)\

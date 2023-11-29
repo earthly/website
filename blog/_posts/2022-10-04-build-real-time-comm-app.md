@@ -13,7 +13,7 @@ excerpt: |
     Learn how to build a real-time communication application with Django Channels and the WebSocket Protocol. This tutorial will guide you through setting up the project, creating the necessary models and views, and handling WebSocket connections. Get ready to dive into the world of real-time communication!
 last_modified_at: 2023-07-19
 ---
-**In this article, we'll guide you through Django Channels with our detailed tutorial. If you develop with Django, Earthly can simplify your build process for real-time apps. [Explore here](/).**
+**This tutorial provides a step-by-step guide on using Django Channels. Earthly streamlines the build process for Django developers creating real-time applications. Visit the Earthly website for more information.**
 
 In this tutorial, we'll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group. [The entire project](https://github.com/DrAnonymousNet/DiscussIt) is available on my Github.
 

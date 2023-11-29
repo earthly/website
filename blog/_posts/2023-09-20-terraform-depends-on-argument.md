@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explains how to use the `depends_on` attribute in Terraform to specify resource dependencies. It covers both explicit and implicit dependencies and provides best practices for managing dependencies in Terraform configurations.
 last_modified_at: 2023-10-06
 ---
-**Explore the subtleties of using Terraform for infrastructure as code (IaC) in this article. Find out how Earthly enhances your Terraform setup, guaranteeing containerized and reliable builds consistently. [Learn how](/).**
+**This article discusses the management of Terraform infrastructure. Earthly streamlines your build process through containerized, reproducible builds that enhance your Terraform workflows. [Check it out](/).**
 
 Infrastructure as code (IaC) refers to the methodology of managing and provisioning infrastructure, servers, load-balancers and other hardware, using code. Essentially, it involves defining and handling all the components of your infrastructure, such as servers, networks, databases, and load balancers, through code.
 

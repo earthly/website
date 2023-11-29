@@ -13,7 +13,7 @@ internal-links:
  - IaC tools
 last_modified_at: 2023-07-19
 ---
-**In this article, we'll compare Terraform and Pulumi for infrastructure as code. Earthly supports both, ensuring reliable builds for your IaC scripts. [Learn more](/).**
+**This article compares Terraform and Pulumi for infrastructure as code. Earthly ensures consistent builds of your IaC scripts. [Check it out](/).**
 
 There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastructure stacks, they began to realize the shortcomings of manual provisioning:  
 

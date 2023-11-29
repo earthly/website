@@ -15,7 +15,7 @@ excerpt: |
     This article explores Rust's concurrency features and provides an overview of basic concurrency primitives such as threads, shared ownership, and message passing. It also covers more advanced topics like error handling, performance optimization, testing, parallel programming with Rayon, and asynchronous programming with Tokio.
 last_modified_at: 2023-08-28
 ---
-**This article teaches you Rust concurrency. If you love Rust, Earthly simplifies your concurrent builds. [Explore now](/).**
+**This article explains Rust concurrency. Earthly streamlines and speeds up concurrent build processes for Rust developers. Visit the Earthly website.**
 
 Rust is a modern programming language that prioritizes performance, safety, and concurrency. It's a unique language thanks to its memory safety guarantees, ownership, and borrowing system, and support for [fearless concurrency](https://doc.rust-lang.org/book/ch16-00-concurrency.html).
 

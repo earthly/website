@@ -13,7 +13,7 @@ excerpt: |
     Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, and API Gateway, and tests the infrastructure by destroying and recreating it.
 last_modified_at: 2023-07-14
 ---
-**Explore Terraform migration in this article. If you're transitioning from AWS Click Ops to Infrastructure as Code, Earthly can streamline your Terraform workflows. [Learn how](/).**
+**This article shares insights from an actual Terraform migration. Earthly streamlines the shift to Infrastructure as Code from AWS Click Ops, improving Terraform processes. [Check it out](/).**
 
 ## From Click Ops To GitOps
 

@@ -10,7 +10,7 @@ excerpt: |
     Learn how to use Podman, Docker Compose, and Earthly to develop and manage containers on your Linux system. Discover how to install and configure these tools, and explore their features and functionalities.
 last_modified_at: 2023-07-14
 ---
-**This article explores Podman's features and shows how Earthly can enhance your container workflow with reproducible builds if you're a Podman user. [Discover more](/).**
+**This article explores Podman's features. Earthly integrates with Podman to enhance container workflows with reproducible builds. [Check it out](/).**
 
 Podman is a daemon-less container engine for developing, managing, and running OCI containers on your Linux System.
 With podman, containers can either be run as root or in rootless mode, which improves security as an attacker will not have root privileges over your system. It has a CLI that serves as a drop-in replacement for Docker to make migration easier, so most users can alias Docker to podman without any issues. You can find out more in the project's [documentation](https://docs.podman.io/en/latest/).

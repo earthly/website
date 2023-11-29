@@ -16,7 +16,7 @@ excerpt: |
     Learn all about Terraform variables and how to use them in this comprehensive guide. Discover the different variable types, their usage, and workarounds for their limitations. Whether you're new to Terraform or looking to enhance your skills, this article has got you covered.
 last_modified_at: 2023-08-24
 ---
-**In this article, we'll dive into Terraform variables. If you want to streamline your build process, Earthly provides a sleek solution. [Learn how Earthly can improve your workflow](/).**
+**This article explains the intricacies of Terraform variables. Earthly streamlines the infrastructure build process for Terraform users. [Check it out](/).**
 
 [Terraform](https://www.terraform.io/) is a widespread [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool that lets you automate the provisioning and management of cloud resources using the [HashiCorp Configuration Language (HCL)](https://www.linode.com/docs/guides/introduction-to-hcl/).
 

@@ -11,7 +11,7 @@ excerpt: |
     Learn how to write effective technical tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials.
 last_modified_at: 2023-07-19
 ---
-**Crafting compelling programming tutorials is our focus in this article. If that excites you, Earthly's insights will elevate your tutorials and code samples. [Read it here](/).**
+**This article provides guidance on crafting programming tutorials. Earthly's blog offers insights that can enhance both your writing and coding examples. [Check it out](/).**
 
 We've been running the Earthly blog for [over a year](/blog/write-for-us-anniversary) now, and in that time we've worked with dozens of talented writers on nearly a hundred programming tutorials.
 

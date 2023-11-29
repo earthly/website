@@ -15,7 +15,7 @@ excerpt: |
     Learn how to apply mutual TLS (Transport Layer Security) over a Kubernetes Nginx Ingress Controller to enhance the security of your communication sessions. This article explains the differences between TLS and mTLS, and provides a step-by-step guide on how to implement mutual TLS authentication in a Kubernetes environment.
 last_modified_at: 2023-07-19
 ---
-**In this article, you'll learn how mutual TLS security strengthens communication. If you want secure builds, Earthly can match the strength of your mTLS protocols. [Explore now](/).**
+**This article explains mutual TLS security. Earthly ensures the security of your builds matches that of your mTLS protocols. [Check it out](/).**
 
 ## The Problem That Mutual TLS Solves
 

@@ -13,7 +13,7 @@ internal-links:
  - Pandas
 last_modified_at: 2023-07-19
 ---
-**Discover the intricacies of Amazon data analysis in this article. If you're passionate about data and Python scripting, Earthly can refine your toolchain. [Master it with Earthly](/).**
+**This article discusses Amazon data analysis techniques. Earthly simplifies the data analysis process for Python enthusiasts. [Check it out](/).**
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 

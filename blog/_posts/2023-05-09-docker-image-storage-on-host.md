@@ -15,7 +15,7 @@ excerpt: |
     Learn how Docker images are stored on the host machine and gain a deeper understanding of Docker image management. Discover the internals of Docker images, including layers, DiffIDs, and ChainIDs, and explore the storage drivers used by Docker.
 last_modified_at: 2023-07-19
 ---
-**In this article, you'll learn how to optimize Docker image builds. Earthly makes the process reproducible and cache-efficient, providing a smooth experience for Docker enthusiasts. [Check it out](/).**
+**This article explains how to create Docker images. Earthly optimizes the build process for Docker images, ensuring reproducibility and cache efficiency. Learn more about Earthly.**
 
 Developers and system administrators can create, deploy, and run distributed applications using the Docker platform. Docker containers, which offer a constant and isolated environment for applications to execute in, are running instances of [Docker](/blog/rails-with-docker) images. They [make](/blog/makefiles-on-windows) it simple to maintain, scale, and guarantee that applications function reliably across many contexts.
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn how to simplify your Kubernetes configuration management using custom resources and controllers. This article guides you through creating a configuration template for your microservice infrastructure and shows you how to use a custom controller to generate microservice configurations from the template.
 last_modified_at: 2023-07-19
 ---
-**Explore Kubernetes configuration templates in this article. If you orchestrate Kubernetes microservices, Earthly streamlines your build process with reproducible and parallel builds. [Discover how Earthly enhances your workflow](/).**
+**This article summarizes Kubernetes configuration templates. Earthly ensures reproducible and parallel builds for your Kubernetes setups. [Learn more](/).**
 
 ## Introduction
 

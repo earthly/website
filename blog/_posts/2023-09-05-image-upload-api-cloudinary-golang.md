@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explains how to implement an image upload system in a Golang web application using Cloudinary. It covers setting up access credentials, creating a Golang REST API with Gin, and integrating the Cloudinary Golang SDK for efficient image uploads.
 last_modified_at: 2023-09-08
 ---
-**Explore Golang Cloudinary integration with us. If you manage image uploads using Go, Earthly can streamline your build and test processes. [Learn more](/).**
+**This article explains how to integrate Cloudinary with Golang. Earthly simplifies the build and test processes for Go developers managing image uploads. Learn more about Earthly's capabilities.**
 
 Golang enables you to build efficient applications with a focus on simplicity. That important when developing modern web applications.
 Uploading various types of files,images, videos, and documents, is a crucial aspect of modern web applications. An outdated and ineffective method of handling file uploads involves storing them in the application database. Unfortunately, this approach is very inefficient and can impact application performance in several ways.

@@ -13,7 +13,7 @@ excerpt: |
     This article explores the history of the build system Pants, from its early days at Google to its current version, Pants V2. It delves into the challenges faced by large tech organizations in managing builds and how Pants provides solutions for Python monorepos. If you're interested in understanding the background and development of build systems, this article is a must-read.
 last_modified_at: 2023-07-11
 ---
-**In this article, we delve into the Pants build system. You'll learn how Earthly's commitment to reproducible and parallel builds advances the evolution of build systems. [Learn how Earthly can improve your build process](/).**
+**This article examines the Pants build system and its role in the advancement of build automation. Earthly provides reproducible and parallel builds. [Learn more about Earthly](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/mEx8NWm4830" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

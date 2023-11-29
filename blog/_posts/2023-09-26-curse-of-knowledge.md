@@ -14,7 +14,7 @@ excerpt: |
     The article discusses the phenomenon of the Curse of Knowledge in technical writing, where authors assume that their audience possesses prior knowledge, leading to ineffective communication. It explores the causes of the curse, its impact on readers, and provides strategies for writers to overcome it and create clear and engaging technical content.
 last_modified_at: 2023-10-06
 ---
-**In this article, we'll tackle the tricky biases that can skew communication in tech. Battling the Curse of Knowledge in your documentation? Earthly keeps your build instructions straightforward and repeatable. [Learn how](/).**
+**This article addresses the challenges of communication biases and the Curse of Knowledge in technical documentation. Earthly ensures that build instructions are clear and reproducible. Visit Earthly's homepage.**
 
 <div class="align-right">
 ![]({{site.images}}{{page.slug}}/tFNsGfD.jpg)

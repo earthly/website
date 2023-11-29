@@ -16,7 +16,7 @@ excerpt: |
      Debugging Docker containers can be frustrating. Luckily, Docker provides several commands that make managing and troubleshooting containers easy. In this article, we'll walk you through several real world scenarios and show you some tips and techniques for debugging Docker containers.
 last_modified_at: 2023-08-14
 ---
-**In this article, discover practical Docker debugging techniques. Struggling with Docker containers? Earthly simplifies your build process and makes debugging easier. [Learn how](/).**
+**This article explains Docker debugging techniques. Earthly simplifies the build process and enhances Docker container debugging. [Learn more](/).**
 
 Debugging Docker containers can be frustrating. Luckily, Docker provides several commands that make managing and troubleshooting containers easy. In this article, we'll walk you through several real world scenarios and show you some tips and techniques for debugging Docker containers.
 

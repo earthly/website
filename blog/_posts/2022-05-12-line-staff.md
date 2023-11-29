@@ -11,7 +11,7 @@ excerpt: |
     In this article, the author explores the differences between line and staff software engineers. They discuss the advantages and disadvantages of each role, highlighting the potential for career growth and broader business focus in staff positions. The article provides valuable insights for those considering their career paths in the tech industry.
 last_modified_at: 2023-07-19
 ---
-**In this article, we'll explore the unique functions of line and staff engineers. If you're a line engineer immersed in coding or a staff engineer crafting strategy, Earthly simplifies your build processes. [Discover how](/).**
+**This article discusses the differences between line and staff engineering positions. Earthly simplifies the build process for all engineers. Learn more at Earthly's website.**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/tiNC16VqTio" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

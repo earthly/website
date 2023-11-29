@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Docker images with Bazel to enhance scalability and simplify the development process. This article explores the integration of Docker and Bazel, provides a step-by-step tutorial, and highlights the benefits of using these tools together.
 last_modified_at: 2023-07-11
 ---
-**In this article, we'll dive into how Bazel and Docker work better together. If you love Bazel, Earthly can take your container builds to new heights. [Explore now](/).**
+**This article discusses how Bazel integrates with Docker. Earthly significantly improves containerized build workflows using Bazel. [Check it out](/).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is an open source build and test tool that helps you automate your software tasks using a defined set of rules from an abstract, human-readable source code. Initially developed by Google, Bazel is a versatile tool that supports multiple programming languages and software environments.
 

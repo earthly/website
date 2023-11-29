@@ -14,7 +14,7 @@ excerpt: |
     This article explores the benefits of monorepos and discusses high-performance build systems like Nx and Turborepo that can help improve the scalability and efficiency of monorepos. These build systems create a dependency tree, utilize caching, and enable parallel job execution to optimize the build process and reduce build times.
 last_modified_at: 2023-08-28
 ---
-**Explore the top monorepo optimization tools in this article. Manage your monorepo more efficiently with Earthly, which boosts your build processes through advanced caching and parallel execution. [Discover Earthly's benefits](/).**
+**This article discusses tools for optimizing monorepos. Earthly enhances monorepo builds with caching and parallel execution. [Check it out](/).**
 
 Monorepo is more than just a trendy buzzword today, thanks to its increasing popularity and game-changing advantages. But if you think they've only been around for a few years, think again. Big tech companies like Google have been using Monorepos since time immemorial. Google maintains more than 2 billion lines of code with more than hundreds of terabytes of data. They store all their code in a single monolithic repository and surprisingly they've been doing it since their inception.
 

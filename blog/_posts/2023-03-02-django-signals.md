@@ -14,7 +14,7 @@ excerpt: |
     Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint.
 last_modified_at: 2023-07-19
 ---
-**Explore the ins and outs of Django signals in this article. If you develop with Django, Earthly can streamline your build process and improve your CI/CD pipeline. [Check it out](/).**
+**This article discusses the implementation of Django signals. Earthly simplifies and accelerates the build process for Django developers. [Check it out](/).**
 
 In Django, signals allow certain senders to inform a set of receivers that specific actions have occurred. Django signals are used to send and receive specific essential information whenever a data model is saved, changed, or even removed. This relates to specific past or present client-provided events that occur in real time.
 

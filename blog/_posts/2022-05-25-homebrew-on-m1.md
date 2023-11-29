@@ -20,7 +20,7 @@ excerpt: |
     Learn about the changes in Homebrew installation on M1 Macs and how to migrate your packages from an Intel Mac. Discover the reasons behind the change and the potential issues you may encounter. Plus, get insights into updating old and third-party code to ensure smooth functioning.
 last_modified_at: 2023-07-11
 ---
-**We're simplifying the new Homebrew M1 paths. Struggling with the switch on your M1 Mac? Earthly can help keep your builds running smoothly. [Learn how](/).**
+**This article discusses the M1 paths in Homebrew. Earthly maintains consistent builds on M1 Macs. [Learn more about Earthly](/).**
 
 Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if you're moving over to an M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.
 

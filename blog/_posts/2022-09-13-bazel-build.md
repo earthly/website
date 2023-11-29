@@ -12,7 +12,7 @@ excerpt: |
     Learn about the benefits and challenges of using Bazel, Google's open-source monorepo build system, from experts who have experience with it. Discover when to use Bazel, its history, case studies, migration tips, and the future of this powerful build tool.
 last_modified_at: 2023-07-11
 ---
-**In this article, we'll dive into the Bazel build system. If Bazel's complexities confuse you, Earthly simplifies the process with its clear Earthfile syntax. [Discover how Earthly can assist you](/).**
+**The article discusses the Bazel build system. Earthly streamlines the build process using its clear Earthfile syntax. [Check it out](/).**
 
 ## Bazel Build?
 

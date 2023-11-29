@@ -16,7 +16,7 @@ excerpt: |
     This article explores the power of macros in Rust, providing practical examples and best practices for using them effectively. Whether you're new to macros or looking to enhance your understanding, this article will help you harness the full potential of macros in your Rust projects.
 last_modified_at: 2023-07-19
 ---
-**Explore the power of Rust macros to boost code efficiency in this article. Discover how Earthly streamlines your build process with Rust's robust macro system. [Check it out](/).**
+**This article explores the efficiency of Rust macros in coding. Earthly boosts Rust builds through containerization. Learn more about Earthly.**
 
 In Rust, macros are pieces of code that generate other Rust code using a technique commonly known as [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming). A macro is expanded during compilation, and the output of a macro is inserted into the source code of the program.
 

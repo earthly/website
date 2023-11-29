@@ -16,7 +16,7 @@ excerpt: |
     This article explains the concepts of static and dynamic linking in programming. It discusses the differences between the two methods, their advantages and disadvantages, and provides guidance on when to choose each approach.
 last_modified_at: 2023-10-06
 ---
-**Explore the essentials of linking in programming with this article. Whether you're working on C or C++ builds, Earthly simplifies your static and dynamic linking challenges. [Learn how](/).**
+**This article explains the linking process in programming. Earthly simplifies both static and dynamic linking in C or C++ builds. Learn more at Earthly's website.**
 
 Have you ever wondered how your code can call a library function like `printf()` and the system can locate it instantly? It may seem like magic, but there's a lot more going on behind the scenes. In fact, it all works because of a process called linking, which plays a crucial role in the compilation process of programming languages like C and C++.
 

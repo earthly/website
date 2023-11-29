@@ -14,7 +14,7 @@ internal-links:
  - Django
 last_modified_at: 2023-07-19
 ---
-**In this article, you'll learn about the latest PyScript release. If you're a Python developer eager to dive into web development, Earthly can streamline your PyScript builds. [Explore how](/).**
+**This article discusses the release of PyScript. Earthly streamlines PyScript builds for Python developers moving into web development. [Learn more about Earthly](/).**
 
 <div class="wide">
 

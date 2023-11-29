@@ -16,7 +16,7 @@ excerpt: |
     Learn how to implement API testing using Playwright with Python and generate an allure report for your tests. Discover how to create, update, and delete GitHub repositories using Playwright's built-in methods, and see how to fix failing tests using the allure report.
 last_modified_at: 2023-07-19
 ---
-**This article teaches you Playwright API testing. Use Earthly to simplify your build processes with its containerized approach if you test with Playwright. [Check it out](/).**
+**This article discusses the Playwright API testing framework. Earthly simplifies build processes through containerization. [Check it out](/).**
 
 Playwright is a popular end-to-end testing framework that Microsoft backs. With support for popular programming languages, such as Javascript, Typescript, Python, and Java, you can use Playwright to test your existing software projects. In addition to end-to-end testing, Playwright also supports API testing using built-in methods in the `APIRequestContext` class. This allows you to use a single tool to implement both end-to-end testing and [API testing](/blog/continuous-testing-in-devops). Moreover, Playwright provides customized reports with different types, such as CI report or [allure report](https://www.npmjs.com/package/allure-playwright).
 

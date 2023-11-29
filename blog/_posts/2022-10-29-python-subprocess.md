@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use Python's subprocess module to run external commands, capture and process outputs, redirect output to files, and more. This tutorial covers the basics of the subprocess module and provides examples on how to run commands, handle errors, redirect outputs, and change the environment of a subprocess. Whether you're a beginner or an experienced Python developer, this guide will help you enhance your scripting capabilities.
 last_modified_at: 2023-07-11
 ---
-**In this article, you'll learn about the Python subprocess module. If you often automate tasks with the Python subprocess module, Earthly can simplify your builds with its containerized approach. [Check it out](/).**
+**This article explains the Python subprocess module. Earthly simplifies build processes through containerization, ideal for Python subprocess module users. [Learn more](/).**
 
 Python ships with built-in modules such as [os](https://docs.python.org/3/library/os.html) and [sys](https://docs.python.org/3/library/sys.html) that provide some functionality to interact with the underlying operating system. However, it may sometimes be more convenient to run system programs from within a Python script. Python's subprocess module provides ready-to-use functionality to run external commands, capture and process outputs, redirect output to files and I/O streams, and much more!
 

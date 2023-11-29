@@ -14,7 +14,7 @@ excerpt: |
   Learn strategies for working with LLMs, such managing context, framing the problem, thinking outloud and more in this newbs's guide to applying large language models.
 last_modified_at: 2023-10-03
 ---
-**In this article, you'll master building translators. Overcome your GitHub Actions challenges using Earthly to streamline and enhance your build workflows. [Learn more](/).**
+**This article discusses the construction of translators. Earthly translates your GitHub Actions workflows into more efficient builds. [Check it out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/Z8ShM-SFxzM?si=EWRLrUr8yRaLHpjQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

@@ -16,7 +16,7 @@ excerpt: |
     This tutorial explores how to build a CRUD REST API using Rust's Rocket web framework and Diesel ORM. It covers setting up the database, handling POST, GET, PUT, and DELETE requests, and interacting with the database using Diesel.
 last_modified_at: 2023-10-06
 ---
-**In this article, you'll learn how to create a Rust CRUD API. If you love Rust, Earthly can streamline your build process, particularly when using frameworks like Rocket and Diesel. [Check it out](/).**
+**This article explains how to create a Rust CRUD API. Earthly simplifies the Rust build process for frameworks like Rocket and Diesel. Learn more at [Earthly](/).**
 
 Rust is a formidable contender in the backend development scene, drawing attention for its unparalleled emphasis on speed, memory safety, and concurrency. Rust's popularity has propelled it to the forefront of high-performance application development, making it an irresistible choice for those seeking performance and security in their codebase.
 
