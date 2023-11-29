@@ -14,7 +14,7 @@ excerpt: |
     Learn how to work with YAML in Python, including creating, reading, modifying, and converting YAML files. This tutorial covers the basics of YAML, the PyYAML library, and how to perform various operations on YAML files using Python. Whether you're new to YAML or looking to expand your Python skills, this tutorial is a great resource.
 last_modified_at: 2023-10-18
 ---
-**This article explains how to manage Python YAML with PyYAML. Earthly greatly improves continuous integration workflows involving Python YAML. [Learn how](/).**
+**This article explains how to manage Python YAML with PyYAML. Earthly greatly improves continuous integration workflows involving Python. [Learn how](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/FfbGrSDXtHU?si=gn5YQnyO7qKPcna2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

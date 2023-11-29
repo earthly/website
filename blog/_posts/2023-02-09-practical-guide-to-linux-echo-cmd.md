@@ -13,7 +13,7 @@ internal-links:
  - Echo
 last_modified_at: 2023-07-19
 ---
-**This article explains the Linux `echo` command in detail. Earthly improves continuous integration (CI) workflows by optimizing the use of `echo` in shell scripts. [Learn how](/).**
+**This article explains the Linux `echo` command in detail. Earthly improves continuous integration (CI) workflows by isolating shell scripts. [Learn how](/).**
 
 **Linux** is one of the most popular operating systems. It has a powerful command-line interface that allows various commands to be passed as instructions to be executed by the computer. The `echo` command is one of the most commonly used Linux commands.
 
