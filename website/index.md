@@ -1,7 +1,8 @@
 ---
 title: Earthly
 layout: default
-banner: ⚠️ We are seeing unusual abuse activity in our free tier ⚠️ <b>We are temporarily requiring verifying the account with a credit card before being able to launch satellites. <a href="https://status.earthly.dev/">Status</a></b>
+# Example banner from when a crypto a-hole abused Satellites
+# banner: ⚠️ We are seeing unusual abuse activity in our free tier ⚠️ <b>We are temporarily requiring verifying the account with a credit card before being able to launch satellites. <a href="https://status.earthly.dev/">Status</a></b>
 ---
 
 <!-- Gavin, 20231109, A/B test homepage-hero-earthfile-image: added divs -->
