@@ -13,7 +13,7 @@ excerpt: |
     Learn the basics of bash variables and how they work in the UNIX shell. Discover how to define and access local shell variables, work with arrays, handle command-line arguments, and use environmental variables. Gain a solid understanding of bash variables to enhance your scripting skills.
 last_modified_at: 2023-07-14
 ---
-**This article explains Bash variables. Earthly provides containerized, reproducible builds for Bash scripters. [Check it out](/).**
+**This article explains Bash variables. Earthly provides containerized, reproducible builds for Bash scripters everywhere. [Check it out](/).**
 
 <div class="narrow-code">
 

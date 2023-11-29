@@ -15,7 +15,7 @@ excerpt: |
     Learn how to manipulate strings in bash with this informative tutorial. From concatenating strings to replacing parts of a string, you'll discover useful techniques for working with text in bash scripts.
 last_modified_at: 2023-07-19
 ---
-**This article explains bash string manipulation techniques. Earthly containerizes complex string operations in bash to improve build processes. [Check it out](/).**
+**This article explains bash string manipulation techniques. Earthly containerizes your build and speeds it up. [Check it out](/).**
 
 <div class="narrow-code">
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.

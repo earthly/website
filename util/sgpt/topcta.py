@@ -27,7 +27,7 @@ gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 rerun = True
-debug = False
+debug = True
 
 cache=True
 GLOBAL_CACHE = {}
@@ -233,18 +233,65 @@ def build_cta(content):
         - Earthly works well with Go Builds.
         - If you're into Azure Functions, you'll love how Earthly optimizes your CI build tools.
         - If you're into command line tools, then Earthly is worth a look.
+
+        Please provide a list of potential options.
         {{~/system}}
         {{#user~}}
         {{content}} 
         {{~/user}}
         {{#assistant~}}
-        {{gen 'summary' max_tokens=100 temperature=0}}
+        {{gen 'options' max_tokens=1500 temperature=0}}
+        {{~/assistant}}
+        {{#user~}}
+        Can you please comment on the pros and cons of each of these. 
+        Sparking curosity in the reader is a goal.
+        Not misleading about what Earthly is is another goal.
+        Being consise is a goal.
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'thinking' temperature=0 max_tokens=2000}}
+        {{~/assistant}}
+        {{#user~}} 
+        Please return the text of the best option, based on above thinking.
+        {{~/user}}
+        {{#assistant~}}
+        {{gen 'answer' temperature=0 max_tokens=500}}
         {{~/assistant}}
         """),llm=gpt4, silent=False)
         out = score(content=content, earthly_facts=earthly_facts)
-        tie_in_sentence = out["summary"].strip().split(".",1)[0]
+        tie_in_sentence = out["answer"].strip().split(".",1)[0]
+        log(out.__str__())
         log(f"Earthly Tie in:\n"+ tie_in_sentence)
         return tie_in_sentence
+
+#    def earthly_statement_repair(content) -> str:
+#         score = guidance(dedent("""
+#         {{#system~}}
+#         You: You are an expert on Earthly and use your background knowledge to assist with Earthly questions.
+#         <background>
+#         {{earthly_facts}}
+#         </background>
+
+#         Task: Given a statement about Earthly, you determine whether it makes sense.
+                                
+#         Example:
+#         Earthly enhances Podman's rootless container management for improved build pipelines.
+        
+#         Verdict:
+#         E
+        
+#         {{~/system}}
+#         {{#user~}}
+#         {{content}} 
+#         {{~/user}}
+#         {{#assistant~}}
+#         {{gen 'summary' max_tokens=100 temperature=0}}
+#         {{~/assistant}}
+#         """),llm=gpt4, silent=False)
+#         out = score(content=content, earthly_facts=earthly_facts)
+#         tie_in_sentence = out["summary"].strip().split(".",1)[0]
+#         log(f"Earthly Tie in:\n"+ tie_in_sentence)
+#         return tie_in_sentence
 
     summary = get_summary(content)
     article_sentence = this_article_sentence(summary)
@@ -286,14 +333,6 @@ def make_shorter(input: str) -> str:
     Task:
     Revise this call to action to make it more engaging and informative for the Earthly blog readers. The call to action should clearly introduce the specific topic of the article and emphasize the unique insights or benefits offered by Earthly. Aim for a concise, casual tone, while ensuring clarity and directness in language.
     
-    Guidelines:
-
-    1. Explicit Topic Reference: Start with a clear statement about the article's topic. For example, "In this detailed article, you will learn about [specific topic]..."
-    2. Highlight Earthly's Unique Perspective With A Statement: Emphasize what makes Earthly's connection to the topic special or beneficial. For instance, "If you're grappling with [specific topic] vs [specific topic], Earthly can streamline your build, no matter which path you choose." This statement should connect the topic to Earthly without overstating Earthly's benefits. The statement can be direct or a implied second person or direct second person. Like "If leveraging zsh for command-line speed, consider using Earthly for streamlining build processes."
-    3. Sign Post: It's important that the text signpost the article by saying something like "This article is about [topic]" or "In this article you will learn". "Discover C#!" is less good than "In this article you'll discover C#" because it lacks explicit reference to the article.
-    4. Casual and Direct: Shorter and casual phrasing is preferred. William Zinsser's advice for writing clearly, actively and directly should be followed.
-    5. Curosity By Connection: A great call to action generates curiosity or interest in Earthly by connecting to the topic of the article. But if the connection is not clear, a straight-forward request to look at Earthly is second best option.
-
     When in doubt, stay close to:
     {{input}} 
     Do not use the word Dive. Only return the revised call to action.
@@ -320,7 +359,7 @@ def make_shorter(input: str) -> str:
     {{input}}
     {{~/user}}
     {{#assistant~}}
-    {{gen 'options' n=7 temperature=0.5 max_tokens=500}}
+    {{gen 'options' n=7 temperature=0.1 max_tokens=500}}
     {{~/assistant}}
     {{#user~}}
     Can you please comment on the pros and cons of each of these replacements and which should be rejected? 
@@ -339,6 +378,12 @@ def make_shorter(input: str) -> str:
     "If you're a DevOps enthusiast, Earthly can streamline your CI workflows with containerized build automation." - Good.
     "If you're a DevOps enthusiast, discover how Earthly can streamline your CI workflows with containerized build automation." - Bad - Use of discover 
 
+    3. Link: The link should be a short invitation to learn more about earthly. It should be a link.
+    "[Check it out](/)" - Good
+    "Learn more about Earthly](/)" - Good
+    "Go to the Earthly website to learn more" - Bad - Not a link 
+    "[Earthly](/)" Bad - phrasing
+    
     After rejecting options. Please go through remaining options and state pros and cons based on Other criteria. 
 
     Other criteria
@@ -450,6 +495,8 @@ def main():
                         markdown_files.append(path)
 
         markdown_files.sort()
+        markdown_files = markdown_files[:10]
+
         # Dispatch the tasks using ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
             futures = [executor.submit(add_top_cta_if_conditions, file_path, args.dryrun) for file_path in markdown_files]
