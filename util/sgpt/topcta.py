@@ -25,8 +25,9 @@ gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 rerun = True
-debug = False
+debug = True
 
+cache=False
 GLOBAL_CACHE = {}
 CACHE_FILE = 'get_new_cta.pkl'
 
@@ -122,7 +123,7 @@ def add_new_cta(filename, frontmatter, rest_of_file):
 def get_new_cta_with_cache(filename, rest_of_file) -> str:
     global GLOBAL_CACHE
     # Check if result is in cache
-    if filename in GLOBAL_CACHE:
+    if filename in GLOBAL_CACHE and cache:
         print("Cache hit")
         return GLOBAL_CACHE[filename]
 
@@ -293,7 +294,17 @@ def make_shorter(input: str) -> str:
 
     When in doubt, stay close to:
     {{input}} 
-    Do not sure the word Dive.
+    Do not use the word Dive. Only return the revised call to action.
+
+    Revised should be made of these parts:
+    Summary: Each should start with a sentence summarizing the article. 
+    Statement: Each should then have a statement about Earthly. 
+    Link: Each should then end with a link.
+                            
+    Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
+    It should be direct, assertive statements rather than those that invite the reader to discover or explore further.
+    The statement should contain clear, unambiguous statements that directly convey information.
+
     {{~/system}}
     {{~#each examples}}
     {{#user~}}
@@ -310,18 +321,38 @@ def make_shorter(input: str) -> str:
     {{gen 'options' n=7 temperature=0.5 max_tokens=500}}
     {{~/assistant}}
     {{#user~}}
-    Can you please comment on the pros and cons of each of these replacements?
+    Can you please comment on the pros and cons of each of these replacements and which should be rejected? 
+                            
+    Rejection Criteria:
+    Summary: Each should start with a sentence summarizing the article. 
+    Statement: Each should then have a statement about Earthly. 
+    Link: Each should then end with a link.
 
-    This text will be a very brief advertisement at the top of a blog post on the Earthly blog.
+    Reject An Options If:
+    1. Summary: Reject if summary does not mention the article directly. Or mentions the article, or content last.
+    "In this article, we'll dive into the latest DevOps practices." - Good.
+    "We'll dive into the latest DevOps practices, in this article." - Bad
+    
+    2. Statement: Reject statement if not a statement. Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
+    "If you're a DevOps enthusiast, Earthly can streamline your CI workflows with containerized build automation." - Good.
+    "If you're a DevOps enthusiast, discover how Earthly can streamline your CI workflows with containerized build automation." - Bad - Use of discover 
 
-    Shorter is better. More connected to the topic at hand is better. Natural sounding, like a casual recommendation is better.
+    After rejecting options. Please go through remaining options and state pros and cons based on Other criteria. 
+
+    Other criteria
+    Shorter is better. More connected to the topic at hand is better. Natural sounding and casual is better.
     
     It's important that the first sentence signpost the article by saying something like "This article is about X" or "In this article you'll learn X". For this reason, "Discover X!" is worse than "In this article you'll discover X" because it lacks explicit reference to the article.
 
-    It's important that, following the sign posting, the next part is a statement about Earthly. This statement should connect the topic to Earthly without overstating Earthly's benefits. The statement can be direct or a implied second person or direct second person. Like "If leveraging zsh for command-line speed, consider using Earthly for streamlining build processes."
+    It's important that, following the sign posting, the next part is a statement about Earthly. This statement should connect the topic to Earthly without overstating Earthly's benefits. The statement can be direct or a implied second person or direct second person. Like "If leveraging zsh for command-line speed, Earthly can streamline your build processes."
 
     Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
-    ---{{#each options}}
+
+    If options all rejected, choose the default:
+    
+    ---
+    Default: {{input}} 
+    {{#each options}}
     Option {{@index}}: {{this}}{{/each}}
     ---
     {{~/user}}
@@ -344,6 +375,25 @@ def make_cleaner(input: str) -> str:
     score = guidance(dedent('''
     {{#system~}}
     You are William Zinsser. You improve writing by making it simpler and more active. You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
+
+    Your general editing rules:
+    Clarity: Ensure your writing is clear and easy to understand. Every sentence should convey its meaning without ambiguity.
+    Simplicity: Use simple words and sentences. Avoid complex vocabulary where a simpler word would work just as well.  
+    Strong Verbs: Use strong, specific verbs to convey action. They often eliminate the need for adverbs and make the writing more vivid and precise.
+    Avoiding Clichés and Redundancies: Steer clear of clichés and redundant phrases. 
+
+    Specific editing rules:
+    The resulting paragraph should be made of these parts:
+    Summary: Each should start with a sentence summarizing the article. 
+    Statement: Each should then have a statement about Earthly. 
+    Link: Each should then end with a link.
+                            
+    Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
+    It should be direct, assertive statements rather than those that invite the reader to discover or explore further.
+    The statement should contain clear, unambiguous statements that directly convey information.
+
+    Specific editing rules take precendence over rour general editing rules. 
+    You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
     {{~/system}}
     {{#user~}} 
     {{input}}
