@@ -497,7 +497,7 @@ def main():
                         markdown_files.append(path)
 
         markdown_files.sort()
-        markdown_files = markdown_files[:100]
+        # markdown_files = markdown_files[:100]
 
         # Dispatch the tasks using ThreadPoolExecutor
         with concurrent.futures.ThreadPoolExecutor(max_workers=7) as executor:
