@@ -12,7 +12,7 @@ excerpt: |
     
 last_modified_at: 2023-07-14
 ---
-**This article explains Kubernetes autoscaling methods. Earthly optimizes build processes to enhance Kubernetes autoscaling for smoother deployments. [Check it out](/).**
+**This article examines Kubernetes autoscaling techniques. Earthly simplifies the build process for seamless Kubernetes deployments. [Learn more about Earthly](/).**
 
 There are many reasons engineers look to [Kubernetes](https://kubernetes.io/) when running their workloads, like support for containers and orchestration. Another major reason for choosing Kubernetes, though, is being able to automatically scale the services found within a cluster.
 
