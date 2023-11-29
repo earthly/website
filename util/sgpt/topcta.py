@@ -29,7 +29,7 @@ gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 rerun = True
 debug = True
 
-cache=True
+cache=False
 GLOBAL_CACHE = {}
 CACHE_FILE = 'get_new_cta.pkl'
 
@@ -165,6 +165,10 @@ earthly_facts = dedent("""
                 Integrates with CI systems like GitHub Actions.
                 Enables building complex multi-language, multi-component projects.
                 Earthly is commonly used for building, testing and shipping applications, especially those with components in different languages. It simplifies build automation for monorepos and complex projects.
+
+                Earthly uses containeriation to build, but has nothing to do with running containers in production. 
+                Earthly has lots to do with building containers, and CI things before production. It's often used to speed up building build artifacts.
+                You might not use Earhtly to build your database, but if you use a database, you might use earthly to build your applciations.
 
                 Overall, Earthly is a developer-focused build tool that leverages containers to provide reproducible, portable and parallel builds for modern applications. Its declarative Earthfile syntax and built-in caching help optimize build performance.
                 Earthly helps with continuous development but not with continuous deployment and works with any programming language.  
@@ -379,10 +383,9 @@ def make_shorter(input: str) -> str:
     "If you're a DevOps enthusiast, discover how Earthly can streamline your CI workflows with containerized build automation." - Bad - Use of discover 
 
     3. Link: The link should be a short invitation to learn more about earthly. It should be a link.
+    Do not reject based on the link, unless the link is missing.
     "[Check it out](/)" - Good
     "Learn more about Earthly](/)" - Good
-    "Go to the Earthly website to learn more" - Bad - Not a link 
-    "[Earthly](/)" Bad - phrasing
     
     After rejecting options. Please go through remaining options and state pros and cons based on Other criteria. 
 
@@ -441,12 +444,29 @@ def make_cleaner(input: str) -> str:
 
     Specific editing rules take precendence over rour general editing rules. 
     You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
+
+    Important: Do Not change the meaning.
+    Important: Do Not Remove the markdown link.
+
+    First discuss what improvements could be made. Discuss some options.
     {{~/system}}
     {{#user~}} 
     {{input}}
     {{~/user}}
     {{#assistant~}}
-    {{gen 'answer' temperature=0.0 max_tokens=1500}}
+    {{gen 'options' max_tokens=1500 temperature=0}}
+    {{~/assistant}}
+    {{#user~}}
+    Can you please comment on the pros and cons of each of these changes. 
+    {{~/user}}
+    {{#assistant~}}
+    {{gen 'thinking' temperature=0 max_tokens=2000}}
+    {{~/assistant}}
+    {{#user~}} 
+    Please return the text of the best option, based on above thinking.
+    {{~/user}}
+    {{#assistant~}}
+    {{gen 'answer' temperature=0 max_tokens=500}}
     {{~/assistant}}
     '''), llm=gpt4, silent=False, logging=True)
     out = score(examples=shorter_examples,input=input) 

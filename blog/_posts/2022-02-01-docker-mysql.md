@@ -11,7 +11,7 @@ excerpt: |
     Learn how to use Docker to manage your MySQL database and simplify your deployment process. This article covers everything from planning your deployment to persisting data with volumes, and even creating a custom Docker image for your MySQL instance.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to Dockerize MySQL. Earthly streamlines MySQL container builds. [Check it out](/).**
+**This guide explains how to Dockerize MySQL for consistent and isolated database environments. Earthly integrates containerization into the build process, enhancing Docker's benefits. [Check it out](/).**
 
 [Docker](https://www.docker.com/) is among the more popular platforms for developing and deploying containerized applications. Containers are isolated environments that hold an application along with all the software packages it needs. With Docker, you can run or scale your application in any environment.
 

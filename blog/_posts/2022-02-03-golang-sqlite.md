@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use Golang's `database/sql` package to work with SQLite databases. This tutorial covers topics such as installing SQLite, creating a database schema, populating the database, inserting and retrieving data, and more. If you're interested in learning how to persist data using SQLite in Golang, this article is for you.
 last_modified_at: 2023-09-19
 ---
-**This article explains how to integrate SQLite with Golang. Earthly simplifies the build and test processes for Golang database interactions. [Check it out](/).**
+**This article discusses integrating SQLite with Golang. Earthly improves the continuous integration pipeline for Golang applications using SQLite databases. [Check it out](/).**
 
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I made a [command-line client](/blog/golang-command-line/) to connect to the [JSON Service](/blog/golang-http/), but today is all about database persistence using `database/sql`.
