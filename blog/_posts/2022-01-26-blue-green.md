@@ -12,7 +12,7 @@ excerpt: |
     Learn how blue/green deployments can eliminate downtime and errors when updating applications, and discover best practices and tools to streamline the process.
 last_modified_at: 2023-08-17
 ---
-****This article discusses blue/green deployments. Earthly ensures reproducible builds that minimize risk during environment switches. [Check it out](https://cloud.earthly.dev/login).****
+**This article discusses blue/green deployments. Earthly ensures reproducible builds that minimize risk during environment switches. [Check it out](https://cloud.earthly.dev/login).**
 
 Remember when systems would go offline to implement changes and updates? Sometimes you still get emails from applications with notifications of downtime, apologizing in advance for any interruption. That's a costly and outdated way of maintaining applications that are constantly evolving.
 

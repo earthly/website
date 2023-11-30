@@ -30,7 +30,7 @@ On the web, python is mainly used for backend development, using frameworks such
 
 Since the [World Wide Web Consortium(W3C) announced web assembly](https://www.w3.org/2019/12/pressrelease-wasm-rec.html.en#:~:text=https%3A%2F%2Fwww.w3.org,for%20efficient%20execution%20and%20compact) specifications as an official web standard, developers of various languages have seemed to support their favorite language on the Web, with Python developers having Pyodide to their rescue.
 
-On the 30th of April 2022, ****Anaconda, a company widely known for its data science products in Python and R programming languages, announced that it had just released a framework that would help users create python applications using HTML.
+On the 30th of April 2022, Anaconda, a company widely known for its data science products in Python and R programming languages, announced that it had just released a framework that would help users create python applications using HTML.
 
 This publication will help you get started writing PyScript, a JSFiddle-like Python framework.
 
