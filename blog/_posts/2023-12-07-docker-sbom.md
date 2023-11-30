@@ -66,6 +66,7 @@ sbom-cli-plugin 0.6.1, build 02cf1c888ad6662109ac6e3be618392514a56316
 If the feature is unavailable, you'll see a `'sbom' is not a docker command` error message. You should manually install the plugin by first downloading the installation script:
 
 ~~~{.bash caption=">_"}
+
 curl -sSfl https://raw.githubusercontent.com/docker/sbom-cli-plugin/main/install.sh -o install-docker-sbom.sh
 ~~~
 
