@@ -8,7 +8,7 @@ excerpt: |
     macOS traditionally did not support native containers, but a community initiative has started to develop containerized macOS, which could be useful for CI XCode builds and local macOS development. While still in the early stages, macOS containers show promise for improving performance and eliminating the need for a Linux VM on macOS.
 last_modified_at: 2023-10-04
 ---
-**The article discusses the macOS container initiative. Earthly streamlines CI processes for macOS developers with more efficient builds. [Check it out](/).**
+**The article discusses the macOS container initiative. Earthly streamlines CI processes for macOS developers with efficient containerized builds. [Check it out](/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/RS9C_4O_Ohg?si=kOWcFxMvPqSNe2n4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
