@@ -43,17 +43,18 @@ To start experimenting with Docker Scout, launch Docker Desktop, fork, and then 
 
 The repository consists of an example project written in Node.js that contains known vulnerabilities. Navigate to the directory and build the application image using `docker build`, replacing `<DOCKER_HUB_ORG>` with your Docker Hub username or organization:
 
-~~~
+~~~{.bash caption=">_"}
 cd scout-demo-service
 docker build -t <DOCKER_HUB_ORG>/scout-demo:v1 .
 ~~~
 
 The output should look like this:
 
-~~~
+~~~{ caption="Output"}
 ...
 What's Next?
-  View a summary of image vulnerabilities and recommendations → docker scout quickview
+  View a summary of image vulnerabilities and 
+  recommendations → docker scout quickview
 ~~~
 
 Follow the suggestion in the last line and run the [`docker scout quickview`](https://github.com/docker/scout-cli/blob/main/docs/scout_quickview.md) command:
@@ -74,7 +75,7 @@ As the name suggests, the `docker scout quickview` command shows a high-level ov
 
 Basically, a CVE scan analyzes a software artifact for known vulnerabilities. [`docker scout cves`](https://github.com/docker/scout-cli/blob/main/docs/scout_cves.md) is the CLI command that performs this scan:
 
-~~~
+~~~{.bash caption=">_"}
 docker scout cves local://<DOCKER_HUB_ORG>/scout-demo:v1
 ~~~
 
@@ -96,7 +97,7 @@ From there, you have different views, such as images, packages, and vulnerabilit
 
 One of the key features of Docker Scout is the recommendations it provides to fix every CVE, ultimately saving you time. All you have to do is run the command [`docker scout recommendations`](https://github.com/docker/scout-cli/blob/main/docs/scout_recommendations.md), like this:
 
-~~~
+~~~{.bash caption=">_"}
 docker scout recommendations local://<DOCKER_HUB_ORG>/scout-demo:v1
 ~~~
 
@@ -130,7 +131,7 @@ Then, you can apply the suggested changes and remediate each vulnerability.
 
 For instance, you could edit the `Dockerfile` and update the Alpine image to version 3.17, as suggested by Docker Scout. Then, you'll need to rebuild the image:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t <DOCKER_HUB_ORG>/scout-demo:v2 .
 ~~~
 
@@ -150,19 +151,19 @@ The Docker Scout documentation explains in detail how to [automate container ima
 
 For instance, if you want to [integrate Docker Scout with GitHub Actions](https://docs.docker.com/scout/integrations/ci/gha/), use the same example repository from before and navigate to the `.github/workflows` directory to create the GitHub action:
 
-~~~
+~~~{.bash caption=">_"}
 cd .github/workflows
 ~~~
 
 Next, create a YAML file with a GitHub action for Docker Scout. In this example, it will be called `github-actions-demo.yml`, but you can use whatever name you prefer:
 
-~~~
+~~~{.bash caption=">_"}
 nano github-actions-demo.yml
 ~~~
 
 At this point, you can create an action with the steps you need. In the following example, the GitHub action will trigger automatically when you create a pull request (PR). It builds and scans Docker images for vulnerabilities and then publishes the results to GitHub:
 
-~~~
+~~~{.yaml caption=""}
 name: Docker
 
 on:
@@ -178,7 +179,8 @@ env:
   REGISTRY: docker.io
   IMAGE_NAME: ${{ github.repository }}
   SHA: {% raw %}${{ github.event.pull_request.head.sha || github.event.after }}{% endraw %}
-  # Use `latest` as the tag to compare to if empty, assuming that it's already pushed
+  # Use `latest` as the tag to compare to if empty, 
+  # assuming that it's already pushed
   COMPARE_TAG: latest
 
 jobs:
@@ -269,7 +271,7 @@ Once the GitHub action is ready, go to your GitHub repository, click the **Setti
 
 Now that your local and remote repositories are ready, you can create a new branch, make dummy changes, and push them to GitHub:
 
-~~~
+~~~{.bash caption=">_"}
 git checkout -b docker-scout-test
 git add .
 git commit -m "testing Docker Scout"
@@ -301,8 +303,3 @@ To learn more about integrating Docker Scout with GitHub Actions, check out the 
 In this tutorial, you learned about what Docker Scout is and its importance in identifying and remedying vulnerabilities. You also learned about its usage and how to integrate it into your favorite CI/CD pipeline. With this knowledge, you're better equipped to optimize your development environment, bolster your security posture, and streamline your workflow.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
