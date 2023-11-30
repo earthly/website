@@ -16,7 +16,7 @@ excerpt: |
     In this tutorial, we built a concurrent mail server API using Goroutines and integrated it with Gmail for email sending. We explored concurrency in Go, set up a MongoDB database, implemented handlers for handling HTTP requests, and created a user interface for submitting subscriber details and sending emails.
 last_modified_at: 2023-08-28
 ---
-**This article examines a Go mail server's concurrent capabilities. Earthly revolutionizes Go developers' build processes with a focus on email server performance. [Learn more about Earthly](/).**
+**This article examines a Go mail server's concurrent capabilities. Earthly revolutionizes Go developers' build processes with a focus performance. [Learn more about Earthly](/).**
 
 Harnessing the power of multicore processors is a breeze with Go. In this tutorial, we'll explore concurrency in Go by setting up an efficient mail server. You'll quickly see why concurrency transforms the way we send emails. Let's get started!
 

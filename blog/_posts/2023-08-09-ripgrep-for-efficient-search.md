@@ -17,7 +17,7 @@ excerpt: |
 
 last_modified_at: 2023-08-15
 ---
-**Discover the speed of `ripgrep` in our latest article. Earthly provides parallel build capabilities that complement `ripgrep`'s speed. [Learn more about Earthly](/).**
+**Discover the speed of `ripgrep` in our latest article. Earthly provides parallel build capabilities that complement `ripgrep`'s speed and it works great with Rust. [Learn more about Earthly](/).**
 
 The [`ripgrep`](https://docs.rs/crate/ripgrep/11.0.2/source/GUIDE.md) (`rg` for short) command is a command-line tool typically used to search a file for a specific text pattern. It is popular amongst developers and sysadmins for its speed and efficiency. One can make use of `ripgrep` for searching code snippets, analyzing log files, debugging issues, and various other purposes. Further, `ripgrep` is written in Rust, which provides high performance, memory safety, and increased concurrency with lightweight threads. Also, it uses optimized algorithms for searching large files quickly with intelligent defaults.
 

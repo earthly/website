@@ -16,7 +16,7 @@ excerpt: |
     This tutorial provides a step-by-step guide on how to create and manage an Amazon VPC using Terraform. It covers the configuration of VPC elements such as subnets, internet gateways, NAT gateways, security groups, and EC2 instances.
 last_modified_at: 2023-08-28
 ---
-**This article explains the basics of setting up a Virtual Private Cloud (VPC) with Terraform. Earthly streamlines build pipelines using Terraform automation. [Learn how](/).**
+**This article explains the basics of setting up a Virtual Private Cloud (VPC) with Terraform. Users of Terraform find Earthly's approach to CI build speed powerful. [Learn how](/).**
 
 [Amazon Virtual Private Cloud (Amazon VPC)](https://docs.aws.amazon.com/vpc/latest/userguide/what-is-amazon-vpc.html) is a service that allows you to create a virtual network within the Amazon Web Services (AWS) cloud environment. It gives you complete control over your network configuration, including your choice of IP address range, creation of subnets, and configuration of route tables and network gateways. With Amazon VPCs, you can securely launch AWS resources, such as Amazon Elastic Compute Cloud (Amazon EC2) instances, Amazon Relational Database Service (Amazon RDS), and Lambda functions, in a logically isolated environment.
 

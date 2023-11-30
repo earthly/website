@@ -96,7 +96,7 @@ def add_top_cta_if_conditions(filename, dryrun):
 
     frontmatter,rest_of_file = split_article(content)   
 
-    if "News" in frontmatter or " Write Outline" in rest_of_file or "topcta: false" in frontmatter:
+    if " Write Outline" in rest_of_file or "topcta: false" in frontmatter:
         print(f"{filename}:Is Earthly focused, skipping.")
         return
     else:

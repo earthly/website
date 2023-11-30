@@ -10,12 +10,11 @@ internal-links:
  - knowledge in technical writing
  - curse in technical writing
  - technical writing
+topcta: false
 excerpt: |
     The article discusses the phenomenon of the Curse of Knowledge in technical writing, where authors assume that their audience possesses prior knowledge, leading to ineffective communication. It explores the causes of the curse, its impact on readers, and provides strategies for writers to overcome it and create clear and engaging technical content.
 last_modified_at: 2023-10-06
 ---
-**This article addresses assumed knowledge in technology. Earthly provides developers with tools for consistent and reproducible builds in any environment. [Learn more about Earthly](/).**
-
 <div class="align-right">
 ![]({{site.images}}{{page.slug}}/tFNsGfD.jpg)
 <figcaption>The Professor</figcaption>
