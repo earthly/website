@@ -55,11 +55,15 @@ What's Next?
 
 Follow the suggestion in the last line and run the [`docker scout quickview`](https://github.com/docker/scout-cli/blob/main/docs/scout_quickview.md) command:
 
+<div class="wide">
 ![`docker scout quickview` output]({{site.images}}{{page.slug}}/wAeIhZF.png)
+</div>
 
 You can also view this information using Docker Desktop:
 
+<div class="wide">
 ![`docker scout quickview` output on Docker Desktop]({{site.images}}{{page.slug}}/0kT5gL1.png)
+</div>
 
 As the name suggests, the `docker scout quickview` command shows a high-level overview of the container image and is a good starting point to figure out if the image has vulnerabilities. In this case, some have been found, and you can dig deeper by running a CVE scan.
 
@@ -73,11 +77,15 @@ docker scout cves local://<DOCKER_HUB_ORG>/scout-demo:v1
 
 This time, the output offers more information, including CVE IDs and a [CVSS](https://nvd.nist.gov/vuln-metrics/cvss) score and CVSS vector for each vulnerability. The following is only a partial output:
 
+<div class="wide">
 ![`docker scout cves` output]({{site.images}}{{page.slug}}/FrN1qD1.png)
+</div>
 
 A convenient way to manage so much information or even filter it is through Docker Desktop:
 
+<div class="wide">
 ![`docker scout cves` output on Docker Desktop]({{site.images}}{{page.slug}}/ILCtj0Q.png)
+</div>
 
 From there, you have different views, such as images, packages, and vulnerabilities, that help you analyze all the data in the way that you prefer. However, analyzing the vulnerabilities is only one part of the equation. Since the real goal is to remediate the vulnerabilities, this is where Docker Scout recommendations are helpful.
 
@@ -91,21 +99,29 @@ docker scout recommendations local://<DOCKER_HUB_ORG>/scout-demo:v1
 
 The following is a partial output that shows recommendations for one of the CVEs:
 
+<div class="wide">
 ![docker scout recommendations output]({{site.images}}{{page.slug}}/ERzW99o.png)
+</div>
 
 Alternatively, you can use the `--only-refresh` or `--only-update` flags to show only base image refresh or update recommendations.
 
 Similar to the previous commands, you can also review the recommendations using Docker Desktop. To do this, simply select **Recommendations for base image**:
 
+<div class="wide">
 ![Docker Scout recommendations for base image]({{site.images}}{{page.slug}}/W1e0spJ.png)
+</div>
 
 A pop-up window will show you a list of recommendations to refresh or update the base image:
 
+<div class="wide">
 ![Refresh or update the base image]({{site.images}}{{page.slug}}/vD4Zn4J.png)
+</div>
 
 You can navigate using the tabs and review each of the recommendations individually:
 
+<div class="wide">
 ![Review each Docker Scout recommendation individually]({{site.images}}{{page.slug}}/IHEVTDC.png)
+</div>
 
 Then, you can apply the suggested changes and remediate each vulnerability.
 
@@ -117,7 +133,9 @@ docker build -t <DOCKER_HUB_ORG>/scout-demo:v2 .
 
 Once ready, you can scan the new version for vulnerabilities in Docker Desktop:
 
+<div class="wide">
 ![Scan the new version for vulnerabilities]({{site.images}}{{page.slug}}/FK7L3TX.png)
+</div>
 
 No further base image issues have been found.
 
@@ -257,15 +275,21 @@ git push --set-upstream origin docker-scout-test
 
 Then, [create a new PR on GitHub](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request#) that will trigger the GitHub action:
 
+<div class="wide">
 ![PR on GitHub]({{site.images}}{{page.slug}}/kUaAoDW.png)
+</div>
 
 The scan results will be published once the process is completed. The following screenshot was taken after changing the Alpine image back to an unsafe version:
 
+<div class="wide">
 ![Unsafe version of Alpine image]({{site.images}}{{page.slug}}/i1Nr5cZ.png)
+</div>
 
 As you can see, it shows the same vulnerabilities as Docker Desktop: 2 critical, 16 high, 7 medium, and 1 unspecified:
 
+<div class="wide">
 ![Vulnerabilities]({{site.images}}{{page.slug}}/48vncnS.png)
+</div>
 
 To learn more about integrating Docker Scout with GitHub Actions, check out the [`scout-action` repository](https://github.com/docker/scout-action).
 
@@ -279,7 +303,6 @@ In this tutorial, you learned about what Docker Scout is and its importance in i
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
+
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
