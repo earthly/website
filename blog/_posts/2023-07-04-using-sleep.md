@@ -16,7 +16,7 @@ excerpt: |
     Learn how to strategically use the `sleep` command in shell scripting to introduce delays and control the timing of actions in your Linux scripts. Discover its various use cases, alternatives, and how it can help you simulate delays and test your applications under different conditions.
 last_modified_at: 2023-07-19
 ---
-**The article details the Linux `sleep` command's intricacies. Earthly optimizes build processes that incorporate `sleep` for better script automation. [Learn more about Earthly](/).**
+**The article details the Linux `sleep` command's intricacies. Earthly optimizes build processes that incorporate `sleep` for better script automation. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Timing is key to many applications, but making things happen at the right time can be challenging. For instance, sometimes you need to introduce a delay to a script to make sure actions are taken precisely when you want them to. The good news is that the `sleep` command lets you do that. With it, you can pause your Linux scripts, ensuring everything happens when it should.
 

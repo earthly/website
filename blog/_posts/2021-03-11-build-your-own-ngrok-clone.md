@@ -16,7 +16,7 @@ topic: cli
 funnel: 2
 last_modified_at: 2023-07-14
 ---
-**Explore DIY ngrok alternatives in this article. Earthly provides a route to efficient, reproducible builds. [Learn how](/).**
+**Explore DIY ngrok alternatives in this article. Earthly provides a route to efficient, reproducible builds. [Learn how](https://cloud.earthly.dev/login).**
 
 <!-- vale WritingSuggestions.CorporateSpeak = NO -->
 

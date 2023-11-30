@@ -15,7 +15,7 @@ excerpt: |
     This article provides a comprehensive guide to understanding Docker networking. It covers the basics of Docker networking, including different network drivers and their use cases. The article also explores advanced concepts like overlay and macvlan networks, as well as how to publish container ports and configure DNS. Whether you're new to Docker or looking to enhance your networking knowledge, this article is a must-read.
 last_modified_at: 2023-07-11
 ---
-**This article explores Docker networking. If you love Docker, Earthly can simplify your container build process. [Discover how](/).**
+**This article explores Docker networking. If you love Docker, Earthly can simplify your container build process. [Discover how](https://cloud.earthly.dev/login).**
 
 Docker is the de facto model for building and running containers at scale in most enterprise organizations today. At a very high level, Docker is a combination of CLI and a daemon process that solves common software problems like installing, publishing, removing, and managing containers. It's perfect for microservices, where you have many services handling a typical business functionality; Docker makes the packaging easier, enabling you to encapsulate those services in containers.
 
@@ -706,6 +706,6 @@ In this article, we've covered the what and how of Docker networking in detail, 
 
 That should provide you with a decent overview of how Docker networking provides different modes of network drivers so that your containers can communicate on a single or multi-host setup. With this knowledge, you can pick and choose a network driver that fits your use case.
 
-Next you might like to read more about a better way to do [docker multi-stage builds](/blog/docker-multistage) or if you'd like a faster way to build software, check out [Earthly](/):
+Next you might like to read more about a better way to do [docker multi-stage builds](/blog/docker-multistage) or if you'd like a faster way to build software, check out [Earthly](https://cloud.earthly.dev/login):
 
 {% include_html cta/bottom-cta.html %}

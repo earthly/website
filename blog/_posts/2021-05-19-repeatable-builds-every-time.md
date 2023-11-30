@@ -18,12 +18,12 @@ topic: earthly
 funnel: 3
 last_modified_at: 2023-07-14
 ---
-**This article guides you through optimizing build systems. Frustrated with complex Makefiles and Dockerfiles? Earthly streamlines your build process, offering a uniform and sustainable method. [Discover Earthly's advantages](/).**
+**This article guides you through optimizing build systems. Frustrated with complex Makefiles and Dockerfiles? Earthly streamlines your build process, offering a uniform and sustainable method. [Discover Earthly's advantages](https://cloud.earthly.dev/login).**
 
 <!-- vale WritingSuggestions.Cliches = NO -->
 <!-- vale HouseStyle.EG = NO -->
 
-*EDIT: This post used to be titled **How to not use our build tool**. It's a details breakdown of how have a great build process even if you aren't using [Earthly](/). Thanks to reddit user `musman` for suggesting the current updated title*
+*EDIT: This post used to be titled **How to not use our build tool**. It's a details breakdown of how have a great build process even if you aren't using [Earthly](https://cloud.earthly.dev/login). Thanks to reddit user `musman` for suggesting the current updated title*
 
 ## Repeatability Matters
 
@@ -493,7 +493,7 @@ If you'd like to get started exploring these, we have previously written about [
 
 Getting everyone to write containerized builds is difficult in a growing organization. As you can see from this article, certain operations within containerized builds are not trivial to achieve and the wheel may be reinvented many times across the different teams.
 
-**For these reasons, we have built [Earthly](/).** Through [Earthly](/), we wanted to give containerized builds to the world, for the sake of reproducibility. From our own experience, we saw that Dockerfiles alone are not meant as build scripts, but rather as container image definitions. In true Unix philosophy, they are a great tool for that specific job - they do one thing and they do it well. To go the extra step and have containerized builds scripts (not just image definitions), a number of tricks and wrappers are necessary. [Earthly](/) takes the best ideas from Dockerfiles and Makefiles and puts them into a unified syntax that anyone can understand at-a-glance.
+**For these reasons, we have built [Earthly](https://cloud.earthly.dev/login).** Through [Earthly](https://cloud.earthly.dev/login/), we wanted to give containerized builds to the world, for the sake of reproducibility. From our own experience, we saw that Dockerfiles alone are not meant as build scripts, but rather as container image definitions. In true Unix philosophy, they are a great tool for that specific job - they do one thing and they do it well. To go the extra step and have containerized builds scripts (not just image definitions), a number of tricks and wrappers are necessary. [Earthly](https://cloud.earthly.dev/login/) takes the best ideas from Dockerfiles and Makefiles and puts them into a unified syntax that anyone can understand at-a-glance.
 
 Give Earthly a try and tell us what you think via our [Slack](https://earthly.dev/slack) or our [GitHub issue tracker](https://github.com/earthly/earthly/issues).
 

@@ -15,7 +15,7 @@ excerpt: |
     Learn the key differences between OpenShift and Kubernetes, two popular container orchestration tools, and discover which one is the best fit for your cloud-native strategy. Find out how these platforms compare in terms of ease of use, deployment, continuous integration, security, installation, and updates.
 last_modified_at: 2023-07-19
 ---
-**The article compares Kubernetes and OpenShift. Earthly provides isolated build environments for enhanced security in CI/CD. [Check it out](/).**
+**The article compares Kubernetes and OpenShift. Earthly provides isolated build environments for enhanced security in CI/CD. [Check it out](https://cloud.earthly.dev/login).**
 
 The modern software delivery life cycle is filled with microservices packed into containers. Containers can lead to more flexible and scalable applications but often at the cost of additional complexity. Your application probably consists of many microservices that are built and deployed independently. Each microservice may have its own development and deployment cycle, and the dependencies between services can be complex.
 

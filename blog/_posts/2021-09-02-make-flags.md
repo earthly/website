@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use `make` flags in your `Makefile` to customize the behavior of the compilation tools. Discover the benefits of using flags over hard-coded options and explore commonly used flags like `CFLAGS`, `CXXFLAGS`, and more.
 last_modified_at: 2023-07-24
 ---
-**In this article, you'll master `make` flags and how to use them. If you already customize builds with `make` flags, discover how Earthly can streamline your build process for reliable and simultaneous builds. [Learn about Earthly's benefits](/).**
+**In this article, you'll master `make` flags and how to use them. If you already customize builds with `make` flags, discover how Earthly can streamline your build process for reliable and simultaneous builds. [Learn about Earthly's benefits](https://cloud.earthly.dev/login).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 

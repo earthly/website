@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use Python's subprocess module to run external commands, capture and process outputs, redirect output to files, and more. This tutorial covers the basics of the subprocess module and provides examples on how to run commands, handle errors, redirect outputs, and change the environment of a subprocess. Whether you're a beginner or an experienced Python developer, this guide will help you enhance your scripting capabilities.
 last_modified_at: 2023-07-11
 ---
-**This article explains Python's `subprocess` module. Earthly streamlines build automation for Python developers. [Learn more about Earthly](/).**
+**This article explains Python's `subprocess` module. Earthly streamlines build automation for Python developers. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Python ships with built-in modules such as [os](https://docs.python.org/3/library/os.html) and [sys](https://docs.python.org/3/library/sys.html) that provide some functionality to interact with the underlying operating system. However, it may sometimes be more convenient to run system programs from within a Python script. Python's subprocess module provides ready-to-use functionality to run external commands, capture and process outputs, redirect output to files and I/O streams, and much more!
 
@@ -440,6 +440,6 @@ I hope this tutorial helped you understand how to use Python's `subprocess` modu
 
 If you need to run external programs within the Python application, try to run them as subprocesses. You can also leverage Python's threading capabilities to run subprocesses concurrently.
 
-And if you are looking for a more repeatable way to build Python, take a look at [Earthly](/). [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.
+And if you are looking for a more repeatable way to build Python, take a look at [Earthly](https://cloud.earthly.dev/login). [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.
 
 {% include_html cta/bottom-cta.html %}

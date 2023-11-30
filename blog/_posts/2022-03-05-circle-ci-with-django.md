@@ -11,7 +11,7 @@ excerpt: |
     Learn how to set up CircleCI for your Python Django project and automate tasks like linting, running tests, and pushing Docker images to Docker Hub. CircleCI offers a free tier with generous build minutes and easy integration with GitHub or Bitbucket.
 last_modified_at: 2023-07-19
 ---
-****This article explains how to deploy Django applications using CircleCI. Earthly significantly enhances build speeds with its advanced caching mechanisms. [Check it out](/).****
+****This article explains how to deploy Django applications using CircleCI. Earthly significantly enhances build speeds with its advanced caching mechanisms. [Check it out](https://cloud.earthly.dev/login).****
 
 I'm currently working on a project comparing different CI/CD pipelines, trying to get a better idea of what each offers, how they run, and how much it takes to get them set up. My first stop was CircleCi.
 

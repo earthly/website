@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Bash to read files line by line, use custom delimiters, assign variables, and more. This article provides step-by-step instructions and examples to help you efficiently search for keywords, process text, automate tasks, and more using Bash scripts.
 last_modified_at: 2023-07-14
 ---
-**This article explains how to read files using Bash. Earthly's caching mechanisms significantly improve build script efficiency. [Learn how](/).**
+**This article explains how to read files using Bash. Earthly's caching mechanisms significantly improve build script efficiency. [Learn how](https://cloud.earthly.dev/login).**
 
 [Bash](https://en.wikipedia.org/wiki/Bash_(Unix_shell)) (bourne again shell) scripts give you the ability to turn series of manual commands into an easily [runnable and repeatable script](https://earthly.dev/blog/understanding-bash/). This can be especially useful when working with files.
 

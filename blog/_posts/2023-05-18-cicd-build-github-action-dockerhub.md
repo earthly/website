@@ -16,7 +16,7 @@ excerpt: |
     In this tutorial, learn how to automate CI/CD builds using GitHub Actions and DockerHub. Discover how to create a GitHub Actions workflow that builds and deploys a Docker image to DockerHub, streamlining your development process and increasing productivity.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to automate Docker deployments in GitHub Actions. Earthly enhances GitHub Actions, streamlining Docker builds for quicker build cycles. [Learn more about Earthly's integration with GitHub Actions](/).**
+**This article explains how to automate Docker deployments in GitHub Actions. Earthly enhances GitHub Actions, streamlining Docker builds for quicker build cycles. [Learn more about Earthly's integration with GitHub Actions](https://cloud.earthly.dev/login).**
 
 To streamline your development workflow, in this tutorial, we will explore the power of GitHub Actions in automating CI/CD builds. Specifically, we will focus on leveraging GitHub Actions to automate Docker builds and facilitate seamless deployments to DockerHub. Join us as we construct an automated CI/CD pipeline using GitHub Actions and DockerHub.
 

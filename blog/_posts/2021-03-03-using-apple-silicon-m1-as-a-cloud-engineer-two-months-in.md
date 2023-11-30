@@ -17,7 +17,7 @@ excerpt: |
     In this article, Vlad shares his experience using the Apple M1 as a cloud engineer. He discusses the compatibility of various software, including Docker and VS Code, and provides insights on performance, battery life, and cost. If you're curious about using Apple Silicon as a cloud engineer, this article offers valuable insights and recommendations.
 last_modified_at: 2023-07-11
 ---
-**Earthly can boost your build speed with caching. [Learn More](/).**
+**Earthly can boost your build speed with caching. [Learn More](https://cloud.earthly.dev/login).**
 
 So I've been using my new M1-based MacBook Pro for a couple of months for a mix of development, email, and other things an [open-source maintainer](https://github.com/earthly/earthly) does day-to-day.
 

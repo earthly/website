@@ -57,7 +57,7 @@ docker:
 
 Earthly in the future will be about much more: for example, cloud-based build parallelization that has never been possible before. For now, you can run it on top of your existing CI, and you can run it locally for development. You still get the other benefits mentioned above.
 
-There are many other goodies that Earthly provides. For more information and also installation instructions, start with [Earthly's homepage](/).
+There are many other goodies that Earthly provides. For more information and also installation instructions, start with [Earthly's sign up](https://cloud.earthly.dev/login/).
 
 This is the first release of Earthly. We will continue to iterate, make improvements and, most importantly, incorporate user feedback. We can't wait to see what you build with it!
 

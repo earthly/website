@@ -11,7 +11,7 @@ excerpt: |
     Learn how to avoid common mistakes when using docker-compose for integration testing and development environments. Discover the cardinal sins to avoid and best practices to follow for a smoother Docker experience.
 last_modified_at: 2023-07-14
 ---
-**In this article, you'll discover common Docker Compose errors. Struggling with docker-compose in your CI workflows? Earthly simplifies your integration testing with consistent builds. [Learn how](/).**
+**In this article, you'll discover common Docker Compose errors. Struggling with docker-compose in your CI workflows? Earthly simplifies your integration testing with consistent builds. [Learn how](https://cloud.earthly.dev/login).**
 
 <!-- vale HouseStyle.H2 = NO -->
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.

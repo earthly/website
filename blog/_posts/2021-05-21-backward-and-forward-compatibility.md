@@ -15,7 +15,7 @@ excerpt: |
     This article explores best practices for maintaining backward and forward compatibility with Protocol Buffers. Learn how to manage your messages and make changes without breaking your system.
 last_modified_at: 2023-07-11
 ---
-**In this article, you'll master the basics of Protocol Buffers. If you're handling data serialization across platforms, Earthly can streamline your protobuf compilation. [Discover how with Earthly](/).**
+**In this article, you'll master the basics of Protocol Buffers. If you're handling data serialization across platforms, Earthly can streamline your protobuf compilation. [Discover how with Earthly](https://cloud.earthly.dev/login).**
 
 Protocol Buffers serialize structured data so it can be efficiently stored or shared over a network. They were designed for internal use at Google in 2001 and released to the public under an open-source license in 2008.
 
@@ -154,6 +154,6 @@ To deprecate a field, you can change the name to something deprecated or remove 
 
 ## Up Next
 
-If you enjoyed this article, take a look at [Building a Monorepo in Golang](/blog/golang-monorepo/) or if you want to bring your CI to the next level then check out [Earthly](/).
+If you enjoyed this article, take a look at [Building a Monorepo in Golang](/blog/golang-monorepo/) or if you want to bring your CI to the next level then check out [Earthly](https://cloud.earthly.dev/login/).
 
 {% include_html cta/bottom-cta.html %}

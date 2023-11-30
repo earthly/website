@@ -15,7 +15,7 @@ excerpt: |
     Learn how to build a command-line JSON client in Golang to interact with a REST service for storing workout activities. The article covers topics such as parsing command-line flags, making HTTP requests, handling errors, and testing the client.
 last_modified_at: 2023-09-19
 ---
-****This article is about Golang activity tracking. Earthly can streamline your build process. [Check it out](/).****
+****This article is about Golang activity tracking. Earthly can streamline your build process. [Check it out](https://cloud.earthly.dev/login).****
 
 I'm an experienced software developer learning Golang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.
 

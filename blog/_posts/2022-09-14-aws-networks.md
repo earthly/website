@@ -16,7 +16,7 @@ excerpt: |
     Learn the basics of AWS networking and how to set up your own virtual private cloud (VPC) from scratch. This tutorial covers regions, availability zones, subnets, internet gateways, and route tables, and includes step-by-step instructions for creating an EC2 instance and deploying a web server using Nginx.
 last_modified_at: 2023-07-19
 ---
-**The article explains how to create a network in AWS. Earthly streamlines the build process for DevOps engineers working with AWS. [Learn more about Earthly](/).**
+**The article explains how to create a network in AWS. Earthly streamlines the build process for DevOps engineers working with AWS. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 When you first create an AWS account a lot of resources get created for you by default. For starters, you'll get a VPC in each region. In each of those you'll get subnets, a Route Table, an Internet Gateway, a CIDR range of IPs, and a Security Group. But what actually is all this stuff? If you're not someone who is super familiar with networking, it can be a little overwhelming.
 

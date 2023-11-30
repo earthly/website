@@ -14,7 +14,7 @@ excerpt: |
     Are you confused about whether to use LXC or Docker for your containerization needs? This article compares the two container platforms in terms of host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. Whether you're a developer looking for simplicity or a system administrator in need of control, this article will help you make an informed decision.
 last_modified_at: 2023-07-11
 ---
-****This article compares LXC and Docker. Earthly enhances Docker by streamlining the container build process with advanced caching and parallelization. [Check it out](/).****
+****This article compares LXC and Docker. Earthly enhances Docker by streamlining the container build process with advanced caching and parallelization. [Check it out](https://cloud.earthly.dev/login).****
 
 [Linux Containers](https://linuxcontainers.org/) (LXC) is an OS-level virtualization technology that enables you to create and run multiple Linux operating systems (OS) simultaneously on a single Linux machine (LXC host). LXC provides a set of tools to manage your container as well as templates to create a virtual environment of [the most common Linux OS](https://uk.lxd.images.canonical.com/).
 

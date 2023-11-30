@@ -23,7 +23,7 @@ excerpt: |
     In this article, the author explores how to build a gRPC client and server in Golang. They explain the advantages of using gRPC over REST, demonstrate how to generate code using `protoc`, and provide examples of implementing the server and client. The author also discusses error handling and testing the gRPC service. Overall, this article provides a comprehensive guide to getting started with gRPC in Golang.
 last_modified_at: 2023-09-19
 ---
-**"This article explains how to use gRPC with Golang, highlighting the `protoc` tool. Earthly guarantees reproducible and efficient Go builds. [Learn more about Earthly](/)."**
+**"This article explains how to use gRPC with Golang, highlighting the `protoc` tool. Earthly guarantees reproducible and efficient Go builds. [Learn more about Earthly](https://cloud.earthly.dev/login/)."**
 
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I added SQLite persistence. Today, I'm going to be porting everything to gRPC.

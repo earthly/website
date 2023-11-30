@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Pulumi and AWS EKS to provision infrastructure as code for your GO applications. This tutorial covers creating an S3 bucket, setting up an EKS cluster, and deploying a Docker image to the cluster. Dive into the world of Infrastructure as Code with Pulumi and streamline your cloud infrastructure management.
 last_modified_at: 2023-07-19
 ---
-**The article examines how Pulumi and Go work together to set up AWS services. Earthly improves continuous integration workflows, whether you are using Pulumi or not. [Learn more about Earthly](/).**
+**The article examines how Pulumi and Go work together to set up AWS services. Earthly improves continuous integration workflows, whether you are using Pulumi or not. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 As the world continues to shift towards cloud-based solutions, managing, and deploying infrastructure in a scalable and automated way has become increasingly important. Infrastructure as Code, often abbreviated as Iac, has emerged as a critical practice in this area, providing a way to manage infrastructure using code, and version control systems.
 

@@ -34,7 +34,7 @@ What we needed was a solution that could simplify the dependency management proc
 
 ## The Solution
 
-The solution I use today for this problem is [Earthly](/). I use it for testing, CI, building container images and sometimes the local development workflow.[^1]
+The solution I use today for this problem is [Earthly](https://cloud.earthly.dev/login). I use it for testing, CI, building container images and sometimes the local development workflow.[^1]
 
 [^1]: 'Use' is probably an understatement. I created the first version of Earthly, not only to deal with these build and dependency problems but also to make my life easier. I open-sourced Earthly, built a company around it, and I'm even considering getting an Earthly tattoo. In fact, I'm so into Earthly that I've been contemplating changing my name to "Earthling" and adopting "Build, Test, Deploy" as my personal motto. So yeah, you could say I'm a fan.
 
@@ -163,6 +163,6 @@ As a Python developer, I'd experienced several challenges during the development
 
 Overall, Earthly helps streamlines Python projects as they mature and build steps get more complex. Adding Earthly makes things more consistent, faster, and easier to manage, particularly when working with complex dependencies or in a team setting. And it's open source! That's why so many teams are investigating using Earthly.
 
-So [try it out](/) and let me know what you think. We have a [slack channel](/slack) if you have questions or feedback to share.
+So [try it out](https://cloud.earthly.dev/login/) and let me know what you think. We have a [slack channel](/slack) if you have questions or feedback to share.
 
 {% include_html cta/bottom-cta.html %}

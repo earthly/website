@@ -16,7 +16,7 @@ excerpt: |
     Learn how to successfully build a monorepo in Go, where each module independently manages its own build, test, and release cycles. Discover the benefits of using a monorepo and how to import local Go modules. Plus, explore efficient caching and versioning strategies for monorepo builds.
 last_modified_at: 2023-07-11
 ---
-**"This article discusses the management of Go monorepos. Earthly simplifies the build process for each module within a monorepo. [Check it out](/)."**
+**"This article discusses the management of Go monorepos. Earthly simplifies the build process for each module within a monorepo. [Check it out](https://cloud.earthly.dev/login/)."**
 
 <!-- markdownlint-disable MD036 -->
 A repository in Go traditionally contains a single Go Module, which lends naturally to a polyrepo setup – but

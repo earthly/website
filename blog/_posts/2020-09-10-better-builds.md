@@ -151,6 +151,6 @@ If a build fails in CI, we can run the same process locally and reproduce the fa
 
 We haven't solved all the problems of CI, however. What about build parallelization? What about caching intermediate steps? How about multi-language builds with complicated interdependencies? Earthly has some solutions for those problems as well and I'll cover them in future tutorials.
 
-For now, you can find more details, such as how to install earthly and many more examples on **[Earthly's homepage](/)**.
+For now, you can find more details, such as how to install earthly and many more examples on **[Earthly's getting started page](https://cloud.earthly.dev/login)**.
 
 {% include_html cta/bottom-cta.html %}

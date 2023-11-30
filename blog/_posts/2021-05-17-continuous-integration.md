@@ -13,7 +13,7 @@ excerpt: |
     Learn the basics of continuous integration, the differences between CI and CD, and common CI tools in this informative article. Discover how CI can help developers catch bugs earlier, increase productivity, and deliver higher-quality releases.
 last_modified_at: 2023-07-14
 ---
-**In this article, you'll learn the principles of continuous integration. Earthly can improve this process. [Check it out](/).**
+**In this article, you'll learn the principles of continuous integration. Earthly can improve this process. [Check it out](https://cloud.earthly.dev/login).**
 
 Continuous integration has become prevalent in software development, but it's still a complex and wide-ranging topic. In this post, we'll cover the basics of continuous integration, the differences between CI and CD, and common CI tools. You'll also find some tips for the best way to set up CI in your environment.
 

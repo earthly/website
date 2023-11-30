@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Docker images with Bazel to enhance scalability and simplify the development process. This article explores the integration of Docker and Bazel, provides a step-by-step tutorial, and highlights the benefits of using these tools together.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to integrate Docker with Bazel. Earthly simplifies containerized builds. [Learn more about Earthly](/).**
+**This article explains how to integrate Docker with Bazel. Earthly simplifies containerized builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is an open source build and test tool that helps you automate your software tasks using a defined set of rules from an abstract, human-readable source code. Initially developed by Google, Bazel is a versatile tool that supports multiple programming languages and software environments.
 
@@ -259,9 +259,9 @@ You can find all the code for this tutorial in this [GitHub repo](https://github
 
 In conclusion, Docker and Bazel can work together efficiently to optimize your development process. Bazel's powerful rule-based structure simplifies the task of managing Docker images, testing software within Docker containers, and deploying applications. This rule-based system provides flexibility, extensibility, and reliability that few other build systems can match.
 
-Yet, while Bazel is a fantastic tool for managing Docker images and containerizing software, it can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](/) comes into the picture.
+Yet, while Bazel is a fantastic tool for managing Docker images and containerizing software, it can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](https://cloud.earthly.dev/login) comes into the picture.
 
-Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel.  [Earthly](/) can handle both small and large projects, offering you scalability without the additional complexity.
+Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel.  [Earthly](https://cloud.earthly.dev/login) can handle both small and large projects, offering you scalability without the additional complexity.
 
 Remember, the ultimate goal is to choose a tool that not only suits your current needs but also has the capacity to grow with you and your project, all the while ensuring a simpler, faster, and more efficient software development process. Be it Bazel, Docker, Earthly, or any other tool, the choice should make your build process a breeze, not a hurdle.
 

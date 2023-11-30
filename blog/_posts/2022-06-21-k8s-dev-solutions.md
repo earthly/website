@@ -15,7 +15,7 @@ excerpt: |
     Looking to develop applications locally using Kubernetes? Check out this article comparing the top local Kubernetes development solutions, including minikube, kind, K3s, kubeadm, Docker Desktop, and MicroK8s. Learn about their platform support, setup complexity, flexibility, and community support to help you choose the best option for your needs.
 last_modified_at: 2023-10-09
 ---
-**This article discusses tools for Kubernetes local development. Minikube streamlines Kubernetes on local machines, and Earthly consistently delivers reproducible builds. [Check it out](/).**
+**This article discusses tools for Kubernetes local development. Minikube streamlines Kubernetes on local machines, and Earthly consistently delivers reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 
 Once you've determined that you want to use [Kubernetes](https://kubernetes.io) as your base for developing applications locally, it's time to figure out which development solution is the best. There are many different options out there, but a few select reign over the others as the most common, including [minikube](https://minikube.sigs.k8s.io/docs/), [kind](https://kind.sigs.k8s.io/), [K3s](https://k3s.io/), [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), [Docker Desktop](https://docs.docker.com/desktop/kubernetes/), and [MicroK8s](https://microk8s.io/).
 

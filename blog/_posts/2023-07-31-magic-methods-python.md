@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explores the concept of magic methods in Python, which are special methods that allow you to define and customize the behavior of classes. It covers topics such as object-oriented programming, operator overloading, and context managers, providing practical examples and explanations of commonly used magic methods.
 last_modified_at: 2023-08-28
 ---
-**This article explains Python magic methods. After learning that, Earthly provides clean and efficient build automation for Python development. [Learn more about Earthly](/).**
+**This article explains Python magic methods. After learning that, Earthly provides clean and efficient build automation for Python development. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 In Python programming, a set of special methods exists, often called "magic methods" or "dunder methods". Magic methods provide a way to define and customize the behavior of classes in Python. You do not call them directly; the interpreter implicitly calls them in response to specific operations or events. For example, when you add two numbers using the `+` operator, the `__add__()` method gets called internally.
 

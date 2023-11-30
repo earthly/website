@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explains how to test and run GitHub Actions locally using a tool called `act`. It covers the installation of `act`, exploring its features, and discusses the limitations of using `act` for local GitHub Actions development.
 last_modified_at: 2023-10-06
 ---
-**The article explains how act can be used to run GitHub Actions locally. The limitations of that approach lead many towards Earthly. Earthly ensures consistent and reliable builds that run in GitHub Actions and locally. [Check it out](/).**
+**The article explains how act can be used to run GitHub Actions locally. The limitations of that approach lead many towards Earthly. Earthly ensures consistent and reliable builds that run in GitHub Actions and locally. [Check it out](https://cloud.earthly.dev/login).**
 
 [GitHub Actions](https://docs.github.com/en/actions) is GitHub's approach to automating development workflows, enabling you to create, build, test, and deploy software. Additionally, with GitHub Actions, you can build automation around GitHub's offerings, such as triaging GitHub issues and creating GitHub releases.
 
@@ -352,6 +352,6 @@ While `act` is a great tool for setting up a local GitHub Actions workflow devel
 * **Custom actions and workflows:** `act` may not fully support custom actions or workflows that are not part of the official GitHub Actions ecosystem. Due to this, some actions may not behave as expected when run locally. If you notice such a situation, it's best to move to a dedicated GitHub repo to be able to access the complete GitHub Actions runner environment when testing.
 * **Limited debugging features:** While `act` provides a way to run workflows locally, it doesn't offer the same debugging capabilities as running actions on GitHub, where you can access logs, artifacts, and other diagnostic information easily. You only get the logs that are printed on the terminal as output, and there's no way to access the intermediate or final artifacts of a workflow. Once again, for workflows that heavily rely on these features, it might be best to switch to a dedicated remote testing GitHub repository.
 
-A different approach to testing GitHub Actions locally is to write your workflow as an [Earthfile](/) that you run inside GitHub Actions. Earthly's Earthfile's can always be run locally due to containerization.
+A different approach to testing GitHub Actions locally is to write your workflow as an [Earthfile](https://cloud.earthly.dev/login/) that you run inside GitHub Actions. Earthly's Earthfile's can always be run locally due to containerization.
 
 {% include_html cta/bottom-cta.html %}

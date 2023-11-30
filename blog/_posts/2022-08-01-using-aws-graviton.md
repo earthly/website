@@ -13,7 +13,7 @@ excerpt: |
     Learn about AWS Graviton, a type of processor made by Amazon, and discover its benefits, use cases, and how to deploy applications on it. Find out how Graviton processors offer strong performance, extensive software support, improved security, and the best performance per watt of energy use in Amazon EC2.
 last_modified_at: 2023-07-19
 ---
-**This article highlights the advantages of using AWS Graviton. Earthly enhances Go applications with containerized build automation optimized for AWS Graviton. [Check it out](/).**
+**This article highlights the advantages of using AWS Graviton. Earthly enhances Go applications with containerized build automation optimized for AWS Graviton. [Check it out](https://cloud.earthly.dev/login).**
 
 [Amazon Web Services (AWS)](https://aws.amazon.com/) is one of the most popular—and comprehensive—cloud service providers. It has over [200 fully-featured services](https://aws.amazon.com/what-is-aws/) on offer. There are enough services that it can be hard to remember them all.
 

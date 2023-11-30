@@ -17,7 +17,7 @@ excerpt: |
     Learn how to cache your package manager dependencies in GitHub Actions to save time and improve the efficiency of your workflows. This article provides step-by-step instructions on using the `cache` action and explores how caching can be combined with Earthly for even more advanced caching capabilities.
 last_modified_at: 2023-07-11
 ---
-**This article explains how to optimize GitHub Actions pipelines using caching. Earthly provides powerful caching capabilities. [Check it out](/).**
+**This article explains how to optimize GitHub Actions pipelines using caching. Earthly provides powerful caching capabilities. [Check it out](https://cloud.earthly.dev/login).**
 
 GitHub Actions is a [continuous integration](/blog/continuous-integration), continuous delivery (CI/CD) platform that allows you to build, test, and deploy your code with simple YAML-based configurations. While GitHub Actions, like many other CI/CD platforms, is powerful enough to handle most use cases, it's important to consider the cost and time associated with frequently running workflows.
 

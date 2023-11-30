@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explains how to resolve deprecation errors in GitHub Actions caused by the `set-output`, `save-state`, `add-path`, and `set-env` workflow commands. It provides step-by-step instructions for fixing the errors and warnings and introduces the use of environment files as an alternative.
 last_modified_at: 2023-10-06
 ---
-**This article offers tips on staying updated on the latest GitHub Actions changes. Earthly maintains the reproducibility of your builds amidst GitHub Actions' ongoing evolution and command deprecations. [Learn how](/).**
+**This article offers tips on staying updated on the latest GitHub Actions changes. Earthly maintains the reproducibility of your builds amidst GitHub Actions' ongoing evolution and command deprecations. [Learn how](https://cloud.earthly.dev/login).**
 
 <div class="wide">
 ![Disabled and Deprecated Workflow Commands Errors and Warnings]({{site.images}}{{page.slug}}/KyJZvzC.png)

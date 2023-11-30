@@ -15,7 +15,7 @@ excerpt: |
     Learn why many experienced software engineers prefer printf debugging over using debuggers, and how this approach can deepen your understanding of your code and make you a better developer. Discover the connection between printf debugging and the unconventional learning methods of mathematician Srinivasa Ramanujan.
 last_modified_at: 2023-07-19
 ---
-**This article teaches advanced debugging techniques. Earthly improves debugging with reproducible and parallel builds. [Check it out](/).**
+**This article teaches advanced debugging techniques. Earthly improves debugging with reproducible and parallel builds. [Check it out](https://cloud.earthly.dev/login).**
 
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 

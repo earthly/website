@@ -14,7 +14,7 @@ excerpt: |
     GitHub Actions offers composite actions, which allow you to bundle multiple workflow steps into a single, reusable entity, enhancing modularity and efficiency. This tutorial provides a comprehensive overview of composite actions, including how to implement them, publish them, and incorporate them into workflows.
 last_modified_at: 2023-10-17
 ---
-**The article explains the benefits of GitHub composite actions. Earthly provides consistent and reproducible builds for your GitHub Actions workflows. [Learn more about Earthly](/).**
+**The article explains the benefits of GitHub composite actions. Earthly provides consistent and reproducible builds for your GitHub Actions workflows. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 GitHub Actions offers a robust set of tools for a number of tasks, but there's an advanced feature that warrants attention for its potential to optimize workflows: [composite actions](https://docs.github.com/en/actions/creating-actions/creating-a-composite-action).
 

@@ -14,7 +14,7 @@ excerpt: |
     Learn about the essential metrics and key performance indicators (KPIs) for incident management in software development. Discover how Mean Time Between Failures (MTBF), Mean Time to Recovery (MTTR), Mean Time to Resolve (MTTRe), and Mean Time to Acknowledge (MTTA) can help improve the quality of your software releases and enhance your incident response process.
 last_modified_at: 2023-07-14
 ---
-**In this article, we'll examine the essential role of software release metrics. If you're looking to improve Mean Time to Recovery (MTTR) and Mean Time to Acknowledgement (MTTA) for cloud software, Earthly can streamline your build process. [Discover Earthly](/).**
+**In this article, we'll examine the essential role of software release metrics. If you're looking to improve Mean Time to Recovery (MTTR) and Mean Time to Acknowledgement (MTTA) for cloud software, Earthly can streamline your build process. [Discover Earthly](https://cloud.earthly.dev/login).**
 
 <!-- markdownlint-disable MD024 -->
 In 2008, I got my first job at a software-as-a-service company. We built learning management software and ran it on servers in the small data center connected to our office.

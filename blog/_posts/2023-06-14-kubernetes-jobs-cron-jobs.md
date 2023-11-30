@@ -16,7 +16,7 @@ excerpt: |
     Learn how to manage jobs and scheduled tasks in Kubernetes with this tutorial on Jobs and CronJobs. Discover how to create, monitor, and customize these resources to improve the reliability and efficiency of your Kubernetes deployments.
 last_modified_at: 2023-07-19
 ---
-**This article discusses Kubernetes Jobs/CronJobs. Earthly ensures consistent builds, enhancing your Kubernetes job management experience. [Learn more about Earthly](/).**
+**This article discusses Kubernetes Jobs/CronJobs. Earthly ensures consistent builds, enhancing your Kubernetes job management experience. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Modern software applications require efficient and reliable management of jobs and scheduled tasks. As applications become more complex and Kubernetes clusters increase in size, automating repetitive tasks like backups, batch processing, and data analysis becomes essential.
 

@@ -12,7 +12,7 @@ excerpt: |
     Learn how canary deployments can help you catch bugs and regressions early in your application deployment process. Discover the benefits and downsides of this strategy, as well as how to implement it effectively.
 last_modified_at: 2023-07-14
 ---
-**In this article, you'll learn how the canary deployment strategy requires vigilant monitoring and swift rollback options. Earthly ensures your builds stay consistent and reliable. [Explore how](/).**
+**In this article, you'll learn how the canary deployment strategy requires vigilant monitoring and swift rollback options. Earthly ensures your builds stay consistent and reliable. [Explore how](https://cloud.earthly.dev/login).**
 
 As you're building your application, you want to ensure that your customers have a bug-free user experience as much as possible. Since bugs show up most often when new code is deployed, your deployment process should be set up to catch bugs or regressions early and then quickly deploy patches into production before those bugs affect users.
 

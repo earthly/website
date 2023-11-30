@@ -13,7 +13,7 @@ excerpt: |
     In this article, the author explores the concept of "brown" and "green" programming languages based on the Stack Overflow Developer Survey results. They discuss how languages used in existing projects tend to be dreaded, while languages used in new projects are loved. The article also delves into the biases and factors that contribute to these perceptions and the lifecycle of programming language hype.
 last_modified_at: 2023-07-19
 ---
-**This article explores programming langauge preferences. You might prefer Earthly. It can streamline your build processes. [Check it out](/).**
+**This article explores programming langauge preferences. You might prefer Earthly. It can streamline your build processes. [Check it out](https://cloud.earthly.dev/login).**
 
 ## The Data
 

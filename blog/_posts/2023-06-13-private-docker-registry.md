@@ -16,7 +16,7 @@ excerpt: |
     Learn how to set up a private Docker registry on Linux and secure your Docker images in an enterprise environment. This step-by-step guide covers everything from installing Docker and Docker Compose to configuring NGINX and implementing authentication, allowing you to have full control over your Docker registry and ensure the security of your images.
 last_modified_at: 2023-07-19
 ---
-**This article outlines the key steps to setting up a Docker registry. Earthly precisely optimizes Docker image build processes. [Learn how](/).**
+**This article outlines the key steps to setting up a Docker registry. Earthly precisely optimizes Docker image build processes. [Learn how](https://cloud.earthly.dev/login).**
 
 If you're working with Docker images in an enterprise environment where security is a concern, a private Docker registry is a great solution. While public registries like Docker Hub allow anyone to push and pull images, they have limitations on the number of image pull requests per six hours and limited control over the registry security.
 

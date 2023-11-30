@@ -15,7 +15,7 @@ excerpt: |
     
 last_modified_at: 2023-07-19
 ---
-**This tutorial explains how to use SQLAlchemy's powerful features. Earthly efficiently manages complex builds in monorepos. [Learn more about Earthly](/).**
+**This tutorial explains how to use SQLAlchemy's powerful features. Earthly efficiently manages complex builds in monorepos. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 If you are interested in working with relational databases in Python, then you need to know what SQLAlchemy is. It is a Python library that provides a high-level, SQL abstraction layer for relational databases. With SQLAlchemy, you can interact with databases using Python objects and methods, rather than writing raw SQL queries.
 In this tutorial, you will learn how to get started with SQLAlchemy and also learn how to interact with and query an [SQLite](https://sqlite.org/index.html) relational database with the SQLAlchemy library.

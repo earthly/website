@@ -15,7 +15,7 @@ last_modified_at: 2023-10-20
 excerpt: |
     This tutorial explains how to build a REST API application using Go and the Chi router. It covers topics such as setting up the environment, creating routes for different HTTP methods, handling CRUD operations, and testing the application.
 ---
-**This article discusses Go REST API development. Earthly significantly reduces testing time with its parallel build capabilities. Try it for your next Go project. [Check it out](/).**
+**This article discusses Go REST API development. Earthly significantly reduces testing time with its parallel build capabilities. Try it for your next Go project. [Check it out](https://cloud.earthly.dev/login).**
 
 Go, developed by Google in 2007, was a response to the increasing popularity of multicore processors. Existing programming languages such as Java, Python, and C++ were widely used but had certain limitations.
 

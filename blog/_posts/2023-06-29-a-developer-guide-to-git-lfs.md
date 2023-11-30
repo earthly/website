@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Git LFS to manage large files in your Git repository and optimize your workflow for smoother collaboration with team members. Git LFS replaces large files in a Git repository with text pointers stored in the repository, while the actual file contents are stored separately in a Git LFS server.
 last_modified_at: 2023-07-19
 ---
-**This article explains how Git LFS manages large files. Earthly significantly speeds up build and test cycles with Git LFS. [Learn how](/).**
+**This article explains how Git LFS manages large files. Earthly significantly speeds up build and test cycles with Git LFS. [Learn how](https://cloud.earthly.dev/login).**
 
 Have you ever tried adding large files to your Git repository, like video or audio files, and found that it slows down any operations involving the repository? Fortunately, a solution is available in the form of Git Large File Storage (LFS).
 

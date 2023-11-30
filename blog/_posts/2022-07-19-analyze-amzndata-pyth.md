@@ -13,7 +13,7 @@ internal-links:
  - Pandas
 last_modified_at: 2023-07-19
 ---
-**This article explains how Python developers can analyze Amazon spending. Earthly precisely builds your data analysis toolchain. [Learn more about Earthly](/).**
+**This article explains how Python developers can analyze Amazon spending. Earthly precisely builds your data analysis toolchain. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 How much have you spent on Amazon? Well, that's a kind of interesting question to find an answer to. And it's the type of question I like to answer using Python.
 

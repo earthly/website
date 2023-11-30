@@ -14,7 +14,7 @@ excerpt: |
     Learn all you need to know about Bazel queries in this article. Discover how Bazel queries can help you analyze your project's build graph, optimize build performance, and debug builds.
 last_modified_at: 2023-07-19
 ---
-**The article explains the advantages of using Bazel queries. Earthly enhances Bazel's dependency management with a simpler approach to build automation. [Check it out](/).**
+**The article explains the advantages of using Bazel queries. Earthly enhances Bazel's dependency management with a simpler approach to build automation. [Check it out](https://cloud.earthly.dev/login).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching](https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
 

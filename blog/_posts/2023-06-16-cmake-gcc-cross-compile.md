@@ -17,7 +17,7 @@ excerpt: |
     Learn how to cross-compile binaries for different architectures using CMake and GCC in this tutorial. Discover the process of building a simple C++ program and then cross-compiling it for ARM64-based devices, along with troubleshooting tips for common issues.
 last_modified_at: 2023-07-19
 ---
-**The article provides insights into cross-compiling for ARM64 architectures. Earthly simplifies the process of cross-compilation for those who use CMake. [Learn how](/).**
+**The article provides insights into cross-compiling for ARM64 architectures. Earthly simplifies the process of cross-compilation for those who use CMake. [Learn how](https://cloud.earthly.dev/login).**
 
 Cross-compilation is the process of compiling your program on a different host than the target system. This enables developers to build binaries for different architectures without using those specific architectures themselves. For example, with cross-compilation, you can compile a binary for ARM-based devices like a Raspberry Pi on your standard x86-64 development machine.
 

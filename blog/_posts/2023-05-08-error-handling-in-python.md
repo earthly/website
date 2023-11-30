@@ -14,7 +14,7 @@ excerpt: |
     Learn how to handle errors in Python with this comprehensive article. From syntax errors to runtime errors, you'll discover how to use the `try-except` block, raise custom exceptions, and implement best practices for error handling.
 last_modified_at: 2023-07-19
 ---
-**This article explains Python error handling. Earthly provides containerized builds for Python that simplify dependency management. [Learn more about Earthly](/).**
+**This article explains Python error handling. Earthly provides containerized builds for Python that simplify dependency management. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Error handling is a critical aspect of programming, and it involves detecting and resolving errors that occur during program execution. Python is a high-level programming language that provides built-in features and libraries for error handling, making it easier for developers to detect and handle errors in their programs. In Python, errors can occur due to dynamic typing and a lack of compile-time checks, making it even more important to properly handle exceptions.
 

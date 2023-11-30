@@ -15,7 +15,7 @@ excerpt: |
     Learn how to set up a reverse proxy in Kubernetes with Nginx and improve the performance and reliability of your application. This tutorial covers configuring the Nginx server, creating a Kubernetes deployment, and setting up a service to expose the deployment to the outside world.
 last_modified_at: 2023-07-19
 ---
-**This article explains how to set up a Kubernetes Nginx reverse proxy. Earthly improves Docker image creation for Kubernetes by enhancing build performance. [Learn more about Earthly](/).**
+**This article explains how to set up a Kubernetes Nginx reverse proxy. Earthly improves Docker image creation for Kubernetes by enhancing build performance. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Setting up a reverse proxy in kubernetes can seem a bit overwhelming if it is your first time coming across them. However, it can greatly improve the performance and reliability of your application.
 

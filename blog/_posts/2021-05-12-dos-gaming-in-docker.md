@@ -20,7 +20,7 @@ last_modified_at: 2023-07-14
 
 ### TLDR
 
-* Quick install [Earthly](/).
+* Quick install [Earthly](https://cloud.earthly.dev/login).
 * Run `earthly github.com/earthly/example-dos-gaming:main+doom` to start container.
 * Play DOOM at `http://localhost:8000` in browser.
 

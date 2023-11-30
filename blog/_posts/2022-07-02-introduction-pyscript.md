@@ -14,7 +14,7 @@ internal-links:
  - Django
 last_modified_at: 2023-07-19
 ---
-**The PyScript framework enables Python execution in web browsers. Earthly ensures your PyScript builds are reproducible. [Learn more about Earthly](/).**
+**The PyScript framework enables Python execution in web browsers. Earthly ensures your PyScript builds are reproducible. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 <div class="wide">
 

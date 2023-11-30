@@ -12,7 +12,7 @@ internal-links:
 topic: cli
 last_modified_at: 2023-07-11
 ---
-**This article teaches you how to use mitmproxy. If you want to improve your build processes, Earthly provides a containerized solution. [Learn how Earthly can improve your workflow](/).**
+**This article teaches you how to use mitmproxy. If you want to improve your build processes, Earthly provides a containerized solution. [Learn how Earthly can improve your workflow](https://cloud.earthly.dev/login).**
 
 ## Introduction
 

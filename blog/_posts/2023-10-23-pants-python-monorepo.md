@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explains how to use Pants, a monorepo tool, to build, configure, and manage a Python monorepo. It covers setting up the project, defining the backend and creating the necessary BUILD files, running tests, linting and formatting the code, and packaging and running the application.
 last_modified_at: 2023-10-17
 ---
-**This article explains the Pants build system for managing Python monorepos. Earthly streamlines build processes using its declarative Earthfile syntax. It works great with Python and excels at building monorepos. [Learn more about Earthly](/).**
+**This article explains the Pants build system for managing Python monorepos. Earthly streamlines build processes using its declarative Earthfile syntax. It works great with Python and excels at building monorepos. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 If your application comprises multiple projects, you can choose between two approaches: storing each project in its own code repository or storing all the projects in one repository. This single repository in the second approach is known as a monorepo. A monorepo is a version control system that holds multiple projects in one repository. A monorepo has advantages, such as easier code reuse and dependency management. However, it also has some disadvantages, such as security challenges with access control and the need for a tool to handle builds efficiently.
 
@@ -665,6 +665,6 @@ In this article, you learned about monorepos, their advantages and disadvantages
 
 You can find the demo solution [in the `solution` branch of this GitHub repository](https://github.com/SystemCraftsman/pants-python-monorepo-demo/tree/solution).
 
-Finally, If you have a monorepo the extends beyond python, using languages like go or Rust that Pants supports less well, then you should take a look at [Earthly](/). It's open source and works with your existing build tools.
+Finally, If you have a monorepo the extends beyond python, using languages like go or Rust that Pants supports less well, then you should take a look at [Earthly](https://cloud.earthly.dev/login). It's open source and works with your existing build tools.
 
 {% include_html cta/bottom-cta.html %}
