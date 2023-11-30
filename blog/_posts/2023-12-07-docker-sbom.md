@@ -6,7 +6,11 @@ toc: true
 author: James Walker
 
 internal-links:
- - just an example
+ - generate sbom
+ - sbom from docker images
+ - how to generate sbom
+ - generating sbom from docker images
+ - software bill of materials
 last_modified_at: 2023-09-08
 ---
 
@@ -240,8 +244,3 @@ SBOMs are particularly important for containerized applications because the pack
 Generating a SBOM for your images using `docker sbom` allows you to easily access this information and then distribute it to your clients and customers. This increases trust in your software, lets you efficiently address new zero-day vulnerabilities, and could [even be a requirement](https://www.isaca.org/resources/news-and-trends/industry-news/2023/why-are-regulations-demanding-sbom-adoption) when tendering for future software delivery contracts.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
