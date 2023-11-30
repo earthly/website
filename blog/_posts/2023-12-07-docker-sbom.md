@@ -40,7 +40,7 @@ When a new zero-day vulnerability like [Log4j](https://www.ncsc.gov.uk/informati
 
 You can generate SBOMs for your container images using the [`docker sbom`](https://docs.docker.com/engine/sbom) command. It provides integrated capabilities for viewing and exporting SBOMs without having to install any other tools.
 
-### Enable and Run the docker sbom Command
+### Enable and Run the `docker sbom` Command
 
 `docker sbom` is an experimental feature. It already includes useful functionality today, but the command might change or be removed in the future. How you access `docker sbom` depends on the Docker edition that you're using:
 
@@ -49,59 +49,59 @@ You can generate SBOMs for your container images using the [`docker sbom`](https
 
 You can check whether the command is already available on your system by running:
 
-```bash
+~~~
 docker sbom --version
-```
+~~~
 
 You're good to go if your output looks like this:
 
-```bash
+~~~
 sbom-cli-plugin 0.6.1, build 02cf1c888ad6662109ac6e3be618392514a56316
-```
+~~~
 
 If the feature is unavailable, you'll see a `'sbom' is not a docker command` error message. You should manually install the plugin by first downloading the installation script:
 
-```bash
+~~~
 curl -sSfl https://raw.githubusercontent.com/docker/sbom-cli-plugin/main/install.sh -o install-docker-sbom.sh
-```
+~~~
 
 Then, make the installation script executable:
 
-```bash
+~~~
 chmod +x install-docker-sbom.sh
-```
+~~~
 
 Run the installation script:
 
-```bash
+~~~
 ./install-docker-sbom.sh
-```
+~~~
 
 Your output will look like this:
 
-```
+~~~
 [info] fetching release script for tag='v0.6.1'
 [info] using release tag='v0.6.1' version='0.6.1' os='linux' arch='amd64'
 [info] installed /home/james/.docker/cli-plugins/docker-sbom
-```
+~~~
 
 Finally, check that `docker sbom` is available. Try running `docker sbom --version` to confirm that the plugin was installed successfully. Your output should look like this:
 
-```
+~~~
 sbom-cli-plugin 0.6.1, build 02cf1c888ad6662109ac6e3be618392514a56316
-```
+~~~
 
 ### Generate a SBOM
 
 You can generate and view an image's SBOM by passing the image's tag to the `docker sbom` command, like this:
 
-```bash
+~~~
 docker sbom nginx:latest
-```
+~~~
 
 The command starts by pulling the image for [Syft](https://github.com/anchore/syft), the underlying SBOM generator that `docker sbom` wraps. The image you're scanning is then pulled and parsed to identify which packages it contains. The results are displayed in a table in your terminal:
 
-```
+~~~
 Syft v0.46.3
  ✔ Pulled image            
  ✔ Loaded image            
@@ -113,13 +113,13 @@ apt                        2.6.1                           deb
 base-files                 12.4+deb12u1                    deb           
 base-passwd                3.6.1                           deb           
 bash                       5.2.15-2+b2                     deb
-```
+~~~
 
 Each row in the table describes a single package in your container image. The records include the package's name, installed version, and the type of package that it is. The row below represents a Debian package installed in the operating system:
 
-```
+~~~
 bash                       5.2.15-2+b2                     deb
-```
+~~~
 
 Using this information, you can rapidly identify which packages are present in your container. When a new vulnerability is published, viewing the SBOM lets you check whether you're using an affected version.
 
@@ -134,13 +134,13 @@ Using this information, you can rapidly identify which packages are present in y
 
 Use the `--format` flag to specify the format to use for your SBOM:
 
-```bash
+~~~
 docker sbom nginx:latest --format spdx-json
-```
+~~~
 
 An SPDX JSON report contains much more information about the detected packages and their sources:
 
-```json
+~~~
 {
  "SPDXID": "SPDXRef-DOCUMENT",
  "name": "nginx-latest",
@@ -162,16 +162,16 @@ An SPDX JSON report contains much more information about the detected packages a
    "licenseConcluded": "GPL-2.0 AND GPL-2.0+",
    "downloadLocation": "NOASSERTION",
    "externalRefs": [
-	{
- 	"referenceCategory": "SECURITY",
- 	"referenceLocator": "cpe:2.3:a:adduser:adduser:3.134:*:*:*:*:*:*:*",
- 	"referenceType": "cpe23Type"
-	},
-	{
- 	"referenceCategory": "PACKAGE_MANAGER",
- 	"referenceLocator": "pkg:deb/debian/adduser@3.134?arch=all&distro=debian-12",
- 	"referenceType": "purl"
-	}
+    {
+     "referenceCategory": "SECURITY",
+     "referenceLocator": "cpe:2.3:a:adduser:adduser:3.134:*:*:*:*:*:*:*",
+     "referenceType": "cpe23Type"
+    },
+    {
+     "referenceCategory": "PACKAGE_MANAGER",
+     "referenceLocator": "pkg:deb/debian/adduser@3.134?arch=all&distro=debian-12",
+     "referenceType": "purl"
+    }
    ],
    "filesAnalyzed": false,
    "licenseDeclared": "GPL-2.0 AND GPL-2.0+",
@@ -180,7 +180,7 @@ An SPDX JSON report contains much more information about the detected packages a
    "versionInfo": "3.134"
   },
 (truncated)
-```
+~~~
 
 This report is suitable to be saved and distributed alongside your container images. It allows users to be sure of what they're running, similar to how food labels give you detailed information on the ingredients you're eating.
 
@@ -188,9 +188,9 @@ This report is suitable to be saved and distributed alongside your container ima
 
 Regardless of the format you select, `docker sbom` defaults to printing your report's output to your terminal. You can save it to a file instead by setting the `--output` flag:
 
-```bash
+~~~
 docker sbom nginx:latest --format spdx-json --output nginx-sbom.json
-```
+~~~
 
 The initial progress information will still be emitted to your console, but the report will be separately written to the specified file.
 
@@ -200,9 +200,9 @@ Most popular Docker images are now multiarch. A tag such as `nginx:latest` can p
 
 `docker sbom` respects this behavior by generating the SBOM for the variant that matches the architecture and platform you're currently using. You can get the SBOM for a different variant by using the `--platform` flag, where the available values depend on those supported by the image:
 
-```bash
+~~~
 docker sbom nginx:latest --platform arm64
-```
+~~~
 
 ### Exclude Specific Container Paths
 
@@ -212,20 +212,20 @@ The `--exclude` flag lets you omit specific paths from the SBOM scan. It support
 
 The following example excludes all common OS package locations:
 
-```bash
+~~~
 docker sbom nginx:latest --exclude /lib --exclude /var
-```
+~~~
 
 Now only one package has been detected, as the noise from the primary system directories has been removed:
 
-```
+~~~
 Syft v0.46.3
- ✔ Loaded image       	 
- ✔ Parsed image       	 
- ✔ Cataloged packages  	[1 packages]
-NAME 	VERSION  TYPE    	 
-libintl  0.21 	java-archive
-```
+ ✔ Loaded image            
+ ✔ Parsed image            
+ ✔ Cataloged packages      [1 packages]
+NAME     VERSION  TYPE         
+libintl  0.21     java-archive
+~~~
 
 Excluding paths you know to be irrelevant will make your scans more performant and cut down on visual noise in reports.
 
@@ -241,11 +241,9 @@ Generating a SBOM for your images using `docker sbom` allows you to easily acces
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
