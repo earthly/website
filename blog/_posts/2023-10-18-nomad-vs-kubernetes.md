@@ -111,6 +111,6 @@ In contrast, Nomad is simple and easy to use. You can use it with a broader sele
 
 If you need extensive features or if you think you may need them in the future, Kubernetes is the best choice. If you don't need this functionality or your developers aren't keen to invest time learning Kubernetes, Nomad is a great alternative. Nomad is also the clear choice if you want to use workloads Kubernetes can't handle.
 
-Another tool to be aware of is [Earthly](https://earthly.dev/). It's a CI/CD framework that runs everywhere. Using it gives you builds that are containerized, repeatable, and language-agnostic. It's simple but powerful, so check it out to see how it can help you.
+Another tool to be aware of is [Earthly](https://cloud.earthly.dev/login). It's a CI/CD framework that runs everywhere. Using it gives you builds that are containerized, repeatable, and language-agnostic. It's simple but powerful, so check it out to see how it can help you.
 
 {% include_html cta/bottom-cta.html %}

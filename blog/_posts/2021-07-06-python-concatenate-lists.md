@@ -260,7 +260,7 @@ There we go, `extend` is much faster when flattening lists or concatenating many
 
 These are the main variants of combining lists in python. Use this table to guide you in the future.
 
-Also, if you are looking for a nice way to standardize the processes around your python projects -- running tests, installing dependencies, and linting code -- take a look at Earthly for [Repeatable Builds](https://earthly.dev/).
+Also, if you are looking for a nice way to standardize the processes around your python projects -- running tests, installing dependencies, and linting code -- take a look at Earthly for [Repeatable Builds](https://cloud.earthly.dev/login).
 
 |  Condition  |  Solution  | Performance Optimization[^2]   |
 |--- |--- |:-: |

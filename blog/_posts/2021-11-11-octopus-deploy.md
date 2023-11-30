@@ -244,6 +244,6 @@ Click on the **Save** button to save your deployment process steps. Now you have
 
 In this article, you have learned that Octopus Deploy can provide tremendous benefits when integrated into your software development life cycles. It eases the workload in managing deployment to multiple servers and allows your team to focus on other important things.
 
-If you want to take your continuous integration pipeline to the next level, consider a tool like [Earthly](https://earthly.dev). [Earthly](https://earthly.dev) allows you to execute your builds in containers, thereby making them self-contained, portable, and repeatable. Earthly can be easily used instead of, or in conjunction with, Octopus. And Earthly's caching and parallel mechanisms make your builds repeatable and fast.
+If you want to take your continuous integration pipeline to the next level, consider a tool like [Earthly](https://cloud.earthly.dev/login). [Earthly](https://cloud.earthly.dev/login) allows you to execute your builds in containers, thereby making them self-contained, portable, and repeatable. Earthly can be easily used instead of, or in conjunction with, Octopus. And Earthly's caching and parallel mechanisms make your builds repeatable and fast.
 
 {% include_html cta/bottom-cta.html %}

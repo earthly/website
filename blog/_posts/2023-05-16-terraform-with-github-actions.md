@@ -151,6 +151,6 @@ If you're using the infrastructure only for testing purposes and want to avoid c
 
 Now that you have a taste for automatically provisioning infrastructure, you could make your `main.tf` file much more complicated and provision all sorts of different resources. Load balancers, databases, and more are now all within your reach using the combination of GitHub Actions and [Terraform](/terraform-lambda).
 
-And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and Terraform.
+And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://cloud.earthly.dev/login). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and Terraform.
 
 {% include_html cta/gha-cta1.html %}

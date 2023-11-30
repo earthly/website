@@ -11,7 +11,7 @@ excerpt: |
     Learn how to use MongoDB with Docker to containerize your development environment and easily create isolated instances of MongoDB. This tutorial covers the best practices for running MongoDB in a Docker container, hosting a Flask app, and using Docker volumes to persist data.
 last_modified_at: 2023-09-19
 ---
-**"This article examines how MongoDB and Docker work together. Earthly guarantees reproducible Docker builds for MongoDB. [Learn more about Earthly](https://cloud.earthly.dev/login/)."**
+**This article examines how MongoDB and Docker work together. Earthly guarantees reproducible Docker builds for MongoDB. [Learn more about Earthly](https://cloud.earthly.dev/login/).**
 
 [Docker](https://www.docker.com/) is a powerful development platform that enables users to containerize software. These containers can be run on any machine, as well as in a public or private cloud. Thanks to Docker's lightweight runtime and ability to run processes in isolation, multiple containers can run at the same time on the same VM or server.
 
@@ -327,6 +327,6 @@ In this article, you hosted your MongoDB server using Docker. You created a Flas
 
 There are many advantages of using containers as part of your day-to-day life as a software developer. Containers ensure consistency across operating systems, and by using them, you can ensure uniformity throughout the team. Deploying containers is relatively easy, as your production environment and development will be consistent. By running MongoDB in Docker, you can create new isolated containers from the same image and you can connect the volume associated with one container to another.
 
-[Earthly](https://earthly.dev/) is an automation tool for managing all your [Docker components](https://docs.earthly.dev/docs/guides/docker-in-earthly), images, and containers. With Earthly, you can execute all your builds in containers and ensure uniformity across machines.
+[Earthly](https://cloud.earthly.dev/login) is an automation tool for managing all your [Docker components](https://docs.earthly.dev/docs/guides/docker-in-earthly), images, and containers. With Earthly, you can execute all your builds in containers and ensure uniformity across machines.
 
 {% include_html cta/bottom-cta.html %}

@@ -87,5 +87,5 @@ Ok, ok - calling this out as being wrong isn't entirely fair. There are many sit
 
 Docker Compose can be an amazing tool for local development purposes. Although it has a few gotchas, it usually brings a lot of productivity benefits to many engineering teams, especially when used in conjunction with integration tests.
 
-If you're looking for more flexibility in defining containerized tests than docker-compose alone can provide, take a [look](https://github.com/earthly/earthly/blob/0f48f14/examples/integration-test/Earthfile#L38-L44) at [integration test support](https://docs.earthly.dev/guides/integration) in [Earthly](https://earthly.dev/).
+If you're looking for more flexibility in defining containerized tests than docker-compose alone can provide, take a [look](https://github.com/earthly/earthly/blob/0f48f14/examples/integration-test/Earthfile#L38-L44) at [integration test support](https://docs.earthly.dev/guides/integration) in [Earthly](https://cloud.earthly.dev/login).
 <!-- vale HouseStyle.H2 = YES -->

@@ -425,6 +425,6 @@ All the code for this tutorial can be found in this [GitHub repo](https://github
 
 Monorepos are becoming the norm for organizing multiple interrelated projects in a single repo. To make full use of a monorepo, you must use a build tool that is capable of efficiently handling a monorepo.
 
-In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://earthly.dev/)
+In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://cloud.earthly.dev/login)
 
 {% include_html cta/bottom-cta.html %}

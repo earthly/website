@@ -214,7 +214,7 @@ You should now be familiar with some of the most common mistakes developers make
 
 Another way to avoid these mistakes is to use secrets management with Docker. Sensitive data is always immutable, never written to disk, and never sent in clear-text format over the network. If you plan to leverage Docker Swarm in production, you should also use Docker secrets for local development.
 
-To further expand on the possibilities of your Docker containers, try [Earthly](https://earthly.dev/). The free, open-source build automation tool helps you more easily create and reuse complex container builds. You can also use it to build Dockerfiles. Earthly runs on top of your continuous integration system to improve your workflow.
+To further expand on the possibilities of your Docker containers, try [Earthly](https://cloud.earthly.dev/login). The free, open-source build automation tool helps you more easily create and reuse complex container builds. You can also use it to build Dockerfiles. Earthly runs on top of your continuous integration system to improve your workflow.
 
 For more information, check the [Earthly Documentation](https://docs.earthly.dev/).
 

@@ -449,6 +449,6 @@ This article has shown you how to create an automated CI/CD build with GitHub an
 - How to create and deploy an application from GitHub Actions
 - How to automatically build and push a Docker image DockerHub with GitHub action.
 
-The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app). And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
+The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app). And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://cloud.earthly.dev/login). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
 
 {% include_html cta/gha-cta1.html %}

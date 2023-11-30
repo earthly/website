@@ -82,6 +82,6 @@ It's worth taking a look at if you are exploring autoscaling, as it provides a m
 
 After reading this article, you know the basics of Kubernetes autoscaling. You're now more familiar with the reasons for wanting to utilize Kubernetes autoscaling, and perhaps you've recognized some of the use cases. You also know what the difference is between the HPA, the VPA, and the CA.
 
-If you're looking to make your life easier in terms of Kubernetes deployments, it's worth checking out [Earthly](https://earthly.dev/). They combine the best of Makefiles and Dockerfiles to provide a seamless deployment system.
+If you're looking to make your life easier in terms of Kubernetes deployments, it's worth checking out [Earthly](https://cloud.earthly.dev/login). They combine the best of Makefiles and Dockerfiles to provide a seamless deployment system.
 
 {% include_html cta/bottom-cta.html %}

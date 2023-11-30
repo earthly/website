@@ -47,7 +47,7 @@ This means you should spend some time diagramming and/or charting the interconne
 
 #### Use Build Tools That Feature Caching
 
-Most build automation tools, including [Apache Maven](https://maven.apache.org/), come with build dependencies. However, some (including Maven) may not have a dependency or [build caching](https://maven.apache.org/extensions/maven-build-cache-extension/) out of the box. In comparison, build and test tools such as [Earthly](https://earthly.dev/) can optimize the build process by caching dependencies and only build what's absolutely necessary (after the initial build).
+Most build automation tools, including [Apache Maven](https://maven.apache.org/), come with build dependencies. However, some (including Maven) may not have a dependency or [build caching](https://maven.apache.org/extensions/maven-build-cache-extension/) out of the box. In comparison, build and test tools such as [Earthly](https://cloud.earthly.dev/login) can optimize the build process by caching dependencies and only build what's absolutely necessary (after the initial build).
 
 If you want to improve how quickly concurrency slots are freed up with each run, you must examine what tools you're using to compile and build your projects through GitHub Actions.
 

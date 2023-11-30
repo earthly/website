@@ -13,7 +13,7 @@ excerpt: |
     Learn how to effectively use Docker and Makefiles together to simplify your deployment process. Discover the advantages of integrating Make into your Docker projects and see how it can streamline building, pushing, releasing, and versioning your Docker images.
 last_modified_at: 2023-07-14
 ---
-**"The article explains how to integrate Docker with Makefiles, enhancing the build process. Earthly streamlines Docker workflows, ensuring consistent and reproducible builds. [Learn how](https://cloud.earthly.dev/login)."**
+**The article explains how to integrate Docker with Makefiles, enhancing the build process. Earthly streamlines Docker workflows, ensuring consistent and reproducible builds. [Learn how](https://cloud.earthly.dev/login).**
 
 Deployments have been one of the hassles for many organizations for a long time, with companies sometimes even hiring engineers whose sole job is to get applications deployed more effectively. Because of this, many tools have been developed to help with this exact use case. However, some prefer to use tools that have already existed for many years: Docker and Makefiles.
 
@@ -221,4 +221,4 @@ By now, you've seen how you can easily and quickly add Make to your project. The
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://earthly.dev/), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible. -->
+<!-- If you're looking at this and thinking to yourself that it's still a bit complex for you and your organization, check out [Earthly](https://cloud.earthly.dev/login), a tool that combines the best of Dockerfiles and Makefiles to make builds as easy as possible. -->

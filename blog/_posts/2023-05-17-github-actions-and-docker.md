@@ -191,7 +191,7 @@ When you're done adding the test cases folder to the same container network, you
 In this code, `{{docker-compose-file}}` is the name of your `docker-compose` file, `{{project-name}}` is the project name, and `[{{container-name}}` is the container name.
 
 <div class="notice--big--primary">
-As an alternative to using a `docker-compose` file, you can leverage [Earthly](https://earthly.dev), which lets you define your containers and their dependencies, as well as specify your entire build process, including testing and deployment, in one **Earthfile**.
+As an alternative to using a `docker-compose` file, you can leverage [Earthly](https://cloud.earthly.dev/login), which lets you define your containers and their dependencies, as well as specify your entire build process, including testing and deployment, in one **Earthfile**.
 
 In addition, Earthly allows you to define reusable builds that you can use across different machines, making it easier to collaborate and enabling you to run your builds anywhere.
 
@@ -212,6 +212,6 @@ You can also monitor the progress of the workflow by visiting the **Actions** ta
 
 In this tutorial, you learned how to create a new workflow, edit an existing workflow, set up the runner for your workflow, and locally set up and work with GitHub Actions. At this point, you should be confident that you can build GitHub Actions for your projects and speed up the development processes.
 
-And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
+And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://cloud.earthly.dev/login). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
 
 {% include_html cta/gha-cta1.html %}

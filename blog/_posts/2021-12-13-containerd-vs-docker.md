@@ -244,6 +244,6 @@ Using the right platform can be difficult, as each comes with its own standards 
 
 Docker offers a full-featured toolkit to build, run, and manage container images and containers in standalone and networked setups. It provides more features than `containerd` and is more human friendly. Also, Docker uses containerd, which makes it suitable for desktop and continuous integration (CI) build environments. You could use it in production as well if Kubernetes is not available, or if you need isolated network namespaces.
 
-[Earthly](https://earthly.dev/) is a container image building tool that allows you to define simple specifications for building Docker images in a repeatable way. Consider using it with your container services to automate and simplify deployment pipelines.
+[Earthly](https://cloud.earthly.dev/login) is a container image building tool that allows you to define simple specifications for building Docker images in a repeatable way. Consider using it with your container services to automate and simplify deployment pipelines.
 
 {% include_html cta/bottom-cta.html %}

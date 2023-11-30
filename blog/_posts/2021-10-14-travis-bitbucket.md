@@ -269,7 +269,7 @@ The source code for this demonstration is available in this [public repository](
 
 CI/CD has become a common model for delivering quality software. Tools, like Travis CI, accelerate the process of automation by providing their platform as a service to software developers.
 
-That being said, the practice of configuring builds for multiple application environments can become increasingly complex—especially as you work across different programming languages and underlying environments. That's where [Earthly](https://earthly.dev/) comes in.
+That being said, the practice of configuring builds for multiple application environments can become increasingly complex—especially as you work across different programming languages and underlying environments. That's where [Earthly](https://cloud.earthly.dev/login) comes in.
 
 Earthly is a build automation tool that works on top of popular CI platforms, like Travis CI, operating in the layer between language-specific tools (like Maven, Gradle, npm, pip, and Go Build) and the CI build specification. A tool like Earthly can give your build automation process the edge it needs when it comes to repeatability and portability.
 

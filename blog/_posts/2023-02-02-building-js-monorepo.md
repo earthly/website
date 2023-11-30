@@ -164,7 +164,7 @@ Some of the drawbacks of Rush are:
 
 ## Conclusion
 
-These five common monorepo tools — Bazel, Gradle, Lage, Lerna, and Rush — all have their own features, benefits, and drawbacks for building JavaScript and TypeScript [monorepos](/blog/go-workspaces). The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://earthly.dev/) with all of them.
+These five common monorepo tools — Bazel, Gradle, Lage, Lerna, and Rush — all have their own features, benefits, and drawbacks for building JavaScript and TypeScript [monorepos](/blog/go-workspaces). The good news is that regardless of which one works best for your situation, you can still use [Earthly](https://cloud.earthly.dev/login) with all of them.
 
 As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 

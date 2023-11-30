@@ -176,7 +176,7 @@ curl -X POST -s localhost:8080 | rg -q "post"
 echo "Success"
 ~~~
 
-And I can also use [Earthly](https://earthly.dev/) to write a small build script that puts this service into a container and tests it's endpoints. Doing so may seem like overkill, but I'm going to build on this test case as we go.
+And I can also use [Earthly](https://cloud.earthly.dev/login) to write a small build script that puts this service into a container and tests it's endpoints. Doing so may seem like overkill, but I'm going to build on this test case as we go.
 
 ~~~{.dockerfile caption="Earthfile"}
 test:

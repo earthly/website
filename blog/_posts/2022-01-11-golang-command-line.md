@@ -532,7 +532,7 @@ Then I'll start-up the docker container for the service (using its GitHub path) 
     END
 ~~~
 
-You can find more about how that works on the [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the backend service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
+You can find more about how that works on the [Earthly site](https://cloud.earthly.dev/login), but the important thing is now my GitHub Action will build the backend service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8600.png --alt {{ build in GitHubActions }} %}

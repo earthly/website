@@ -130,4 +130,4 @@ This can help you assess the effectiveness of your performance tweaks and guide 
 
 Jenkins' responsiveness issues are common, especially when dealing with heavier builds. Broken Jenkins CI/CD pipelines can stall your development teams and create unnecessary dependencies. The tips discussed in this article should help you boost the performance of your Jenkins CI/CD pipeline significantly.
 
-Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky [bash scripts](/blog/understanding-bash) and Makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://earthly.dev/).
+Looking to make your builds more repeatable? [Earthly](https://cloud.earthly.dev/login) replaces clunky [bash scripts](/blog/understanding-bash) and Makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://cloud.earthly.dev/login).

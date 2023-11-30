@@ -221,6 +221,6 @@ CNAME provides a mechanism for clusters to communicate with each other externall
 
 In this article, you've learned about various Kubernetes networking topics ranging from IP address allocation, CNI APIs, Services, DNS, and more.
 
-Kubernetes and container orchestration have become vital aspects of the DevOps workflow. If you want to further improve your continuous integration process, [Earthly](https://earthly.dev/) is the tool for you. It helps you generate repeatable, complex, idempotent container builds between your local development and [continuous integration](/blog/continuous-integration) environment, with achievable outcomes.
+Kubernetes and container orchestration have become vital aspects of the DevOps workflow. If you want to further improve your continuous integration process, [Earthly](https://cloud.earthly.dev/login) is the tool for you. It helps you generate repeatable, complex, idempotent container builds between your local development and [continuous integration](/blog/continuous-integration) environment, with achievable outcomes.
 
 {% include_html cta/bottom-cta.html %}

@@ -346,6 +346,6 @@ In both cases, you can activate, deactivate, or even add new drivers from Ranche
 
 In this article, you learned what Rancher is and how it can help you better manage your Kubernetes clusters regardless of where they're hosted. To that end, you've explored how Rancher solves many Kubernetes pain points by extending its default functionality to allow deployment and monitoring of Kubernetes clusters on any infrastructure, management of hybrid and multi-cluster environments from a single interface, and support for authentication methods such as Active Directory, LDAP, or SAML.In summary, Rancher takes Kubernetes to the next level by adding vital features and enterprise support with no vendor lock-in.
 
-Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
+Another tool that is as flexible and easy to use as Rancher is [Earthly](https://cloud.earthly.dev/login), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
 
 {% include_html cta/bottom-cta.html %}

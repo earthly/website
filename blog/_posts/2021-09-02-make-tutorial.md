@@ -298,4 +298,4 @@ The `make` tool is a valuable one to master in software development. Using it ca
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you're familiar with Docker, consider using [Earthly](https://earthly.dev). Earthly combines the best aspects of `make` and Docker to give you an easy-to-understand and reproducible build with minimal effort. -->
+<!-- If you're familiar with Docker, consider using [Earthly](https://cloud.earthly.dev/login). Earthly combines the best aspects of `make` and Docker to give you an easy-to-understand and reproducible build with minimal effort. -->

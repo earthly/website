@@ -200,4 +200,4 @@ With the new Makefile Tools Extension, Visual Studio Code greatly simplifies acc
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://earthly.dev/). -->
+<!-- If you want to learn about the power of make and Makefiles, consider checking out our [Makefile Series](/blog/series/makefile/), and if you want the simplicity of a Makefile with the isolation of containers take a look at [Earthly](https://cloud.earthly.dev/login). -->

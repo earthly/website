@@ -416,4 +416,4 @@ Adding performance tests can help you track important metrics and ensure that ch
 
 Finally, to succeed in implementing CT, remember that testing should become part of your team's DNA and share the same five pillars as DevOps: culture, automation, lean, measurement, and sharing.
 
-As your CT process grows and becomes more ingrained in how you work, take a look at [Earthly's](https://earthly.dev/) ability to produce a repeatable build process. It can help make testing in GitHub Actions a more straightforward process.
+As your CT process grows and becomes more ingrained in how you work, take a look at [Earthly's](https://cloud.earthly.dev/login) ability to produce a repeatable build process. It can help make testing in GitHub Actions a more straightforward process.

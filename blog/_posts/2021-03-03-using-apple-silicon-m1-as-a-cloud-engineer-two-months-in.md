@@ -167,6 +167,6 @@ If you're a developer and your coding productivity depends on your laptop, I wou
 
 If you're not a developer, or only use your laptop for browsing and email, I really don't see any reason why you would pick an Intel MacBook over this one. I would also assume that the MacBook Air version is also amazing (unlike the Intel version of MacBook Air, which is often on the slow side for modern web browsing). The M1 chip is very similar between Pro and Air and there's no need for fans.
 
-And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://earthly.dev/).
+And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}

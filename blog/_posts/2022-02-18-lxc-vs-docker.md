@@ -155,6 +155,6 @@ LXC, is a serious contender to virtual machines. So, if you are developing a Lin
 
 Docker is a complete solution to distribute applications and is particularly loved by developers. Docker solved the local developer configuration tantrum and became a key component in the CI/CD pipeline because it provides isolation between the workload and reproducible environment.
 
-In the same way that Docker extended the features of LXC to make it easy to package applications and make operating them more developer-friendly, [Earthly](https://earthly.dev/) built on top of Dockerfile to create tools better suited to manage the CI/CD workload. Be sure to check it out to help automate and simplify your development pipeline using either Docker or LXC.
+In the same way that Docker extended the features of LXC to make it easy to package applications and make operating them more developer-friendly, [Earthly](https://cloud.earthly.dev/login) built on top of Dockerfile to create tools better suited to manage the CI/CD workload. Be sure to check it out to help automate and simplify your development pipeline using either Docker or LXC.
 
 {% include_html cta/bottom-cta.html %}

@@ -33,4 +33,4 @@ Wes will be helping us better understand the challenges of software builds in da
 
 We are grateful and proud to have Wes McKinney onboard as an advisor. The world of software engineering is vast and industry veterans such as Wes allow us to tune our technology to the needs of the various communities out there. The more we connect with great minds in tech, the more Earthly gets better for everyone else.
 
-If you are an Earthly user, please join me in welcoming Wes to the Earthly family! [Follow Wes on Twitter](https://twitter.com/wesmckinn) and let him know why you're excited about Earthly. If you aren't a user yet, you're missing out! ;-) Come give Earthly a try at [earthly.dev](https://earthly.dev).
+If you are an Earthly user, please join me in welcoming Wes to the Earthly family! [Follow Wes on Twitter](https://twitter.com/wesmckinn) and let him know why you're excited about Earthly. If you aren't a user yet, you're missing out! ;-) Come give Earthly a try at [earthly.dev](https://cloud.earthly.dev/login).

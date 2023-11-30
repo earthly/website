@@ -25,7 +25,7 @@ There are a lot of build tools in the JavaScript ecosystem. Some of them have ov
 
 [Lerna](https://lerna.js.org/) is a self-described "build system for managing and publishing multiple JavaScript/TypeScript [packages](/blog/setup-typescript-monorepo) from the same repository." You don't need a tool like Lerna to operate a monorepo — a version-controlled code repository that stores multiple projects or applications within a single, centralized repository — but it improves the developer experience by solving several common issues, including streamlining version management tasks, publishing or deploying new code, managing dependencies between projects, and running commands against multiple projects simultaneously.
 
-In this tutorial, you'll learn how to leverage Lerna to manage a simple TypeScript [monorepo](/blog/golang-monorepo). You'll see how to set up Lerna, create some packages, and publish them to [npm](https://www.npmjs.com/). You will also see how you can use Lerna along with [GitHub Actions](https://github.com/features/actions) and [Earthly](https://earthly.dev/) to simplify the continuous integration (CI) of your monorepo.
+In this tutorial, you'll learn how to leverage Lerna to manage a simple TypeScript [monorepo](/blog/golang-monorepo). You'll see how to set up Lerna, create some packages, and publish them to [npm](https://www.npmjs.com/). You will also see how you can use Lerna along with [GitHub Actions](https://github.com/features/actions) and [Earthly](https://cloud.earthly.dev/login) to simplify the continuous integration (CI) of your monorepo.
 
 This article assumes you have a working understanding of JavaScript, knowledge of TypesScript, React, package management, and bundling with tools like [Rollup](https://rollupjs.org) is beneficial but not necessary.
 
@@ -496,7 +496,7 @@ Whether you use Lerna or one of the package managers' solutions, such tools are 
 
 ## Conclusion
 
-In this tutorial, you've seen how to set up a monorepo with Lerna. You learned how to add multiple packages to it, publish those packages to npm, and run CI workflows for those packages using [Github Actions](/blog/continuous-integration) and [Earthly](https://earthly.dev).
+In this tutorial, you've seen how to set up a monorepo with Lerna. You learned how to add multiple packages to it, publish those packages to npm, and run CI workflows for those packages using [Github Actions](/blog/continuous-integration) and [Earthly](https://cloud.earthly.dev/login).
 
 If you've configured CI workflows before, you know how frustrating it can be when you aren't able to test your changes without pushing them. Earthly solves this problem by giving you portable, reproducible CI workflows that run the same locally as they do in the cloud, saving you time and giving you peace of mind when configuring CI.
 

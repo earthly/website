@@ -148,4 +148,4 @@ There are many ways to measure the quality of your software as a service product
 
 Invest in improving these metrics, and you'll make up for it in time saved fighting fires. Also, focusing on aggregate metrics can be an effective way to move the discussion from blame about specific incidents to a higher-level debate around changing the process to better support the company's goals.
 
-If your build pipeline is taking more than 15 minutes and therefore negatively affecting your metrics, then take a look at Earthly's [free and open build tool](http://earthly.dev/).
+If your build pipeline is taking more than 15 minutes and therefore negatively affecting your metrics, then take a look at Earthly's [free and open build tool](https://cloud.earthly.dev/login).

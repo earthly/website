@@ -818,6 +818,6 @@ You made your function robust and production-ready by setting up the following:
 
 You also used a pipeline to deploy your function. Pipelines are a great way to automate the deployment process and ensure that your code is deployed consistently and reliably.
 
-If you're looking for a way to improve the speed, consistency, and ease of use of your CI/CD pipeline, consider using [Earthly](https://earthly.dev/). An open source project, Earthly makes it easy to define and execute pipelines using simple, familiar syntax. It also leverages containers for isolation and caching, which can significantly improve build times. [Sign up for an account today!](https://earthly.dev/signup/earthly-ci/)
+If you're looking for a way to improve the speed, consistency, and ease of use of your CI/CD pipeline, consider using [Earthly](https://cloud.earthly.dev/login). An open source project, Earthly makes it easy to define and execute pipelines using simple, familiar syntax. It also leverages containers for isolation and caching, which can significantly improve build times. [Sign up for an account today!](https://earthly.dev/signup/earthly-ci/)
 
 {% include_html cta/bottom-cta.html %}

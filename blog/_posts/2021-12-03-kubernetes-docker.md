@@ -88,6 +88,6 @@ Having explored the main strengths and weaknesses of Docker and Kubernetes for l
 
 If you are a software developer, your workflow will likely be more closely tied to the Docker ecosystem. However, the rapid adoption of cloud-native apps often leads to running and testing applications on Kubernetes to ensure that all features are functioning as expected.
 
-Regardless of your tool of choice, [Earthly](https://earthly.dev/) can help you optimize your deployment process. This is possible because Earthly allows you to automate your Docker builds in a unique and innovative way, making them better and more repeatable.
+Regardless of your tool of choice, [Earthly](https://cloud.earthly.dev/login) can help you optimize your deployment process. This is possible because Earthly allows you to automate your Docker builds in a unique and innovative way, making them better and more repeatable.
 
 {% include_html cta/bottom-cta.html %}

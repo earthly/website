@@ -311,4 +311,4 @@ While Docker containerization allows developers to encapsulate a program and its
 
 As we have seen in this post, to facilitate logging, Docker offers logging drivers and commands in the platform which gives you the mechanisms for accessing the performance data and also provides plugins to integrate with third-party logging tools as well. To maximize the logging capabilities there are several methods and strategies which help in designing your logging infrastructure, but each comes with its advantages and disadvantages.
 
-With this understanding of logging, containerization can be a powerful tool. Earthly is a containerized [continuous integration tool](https://earthly.dev/). If you've ever had to deal with flaky builds you should [check it out](https://earthly.dev/).
+With this understanding of logging, containerization can be a powerful tool. Earthly is a containerized [continuous integration tool](https://cloud.earthly.dev/login). If you've ever had to deal with flaky builds you should [check it out](https://cloud.earthly.dev/login).

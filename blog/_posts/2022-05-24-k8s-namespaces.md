@@ -132,6 +132,6 @@ If you want to supercharge the utility, you should also install [Fzf](https://gi
 
 By now, you should have a good grasp of what namespaces are, what the default namespaces do, and how you can create your own. Additionally, you've learned about when you should use namespaces to create a logical separation of your applications and workloads.
 
-If you're running your applications on Kubernetes and you want a simple and effective way of deploying your application to your clusters, check out [Earthly](https://earthly.dev/), a tool designed to help with repeatable and easy builds.
+If you're running your applications on Kubernetes and you want a simple and effective way of deploying your application to your clusters, check out [Earthly](https://cloud.earthly.dev/login), a tool designed to help with repeatable and easy builds.
 
 {% include_html cta/bottom-cta.html %}

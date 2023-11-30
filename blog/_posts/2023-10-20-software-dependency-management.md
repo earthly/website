@@ -106,7 +106,7 @@ Now that you know some of the bad things that can happen due to poor software de
 
 Continuous integration, continuous deployment (CI/CD) tools streamline the process of automatically merging code from multiple contributors and deploying it to diverse environments, including testing, staging, and production. These tools play a crucial role in maintaining the integrity of existing functionality and ensuring that the software remains in a state that's ready for deployment.
 
-For effective build automation in CI/CD, consider using [Earthly](https://earthly.dev/). Its main purpose is to empower developers to create a reliable and replicable build process. With a syntax similar to Dockerfiles, Earthly is beginner-friendly.
+For effective build automation in CI/CD, consider using [Earthly](https://cloud.earthly.dev/login). Its main purpose is to empower developers to create a reliable and replicable build process. With a syntax similar to Dockerfiles, Earthly is beginner-friendly.
 
 Earthly is a great option if you want consistent build environments and are familiar with [Docker](https://www.docker.com/) or containers.
 
@@ -146,6 +146,6 @@ The tools and practices around dependency management continue to evolve. However
 
 Navigating the intricate web of software dependency management is akin to masterfully orchestrating a complex symphony. That's why, in this article, you learned all about dependency management, some issues that can arise if it's not managed well, and tools that can help. From challenges, such as versioning dilemmas, dependency bloat, and conflicts, to compatibility issues, it's evident that mastering this domain is vital to ensuring software robustness and efficiency.
 
-That's where tools ranging from build tools like [Earthly](https://earthly.dev/) to dependency managers like Apache Ivy can help. They enable you to combat the myriad of challenges and improve your dependency management workflow. By understanding and utilizing these tools and practices, you can fortify your software projects, ensuring they remain robust, secure, and consistently updated in an ever-evolving tech ecosystem.
+That's where tools ranging from build tools like [Earthly](https://cloud.earthly.dev/login) to dependency managers like Apache Ivy can help. They enable you to combat the myriad of challenges and improve your dependency management workflow. By understanding and utilizing these tools and practices, you can fortify your software projects, ensuring they remain robust, secure, and consistently updated in an ever-evolving tech ecosystem.
 
 {% include_html cta/bottom-cta.html %}

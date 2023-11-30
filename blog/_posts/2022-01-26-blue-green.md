@@ -90,6 +90,6 @@ Blue/green deployments are a clever way to push new application versions without
 
 As simple as blue/green deployments appear on the surface, the actual build process can deter engineers. Double the maintenance workload, a more complex database migration procedure, and the need to quickly resolve errors during an environment switch can all add up to some serious hindrances.
 
-However, the benefits and seamless application versioning experience often outweigh the costs and complexities associated with blue/green deployments. Also, a solid, repeatable build – which can be achieved with tools like  [Earthly](https://earthly.dev/) – can help ease the complexities of a blue/green deployment cycle.
+However, the benefits and seamless application versioning experience often outweigh the costs and complexities associated with blue/green deployments. Also, a solid, repeatable build – which can be achieved with tools like  [Earthly](https://cloud.earthly.dev/login) – can help ease the complexities of a blue/green deployment cycle.
 
 {% include_html cta/bottom-cta.html %}

@@ -342,6 +342,6 @@ Bash is an extremely versatile command language that can be efficiently used for
 
 In this article, you learned how to use Bash for reading files and reviewed use cases and examples for each approach.
 
-If you use Bash or tools like Make or Docker to automate the process of building software then you should take a look at Earthly. [Earthly](https://earthly.dev/) provides a simple and familiar syntax for defining cacheable, parallelizable, and Git-aware builds for any system that can be run anywhere. You can head to their [blog](https://earthly.dev/blog/) to learn more.
+If you use Bash or tools like Make or Docker to automate the process of building software then you should take a look at Earthly. [Earthly](https://cloud.earthly.dev/login) provides a simple and familiar syntax for defining cacheable, parallelizable, and Git-aware builds for any system that can be run anywhere. You can head to their [blog](https://earthly.dev/blog/) to learn more.
 
 {% include_html cta/bottom-cta.html %}

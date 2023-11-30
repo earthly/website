@@ -368,7 +368,7 @@ That's a wrap! In summary, here's the gist of what was covered here:
 
 I hope you found this guide to effective error handling useful. If you'd like to learn more, I've attached some related articles I found interesting during my own journey to robust error handling in Go.
 
-Also, checkout [Earthly](https://earthly.dev/). I work on it and its written in go and is open source.
+Also, checkout [Earthly](https://cloud.earthly.dev/login). I work on it and its written in go and is open source.
 
 ## References
 

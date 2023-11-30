@@ -162,6 +162,6 @@ The key is to be aware of your project needs. If you're just starting out with c
 
 ![Sample build file for Earthly]({{site.images}}{{page.slug}}/z5Vi47D.png)
 
-If you want to make your build process easier, try [Earthly](https://earthly.dev/). It lets you run repeatable, cached builds and works with all the tools listed above. It's also free and open-source, making it ideal for teams of all sizes and budgets.
+If you want to make your build process easier, try [Earthly](https://cloud.earthly.dev/login). It lets you run repeatable, cached builds and works with all the tools listed above. It's also free and open-source, making it ideal for teams of all sizes and budgets.
 
 {% include_html cta/bottom-cta.html %}

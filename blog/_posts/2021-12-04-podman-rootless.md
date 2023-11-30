@@ -54,7 +54,7 @@ Red Hat has now adopted Podman as the default container runtime of Red Hat Enter
 
 ## Conclusion
 
-Podman is a promising development in the containerization landscape. While Docker is likely to remain the de facto tool for building images and running containers, for the time being, things, like the arrival of Podman and the Kubernetes deprecation of Docker, go to show that OCI's efforts to open up the playing field are paying off. As more and more OCI-compliant tools emerge, it will be interesting to see the impact on workflows and build tools. If you are concerned about these changes to the tool landscape impacting your [CI/CD](/blog/ci-vs-cd) and your builds, consider [Earthly](https://earthly.dev/).
+Podman is a promising development in the containerization landscape. While Docker is likely to remain the de facto tool for building images and running containers, for the time being, things, like the arrival of Podman and the Kubernetes deprecation of Docker, go to show that OCI's efforts to open up the playing field are paying off. As more and more OCI-compliant tools emerge, it will be interesting to see the impact on workflows and build tools. If you are concerned about these changes to the tool landscape impacting your [CI/CD](/blog/ci-vs-cd) and your builds, consider [Earthly](https://cloud.earthly.dev/login).
 
 Earthly provides an abstraction layer for your build process to make it repeatable, portable, and most importantly, understandable. Instead of juggling multiple different tools in your builds, Earthly handles this for you and helps you iterate on build scripts by making them run the same no matter where they are running, whether it is your laptop or CI.
 

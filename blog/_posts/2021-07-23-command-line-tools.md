@@ -268,6 +268,6 @@ sudo cp gitupdate /usr/local/bin
 
 There are many other helpful command-line tools. More than can be covered well in a single article. JQ, [`mitmproxy`](/blog/mitmproxy), [Pandoc](https://pandoc.org/), and [PSTree](https://man7.org/linux/man-pages/man1/pstree.1.html) are some I use frequently. There is also a whole class of Rust rewrites of common POSIX tools that warrant an article of their own.  
 
-Of course, [Earthly](https://earthly.dev/) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint), have become a standard part of how I work.
+Of course, [Earthly](https://cloud.earthly.dev/login) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint), have become a standard part of how I work.
 
 What less common command-line tools do you use? If you have tool suggestions, I'd love to hear them. You can find my Twitter account and email below, and I'd love to hear what you are using.

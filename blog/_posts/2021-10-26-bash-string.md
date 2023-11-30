@@ -509,7 +509,7 @@ Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/
 
 I hope this overview of string manipulation in bash gave you enough details to cover most of your use cases.
 
-Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://earthly.dev/). It's a great tool for creating repeatable builds in a approachable syntax.
+Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://cloud.earthly.dev/login). It's a great tool for creating repeatable builds in a approachable syntax.
 
 {% include_html cta/bottom-cta.html %}
 

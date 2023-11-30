@@ -84,11 +84,11 @@ By using each of these tools for what they're good at—Chef for managing infras
 
 In this scenario, you will have your build process create a new Docker container with all your latest code changes and publish it to the registry. Chef would then take over, handle connecting to all your latest infrastructure, and ensure that the newly-built Docker container is deployed to all the servers that need it. Chef would also make sure the old container is stopped, and the new container is started through a [blue/green deployment scheme](/blog/deployment-strategies).
 
-And if you're looking for a tool to manage your build pipeline as it gets more complex, consider [Earthly](https://earthly.dev/). It's a syntax for defining your build and works with your existing build system (even if it's not Docker and Chef) to support you as you move into adopting new tools into your pipeline.
+And if you're looking for a tool to manage your build pipeline as it gets more complex, consider [Earthly](https://cloud.earthly.dev/login). It's a syntax for defining your build and works with your existing build system (even if it's not Docker and Chef) to support you as you move into adopting new tools into your pipeline.
 
 ## Conclusion
 
-Chef and Docker, while originally conceived for different purposes, are both used in build and deployment pipelines to get the code for applications on the internet into production. While many companies only utilize one or the other, they work very well together, especially when paired with a tool like [Earthly](https://earthly.dev/).
+Chef and Docker, while originally conceived for different purposes, are both used in build and deployment pipelines to get the code for applications on the internet into production. While many companies only utilize one or the other, they work very well together, especially when paired with a tool like [Earthly](https://cloud.earthly.dev/login).
 
 Earthly helps simplify your build syntax, so you can use Docker and Chef to construct a robust build and deploy pipeline that will take your DevOps team to the next level.
 

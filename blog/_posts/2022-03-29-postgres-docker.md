@@ -214,6 +214,6 @@ However, a database is stateful, and so any disruption caused in a database appl
 
 In this article, you've learned about running a PostgreSQL instance on Docker. You implemented the instance using Docker and used a GUI and pgAdmin to connect to the database. You also learned about a few best practices like using a persistent volume to store data so that you can offer a smooth experience and secure data.
 
-In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments. It provides integrations with most of the popular CI tools. You can learn more about Earthly on their [website](https://earthly.dev/).
+In order to deploy your container-based applications, you need to implement a CI/CD pipeline that will continuously build your Docker image and deploy it when new versions of your code are available. [Earthly](https://docs.earthly.dev/docs/guides/docker-in-earthly) is a popular CI tool that can be used to automate your container deployments. It provides integrations with most of the popular CI tools. You can learn more about Earthly on their [website](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}

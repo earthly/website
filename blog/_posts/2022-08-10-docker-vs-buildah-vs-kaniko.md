@@ -120,6 +120,6 @@ kaniko was built by Google, but they mention very clearly at the top of the [Git
 
 As you can see, Docker, Buildah, and kaniko are great options for choosing a container image build tool. Docker is the de facto tool chosen by the industry mainly because it's been around for many more years than the two other alternatives. Buildah is great if you just want an alternative to Docker that can build from the same files and produce the same images. kaniko is likely the best choice if you want to build your images inside of Kubernetes.
 
-No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://earthly.dev/), a tool to help you create idempotent CI/CD runs.
+No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://cloud.earthly.dev/login), a tool to help you create idempotent CI/CD runs.
 
 {% include_html cta/bottom-cta.html %}

@@ -286,6 +286,6 @@ Being full of features, and primarily targeted towards compiled languages, `make
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you are looking for a solution to avoid the complexities of Makefile, while still retaining the powerful automation capabilities, check out [Earthly](https://earthly.dev/). Earthly takes a modern approach towards project builds and combines the best of both Makefile and Dockerfile. Earthly provides understandable and repeatable build scripts without any complexity.
+<!-- If you are looking for a solution to avoid the complexities of Makefile, while still retaining the powerful automation capabilities, check out [Earthly](https://cloud.earthly.dev/login). Earthly takes a modern approach towards project builds and combines the best of both Makefile and Dockerfile. Earthly provides understandable and repeatable build scripts without any complexity.
 
 [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python. -->

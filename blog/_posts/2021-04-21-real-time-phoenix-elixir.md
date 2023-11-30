@@ -527,7 +527,7 @@ As you've learned, Phoenix offers a powerful set of libraries, making it relativ
 
 Of course, we've only begun to scratch the surface here of what you can do with Phoenix, LiveView, and PubSub. If you want to keep going with this project, I would recommend tackling adding persistence next, and the ability to create multiple auctions with [Ecto](https://hexdocs.pm/ecto/getting-started.html).
 
-Both Ecto and the Phoenix project use [Earthly](https://earthly.dev) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
+Both Ecto and the Phoenix project use [Earthly](https://cloud.earthly.dev/login) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
 
 ### Additional Resources
 

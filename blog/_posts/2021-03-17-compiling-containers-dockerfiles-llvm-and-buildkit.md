@@ -524,7 +524,7 @@ We have learned that a three-phased structure borrowed from compilers powers bui
 
 This deep dive on frontends still leaves much to explore. If you want to learn more, I suggest looking into BuildKit workers. Workers do the actual building and are the secret behind `docker buildx`, and [multi-archtecture builds](https://docs.docker.com/buildx/working-with-buildx/). `docker build` also has support for remote workers and cache mounts, both of which can lead to faster builds.
 
-[Earthly](https://earthly.dev/) uses BuildKit internally for its repeatable build syntax. Without it, our containerized Makefile-like syntax would not be possible. If you want a saner CI process, then [you should check it out](https://earthly.dev/).
+[Earthly](https://cloud.earthly.dev/login) uses BuildKit internally for its repeatable build syntax. Without it, our containerized Makefile-like syntax would not be possible. If you want a saner CI process, then [you should check it out](https://cloud.earthly.dev/login).
 
 There is also much more to explore about how modern compilers work. Modern compilers often have many stages and more than one intermediate representation, and they are often able to do very sophisticated optimizations.[^3]
 

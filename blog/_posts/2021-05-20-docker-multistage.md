@@ -25,7 +25,7 @@ To build an efficient Docker image, you want to eliminate some of these layers f
 
 One approach to keeping Docker images small is using multistage builds. A multistage build allows you to use multiple images to build a final product. In a multistage build, you have a single Dockerfile, but can define multiple images inside it to help build the final image.
 
-In this post, you'll learn about the core concepts of multistage builds in Docker and how they help to create production-grade images. In addition, I will detail how you can create these types of files, as well as highlight some challenges that they present. I'll end with a better way to do multi-stage builds using [Earthly](https://earthly.dev/).
+In this post, you'll learn about the core concepts of multistage builds in Docker and how they help to create production-grade images. In addition, I will detail how you can create these types of files, as well as highlight some challenges that they present. I'll end with a better way to do multi-stage builds using [Earthly](https://cloud.earthly.dev/login).
 
 **(For The Impatient: <a href="#a-better-way-earthly">Skip to 'Better Multi-Stage Builds'</a>)**
 
@@ -114,7 +114,7 @@ You can enable BuildKit, and get faster multi-stage builds by setting the DOCKER
 
 ## A Better Way: Earthly
 
-As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge. If the number of stages extends beyond two or if caching is becoming a challenge even with Buildkit enabled, you may want to consider using [Earthly](http://earthly.dev/) to produce your docker images.
+As your multi-stage build grows in complexity, comprehending how each step follows from the next can become a challenge. If the number of stages extends beyond two or if caching is becoming a challenge even with Buildkit enabled, you may want to consider using [Earthly](https://cloud.earthly.dev/login) to produce your docker images.
 
 Earthly mirrors the dockerfile syntax but allows for naming the stages and for more fine-grained caching.
 

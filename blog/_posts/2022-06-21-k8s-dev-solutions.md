@@ -241,6 +241,6 @@ If you're not able to find the answer to your question in the existing documenta
 
 If you're looking for something that is as close to your production cluster as possible, then you will likely have to go with kubeadm or even K3s, if you're running K3s in production. If your goal is to just have an easy cluster to test with, Docker Desktop or minikube will likely be the best choice.
 
-No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://earthly.dev/), a framework to help you effortlessly deploy your services.
+No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://cloud.earthly.dev/login), a framework to help you effortlessly deploy your services.
 
 {% include_html cta/bottom-cta.html %}

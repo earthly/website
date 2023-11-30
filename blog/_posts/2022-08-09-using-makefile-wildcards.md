@@ -159,4 +159,4 @@ Wildcards are a handy utility when creating your Makefiles. You can use them dir
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/). -->
+<!-- While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://cloud.earthly.dev/login), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/). -->

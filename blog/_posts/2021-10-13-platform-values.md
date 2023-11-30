@@ -15,7 +15,7 @@ topcta: false
 last_modified_at: 2023-07-11
 ---
 
-As creators of [a new approach to build automation](https://earthly.dev), we have always strived to create products that we ourselves would have wished we had. While this may sound easier than it actually is, the reality of the matter is that as creators it is hard to put ourselves in the shoes of a first-time user.
+As creators of [a new approach to build automation](https://cloud.earthly.dev/login), we have always strived to create products that we ourselves would have wished we had. While this may sound easier than it actually is, the reality of the matter is that as creators it is hard to put ourselves in the shoes of a first-time user.
 
 As experts of Earthly ourselves, it is too easy for us to just incrementally add more complexity, more primitives, more constructs that address the immediate issue at hand, but ultimately create a more difficult tool to use over time.
 
@@ -151,6 +151,6 @@ Hopefully, this prioritization exercise will help us as a community to more easi
 
 Note that these principles aren't meant as hard and fast rules - they are mainly guidelines. There may be occasions when the sensible thing to do is to make an exception.
 
-If you're new, come give [Earthly a spin to experience Repeatable and Understandable builds](https://earthly.dev).
+If you're new, come give [Earthly a spin to experience Repeatable and Understandable builds](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}

@@ -32,7 +32,7 @@ However, monorepos also have some drawbacks, such as limited access control for 
 You can overcome these drawbacks by using a tool designed to handle monorepos. Some popular tools for monorepo management include the following:
 
 * **Nx:** [Nx](https://nx.dev/) is a monorepo tool that was developed by [Nrwl](https://github.com/nrwl). It supports not only JavaScript and Angular but also languages such as Go and Rust.
-* **Earthly:** [Earthly](https://earthly.dev/) is an open source monorepo tool. It uses [BuildKit](https://github.com/earthly/buildkit) to create sandbox environments and provides an easy transition from inherent build tools as it has a syntax similar to that of Dockerfiles.
+* **Earthly:** [Earthly](https://cloud.earthly.dev/login) is an open source monorepo tool. It uses [BuildKit](https://github.com/earthly/buildkit) to create sandbox environments and provides an easy transition from inherent build tools as it has a syntax similar to that of Dockerfiles.
 * **Bazel:** [Bazel](https://bazel.build/) is a monorepo tool from Google, which is designed to be fast and scalable. Bazel is a powerful tool that supports many languages, including C++, Java, and Objective-C.
 * **Pants:** Pants is a monorepo tool that uses a structure similar to Bazel. Pants is popular with large organizations that find Bazel challenging for development workflows.
 

@@ -378,6 +378,6 @@ In this article, you learned about Bazel, a fast and reliable tool that supports
 
 [Bazel](/blog/monorepo-with-bazel) is useful when you're working with different operating systems utilizing different languages, as you would only have to write the code once. Bazel enables users to create rules for rapid application testing and provides the ability to define custom rules, resulting in increased flexibility.
 
-Another useful tool to speed up automated testing is [Earthly](https://earthly.dev/). Earthly is a simple framework that enables the creation of pipelines that can be developed locally and executed on any platform. It uses containers to run the pipelines, making them self-sufficient, repeatable, portable, and capable of running in parallel. It helps speed up builds since the cache is retained between builds.
+Another useful tool to speed up automated testing is [Earthly](https://cloud.earthly.dev/login). Earthly is a simple framework that enables the creation of pipelines that can be developed locally and executed on any platform. It uses containers to run the pipelines, making them self-sufficient, repeatable, portable, and capable of running in parallel. It helps speed up builds since the cache is retained between builds.
 
 {% include_html cta/bottom-cta.html %}

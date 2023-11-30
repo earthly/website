@@ -66,6 +66,6 @@ One you have canary deployments implemented, your organization may benefit from 
 
 As your application, and more importantly your user base, grows, you want to be sure that any bugs or bad deployments are relatively limited in scope and easy to fix while impacting as few customers as possible. Rolling out any changes to a subset of your customers using the canary deployment strategy can be a great way to do this.
 
-Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://earthly.dev/). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses.
+Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://cloud.earthly.dev/login). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses.
 
 {% include_html cta/bottom-cta.html %}

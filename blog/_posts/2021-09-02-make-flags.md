@@ -246,6 +246,6 @@ Using `make` flags ensures your `makefile` follows the standard and offers an ea
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you are looking for a powerful alternative to `make`, [Earthly](https://earthly.dev/) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, [Earthly](https://earthly.dev/) provides reproducible and understandable builds with minimal effort.
+<!-- If you are looking for a powerful alternative to `make`, [Earthly](https://cloud.earthly.dev/login) may be the right choice for you. It is a modern take on the `make` utility. Tailored for the container era, [Earthly](https://cloud.earthly.dev/login) provides reproducible and understandable builds with minimal effort.
 
 {% include_html cta/bottom-cta.html %} -->

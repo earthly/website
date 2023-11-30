@@ -155,7 +155,7 @@ GitHub Actions is a cloud-based CI tool that integrates natively with GitHub and
 - **Resilience:** It uses YAML files and its build configuration is similar to that of CircleCI. It offers builds on all popular OSs and containers.
 - **Compatibility:** This might be the most limited option, because it can be used only with GitHub and its plugins and extensions are maintained by the community.
 
-### [Earthly](https://earthly.dev/)
+### [Earthly](https://cloud.earthly.dev/login)
 
 ![Earthly]({{site.images}}{{page.slug}}/aXSTkjI.jpeg)\
 

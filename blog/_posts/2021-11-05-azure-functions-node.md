@@ -120,7 +120,7 @@ Now, switch to Azure to create the required function to deploy your app.
 - Enter your Azure subscription.
 - Create a new resource group (for example, "myfunctionapp-rg").
 - Choose a function app name (for example, "nodejs-function-app-<yourname>"). The Azure function name should be unique across Azure.
-- Choose the publish type. Choose Code. You can create a function app Docker container by using a repeatable build tool such as [_Earthly_](https://earthly.dev/).
+- Choose the publish type. Choose Code. You can create a function app Docker container by using a repeatable build tool such as [_Earthly_](https://cloud.earthly.dev/login).
 - Choose the runtime as **Node.js**, then runtime version as **14 LTS**.
 - Choose the closest Azure region to you. Aim to store your function apps geographically close to your customers to ensure high performance.
 - Click on **Next: Hosting**.
@@ -179,6 +179,6 @@ Congratulations on implementing your first serverless function! Now you know how
 
 Of course, Azure functions development is a big topic. If you are interested in learning more, check out the [Microsoft documentation](https://docs.microsoft.com/en-us/azure/azure-functions/functions-scale?WT.mc_id=Portal-WebsitesExtension). Keep in mind that there is no free lunch. While Azure functions make it easy for you to develop applications quickly and cheaply, you'll lose flexibility in controlling your infrastructure, so be sure to weigh your options carefully.
 
-To further assist your build process, try [Earthly](https://earthly.dev/). This free automation tool helps you execute your builds in containers. It works with multiple platforms and offers flexible caching and parallelism, so you can quickly build, test, and [deploy](/blog/deployment-strategies) your projects.
+To further assist your build process, try [Earthly](https://cloud.earthly.dev/login). This free automation tool helps you execute your builds in containers. It works with multiple platforms and offers flexible caching and parallelism, so you can quickly build, test, and [deploy](/blog/deployment-strategies) your projects.
 
 {% include_html cta/bottom-cta.html %}

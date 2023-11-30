@@ -219,7 +219,7 @@ Then click the **run** button, which will run the full Jenkinsfile and do all th
 
 In this article, you have seen how to leverage Jenkins's deployment phases and Pipeline features to help automate your deployments by constructing a Jenkinsfile, which is significantly easier than completing a manual deployment.
 
-Finally, take a look at [Earthly](https://earthly.dev/), a continuous integration tool that may be used to supplement Jenkins's continuous deployment features.
+Finally, take a look at [Earthly](https://cloud.earthly.dev/login), a continuous integration tool that may be used to supplement Jenkins's continuous deployment features.
 
 Earthly is a container [build automation](/blog/introducing-earthly-build-automation-for-the-container-era) solution that allows you to run all your builds in containers. Regardless of how Earthly runs—whether on your CI or on your local computer—there is a degree of assurance that the build will run the same way. This allows for faster iteration of the build scripts as well as easier debugging in the event that something goes wrong.
 

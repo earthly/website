@@ -13,7 +13,7 @@ excerpt: |
     Learn how to run a Ruby on Rails application inside a Docker container and discover best practices for building Docker images. This tutorial covers topics such as creating a Dockerfile, reducing image size with Alpine base images and multistage builds, and running multiple containers with Docker Compose.
 last_modified_at: 2023-07-11
 ---
-**"This article explains how to Dockerize Ruby on Rails applications. Earthly improves the Dockerization process for Rails apps by enabling parallel builds and optimizing cache usage. [Learn more about Earthly](https://cloud.earthly.dev/login)."**
+**This article explains how to Dockerize Ruby on Rails applications. Earthly improves the Dockerization process for Rails apps by enabling parallel builds and optimizing cache usage. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 When working with large distributed teams, you often run into the issue of something working on one computer but not others. When building and running applications, each developer has a slightly different development environment. For example, one developer may use a Windows PC to build and run an application that was developed on a Mac. Apart from the differences in the command line, the developer trying to run the applications may not have the required dependencies installed, and the process of finding and installing the correct versions of the dependencies slows development. This is where containerization tools, like [Docker](https://www.docker.com), can help.
 
@@ -237,6 +237,6 @@ Navigate to [http://localhost:3000](http://localhost:3000). And you should be gr
 
 In this article, you learned how to build a Docker image for a Ruby on Rails application and how to reduce image size by making use of Alpine base images and multistage builds. You also learned how to run multiple containers with Docker Compose and connect your application to a database.
 
-[Earthly.dev](https://earthly.dev/) is a free and open source syntax for defining cacheable, parallelizable, and Git-aware build steps. Earthly takes some of the best ideas from Makefiles and Dockerfiles, and combines them into one specification. With Earthly, you can run unit and integration tests, create several Docker images at a time, and easily define multistage builds.
+[Earthly.dev](https://cloud.earthly.dev/login) is a free and open source syntax for defining cacheable, parallelizable, and Git-aware build steps. Earthly takes some of the best ideas from Makefiles and Dockerfiles, and combines them into one specification. With Earthly, you can run unit and integration tests, create several Docker images at a time, and easily define multistage builds.
 
 {% include_html cta/bottom-cta.html %}

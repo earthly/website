@@ -229,6 +229,6 @@ ArgoCD integrates well with Kubernetes tools. Here are some examples:
 
 ArgoCD is a powerful tool that allows you to deploy your application by constantly checking the state of the environment configurations on Git and ensuring it matches that of the cluster. ArgoCD also provides an intuitive UI for managing applications and pipelines, which improves overall UX.
 
-To further improve your CI/CD workflow with ArgoCD, you can use [Earthly](https://earthly.dev/). Earthly allows you to execute builds in Docker containers and can also run on popular CI tools like Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild. [Earthly](https://earthly.dev/) acts as an interface between language-specific tooling and build specification.
+To further improve your CI/CD workflow with ArgoCD, you can use [Earthly](https://cloud.earthly.dev/login). Earthly allows you to execute builds in Docker containers and can also run on popular CI tools like Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild. [Earthly](https://cloud.earthly.dev/login) acts as an interface between language-specific tooling and build specification.
 
 {% include_html cta/bottom-cta.html %}

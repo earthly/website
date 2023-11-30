@@ -622,7 +622,7 @@ Output:
 The above command retrieves all the links from a markdown document. The link in a standard Markdown looks as shown below:
 
 ~~~{ caption="Output"}
-[Earthly](https://earthly.dev)
+[Earthly](https://earthly.dev/)
 ~~~
 
 So,the above command retrieves the link by looking for the pattern that matches how a link is embedded in a standard markdown.

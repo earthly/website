@@ -422,6 +422,6 @@ Here's a shorter list of 10 important GitHub Actions environment variables:
 
 ## Conclusion
 
-In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an build tool that can run everywhere. Including in [GitHub Actions](/earthly-github-actions).
+In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://cloud.earthly.dev/login), an build tool that can run everywhere. Including in [GitHub Actions](/earthly-github-actions).
 
 {% include_html cta/gha-cta1.html %}

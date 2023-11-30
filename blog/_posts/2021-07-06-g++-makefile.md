@@ -380,6 +380,6 @@ Because `make` is a feature rich utility and supports a wide range of systems, i
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+<!-- If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://cloud.earthly.dev/login).
 
-**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.** -->
+**[Earthly](https://cloud.earthly.dev/login) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.** -->

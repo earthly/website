@@ -165,6 +165,6 @@ Bitbucket pipelines are charged based on the number of minutes used per month. D
 
 In this article you've seen that Bitbucket provides many ways to run a CI workflow. Each one has its own areas where it outshines the rest. Ultimately you'll need to decide what's important to your project before committing to one method over another.
 
-An issue that you may run into while creating CI pipelines is that things don't always build the same on your server as on your development machine. Usually it's quite frustrating to troubleshoot. If you'd like to avoid the headache, check out the open-source project [Earthly](https://earthly.dev).
+An issue that you may run into while creating CI pipelines is that things don't always build the same on your server as on your development machine. Usually it's quite frustrating to troubleshoot. If you'd like to avoid the headache, check out the open-source project [Earthly](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}

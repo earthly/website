@@ -289,6 +289,6 @@ Often, you want your containers to use or persist data beyond the scope of the c
 
 In this guide, you looked at how volumes work with Docker, what they do, and where volumes are the preferred solution.
 
-Docker plays an important role in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://earthly.dev/). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
+Docker plays an important role in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://cloud.earthly.dev/login). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
 
 {% include_html cta/bottom-cta.html %}

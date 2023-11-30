@@ -486,6 +486,6 @@ The crontab configuration is stored in your system, and you can view them all us
 
 This post went through many popular, powerful commands, including some that will make everyday tasks faster and easier. Again, the best way to remember and get comfortable with the commands is to try them, so don't be afraid—open up your terminal and test them out.
 
-When you're building an application, the best-practice approach is using a system to define your build. [Earthly](https://earthly.dev/) is a cacheable, Git-aware, parallelizable, and self-contained tool for defining build steps. It works with the tools you're already using and ensures that your builds will run the same way, no matter what they're running on.
+When you're building an application, the best-practice approach is using a system to define your build. [Earthly](https://cloud.earthly.dev/login) is a cacheable, Git-aware, parallelizable, and self-contained tool for defining build steps. It works with the tools you're already using and ensures that your builds will run the same way, no matter what they're running on.
 
 {% include_html cta/bottom-cta.html %}

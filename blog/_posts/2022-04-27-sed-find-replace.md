@@ -413,7 +413,7 @@ Hello, world!
 
 `sed` gives you a lot of power over your text processing. It offers flexibility when performing repetitive tasks, and it has a robust command and feature set. It can even be coupled with other command line tools to further enrich your text processing tasks.
 
-Another tool for defining repeatable builds is [Earthly](https://earthly.dev/), a Git-aware syntax that you can use with your current build system. All Earthly builds are language-agnostic and containerized, meaning they can run anywhere, and they can be used to reproduce CI failures, automatically cache build steps, and automatically execute targets in parallel.
+Another tool for defining repeatable builds is [Earthly](https://cloud.earthly.dev/login), a Git-aware syntax that you can use with your current build system. All Earthly builds are language-agnostic and containerized, meaning they can run anywhere, and they can be used to reproduce CI failures, automatically cache build steps, and automatically execute targets in parallel.
 
 To learn more about Earthly, check out its [documentation](https://docs.earthly.dev/).
 

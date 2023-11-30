@@ -577,7 +577,7 @@ ID:2    "cross country skiing "      2022-01-2
 ID:1    "christmas eve bike class"   2021-12-24
 ~~~
 
-And I can also use [Earthly](https://earthly.dev/) to test my CI integration tests:
+And I can also use [Earthly](https://cloud.earthly.dev/login) to test my CI integration tests:
 
 ~~~{.bash caption=">_"}
 > earthly -P +test

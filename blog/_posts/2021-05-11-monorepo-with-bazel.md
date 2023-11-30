@@ -406,6 +406,6 @@ Due to better structured configurational files and multiple language support, Ba
 
 If you'd like to explore further, you can build your own React or Angular app using Bazel to see how it treats different environments of the same language. You can also try out their [tutorials for different languages](https://docs.bazel.build/versions/0.17.2/build-javascript.html#tutorials) to get a bigger picture of how Bazel works. And if today's the day you're welcoming Bazel into your project, definitely take a moment to familiarize yourself with its documented [best practices](https://docs.bazel.build/versions/master/best-practices.html).
 
-If the benefits of Bazel look promising but the downsides prevent you from adopting it, then take a look at [Earthly](https://earthly.dev/). It supports monorepo and polyrepos and has a gentler learning curve.
+If the benefits of Bazel look promising but the downsides prevent you from adopting it, then take a look at [Earthly](https://cloud.earthly.dev/login). It supports monorepo and polyrepos and has a gentler learning curve.
 
 {% include_html cta/bottom-cta.html %}

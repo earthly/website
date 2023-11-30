@@ -19,6 +19,6 @@ Earthly's complete set of investors includes founders of companies such as Cockr
 
 The new funding will be used to improve and add more enterprise-friendly features to [Earthly Cloud](https://cloud.earthly.dev/login/). Earthly Cloud is a fast, repeatable build platform that is super simple to use. It gives teams repeatable CI pipelines that you write once and run anywhere; has an automatic and instantly available build cache that makes builds faster; and it's incredibly user-friendly.
 
-If you're a developer and this is interesting to you, [get started with Earthly Cloud](https://earthly.dev/)! Let's build the next generation of software together!
+If you're a developer and this is interesting to you, [get started with Earthly Cloud](https://cloud.earthly.dev/login)! Let's build the next generation of software together!
 
 {% include_html cta/bottom-cta.html %}

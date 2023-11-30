@@ -11,7 +11,7 @@ excerpt: |
     Learn about the differences between Docker containers and virtual machines (VMs) in this article. Discover the strengths and limitations of each technology, including factors such as host machine utilization, simplicity, speed, security, and ease of replicability. Whether you're new to containerization or looking to optimize your virtualized deployments, this article provides valuable insights to help you make informed decisions.
 last_modified_at: 2023-07-14
 ---
-**"This article compares Docker and virtual machines. Earthly significantly improves container build times with advanced caching. [Check it out](https://cloud.earthly.dev/login/)."**
+**This article compares Docker and virtual machines. Earthly significantly improves container build times with advanced caching. [Check it out](https://cloud.earthly.dev/login/).**
 
 [Docker](https://www.docker.com/) and similar containerization technologies have taken the tech world by storm. They have largely displaced virtual machines (VMs) as the de facto segmentation methodology for servers and software developer workflows. However, it's important to note that Docker containers and VMs do not make for an apples-to-apples comparison. One is not inherently better than the other, with each having its pros and cons and use cases that might be better suited to one than the other.
 
@@ -67,6 +67,6 @@ Docker containers have arguably more desirable behavior in this regard, as they 
 
 Now that you have seen how VMs and Docker containers compare, it should be clear that each technology shines in its own way, and which one is right for you will largely depend on what you want to do with it. However, both are perfectly capable, with careful configuration, and there is no reason you cannot use the two in conjunction if that will give you the best result in your own situation.
 
-If you like Docker's excellence when it comes to replicability and find yourself frustrated over hard-to-replicate issues with your CI/CD pipelines, be sure to consider [Earthly.dev](https://earthly.dev/). Earthly.dev allows you to easily define repeatable builds that work the same locally as in the cloud, streamlining the CI development and debugging process, and saving you from endless `fix ci` commit messages.
+If you like Docker's excellence when it comes to replicability and find yourself frustrated over hard-to-replicate issues with your CI/CD pipelines, be sure to consider [Earthly.dev](https://cloud.earthly.dev/login). Earthly.dev allows you to easily define repeatable builds that work the same locally as in the cloud, streamlining the CI development and debugging process, and saving you from endless `fix ci` commit messages.
 
 {% include_html cta/bottom-cta.html %}

@@ -344,6 +344,6 @@ body:"AWS Lambda is awesome"'
 
 You've now created and deployed your first AWS Lambda/Node.js app. To get started with AWS Lambda functions, you used the `serverless.com` platform as a reliable and easy-to-manage tool to manage and monitor your AWS Lambda apps.
 
-To further improve your development workflow, try [Earthly](https://earthly.dev/). The free, open-source container tool works with multiple programming languages and platforms. Earthly can help you establish and repeat a build process for your app.
+To further improve your development workflow, try [Earthly](https://cloud.earthly.dev/login). The free, open-source container tool works with multiple programming languages and platforms. Earthly can help you establish and repeat a build process for your app.
 
 {% include_html cta/bottom-cta.html %}
