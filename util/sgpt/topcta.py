@@ -22,7 +22,7 @@ from datetime import datetime
 # gpt-4-1106-preview is cheaper and with more context
 # But doesn't work with guidance's latest, so must revert back in CI
 # Hand patched on Adam's machine
-gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
+gpt4 = guidance.llms.OpenAI("gpt-4")
 
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
