@@ -34,90 +34,90 @@ The best way to evaluate a tool is to see it in action, which is what you'll do 
 
 Docker Desktop provides a convenient UI for Docker Scout and the corresponding command line interface, `scout-cli`. Alternatively, you can install just `scout-cli` on a headless system by following [these instructions](https://github.com/docker/scout-cli).
 
-### The docker scout quickview Command
+### The `docker scout quickview` Command
 
 To start experimenting with Docker Scout, launch Docker Desktop, fork, and then clone [this GitHub repository](https://github.com/docker/scout-demo-service.git) to your local machine.
 
 The repository consists of an example project written in Node.js that contains known vulnerabilities. Navigate to the directory and build the application image using `docker build`, replacing `<DOCKER_HUB_ORG>` with your Docker Hub username or organization:
 
-```shell
+~~~
 cd scout-demo-service
 docker build -t <DOCKER_HUB_ORG>/scout-demo:v1 .
-```
+~~~
 
 The output should look like this:
 
-```shell
+~~~
 ...
 What's Next?
   View a summary of image vulnerabilities and recommendations → docker scout quickview
-```
+~~~
 
 Follow the suggestion in the last line and run the [`docker scout quickview`](https://github.com/docker/scout-cli/blob/main/docs/scout_quickview.md) command:
 
-![docker scout quickview output](https://i.imgur.com/wAeIhZF.png)
+![`docker scout quickview` output]({{site.images}}{{page.slug}}/wAeIhZF.png)
 
 You can also view this information using Docker Desktop:
 
-![docker scout quickview output on Docker Desktop](https://i.imgur.com/0kT5gL1.png)
+![`docker scout quickview` output on Docker Desktop]({{site.images}}{{page.slug}}/0kT5gL1.png)
 
 As the name suggests, the `docker scout quickview` command shows a high-level overview of the container image and is a good starting point to figure out if the image has vulnerabilities. In this case, some have been found, and you can dig deeper by running a CVE scan.
 
-### The docker scout cves Command
+### The `docker scout cves` Command
 
 Basically, a CVE scan analyzes a software artifact for known vulnerabilities. [`docker scout cves`](https://github.com/docker/scout-cli/blob/main/docs/scout_cves.md) is the CLI command that performs this scan:
 
-```shell
+~~~
 docker scout cves local://<DOCKER_HUB_ORG>/scout-demo:v1
-```
+~~~
 
 This time, the output offers more information, including CVE IDs and a [CVSS](https://nvd.nist.gov/vuln-metrics/cvss) score and CVSS vector for each vulnerability. The following is only a partial output:
 
-![docker scout cves output](https://i.imgur.com/FrN1qD1.png)
+![`docker scout cves` output]({{site.images}}{{page.slug}}/FrN1qD1.png)
 
 A convenient way to manage so much information or even filter it is through Docker Desktop:
 
-![docker scout cves output on Docker Desktop](https://i.imgur.com/ILCtj0Q.png)
+![`docker scout cves` output on Docker Desktop]({{site.images}}{{page.slug}}/ILCtj0Q.png)
 
 From there, you have different views, such as images, packages, and vulnerabilities, that help you analyze all the data in the way that you prefer. However, analyzing the vulnerabilities is only one part of the equation. Since the real goal is to remediate the vulnerabilities, this is where Docker Scout recommendations are helpful.
 
-### The docker scout recommendations Command
+### The `docker scout recommendations` Command
 
 One of the key features of Docker Scout is the recommendations it provides to fix every CVE, ultimately saving you time. All you have to do is run the command [`docker scout recommendations`](https://github.com/docker/scout-cli/blob/main/docs/scout_recommendations.md), like this:
 
-```shell
+~~~
 docker scout recommendations local://<DOCKER_HUB_ORG>/scout-demo:v1
-```
+~~~
 
 The following is a partial output that shows recommendations for one of the CVEs:
 
-![docker scout recommendations output](https://i.imgur.com/ERzW99o.png)
+![docker scout recommendations output]({{site.images}}{{page.slug}}/ERzW99o.png)
 
 Alternatively, you can use the `--only-refresh` or `--only-update` flags to show only base image refresh or update recommendations.
 
 Similar to the previous commands, you can also review the recommendations using Docker Desktop. To do this, simply select **Recommendations for base image**:
 
-![Docker Scout recommendations for base image](https://i.imgur.com/W1e0spJ.png)
+![Docker Scout recommendations for base image]({{site.images}}{{page.slug}}/W1e0spJ.png)
 
 A pop-up window will show you a list of recommendations to refresh or update the base image:
 
-![Refresh or update the base image](https://i.imgur.com/vD4Zn4J.png)
+![Refresh or update the base image]({{site.images}}{{page.slug}}/vD4Zn4J.png)
 
 You can navigate using the tabs and review each of the recommendations individually:
 
-![Review each Docker Scout recommendation individually](https://i.imgur.com/IHEVTDC.png)
+![Review each Docker Scout recommendation individually]({{site.images}}{{page.slug}}/IHEVTDC.png)
 
 Then, you can apply the suggested changes and remediate each vulnerability.
 
 For instance, you could edit the `Dockerfile` and update the Alpine image to version 3.17, as suggested by Docker Scout. Then, you'll need to rebuild the image:
 
-```shell
+~~~
 docker build -t <DOCKER_HUB_ORG>/scout-demo:v2 .
-```
+~~~
 
 Once ready, you can scan the new version for vulnerabilities in Docker Desktop:
 
-![Scan the new version for vulnerabilities](https://i.imgur.com/FK7L3TX.png)
+![Scan the new version for vulnerabilities]({{site.images}}{{page.slug}}/FK7L3TX.png)
 
 No further base image issues have been found.
 
@@ -129,19 +129,19 @@ The Docker Scout documentation explains in detail how to [automate container ima
 
 For instance, if you want to [integrate Docker Scout with GitHub Actions](https://docs.docker.com/scout/integrations/ci/gha/), use the same example repository from before and navigate to the `.github/workflows` directory to create the GitHub action:
 
-```shell
+~~~
 cd .github/workflows
-```
+~~~
 
 Next, create a YAML file with a GitHub action for Docker Scout. In this example, it will be called `github-actions-demo.yml`, but you can use whatever name you prefer:
 
-```shell
+~~~
 nano github-actions-demo.yml
-```
+~~~
 
 At this point, you can create an action with the steps you need. In the following example, the GitHub action will trigger automatically when you create a pull request (PR). It builds and scans Docker images for vulnerabilities and then publishes the results to GitHub:
 
-```yaml
+~~~
 name: Docker
 
 on:
@@ -156,7 +156,7 @@ env:
   # Use docker.io for Docker Hub if empty
   REGISTRY: docker.io
   IMAGE_NAME: ${{ github.repository }}
-  SHA: ${{ github.event.pull_request.head.sha || github.event.after }}
+  SHA: {% raw %}${{ github.event.pull_request.head.sha || github.event.after }}{% endraw %}
   # Use `latest` as the tag to compare to if empty, assuming that it's already pushed
   COMPARE_TAG: latest
 
@@ -186,9 +186,9 @@ jobs:
       - name: Log into registry ${{ env.REGISTRY }}
         uses: docker/login-action@v2.1.0
         with:
-          registry: ${{ env.REGISTRY }}
-          username: ${{ secrets.DOCKER_USER }}
-          password: ${{ secrets.DOCKER_PAT }}
+          registry: {% raw %}${{ env.REGISTRY }}{% endraw %}
+          username: {% raw %}${{ secrets.DOCKER_USER }}{% endraw %}
+          password: {% raw %}${{ secrets.DOCKER_PAT }}{% endraw %}
 
       # Extract metadata (tags, labels) for Docker
       # https://github.com/docker/metadata-action
@@ -196,9 +196,9 @@ jobs:
         id: meta
         uses: docker/metadata-action@v4.4.0
         with:
-          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          images: {% raw %}${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}{% endraw %}
           labels: |
-            org.opencontainers.image.revision=${{ env.SHA }}
+            org.opencontainers.image.revision={% raw %}${{ env.SHA }}{% endraw %}
           tags: |
             type=edge,branch=$repo.default_branch
             type=semver,pattern=v{{version}}
@@ -212,28 +212,28 @@ jobs:
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: {% raw %}${{ steps.meta.outputs.tags }}{% endraw %}
+          labels: {% raw %}${{ steps.meta.outputs.labels }}{% endraw %}
           cache-from: type=gha
           cache-to: type=gha,mode=max
 
       - name: Analyze for critical and high CVEs
         id: docker-scout-cves
-        if: ${{ github.event_name != 'pull_request_target' }}
+        if: {% raw %}${{ github.event_name != 'pull_request_target' }}{% endraw %}
         uses: docker/scout-action@v1
         with:
           command: cves, recommendations
-          image: ${{ steps.meta.outputs.tags }}
+          image: {% raw %}${{ steps.meta.outputs.tags }}{% endraw %}
           sarif-file: sarif.output.json
           summary: true
       
       - name: Upload SARIF result
         id: upload-sarif
-        if: ${{ github.event_name != 'pull_request_target' }}
+        if: {% raw %}${{ github.event_name != 'pull_request_target' }}{% endraw %}
         uses: github/codeql-action/upload-sarif@v2
         with:
           sarif_file: sarif.output.json
-```
+~~~
 
 In this code, some preliminary tasks are performed to pave the way for vulnerability scanning with Docker Scout, including checking the repository code, configuring Docker `buildx`, authenticating to the Docker registry, pulling metadata, and building/pushing the Docker image. Then, from line 76 onwards, you'll notice two actions related to Docker Scout:
 
@@ -248,24 +248,24 @@ Once the GitHub action is ready, go to your GitHub repository, click the **Setti
 
 Now that your local and remote repositories are ready, you can create a new branch, make dummy changes, and push them to GitHub:
 
-```shell
+~~~
 git checkout -b docker-scout-test
 git add .
 git commit -m "testing Docker Scout"
 git push --set-upstream origin docker-scout-test
-```
+~~~
 
 Then, [create a new PR on GitHub](https://docs.github.com/en/pull-requests/collaborating-with-pull-requests/proposing-changes-to-your-work-with-pull-requests/creating-a-pull-request#) that will trigger the GitHub action:
 
-![PR on GitHub](https://i.imgur.com/kUaAoDW.png)
+![PR on GitHub]({{site.images}}{{page.slug}}/kUaAoDW.png)
 
 The scan results will be published once the process is completed. The following screenshot was taken after changing the Alpine image back to an unsafe version:
 
-![Unsafe version of Alpine image](https://i.imgur.com/i1Nr5cZ.png)
+![Unsafe version of Alpine image]({{site.images}}{{page.slug}}/i1Nr5cZ.png)
 
 As you can see, it shows the same vulnerabilities as Docker Desktop: 2 critical, 16 high, 7 medium, and 1 unspecified:
 
-![Vulnerabilities](https://i.imgur.com/48vncnS.png)
+![Vulnerabilities]({{site.images}}{{page.slug}}/48vncnS.png)
 
 To learn more about integrating Docker Scout with GitHub Actions, check out the [`scout-action` repository](https://github.com/docker/scout-action).
 
@@ -275,11 +275,10 @@ In this tutorial, you learned about what Docker Scout is and its importance in i
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
