@@ -6,7 +6,10 @@ toc: true
 author: Damaso Sanoja
 
 internal-links:
- - just an example
+ - how to use docker scout
+ - what is docker scout
+ - using docker scout
+ - securing docker images with scout
 last_modified_at: 2023-09-08
 ---
 
@@ -303,6 +306,3 @@ In this tutorial, you learned about what Docker Scout is and its importance in i
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
