@@ -273,6 +273,8 @@ To learn more about integrating Docker Scout with GitHub Actions, check out the 
 
 In this tutorial, you learned about what Docker Scout is and its importance in identifying and remedying vulnerabilities. You also learned about its usage and how to integrate it into your favorite CI/CD pipeline. With this knowledge, you're better equipped to optimize your development environment, bolster your security posture, and streamline your workflow.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -281,4 +283,3 @@ In this tutorial, you learned about what Docker Scout is and its importance in i
   * Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
