@@ -390,6 +390,6 @@ jobs:
 
 CI/CD pipelines are key to smooth development, but they need some upkeep. Enter GitHub Actions, which eases this workload so you can zero in on your workflows. We hope our tutorial sets you up for creating the perfect workflow for your project, even if it's not an exact fit.
 
-If you've enjoyed automating with fastlane and GitHub Actions, then you might love exploring [Earthly](https://www.earthly.dev/) for even more streamlined build automation. It's another tool that can further enhance your development process.
+If you've enjoyed automating with fastlane and GitHub Actions, then you might love exploring [Earthly]((https://cloud.earthly.dev/login)) for even more streamlined build automation. It's another tool that can further enhance your development process.
 
 The example code for our tutorial is accessible on [GitHub](https://github.com/tzatzosm/MyWallet). Happy coding!

@@ -299,7 +299,7 @@ Now apply the changes you made to the Ingress file. After that is done, when you
 
 Through this guide, you've mastered deploying an NGINX image, setting a service, and using Ingress to redirect domain requests to your app. Plus, you've figured out multi-path configurations for a domain with Ingress and got your app running on HTTPS.
 
-Now that you've got a handle on Kubernetes routing, why not take the next step and optimize your build process too? Give [Earthly](https://www.earthly.dev/) a whirl. It could be the perfect tool to streamline your workflow.
+Now that you've got a handle on Kubernetes routing, why not take the next step and optimize your build process too? Give [Earthly]((https://cloud.earthly.dev/login)) a whirl. It could be the perfect tool to streamline your workflow.
 
 Looking ahead, consider scaling up your project - try a legit TLS certificate or manage routing for two apps on the same domain. The possibilities are endless!
 

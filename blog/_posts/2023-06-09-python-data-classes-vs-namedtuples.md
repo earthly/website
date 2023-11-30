@@ -556,4 +556,4 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 
 In this post, we dove into data classes and named tuples in Python, comparing their features like immutability and memory usage. These tools are handy for structured data, but don't forget about third-party packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/) too. They can automate some best practices, so feel free to explore and use them in your projects.
 
-Speaking of automation, if you're looking to streamline your coding process even further, don't stop at Python. Try out [Earthly](https://www.earthly.dev/) for build automation. This tool can be a game-changer in managing your builds and ensuring consistency across different environments.
+Speaking of automation, if you're looking to streamline your coding process even further, don't stop at Python. Try out [Earthly]((https://cloud.earthly.dev/login)) for build automation. This tool can be a game-changer in managing your builds and ensuring consistency across different environments.

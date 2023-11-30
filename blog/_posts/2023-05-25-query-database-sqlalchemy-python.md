@@ -629,7 +629,7 @@ You now know the magic of SQLAlchemy for managing databases in Python. You can c
 
 Dive deeper into SQLAlchemy by checking out the [official documentation](https://docs.sqlalchemy.org/en/20/orm/queryguide/index.html). For all the code snippets, just visit this [GitHub repo](https://github.com/mercybassey/sqlalchemy-for-python.git).
 
-And if you enjoyed tweaking databases with SQLAlchemy, you might also want to try [Earthly](https://www.earthly.dev/) for efficient and reproducible build automation.
+And if you enjoyed tweaking databases with SQLAlchemy, you might also want to try [Earthly]((https://cloud.earthly.dev/login)) for efficient and reproducible build automation.
 
 Happy coding!
 

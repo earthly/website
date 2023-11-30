@@ -339,6 +339,6 @@ But when you visit the /flask route, you should see that your request is being h
 
 In this tutorial, we navigated through setting up a reverse proxy in Kubernetes using Nginx. We built a Flask server, configured Nginx, created Docker images for both, and deployed them to Kubernetes. You can find all the code on this [Github repository](https://github.com/somT-oss/flask-docker).
 
-And if you're looking to further streamline your build processes, you might want to give [Earthly](https://www.earthly.dev/) a try. It's a tool that simplifies build automation, making it a breeze to manage your builds.
+And if you're looking to further streamline your build processes, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try. It's a tool that simplifies build automation, making it a breeze to manage your builds.
 
 {% include_html cta/bottom-cta.html %}

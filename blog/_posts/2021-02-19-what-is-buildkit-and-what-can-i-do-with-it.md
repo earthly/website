@@ -391,6 +391,6 @@ It's empty! The scratch keyword indicates a completely empty docker layer. The m
 
 So, we've gone over a few ways to use BuildKit directly, which offers more features than the modern `docker build`. With it, you can do cool stuff like changing the output type and monitoring process and network requests. But we've just scratched the surface! BuildKit aids in multi-platform builds, enables parallel builds, supports caching, and boosts multi-stage builds, among other things.
 
-If you've enjoyed exploring BuildKit and are looking to take things up a notch, you might want to check out [Earthly](https://www.earthly.dev/). It offers an optimized build process and extends the functionality available in BuildKit.
+If you've enjoyed exploring BuildKit and are looking to take things up a notch, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It offers an optimized build process and extends the functionality available in BuildKit.
 
 Stay tuned for a future post where we'll ditch Dockerfile syntax and explore creating a custom frontend.

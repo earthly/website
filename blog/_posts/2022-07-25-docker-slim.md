@@ -175,6 +175,6 @@ This command utilizes the created `apparmor` security profile in the working dir
 
 Docker Slim is a handy tool. It uses static and dynamic analysis to clear out unnecessary stuff from your Docker images, making them safer and more effective. Despite Docker's contribution to DevOps, it's not flawless and that's where Docker Slim can help. Through this tutorial, we've guided you on how to use Docker Slim and its commands: `lint`, `xray`, `profile`, and `build` to tweak your Docker images and containers.
 
-Also if you're craving more efficiency in your build processes, you might want to give [Earthly](https://www.earthly.dev/) a spin! This open-source build automation tool could be the next step in optimizing your development workflow.
+Also if you're craving more efficiency in your build processes, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin! This open-source build automation tool could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

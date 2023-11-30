@@ -430,6 +430,6 @@ With that, we have just successfully deployed our docker container.
 
 In a nutshell, we dived into container deployment, explored various services, and checked out the perks of using AWS ECS. We even deployed a simple Docker container.
 
-Now, if you're looking to level up your build process efficiency, you might want to try [Earthly](https://www.earthly.dev/), especially if you're already working with Docker containers.
+Now, if you're looking to level up your build process efficiency, you might want to try [Earthly]((https://cloud.earthly.dev/login)), especially if you're already working with Docker containers.
 
 {% include_html cta/bottom-cta.html %}

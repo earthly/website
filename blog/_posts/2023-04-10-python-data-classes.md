@@ -722,6 +722,6 @@ This tutorial provided insights into Python data classes, including their creati
 
 The [next piece](/blog/more-on-python-data-classes/) expands on inheritance and performance optimizations in Python 3.10. Keep coding!
 
-If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly](https://www.earthly.dev/). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
+If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
 
 {% include_html cta/bottom-cta.html %}

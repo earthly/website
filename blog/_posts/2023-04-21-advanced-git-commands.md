@@ -388,6 +388,6 @@ The command forcefully removes the untracked directories in our example.
 
 Git is a powerful tool that boosts productivity and collaboration quality. Even with basic commands like push, pull, and merge, it's highly effective. To take it a step further, explore more features such as [Git aliases](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect).
 
-And if you're looking to supercharge your dev workflow even further, don't miss [Earthly](https://www.earthly.dev/) for efficient build automation.
+And if you're looking to supercharge your dev workflow even further, don't miss [Earthly]((https://cloud.earthly.dev/login)) for efficient build automation.
 
 {% include_html cta/bottom-cta.html %}

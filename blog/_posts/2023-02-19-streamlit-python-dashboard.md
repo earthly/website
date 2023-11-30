@@ -357,6 +357,6 @@ with col2:
 
 Look at you, you've just aced the basics of Streamlit and discovered how to crank up your data visualization with interactive Plotly charts. Why not take it a step further and design a data dashboard with your favorite dataset? Go on, give it a shot!
 
-And if you're building data apps with Streamlit, consider boosting your build process with [Earthly](https://www.earthly.dev/). It's a tool that could significantly enhance your development workflow.
+And if you're building data apps with Streamlit, consider boosting your build process with [Earthly]((https://cloud.earthly.dev/login)). It's a tool that could significantly enhance your development workflow.
 
 {% include_html cta/bottom-cta.html %}

@@ -571,6 +571,6 @@ Your output should look like the following:
 
 Handling CSV files in Go is simple using the encoding/csv package and libraries like goCSV. Whether reading, adding to, or converting CSV files, Go equips you with what you need. Use the code examples in this article to delve into the perks of CSV for data storage and analysis.
 
-And if you're looking to further enhance your development processes, consider exploring [Earthly](https://www.earthly.dev/), a neat build automation tool that can streamline your builds and make them more efficient.
+And if you're looking to further enhance your development processes, consider exploring [Earthly]((https://cloud.earthly.dev/login)), a neat build automation tool that can streamline your builds and make them more efficient.
 
 {% include_html cta/bottom-cta.html %}

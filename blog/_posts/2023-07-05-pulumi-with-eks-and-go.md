@@ -735,6 +735,6 @@ pulumi stack rm <name-of-stack>
 
 Pulumi is a super flexible tool for creating Infrastructure as Code. In this tutorial, we used it to handle AWS resources, including creating S3 buckets and provisioning an EKS cluster with Go. But that's just the start! Pulumi supports multiple cloud providers and programming languages, meaning you have a huge variety of possibilities for managing your cloud infrastructure.
 
-We used Go to write our Pulumi infrastructure and speaking of Go, if you're building with it and want a more streamlined build workflow, you might want to give [Earthly](https://www.earthly.dev/) a try. It could be a valuable addition to your development toolkit.
+We used Go to write our Pulumi infrastructure and speaking of Go, if you're building with it and want a more streamlined build workflow, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try. It could be a valuable addition to your development toolkit.
 
 {% include_html cta/bottom-cta.html %}

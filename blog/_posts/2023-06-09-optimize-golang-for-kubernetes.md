@@ -489,6 +489,6 @@ Congratulations! You've now moved closer to mastering optimization of Golang app
 
 Optimizing Golang applications for Kubernetes is essential for efficient and reliable deployment. Key practices include minimizing container size, optimizing resource allocation and garbage collection, implementing health checks and readiness probes, and leveraging Kubernetes for scaling and load balancing. These strategies reduce server load, boosting performance and cost efficiency.
 
-If you're looking for reliable, reproducible builds for your Golang apps, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool that can further enhance your development process, ensuring consistency across different environments.
+If you're looking for reliable, reproducible builds for your Golang apps, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's a tool that can further enhance your development process, ensuring consistency across different environments.
 
 {% include_html cta/bottom-cta.html %}

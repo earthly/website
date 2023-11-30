@@ -488,6 +488,6 @@ The three download tasks can be executed in parallel since they don't have any d
 
 This article dove into the nitty-gritty of Apache Airflow, its strengths, and how to effectively install, configure, and write DAG code for it. We also explored some best practices for its use. Future upgrades might lead to better cloud integration, improved data streaming support, and cooler visualization & monitoring features. Airflow's versatility makes it a superb tool - and it's just going to keep getting better!
 
-As you continue to explore tools to streamline your data engineering processes, you might also be interested in [Earthly](https://www.earthly.dev/). It's an open-source build automation tool that could be a great addition to your toolkit, especially if you're looking to further optimize your build.
+As you continue to explore tools to streamline your data engineering processes, you might also be interested in [Earthly]((https://cloud.earthly.dev/login)). It's an open-source build automation tool that could be a great addition to your toolkit, especially if you're looking to further optimize your build.
 
 {% include_html cta/bottom-cta.html %}

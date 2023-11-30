@@ -591,6 +591,6 @@ The image above shows the response received after an HTTP request was sent to Ng
 
 In this article, we've explored how kubeadm makes cluster bootstrapping and upgrading seamless. While it shines for development and non-autoscaling workloads, it might not be the best fit for large-scale autoscaling production clusters. Kubeadm hands off hardware and infrastructure management, essential for node [autoscaling](/blog/k8s-autoscaling), to infrastructure providers.
 
-As you continue to explore and level up your Kubernetes build process, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a definite game-changer for builds and could be the next step in optimizing your development workflow.
+As you continue to explore and level up your Kubernetes build process, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's a definite game-changer for builds and could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

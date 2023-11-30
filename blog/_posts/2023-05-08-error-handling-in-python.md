@@ -388,6 +388,6 @@ This article provided insights on Python error handling, such as various error t
 
 After reading, you should be adept at handling errors in Python to create more reliable code. All code discussed is available on [GitHub](https://github.com/Boadzie/error-handling-in-python).
 
-And as you continue to refine your Python skills, you might also be looking for ways to streamline your build process. If so, consider taking your workflow up a notch with [Earthly](https://www.earthly.dev/), a tool designed to simplify build automation.
+And as you continue to refine your Python skills, you might also be looking for ways to streamline your build process. If so, consider taking your workflow up a notch with [Earthly]((https://cloud.earthly.dev/login)), a tool designed to simplify build automation.
 
 {% include_html cta/bottom-cta.html %}

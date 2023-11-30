@@ -149,6 +149,6 @@ Kubernetes and OpenShift both offer unique approaches to container orchestration
 
 Your final decision should consider factors like deployment complexity, budget, and specific needs. If you need customization capabilities and have the resources, choose Kubernetes. For a faster cloud transition and if you're okay with the cost, OpenShift is a strong choice.
 
-And if you're considering OpenShift or Kubernetes, why not also check out [Earthly](https://www.earthly.dev/) for CI? It might just simplify your build automation process.
+And if you're considering OpenShift or Kubernetes, why not also check out [Earthly]((https://cloud.earthly.dev/login)) for CI? It might just simplify your build automation process.
 
 {% include_html cta/bottom-cta.html %}

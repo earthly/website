@@ -394,6 +394,6 @@ rules: \
 
 In this tutorial, you've learned how to use RBAC for namespace and cluster-level implementations. RBAC is crucial for access control as it limits unauthorised service accounts and users, helping to prevent common issues like secret sprawling. Remember: a lost key is as good as a lost system.
 
-Now that you've secured your Kubernetes with RBAC, the next step is to optimize your build process. For that, you might want to give [Earthly](https://www.earthly.dev/) a shot! It's an excellent tool for streamlining and enhancing your build process.
+Now that you've secured your Kubernetes with RBAC, the next step is to optimize your build process. For that, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a shot! It's an excellent tool for streamlining and enhancing your build process.
 
 {% include_html cta/bottom-cta.html %}

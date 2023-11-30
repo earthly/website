@@ -296,6 +296,6 @@ So here is my conclusion.
 
 **And tool users**: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
 
-And if you're tired of YAML's complexities, you might like [Earthly](https://www.earthly.dev/), its like my python build script above but 1000x times better. And Earthly Cloud now was a free plan with 6000 free minutes per month. So you can ditch the Yaml and get faster builds at the same time.
+And if you're tired of YAML's complexities, you might like [Earthly]((https://cloud.earthly.dev/login)), its like my python build script above but 1000x times better. And Earthly Cloud now was a free plan with 6000 free minutes per month. So you can ditch the Yaml and get faster builds at the same time.
 
 {% include_html cta/bottom-cta.html %}

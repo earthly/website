@@ -128,7 +128,7 @@ Continuous integration (CI) is a game-changer! It helps find bugs quicker, speed
 - Aim for **reproducible** builds for developer confidence.
 - **Reusability** allows us to leverage the tools, patterns, and environments for continuous integration across projects.
 
-Speaking of reproducible builds, if you're looking to improve your CI/CD pipeline, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool designed for speedy, reproducible builds, which can significantly enhance your CI/CD process.
+Speaking of reproducible builds, if you're looking to improve your CI/CD pipeline, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's a tool designed for speedy, reproducible builds, which can significantly enhance your CI/CD process.
 
 CI also paves the way for **continuous deployment** and combined with continuous delivery, it helps ship and test features faster.
 

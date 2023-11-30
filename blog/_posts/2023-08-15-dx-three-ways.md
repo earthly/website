@@ -151,4 +151,4 @@ From public-facing APIs to internal tools and across entire organizations, DX me
 
 Are there tools or apps you use that could be improved?
 
-DX can turn a tool from ignored to essential, boost a struggling product, and make a growing team run smoothly. Whether you're an Alice, a Bob, or a Carlos, improving DX is key. It ensures developer satisfaction and your organization's success. And if you're looking to improve your Developer Experience, check out [Earthly](https://www.earthly.dev/). It's a tool designed to simplify and speed up builds and accelerate development workflows.
+DX can turn a tool from ignored to essential, boost a struggling product, and make a growing team run smoothly. Whether you're an Alice, a Bob, or a Carlos, improving DX is key. It ensures developer satisfaction and your organization's success. And if you're looking to improve your Developer Experience, check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool designed to simplify and speed up builds and accelerate development workflows.

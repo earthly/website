@@ -201,6 +201,6 @@ Now I can keep working on my adder library and test it in my service without hav
 
 Remember, workspaces are personal to each developer and should be kept out of the source code. So, add it to your `.gitignore` or delete it before you push changes. Plus, the cool thing is, if I include modules in the workspace that require my `adder` library, they'll default to the local version I'm editing, no need to tweak anything in the `go.mod` of each module.
 
-If you're loving the efficiency of Golang Workspaces, you might want to take it up a notch. If so check out [Earthly](https://www.earthly.dev/) for more streamlined builds. It could be the next tool to add to your developer toolkit.
+If you're loving the efficiency of Golang Workspaces, you might want to take it up a notch. If so check out [Earthly]((https://cloud.earthly.dev/login)) for more streamlined builds. It could be the next tool to add to your developer toolkit.
 
 {% include_html cta/bottom-cta.html %}

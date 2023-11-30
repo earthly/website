@@ -768,6 +768,6 @@ If positional patterns are present in a class, they are converted to keyword pat
 
 In this tutorial, we delved into Python 3.10's *structural pattern matching* feature. You learned about various patterns, like literal, capture, wildcard, AS, OR, sequence, mapping, and class. And the practicality of this feature isn't confined to API response matching in web development, it's useful in any scenario where value structure matching is required.
 
-As you continue to explore Python's capabilities, you might also be interested in optimizing your builds. If so, give [Earthly](https://www.earthly.dev/) a try! Earthly can be a great asset in your Python development toolkit.
+As you continue to explore Python's capabilities, you might also be interested in optimizing your builds. If so, give [Earthly]((https://cloud.earthly.dev/login)) a try! Earthly can be a great asset in your Python development toolkit.
 
 {% include_html cta/bottom-cta.html %}

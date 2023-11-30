@@ -287,6 +287,6 @@ Multiple constraints passed to the same environment variable are always combined
 
 Docker containers can't directly access your GPU, as they need a vendor-specific layer to expose GPUs. If you're rocking NVIDIA hardware, their container runtime helps connect your docker with NVIDIA drivers. You can then add GPU support to your images, either using NVIDIA CUDA image or by manually installing CUDA libraries in your Dockerfile. This makes your CI pipelines not only reproducible but also capable of handling AI and ML workloads.
 
-Pretty cool, right? And if you're looking to streamline your container build process, give [Earthly](https://www.earthly.dev/) a look! It's a tool that can further enhance your build automation.
+Pretty cool, right? And if you're looking to streamline your container build process, give [Earthly]((https://cloud.earthly.dev/login)) a look! It's a tool that can further enhance your build automation.
 
 {% include_html cta/bottom-cta.html %}

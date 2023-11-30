@@ -569,6 +569,6 @@ Raspberry Pi's simplicity can be a limitation, but with a cross-compilation tool
 
 This article walked you through setting up a cross-compilation environment, creating a CMake toolchain file, compiling a C++ program, linking it to a shared library, and debugging using GDB.
 
-To delve deeper into cross-compilation with CMake, read the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM). And if you're looking to further fine-tune your cross compile process, you might want to give [Earthly](https://www.earthly.dev/) a try!
+To delve deeper into cross-compilation with CMake, read the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM). And if you're looking to further fine-tune your cross compile process, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try!
 
 {% include_html cta/bottom-cta.html %}

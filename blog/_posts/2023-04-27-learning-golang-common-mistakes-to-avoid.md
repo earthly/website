@@ -931,6 +931,6 @@ In conclusion, Golang is a powerful and efficient programming language that can 
 
 Let's also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
 
-And if you're building in Golang, consider streamlining your process with [Earthly](https://www.earthly.dev/) for more efficient, reproducible builds. It could be a game-changer for your development workflow.
+And if you're building in Golang, consider streamlining your process with [Earthly]((https://cloud.earthly.dev/login)) for more efficient, reproducible builds. It could be a game-changer for your development workflow.
 
 {% include_html cta/bottom-cta.html %}

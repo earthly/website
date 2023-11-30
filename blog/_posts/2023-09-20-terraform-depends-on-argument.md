@@ -500,6 +500,6 @@ In this article, you learned all about dependencies in Terraform and how to effe
 
 If you want to learn more about this topic, check out the [official depends_on documentation](https://www.terraform.io/docs/language/meta-arguments/depends_on.html) or [this discussion from the HashiCorp blog](https://discuss.hashicorp.com/t/how-to-solve-circular-dependency-issue-in-terraform-resources/53569) about how to avoid and resolve circular dependencies.
 
-Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect complement to your chosen IaC tool.
+Looking to simplify your build automation further? Give [Earthly]((https://cloud.earthly.dev/login)) a try. It could be the perfect complement to your chosen IaC tool.
 
 {% include_html cta/bottom-cta.html %}

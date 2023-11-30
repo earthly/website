@@ -390,6 +390,6 @@ There are many other
 
 In this tutorial, we've covered the definitions, importance, and workings of distributed tracing. We've also delved into its three components: spans, tags, and traces. Lastly, we have guided you through the setup process of distributed tracing on your cluster using Signoz and Application Performance Monitoring agents on each required microservice.
 
-As you continue to optimize your microservices, you might also want to consider improving your build processes. If that's the case, give [Earthly](https://www.earthly.dev/) a shot. It's a tool designed to streamline and enhance your build automation, making it an excellent companion for managing complex, multi-component projects.
+As you continue to optimize your microservices, you might also want to consider improving your build processes. If that's the case, give [Earthly]((https://cloud.earthly.dev/login)) a shot. It's a tool designed to streamline and enhance your build automation, making it an excellent companion for managing complex, multi-component projects.
 
 {% include_html cta/bottom-cta.html %}

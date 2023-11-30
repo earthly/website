@@ -34,7 +34,7 @@ Next, locate your settings.json file by opening it in VS Code (Ctrl-Shift-P or C
 
 In your terminal, simply copy your settings and keybindings files into your new settings repo. After committing them (`git add . && git commit -a -m "settings.json"`), remove the old copies. Next, symlink the new versions in their place. Make sure VS Code is closed during this process. Now, any changes you make to your settings will be saved in the repo, allowing you to commit or undo changes as needed.
 
-Once you've got your settings optimized, you might want to consider streamlining your build process as well. Check out [Earthly](https://www.earthly.dev/) for efficient build automation. It could be the perfect complement to your newly optimized VS Code settings.
+Once you've got your settings optimized, you might want to consider streamlining your build process as well. Check out [Earthly]((https://cloud.earthly.dev/login)) for efficient build automation. It could be the perfect complement to your newly optimized VS Code settings.
 
 Here's where my [settings](https://github.com/adamgordonbell/vs-code-styles) live on GitHub.
 

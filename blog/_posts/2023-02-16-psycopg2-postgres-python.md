@@ -608,6 +608,6 @@ Let's review all that we've learned in this tutorial:
 
 In this tutorial, you've learned the basics of querying PostgreSQL databases using psycopg2, including connection establishment, running queries, and exception handling. Now, you can expand your knowledge by adding more tables to your database, defining table relationships, and querying data from multiple tables.
 
-And as you continue to build and expand your Python applications, you might encounter the need for consistent builds across different environments. For this, don't forget to check out [Earthly](https://www.earthly.dev/), a tool designed to ensure reproducibility and efficiency in your build process.
+And as you continue to build and expand your Python applications, you might encounter the need for consistent builds across different environments. For this, don't forget to check out [Earthly]((https://cloud.earthly.dev/login)), a tool designed to ensure reproducibility and efficiency in your build process.
 
 {% include_html cta/bottom-cta.html %}

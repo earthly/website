@@ -436,6 +436,6 @@ The `--global` flag applies the option globally to all Git repositories on the u
 
 Git LFS is a game changer for managing big files in Git repos. Instead of swallowing up storage with massive files, LFS swaps them for text pointers on a separate server, speeding up operations and saving space. You've learned how to set up Git LFS, add files to it, and the perks it provides. This tool's versatility makes it appealing across fields like software dev, game dev, and data science.
 
-And while you're optimizing your workflow, why not take a look at your build process too? [Earthly](https://www.earthly.dev/) can help streamline and simplify your builds, making your development process even more efficient.
+And while you're optimizing your workflow, why not take a look at your build process too? [Earthly]((https://cloud.earthly.dev/login)) can help streamline and simplify your builds, making your development process even more efficient.
 
 {% include_html cta/bottom-cta.html %}

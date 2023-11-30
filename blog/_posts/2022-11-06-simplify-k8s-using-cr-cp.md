@@ -520,6 +520,6 @@ sample-service-2      1m
 
 This tutorial walked you through using Kubernetes `custom resources` and controllers for easy configuration management. We covered how to define configurations using `custom resources`, built a custom controller, and set up correct permissions with `ServiceAccount` and `ClusterRoleBinding`. All in all, a neat way to manage your microservice configurations.
 
-Now that you've got Kubernetes configuration down, you might be thinking about how to streamline your build process. If so, why not give [Earthly](https://www.earthly.dev/) a shot? It could be the next step in making your development process even smoother. Cheers to simpler Kubernetes management and efficient build processes!
+Now that you've got Kubernetes configuration down, you might be thinking about how to streamline your build process. If so, why not give [Earthly]((https://cloud.earthly.dev/login)) a shot? It could be the next step in making your development process even smoother. Cheers to simpler Kubernetes management and efficient build processes!
 
 {% include_html cta/bottom-cta.html %}

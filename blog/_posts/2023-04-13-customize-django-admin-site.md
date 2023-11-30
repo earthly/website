@@ -641,6 +641,6 @@ This will increase the editing area as shown below:
 
 Customizing the Django admin site can drastically improve user experience and data management efficiency in a Django project. With simple adjustments, it can evolve into a powerful, tailor-made tool. This tutorial taught you how to customize field display, disable models, add filters, links, thumbnails, custom validations, and override templates and forms.
 
-For a deeper dive into admin interface customization, check out the [Django documentation](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/). And once you've mastered Django admin customization, why not take your project to the next level? Optimize your builds with [Earthly](https://www.earthly.dev/), a tool designed to streamline and enhance your build process.
+For a deeper dive into admin interface customization, check out the [Django documentation](https://docs.djangoproject.com/en/4.1/ref/contrib/admin/). And once you've mastered Django admin customization, why not take your project to the next level? Optimize your builds with [Earthly]((https://cloud.earthly.dev/login)), a tool designed to streamline and enhance your build process.
 
 {% include_html cta/bottom-cta.html %}

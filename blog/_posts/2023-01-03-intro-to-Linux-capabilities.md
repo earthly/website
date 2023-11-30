@@ -357,6 +357,6 @@ Even if you're using a multi-container pod, you can set the SecurityContext in e
 
 Understanding Linux capabilities is crucial, especially when running containerized workloads. Check the privileges of your container and assign only the minimum necessary capabilities to minimize the attack surface. Remember, setting the right capabilities helps control damage in case of a breach.
 
-And if you're looking to further optimize your containerized workloads, you might want to give [Earthly](https://www.earthly.dev/) a spin!
+And if you're looking to further optimize your containerized workloads, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin!
 
 {% include_html cta/bottom-cta.html %}

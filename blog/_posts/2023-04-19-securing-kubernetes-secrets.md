@@ -532,6 +532,6 @@ See the following [guide](https://github.com/justmeandopensource/kubernetes/blob
 
 In this tutorial, we've covered Kubernetes secrets security. You now have the tools to safeguard your sensitive info, including enabling data encryption, setting up role-based access control, and securing ETCD. Now it's your turn to keep your secrets under wraps. You've totally got this!
 
-After mastering the security of your Kubernetes secrets, why not take the next step in streamlining your builds? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect tool to further enhance your development process.
+After mastering the security of your Kubernetes secrets, why not take the next step in streamlining your builds? Give [Earthly]((https://cloud.earthly.dev/login)) a try. It could be the perfect tool to further enhance your development process.
 
 {% include_html cta/bottom-cta.html %}
