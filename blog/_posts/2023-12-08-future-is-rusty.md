@@ -56,6 +56,8 @@ The realistic concern for this approach is not whether the LLM is helpful enough
 
 Contrary to the often-held belief that the best learning comes from grappling with problems alone, research suggests that guided learning can be more impactful, especially in complex fields like programming. The educational psychologist John Sweller showed that being walked through a solution by someone else is often the best way to learn something. Better than figuring it out yourself. Large Language Models, by offering instant, contextual, and conversational assistance, excel at this. When an intermediate learner encounters a baffling error or a gap in their knowledge, questioning ChatGPT can provide a well-structured explanation or a step-by-step breakdown of the problem. This is not merely about providing answers; it's about unveiling the underlying logic and process, illuminating the 'why' and 'how' behind the solution.
 
+![Image]({{site.images}}{{page.slug}}/image.png)\
+
 There is this educational concept called the "Zone of Proximal Development". It's the area beyond your current skills where you need some assistance to progress. LLMs can serve as a bridge into this zone, offering assistance to get you past limits on what you can do yourself.
 
 This is called a scaffolded learning experience. The intermediate gap can be closed: Try to build something beyond your abilities, hit gaps, and get help from an LLM. You will be able to do more than you can without them, and if education research is correct, what you can accomplish without them will be expanded by this process. You're not cheating. You're learning.
@@ -66,20 +68,12 @@ Try something hard, and lean on an LLM. You will be learning the tools and techn
 
 This brings me back to Rust vs Python: Yes, if you are learning a programming language for the first time, then learn Python, but if there is something you bounced off of in the past, as I did with building Haskell web services back in the day, well, try again, tackle something hard and use the LLMs to help you along the way. Steep learning curves are now a lot less steep. Try something, hit a barrier, get help, backtrack a bit to make sure you understand, and then charge ahead. Push out into the Proximal Development Zone!
 
-Back to Terence Tao: He is now also using ChatGPT to teach himself the lean programming language and using that to formalize some of his proofs.
+Back to Terence Tao: He is now also using [ChatGPT to teach himself the lean programming language](https://twitter.com/8teAPi/status/1713867160886599920) and using that to formalize some of his proofs.
 
 If the most brilliant mathematician of our time is using ChatGPT to help him with proofs and programming, you have no excuse.
 
 Build something with Rust. Build something with Ocaml. Build something with Elixir. The intermediate problem is over. Your coding buddy can boost you over hurdles and pretty soon you'll be jumping them on your own. LLMs are only getting better. Therefore, programming languages can be more expressive and rigorous, with steeper learning curves, and we can still learn them. **The world can be more rusty**.
 
-(Coincidentally, if you are working in Rust, check out this example of Earthly taking Rust builds from 13 minutes to 3 minutes.)
+(Coincidentally, if you are working in Rust, check out this example of Earthly taking Rust builds from [13 minutes to 3 minutes](http://fsdf/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-
