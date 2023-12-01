@@ -1,18 +1,18 @@
 ---
-title: "Put Your Best Title Here"
+title: "Approachability in Programming Languages"
 categories:
   - Tutorials
 toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - approachability in programming languages
+ - rust in programming languages
+ - future is rust
 last_modified_at: 2023-09-08
 ---
 
 **We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you want rust builds in CI as fast as local development then [check us out](https://earthly.dev/).**
-
-## Approachability in Programming Languages
 
 I see something like this on reddit/r/rust quite a bit:
 
@@ -82,5 +82,4 @@ Build something with Rust. Build something with Ocaml. Build something with Elix
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
