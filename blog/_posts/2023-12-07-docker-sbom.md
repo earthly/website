@@ -123,7 +123,7 @@ bash                       5.2.15-2+b2                     deb
 Each row in the table describes a single package in your container image. The records include the package's name, installed version, and the type of package that it is. The row below represents a Debian package installed in the operating system:
 
 ~~~{ caption="Output"}
-bash                       5.2.15-2+b2                     deb
+bash            5.2.15-2+b2          deb
 ~~~
 
 Using this information, you can rapidly identify which packages are present in your container. When a new vulnerability is published, viewing the SBOM lets you check whether you're using an affected version.
