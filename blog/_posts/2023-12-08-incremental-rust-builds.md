@@ -337,7 +337,7 @@ If you would like to become a part of ExpressVPN's core team and work on their R
 
 {% include_html cta/bottom-cta.html %}
 
-[^1]: [Rust performance dashbord](https://perf.rust-lang.org/dashboard.html)
+[^1]: [Rust performance dashboard](https://perf.rust-lang.org/dashboard.html)
 [^2]: [Fast Rust Builds by matklad](https://matklad.github.io/2021/09/04/fast-rust-builds.html)
 [^3]: See [Cargo's issue #2644](https://github.com/rust-lang/cargo/issues/2644)
 [^4]: [Cargo GC tracking issue](https://github.com/rust-lang/cargo/issues/12633)
