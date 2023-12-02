@@ -6,7 +6,9 @@ toc: true
 author: Nacho
 
 internal-links:
- - just an example
+ - rust builds in ci
+ - rust builds
+ - incremental builds
 last_modified_at: 2023-09-08
 ---
 
@@ -344,5 +346,3 @@ If you would like to become a part of ExpressVPN's core team and work on their R
 
 - [ ] Create header image in Canva
 
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
