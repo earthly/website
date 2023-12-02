@@ -39,9 +39,9 @@ With this change, ExpressVPN saw Cargo build times go from [22.5 minutes](https:
 > The Rust programming language was designed for slow compilation times.
 (Brian Anderson, founding member of Rust core team)
 
-Rust is known for slow compilation times, mainly because it prioritizes runtime performance at the cost of build performance. However, the Rust compiler (rustc) is actually quite advanced, and has been constantly improved over the years. It uses a very sophisticated incremental compilation and benefits from a modular compilation model.
+Rust is known for slow compilation times, mainly because it prioritizes runtime performance at the cost of build performance. However, the Rust compiler (rustc) is actually quite advanced, and has been constantly improved over the years[^1]. It uses a very sophisticated incremental compilation and benefits from a modular compilation model.
 
-While incremental compilation is enabled by default, achieving faster compilation times in Rust may not be straightforward. Several well-established techniques help control build times on developer machines. These include:
+While incremental compilation is enabled by default, achieving faster compilation times in Rust may not be straightforward. Several well-established techniques[^2] help control build times on developer machines. These include:
 
 - **Modularizing application logic**: Breaking down application logic into multiple crates that avoid long dependency chains. This not only aids in compilation parallelization, but  also reduces cascade compilation, since a crate will be recompiled whenever a dependent one is.
 - U**sing check for quick feedback**: `cargo check` performs a partial compilation that skips the costly step of code generation. It is useful for getting rapid feedback during development, helping catch potential issues early in the coding process.
@@ -70,7 +70,7 @@ Here are the relevant locations to have in mind when thinking about Cargo cachin
 
 When it comes to CI, the main bottleneck is storing and retrieving information from the cache. Ephemeral CI runners, like GitHub Actions and CircleCI don't have a way to save and retrieve cache without using slow upload/download cache transfers on every run.
 
-For years, the community has been actively seeking improved strategies to minimize build inefficiencies in CI, with the ultimate goal of achieving caching performance for iterative builds that matches the efficiency experienced in local development.
+For years, the community has been actively seeking improved strategies to minimize build inefficiencies in CI[^3], with the ultimate goal of achieving caching performance for iterative builds that matches the efficiency experienced in local development.
 
 The most popular techniques employed by developers include:
 
@@ -142,7 +142,7 @@ Here are some key details about its implementation:
 - Includes `$CARGO_HOME/.package-cache` in the mount cache so Cargo locking can work and the cache is not corrupted by parallel builds.
 - It also makes sure that `$CARGO_HOME/bin` binaries are still accessible, after mounting the caches.
 - Ensures installed binaries are stored in the build layers rather than in the mount cache. Notice that `$CARGO_HOME/bin` is not a cache folder, and its contents are not fetched on-demand if they're missing. Storing these binaries in the mount cache could lead to scenarios where BuildKit garbage collects the mount cache, but the layer of the `RUN` command that populated it (installed the binary) is still cached, resulting in a runtime failure.
-- Automatically uses [cargo-sweep](https://github.com/holmgr/cargo-sweep) under the hood to keep cache sizes small and efficient. At least until native Cargo CG is fully released.
+- Automatically uses [cargo-sweep](https://github.com/holmgr/cargo-sweep) under the hood to keep cache sizes small and efficient. At least until native Cargo CG[^4] is fully released.
 - We've added an `--output` argument, allowing users to specify which files in the `./target` folder will be copied to the layer cache. Due to the inconsistent structure across various Cargo subcommands and potentially large size of this folder, automatically copying its entire contents is not a feasible option.
 
 ## Preliminary Results
@@ -334,6 +334,11 @@ Thanks to:
 If you would like to become a part of ExpressVPN's core team and work on their Rust projects and Earthly build systems, [apply for their job openings](https://www.expressvpn.com/jobs/job-openings/job?gh_jid=7046141002).
 
 {% include_html cta/bottom-cta.html %}
+
+[^1]: [Rust performance dashbord](https://perf.rust-lang.org/dashboard.html)
+[^2]: [Fast Rust Builds by matklad](https://matklad.github.io/2021/09/04/fast-rust-builds.html)
+[^3]: See [Cargo's issue #2644](https://github.com/rust-lang/cargo/issues/2644)
+[^4]: [Cargo GC tracking issue](https://github.com/rust-lang/cargo/issues/12633)
 
 ## Outside Article Checklist
 
