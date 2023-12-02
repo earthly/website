@@ -13,7 +13,7 @@ excerpt: |
     Learn how to build a real-time communication application with Django Channels and the WebSocket Protocol. This tutorial will guide you through setting up the project, creating the necessary models and views, and handling WebSocket connections. Get ready to dive into the world of real-time communication!
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're developing real-time apps with Django, Earthly can streamline your build process, making your life a whole lot easier. [Check it out](/).**
+**This article details how to construct chat applications with WebSockets. Earthly accelerates service builds, including for WebSockets. [Check it out](https://cloud.earthly.dev/login).**
 
 In this tutorial, we'll learn how to build a real-time communication application with The [Django Channels](https://channels.readthedocs.io/en/stable/) package and The [WebSocket Protocol](https://datatracker.ietf.org/doc/html/rfc6455). The application we will create will be a platform where users can join multiple pre-created groups and share ideas with members of the group. [The entire project](https://github.com/DrAnonymousNet/DiscussIt) is available on my Github.
 
@@ -1198,6 +1198,6 @@ The message is sent to the client and the chat log is updated.
 
 ## Conclusion
 
-WebSockets and Django-channels open up a world of possibilities, like real-time IoT device communication. This tutorial was just a sneak peek into their potential. You managed to build a real-time chat app using them. If you're looking to optimize your Django Channels build process, you might want to give [Earthly](https://www.earthly.dev/) a shot! It's a great tool for optimizing builds. Here's the [project code](https://github.com/DrAnonymousNet/DiscussIt) from today - keep experimenting, learning, and optimizing your build processes!
+WebSockets and Django-channels open up a world of possibilities, like real-time IoT device communication. This tutorial was just a sneak peek into their potential. You managed to build a real-time chat app using them. If you're looking to optimize your Django Channels build process, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a shot! It's a great tool for optimizing builds. Here's the [project code](https://github.com/DrAnonymousNet/DiscussIt) from today - keep experimenting, learning, and optimizing your build processes!
 
 {% include_html cta/bottom-cta.html %}

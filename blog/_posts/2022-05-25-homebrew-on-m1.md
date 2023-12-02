@@ -20,7 +20,7 @@ excerpt: |
     Learn about the changes in Homebrew installation on M1 Macs and how to migrate your packages from an Intel Mac. Discover the reasons behind the change and the potential issues you may encounter. Plus, get insights into updating old and third-party code to ensure smooth functioning.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Homebrew and some quirks of using it on the Mac M1. If you doing things at command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
+**The article details the M1 Macs' transition to Homebrew's `/opt/homebrew/bin` and its M1 support. Earthly resolves build issues related to paths and dependencies. [Learn how](https://cloud.earthly.dev/login).**
 
 Homebrew made some changes to where it installs packages if you are running it on a new M1 Mac, and these changes may throw you for a loop if you're moving over to an M1 from Intel. In this article I'll talk about what changed and why it changed. I'll also walk you through getting all your Homebrew packages from your Intel Mac reinstalled on your M1, and share a couple of issues I came across after migrating that will hopefully help you with any gotchas you encounter in the future.
 
@@ -146,6 +146,6 @@ So this was a lot of information but the main take away is: Homebrew moved and i
 
 One of the reasons people love Homebrew is because it just works. And on Apple Silicon, that's still true, but you might encounter a couple of hiccups along the way. I ended up learning a lot about Homebrew and how it works while digging a little deeper into this issue. If you want to learn more about Homebrew you can checkout their website, or this excellent [getting started tutorial](https://mac.install.guide/homebrew/3.html). And if you haven't already, it's worth reading a bit about [Rosetta 2](https://screenrant.com/apple-rosetta-2-explained/), since it's at the heart of what makes the switch to Apple Silicon possible, not just for Homebrew, but for all software switching over from Intel to M1.
 
-Also, If you're homebrew, you probably and you haven't heard of [Earthly](/), then you should probably check it out. It's a open source tool for building linux software regardless of your host environment.  
+Also, If you're homebrew, you probably and you haven't heard of [Earthly](https://cloud.earthly.dev/login), then you should probably check it out. It's a open source tool for building linux software regardless of your host environment.  
 
 {% include_html cta/bottom-cta.html %}

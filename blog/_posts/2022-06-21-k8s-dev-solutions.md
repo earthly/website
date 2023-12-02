@@ -15,7 +15,7 @@ excerpt: |
     Looking to develop applications locally using Kubernetes? Check out this article comparing the top local Kubernetes development solutions, including minikube, kind, K3s, kubeadm, Docker Desktop, and MicroK8s. Learn about their platform support, setup complexity, flexibility, and community support to help you choose the best option for your needs.
 last_modified_at: 2023-10-09
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Earthly could be exactly what you need to optimize your build process. Why not [give it a look](/)?**
+**This article discusses tools for Kubernetes local development. Minikube streamlines Kubernetes on local machines, and Earthly consistently delivers reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 
 Once you've determined that you want to use [Kubernetes](https://kubernetes.io) as your base for developing applications locally, it's time to figure out which development solution is the best. There are many different options out there, but a few select reign over the others as the most common, including [minikube](https://minikube.sigs.k8s.io/docs/), [kind](https://kind.sigs.k8s.io/), [K3s](https://k3s.io/), [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/), [Docker Desktop](https://docs.docker.com/desktop/kubernetes/), and [MicroK8s](https://microk8s.io/).
 
@@ -241,6 +241,6 @@ If you're not able to find the answer to your question in the existing documenta
 
 If you're looking for something that is as close to your production cluster as possible, then you will likely have to go with kubeadm or even K3s, if you're running K3s in production. If your goal is to just have an easy cluster to test with, Docker Desktop or minikube will likely be the best choice.
 
-No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://earthly.dev/), a framework to help you effortlessly deploy your services.
+No matter what option you choose for developing your applications locally, you'll have to deploy mthe platform into production. For this, check out [Earthly](https://cloud.earthly.dev/login), a framework to help you effortlessly deploy your services.
 
 {% include_html cta/bottom-cta.html %}

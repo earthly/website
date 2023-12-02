@@ -277,7 +277,7 @@ The downside? The user needs a C compiler. But, as long as you have the python.h
 producing mergefast-1.1.3.tar.gz
 ~~~
 
-We can test this package with a `pip install dist/mergefast-1.1.3.tar.gz`. I, of course, do this [Earthly](/), for reproducibility sake:
+We can test this package with a `pip install dist/mergefast-1.1.3.tar.gz`. I, of course, do this [Earthly](https://cloud.earthly.dev/login), for reproducibility sake:
 
 ~~~{.dockerfile caption="Earthfile"}
 test-dist-install:

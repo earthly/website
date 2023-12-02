@@ -16,7 +16,7 @@ excerpt: |
     In this tutorial, learn how to automate CI/CD builds using GitHub Actions and DockerHub. Discover how to create a GitHub Actions workflow that builds and deploys a Docker image to DockerHub, streamlining your development process and increasing productivity.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
+**This article explains how to automate Docker deployments in GitHub Actions. Earthly enhances GitHub Actions, streamlining Docker builds for quicker build cycles. [Learn more about Earthly's integration with GitHub Actions](https://cloud.earthly.dev/login).**
 
 To streamline your development workflow, in this tutorial, we will explore the power of GitHub Actions in automating CI/CD builds. Specifically, we will focus on leveraging GitHub Actions to automate Docker builds and facilitate seamless deployments to DockerHub. Join us as we construct an automated CI/CD pipeline using GitHub Actions and DockerHub.
 
@@ -449,6 +449,6 @@ This article has shown you how to create an automated CI/CD build with GitHub an
 - How to create and deploy an application from GitHub Actions
 - How to automatically build and push a Docker image DockerHub with GitHub action.
 
-The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app). And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
+The code used in this tutorial can be found in this [GitHub repository](https://github.com/Rose-stack/node_app). And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://cloud.earthly.dev/login). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
 
 {% include_html cta/gha-cta1.html %}

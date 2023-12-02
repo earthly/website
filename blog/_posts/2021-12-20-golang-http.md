@@ -14,7 +14,7 @@ excerpt: |
     Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
 last_modified_at: 2023-09-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can streamline your Golang build process, making your HTTP server projects a breeze. [Give it a go](/).**
+**This article explains Golang JSON services. Earthly simplifies the build and test processes for Go web services. [Learn more](https://cloud.earthly.dev/login).**
 
 If you want to build a simple JSON HTTP web service that runs natively on a Linux server, then Golang is a great choice. At least this is what I've been told, my coworkers are big fans and report having a small memory footprint, a shallow learning curve, and an excellent standard library.
 
@@ -176,7 +176,7 @@ curl -X POST -s localhost:8080 | rg -q "post"
 echo "Success"
 ~~~
 
-And I can also use [Earthly](https://earthly.dev/) to write a small build script that puts this service into a container and tests it's endpoints. Doing so may seem like overkill, but I'm going to build on this test case as we go.
+And I can also use [Earthly](https://cloud.earthly.dev/login) to write a small build script that puts this service into a container and tests it's endpoints. Doing so may seem like overkill, but I'm going to build on this test case as we go.
 
 ~~~{.dockerfile caption="Earthfile"}
 test:
@@ -499,7 +499,7 @@ I hit a number of errors building this. If you hit them, here are the solutions.
 
 Next up, I'm building a command-line client for this service to make it more user-friendly. I've got other features brewing in my mind, but I'll save that for later. Tossed around a few other improvements like using `gojsonschema` for better JSON validation and `net/http/httptest` for testing.
 
-Speaking of Golang projects, you might want to check out [Earthly](https://www.earthly.dev/) for efficient, reproducible builds. It could be a valuable tool to streamline your development process.
+Speaking of Golang projects, you might want to check out [Earthly]((https://cloud.earthly.dev/login)) for efficient, reproducible builds. It could be a valuable tool to streamline your development process.
 
 If you want to be notified about the next installment, sign up for the newsletter:
 

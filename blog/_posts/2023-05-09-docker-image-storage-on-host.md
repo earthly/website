@@ -15,7 +15,7 @@ excerpt: |
     Learn how Docker images are stored on the host machine and gain a deeper understanding of Docker image management. Discover the internals of Docker images, including layers, DiffIDs, and ChainIDs, and explore the storage drivers used by Docker.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Do a lot with Docker images? Earthly could simplify the process for you. [Give it a try](/).**
+**This article explains how to create Docker images. Earthly optimizes the build process for Docker images, ensuring reproducibility and cache efficiency. Learn more about Earthly.**
 
 Developers and system administrators can create, deploy, and run distributed applications using the Docker platform. Docker containers, which offer a constant and isolated environment for applications to execute in, are running instances of [Docker](/blog/rails-with-docker) images. They [make](/blog/makefiles-on-windows) it simple to maintain, scale, and guarantee that applications function reliably across many contexts.
 
@@ -397,6 +397,6 @@ In summary, understanding how Docker images are stored on the host machine is cr
 
 With this in-depth understanding of how [Docker](/blog/rails-with-docker) images are saved on the host machines, developers can better manage their Docker environments and resolve any problems that may arise. Further, developers may enhance their Docker processes and fully utilize the strength and adaptability of Docker containerization.
 
-And if you're looking to further boost your Docker workflows, you might want to give [Earthly](https://www.earthly.dev/) a shot. It offers simpler, more reliable builds, enhancing your productivity and efficiency in managing containerized environments.
+And if you're looking to further boost your Docker workflows, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a shot. It offers simpler, more reliable builds, enhancing your productivity and efficiency in managing containerized environments.
 
 {% include_html cta/bottom-cta.html %}

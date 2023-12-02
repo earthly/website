@@ -15,8 +15,7 @@ excerpt: |
     Learn how to manipulate strings in bash with this informative tutorial. From concatenating strings to replacing parts of a string, you'll discover useful techniques for working with text in bash scripts.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about bash – which has its quirks but is a tool we find ourselves often reaching for. If you are looking for an open-source tool to improve how you build software, then [check us out](/).**
+**This article explains bash string manipulation techniques. If you find yourself working with bash in CI pipelines, you might like Earthly. Earthly containerizes your build to make it more consistent and speeds it up. [Check it out](https://cloud.earthly.dev/login).**
 
 <div class="narrow-code">
 One thing that bash is excellent at is manipulating strings of text. If you're at the command line or writing a small script, then knowing some bash string idioms can be a lot of help.
@@ -510,7 +509,7 @@ Bash regular expressions have some limitations but sed, grep, and [`awk`](/blog/
 
 I hope this overview of string manipulation in bash gave you enough details to cover most of your use cases.
 
-Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://earthly.dev/). It's a great tool for creating repeatable builds in a approachable syntax.
+Also, if you're the type of person who's not afraid to solve problems in bash then take a look at [Earthly](https://cloud.earthly.dev/login). It's a great tool for creating repeatable builds in a approachable syntax.
 
 {% include_html cta/bottom-cta.html %}
 

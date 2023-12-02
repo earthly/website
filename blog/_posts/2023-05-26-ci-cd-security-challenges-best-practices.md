@@ -15,7 +15,7 @@ excerpt: |
     Learn about the challenges and best practices for securing your CI/CD pipeline in this informative article. Discover how to mitigate security risks and ensure the reliability and integrity of your software development and deployment process.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an ideal tool for boosting the security and efficiency of your CI/CD pipelines. [Check it out](/).**
+**This article outlines top CI/CD security practices. Earthly secures these practices with its containerized builds, adding an extra layer of protection for teams. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 In today's fast-paced world of software development, speed, and agility are important to stay ahead of the competition. Continuous Integration and Continuous Deployment (CI/CD) have emerged as the go-to methodologies to achieve this goal. CI/CD is a practice that allows developers to continuously integrate and deploy their code changes into production, enabling them to rapidly deliver features and updates to their users.
 
@@ -404,6 +404,6 @@ Best practices to tackle these issues include securing the CI/CD pipeline and th
 
 Using security tools and technologies like static code analysis, DAST, and IAST can also enhance CI/CD security. Factors such as integration with the pipeline, user-friendliness, and scalability should be considered when choosing these tools.
 
-In essence, prioritizing CI/CD security and using the right practices and tools can mitigate risks and enhance software quality. And if you're looking for a build automation tool that aligns well with your secure CI/CD practices, you might want to give [Earthly](https://www.earthly.dev/) a look!
+In essence, prioritizing CI/CD security and using the right practices and tools can mitigate risks and enhance software quality. And if you're looking for a build automation tool that aligns well with your secure CI/CD practices, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a look!
 
 {% include_html cta/bottom-cta.html %}

@@ -11,7 +11,7 @@ excerpt: |
     In this article, we explore the differences between Python data classes and named tuples. We discuss their features, such as immutability, default values, type hints, comparison, memory efficiency, and maintainability. Whether you're a beginner or an experienced Python developer, understanding these differences can help you make informed decisions when choosing between data classes and named tuples for your projects.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building Python software simpler and faster using containerization. It's perfect for complex Python projects. [Check it out](/).**
+**This article explains Python data structures. Earthly enhances Python builds by combining the simplicity of docker with greater flexibility. [Check it out](https://cloud.earthly.dev/login).**
 
 [Data classes](/blog/python-data-classes), introduced in Python 3.7, provide a convenient way to define classes that are a collection of fields. But for such use cases, named tuples, built into the collections module in the Python standard library, are good choices too. Named tuples have been around since Python 2.6, and several features have been added in the recent Python 3.x releases.
 
@@ -556,4 +556,4 @@ Let's wrap up our discussion by summarizing the key differences between data cla
 
 In this post, we dove into data classes and named tuples in Python, comparing their features like immutability and memory usage. These tools are handy for structured data, but don't forget about third-party packages like [Pydantic](https://docs.pydantic.dev/latest/) and [attrs](https://pypi.org/project/attrs/) too. They can automate some best practices, so feel free to explore and use them in your projects.
 
-Speaking of automation, if you're looking to streamline your coding process even further, don't stop at Python. Try out [Earthly](https://www.earthly.dev/) for build automation. This tool can be a game-changer in managing your builds and ensuring consistency across different environments.
+Speaking of automation, if you're looking to streamline your coding process even further, don't stop at Python. Try out [Earthly]((https://cloud.earthly.dev/login)) for build automation. This tool can be a game-changer in managing your builds and ensuring consistency across different environments.

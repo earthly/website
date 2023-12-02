@@ -10,7 +10,7 @@ excerpt: |
     Learn how to set up multi-factor authentication and generate time-based one-time passwords programmatically using MFA secret keys. Discover different methods for securely storing and retrieving MFA keys, including using LastPass, 1Password, Earthly secrets, or even your YubiKey.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly is perfect for automating your build processes and ensuring reliable builds. [Check it out](/).**
+**This article explains the complexities of implementing Multi-Factor Authentication (MFA) for Amazon Web Services (AWS). Earthly simplifies Continuous Integration (CI) builds for AWS users who require MFA. [Learn how](https://cloud.earthly.dev/login).**
 
 "You need to setup multi-factor authentication."
 

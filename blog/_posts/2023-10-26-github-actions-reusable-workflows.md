@@ -14,7 +14,7 @@ last_modified_at: 2023-10-20
 excerpt: |
     Reusable workflows in GitHub Actions are predefined templates that allow developers to quickly scaffold processes and accelerate software delivery. Best practices for using reusable workflows include parameterizing workflows, documenting them, using composite actions, considering a dedicated workflows repository, versioning workflows, testing them, following naming conventions, considering platform compatibility, and continuously improving and refining workflows based on user feedback.
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with our containerization tool. If you're into streamlining your CI workflows with GitHub Actions, Earthly can take it to the next level. [Check us out](/).**
+**This article examines the benefits of GitHub's reusable workflows. Earthly enhances GitHub Actions with its reproducible and parallel builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 GitHub Actions [reusable workflows](https://docs.github.com/en/actions/using-workflows/reusing-workflows) are particularly helpful in modern software projects. Reusable workflows act as blueprints for CI/CD pipelines, allowing developers to quickly scaffold processes and accelerate their software delivery significantly.
 
@@ -203,6 +203,6 @@ Encourage feedback from users of your reusable workflows and iterate on them bas
 
 Reusable workflows make it convenient to isolate reusable logic from your CI/CD pipelines and reuse them across multiple repositories and pipelines. However, they can get quite tricky to track and manage if you aren't careful with them.
 
-If writing pipelines in this way is starting to seem cumbersome, then take a look at [Earthly](/). It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
+If writing pipelines in this way is starting to seem cumbersome, then take a look at [Earthly](https://cloud.earthly.dev/login). It can be used within GitHub Actions to over encapsulation and a way to organize more complex builds.
 
 {% include_html cta/bottom-cta.html %}

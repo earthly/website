@@ -16,7 +16,7 @@ excerpt: |
     Learn how to automate your data pipelines and workflows using Apache Airflow. This powerful open-source platform simplifies task scheduling, monitoring, and collaboration, making it a must-have tool for data engineers.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that can automate and streamline data engineering CI processes. [Check it out](/).**
+**This article provides an overview of Apache Airflow. Earthly simplifies the build process for complex data processing tasks, benefiting Airflow users. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Are you seeking a powerful, user-friendly platform to manage your data workflows? If so, Apache Airflow might be just what you need. Apache Airflow is a powerful, open-source platform for managing complex data workflows and machine learning tasks. Its Python-based architecture seamlessly integrates with other Python tools and its web-based interface simplifies monitoring and managing workflows. With features like task dependency management and retries, Airflow streamlines workflow management to improve efficiency for teams of any size.
 
@@ -488,6 +488,6 @@ The three download tasks can be executed in parallel since they don't have any d
 
 This article dove into the nitty-gritty of Apache Airflow, its strengths, and how to effectively install, configure, and write DAG code for it. We also explored some best practices for its use. Future upgrades might lead to better cloud integration, improved data streaming support, and cooler visualization & monitoring features. Airflow's versatility makes it a superb tool - and it's just going to keep getting better!
 
-As you continue to explore tools to streamline your data engineering processes, you might also be interested in [Earthly](https://www.earthly.dev/). It's an open-source build automation tool that could be a great addition to your toolkit, especially if you're looking to further optimize your build.
+As you continue to explore tools to streamline your data engineering processes, you might also be interested in [Earthly]((https://cloud.earthly.dev/login)). It's an open-source build automation tool that could be a great addition to your toolkit, especially if you're looking to further optimize your build.
 
 {% include_html cta/bottom-cta.html %}

@@ -14,7 +14,7 @@ excerpt: |
     Learn about the different monorepo build tools available, including Bazel, Pants, Nx, and Earthly. Discover their features, programming language support, learning curves, remote caching and execution capabilities, build introspection abilities, and versatility. Find the right tool for your organization's monorepo needs.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/) and this article is about Monorepo build tools. Earthly is particularly useful if you're working with a Monorepo. [check us out](/).**
+**The article examines monorepo build tools, highlighting Pants for Python. Earthly supports multiple languages, potentially simplifying your build process. [Check it out](https://cloud.earthly.dev/login).**
 
 <!-- markdownlint-disable-file MD001 -->
 <!-- vale HouseStyle.OxfordComma = NO -->
@@ -271,7 +271,7 @@ If your organization is Google-like – in terms of language use, workflow, and 
 
 If your monorepo is a frontend web dev monorepo, mainly full of JavaScript and Typescript, then Bazel is often a significant change, and Pants isn't ready for you. For those reasons and because of its popularity among front-end devs, NX is a great choice.
 
-If you are working with containerized microservices, or if your software has system-level dependencies, or if you'd like to use your language's existing build tools or need to do something a bit non-standard, then [Earthly](/), with its containerized glue layer approach, can be a great choice to build in an efficient and reproducible way.
+If you are working with containerized microservices, or if your software has system-level dependencies, or if you'd like to use your language's existing build tools or need to do something a bit non-standard, then [Earthly](https://cloud.earthly.dev/login), with its containerized glue layer approach, can be a great choice to build in an efficient and reproducible way.
 
 (Also, you can combine many of these tools together. Earlier I mentioned NX backed by Bazel, but Bazel inside of Earthly and Pants inside of Earthly has also been done. The only real way to find out what tool will work best for your specific use case is to give it a try with a small proof of concept.)
 

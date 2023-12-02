@@ -11,7 +11,7 @@ excerpt: |
     Looking for alternatives to Travis CI? Check out this article that explores the ten best alternatives, including CircleCI, Jenkins, Bitrise, and more. Find the perfect CI tool for your project and improve your build process.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about exploring Travis CI alternatives. Since the original date of publication we have released our own CI. [Check it out](/).**
+**This article examines alternatives to Travis CI. Earthly provides reproducible and parallel builds that can transform your CI pipeline. [Learn more](https://cloud.earthly.dev/login).**
 
 Travis CI is one of the best known continuous integration (CI) tools on the market. It was founded in 2011 to automate builds and tests for Ruby, but now supports over thirty languages including JavaScript, Python, and Java.
 
@@ -155,7 +155,7 @@ GitHub Actions is a cloud-based CI tool that integrates natively with GitHub and
 - **Resilience:** It uses YAML files and its build configuration is similar to that of CircleCI. It offers builds on all popular OSs and containers.
 - **Compatibility:** This might be the most limited option, because it can be used only with GitHub and its plugins and extensions are maintained by the community.
 
-### [Earthly](https://earthly.dev/)
+### [Earthly](https://cloud.earthly.dev/login)
 
 ![Earthly]({{site.images}}{{page.slug}}/aXSTkjI.jpeg)\
 

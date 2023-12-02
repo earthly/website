@@ -13,7 +13,7 @@ excerpt: |
     Learn how to securely manage secrets in Docker with Docker secrets. This article explains the benefits of using Docker secrets and provides a step-by-step guide on setting up Docker Swarm and leveraging Docker secrets in your development workflow.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about Docker and how to manage secrets. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+**This article discusses managing Docker secrets. Earthly significantly improves CI pipelines for Docker Swarm users. [Check it out](https://cloud.earthly.dev/login/).**
 
 Even if you've used [Docker](https://www.docker.com/) for your smaller or locally developed software, you might find that it can be daunting for more complex tasks. This can especially be true for secrets management and sharing—areas often overlooked when working with containerized applications.
 
@@ -214,7 +214,7 @@ You should now be familiar with some of the most common mistakes developers make
 
 Another way to avoid these mistakes is to use secrets management with Docker. Sensitive data is always immutable, never written to disk, and never sent in clear-text format over the network. If you plan to leverage Docker Swarm in production, you should also use Docker secrets for local development.
 
-To further expand on the possibilities of your Docker containers, try [Earthly](https://earthly.dev/). The free, open-source build automation tool helps you more easily create and reuse complex container builds. You can also use it to build Dockerfiles. Earthly runs on top of your continuous integration system to improve your workflow.
+To further expand on the possibilities of your Docker containers, try [Earthly](https://cloud.earthly.dev/login). The free, open-source build automation tool helps you more easily create and reuse complex container builds. You can also use it to build Dockerfiles. Earthly runs on top of your continuous integration system to improve your workflow.
 
 For more information, check the [Earthly Documentation](https://docs.earthly.dev/).
 

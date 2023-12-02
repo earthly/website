@@ -12,7 +12,7 @@ excerpt: |
     In this tutorial, you'll learn about Python data classes and how they provide a convenient way to define and manage data-oriented classes. You'll explore the basics of data classes, their differences from regular classes, and how they support type hints, default values, immutability, and more. If you're interested in simplifying your data-oriented classes and improving your Python code, this tutorial is for you!
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. Earthly can help manage and automate your Python project's build process. [Check it out](/).**
+**This article explores Python data classes. Earthly streamlines the build process for Python developers, whether they are using data classes or not. [Learn more](https://cloud.earthly.dev/login).**
 
 In Python, classes let you group data and behavior together by defining attributes and methods, respectively. Typically, a class contains both attributes and a set of methods that add functionality. **But what if you have a class that stores a lot of attributes with almost no functionality?** Do you still need to use regular classes, or is there a better alternative?
 
@@ -722,6 +722,6 @@ This tutorial provided insights into Python data classes, including their creati
 
 The [next piece](/blog/more-on-python-data-classes/) expands on inheritance and performance optimizations in Python 3.10. Keep coding!
 
-If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly](https://www.earthly.dev/). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
+If you enjoyed streamlining your Python classes, you might want to streamline your builds next - check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can help you automate and optimize your build processes, much like how data classes can optimize your Python code.
 
 {% include_html cta/bottom-cta.html %}

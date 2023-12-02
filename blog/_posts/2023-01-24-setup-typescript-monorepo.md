@@ -17,8 +17,7 @@ excerpt: |
     Learn how to set up a TypeScript monorepo using npm workspaces. This tutorial covers the benefits of monorepos, how to define local packages, and how to use them within your monorepo.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
+**The article discusses the advantages of a monorepo approach. Earthly streamlines the build process and guarantees uniformity in builds across multiple projects. [Check it out](https://cloud.earthly.dev/login).**
 
 In recent years, monorepos have become a trending topic in the IT community. When using a monorepo, an organization stores all its projects in the same repo. Monorepos are particularly popular among web developers, since most of their projects use JavaScript or TypeScript and rely on the same npm dependencies.
 
@@ -528,6 +527,6 @@ Congratulations! You just learned how to set up a TypeScript monorepo based on n
 
 As you know, a monorepo consists of several applications, with each application relying on many packages that may depend on each other. So to ensure that you can correctly deploy an application that's part of a monorepo, it's essential to build and deploy each package in the right order. Therefore, you need to define a monorepo pipeline.
 
-[Earthly](https://earthly.dev/) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as [Jenkins](/blog/slow-performance-in-jenkins), [CircleCI](/blog/continuous-integration), GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
+[Earthly](https://cloud.earthly.dev/login) can help you with that. It's a build automation tool that enables you to run all your builds in containers. Earthly runs on top of the most popular CI systems, such as [Jenkins](/blog/slow-performance-in-jenkins), [CircleCI](/blog/continuous-integration), GitHub Actions, and AWS CodeBuild, and you can easily adopt it to set up your monorepo pipeline.
 
 {% include_html cta/bottom-cta.html %}

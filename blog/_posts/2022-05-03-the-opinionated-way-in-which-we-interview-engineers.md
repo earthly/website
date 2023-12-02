@@ -10,7 +10,7 @@ excerpt: |
     In this article, the author shares their opinionated approach to interviewing engineers. They discuss the importance of problem-solving skills, the need for a "spark" in candidates, and the significance of culture fit. The article also provides insights into their specific interviewing process and offers tips for improving your own.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. As an engineer, using Earthly can help you optimize your build process and manage complex software projects more efficiently. [Check us out](/).**
+**The article provides strategies for conducting effective engineering interviews. Earthly's caching mechanisms significantly improve build processes for engineering managers. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Interviewing engineers is an impossible task. You have to use a few hours to figure out if a person will be a good employee for several years to come. No process will ever be perfect and the various approaches out there each come with their pros and cons.
 
@@ -18,7 +18,7 @@ I always found an interesting correlation between the interviewing standards and
 
 I've heard some people complain about "the whiteboard interview" as being outdated (which, I agree in many ways, it is). However, replacing that with just a chat about previous experience + behavioral questions alone is far worse: you can learn some things about a person's personality, but you won't know jack about how they will perform as an engineer.
 
-Across my career so far I've worked in both big and small companies, across industries ranging from Telco (EE - TMobile & Orange in UK), to Cloud infrastructure (RabbitMQ), to Virtualization (VMware), to Ads and Search (Google), and finally to founding two of my own companies in Security ([ShiftLeft](https://shiftleft.io)) and Developer Tooling ([Earthly](https://earthly.dev)). I have been interviewed ~20 times throughout my career and have interviewed others hundreds of times.
+Across my career so far I've worked in both big and small companies, across industries ranging from Telco (EE - TMobile & Orange in UK), to Cloud infrastructure (RabbitMQ), to Virtualization (VMware), to Ads and Search (Google), and finally to founding two of my own companies in Security ([ShiftLeft](https://shiftleft.io)) and Developer Tooling ([Earthly](https://cloud.earthly.dev/login)). I have been interviewed ~20 times throughout my career and have interviewed others hundreds of times.
 
 There are many facets of a "good interviewing process". What is important to you will vary greatly depending on the company culture and the vertical that your business is addressing. Here is a non-exhaustive list of things to measure:
 

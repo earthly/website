@@ -15,7 +15,7 @@ excerpt: |
     This tutorial explains how to use Pants, a monorepo tool, to build, configure, and manage a Python monorepo. It covers setting up the project, defining the backend and creating the necessary BUILD files, running tests, linting and formatting the code, and packaging and running the application.
 last_modified_at: 2023-10-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Just like Pants, Earthly is a powerful tool for managing monorepo builds. [Check it out](/).**
+**This article explains the Pants build system for managing Python monorepos. Earthly streamlines build processes using its declarative Earthfile syntax. It works great with Python and excels at building monorepos. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 If your application comprises multiple projects, you can choose between two approaches: storing each project in its own code repository or storing all the projects in one repository. This single repository in the second approach is known as a monorepo. A monorepo is a version control system that holds multiple projects in one repository. A monorepo has advantages, such as easier code reuse and dependency management. However, it also has some disadvantages, such as security challenges with access control and the need for a tool to handle builds efficiently.
 
@@ -32,7 +32,7 @@ However, monorepos also have some drawbacks, such as limited access control for 
 You can overcome these drawbacks by using a tool designed to handle monorepos. Some popular tools for monorepo management include the following:
 
 * **Nx:** [Nx](https://nx.dev/) is a monorepo tool that was developed by [Nrwl](https://github.com/nrwl). It supports not only JavaScript and Angular but also languages such as Go and Rust.
-* **Earthly:** [Earthly](https://earthly.dev/) is an open source monorepo tool. It uses [BuildKit](https://github.com/earthly/buildkit) to create sandbox environments and provides an easy transition from inherent build tools as it has a syntax similar to that of Dockerfiles.
+* **Earthly:** [Earthly](https://cloud.earthly.dev/login) is an open source monorepo tool. It uses [BuildKit](https://github.com/earthly/buildkit) to create sandbox environments and provides an easy transition from inherent build tools as it has a syntax similar to that of Dockerfiles.
 * **Bazel:** [Bazel](https://bazel.build/) is a monorepo tool from Google, which is designed to be fast and scalable. Bazel is a powerful tool that supports many languages, including C++, Java, and Objective-C.
 * **Pants:** Pants is a monorepo tool that uses a structure similar to Bazel. Pants is popular with large organizations that find Bazel challenging for development workflows.
 
@@ -665,6 +665,6 @@ In this article, you learned about monorepos, their advantages and disadvantages
 
 You can find the demo solution [in the `solution` branch of this GitHub repository](https://github.com/SystemCraftsman/pants-python-monorepo-demo/tree/solution).
 
-Finally, If you have a monorepo the extends beyond python, using languages like go or Rust that Pants supports less well, then you should take a look at [Earthly](/). It's open source and works with your existing build tools.
+Finally, If you have a monorepo the extends beyond python, using languages like go or Rust that Pants supports less well, then you should take a look at [Earthly](https://cloud.earthly.dev/login). It's open source and works with your existing build tools.
 
 {% include_html cta/bottom-cta.html %}

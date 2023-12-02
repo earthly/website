@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Docker volumes to persist data outside of containers and easily share data between containers. This tutorial covers the basics of Docker volumes, including how to create and manage them, mount them to containers, and configure them using Docker Compose. If you're looking to improve your containerization workflow and make your builds self-contained and portable, check out Earthly, a build automation tool mentioned in the article.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about container volume management. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+**This article discusses Docker volumes management. Managing complex Docker builds, Earthly's caching and parallelization save time. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [Docker](https://www.docker.com/) is a common containerization solution that offers a user-friendly interface. It allows you to deploy your application as a lightweight process set rather than a complete virtual machine.
 
@@ -289,6 +289,6 @@ Often, you want your containers to use or persist data beyond the scope of the c
 
 In this guide, you looked at how volumes work with Docker, what they do, and where volumes are the preferred solution.
 
-Docker plays an important role in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://earthly.dev/). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
+Docker plays an important role in the DevOps ecosystem, so if you want to improve your continuous integration process, consider [Earthly](https://cloud.earthly.dev/login). Earthly is a build automation tool that allows you to build anything via containers, making your builds self-contained, repeatable, portable, and parallel.
 
 {% include_html cta/bottom-cta.html %}

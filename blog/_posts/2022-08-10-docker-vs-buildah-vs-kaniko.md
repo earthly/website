@@ -15,7 +15,7 @@ excerpt: |
     This article compares three popular container image build tools: Docker, Buildah, and kaniko. It explores their features, compatibility, and community support, helping readers make an informed decision about which tool is right for their needs. Whether you're new to containerization or looking for alternatives to Docker, this article provides valuable insights into the world of container image building.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about several different ways to build containers. If you're interested in a [simple way to build containers](/blog/docker-multistage) then [check us out](/).**
+**This article explores container image tools. Earthly significantly speeds up builds with its advanced caching system while maintaining familiar container workflows. [Check it out](https://cloud.earthly.dev/login).**
 
 When you first start learning about containerization, you're probably going to use [Docker](https://www.docker.com). Docker wasn't the first tool to introduce the world to containerization; however, it's definitely the most popular. As you familiarize yourself with Docker and containerization in general, you may begin to run into use cases where Docker isn't the ideal tool.
 
@@ -120,6 +120,6 @@ kaniko was built by Google, but they mention very clearly at the top of the [Git
 
 As you can see, Docker, Buildah, and kaniko are great options for choosing a container image build tool. Docker is the de facto tool chosen by the industry mainly because it's been around for many more years than the two other alternatives. Buildah is great if you just want an alternative to Docker that can build from the same files and produce the same images. kaniko is likely the best choice if you want to build your images inside of Kubernetes.
 
-No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://earthly.dev/), a tool to help you create idempotent CI/CD runs.
+No matter the tool you choose to build your images, it's important that the applications inside them get deployed properly. For this, you can check out [Earthly](https://cloud.earthly.dev/login), a tool to help you create idempotent CI/CD runs.
 
 {% include_html cta/bottom-cta.html %}

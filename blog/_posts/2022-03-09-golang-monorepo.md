@@ -16,8 +16,7 @@ excerpt: |
     Learn how to successfully build a monorepo in Go, where each module independently manages its own build, test, and release cycles. Discover the benefits of using a monorepo and how to import local Go modules. Plus, explore efficient caching and versioning strategies for monorepo builds.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article discusses some of the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
+**This article discusses the management of Go monorepos. Earthly simplifies the build process for each module within a monorepo. [Check it out](https://cloud.earthly.dev/login/).**
 
 <!-- markdownlint-disable MD036 -->
 A repository in Go traditionally contains a single Go Module, which lends naturally to a polyrepo setup – but
@@ -205,7 +204,7 @@ Now that we have our monorepo running locally, the next step might be to configu
 the microservices, run unit tests, end-to-end integration tests, and any other typical steps we might want as part of
 a Continuous Integration pipeline.
 
-[Earthly](https://earthly.dev/) is a great tool for this job. It allows each service or library to independently manage
+[Earthly](https://cloud.earthly.dev/login) is a great tool for this job. It allows each service or library to independently manage
 its own build and test cycles. It can also effectively utilize cache so that only the services or libraries
 which have changed will re-trigger their build.
 
@@ -352,6 +351,6 @@ Continuous Integration more efficient.
 You can find the full working monorepo covered in this article in the official
 [Earthly examples collection](https://github.com/earthly/earthly/tree/main/examples/go-monorepo).
 
-For more on using Earthly to improve Go builds checkout [Earthly.dev](https://earthly.dev/):
+For more on using Earthly to improve Go builds checkout [Earthly.dev](https://cloud.earthly.dev/login):
 
 {% include_html cta/bottom-cta.html %}

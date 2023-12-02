@@ -12,7 +12,7 @@ excerpt: |
     Learn how to simplify complex deployments with Octopus Deploy, a continuous deployment platform that automates releases, manages deployments, and handles routine procedures. Discover the benefits of using Octopus Deploy and follow step-by-step instructions to set it up and connect it to your application.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly complements tools like Octopus Deploy, enhancing the building phase of your CI pipeline. [Check it out](/).**
+**This guide provides instructions for setting up Octopus Deploy. Earthly ensures reproducible builds in your CI pipeline. [Check it out](https://cloud.earthly.dev/login).**
 
 Deployment is an integral part of the software development life cycle. It is the process where the application's codebase is compiled, run through a series of tests (such as unit, integration, and build tests), and then deployed to different environments (such as development, staging, or production). To speed up the process of deployments and ensure deployment reliability during software development, developers introduced the concept of automated deployment or continuous deployment (CD).
 
@@ -244,6 +244,6 @@ Click on the **Save** button to save your deployment process steps. Now you have
 
 In this article, you have learned that Octopus Deploy can provide tremendous benefits when integrated into your software development life cycles. It eases the workload in managing deployment to multiple servers and allows your team to focus on other important things.
 
-If you want to take your continuous integration pipeline to the next level, consider a tool like [Earthly](https://earthly.dev). [Earthly](https://earthly.dev) allows you to execute your builds in containers, thereby making them self-contained, portable, and repeatable. Earthly can be easily used instead of, or in conjunction with, Octopus. And Earthly's caching and parallel mechanisms make your builds repeatable and fast.
+If you want to take your continuous integration pipeline to the next level, consider a tool like [Earthly](https://cloud.earthly.dev/login). [Earthly](https://cloud.earthly.dev/login) allows you to execute your builds in containers, thereby making them self-contained, portable, and repeatable. Earthly can be easily used instead of, or in conjunction with, Octopus. And Earthly's caching and parallel mechanisms make your builds repeatable and fast.
 
 {% include_html cta/bottom-cta.html %}

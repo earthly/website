@@ -16,7 +16,7 @@ excerpt: |
     In this article, the author compares two popular GitOps tools, Flux and Argo CD. They discuss various aspects such as reconciliation, source tracking, configuration, Helm support, scaling out, permissions and access control, and more. The article provides insights into the similarities and differences between the two tools, helping readers make an informed decision based on their specific needs.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We streamline building software using containers - perfect for using alongside GitOps tools like Flux and Argo CD. It's all about simplifying your CI/CD process. [Give it a look](/).**
+**The article compares Flux and Argo CD. Earthly enhances CI/CD security with isolated build environments, unlike Argo CD. [Check it out](https://cloud.earthly.dev/login).**
 
 Since February we have been working on adopting Kubernetes and cloud-native technologies for our cell simulation platform at [Turbine.ai](https://turbine.ai).
 Part of my job entailed figuring out how to onboard developers who didn't practice DevOps before.
@@ -355,7 +355,7 @@ can use conventional tooling (such as kustomize overlays) to [generate GitOps ma
 
 In this article, we explored GitOps frameworks, focusing mainly on core capabilities, leaving out features like multi-tenancy, RBAC, notifications, image automation, etc. We found that Argo CD and Flux are comparably efficient, with each having its pros and cons. After careful deliberation, at Turbine.ai we chose Flux due to its superior support for OTS Helm charts and operational simplicity.
 
-Also as you prioritize your organization's specific needs when choosing between these platforms, you might also want to consider supercharging your build automation. If that's the case, give [Earthly](https://www.earthly.dev/) a try!
+Also as you prioritize your organization's specific needs when choosing between these platforms, you might also want to consider supercharging your build automation. If that's the case, give [Earthly]((https://cloud.earthly.dev/login)) a try!
 
 It could be a valuable addition to your GitOps practices.
 

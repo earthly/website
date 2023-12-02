@@ -10,7 +10,7 @@ excerpt: |
     Looking for alternatives to Docker? This article explores various container and non-container tools that can help you deploy software faster and more securely. From Podman to Kubernetes, discover the pros and cons of each option and find the right tool for your team.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). Into exploring Docker alternatives? We're an open-source build tool that simplifies the software building process and works great with Docker, Podman and other container platforms. [Check us out](/).**
+**This article discusses alternatives to Docker. Earthly's containerized builds extend Docker workflows without directly managing Dockerfiles. [Check it out](https://cloud.earthly.dev/login).**
 
 [Docker](https://www.docker.com/) sits proudly atop its niche, with an estimated [83 percent of the container software market](https://www.slintel.com/tech/containerization/docker-market-share). Development teams use it to make deploying software faster and securer. Its easy-to-use containerization means you can get deployments up and running without stressing over configuration or dependencies.
 
@@ -162,6 +162,6 @@ The key is to be aware of your project needs. If you're just starting out with c
 
 ![Sample build file for Earthly]({{site.images}}{{page.slug}}/z5Vi47D.png)
 
-If you want to make your build process easier, try [Earthly](https://earthly.dev/). It lets you run repeatable, cached builds and works with all the tools listed above. It's also free and open-source, making it ideal for teams of all sizes and budgets.
+If you want to make your build process easier, try [Earthly](https://cloud.earthly.dev/login). It lets you run repeatable, cached builds and works with all the tools listed above. It's also free and open-source, making it ideal for teams of all sizes and budgets.
 
 {% include_html cta/bottom-cta.html %}
