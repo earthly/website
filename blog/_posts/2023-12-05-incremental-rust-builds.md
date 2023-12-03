@@ -14,9 +14,9 @@ last_modified_at: 2023-09-08
 
 In this post, we present [lib/rust](https://github.com/earthly/lib/tree/main/rust), an open-source [Earthly](https://earthly.dev/) library created in collaboration with the [ExpressVPN](https://github.com/expressvpn) core team, that will help you get maximum performance on Rust builds in CI when used in combination with persistent build runners.
 
-lib/rust leverages the same caching features that make your local Rust builds fast. It is also straightforward to use and keeps your build logic (Earthfiles) clean and readable. You just replace `RUN cargo` with `DO rust+CARGO` and get faster builds.
+`lib/rust` leverages the same caching features that make your local Rust builds fast. It is also straightforward to use and keeps your build logic (Earthfiles) clean and readable. You just replace `RUN cargo` with `DO rust+CARGO` and get faster builds.
 
-**New to Earthly?** Earthly is like a containerized Make that uses Dockerfile syntax. It lets you express the build logic in a readable and familiar way, runs the builds locally or on remote runners, and can be integrated with your CI provider. See the [Earthly docs](https://docs.earthly.dev/) for more info.
+***New to Earthly?** Earthly is like a containerized Make that uses Dockerfile syntax. It lets you express the build logic in a readable and familiar way, runs the builds locally or on remote runners, and can be integrated with your CI provider. See the [Earthly docs](https://docs.earthly.dev/) for more info.*
 
 #### Before
 
@@ -39,19 +39,20 @@ With this change, ExpressVPN saw Cargo build times go from [22.5 minutes](https:
 ## Context
 
 > The Rust programming language was designed for slow compilation times.
-(Brian Anderson, founding member of Rust core team)
+
+-- (Brian Anderson, founding member of Rust core team)
 
 Rust is known for slow compilation times, mainly because it prioritizes runtime performance at the cost of build performance. However, the Rust compiler (rustc) is actually quite advanced, and has been constantly improved over the years[^1]. It uses a very sophisticated incremental compilation and benefits from a modular compilation model.
 
 While incremental compilation is enabled by default, achieving faster compilation times in Rust may not be straightforward. Several well-established techniques[^2] help control build times on developer machines. These include:
 
 - **Modularizing application logic**: Breaking down application logic into multiple crates that avoid long dependency chains. This not only aids in compilation parallelization, but  also reduces cascade compilation, since a crate will be recompiled whenever a dependent one is.
-- U**sing check for quick feedback**: `cargo check` performs a partial compilation that skips the costly step of code generation. It is useful for getting rapid feedback during development, helping catch potential issues early in the coding process.
+- **Using check for quick feedback**: `cargo check` performs a partial compilation that skips the costly step of code generation. It is useful for getting rapid feedback during development, helping catch potential issues early in the coding process.
 - **Mindful use of macros and generics**: Careful consideration of the impact of macros and generics on build times is essential. They may bring costly dependencies into your tree and they may generate a ton of code to be compiled.
 - **Disabling Link-Time Optimization (LTO)**: In certain cases, disabling LTO can expedite compilation, as it avoids the extra time spent on whole-program optimizations. This is at expense of runtime performance though, usually only suited for development binaries.
-- U**sing a faster linker**. While not technically a compiler optimization, using a faster linker is a common and effective way to get faster builds.
+- **Using a faster linker**. While not technically a compiler optimization, using a faster linker is a common and effective way to get faster builds.
 
-In this article, we won't delve into the subject of making local Rust builds fast. We'll assume a Rust project performs well enough on a developer's machine. Instead, our focus will be on achieving a similar level of performance for Rust builds in continuous integration (CI).
+In this article, we won't delve into the subject of making **local** Rust builds fast. We'll assume a Rust project performs well enough on a developer's machine. Instead, our focus will be on achieving a similar level of performance for Rust builds in continuous integration (CI).
 
 ### Cargo Caches
 
@@ -202,10 +203,8 @@ install:
   RUN rustup component add clippy rustfmt
 
 # Call +INIT before copying the source file to avoid installing function depencies every time source code changes
-
 # This parametrization will be used in future calls to functions of the library
-
-  DO rust+INIT --keep_fingerprints=true
+DO rust+INIT --keep_fingerprints=true
 
 source:
   FROM +install
@@ -213,32 +212,27 @@ source:
   COPY --keep-ts --dir package1 package2  ./
 
 # lint runs cargo clippy on the source code
-
 lint:
   FROM +source
   DO rust+CARGO --args="clippy --all-features --all-targets -- -D warnings"
 
 # build builds with the Cargo release profile
-
 build:
   FROM +lint
   DO rust+CARGO --args="build --release" --output="release/[^/\.]+"
   SAVE ARTIFACT ./target/release/ target AS LOCAL artifact/target
 
 # test executes all unit and integration tests via Cargo
-
 test:
   FROM +lint
   DO rust+CARGO --args="test"
 
 # fmt checks whether Rust code is formatted according to style guidelines
-
 fmt:
   FROM +lint
   DO rust+CARGO --args="fmt --check"
 
 # all runs all other targets in parallel
-
 all:
   BUILD +build
   BUILD +test
@@ -317,7 +311,7 @@ Push some commits and see how the build gets cached.
 
 We're excited about what we've been working on and would really love to hear your thoughts on it. Your feedback is worth its weight in gold to us, and would help us improve the technique for everybody!
 
-The lib/rust library is open-source! Feel free to [open an issue](https://github.com/earthly/lib/issues/new?labels=rust) in our [lib](https://github.com/earthly/lib) repo or hop into our [#rust](https://earthly.dev/slack) channel on our community Slack for more in-depth discussions.
+The `lib/rust` library is open-source! Feel free to [open an issue](https://github.com/earthly/lib/issues/new?labels=rust) in our [lib](https://github.com/earthly/lib) repo or hop into our [#rust](https://earthly.dev/slack) channel on our community Slack for more in-depth discussions.
 
 If you have any comparison data with other techniques, that would be the icing on the cake!
 
