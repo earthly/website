@@ -3,7 +3,7 @@ title: "Incremental Rust builds in CI"
 categories:
   - Tutorials
 toc: true
-author: Nacho
+author: Ignacio del Valle Alles
 
 internal-links:
  - rust builds in ci
@@ -202,9 +202,9 @@ install:
   FROM rust:1.73.0-bookworm
   RUN rustup component add clippy rustfmt
 
-# Call +INIT before copying the source file to avoid installing function depencies every time source code changes
-# This parametrization will be used in future calls to functions of the library
-DO rust+INIT --keep_fingerprints=true
+  # Call +INIT before copying the source file to avoid installing function depencies every time source code changes
+  # This parametrization will be used in future calls to functions of the library
+  DO rust+INIT --keep_fingerprints=true
 
 source:
   FROM +install
@@ -294,7 +294,7 @@ jobs:
     runs-on: ubuntu-latest
     env:
       FORCE_COLOR: 1
-      EARTHLY_TOKEN: "${{ secrets.EARTHLY_TOKEN }}"
+      EARTHLY_TOKEN: "{% raw %}${{ secrets.EARTHLY_TOKEN }}{% endraw %}"
     steps:
       - uses: earthly/actions/setup-earthly@v1
       - uses: actions/checkout@v2
