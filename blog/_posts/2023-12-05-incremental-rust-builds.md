@@ -20,14 +20,14 @@ In this post, we present [lib/rust](https://github.com/earthly/lib/tree/main/rus
 
 #### Before
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 lint:
   RUN cargo clippy --all-features --all-targets -- -D warnings
 ~~~
 
 After:
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 IMPORT github.com/earthly/lib/rust AS rust
 
 lint:
@@ -111,7 +111,7 @@ In essence, the runners serve as the cache itself, allowing us to bring the comp
 
 Cache mounts are Buildkit constructs that let you complement layer caching, by allowing the contents of a directory to be reused across multiple builds.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 RUN --mount=type=cache,sharing=shared,target=$CARGO_HOME
 ~~~
 
@@ -130,7 +130,7 @@ Getting cache mounts right is tricky for Rust though. That's why we decided to i
 
 This ensures a smoother collaborative experience, keeping your code readable while seamlessly incorporating enhancements from our end into its implementation.
 
-~~~{.bash caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 IMPORT github.com/earthly/lib/rust AS rust
 
 lint:
@@ -193,7 +193,7 @@ Suppose the following project structure:
 
 The Earthfile would look like:
 
-~~~{ caption=">_"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION --global-cache 0.7
 
 IMPORT github.com/earthly/lib/rust AS rust
