@@ -31,7 +31,7 @@ In addition to its core container runtime functionality, containerd now also inc
 
 Docker [doesn't plan](https://github.com/docker/roadmap/issues/371) to add these features to its own image store. Instead, it's [integrating containerd's store](https://www.docker.com/blog/extending-docker-integration-with-containerd) to provide the functionality without having to increase the code complexity of Docker Engine and Docker Desktop.
 
-## How to Get Started with the containerd Image Store
+## How to Get Started With the `containerd` Image Store
 
 To use these new image store features, you must enable the containerd image store in Docker's settings. Otherwise, Docker's image store will continue to be used until it's removed in an eventual future update. The containerd store is currently *experimental*—some features could be missing, broken, or removed in new releases, so keep this in mind when using the integration.
 
@@ -39,32 +39,32 @@ To use these new image store features, you must enable the containerd image stor
 
 The containerd image store has been available in the standalone Docker Engine for Linux since [the version 24 release](https://docs.docker.com/engine/release-notes/24.0/#2400). To enable it, you must manually edit your Docker daemon config file found at `/etc/docker/daemon.json` (go ahead and create it if it doesn't already exist). Set the `features.containerd-snapshotter` field in the top-level config object to `true`:
 
-```json
+~~~
 {
     "features": {
-   	 "containerd-snapshotter": true
+        "containerd-snapshotter": true
     }
 }
-```
+~~~
 
 Next, restart the Docker daemon to apply the change:
 
-```
+~~~
 $ sudo systemctl restart docker
-```
+~~~
 
 You can verify that the containerd image store is enabled by running the following command:
 
-```
+~~~
 $ docker info -f '{{ .DriverStatus }}'
 [[driver-type io.containerd.snapshotter.v1]]
-```
+~~~
 
 This output confirms that containerd is being used. For reference, the default output without containerd will look like this:
 
-```
+~~~
 [[Backing Filesystem extfs] [Supports d_type true] [Using metacopy false] [Native Overlay Diff true] [userxattr false]]
-```
+~~~
 
 Running `docker images` also lets you verify that the containerd image store is being used. Your image list will be empty after you switch to containerd because your existing images aren't automatically copied into the containerd store. (They still exist on your machine, so you can recover them by disabling the containerd integration.)
 
@@ -72,7 +72,9 @@ Running `docker images` also lets you verify that the containerd image store is 
 
 Docker Desktop added support for the containerd image store in [version 4.12.0](https://docs.docker.com/desktop/release-notes/#4120). To enable it, click the settings cog icon in the desktop app's title bar, then switch to the **Features in development** settings tab using the left sidebar. Select the **Use containerd for pulling and storing images** checkbox, then press the blue **Apply & restart** button:
 
-![Enabling the containerd image store in Docker Desktop](https://i.imgur.com/DrfQCA5.png)
+<div class="wide">
+![Enabling the containerd image store in Docker Desktop]({{site.images}}{{page.slug}}/DrfQCA5.png)
+</div>
 
 Docker Desktop will take several seconds to restart. Once it's running again, you'll see that your existing containers and images have disappeared. This is because Docker is now using the containerd image store, which will be empty until you've added some content.
 
@@ -92,55 +94,55 @@ Now, let's see this in action by creating a simple multiplatform image build.
 
 To build a multiplatform image with Docker and containerd, copy the following code and save it as `Dockerfile` in your working directory:
 
-```
+~~~
 FROM nginx:latest
 
 RUN echo "<h1>Example site</h1><p>This is an example</p>" > /usr/share/nginx/html/index.html'
-```
+~~~
 
 This trivial image builds upon the official Nginx base image to serve a simple web page.
 
 Next, run the following command to build the image for both AMD64 and ARM64 Linux systems, after replacing `<your_docker_hub_username>` with your username:
 
-```
+~~~
 $ docker buildx build --platform linux/arm64,linux/amd64 -t <your_docker_hub_username>/containerd-example:latest .
-[+] Building 41.0s (9/9) FINISHED                                                                                      	docker:default
- => [internal] load build definition from Dockerfile                                                                             	0.1s
- => => transferring dockerfile: 150B                                                                                             	0.1s
- => [linux/amd64 internal] load metadata for docker.io/library/nginx:latest                                                      	4.3s
- => [linux/arm64 internal] load metadata for docker.io/library/nginx:latest                                                      	4.7s
- => [internal] load .dockerignore                                                                                                	0.1s
- => => transferring context: 2B                                                                                                  	0.0s
+[+] Building 41.0s (9/9) FINISHED                                                                                          docker:default
+ => [internal] load build definition from Dockerfile                                                                                 0.1s
+ => => transferring dockerfile: 150B                                                                                                 0.1s
+ => [linux/amd64 internal] load metadata for docker.io/library/nginx:latest                                                          4.3s
+ => [linux/arm64 internal] load metadata for docker.io/library/nginx:latest                                                          4.7s
+ => [internal] load .dockerignore                                                                                                    0.1s
+ => => transferring context: 2B                                                                                                      0.0s
  => [linux/arm64 1/2] FROM docker.io/library/nginx:latest@sha256:add4792d930c25dd2abf2ef9ea79de578097a1c175a16ab25814332fe33622de   26.8s
 ...
  => [linux/amd64 1/2] FROM docker.io/library/nginx:latest@sha256:add4792d930c25dd2abf2ef9ea79de578097a1c175a16ab25814332fe33622de   28.7s
 ...
- => [linux/arm64 2/2] RUN echo "<h1>Example site</h1><p>This is an example</p>" > /usr/share/nginx/html/index.html               	1.9s
- => [linux/amd64 2/2] RUN echo "<h1>Example site</h1><p>This is an example</p>" > /usr/share/nginx/html/index.html               	0.7s
- => exporting to image                                                                                                           	2.0s
+ => [linux/arm64 2/2] RUN echo "<h1>Example site</h1><p>This is an example</p>" > /usr/share/nginx/html/index.html                   1.9s
+ => [linux/amd64 2/2] RUN echo "<h1>Example site</h1><p>This is an example</p>" > /usr/share/nginx/html/index.html                   0.7s
+ => exporting to image                                                                                                               2.0s
 ...
-```
+~~~
 
 The output shows that the `linux/amd64` and `linux/arm64` variants of the base image were pulled. Docker uses your Dockerfile to build a new image for each variant. You'll see the two created variants when you run `docker images`:
 
-```
+~~~
 $ docker images
-REPOSITORY               	TAG   	IMAGE ID   	CREATED      	SIZE
-ilmiont/containerd-example   latest	b6aa383eea99   11 minutes ago   272MB
-ilmiont/containerd-example   latest	b6aa383eea99   11 minutes ago   67.2MB
-```
+REPOSITORY                   TAG       IMAGE ID       CREATED          SIZE
+ilmiont/containerd-example   latest    b6aa383eea99   11 minutes ago   272MB
+ilmiont/containerd-example   latest    b6aa383eea99   11 minutes ago   67.2MB
+~~~
 
 This workflow isn't possible without the containerd integration. If you tried to run the same command using Docker's image store, you'd see the following error message:
 
-```
+~~~
 ERROR: Multiple platforms feature is currently not supported for docker driver.
-```
+~~~
 
 The successful image build demonstrates that containerd was used to pull the base image, build your new image, and store the result on your machine. Now, you can try exporting the image to a local tar archive using `docker save`:
 
-```
+~~~
 $ docker save <your_docker_hub_username>/containerd-example:latest > containerd-example-image.tar
-```
+~~~
 
 This operation should complete successfully without any differences between the Docker-specific and containerd-provided image store implementations.
 
@@ -148,15 +150,17 @@ This operation should complete successfully without any differences between the 
 
 You can now push your image to your Docker Hub account:
 
-```
+~~~
 $ docker push <your_docker_hub_username>/containerd-example:latest
-```
+~~~
 
 You should see the push complete successfully, with both image variants being uploaded to your Docker Hub registry.
 
 You can verify this by logging in to Docker Hub and viewing the pushed image:
 
-![The pushed demo image in the author's Docker Hub account](https://i.imgur.com/d6VrWs0.png)
+<div class="wide">
+![The pushed demo image in the author's Docker Hub account]({{site.images}}{{page.slug}}/d6VrWs0.png)
+</div>
 
 As you can see, using containerd provides a simpler build experience without causing any compatibility issues with familiar Docker commands. You'll also benefit from the behind-the-scenes performance improvements that the containerd image store provides.
 
@@ -180,9 +184,7 @@ For the time being, the containerd image store remains an experimental Docker fe
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
