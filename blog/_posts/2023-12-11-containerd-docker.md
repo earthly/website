@@ -41,7 +41,7 @@ To use these new image store features, you must enable the containerd image stor
 
 The containerd image store has been available in the standalone Docker Engine for Linux since [the version 24 release](https://docs.docker.com/engine/release-notes/24.0/#2400). To enable it, you must manually edit your Docker daemon config file found at `/etc/docker/daemon.json` (go ahead and create it if it doesn't already exist). Set the `features.containerd-snapshotter` field in the top-level config object to `true`:
 
-~~~
+~~~{.json caption="daemon.json"}
 {
     "features": {
         "containerd-snapshotter": true
@@ -51,21 +51,22 @@ The containerd image store has been available in the standalone Docker Engine fo
 
 Next, restart the Docker daemon to apply the change:
 
-~~~
+~~~{.bash caption=">_"}
 $ sudo systemctl restart docker
 ~~~
 
 You can verify that the containerd image store is enabled by running the following command:
 
-~~~
-$ docker info -f '{{ .DriverStatus }}'
+~~~{.bash caption=">_"}
+$ docker info -f '{% raw %}{{ .DriverStatus }}{% endraw %}'
 [[driver-type io.containerd.snapshotter.v1]]
 ~~~
 
 This output confirms that containerd is being used. For reference, the default output without containerd will look like this:
 
-~~~
-[[Backing Filesystem extfs] [Supports d_type true] [Using metacopy false] [Native Overlay Diff true] [userxattr false]]
+~~~{ caption="Output"}
+[[Backing Filesystem extfs] [Supports d_type true] 
+[Using metacopy false] [Native Overlay Diff true] [userxattr false]]
 ~~~
 
 Running `docker images` also lets you verify that the containerd image store is being used. Your image list will be empty after you switch to containerd because your existing images aren't automatically copied into the containerd store. (They still exist on your machine, so you can recover them by disabling the containerd integration.)
@@ -96,24 +97,26 @@ Now, let's see this in action by creating a simple multiplatform image build.
 
 To build a multiplatform image with Docker and containerd, copy the following code and save it as `Dockerfile` in your working directory:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 FROM nginx:latest
 
-RUN echo "<h1>Example site</h1><p>This is an example</p>" > /usr/share/nginx/html/index.html'
+RUN echo "<h1>Example site</h1><p>This is an example</p>" > \
+/usr/share/nginx/html/index.html'
 ~~~
 
 This trivial image builds upon the official Nginx base image to serve a simple web page.
 
 Next, run the following command to build the image for both AMD64 and ARM64 Linux systems, after replacing `<your_docker_hub_username>` with your username:
 
-~~~
+~~~{.bash caption=">_"}
+
 $ docker buildx build --platform linux/arm64,linux/amd64 -t <your_docker_hub_username>/containerd-example:latest .
 [+] Building 41.0s (9/9) FINISHED                                                                                          docker:default
- => [internal] load build definition from Dockerfile                                                                                 0.1s
- => => transferring dockerfile: 150B                                                                                                 0.1s
- => [linux/amd64 internal] load metadata for docker.io/library/nginx:latest                                                          4.3s
- => [linux/arm64 internal] load metadata for docker.io/library/nginx:latest                                                          4.7s
- => [internal] load .dockerignore                                                                                                    0.1s
+ => [internal] load build definition from Dockerfile              0.1s
+ => => transferring dockerfile: 150B                              0.1s
+ => [linux/amd64 internal] load metadata for docker.io/library/nginx:latest     4.3s
+ => [linux/arm64 internal] load metadata for docker.io/library/nginx:latest     4.7s
+ => [internal] load .dockerignore                                 0.1s
  => => transferring context: 2B                                                                                                      0.0s
  => [linux/arm64 1/2] FROM docker.io/library/nginx:latest@sha256:add4792d930c25dd2abf2ef9ea79de578097a1c175a16ab25814332fe33622de   26.8s
 ...
@@ -127,23 +130,25 @@ $ docker buildx build --platform linux/arm64,linux/amd64 -t <your_docker_hub_use
 
 The output shows that the `linux/amd64` and `linux/arm64` variants of the base image were pulled. Docker uses your Dockerfile to build a new image for each variant. You'll see the two created variants when you run `docker images`:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker images
-REPOSITORY                   TAG       IMAGE ID       CREATED          SIZE
-ilmiont/containerd-example   latest    b6aa383eea99   11 minutes ago   272MB
-ilmiont/containerd-example   latest    b6aa383eea99   11 minutes ago   67.2MB
+REPOSITORY                   TAG      IMAGE ID       CREATED          SIZE
+ilmiont/containerd-example   latest   b6aa383eea99   11 minutes ago   272MB
+ilmiont/containerd-example   latest   b6aa383eea99   11 minutes ago   67.2MB
 ~~~
 
 This workflow isn't possible without the containerd integration. If you tried to run the same command using Docker's image store, you'd see the following error message:
 
-~~~
-ERROR: Multiple platforms feature is currently not supported for docker driver.
+~~~{ caption="Output"}
+ERROR: Multiple platforms feature is currently not supported for 
+docker driver.
 ~~~
 
 The successful image build demonstrates that containerd was used to pull the base image, build your new image, and store the result on your machine. Now, you can try exporting the image to a local tar archive using `docker save`:
 
-~~~
-$ docker save <your_docker_hub_username>/containerd-example:latest > containerd-example-image.tar
+~~~{.bash caption=">_"}
+$ docker save <your_docker_hub_username>/containerd-example:latest > \
+containerd-example-image.tar
 ~~~
 
 This operation should complete successfully without any differences between the Docker-specific and containerd-provided image store implementations.
@@ -152,7 +157,7 @@ This operation should complete successfully without any differences between the 
 
 You can now push your image to your Docker Hub account:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker push <your_docker_hub_username>/containerd-example:latest
 ~~~
 
@@ -176,15 +181,10 @@ Docker will then implement an automated migration for Docker Desktop and Docker 
 
 ## Conclusion
 
-containerd is a lightweight, OCI-compliant container runtime that's been used by Docker since it was split out of the project in late 2016. Docker is now transitioning to also use containerd's image store features instead of its own implementation (the current default in Docker Engine and Docker Desktop).
+`containerd` is a lightweight, OCI-compliant container runtime that's been used by Docker since it was split out of the project in late 2016. Docker is now transitioning to also use containerd's image store features instead of its own implementation (the current default in Docker Engine and Docker Desktop).
 
 Using the containerd image store allows you to access more powerful image management functionality, including support for multiplatform images, Wasm, and lazy pulling of image content. containerd's pluggable model also lets you use additional features implemented by adjacent projects, such as image encryption with [imgcrypt](https://github.com/containerd/imgcrypt). None of these capabilities are available in Docker's image store.
 
 For the time being, the containerd image store remains an experimental Docker feature. You can stay informed on what's happening by checking the issues on the [public integration roadmap](https://github.com/moby/moby/projects/13) and following the release notes for [Docker Engine](https://docs.docker.com/engine/release-notes) and [Docker Desktop](https://docs.docker.com/desktop/release-notes).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
