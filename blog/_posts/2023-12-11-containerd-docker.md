@@ -180,6 +180,8 @@ Using the containerd image store allows you to access more powerful image manage
 
 For the time being, the containerd image store remains an experimental Docker feature. You can stay informed on what's happening by checking the issues on the [public integration roadmap](https://github.com/moby/moby/projects/13) and following the release notes for [Docker Engine](https://docs.docker.com/engine/release-notes) and [Docker Desktop](https://docs.docker.com/desktop/release-notes).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -187,4 +189,3 @@ For the time being, the containerd image store remains an experimental Docker fe
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
