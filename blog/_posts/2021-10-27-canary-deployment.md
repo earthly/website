@@ -12,7 +12,7 @@ excerpt: |
     Learn how canary deployments can help you catch bugs and regressions early in your application deployment process. Discover the benefits and downsides of this strategy, as well as how to implement it effectively.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly is a fantastic tool to help manage and streamline your build process. [Give it a look](/).**
+**In this article, you'll learn how the canary deployment strategy requires vigilant monitoring and swift rollback options. Earthly ensures your builds stay consistent and reliable. [Explore how](https://cloud.earthly.dev/login).**
 
 As you're building your application, you want to ensure that your customers have a bug-free user experience as much as possible. Since bugs show up most often when new code is deployed, your deployment process should be set up to catch bugs or regressions early and then quickly deploy patches into production before those bugs affect users.
 
@@ -66,6 +66,6 @@ One you have canary deployments implemented, your organization may benefit from 
 
 As your application, and more importantly your user base, grows, you want to be sure that any bugs or bad deployments are relatively limited in scope and easy to fix while impacting as few customers as possible. Rolling out any changes to a subset of your customers using the canary deployment strategy can be a great way to do this.
 
-Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://earthly.dev/). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses.
+Many of the difficult pieces of implementing a canary deployment system can be mitigated with a tool like [Earthly](https://cloud.earthly.dev/login). Earthly helps manage and automate your build process, which is a key component of managing the added complexity of a canary deployment process. With Earthly, all builds are containerized, repeatable, and language agnostic, ensuring that you get consistent results no matter what language or infrastructure your application currently uses.
 
 {% include_html cta/bottom-cta.html %}

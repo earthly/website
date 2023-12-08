@@ -4,7 +4,7 @@ categories:
   - Articles
 toc: true
 author: Gavin
-
+topcta: false
 internal-links:
  - diluting dora
  - engineering best practices
@@ -14,8 +14,6 @@ excerpt: |
     Learn the ways marketers and consultants exploit DORA metrics. This blog post highlights ethical from unethical practices around the use of DORA metrics and offers guidance for tech experts. Learn how to protect the integrity of DORA metrics and make informed decisions.
 last_modified_at: 2023-09-13
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool that enhances your CI/CD workflows. [Check it out](/).**
-
 Marketers and consultants are scummy. They try to make you think they have the answers to the problems you and your business are running into by telling half-truths that have a foundation in technical best practices, but they don't actually have the answers to these complex problems.
 
 I have a somewhat unique and fairly thorough understanding of how marketers and consultants do this, how they take useful technical best practices and bastardize them for their own gain. I have a Computer Science degree and started my career as a computer programmer. I moved up into a system administrator role – the spiritual predecessor to DevOps roles. Eventually, I decided to get an MBA and worked for Deloitte as a senior consultant and eventually manager on tech projects afterward. After Deloitte, I moved into product marketing, working at DirecTV and then at several tech companies including New Relic, Twilio Segment, and, now, Earthly. I have been the user, the buyer, the marketer, and the consultant at different points in my career. I've seen this pattern repeated over and over.

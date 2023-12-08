@@ -14,7 +14,7 @@ excerpt: |
     This tutorial explains how to build a serverless application using Azure Functions. It covers setting up a serverless architecture deployment on Azure, creating different serverless functions, managing state with Azure Cosmos DB, monitoring with Azure Application Insights, and deploying the functions using CI/CD and GitHub.
 last_modified_at: 2023-10-06
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're into Azure Functions, you'll love how we optimize your CI build tools. [Check it out](/).**
+**This tutorial explains how to build a serverless application using Azure Functions. After reading it take a look at Earthly. Earthly provides indispensable build tools for your next project. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Serverless architecture simplifies the process of building and deploying applications by removing the need to manage servers. You just need to write your application's business logic in different functions.
 
@@ -818,6 +818,6 @@ You made your function robust and production-ready by setting up the following:
 
 You also used a pipeline to deploy your function. Pipelines are a great way to automate the deployment process and ensure that your code is deployed consistently and reliably.
 
-If you're looking for a way to improve the speed, consistency, and ease of use of your CI/CD pipeline, consider using [Earthly](https://earthly.dev/). An open source project, Earthly makes it easy to define and execute pipelines using simple, familiar syntax. It also leverages containers for isolation and caching, which can significantly improve build times. [Sign up for an account today!](https://earthly.dev/signup/earthly-ci/)
+If you're looking for a way to improve the speed, consistency, and ease of use of your CI/CD pipeline, consider using [Earthly](https://cloud.earthly.dev/login). An open source project, Earthly makes it easy to define and execute pipelines using simple, familiar syntax. It also leverages containers for isolation and caching, which can significantly improve build times. [Sign up for an account today!](https://earthly.dev/signup/earthly-ci/)
 
 {% include_html cta/bottom-cta.html %}

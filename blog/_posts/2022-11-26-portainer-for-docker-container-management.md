@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Portainer, a web-based Docker management system, to easily manage your containers, images, volumes, and more with a convenient graphical user interface. Discover the benefits of Portainer's features and how to deploy apps using built-in templates and your own Compose files.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a [simple way to build containers](/blog/docker-multistage) then [check us out](/).**
+**The article provides a step-by-step guide for configuring Portainer. Earthly improves continuous integration pipelines by providing efficient caching and enabling parallel builds. Great for those using Portainer. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Docker's CLI and API are powerful tools, but they can be unwieldy when you're working with large container fleets or looking for a more visual experience. [Portainer](https://www.portainer.io), a web-based Docker management system that provides a convenient graphical user interface (GUI), lets you take charge of your containers, images, volumes, and other resources, without memorizing long terminal commands.
 
@@ -339,6 +339,6 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 [Portainer](https://www.portainer.io) is a super handy web interface for managing Docker containers and other environments. You can use it on your local machine or even for keeping an eye on your production apps. It's also great for tracking containers and images in your CI/CD pipelines and build systems, keeping your Docker host clutter-free.
 
-While you're optimizing your Docker environment, you might also want to take a peek at [Earthly](https://www.earthly.dev/). It's a tool designed for efficient and consistent automation of your Docker builds. Give both of these powerful tools a try!
+While you're optimizing your Docker environment, you might also want to take a peek at [Earthly]((https://cloud.earthly.dev/login)). It's a tool designed for efficient and consistent automation of your Docker builds. Give both of these powerful tools a try!
 
 {% include_html cta/bottom-cta.html %}

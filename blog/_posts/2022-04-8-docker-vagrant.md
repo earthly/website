@@ -11,7 +11,7 @@ excerpt: |
     Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're interested in enhancing your container workflow, Earthly could be a game-changer. [Check it out](/).**
+**The article compares Vagrant and Docker. Earthly improves Docker builds by enabling parallel execution. [Learn more about Earthly](https://cloud.earthly.dev/login/).**
 
 <!-- vale HouseStyle.OxfordComma = NO -->
 
@@ -180,7 +180,7 @@ Being resource-heavy, virtual machines are hard to deploy and use. Docker contai
 
 It's a developer's choice to use Vagrant, Docker, or any other tool to create the development environment. Just make sure you consider factors like speed, efficiency, security and integration options.
 
-[Earthly](https://earthly.dev), an open-source application, can help create artifacts or Docker images to speed up the build and deployment of your containerized applications. It can [run on top of popular CI tools](https://docs.earthly.dev/docs/examples) such as Jenkins, GitHub Actions, and CircleCI
+[Earthly](https://cloud.earthly.dev/login), an open-source application, can help create artifacts or Docker images to speed up the build and deployment of your containerized applications. It can [run on top of popular CI tools](https://docs.earthly.dev/docs/examples) such as Jenkins, GitHub Actions, and CircleCI
 
 To see how it works, check out the sample [GitHub Action workflow](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration) that uses Earthly.
 

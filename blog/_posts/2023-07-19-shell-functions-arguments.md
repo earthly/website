@@ -15,8 +15,7 @@ excerpt: |
     Learn the fundamentals of shell scripting functions and arguments in this comprehensive guide. Discover how to create functions, pass arguments, use variables, and return values in Bash scripts, along with best practices for writing efficient and reusable code.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster by using containerization. This article is about autotools and make. If you're interested in a different building and packaging software approach, then [check us out](/).**
+**This article explains Bash scripting functions. Earthly provides reproducible build capabilities that improve Bash scripting. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 When you think of automation, you might initially envision its application in physical implementations, such as Internet of Things (IoT) tools like lights and voice assistants. Or you may think of new AI automation tools or platforms like [Microsoft Flow](https://powerautomate.microsoft.com/en-us/blog/welcome-to-microsoft-flow/). But what if there was a closer, more versatile tool, and right at your very fingertips?
 
@@ -441,6 +440,6 @@ For further learning on scripting methodologies, check out these links:
 * [Command line arguments in Bash scripts](https://www.baeldung.com/linux/use-command-line-arguments-in-bash-script)
 * [Bash scripts and function libraries](https://medium.com/swlh/bash-scripts-part-6-functions-and-library-development-2411adbf962)
 
-And if you're eager to take your build automation up a notch, give [Earthly](https://www.earthly.dev/) a try! It's a powerful tool.
+And if you're eager to take your build automation up a notch, give [Earthly]((https://cloud.earthly.dev/login)) a try! It's a powerful tool.
 
 {% include_html cta/bottom-cta.html %}

@@ -12,9 +12,9 @@ excerpt: |
     Learn how to run Python applications using Docker, a containerization tool that simplifies managing dependencies and allows for easy sharing of projects with other developers. This tutorial provides step-by-step instructions on setting up a Docker container, building a Python app, and running it within the container.
 last_modified_at: 2023-07-24
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/4bGtb2L4-VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+**This article explains how to Dockerize Python applications. Earthly significantly speeds up CI pipelines for Python apps in Docker. [Learn how](https://cloud.earthly.dev/login).**
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about one solution to the complexities of Python development. If you're interested in a simple and containerized approach to building python code then [check us out](/).**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/4bGtb2L4-VM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Python is a versatile programming language, but running it can be a handful when you have to manage its dependencies—especially when you are sharing projects with other developers.
 
@@ -284,7 +284,7 @@ Create another interactive container using the same volume, `cd` into the contai
 
 Using [Docker](https://www.docker.com/) gives you a lot of options for your Python applications. As you've seen in this tutorial, you can use Docker to test and store your app and even protect your data in case of accidental deletion. Docker container images are flexible and can be cached to use anywhere.
 
-You can optimize your use of containers even more with [Earthly](https://earthly.dev/), a syntax for repeatable builds. Its automated, self-contained builds make you life easier by improving your workflow.
+You can optimize your use of containers even more with [Earthly](https://cloud.earthly.dev/login), a syntax for repeatable builds. Its automated, self-contained builds make you life easier by improving your workflow.
 
 To see the entire tutorial project at once, check out the [GitHub repo](https://github.com/adenicole/dockerpy).
 

@@ -12,7 +12,7 @@ internal-links:
 topic: cli
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. We wrote this article because we are big fans of MITMProxy and poking around in the network stack. [Check us out](https://earthly.dev/)!**
+**This article teaches you how to use mitmproxy. If you want to improve your build processes, Earthly provides a containerized solution. [Learn how Earthly can improve your workflow](https://cloud.earthly.dev/login).**
 
 ## Introduction
 
@@ -511,6 +511,6 @@ If you can get something running on your local machine, you can now capture and 
 
 The fun doesn't stop here, though.  [mitmproxy](https://mitmproxy.org/) can modify and replay requests and has an active ecosystem, including [mastermind](https://github.com/ustwo/mastermind) which lets you build mock services based on captured requests and [BDFProxy](https://github.com/secretsquirrel/BDFProxy), which uses mitmproxy to modify common security updates for <del>nefarious reasons</del> security research projects, and much more.  
 
-And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://earthly.dev/).
+And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}

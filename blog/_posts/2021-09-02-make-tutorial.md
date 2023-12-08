@@ -13,7 +13,7 @@ excerpt: |
     Learn how to automate the software building process using `make`, a powerful tool that saves time and resources. This article covers the basics of writing a Makefile, important components of `make`, and provides examples of using `make` with different technologies.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using `make` for your builds, you'll love how Earthly can streamline the process even further. [Check it out](/).**
+**In this article, you'll master Makefile automation. If you know `make`, Earthly provides a containerized, reliable way to improve your builds. [Learn more](https://cloud.earthly.dev/login).**
 
 Building software is a multi-step process—installing or updating dependencies, compiling the source code, testing, installing, and so on. In any moderately sized project, you might find it difficult to perform all these steps manually. This is where `make` can help you.
 
@@ -298,4 +298,4 @@ The `make` tool is a valuable one to master in software development. Using it ca
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you're familiar with Docker, consider using [Earthly](https://earthly.dev). Earthly combines the best aspects of `make` and Docker to give you an easy-to-understand and reproducible build with minimal effort. -->
+<!-- If you're familiar with Docker, consider using [Earthly](https://cloud.earthly.dev/login). Earthly combines the best aspects of `make` and Docker to give you an easy-to-understand and reproducible build with minimal effort. -->

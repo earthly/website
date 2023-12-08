@@ -16,7 +16,7 @@ excerpt: |
     Learn how to efficiently manipulate and process text data in Linux with a variety of powerful commands, including sed, grep, awk, tr, wc, cut, sort, tac, bat, fd, uniq, and xargs. These commands will help you search, filter, transform, and analyze text data, saving you time and effort in your daily workflow.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly might help streamline your text processing pipeline and make your projects easier to manage. [Check it out](/).**
+**This article explores Linux text commands. Earthly efficiently manages build process dependencies. Great for your text processing needs. [Check it out](https://cloud.earthly.dev/login).**
 
 Text processing in Linux involves manipulating text data to extract meaningful information or to transform it into a desired output. This is particularly useful because in Linux, everything is treated as a file, including text data. By mastering Linux text processing commands, you can complete tasks more efficiently, saving time and effort in your daily workflow.
 
@@ -622,7 +622,7 @@ Output:
 The above command retrieves all the links from a markdown document. The link in a standard Markdown looks as shown below:
 
 ~~~{ caption="Output"}
-[Earthly](https://earthly.dev)
+[Earthly](https://earthly.dev/)
 ~~~
 
 So,the above command retrieves the link by looking for the pattern that matches how a link is embedded in a standard markdown.

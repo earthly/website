@@ -15,7 +15,7 @@ excerpt: |
     Learn how to manage sensitive data in Kubernetes using secrets. This tutorial covers creating secrets, using them as environment variables or volume mounts, and pulling images from private Docker repositories using secrets.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. If you like Kubernetes for running containers and services, you might like Earthly for buildings them. [Check it out](/).**
+**This article discusses Kubernetes secrets management. Earthly enhances Kubernetes workflows with its containerized build automation. [Check it out](https://cloud.earthly.dev/login).**
 
 Generally, applications contain some sensitive data, like authentication tokens, passwords, usernames, and more. As you build in Kubernetes, some of these may go into pod specifications accidentally exposing some sensitive data. So how do we manage such data in Kubernetes? Secrets can help!
 
@@ -669,6 +669,6 @@ If you have the below output, then your Kubernetes [cluster](/blog/kube-bench) w
 
 In this tutorial, you've gained a solid understanding of Kubernetes secrets and their implementation as environment variables and volume mounts. You've also learned creation of secrets from a file, via `kubectl`, and from YAML manifest files. We went over the process of authenticating a Kubernetes cluster for image pulling from a private DockerHub repository using a secret from the `.docker/config.json` file and the `imagePullSecrets` attribute. Now, you're equipped to deploy applications securely to Kubernetes using secrets.
 
-As you continue to enhance your Kubernetes skills, you might be interested in exploring more efficiency hacks in automating builds. In this regard, [Earthly](https://www.earthly.dev/) could be a valuable tool to consider.
+As you continue to enhance your Kubernetes skills, you might be interested in exploring more efficiency hacks in automating builds. In this regard, [Earthly]((https://cloud.earthly.dev/login)) could be a valuable tool to consider.
 
 {% include_html cta/bottom-cta.html %}

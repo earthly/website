@@ -16,8 +16,7 @@ excerpt: |
     Learn how to navigate directories like a pro with the bash commands pushd and popd. These commands allow you to easily switch between directories and keep track of your navigation history, making your terminal workflow more efficient.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers bash pushd and popd. If you want to know more about building in containers then [check us out](/).**
+**The article provides a detailed guide on Bash directory commands. Earthly is a build automation tool that extends your strengths beyond bash scripting. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Do you get lost in path navigation? Do you have more terminal windows open than browser tabs because you worry about not finding your way back to the previous working directory?
 
@@ -309,7 +308,7 @@ $ dirs --help
 
 `pushd` and `popd` can be real game-changers for working in Bash or any other compatible shell. Understand the stack concept and you'll zip through your directory trees like a breeze.
 
-But why stop there? If you've just mastered directory navigation, you can level up even more with by checking out [Earthly](https://www.earthly.dev/) for efficient build automation.
+But why stop there? If you've just mastered directory navigation, you can level up even more with by checking out [Earthly]((https://cloud.earthly.dev/login)) for efficient build automation.
 
 For more on Bash, do check out our [Bash series](https://earthly.dev/blog/series/bash/). Catch you there!
 

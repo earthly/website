@@ -10,6 +10,7 @@ internal-links:
    - travisci
 topic: ci
 funnel: 2
+topcta: false
 excerpt: |
     Learn about the recent migration of open-source projects off of Travis CI and discover alternative options for hosting your builds, such as Circle CI and GitHub Actions. Find out why this migration is important for the open-source community and how you can minimize the effort of moving your builds in the future.
 last_modified_at: 2023-07-11
@@ -154,4 +155,4 @@ Another interesting option if you are feeling adventurous is using AWS lambda as
 
 You probably need to move your open-source project's builds off of Travis CI. If you host it on GitHub, GitHub Actions is probably a good choice. There is a risk that the GHA offer will disappear as well. &nbsp;You can protect yourself from that by defining your build in an open format that is easy to move around. &nbsp;All build problems can be solved by another layer of abstraction.
 
-If you are going that route, I think [Earthly](https://earthly.dev/) is a great option, but as I said, I am biased.
+If you are going that route, I think [Earthly](https://cloud.earthly.dev/login) is a great option, but as I said, I am biased.

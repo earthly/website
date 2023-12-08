@@ -12,7 +12,7 @@ excerpt: |
     Learn how to achieve repeatability in your continuous integration pipeline and improve the reliability, reproducibility, reusability, and speed of your builds. Discover best practices for test automation, adopting continuous integration, and fixing broken builds immediately.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly is a powerful tool for achieving repeatability in your CI/CD pipeline. [Check it out](/).**
+**This article delves into Continuous Integration practices. If you're committed to improving your CI workflows, Earthly can help. [Discover Earthly's role](https://cloud.earthly.dev/login).**
 
 <!-- vale HouseStyle.EG = NO -->
 > In software engineering, continuous integration is the practice of merging all developers' working copies to a shared mainline several times a day. Grady Booch first proposed the term CI in his 1991 method, although he did not advocate integrating several times a day. —[Wikipedia](https://en.wikipedia.org/wiki/Continuous_integration "Wikipedia article on continuous integration")
@@ -128,7 +128,7 @@ Continuous integration (CI) is a game-changer! It helps find bugs quicker, speed
 - Aim for **reproducible** builds for developer confidence.
 - **Reusability** allows us to leverage the tools, patterns, and environments for continuous integration across projects.
 
-Speaking of reproducible builds, if you're looking to improve your CI/CD pipeline, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool designed for speedy, reproducible builds, which can significantly enhance your CI/CD process.
+Speaking of reproducible builds, if you're looking to improve your CI/CD pipeline, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's a tool designed for speedy, reproducible builds, which can significantly enhance your CI/CD process.
 
 CI also paves the way for **continuous deployment** and combined with continuous delivery, it helps ship and test features faster.
 

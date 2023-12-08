@@ -14,7 +14,7 @@ excerpt: |
     This article discusses different deployment strategies in Kubernetes, including rolling deployment, blue-green deployment, recreate deployment, and canary deployment. It explains how to implement each strategy and highlights their advantages and disadvantages.
 last_modified_at: 2023-10-06
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're dealing with Kubernetes deployments, Earthly can make your build process a breeze. [Why not check us out?](/).**
+**This article explores the best Kubernetes deployment strategies to streamline your workflow. Earthly provides reproducible and efficient CI builds that enhance your Kubernetes environment. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Kubernetes is a container orchestration platform that helps you deploy, manage, and scale containerized applications. One of the key features of Kubernetes is its ability to choose between different deployment strategies. With the right strategy you can easily roll out new versions of your application based on business needs and application requirements.
 

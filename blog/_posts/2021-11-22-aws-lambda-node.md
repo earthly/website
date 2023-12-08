@@ -13,7 +13,7 @@ excerpt: |
     Learn how to set up your first AWS Lambda deployment for a Node application in this tutorial. Discover how to leverage AWS Lambda to execute backend applications without worrying about server configurations or maintenance.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds. Earthly works great with Node.js. [Check it out](/).**
+**This tutorial provides guidance on using AWS Lambda for serverless applications. Earthly simplifies and accelerates the build process in CI/CD pipelines. [Check it out](https://cloud.earthly.dev/login).**
 
 <!-- vale HouseStyle.Link = NO -->
 AWS Lambda is a cloud computing solution that allows you to execute your backend applications without having to worry about server configurations or maintenance.
@@ -344,6 +344,6 @@ body:"AWS Lambda is awesome"'
 
 You've now created and deployed your first AWS Lambda/Node.js app. To get started with AWS Lambda functions, you used the `serverless.com` platform as a reliable and easy-to-manage tool to manage and monitor your AWS Lambda apps.
 
-To further improve your development workflow, try [Earthly](https://earthly.dev/). The free, open-source container tool works with multiple programming languages and platforms. Earthly can help you establish and repeat a build process for your app.
+To further improve your development workflow, try [Earthly](https://cloud.earthly.dev/login). The free, open-source container tool works with multiple programming languages and platforms. Earthly can help you establish and repeat a build process for your app.
 
 {% include_html cta/bottom-cta.html %}

@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use ReplicaSets in Kubernetes to ensure fault tolerance and high availability for your applications. This tutorial explains what ReplicaSets are, how to create them using YAML, and how they work internally. If you want to build a fault-tolerant and scalable system with Kubernetes, understanding ReplicaSets is essential.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using ReplicaSets in Kubernetes. Earthly is a powerful tool that can be used streamline the build and deployment of containerized applications. [Check us out](/).**
+**This article explains Kubernetes ReplicaSets. Earthly significantly reduces build times during Kubernetes scaling. [Check it out](https://cloud.earthly.dev/login).**
 
 ## What Is Kubernetes?
 
@@ -207,6 +207,6 @@ ReplicaSet requires ongoing communication with the Kubernetes API and Pods in or
 
 In this tutorial, we've covered how to build Pods using ReplicaSets in Kubernetes. ReplicaSets boost the fault tolerance of Pods, which is why they're commonly used instead of creating Pods directly. While ReplicationControllers are outmoded, you might still come across them. Also, remember other Controllers like StatefulSet for persistent storage apps and DaemonSet for running pod copies across the cluster. These insights are handy for building scalable, fault-tolerant systems.
 
-As you scale your Kubernetes apps, you might find that [Earthly](https://www.earthly.dev/) could be your next step for efficient and reproducible builds. Check it out!
+As you scale your Kubernetes apps, you might find that [Earthly]((https://cloud.earthly.dev/login)) could be your next step for efficient and reproducible builds. Check it out!
 
 {% include_html cta/bottom-cta.html %}

@@ -17,8 +17,7 @@ excerpt: |
     Learn how to cross-compile binaries for different architectures using CMake and GCC in this tutorial. Discover the process of building a simple C++ program and then cross-compiling it for ARM64-based devices, along with troubleshooting tips for common issues.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article covers cross-compiling binaries using CMake and GCC. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile`, then [check us out](/).**
+**The article provides insights into cross-compiling for ARM64 architectures. Earthly simplifies the process of cross-compilation for those who use CMake. [Learn how](https://cloud.earthly.dev/login).**
 
 Cross-compilation is the process of compiling your program on a different host than the target system. This enables developers to build binaries for different architectures without using those specific architectures themselves. For example, with cross-compilation, you can compile a binary for ARM-based devices like a Raspberry Pi on your standard x86-64 development machine.
 
@@ -284,6 +283,6 @@ This tutorial showed you the basics of cross-compiling a C++ program for ARM64 d
 
 Want to delve deeper into cross-compiling? Check out the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) docs, or explore [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). Happy cross-compiling!
 
-And if you are looking for ways to further simplify your cross compile build process, you might want to check out [Earthly](https://www.earthly.dev/). It's a tool that can make cross complication simpler.
+And if you are looking for ways to further simplify your cross compile build process, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can make cross complication simpler.
 
 {% include_html cta/makefile-cta.html %}

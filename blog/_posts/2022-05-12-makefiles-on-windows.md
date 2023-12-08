@@ -17,7 +17,7 @@ excerpt: |
     Learn how to run Makefiles on Windows with different options like Chocolatey, Cygwin, NMAKE, CMake, and Windows Subsystem for Linux. Discover the strengths and weaknesses of each approach and find the best solution for your needs.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about `make` and `Makefile`s but if you're interested in a different approach to building software then [check us out](/).**
+**This article explores alternatives to Makefiles on Windows. Earthly provides a consistent, containerized build environment for Windows users. [Check it out](https://cloud.earthly.dev/login).**
 
 As the field of DevOps and build release engineering continues to grow, many new tools are being developed to help make building and releasing applications easier. One of the tools that has been in use for many years is [Make](https://en.wikipedia.org/wiki/Make_(software)), which is still heavily used by engineers today.
 
@@ -111,4 +111,4 @@ As you can see, there are a few different ways you can be successful in running 
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://earthly.dev/). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective. -->
+<!-- If all this becomes too tedious for you and you're looking for an easier alternative to optimize your builds, then check out [Earthly](https://cloud.earthly.dev/login). Earthly has taken all the best parts of Makefiles and combined them with the best parts of Dockerfiles to help make your build processes more streamlined and effective. -->

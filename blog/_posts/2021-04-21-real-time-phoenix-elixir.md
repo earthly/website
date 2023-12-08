@@ -13,7 +13,7 @@ excerpt: |
     Learn how to build a real-time crowdfunding application using the Phoenix Framework and Elixir. Discover the power of Phoenix LiveView and how to leverage PubSub to broadcast updates to all users in real time.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a real-time application in the Phoenix Framework with Elixir. Earthly can be used in conjunction Elixir to streamline your CI builds. [Check us out](/).**
+**In this article, discover how to build real-time apps using Phoenix LiveView. Earthly streamlines your build process, enhancing your Elixir and Phoenix development with faster builds. [Learn more](https://cloud.earthly.dev/login).**
 
 The Elixir language, along with the [Phoenix framework](https://phoenixframework.org/), has been growing in popularity at a quick pace, and with good reason. Phoenix offers productivity levels comparable to frameworks like Ruby on Rails while being one of the [fastest web frameworks](https://github.com/mroth/phoenix-showdown/blob/master/RESULTS_v3.md) available.
 
@@ -527,7 +527,7 @@ As you've learned, Phoenix offers a powerful set of libraries, making it relativ
 
 Of course, we've only begun to scratch the surface here of what you can do with Phoenix, LiveView, and PubSub. If you want to keep going with this project, I would recommend tackling adding persistence next, and the ability to create multiple auctions with [Ecto](https://hexdocs.pm/ecto/getting-started.html).
 
-Both Ecto and the Phoenix project use [Earthly](https://earthly.dev) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
+Both Ecto and the Phoenix project use [Earthly](https://cloud.earthly.dev/login) for defining their continuous integration process, so examining [those](https://github.com/elixir-ecto/ecto/blob/master/Earthfile) [projects](https://github.com/phoenixframework/phoenix/blob/master/Earthfile) can be a great way to learn more about Earthly.
 
 ### Additional Resources
 

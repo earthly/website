@@ -16,7 +16,7 @@ excerpt: |
     Learn the key differences between CMake and Make, two popular build automation tools. Discover how CMake's cross-platform capabilities, GUI, and better dependency handling make it a preferred choice for software development.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We streamline building software using containerization. If you're into CMake or Make, you might find Earthly interesting for an even more efficient build process. [Give it a look](/).**
+**This article compares CMake and Make. Earthly adds reproducibility and efficient caching to either. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Creating software isn't only about writing code; you need to build all the source code to get a usable software artifact. This build process can be done manually, but it can become difficult as you start working on larger projects. This is where tools like [CMake](https://cmake.org/) and [Make](https://www.make.com/en) can help you automate the process. Both of these tools allow you to go from source code to executables.
 
@@ -422,7 +422,7 @@ More recently, CMake added the `FetchContent` module, which is a better way to f
 
 ## Conclusion
 
-You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly](https://www.earthly.dev/). It's a tool that takes build automation a step further.
+You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly]((https://cloud.earthly.dev/login)). It's a tool that takes build automation a step further.
 
 Keep coding!
 

@@ -12,6 +12,7 @@ internal-links:
   - earthly open-source
 topic: earthly
 funnel: 3
+topcta: false
 excerpt: |
     Earthly, a CI/CD framework, has announced that it is switching to an open-source license, allowing for greater community involvement and integration with various CI/CD vendors. The decision was made after considering user feedback and the benefits of an open model for both users and the business.
 last_modified_at: 2023-07-24

@@ -16,8 +16,7 @@ excerpt: |
     Rust's use of generics allows developers to write flexible and reusable code by defining functions, structs, and enums without specifying the type of data they will operate on. Generics provide better type safety, reduce errors, and can be used in advanced topics such as traits, generic lifetimes, phantom types, and type-level programming.
 last_modified_at: 2023-08-28
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**
+**This article discusses Rust generics. If Rust CI times are slowing you down, Earthly speed up Rust build processes by caching cargo results in CI. [Check it out](https://cloud.earthly.dev/login).**
 
 Rust's use of generics enables developers to write flexible and reusable code. Generics allow functions, structs, and enums to be defined without specifying the type of data they will operate on. This means that a single implementation can work with various types of data, making the code more versatile. Additionally, generics provide better type safety and reduce the likelihood of errors.
 

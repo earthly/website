@@ -14,7 +14,7 @@ excerpt: |
     In this article, the author shares their experience as an engineering manager and the challenges they faced when trying to reach alignment and prevent objections in a project. They discuss the value of advice and the difference between non-contingent, one-size-fits-all solutions and more nuanced, contingent advice. The article also explores the research of Philip E. Tetlock on expert predictions and the importance of considering specific contexts when seeking advice. Overall, it serves as a reminder to avoid being a "thought leader" and to embrace more nuanced and contingent approaches to problem-solving.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We balance simplicity with powerful functionality in build automation. Our focus is on making software builds faster and error-free using containerization. [Give us a try](/).**
+**In this article, you'll learn how to effectively tackle project objections. Earthly can't help with that, but it can help speed up your builds. [Discover how](https://cloud.earthly.dev/login).**
 
 Here is a somewhat fictionalized personal story. I've changed the names of the people and the technology used.
 
@@ -123,4 +123,4 @@ Software development is full of confident forecasters. We are a pretty new field
 
 The more universal a solution someone claims to have to whatever software engineering problem exists, and the more confident they are that it is a fully generalized solution, the more you should question them. The more specific and contingent the advice - the more someone says 'it depends' or 'YourSQL works well in a read-heavy context with the following constraints' the more likely they are to be leading you in the right direction. At least that's what I have found.
 
-Here at Earthly, we've been talking to a lot of people about how they build software and doing a lot of writing. When meeting with someone or [writing down advice](/blog/unit-vs-integration), I try to keep in mind Tetlock's findings. I really think [repeatable builds](https://earthly.dev) are important, but if it's my solution to every problem, then I think I'm probably falling into the same trap. So this post is my reminder to myself: Don't be a ~~hedgehog~~ thought-leader.
+Here at Earthly, we've been talking to a lot of people about how they build software and doing a lot of writing. When meeting with someone or [writing down advice](/blog/unit-vs-integration), I try to keep in mind Tetlock's findings. I really think [repeatable builds](https://cloud.earthly.dev/login) are important, but if it's my solution to every problem, then I think I'm probably falling into the same trap. So this post is my reminder to myself: Don't be a ~~hedgehog~~ thought-leader.

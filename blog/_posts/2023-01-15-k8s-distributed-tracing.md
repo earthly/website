@@ -14,7 +14,7 @@ excerpt: |
     Learn how to set up distributed tracing in Kubernetes with SigNoz, an open-source Metrics, Tracing, and Logging tool for distributed systems. This article explains what distributed tracing is, how it works, and provides step-by-step instructions on how to configure and use SigNoz on your Kubernetes cluster.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Check it out](/).**
+**This article explains the key elements of distributed tracing. Earthly maintains consistent CI for developers. Pair it with Signoz. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Debugging an application can be stressful, especially when your application runs on a large distributed system with multiple separate components. Some of these components are written in different languages and use different frameworks with different [logging](/blog/understanding-docker-logging-and-log-files) mechanisms. This makes it hard to debug when something goes wrong. You have to jump between different tools, run each component in separate terminals, check their logs, and try to put everything together to understand what went wrong.
 This can be made easier with distributed tracing. Distributed tracing allows you to see the flow of data between the different components in your application and understand how they interact with each other. It provides insight into where things are going wrong and allows you to debug problems on a whole new level. In this article, you will learn what distributed tracing is, how it works, and how you can set it up in your kubernetes cluster.
@@ -390,6 +390,6 @@ There are many other
 
 In this tutorial, we've covered the definitions, importance, and workings of distributed tracing. We've also delved into its three components: spans, tags, and traces. Lastly, we have guided you through the setup process of distributed tracing on your cluster using Signoz and Application Performance Monitoring agents on each required microservice.
 
-As you continue to optimize your microservices, you might also want to consider improving your build processes. If that's the case, give [Earthly](https://www.earthly.dev/) a shot. It's a tool designed to streamline and enhance your build automation, making it an excellent companion for managing complex, multi-component projects.
+As you continue to optimize your microservices, you might also want to consider improving your build processes. If that's the case, give [Earthly]((https://cloud.earthly.dev/login)) a shot. It's a tool designed to streamline and enhance your build automation, making it an excellent companion for managing complex, multi-component projects.
 
 {% include_html cta/bottom-cta.html %}

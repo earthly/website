@@ -15,7 +15,7 @@ excerpt: |
     Learn how to manage your dotfiles using Git and make your environment configuration easier to maintain and synchronize across multiple machines. Say goodbye to the hassle of manually reinstalling programs and customizing settings every time you switch computers.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify software building using containerization. [Check it out](/).**
+**This article explains how to manage dotfiles using Git. Earthly provides consistent and efficient build processes for dotfile management. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Have you ever found yourself in a situation where you had to format your computer and manually reinstall all the programs you were using? Or did you change machines and have to go to the page of each of the software you use and download and run the installer one by one? Or even customize some mouse/keyboard settings?
 
@@ -172,6 +172,6 @@ The command does not display any output if everything went well, so the way to i
 
 Keeping Dotfiles on platforms like [Github](/blog/ci-comparison) or [Gitlab](/blog/gitlab-ci) streamlines configuration syncing and makes setup and collaboration a breeze. Remember, _dotfile_ files aren't just for system admin geeks. They're great tools to fine-tune your dev environment and boost your productivity.
 
-Looking to further streamline your dev setup? Take a look at [Earthly](https://www.earthly.dev/), for your build automation needs! With Earthly, you can simplify your build configuration and ensure consistent builds across different environments. Let's get optimizing!
+Looking to further streamline your dev setup? Take a look at [Earthly]((https://cloud.earthly.dev/login)), for your build automation needs! With Earthly, you can simplify your build configuration and ensure consistent builds across different environments. Let's get optimizing!
 
 {% include_html cta/bottom-cta.html %}

@@ -15,7 +15,7 @@ excerpt: |
     Learn how to run your containers on Amazon using AWS ECS. This tutorial will guide you through the process of creating an ECS cluster, deploying a containerized application, and accessing it using the public IP address.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly can make building your containers, before they get to AWS ECS, even easier. [Check it out](/).**
+**This article is about ECS container deployment. Earthly simplifies build automation for developers handling complex microservices. [Check it out](https://cloud.earthly.dev/login).**
 
 Containerization is the process of bundling the components of an application (*ie* files, libraries, and application code) into a single package that can be run consistently on any infrastructure. Containerization continues to grow in popularity because it's portable, has built-in fault tolerance, and is easily scalable.
 
@@ -249,6 +249,6 @@ You should see your application running, and if it is i.e. showing you a *Welcom
 
 In this article, you learned how to run containers using Amazon ECS. You started by creating an ECS cluster (which is a logical grouping of resources that can be managed together) to host your containers. Then you used the latest NGINX container image hosted on Docker Hub and created a task definition. After that, you created an ECS Service which enables you to specify the number of tasks and the load balancing strategy for the container. Finally, you accessed the container using the public IP address of the service which allowed you to connect to the NGINX web server and view the default welcome page.
 
-To optimize your container environment and improve your development workflow, you may want to explore other CI/CD tools such as [Earthly](https://earthly.dev/). One of the primary benefits of Earthly is that it focuses on developer productivity—which means developers can focus on core development instead of orchestration. This, ultimately, streamlines the development process and reduces the time and effort required to build and deploy containerized applications.
+To optimize your container environment and improve your development workflow, you may want to explore other CI/CD tools such as [Earthly](https://cloud.earthly.dev/login). One of the primary benefits of Earthly is that it focuses on developer productivity—which means developers can focus on core development instead of orchestration. This, ultimately, streamlines the development process and reduces the time and effort required to build and deploy containerized applications.
 
 {% include_html cta/bottom-cta.html %}

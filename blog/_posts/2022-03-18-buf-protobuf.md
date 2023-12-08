@@ -12,7 +12,7 @@ excerpt: |
     Learn how to avoid common pitfalls when working with Protobuf using Buf, a suite of tools that simplifies dealing with protocol buffers. Discover how to use Buf's linting, breaking change detection, and code generation features to improve your development process.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about avoiding common pitfalls with Protobuf using Buf. Earthly great build tool if you are using Protobufs. [Check us out](/).**
+**This article explores the `buf` tool. Earthly can enhance your `buf` toolchain by ensuring reproducible builds for your gRPC services. [Check it out](https://cloud.earthly.dev/login).**
 
 ## Introduction
 
@@ -204,7 +204,7 @@ proto:
 
 And with that, I have a simpler, more declarative protocol buffer generation process, and `buf lint` and `buf breaking` help me avoid some gRPC foot-guns, and it's all wrapped up in a reusable build script, so no breaking change or lint violation will even make it into my main branch.
 
-( So, hint hint, if you're looking for a smarter build process, give [Earthly](https://www.earthly.dev/) a go. )
+( So, hint hint, if you're looking for a smarter build process, give [Earthly]((https://cloud.earthly.dev/login)) a go. )
 
 And I'm just scratching the surface on `buf`, most of the steps above are highly configurable, and their schema registry and remote generation feature look very cool. But for now, I think it's been an improvement.
 
