@@ -1,16 +1,13 @@
 - points:
-  - Satellites
-  - Log Sharing
-  - Secrets
-- points:
   - Fully managed, single-tenant satellite fleet
   - Unlimited users
+- points:
   - XS, S, M, L, and XL satellites
   - Unlimited log retention
 - points:
-  - x86 & arm64 satellites
   - Dedicated IP address
   - Single sign-on
   - 24/7 support
 - points:
   - Self-hosted satellites (coming soon)
+  - Secrets integrations – e.g. Vault (coming soon)
