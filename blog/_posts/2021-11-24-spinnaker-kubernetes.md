@@ -12,7 +12,10 @@ excerpt: |
     Learn how to use Spinnaker, an open-source continuous delivery platform, to automate and standardize software releases to Kubernetes clusters. This tutorial provides step-by-step instructions on setting up Spinnaker, configuring providers and storage, and deploying applications with pipelines.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Pair it with Spinnaker for even smoother Kubernetes deployments. [Check it out](/).**
+**This article discusses how to automate Kubernetes deployments. Earthly optimizes deployment pipelines effectively. [Check it out](https://cloud.earthly.dev/login).**
+
+**This article is about Spinnaker Kubernetes deployments. Summary:
+This blog post provides a comprehensive tutorial on using Spinnaker, an open-source continuous delivery platform, for automating Kubernetes deployments. [Check it out](https://cloud.earthly.dev/login).**
 
 Kubernetes has become the standard for deploying and managing containerized applications, but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
 
@@ -473,6 +476,6 @@ And of course there are tons of [other configuration options](https://www.opsmx.
 
 Spinnaker makes it easy to automate application deployments. Your development team can spend its energy more wisely, improving the number of releases they can handle per day, per week, or per month.
 
-To further improve your CI/CD workflow, check out [Earthly](https://earthly.dev/). Earthly is a continuous integration tool for both your development machine and the CI server, ensuring repeatable builds for everyone.
+To further improve your CI/CD workflow, check out [Earthly](https://cloud.earthly.dev/login). Earthly is a continuous integration tool for both your development machine and the CI server, ensuring repeatable builds for everyone.
 
 {% include_html cta/bottom-cta.html %}

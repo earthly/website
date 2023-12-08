@@ -10,7 +10,7 @@ excerpt: |
     Learn the key similarities and differences between Docker and Kubernetes for local development and discover which tool is better suited for your use case. Find out how Docker's versatility and ease of use compare to Kubernetes' built-in container orchestration and unmatched flexibility.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make software builds simpler and faster using containerization. Earthly can optimize your container builds, making local development even more efficient. [Check it out](/).**
+**This article compares Docker and Kubernetes. DevOps professionals benefit from Earthly's build automation when using Docker or Kubernetes. [Check it out](https://cloud.earthly.dev/login).**
 
 You may be wondering, given that [Docker](https://www.docker.com/) is a containerization platform and [Kubernetes](https://kubernetes.io/) is a containerization platform orchestrator, how can the two be compared? Aren't they supposed to play different roles?
 
@@ -88,6 +88,6 @@ Having explored the main strengths and weaknesses of Docker and Kubernetes for l
 
 If you are a software developer, your workflow will likely be more closely tied to the Docker ecosystem. However, the rapid adoption of cloud-native apps often leads to running and testing applications on Kubernetes to ensure that all features are functioning as expected.
 
-Regardless of your tool of choice, [Earthly](https://earthly.dev/) can help you optimize your deployment process. This is possible because Earthly allows you to automate your Docker builds in a unique and innovative way, making them better and more repeatable.
+Regardless of your tool of choice, [Earthly](https://cloud.earthly.dev/login) can help you optimize your deployment process. This is possible because Earthly allows you to automate your Docker builds in a unique and innovative way, making them better and more repeatable.
 
 {% include_html cta/bottom-cta.html %}

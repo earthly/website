@@ -15,7 +15,7 @@ excerpt: |
     Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly can simplify your Linux build process. [Check it out](/).**
+**This article explores essential Linux productivity commands. Earthly ensures your builds are reproducible with precision. [Check it out](https://cloud.earthly.dev/login).**
 
 [Linux](https://www.linux.org/), a powerful, free, stable, secure, and highly customizable operating system, is essential for any developer's workflow. The Linux terminal interacts with the operating system for all basic and advanced tasks. Moreover, most web servers run Linux, and tools like [Docker](/blog/rails-with-docker) work by providing an additional layer of abstraction and automation on top of Linux.
 
@@ -486,6 +486,6 @@ The crontab configuration is stored in your system, and you can view them all us
 
 This post went through many popular, powerful commands, including some that will make everyday tasks faster and easier. Again, the best way to remember and get comfortable with the commands is to try them, so don't be afraid—open up your terminal and test them out.
 
-When you're building an application, the best-practice approach is using a system to define your build. [Earthly](https://earthly.dev/) is a cacheable, Git-aware, parallelizable, and self-contained tool for defining build steps. It works with the tools you're already using and ensures that your builds will run the same way, no matter what they're running on.
+When you're building an application, the best-practice approach is using a system to define your build. [Earthly](https://cloud.earthly.dev/login) is a cacheable, Git-aware, parallelizable, and self-contained tool for defining build steps. It works with the tools you're already using and ensures that your builds will run the same way, no matter what they're running on.
 
 {% include_html cta/bottom-cta.html %}

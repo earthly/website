@@ -17,8 +17,8 @@ Today, we are announcing Earthly's $6.5M Seed+ funding, taking our total capital
 
 Earthly's complete set of investors includes founders of companies such as Cockroach Labs, DigitalOcean, Mesosphere, DataDog, Sentry, and Instana, as well as creators and maintainers of notable developer platforms, such as Docker, Elixir, VS Code, GitHub Copilot, Hashicorp, Envoy proxy, Cypress, Mesos, and others.
 
-The new funding will be used to improve and add more enterprise-friendly features to [Earthly Cloud](/). Earthly Cloud is a fast, repeatable build platform that is super simple to use. It gives teams repeatable CI pipelines that you write once and run anywhere; has an automatic and instantly available build cache that makes builds faster; and it's incredibly user-friendly.
+The new funding will be used to improve and add more enterprise-friendly features to [Earthly Cloud](https://cloud.earthly.dev/login/). Earthly Cloud is a fast, repeatable build platform that is super simple to use. It gives teams repeatable CI pipelines that you write once and run anywhere; has an automatic and instantly available build cache that makes builds faster; and it's incredibly user-friendly.
 
-If you're a developer and this is interesting to you, [get started with Earthly Cloud](https://earthly.dev/)! Let's build the next generation of software together!
+If you're a developer and this is interesting to you, [get started with Earthly Cloud](https://cloud.earthly.dev/login)! Let's build the next generation of software together!
 
 {% include_html cta/bottom-cta.html %}

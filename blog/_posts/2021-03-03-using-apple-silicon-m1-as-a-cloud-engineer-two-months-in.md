@@ -17,7 +17,7 @@ excerpt: |
     In this article, Vlad shares his experience using the Apple M1 as a cloud engineer. He discusses the compatibility of various software, including Docker and VS Code, and provides insights on performance, battery life, and cost. If you're curious about using Apple Silicon as a cloud engineer, this article offers valuable insights and recommendations.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. In this article, Vlad reviews the Apple M1 as a cloud engineer.**
+**In this article, Vlad shares his experience using the Apple M1 as a cloud engineer. He discusses the compatibility of various software, including Docker and VS Code, and provides insights on performance, battery life, and cost. If you're into optimizations, then you should also check out Earthly. Earthly can boost your build speed with caching. [Learn More](https://cloud.earthly.dev/login).**
 
 So I've been using my new M1-based MacBook Pro for a couple of months for a mix of development, email, and other things an [open-source maintainer](https://github.com/earthly/earthly) does day-to-day.
 
@@ -167,6 +167,6 @@ If you're a developer and your coding productivity depends on your laptop, I wou
 
 If you're not a developer, or only use your laptop for browsing and email, I really don't see any reason why you would pick an Intel MacBook over this one. I would also assume that the MacBook Air version is also amazing (unlike the Intel version of MacBook Air, which is often on the slow side for modern web browsing). The M1 chip is very similar between Pro and Air and there's no need for fans.
 
-And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://earthly.dev/).
+And if you liked this article you might like to hear a little about the [backstory behind](/blog/introducing-earthly-build-automation-for-the-container-era) [Earthly](https://cloud.earthly.dev/login).
 
 {% include_html cta/bottom-cta.html %}

@@ -6,6 +6,7 @@ toc: true
 author: Evan Pease
 topic: earthly
 funnel: 3
+topcta: false
 internal-links:
  - Earthly
  - Github Actions

@@ -12,7 +12,7 @@ excerpt: |
     Learn how blue/green deployments can eliminate downtime and errors when updating applications, and discover best practices and tools to streamline the process.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about blue/green deployments. Earthly is a powerful build tool for streamlining a deployment processes. [Check us out](/).**
+**This article discusses blue/green deployments. Earthly ensures reproducible builds that minimize risk during environment switches. [Check it out](https://cloud.earthly.dev/login).**
 
 Remember when systems would go offline to implement changes and updates? Sometimes you still get emails from applications with notifications of downtime, apologizing in advance for any interruption. That's a costly and outdated way of maintaining applications that are constantly evolving.
 
@@ -90,6 +90,6 @@ Blue/green deployments are a clever way to push new application versions without
 
 As simple as blue/green deployments appear on the surface, the actual build process can deter engineers. Double the maintenance workload, a more complex database migration procedure, and the need to quickly resolve errors during an environment switch can all add up to some serious hindrances.
 
-However, the benefits and seamless application versioning experience often outweigh the costs and complexities associated with blue/green deployments. Also, a solid, repeatable build – which can be achieved with tools like  [Earthly](https://earthly.dev/) – can help ease the complexities of a blue/green deployment cycle.
+However, the benefits and seamless application versioning experience often outweigh the costs and complexities associated with blue/green deployments. Also, a solid, repeatable build – which can be achieved with tools like  [Earthly](https://cloud.earthly.dev/login) – can help ease the complexities of a blue/green deployment cycle.
 
 {% include_html cta/bottom-cta.html %}

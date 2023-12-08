@@ -13,7 +13,7 @@ internal-links:
  - Echo
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're working with Linux commands like `echo`... `echo`, Earthly can automate your build process making it even more efficient. [Check it out](/).**
+**This article explains the Linux `echo` command in detail. Earthly improves continuous integration (CI) workflows by isolating shell scripts. [Learn how](https://cloud.earthly.dev/login).**
 
 **Linux** is one of the most popular operating systems. It has a powerful command-line interface that allows various commands to be passed as instructions to be executed by the computer. The `echo` command is one of the most commonly used Linux commands.
 
@@ -533,6 +533,6 @@ Here are the ANSI escape color codes for some colors:
 
 This tutorial equipped you with the know-how of using the `echo` command and its various options like `-n`, `-e`, and `-E`. We explored its uses in different scenarios including text manipulation, outputting variables, and filtering files. Also, we saw how it can be integrated with other commands using the pipe operator for customized output colors.
 
-As you continue to explore and enhance your command line skills, you might be interested in powering up your Linux build automation. If so, give [Earthly](https://www.earthly.dev/) a shot. It's a tool that can significantly simplify and optimize your build processes.
+As you continue to explore and enhance your command line skills, you might be interested in powering up your Linux build automation. If so, give [Earthly]((https://cloud.earthly.dev/login)) a shot. It's a tool that can significantly simplify and optimize your build processes.
 
 {% include_html cta/bottom-cta.html %}

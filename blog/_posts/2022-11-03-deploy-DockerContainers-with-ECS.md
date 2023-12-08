@@ -14,7 +14,7 @@ excerpt: |
     Learn how to deploy Docker containers with AWS ECS, a beginner-friendly and cost-effective container service. With auto-scaling and a serverless option, AWS ECS makes it easy to manage and run your container applications.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. If you're deploying Docker containers with AWS ECS, Earthly can help build those containers better. [Check it out](/).**
+**The article details how to deploy Django applications on AWS ECS. Developers use Earthly for reliable Docker image construction. [Check it out](https://cloud.earthly.dev/login).**
 
 ## What Is AWS ECS
 
@@ -430,6 +430,6 @@ With that, we have just successfully deployed our docker container.
 
 In a nutshell, we dived into container deployment, explored various services, and checked out the perks of using AWS ECS. We even deployed a simple Docker container.
 
-Now, if you're looking to level up your build process efficiency, you might want to try [Earthly](https://www.earthly.dev/), especially if you're already working with Docker containers.
+Now, if you're looking to level up your build process efficiency, you might want to try [Earthly]((https://cloud.earthly.dev/login)), especially if you're already working with Docker containers.
 
 {% include_html cta/bottom-cta.html %}

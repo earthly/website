@@ -2,8 +2,9 @@
 title: Earthly Cloud
 description: Earthly Cloud is a SaaS build automation platform with consistent builds; an instantly available build cache for ridiculous build speed; a next-gen developer experience; and that works seamlessly with any CI.
 layout: default
-banner: <b>Introducing Earthly Cloud.</b> Consistent builds. Ridiculous speed. Next-gen developer experience. Works with any CI. Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
-mobileBanner: <b>Introducing Earthly Cloud.</b> Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
+# Example banner
+# banner: <b>Introducing Earthly Cloud.</b> Consistent builds. Ridiculous speed. Next-gen developer experience. Works with any CI. Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
+# mobileBanner: <b>Introducing Earthly Cloud.</b> Get 6,000 min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.
 ---
 
 {% include home/layout.html template='cloud/hero.html' %}

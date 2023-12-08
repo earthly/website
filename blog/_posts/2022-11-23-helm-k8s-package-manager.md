@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use Helm, the Kubernetes package manager, to deploy complex applications quickly and efficiently. With Helm charts, you can package and distribute collections of Kubernetes YAML files, making deployments more manageable and reusable. Dive into this tutorial to deploy a MongoDB database on Kubernetes using Helm and explore the benefits of using Helm for your application deployments.
 last_modified_at: 2023-07-19
 ---
->**We're [Earthly](https://earthly.dev/), experts in making software builds easier and faster with containerization. Pair Earthly with Helm for even smoother Kubernetes deployments. [Give it a whirl!](/)**
+**This article examines how Helm integrates with MongoDB. Earthly provides consistent and reproducible builds for Helm users. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 For production and hybrid cloud environments, manual deployments with Kubernetes are time consuming and non reusable. As you deploy different applications with similar configuration settings to Kubernetes, you'll have a large number of YAML files and substantial duplication; this makes the applications difficult to maintain. This is where Helm can help.
 
@@ -551,6 +551,6 @@ http://104-200-26-90-ip.linodeusercontent.com
 
 That's Helm for you - a real lifesaver for Kubernetes. You've learned how to deploy a MongoDB database, come up with a mongo-express service for a UI, and use Helm to deploy an Nginx Ingress controller, all without the headaches of manual configuration.
 
-If you've enjoyed the simplicity and consistency Helm brings to Kubernetes, you might also love [Earthly](https://www.earthly.dev/), a tool designed to make build automation even simpler and more consistent. It's definitely worth checking out.
+If you've enjoyed the simplicity and consistency Helm brings to Kubernetes, you might also love [Earthly]((https://cloud.earthly.dev/login)), a tool designed to make build automation even simpler and more consistent. It's definitely worth checking out.
 
 {% include_html cta/bottom-cta.html %}

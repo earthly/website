@@ -15,7 +15,7 @@ excerpt: |
     Learn how Rancher can help you better manage your Kubernetes clusters, regardless of where they're hosted. With features like deploying managed Kubernetes clusters, importing existing clusters, enforcing security, and providing a centralized interface for multi-cluster management, Rancher simplifies the management and monitoring of your Kubernetes deployments.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're managing Kubernetes clusters with Rancher, you'll find Earthly a useful tool for streamlining your container and service builds. [Check it out](/).**
+**This article is about Rancher Kubernetes management. Earthly provides precise build automation to enhance your CI pipeline's consistency and speed. [Check it out](https://cloud.earthly.dev/login).**
 
 Recently, multi-cloud and hybrid cloud deployments have gained significant traction as they let you optimize costs, increase scalability, improve agility, and achieve greater operational resilience. However, with these [deployment strategies](/blog/deployment-strategies), managing different Kubernetes clusters with multiple tools and dashboards can be a challenge; Rancher can help you seamlessly manage such deployments at scale.
 
@@ -346,6 +346,6 @@ In both cases, you can activate, deactivate, or even add new drivers from Ranche
 
 In this article, you learned what Rancher is and how it can help you better manage your Kubernetes clusters regardless of where they're hosted. To that end, you've explored how Rancher solves many Kubernetes pain points by extending its default functionality to allow deployment and monitoring of Kubernetes clusters on any infrastructure, management of hybrid and multi-cluster environments from a single interface, and support for authentication methods such as Active Directory, LDAP, or SAML.In summary, Rancher takes Kubernetes to the next level by adding vital features and enterprise support with no vendor lock-in.
 
-Another tool that is as flexible and easy to use as Rancher is [Earthly](https://earthly.dev), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
+Another tool that is as flexible and easy to use as Rancher is [Earthly](https://cloud.earthly.dev/login), the effortless [CI/CD](/blog/ci-vs-cd) framework that allows you to develop pipelines locally and run them anywhere.
 
 {% include_html cta/bottom-cta.html %}

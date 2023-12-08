@@ -15,7 +15,7 @@ excerpt: |
     Learn how to build a command-line JSON client in Golang to interact with a REST service for storing workout activities. The article covers topics such as parsing command-line flags, making HTTP requests, handling errors, and testing the client.
 last_modified_at: 2023-09-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a command-line JSON client in Golang. Earthly is a great build tool for go projects. [Check us out](/).**
+**This article is about Golang activity tracking. Earthly can streamline your build process. [Check it out](https://cloud.earthly.dev/login).**
 
 I'm an experienced software developer learning Golang by building an activity tracker[^1]. I want a low-effort way to track my physical activity, and building it seems like a fun learning project. [Last time](/blog/golang-http/) I built a REST service for storing my workout activities, and now I'm going to make a command-line client for it.
 
@@ -532,7 +532,7 @@ Then I'll start-up the docker container for the service (using its GitHub path) 
     END
 ~~~
 
-You can find more about how that works on the [Earthly site](https://earthly.dev), but the important thing is now my GitHub Action will build the backend service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
+You can find more about how that works on the [Earthly site](https://cloud.earthly.dev/login), but the important thing is now my GitHub Action will build the backend service, the client, and then test them together using my shell script. It gives me a quick sanity check on the compatibility of my client that I can run whenever I'm adding new features.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/8600.png --alt {{ build in GitHubActions }} %}

@@ -15,8 +15,7 @@ excerpt: |
    AWS CloudWatch is a comprehensive monitoring and observability service. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities.
 last_modified_at: 2023-08-15
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article covers getting started with AWS CloudWatch, which is a great for monitoring applications. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+**This guide explains AWS CloudWatch. Fans of AWS CloudWatch might like Earthly. Earthly streamlines and speeds up CI builds. [Check it out](https://cloud.earthly.dev/login).**
 
 In today's cloud-dominated digital landscape, the ability to monitor and track the performance of your applications is paramount. For those working with the Amazon Web Services (AWS) Cloud, [AWS CloudWatch](https://aws.amazon.com/cloudwatch/) is a comprehensive monitoring and observability service designed to meet this critical need. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities to enhance the reliability and efficiency of their applications.
 
@@ -190,6 +189,6 @@ This article introduced AWS CloudWatch and some of its key concepts and features
 
 As you continue using AWS CloudWatch, be mindful of best practices, such as choosing the correct monitoring granularity, which varies from metric to metric. In addition, be sure to keep your alarms and dashboards organized (*ie* via CloudFormation) since they can get overwhelming to manage as you continue to add them. Finally, remember to choose an appropriate retention policy for your logs, which may depend on local laws and regulations.
 
-A service like CloudWatch is also great to use alongside a build automation tool like [Earthly](https://earthly.dev/), which helps developers create reproducible and efficient build procedures. While Earthly itself doesn't directly integrate with CloudWatch, it can be used with Earthly features to help you monitor deployment-related metrics. For instance, you can use the monitored data to drive decisions on modifying Earthfiles and other continuous integration, continuous delivery (CI/CD) scripts that you use to automate deployments.
+A service like CloudWatch is also great to use alongside a build automation tool like [Earthly](https://cloud.earthly.dev/login), which helps developers create reproducible and efficient build procedures. While Earthly itself doesn't directly integrate with CloudWatch, it can be used with Earthly features to help you monitor deployment-related metrics. For instance, you can use the monitored data to drive decisions on modifying Earthfiles and other continuous integration, continuous delivery (CI/CD) scripts that you use to automate deployments.
 
 {% include_html cta/bottom-cta.html %}

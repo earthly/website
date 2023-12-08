@@ -14,7 +14,7 @@ excerpt: |
     Learn how to benchmark your Kubernetes cluster against CIS benchmarks using Kube-Bench. This tutorial provides step-by-step instructions on installing and configuring Kube-Bench, running benchmarks via CLI, fixing WARN and FAIL benchmarks, and automating the process using Kubernetes jobs and cronjobs.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly could be a great addition to your toolkit. [Check it out](/).**
+**This article discusses Kubernetes security benchmarking. Kube-bench secures Kubernetes clusters, while Earthly ensures robust and reliable CI pipeline builds. [Check it out](https://cloud.earthly.dev/login).**
 
 ## What Is CIS?
 
@@ -327,6 +327,6 @@ This will give you all the warnings, pass & failed checks with respect to your G
 
 Using kube-bench in production allows you to benchmark your Kubernetes cluster against CIS benchmarks effectively, helping you avoid misconfigurations. Following CIS benchmarks ensures you abide by best practices for running Kubernetes. This guide should equip you to understand and utilize kube-bench for benchmarking your cluster.
 
-If you're looking to further enhance your Kubernetes workflows, consider giving [Earthly](https://www.earthly.dev/) a try. It offers efficient and reproducible builds, adding another layer of optimization to your development process.
+If you're looking to further enhance your Kubernetes workflows, consider giving [Earthly]((https://cloud.earthly.dev/login)) a try. It offers efficient and reproducible builds, adding another layer of optimization to your development process.
 
 {% include_html cta/bottom-cta.html %}

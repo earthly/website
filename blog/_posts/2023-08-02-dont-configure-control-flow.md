@@ -4,7 +4,6 @@ categories:
   - Tutorials
 toc: true
 author: Adam
-topcta: false
 bottomcta: false
 internal-links:
  - YAML
@@ -12,7 +11,7 @@ excerpt: |
     Learn why using YAML for control flow configuration can lead to complex and hard-to-understand code, and why it's better to use existing programming languages or write a parser instead. Discover the pitfalls of using YAML as a programming language and explore alternative tools like Makefile or Earthfile.
 last_modified_at: 2023-08-02
 ---
-**We're [Earthly](https://earthly.dev/). Build scripts without YAML are possible. After reading this article about YAML hell maybe [check us out](/).**
+**The article examines the difficulties associated with using YAML in CI/CD pipelines. Earthly streamlines builds by addressing these challenges head on. [Learn how](https://cloud.earthly.dev/login).**
 
 When I first worked with YAML config, it was a breath of fresh air. No more XML! No angle brackets. It was so plain and clear.
 
@@ -297,6 +296,6 @@ So here is my conclusion.
 
 **And tool users**: Don't assume that because something only requires configuration, you won't need to learn a partially-defined embedded-in-config programming language. You might be better off choosing a tool like a Makefile, an Earthfile, or even Gradle than one of the 100s of things that are 'configured' in YAML (Ansible, GHA, Azure Pipelines, and so on).
 
-And if you're tired of YAML's complexities, you might like [Earthly](https://www.earthly.dev/), its like my python build script above but 1000x times better. And Earthly Cloud now was a free plan with 6000 free minutes per month. So you can ditch the Yaml and get faster builds at the same time.
+And if you're tired of YAML's complexities, you might like [Earthly]((https://cloud.earthly.dev/login)), its like my python build script above but 1000x times better. And Earthly Cloud now was a free plan with 6000 free minutes per month. So you can ditch the Yaml and get faster builds at the same time.
 
 {% include_html cta/bottom-cta.html %}

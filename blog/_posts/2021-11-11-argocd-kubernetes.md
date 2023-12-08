@@ -14,7 +14,7 @@ excerpt: |
     Learn how to simplify Kubernetes deployments using ArgoCD, a lightweight tool that reads environment configurations from a Git repository and applies changes to a Kubernetes cluster. Discover common use cases and step-by-step instructions for implementing ArgoCD in your project.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're using ArgoCD for Kubernetes deployments, Earthly can enhance your workflow by automating and accelerating the build process. [Check it out](/).**
+**This article discusses the integration of ArgoCD in Kubernetes environments. Earthly enhances CI build processes deployments with reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 
 Kubernetes has simplified the container management process for microservice applications, but developers often face challenges when using this notoriously complex platform to achieve constant software delivery.
 
@@ -229,6 +229,6 @@ ArgoCD integrates well with Kubernetes tools. Here are some examples:
 
 ArgoCD is a powerful tool that allows you to deploy your application by constantly checking the state of the environment configurations on Git and ensuring it matches that of the cluster. ArgoCD also provides an intuitive UI for managing applications and pipelines, which improves overall UX.
 
-To further improve your CI/CD workflow with ArgoCD, you can use [Earthly](https://earthly.dev/). Earthly allows you to execute builds in Docker containers and can also run on popular CI tools like Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild. [Earthly](https://earthly.dev/) acts as an interface between language-specific tooling and build specification.
+To further improve your CI/CD workflow with ArgoCD, you can use [Earthly](https://cloud.earthly.dev/login). Earthly allows you to execute builds in Docker containers and can also run on popular CI tools like Jenkins, CircleCI, GitHub Actions, and AWS CodeBuild. [Earthly](https://cloud.earthly.dev/login) acts as an interface between language-specific tooling and build specification.
 
 {% include_html cta/bottom-cta.html %}

@@ -7,7 +7,7 @@ import contextlib
 import yaml
 import guidance
 
-gpt4 = guidance.llms.OpenAI("gpt-4")
+gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
 should_cache = True
@@ -450,5 +450,3 @@ def main():
 
 if __name__ == '__main__':
     main()
-
-

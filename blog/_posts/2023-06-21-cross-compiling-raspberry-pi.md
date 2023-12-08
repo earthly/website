@@ -15,8 +15,7 @@ excerpt: |
     Learn how to cross-compile programs for Raspberry Pi using a more powerful PC with this step-by-step tutorial. Discover how to set up the development environment, write a C++ program, and debug it using GDB.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers cross compiling. If you're someone who builds software often, you might want to [check us out](/) and see if Earthly can help you build faster and easier.**
+**This article discusses how to cross-compile for Raspberry Pi efficiently. Earthly simplifies the build process for cross-compilation. [Check it out](https://cloud.earthly.dev/login).**
 
 Thanks to its Debian-based OS, Raspberry Pi offers a robust developer experience. However, at times, it can be difficult to compile programs. For instance, maybe your project is large and your board doesn't have enough resources to compile it at a reasonable speed, especially if you're using a low-end board like the Raspberry Pi Zero. Or maybe your Virtual Network Computing (VNC) session is lagging, or the Raspberry Pi is in a location where it's not possible to attach a keyboard, mouse, or display. In these situations, you can use a readily available and efficient development machine, such as a laptop or another PC, to compile programs for the Raspberry Pi using a process known as cross-compilation.
 
@@ -570,6 +569,6 @@ Raspberry Pi's simplicity can be a limitation, but with a cross-compilation tool
 
 This article walked you through setting up a cross-compilation environment, creating a CMake toolchain file, compiling a C++ program, linking it to a shared library, and debugging using GDB.
 
-To delve deeper into cross-compilation with CMake, read the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM). And if you're looking to further fine-tune your cross compile process, you might want to give [Earthly](https://www.earthly.dev/) a try!
+To delve deeper into cross-compilation with CMake, read the [official documentation](https://cmake.org/cmake/help/book/mastering-cmake/chapter/Cross%20Compiling%20With%20CM). And if you're looking to further fine-tune your cross compile process, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try!
 
 {% include_html cta/bottom-cta.html %}

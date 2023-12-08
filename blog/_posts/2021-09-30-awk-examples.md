@@ -12,7 +12,7 @@ excerpt: |
     Learn the basics of Awk, a powerful text processing tool, in this informative article. Discover how to use Awk to manipulate and analyze data, calculate averages, and even score books based on reviews. Whether you're a beginner or an experienced programmer, this article will help you unlock the potential of Awk.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
+**In this article, we'll explore the fundamentals of Awk, a tool that simplifies text processing. Earthly streamlines your build processes with ease and effectiveness. [Learn more](https://cloud.earthly.dev/login).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/yJek26lyXZ0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -1156,7 +1156,7 @@ $ ./average "The AWK "
 The AWK Programming Language                            👍👍
 ~~~
 
-Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/):
+Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](https://cloud.earthly.dev/login/):
 
 {% include_html cta/bottom-cta.html %}
 
@@ -1166,7 +1166,7 @@ I hope this introduction gave you enough Awk for 90% of your use-cases though. I
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">AWK is a Swiss Army knife of text processing.<br><br>I knew it was powerful but I&#39;d never known how to use it.<br><br>So I took some time to learn the basics. Here is what you need to know: 🧵</p>&mdash; Adam Gordon Bell 🤓 (@adamgordonbell) <a href="https://twitter.com/adamgordonbell/status/1443590995279446019?ref_src=twsrc%5Etfw">September 30, 2021</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 
-And after mastering Awk, why not level up your build automation game next? Take a peek at [Earthly](https://www.earthly.dev/). This open-source tool could be the next step in your command line journey, offering a new way to handle build automation with ease and efficiency.
+And after mastering Awk, why not level up your build automation game next? Take a peek at [Earthly]((https://cloud.earthly.dev/login)). This open-source tool could be the next step in your command line journey, offering a new way to handle build automation with ease and efficiency.
 
 [^1]:
  [Sundeep Agarwal](https://learnbyexample.github.io/learn_gnuawk/cover.html) pointed out on [reddit](https://www.reddit.com/r/programming/comments/pyjy65/understanding_awk/) that Awk does more than this: "By default, awk does more than split the input on spaces. It splits based on one or more sequence of space or tab or newline characters. In addition, any of these three characters at the start or end of input gets trimmed and won't be part of field contents. Newline characters come into play if the record separator results in newline within the record content."

@@ -17,7 +17,7 @@ excerpt: |
     Learn how to use loops in Bash to control the flow of your programs. This article covers the different types of loops in Bash, including `while`, `until`, and `for`, and provides examples of how to use them in practical scenarios.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about looping in bash. If you are looking for to move beyond bash scripts for building and deploying then [check us out](/).**
+**This article explains how to use Bash loops. Earthly makes your build process more consistent and efficient. [Check it out](https://cloud.earthly.dev/login/).**
 
 Like any other programming language, [Bash](https://www.gnu.org/software/bash/) supports loops. The loops are used to repeatedly execute a set of commands based on some condition. Along with [conditionals](https://earthly.dev/blog/bash-conditionals/), they're the most common way to control the flow of a program.
 
@@ -450,6 +450,6 @@ Loops are one of the most fundamental concepts in Bash, or any programming langu
 
 This article gave you an overview of loops in Bash, using `while`, `until`, and `for` loops. If you want to learn more about loops, you can consult the [Bash manual](https://www.gnu.org/software/bash/manual/bash.html) or if you want to learn more about Bash, you can check out the [next article in this series](link).
 
-If you love building things in Bash, you're sure to love [Earthly](https://earthly.dev). Supercharge your build system with the clean and approachable syntax, and repeatable builds, of Earthly.
+If you love building things in Bash, you're sure to love [Earthly](https://cloud.earthly.dev/login). Supercharge your build system with the clean and approachable syntax, and repeatable builds, of Earthly.
 
 {% include_html cta/bottom-cta.html %}

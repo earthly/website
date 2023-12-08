@@ -10,6 +10,7 @@ internal-links:
    - design decision
 topic: kubernetes
 funnel: 2
+topcta: false
 excerpt: |
     In this article, Corey Larson, lead architect at Earthly, shares his insights on the importance of making technology choices that align with the beaten path. He emphasizes the value of community support and long-term dividends, urging readers to avoid being "weird" unless there is a strong justification.
 last_modified_at: 2023-07-11

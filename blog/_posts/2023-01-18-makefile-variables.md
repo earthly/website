@@ -15,9 +15,9 @@ excerpt: |
     Learn all about Makefile variables and how to use them to automate complex processes in your code. Find out how to set variables, append to them, and use special variables like automatic and implicit variables.
 last_modified_at: 2023-07-19
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+**The article explains the intricacies of Makefile variables. Earthly improves on Makefile performance by introducing sophisticated caching and concurrent execution. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-**We're [Earthly](https://earthly.dev/). Ever struggled with complex Makefile variables? That's where we come in. We simplify your build processes for quicker, efficient results. [Check us out](/).**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 Since its appearance in 1976, [Make](https://www.make.com/en) has been helping developers automate complex processes for compiling code, building executables, and generating documentation.
 
@@ -522,6 +522,6 @@ Learn more about [Makefile flags](https://earthly.dev/blog/make-flags/).
 
 ## Conclusion
 
-Make variables are akin to variables in other languages with unique features that make them effective yet somewhat complex. Learning them can be a handy addition to your programming toolkit. If you've enjoyed diving into the intricacies of Makefile variables, you might want to explore [Earthly](https://www.earthly.dev/) for a fresh take on builds!
+Make variables are akin to variables in other languages with unique features that make them effective yet somewhat complex. Learning them can be a handy addition to your programming toolkit. If you've enjoyed diving into the intricacies of Makefile variables, you might want to explore [Earthly]((https://cloud.earthly.dev/login)) for a fresh take on builds!
 
 {% include_html cta/makefile-cta.html %}

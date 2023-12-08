@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Portainer, an open-source container management tool, to easily deploy and manage Docker containers without the need for complex command-line interfaces. With Portainer's graphical user interface, you can view and administer your containerized applications with ease.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. It's a great companion with tools like Docker and Kubernetes, for a smoother containerization workflow. [Give it a try](/).**
+**This article explores the capabilities of Portainer in managing containers. Earthly ensures the production of dependable build artifacts. [Check it out](https://cloud.earthly.dev/login).**
 
 As a developer managing containerized applications can be daunting especially when it comes to using a command-line interface; administrating [docker](/blog/rails-with-docker) containers, writing complicating, and having to learn the various commands can be intimidating.
 
@@ -337,6 +337,6 @@ Viewing portainer agents for both Kubernetes via load balancer and Kubernetes vi
 
 Portainer is a super handy tool for managing your Docker apps. You've now got the basics down on creating Docker containers and images, plus adding other environments to your Portainer server. But remember, this is just the beginning! Maybe dive into Role-Based Access next. There's a lot more to explore with Portainer.
 
-And if you're enjoying Docker with Portainer, you'll love optimizing your builds with [Earthly](https://www.earthly.dev/). It's another tool that can significantly enhance your Docker experience. So, don't hesitate to have a look! Stay curious and keep exploring!
+And if you're enjoying Docker with Portainer, you'll love optimizing your builds with [Earthly]((https://cloud.earthly.dev/login)). It's another tool that can significantly enhance your Docker experience. So, don't hesitate to have a look! Stay curious and keep exploring!
 
 {% include_html cta/bottom-cta.html %}

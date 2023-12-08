@@ -18,8 +18,7 @@ excerpt: |
     Learn how to simplify your Go development process with Golang Workspaces. This article explores the concept of workspaces and how they can help you manage dependencies across multiple modules in your project, without the need for manual editing of `go.mod` files. Discover how to set up a workspace, make local changes to modules, and ensure that your changes are reflected across all dependent modules.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article mentions Monorepos as a great use case for Go Workspaces. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
+**This article explains how to use Go workspaces effectively. Earthly simplifies the build process for multi-module Go projects. [Check it out](https://cloud.earthly.dev/login).**
 
 ## The Problem
 
@@ -202,6 +201,6 @@ Now I can keep working on my adder library and test it in my service without hav
 
 Remember, workspaces are personal to each developer and should be kept out of the source code. So, add it to your `.gitignore` or delete it before you push changes. Plus, the cool thing is, if I include modules in the workspace that require my `adder` library, they'll default to the local version I'm editing, no need to tweak anything in the `go.mod` of each module.
 
-If you're loving the efficiency of Golang Workspaces, you might want to take it up a notch. If so check out [Earthly](https://www.earthly.dev/) for more streamlined builds. It could be the next tool to add to your developer toolkit.
+If you're loving the efficiency of Golang Workspaces, you might want to take it up a notch. If so check out [Earthly]((https://cloud.earthly.dev/login)) for more streamlined builds. It could be the next tool to add to your developer toolkit.
 
 {% include_html cta/bottom-cta.html %}

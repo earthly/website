@@ -14,7 +14,7 @@ internal-links:
  - Django
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can help streamline your builds and amplify your productivity. [Give us a try](/).**
+**The PyScript framework enables Python execution in web browsers. Earthly ensures your PyScript builds are reproducible. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 <div class="wide">
 
@@ -30,7 +30,7 @@ On the web, python is mainly used for backend development, using frameworks such
 
 Since the [World Wide Web Consortium(W3C) announced web assembly](https://www.w3.org/2019/12/pressrelease-wasm-rec.html.en#:~:text=https%3A%2F%2Fwww.w3.org,for%20efficient%20execution%20and%20compact) specifications as an official web standard, developers of various languages have seemed to support their favorite language on the Web, with Python developers having Pyodide to their rescue.
 
-On the 30th of April 2022, ****Anaconda, a company widely known for its data science products in Python and R programming languages, announced that it had just released a framework that would help users create python applications using HTML.
+On the 30th of April 2022, Anaconda, a company widely known for its data science products in Python and R programming languages, announced that it had just released a framework that would help users create python applications using HTML.
 
 This publication will help you get started writing PyScript, a JSFiddle-like Python framework.
 
@@ -274,6 +274,6 @@ Learn more about PyScript and Pyodide from these resources.
 
 In this tutorial, we've explored PyScript, a tool that allows running Python code in HTML with functionalities like external packages, Python REPLs, and visualization of Python-generated images in a browser. PyScript, an alpha stage tool, makes it easier to use Python scripts in HTML and its scientific stack on the client side, though it's not yet production-ready.
 
-As you continue to build your PyScript apps, consider boosting your build efficiency with [Earthly](https://www.earthly.dev/), your new favorite tool for reproducible builds. Earthly can be a game-changer in ensuring consistent and reliable results in your development process.
+As you continue to build your PyScript apps, consider boosting your build efficiency with [Earthly]((https://cloud.earthly.dev/login)), your new favorite tool for reproducible builds. Earthly can be a game-changer in ensuring consistent and reliable results in your development process.
 
 {% include_html cta/bottom-cta.html %}

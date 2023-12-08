@@ -13,7 +13,7 @@ excerpt: |
     
 last_modified_at: 2023-07-19
 ---
->**We're [Earthly](https://earthly.dev/). If you're dealing with rpms and yum, you'll want to check this out. [Take a look](/).**
+**In this article, you'll master RPM package creation. Earthly simplifies and improves your build process with containers. [Discover Earthly's benefits](https://cloud.earthly.dev/login).**
 
 <div class="narrow-code">
 

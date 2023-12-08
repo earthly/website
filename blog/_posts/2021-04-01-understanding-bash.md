@@ -15,7 +15,7 @@ excerpt: |
     Learn the ins and outs of bash scripting and how it can make your life easier. From understanding shebangs to error handling and variable naming, this article covers all the essentials for writing efficient and effective bash scripts.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software easier and quicker using containerization. If you're into bash scripting, you'll get the value of Earthly right away. Why not [give it a try](/)?**
+**In this article, you'll learn the best practices for bash scripting. If you enjoy crafting efficient bash scripts, Earthly's containerized build approach can streamline your build processes. [Discover how Earthly can assist you](https://cloud.earthly.dev/login).**
 
 <div class="narrow-code">
 
@@ -331,4 +331,4 @@ For example, if you set `TEST="hello"` in your shell and run `echo $TEST` inside
 
 You're now equipped to dive into bash scripting. With knowledge of common shebangs, functions of `set`, improved error handling, and common developer pitfalls, you're armed and ready. Use your newfound skills to automate daily commands, parse the remote git URL, or batch rename files. With bash scripting, the possibilities are endless.
 
-And once you've mastered bash scripting and are ready to level up your automation game, check out [Earthly](https://www.earthly.dev/). It's a tool designed for easier, more efficient builds, and it could be the next step in your development journey.
+And once you've mastered bash scripting and are ready to level up your automation game, check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool designed for easier, more efficient builds, and it could be the next step in your development journey.
