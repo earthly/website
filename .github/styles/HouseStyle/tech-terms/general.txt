@@ -565,6 +565,8 @@ interoperate
 tutorialspot
 Backpressure
 backpressure
+rebases
+Mergify
 rustc
 Swatinem
 sccache
