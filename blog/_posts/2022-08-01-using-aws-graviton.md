@@ -13,7 +13,7 @@ excerpt: |
     Learn about AWS Graviton, a type of processor made by Amazon, and discover its benefits, use cases, and how to deploy applications on it. Find out how Graviton processors offer strong performance, extensive software support, improved security, and the best performance per watt of energy use in Amazon EC2.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Earthly could be the tool to streamline your CI/CD pipelines. [Give it a try](/).**
+**This article highlights the advantages of using AWS Graviton. Earthly enhances Go applications with containerized build automation optimized for AWS Graviton. [Check it out](https://cloud.earthly.dev/login).**
 
 [Amazon Web Services (AWS)](https://aws.amazon.com/) is one of the most popular—and comprehensive—cloud service providers. It has over [200 fully-featured services](https://aws.amazon.com/what-is-aws/) on offer. There are enough services that it can be hard to remember them all.
 
@@ -214,7 +214,7 @@ If you've followed along, then you've just deployed a Go application to a Gravit
 
 In this guide, we've explored the Graviton processor architecture, its common applications, the services it supports, and its pros and cons. We've also walked through deploying an app on a Graviton EC2 instance. Its high performance and energy-efficiency make Graviton a versatile choice for any cloud workflow.
 
-Looking to streamline your cloud workflow even further? Give [Earthly](https://www.earthly.dev/), the build automation tool, a try! It can complement your Graviton-powered applications by simplifying cross architecture builds.
+Looking to streamline your cloud workflow even further? Give [Earthly]((https://cloud.earthly.dev/login)), the build automation tool, a try! It can complement your Graviton-powered applications by simplifying cross architecture builds.
 
 No matter your company's size, combining the power of Graviton with the efficiency of Earthly can offer significant savings and improvements in your development pipeline.
 

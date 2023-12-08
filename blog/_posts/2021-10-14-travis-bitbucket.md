@@ -11,7 +11,7 @@ excerpt: |
     Learn how to set up a continuous integration workflow using Travis CI and Bitbucket. This tutorial will guide you through the process of creating a simple REST API using Node.js and the Express framework, and then running tests on the application using Travis CI.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We streamline the build process using containerization. You're into Travis CI and Bitbucket? Perfect. Earthly can take your CI/CD workflow to the next level. [Give it a try](/).**
+**This article explains how to set up Travis CI. Use Earthly with Travis CI to make your CI/CD pipelines more efficient with reproducible and parallel builds. [Learn more](https://cloud.earthly.dev/login).**
 
 CI/CD (continuous integration / continuous delivery) helps development teams optimize software quality tests before delivering committed changes into production. In this tutorial, you'll learn how to set up a continuous integration workflow using [Travis CI](https://www.travis-ci.com/) and [Bitbucket](https://bitbucket.org/).
 
@@ -269,7 +269,7 @@ The source code for this demonstration is available in this [public repository](
 
 CI/CD has become a common model for delivering quality software. Tools, like Travis CI, accelerate the process of automation by providing their platform as a service to software developers.
 
-That being said, the practice of configuring builds for multiple application environments can become increasingly complex—especially as you work across different programming languages and underlying environments. That's where [Earthly](https://earthly.dev/) comes in.
+That being said, the practice of configuring builds for multiple application environments can become increasingly complex—especially as you work across different programming languages and underlying environments. That's where [Earthly](https://cloud.earthly.dev/login) comes in.
 
 Earthly is a build automation tool that works on top of popular CI platforms, like Travis CI, operating in the layer between language-specific tools (like Maven, Gradle, npm, pip, and Go Build) and the CI build specification. A tool like Earthly can give your build automation process the edge it needs when it comes to repeatability and portability.
 

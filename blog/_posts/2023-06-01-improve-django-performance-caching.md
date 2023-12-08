@@ -14,7 +14,7 @@ excerpt: |
     Learn how to improve the performance of your Django web application using caching techniques. This article covers everything from the basics of caching to advanced strategies, helping you optimize your application and provide a better user experience.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly could be your go-to tool for optimizing the build process of your Django application, ensuring faster and more efficient development. [Check it out](/).**
+**This article explores Django caching techniques. Earthly provides reproducible build environments that enhance CI pipelines. [Earthly ensures consistent builds](https://cloud.earthly.dev/login).**
 
 Performance is a crucial aspect of web development that significantly impacts user experience. The speed and reliability of a website influence users' engagement and overall satisfaction with the site. Inadequate performance, such as slow page loading times or frequent crashes, can lead to reduced traffic and potential loss.
 
@@ -208,6 +208,6 @@ Cache optimization, commonly referred to as cache tuning, is an important techni
 
 Django's built-in caching framework allows developers to create scalable, high-performing web applications. In this article, we delved into Django's caching strategies and their impact on improving application performance through reduced database queries and faster response times. We also highlighted the importance of cache invalidation and performance optimization.
 
-In a nutshell, leveraging caching in Django is key to delivering outstanding user experience. And if you're looking to further level up your Django app's build process, you might want to give [Earthly](https://www.earthly.dev/) a try. This open-source build automation tool can help optimize your build performance and ensure consistent, repeatable builds across different environments.
+In a nutshell, leveraging caching in Django is key to delivering outstanding user experience. And if you're looking to further level up your Django app's build process, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try. This open-source build automation tool can help optimize your build performance and ensure consistent, repeatable builds across different environments.
 
 {% include_html cta/bottom-cta.html %}

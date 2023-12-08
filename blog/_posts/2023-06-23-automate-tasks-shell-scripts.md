@@ -16,8 +16,7 @@ excerpt: |
     Learn how to automate common tasks in software development using shell scripts. From file backups to log analysis and system maintenance, this article provides step-by-step guides and introduces key concepts like variables, loops, and regular expressions.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about how to automate common tasks with shell scripts. If you're interested in a different approach to building and packaging software then [check us out](/).**
+**The article provides an in-depth analysis of shell script automation. Earthly enhances your build process through containerization. [Learn how](https://cloud.earthly.dev/login).**
 
 While performing various software development practices, it is common to repeat specific tasks. This repetition can lead to human error, which introduces the task to bugs and other security vulnerabilities. Also, doing repetitive tasks manually can be time-consuming and inefficient in software development. However, automation of tasks can help solve these problems.
 
@@ -664,6 +663,6 @@ This task provides a guide for creating an automated deployment script using con
 
 Shell scripts offer a powerful solution to automate various tasks, such as file backups, data processing, and system maintenance. This article has provided a hands-on understanding of scripting features like variables, loops, system calls, and more. Shell scripting can decrease errors, boost productivity, and enhance system stability, becoming a highly sought skill in the DevOps domain.
 
-While it's essential to select the right tool, shell scripting isn't a cure-all. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly](https://www.earthly.dev/) for container-based build scripting and automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
+While it's essential to select the right tool, shell scripting isn't a cure-all. If you've enjoyed learning about automation with shell scripts, you might want to explore [Earthly]((https://cloud.earthly.dev/login)) for container-based build scripting and automation. It's super cool stuff and a great next step in your journey towards mastering automation tools.
 
 {% include_html cta/bottom-cta.html %}

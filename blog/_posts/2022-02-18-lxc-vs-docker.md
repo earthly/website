@@ -14,7 +14,7 @@ excerpt: |
     Are you confused about whether to use LXC or Docker for your containerization needs? This article compares the two container platforms in terms of host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. Whether you're a developer looking for simplicity or a system administrator in need of control, this article will help you make an informed decision.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. If you're interested in a simple and containerized approach to building software then [check us out](/).**
+**This article compares LXC and Docker. Earthly enhances Docker by streamlining the container build process with advanced caching and parallelization. [Check it out](https://cloud.earthly.dev/login).**
 
 [Linux Containers](https://linuxcontainers.org/) (LXC) is an OS-level virtualization technology that enables you to create and run multiple Linux operating systems (OS) simultaneously on a single Linux machine (LXC host). LXC provides a set of tools to manage your container as well as templates to create a virtual environment of [the most common Linux OS](https://uk.lxd.images.canonical.com/).
 
@@ -155,6 +155,6 @@ LXC, is a serious contender to virtual machines. So, if you are developing a Lin
 
 Docker is a complete solution to distribute applications and is particularly loved by developers. Docker solved the local developer configuration tantrum and became a key component in the CI/CD pipeline because it provides isolation between the workload and reproducible environment.
 
-In the same way that Docker extended the features of LXC to make it easy to package applications and make operating them more developer-friendly, [Earthly](https://earthly.dev/) built on top of Dockerfile to create tools better suited to manage the CI/CD workload. Be sure to check it out to help automate and simplify your development pipeline using either Docker or LXC.
+In the same way that Docker extended the features of LXC to make it easy to package applications and make operating them more developer-friendly, [Earthly](https://cloud.earthly.dev/login) built on top of Dockerfile to create tools better suited to manage the CI/CD workload. Be sure to check it out to help automate and simplify your development pipeline using either Docker or LXC.
 
 {% include_html cta/bottom-cta.html %}

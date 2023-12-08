@@ -11,8 +11,7 @@ excerpt: |
     Learn how to use the `sed` command in the command line to search and manipulate text. Discover the benefits of using `sed` and explore various commands and techniques for find and replace operations.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about `sed` and the best ways to use it. If you doing things at command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
+**This article explains how to use `sed` for text manipulation. Earthly integrates `sed` into its reproducible build processes. [Learn how](https://cloud.earthly.dev/login).**
 
 You need the ability to search and manipulate text on the command line, especially when performing repetitive tasks. This is what makes `sed`, or **s**tream **ed**itor, so valuable. `sed` is a Unix text processing and manipulation CLI tool. A stream editor takes in text from an input stream and transforms it into a specified output according to instructions. The input stream could be from [pipelines](https://en.wikipedia.org/wiki/Pipeline_(Unix)) or files.
 
@@ -414,7 +413,7 @@ Hello, world!
 
 `sed` gives you a lot of power over your text processing. It offers flexibility when performing repetitive tasks, and it has a robust command and feature set. It can even be coupled with other command line tools to further enrich your text processing tasks.
 
-Another tool for defining repeatable builds is [Earthly](https://earthly.dev/), a Git-aware syntax that you can use with your current build system. All Earthly builds are language-agnostic and containerized, meaning they can run anywhere, and they can be used to reproduce CI failures, automatically cache build steps, and automatically execute targets in parallel.
+Another tool for defining repeatable builds is [Earthly](https://cloud.earthly.dev/login), a Git-aware syntax that you can use with your current build system. All Earthly builds are language-agnostic and containerized, meaning they can run anywhere, and they can be used to reproduce CI failures, automatically cache build steps, and automatically execute targets in parallel.
 
 To learn more about Earthly, check out its [documentation](https://docs.earthly.dev/).
 

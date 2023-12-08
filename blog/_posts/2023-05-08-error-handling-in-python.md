@@ -14,7 +14,7 @@ excerpt: |
     Learn how to handle errors in Python with this comprehensive article. From syntax errors to runtime errors, you'll discover how to use the `try-except` block, raise custom exceptions, and implement best practices for error handling.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). Our build automation tool makes building software simpler and faster using containerization. Earthly can make your Python projects easier to build and troubleshoot. [Check us out](/).**
+**This article explains Python error handling. Earthly provides containerized builds for Python that simplify dependency management. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Error handling is a critical aspect of programming, and it involves detecting and resolving errors that occur during program execution. Python is a high-level programming language that provides built-in features and libraries for error handling, making it easier for developers to detect and handle errors in their programs. In Python, errors can occur due to dynamic typing and a lack of compile-time checks, making it even more important to properly handle exceptions.
 
@@ -388,6 +388,6 @@ This article provided insights on Python error handling, such as various error t
 
 After reading, you should be adept at handling errors in Python to create more reliable code. All code discussed is available on [GitHub](https://github.com/Boadzie/error-handling-in-python).
 
-And as you continue to refine your Python skills, you might also be looking for ways to streamline your build process. If so, consider taking your workflow up a notch with [Earthly](https://www.earthly.dev/), a tool designed to simplify build automation.
+And as you continue to refine your Python skills, you might also be looking for ways to streamline your build process. If so, consider taking your workflow up a notch with [Earthly]((https://cloud.earthly.dev/login)), a tool designed to simplify build automation.
 
 {% include_html cta/bottom-cta.html %}

@@ -21,8 +21,7 @@ excerpt: |
     This article explores the debate between using a monorepo or a polyrepo structure for source code. It discusses the benefits and challenges of each approach, as well as the hybrid option. Whether you're interested in ease of importing, contributions within and across projects, viewing diffs, structure of releases, builds and CI, open-source considerations, or issue tracking, this article provides insights to help you make an informed decision.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article talks about the benefits of using a Monorepo. Earthly is particularly useful if you're working with a Monorepo. [Check us out](/).**
+**In this article, we'll examine the key choices in organizing repositories. Struggling with monorepo builds? Earthly's containerized method can streamline your continuous integration process. [Learn more](https://cloud.earthly.dev/login).**
 
 The decision of whether to use a monorepo or a polyrepo structure for your source code can be a very emotional (maybe even religious!) battle. On its surface, it's not much different than "tabs vs spaces" or "vim vs emacs". Or is it?
 
@@ -196,7 +195,7 @@ A third possibility also exists, which I call the *hybrid layout*. Because monor
 
 #### A Note on Earthly
 
-[Earthly](https://earthly.dev) supports cross-project builds for either monorepo and polyrepo layouts. It solves for some of the challenges outlined above. In fact, these challenges were the main [source of inspiration](https://earthly.dev/blog/introducing-earthly-build-automation-for-the-container-era/) when Earthly was started.
+[Earthly](https://cloud.earthly.dev/login) supports cross-project builds for either monorepo and polyrepo layouts. It solves for some of the challenges outlined above. In fact, these challenges were the main [source of inspiration](https://earthly.dev/blog/introducing-earthly-build-automation-for-the-container-era/) when Earthly was started.
 
 ### Code Ownership
 
@@ -250,7 +249,7 @@ Hybrid setups tend to come as a compromise between the two approaches. They can 
 
 As a bit of personal opinion, I have always aimed to optimize for cross-team collaboration in my engineering teams. Developers don't naturally gravitate towards unknown code or unknown technologies, so anything you can do to encourage close collaboration helps bridge this gap. The result can be a really agile engineering organization.
 
-It is usually the integration of components together that is the most time-consuming, the most prone to bugs, and the cause for unexpected surprises when working in production. If everyone is left to contribute in their own little box, they will not build the right tools and processes to effectively contribute across. As Andy Grove suggests in [High Output Management](https://www.amazon.com/dp/0679762884/ref=cm_sw_em_r_mt_dp_d.4bGbH1VS8VW) to design around the [limiting factor](https://charles.io/high-output-management/) (in this case, the limiting factor being cross-team contribution), I have always gravitated towards monorepo whenever possible. However, realistically pure monorepo hasn't always been truly feasible, so for one reason or another, we always ended up with a hybrid. This is one of the reasons I started [Earthly](https://earthly.dev).
+It is usually the integration of components together that is the most time-consuming, the most prone to bugs, and the cause for unexpected surprises when working in production. If everyone is left to contribute in their own little box, they will not build the right tools and processes to effectively contribute across. As Andy Grove suggests in [High Output Management](https://www.amazon.com/dp/0679762884/ref=cm_sw_em_r_mt_dp_d.4bGbH1VS8VW) to design around the [limiting factor](https://charles.io/high-output-management/) (in this case, the limiting factor being cross-team contribution), I have always gravitated towards monorepo whenever possible. However, realistically pure monorepo hasn't always been truly feasible, so for one reason or another, we always ended up with a hybrid. This is one of the reasons I started [Earthly](https://cloud.earthly.dev/login).
 
 [^1]: In some extreme cases, the segmentation can be so aggressive, that you end up with micro-repos: repositories that perform specific functions. See for example this [collection of micro npm packages](https://github.com/parro-it/awesome-micro-npm-packages). There's a package for checking if an array is sorted?? Huh...
 

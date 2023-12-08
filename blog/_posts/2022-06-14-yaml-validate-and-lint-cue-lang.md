@@ -12,7 +12,7 @@ excerpt: |
     Learn how to use Cuelang, an extension of YAML, to validate your YAML configurations and prevent runtime errors. Discover how to define types, add constraints, and import packages to ensure your YAML files are structured correctly.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up builds using containerization. [Check it out](/).**
+**This article explains how Cuelang configurations enhance CI pipelines. Earthly guarantees reproducible and efficient builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 I've complained before [about using YAML](/blog/intercal-yaml-and-other-horrible-programming-languages/) when a programming language is what's needed. But, when you've got configuring to do, YAML is pretty useful. It's so much nicer to read and write than the XML I had to write back in the early days of Java development. But one advantage XML had over YAML was that XML schemas were commonly used and so I wouldn't get errors like this:
 

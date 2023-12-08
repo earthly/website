@@ -12,7 +12,7 @@ excerpt: |
     Learn how to combine GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Discover different approaches to proxying GRPC requests on Lambda and explore the limitations of running a GRPC service on an AWS Lambda.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster with containerization. Earthly is a great tool that can streamline your build process. [Check it out](/).**
+**This article discusses integrating GRPC with AWS Lambda. Earthly provides a reproducible build environment for this integration. [Check it out](https://cloud.earthly.dev/login).**
 
 <!-- vale HouseStyle.Link = NO -->
 
@@ -101,7 +101,7 @@ However, this endpoint can be used to make GRPCWeb requests. GRPCWeb is a differ
 
 HTTP/2 and AWS's API Gateway don't play well when it comes to lambdas. Although you can connect via HTTP/2, the API Gateway sticks to HTTP/1.1 for lambda calls which is a bummer for GRPC, as it's bound with HTTP/2. You'd need to switch to GRPC-Web to work over HTTP/1.1, but its client support is limited.
 
-A GRPC service on an AWS Lambda might not be feasible unless more GRPCWeb clients emerge, or you're okay with JavaScript or not using Lambdas. If you find a workaround, hit me up! In the meantime, if you're struggling with build automation in your serverless architecture, [Earthly](https://www.earthly.dev/) could make things easier. Check it out!
+A GRPC service on an AWS Lambda might not be feasible unless more GRPCWeb clients emerge, or you're okay with JavaScript or not using Lambdas. If you find a workaround, hit me up! In the meantime, if you're struggling with build automation in your serverless architecture, [Earthly]((https://cloud.earthly.dev/login)) could make things easier. Check it out!
 
 For more information on GRPC and GRPC Web, you can check out these resources:
 

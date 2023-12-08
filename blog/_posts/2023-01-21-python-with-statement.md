@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use the `with` keyword in Python to handle exceptions and ensure proper resource management. This article explains the concept of context managers and provides examples of creating your own classes and functions that support the `with` statement. Whether you're working with files, locks, or other types of connections, understanding the `with` statement is essential for writing clean and efficient Python code.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software building with containerization. If you're wrestling with complex Python CI/CD pipelines, you'll find Earthly can make your life a lot easier. [Check it out](/).**
+**This article explains the `with` statement in Python. The `with` statement in Python streamlines exception handling. Earthly simplifies the build process in continuous integration. [Check it out](https://cloud.earthly.dev/login).**
 
 The `with` keyword in python is used for exception handling when working with certain resources like files or database connections. These resources may need to have additional actions performed if an exception is raised.
 
@@ -171,6 +171,6 @@ When the code in the `with` statement block has finished executing, Python execu
 
 The `with` statement in Python, used with context managers, provides a simpler way than 'try-finally' blocks to ensure resources are immediately closed after use. In this tutorial, you've learned its function, how to use it in your custom objects and how it manages resources even when exceptions arise. While it's commonly used in file handling, it has wider applications too.
 
-As you continue to master Python, why not explore build efficiency too? Check out [Earthly](https://www.earthly.dev/). This tool could be your next step in optimizing your development process.
+As you continue to master Python, why not explore build efficiency too? Check out [Earthly]((https://cloud.earthly.dev/login)). This tool could be your next step in optimizing your development process.
 
 {% include_html cta/bottom-cta.html %}

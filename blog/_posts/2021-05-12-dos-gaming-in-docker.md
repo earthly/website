@@ -13,13 +13,14 @@ internal-links:
  - js dos
 topic: docker
 funnel: 2
+topcta: false
 last_modified_at: 2023-07-14
 ---
 <div class="notice--info">
 
 ### TLDR
 
-* Quick install [Earthly](/).
+* Quick install [Earthly](https://cloud.earthly.dev/login).
 * Run `earthly github.com/earthly/example-dos-gaming:main+doom` to start container.
 * Play DOOM at `http://localhost:8000` in browser.
 
@@ -41,7 +42,7 @@ Turns out you can!
 * A copy of a Shareware game
 * [NodeJS](https://hub.docker.com/_/node)
 * [Docker](https://www.docker.com/get-started)
-* [Earthly](https://earthly.dev/) (Optional, but I think it's neat!)
+* [Earthly](https://cloud.earthly.dev/login) (Optional, but I think it's neat!)
 
 ## Putting It Together
 
@@ -150,7 +151,7 @@ Using Earthly, we can even go a step further! Earthly lets us separate some of t
 
 ### About Earthly
 
-[Earthly](https://earthly.dev/) makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)
+[Earthly](https://cloud.earthly.dev/login) makes creating Docker images easier. [Take it for a spin!](https://docs.earthly.dev/basics)
 </div>
 
 ```Dockerfile
@@ -224,7 +225,7 @@ Make sure you replace the tag, URL, and args as appropriate.
 
 ## Conclusion
 
-It's neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out the [repository](https://github.com/earthly/example-dos-gaming). And if you want a better way to build docker images and to build things in general take a look at [Earthly](https://earthly.dev/). It's pretty cool.
+It's neat that we can make independent, offline bundles, similar to those shareware floppy disks from back in the day. To see the project as a whole, check out the [repository](https://github.com/earthly/example-dos-gaming). And if you want a better way to build docker images and to build things in general take a look at [Earthly](https://cloud.earthly.dev/login). It's pretty cool.
 
 Thanks for reading!
 

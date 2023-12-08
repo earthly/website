@@ -16,7 +16,7 @@ excerpt: |
     This tutorial introduces Turborepo, a fast and high-performance build system for JavaScript and TypeScript monorepos. It explains the benefits of using Turborepo, such as fast builds, remote caching, flexible task configuration, and integration with existing package managers, while also highlighting its limitations.
 last_modified_at: 2023-10-06
 ---
-**We're [Earthly](https://earthly.dev/). We use containerization to simplify and speed up software building. If you're working with monorepos, Earthly can be a game-changer for your build process. [Check it out](/).**
+**This article discusses the advantages of using Turborepo for monorepos. Earthly enhances monorepo efficiency with its powerful parallel build capabilities. [Check it out](https://cloud.earthly.dev/login).**
 
 In recent years, monorepos have seen a boom in popularity. Many real-life software projects consist of smaller, individual components that often depend on each other.
 
@@ -584,6 +584,6 @@ turbo run build --graph=tasks.png
 
 Turborepo is a young contender in the world of build tools. Its speed and optimization powers make it a fantastic choice for building JavaScript and TypeScript monorepos.
 
-In this article, you learned the pros and cons of Turborepo and saw how to use Turborepo in a monorepo for building and running tasks. If you have JavaScript or TypeScript projects that you want to speed up, give Turborepo a try! If your projects include the use of other languages, Turborepo won't be a fit, but you might want to take a look at [Earthly](https://earthly.dev/). Earthly can speed up your builds and work with other tools including Turborepo and NX.
+In this article, you learned the pros and cons of Turborepo and saw how to use Turborepo in a monorepo for building and running tasks. If you have JavaScript or TypeScript projects that you want to speed up, give Turborepo a try! If your projects include the use of other languages, Turborepo won't be a fit, but you might want to take a look at [Earthly](https://cloud.earthly.dev/login). Earthly can speed up your builds and work with other tools including Turborepo and NX.
 
 {% include_html cta/bottom-cta.html %}

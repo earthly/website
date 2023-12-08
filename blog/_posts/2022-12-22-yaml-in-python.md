@@ -14,9 +14,9 @@ excerpt: |
     Learn how to work with YAML in Python, including creating, reading, modifying, and converting YAML files. This tutorial covers the basics of YAML, the PyYAML library, and how to perform various operations on YAML files using Python. Whether you're new to YAML or looking to expand your Python skills, this tutorial is a great resource.
 last_modified_at: 2023-10-18
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/FfbGrSDXtHU?si=gn5YQnyO7qKPcna2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+**This article explains how to manage Python YAML with PyYAML. Earthly greatly improves continuous integration workflows involving Python. [Learn how](https://cloud.earthly.dev/login).**
 
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Working with Python? Earthly integrates smoothly it to streamline your build process. [Check it out](/).**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/FfbGrSDXtHU?si=gn5YQnyO7qKPcna2" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 If you've ever worked with Docker or Kubernetes, you'll have likely used YAML files. From configuring an application's services in [Docker](/blog/rails-with-docker) to defining Kubernetes objects like pods, services, and more—YAML is used for them all.
 
@@ -480,7 +480,7 @@ Once converted successfully, you should have an `output.json` file in your worki
 
 In this tutorial, you've learned how to handle YAML using Python and the PyYAML library. You've worked with functions like `safe_load()`, `safe_load_all()`, `dump()`, and `dump_all()` to manipulate YAML data and even convert it to JSON with Python's `json` library.
 
-As you continue to explore and expand your Python skills, you might find yourself in need a CI process. If that's the case, give [Earthly](https://www.earthly.dev/) a try. It's a great tool for automating Python builds and can significantly streamline your workflow.
+As you continue to explore and expand your Python skills, you might find yourself in need a CI process. If that's the case, give [Earthly]((https://cloud.earthly.dev/login)) a try. It's a great tool for automating Python builds and can significantly streamline your workflow.
 
 Now, why not take your newfound knowledge a step further? Try converting [JSON to CSV](https://earthly.dev/blog/convert-to-from-json/) next.
 

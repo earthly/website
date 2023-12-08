@@ -12,7 +12,7 @@ excerpt: |
     
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. While you're managing resources with Kubernetes autoscaling, we're here to make the build process efficient. [Check us out](/).**
+**This article examines Kubernetes autoscaling techniques. Earthly simplifies the build process for seamless Kubernetes deployments. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 There are many reasons engineers look to [Kubernetes](https://kubernetes.io/) when running their workloads, like support for containers and orchestration. Another major reason for choosing Kubernetes, though, is being able to automatically scale the services found within a cluster.
 
@@ -82,6 +82,6 @@ It's worth taking a look at if you are exploring autoscaling, as it provides a m
 
 After reading this article, you know the basics of Kubernetes autoscaling. You're now more familiar with the reasons for wanting to utilize Kubernetes autoscaling, and perhaps you've recognized some of the use cases. You also know what the difference is between the HPA, the VPA, and the CA.
 
-If you're looking to make your life easier in terms of Kubernetes deployments, it's worth checking out [Earthly](https://earthly.dev/). They combine the best of Makefiles and Dockerfiles to provide a seamless deployment system.
+If you're looking to make your life easier in terms of Kubernetes deployments, it's worth checking out [Earthly](https://cloud.earthly.dev/login). They combine the best of Makefiles and Dockerfiles to provide a seamless deployment system.
 
 {% include_html cta/bottom-cta.html %}

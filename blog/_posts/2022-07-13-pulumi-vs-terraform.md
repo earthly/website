@@ -13,7 +13,7 @@ internal-links:
  - IaC tools
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up the software building process using containerization. Earthly can seamlessly work with both Pulumi and Terraform to streamline your infra process. [Check it out](/).**
+**This article compares infrastructure as code (IaC) tools. Earthly's declarative syntax streamlines complex build steps. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 There once was a time when technicians manually provisioned application infrastructure. In recent years, as companies began rapidly expanding their infrastructure stacks, they began to realize the shortcomings of manual provisioning:  
 
@@ -118,6 +118,6 @@ This article compared Terraform and Pulumi, two prominent Infrastructure as Code
 
 In summary, [Terraform](/blog/kubernetes-terraform), as the industry leader, is ideal if you seek robust community support and are willing to learn HCL. Pulumi is an emerging player preferred for efficiency and the use of familiar languages. Both tools serve the same purpose - pick one that aligns best with your needs.
 
-Looking to simplify your build automation further? Give [Earthly](https://www.earthly.dev/) a try. It could be the perfect complement to your chosen IaC tool.
+Looking to simplify your build automation further? Give [Earthly]((https://cloud.earthly.dev/login)) a try. It could be the perfect complement to your chosen IaC tool.
 
 {% include_html cta/bottom-cta.html %}

@@ -14,7 +14,7 @@ excerpt: |
     Learn how to work with classes and objects in Python in this tutorial. Discover how to define attributes and methods, use class variables and methods, and create objects from tuples.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software building using containerization. If you're working with Python, Earthly can simplify your build process. [Check it out](/).**
+**This article explains the basics of Python OOP fundamentals. Earthly streamlines your continuous integration workflow for Python OOP projects. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 If you're a developer looking to level up your Python skills, adding OOP to your Python box can be helpful. This tutorial will help you get started with object-oriented programming in Python.
 
@@ -472,7 +472,7 @@ class Student:
 
 In this tutorial, we explored Python's classes and objects, using classes as templates to make objects with instance attributes and methods. We learned about class variables and methods, which share values across all instances and serve as alternate constructors, respectively. We also discussed static methods not tied to a class or instance.
 
-As we continue to level up our Python skills, it's also worth considering how we can optimize our build automation. If you're interested in this, you might want to check out [Earthly](https://www.earthly.dev/).
+As we continue to level up our Python skills, it's also worth considering how we can optimize our build automation. If you're interested in this, you might want to check out [Earthly]((https://cloud.earthly.dev/login)).
 
 Next up, we'll learn about extending class functionality with Python inheritance. Stay tuned!
 

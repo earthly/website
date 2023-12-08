@@ -14,9 +14,7 @@ excerpt: |
     This article explores the benefits of monorepos and discusses high-performance build systems like Nx and Turborepo that can help improve the scalability and efficiency of monorepos. These build systems create a dependency tree, utilize caching, and enable parallel job execution to optimize the build process and reduce build times.
 last_modified_at: 2023-08-28
 ---
-
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about the pros and cons of working with monorepos. If you're currently working with a monorepo, Earthly could be a great solution to help you improve build times and create a better developer experience. [Check us out](/).**
+**This article identifies top tools for optimizing monorepos. Earthly simplifies and standardizes developer builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Monorepo is more than just a trendy buzzword today, thanks to its increasing popularity and game-changing advantages. But if you think they've only been around for a few years, think again. Big tech companies like Google have been using Monorepos since time immemorial. Google maintains more than 2 billion lines of code with more than hundreds of terabytes of data. They store all their code in a single monolithic repository and surprisingly they've been doing it since their inception.
 
@@ -163,6 +161,6 @@ Let's say developer A in your team builds an application. Then, developer B conf
 
 Monorepos have become an increasingly popular concept in the context of distributed teams. Taking advantage of the enhanced visibility and efficient code sharing they afford, as well as the potential to test and build complex applications easily, more and more development teams are turning to monorepos. The introduction of high-performance build systems such as Nx and Turborepo can take the power of monorepo to a whole new level, equipping them with features like caching, parallel job execution, and more.
 
-If you're currently looking for a build tool that works great with monorepos, consider checking out [Earthly](/). As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
+If you're currently looking for a build tool that works great with monorepos, consider checking out [Earthly](https://cloud.earthly.dev/login). As an open source [CI/CD](/blog/ci-vs-cd) framework, Earthly allows you to develop locally and run anywhere. Builds are containerized and language agnostic, and tasks are executed in parallel, which makes it fast. Check out Earthly's detailed [documentation](https://docs.earthly.dev/) to see how you can get started with it easily.
 
 {% include_html cta/bottom-cta.html %}

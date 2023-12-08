@@ -16,7 +16,7 @@ excerpt: |
     Learn the basics of AWS networking and how to set up your own virtual private cloud (VPC) from scratch. This tutorial covers regions, availability zones, subnets, internet gateways, and route tables, and includes step-by-step instructions for creating an EC2 instance and deploying a web server using Nginx.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster, which could be handy if you're working on AWS networking systems. Earthly can help automate your build process and make resource management easier. [Check it out](/).**
+**The article explains how to create a network in AWS. Earthly streamlines the build process for DevOps engineers working with AWS. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 When you first create an AWS account a lot of resources get created for you by default. For starters, you'll get a VPC in each region. In each of those you'll get subnets, a Route Table, an Internet Gateway, a CIDR range of IPs, and a Security Group. But what actually is all this stuff? If you're not someone who is super familiar with networking, it can be a little overwhelming.
 
@@ -321,7 +321,7 @@ That's it, no more setup is needed. Now you can paste the same IP address into y
 
 This tutorial has provided basic insights into setting up a secure AWS network. Remember, the default VPCs that AWS provides in each region are completely usable and free. You can use them without fully understanding them, but it's always better to know how things work.
 
-Once you've got your AWS network up and running, you might want to consider making your builds smoother with [Earthly](https://www.earthly.dev/). It's a tool that can significantly enhance your build automation process. So, do check it out!
+Once you've got your AWS network up and running, you might want to consider making your builds smoother with [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can significantly enhance your build automation process. So, do check it out!
 
 There's plenty more to learn in this area, so keep exploring.
 

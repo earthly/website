@@ -16,8 +16,7 @@ excerpt: |
     Learn how to build Java projects with Bazel, an open-source automatic build tool that offers extensibility, scalability, and flexibility. This tutorial walks you through the process of configuring your workspace, creating a build file, adding dependencies, and building your project with Bazel.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building Java projects with Bazel. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
+**This article examines the combination of Bazel and Java. Earthly directly integrates with Bazel for Java project CI pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 If you're a Java developer, you'll have likely used ANT, Maven, or Gradle to build your projects. Many of these solutions have been around for decades, but Java's changed a lot over the years. While these tools are still serviceable, you may want something more conducive to the current speed of application development and deployment.
 
@@ -413,7 +412,7 @@ This should return a list of all the classes packed into the `.jar`. The list is
 
 ## Conclusion
 
-We've walked through the basics of building Java projects with Bazel in this tutorial. Now you should have a rough idea of how Bazel can improve your workflows and big project builds. If you enjoyed learning about Bazel, then you'll love exploring [Earthly](https://www.earthly.dev/) - another nifty build automation tool for your tech stack. Check it out!
+We've walked through the basics of building Java projects with Bazel in this tutorial. Now you should have a rough idea of how Bazel can improve your workflows and big project builds. If you enjoyed learning about Bazel, then you'll love exploring [Earthly]((https://cloud.earthly.dev/login)) - another nifty build automation tool for your tech stack. Check it out!
 
 Happy coding!
 

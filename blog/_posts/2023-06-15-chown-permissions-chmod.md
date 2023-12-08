@@ -15,8 +15,7 @@ excerpt: |
     Learn how to change file and directory ownership in Linux using the `chown` command. This article explains the importance of ownership in Linux, how permissions work, and provides examples of using `chown` to change ownership.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster. This article is about Linux file permissions and ownership. If you enjoy doing things at the command line you might like [Earthly](https://earthly.dev/). It's a pretty great open-source build tool.**
+**This article explains the basics of managing ownership in Linux. Earthly provides advanced build automation for CI/CD pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 In Linux, file, and directory ownership is a core aspect of the operating system's security and file management model. Each file and directory has an *owner* and a *group* assigned to it. The owner of a file or directory is the user who created it, and the group is a collection of users who share the same permissions for that file or directory.
 
@@ -334,6 +333,6 @@ Because the root user has unrestricted access to the system, it's highly recomme
 
 In this quick guide, you've got the hang of using `ls`, `chown`, `chgrp`, and `chmod` to manage Linux file permissions and ownership. Sure, it can be tricky, but there are loads of resources to help you out, like official docs, online tutorials, and forums. Some cool places to start could be [Linux Documentation Project](https://tldp.org), [LinuxQuestions.org](https://www.linuxquestions.org), or the [Ubuntu Community Help Wiki](https://help.ubuntu.com/community/CommunityHelpWiki).
 
-Now that you've mastered Linux permissions, why not level up your build automation game with [Earthly](https://www.earthly.dev/)? It's a great tool to streamline your development process.
+Now that you've mastered Linux permissions, why not level up your build automation game with [Earthly]((https://cloud.earthly.dev/login))? It's a great tool to streamline your development process.
 
 {% include_html cta/bottom-cta.html %}

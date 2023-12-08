@@ -15,7 +15,7 @@ excerpt: |
     Learn how to configure a continuous delivery pipeline with Flux for your Kubernetes cluster in this tutorial. Discover how GitOps can automate application delivery and deployment using a Git repository as the single source of truth.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. It's an ideal tool for building and managing containerized applications, perfect for those working with Kubernetes. [Check it out](/).**
+**This article explores how FluxCD automation can be enhanced by integrating Earthly, optimizing both build and deployment processes in Kubernetes. [Check it out](https://cloud.earthly.dev/login).**
 
 Kubernetes has become the go-to tool for application [deployment](/blog/deployment-strategies). However, it does not offer features for continuous integration and delivery. Continuous delivery can be particularly helpful for larger teams that host and update deployments frequently. One approach to maintaining continuous delivery for Kubernetes is GitOps.
 
@@ -601,7 +601,7 @@ FluxCD also supports deployments with [Helm](https://fluxcd.io/flux/guides/helmr
 
 You've now got a good grip on how Flux can automate your Kubernetes manifest deployment by tracking updates in your repos, following the GitOps logic. And you aren't just limited to GitHub; it works with GitLab repositories too.
 
-If you're looking to further optimize your build automation, you might want to give [Earthly](https://www.earthly.dev/) a look! It's a powerful tool that can complement your use of Flux and other GitOps tools.
+If you're looking to further optimize your build automation, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a look! It's a powerful tool that can complement your use of Flux and other GitOps tools.
 
 Curious about more? Explore [ArgoCD](https://earthly.dev/blog/argocd-kubernetes/), another cool GitOps tool. Want to see how they stack up? Here's a [killer comparison guide](https://earthly.dev/blog/flux-vs-argo-cd/).
 

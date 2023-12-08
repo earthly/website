@@ -16,8 +16,7 @@ excerpt: |
     This article explores the power of macros in Rust, providing practical examples and best practices for using them effectively. Whether you're new to macros or looking to enhance your understanding, this article will help you harness the full potential of macros in your Rust projects.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article presents practical examples for using macros in Rust. If you're interested in a different approach to building and packaging software then [check us out](/).**
+**This article delves into the power and versatility of Rust macros. Earthly guarantees a build process as robust as the macros you create. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 In Rust, macros are pieces of code that generate other Rust code using a technique commonly known as [metaprogramming](https://en.wikipedia.org/wiki/Metaprogramming). A macro is expanded during compilation, and the output of a macro is inserted into the source code of the program.
 
@@ -666,7 +665,7 @@ Here, assume that `my_macro.rs` invokes some macro in an invalid way. The `trybu
 
 Macros are a high-powered feature in Rust for code manipulation and complexity reduction. In this tutorial, you learned about declarative and procedural macros, their syntax, real-life examples, and efficiency tips.
 
-If you're using Rust macros like a pro and looking for ways to further streamline your development process, you should check out [Earthly](https://www.earthly.dev/). It offers slicker, reproducible builds, making it a valuable tool in your Rust development toolbox.
+If you're using Rust macros like a pro and looking for ways to further streamline your development process, you should check out [Earthly]((https://cloud.earthly.dev/login)). It offers slicker, reproducible builds, making it a valuable tool in your Rust development toolbox.
 
 Find all code from this tutorial on [GitHub](https://github.com/heraldofsolace/rust-macros-demo). For further study, visit the [Rust docs](https://doc.rust-lang.org/book/ch19-06-macros.html), [*The Little Book of Rust Macros*](https://danielkeep.github.io/tlborm/book/README.html), and [more practical examples on GitHub](https://github.com/thepacketgeek/rust-macros-demo).
 

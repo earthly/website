@@ -15,7 +15,7 @@ excerpt: |
     Learn how to build and deploy a Python app with Bazel, a build automation tool. This article provides a step-by-step guide on implementing Bazel for building Python apps and demonstrates how to create a Flask app using Bazel. If you're interested in simplifying your software builds and deployments, this article is a must-read.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about Bazel. If you are looking for a simpler approach to monorepo builds then [check us out](/).**
+**The article provides insights into the effectiveness of Bazel for build automation. Earthly guarantees reproducible builds, complementing Bazel's scalable architecture. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 ## What Is Bazel
 
@@ -260,7 +260,7 @@ By running the command `bazel run //app:main`, the project is built, and the mai
 
 In this article, the fundamentals of Bazel, specifically what Bazel is, what it's used for, and how to prepare the `WORKSPACE` and `BUILD` files, were explained. In the practical part of the article, a simple application was implemented in Python and Flask. Bazel was then used to build the source code, run a unit test, and run the main application in the browser.
 
-Bazel isn't the only solution for the automation of building and testing software. [Earthly](https://earthly.dev/) provides a convenient framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines.
+Bazel isn't the only solution for the automation of building and testing software. [Earthly](https://cloud.earthly.dev/login) provides a convenient framework to build images or stand-alone artifacts by leveraging containers for the execution of pipelines.
 
 A Earthfile for testing our calculator app could look like this:
 
@@ -279,6 +279,6 @@ unit_test:
   RUN python -m unittest discover
 ~~~
 
-[Earthly](https://earthly.dev/) combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
+[Earthly](https://cloud.earthly.dev/login) combines the best ideas from Dockerfiles and Makefiles into one specification, making the containers self-contained, repeatable, portable, and parallel.
 
 {% include_html cta/bottom-cta.html %}

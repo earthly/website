@@ -16,7 +16,7 @@ excerpt: |
     Learn how to implement API testing using Playwright with Python and generate an allure report for your tests. Discover how to create, update, and delete GitHub repositories using Playwright's built-in methods, and see how to fix failing tests using the allure report.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. If you're testing APIs with Python, Earthly can streamline and automate your build process. [Check it out](/).**
+**Playwright offers robust tools for API testing in Python. Earthly enhances the consistency of CI processes for API test builds and all builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Playwright is a popular end-to-end testing framework that Microsoft backs. With support for popular programming languages, such as Javascript, Typescript, Python, and Java, you can use Playwright to test your existing software projects. In addition to end-to-end testing, Playwright also supports API testing using built-in methods in the `APIRequestContext` class. This allows you to use a single tool to implement both end-to-end testing and [API testing](/blog/continuous-testing-in-devops). Moreover, Playwright provides customized reports with different types, such as CI report or [allure report](https://www.npmjs.com/package/allure-playwright).
 
@@ -454,7 +454,7 @@ As seen, the tests are all passing now.
 
 In this tutorial, we've gone through how to use Playwright with Python for API testing, specifically on GitHub APIs. This powerful approach will enhance your app quality, ensuring new features don't mess up the existing ones. Plus, thanks to generated allure reports, you'll have full visibility of your API test results, including any failures.
 
-If you've enjoyed learning about API testing with Playwright and Python, why not take your build process up a notch? Check out [Earthly](https://www.earthly.dev/), a tool that can further streamline your development workflow.
+If you've enjoyed learning about API testing with Playwright and Python, why not take your build process up a notch? Check out [Earthly]((https://cloud.earthly.dev/login)), a tool that can further streamline your development workflow.
 
 Explore how Earthly can enhance your build process!
 

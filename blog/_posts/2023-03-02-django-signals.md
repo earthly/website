@@ -14,7 +14,7 @@ excerpt: |
     Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about Django signals. Earthly is a powerful build tool that can be used to build and test Django projects and projects in any framework. [Check us out](/).**
+**This article explains the use of Django signals. Earthly significantly accelerates your Django-based REST API's CI pipeline. [Check it out](https://cloud.earthly.dev/login).**
 
 In Django, signals allow certain senders to inform a set of receivers that specific actions have occurred. Django signals are used to send and receive specific essential information whenever a data model is saved, changed, or even removed. This relates to specific past or present client-provided events that occur in real time.
 
@@ -525,6 +525,6 @@ The other image below shows the "mailtrap" sandbox environment for simulating em
 
 In this tutorial, we dove into Django signals, covering different types and how to use them in real-life applications. We unraveled the mystery of how Django internally creates and saves object instances using `save()` and `_init()_`. We explored ways to connect signals with receiver functions, and touched upon `post_init`, `pre_init`, `pre_save`, `post_save`, `pre_delete`, and `post_delete` signals with examples. We also learned about the `disconnect()` method. Finally, we built a feature using signals and threading to send emails.
 
-As you continue to expand your knowledge of [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/), you might also want to streamline your Django build processes. If so, why not give [Earthly](https://www.earthly.dev/) a try? This tool can help you optimize your development workflow, making it even more efficient and effective.
+As you continue to expand your knowledge of [Django signals](https://docs.djangoproject.com/en/4.1/topics/signals/), you might also want to streamline your Django build processes. If so, why not give [Earthly]((https://cloud.earthly.dev/login)) a try? This tool can help you optimize your development workflow, making it even more efficient and effective.
 
 {% include_html cta/bottom-cta.html %}

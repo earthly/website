@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use wildcards in Makefiles to create flexible and automated build processes. This tutorial provides examples and explanations of common wildcard use, the wildcard function, and rules with wildcards. Whether you're new to Make or looking to enhance your Makefile skills, this article is a must-read.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We're here to make your software builds simpler and faster using containerization. If you're using Makefiles, consider giving Earthly a spin for a more modern approach. [Check us out](/).**
+**This article explains the use of wildcards in Make. Earthly simplifies build processes with reproducible and parallel builds. [Check it out](https://cloud.earthly.dev/login).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/z4uPHjxYyPs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -159,4 +159,4 @@ Wildcards are a handy utility when creating your Makefiles. You can use them dir
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://earthly.dev/), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/). -->
+<!-- While Make is a popular tool with many possibilities and some downsides. For a modern approach to builds, check out [Earthly](https://cloud.earthly.dev/login), a tool that has combined the best parts of Makefiles and [Dockerfiles](https://docs.docker.com/engine/reference/builder/). -->

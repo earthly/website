@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use BuildKit, an open-source project that turns Dockerfiles into Docker images. Discover its history, how to install it, and how to build images using BuildKit directly. Explore different output types and gain insights into the inner workings of BuildKit.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify building software with containerization.[Check it out](/).**
+**In this article, discover BuildKit's powerful features. Learn how Earthly can boost your builds using Buildkit. [Explore Earthly](https://cloud.earthly.dev/login).**
 
 There is an excellent open-source project that you have probably used without realizing it. It's called BuildKit, and it is what turns a Dockerfile into a Docker image. And it doesn't just build Docker images; it can build OCI images and several other output formats. [OpenFasS](https://www.openfaas.com/) uses it to turn functions into full containers, and here at Earthly, we use it to create complete continuous integration pipelines.  
 
@@ -391,6 +391,6 @@ It's empty! The scratch keyword indicates a completely empty docker layer. The m
 
 So, we've gone over a few ways to use BuildKit directly, which offers more features than the modern `docker build`. With it, you can do cool stuff like changing the output type and monitoring process and network requests. But we've just scratched the surface! BuildKit aids in multi-platform builds, enables parallel builds, supports caching, and boosts multi-stage builds, among other things.
 
-If you've enjoyed exploring BuildKit and are looking to take things up a notch, you might want to check out [Earthly](https://www.earthly.dev/). It offers an optimized build process and extends the functionality available in BuildKit.
+If you've enjoyed exploring BuildKit and are looking to take things up a notch, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It offers an optimized build process and extends the functionality available in BuildKit.
 
 Stay tuned for a future post where we'll ditch Dockerfile syntax and explore creating a custom frontend.

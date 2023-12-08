@@ -16,7 +16,7 @@ topic: cli
 funnel: 2
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about building a Ngrok clone with AWS and Earthly. [Check out Earthly](/).**
+**Explore DIY ngrok alternatives in this article. Earthly provides a route to efficient, reproducible builds. [Learn how](https://cloud.earthly.dev/login).**
 
 <!-- vale WritingSuggestions.CorporateSpeak = NO -->
 
@@ -24,7 +24,7 @@ last_modified_at: 2023-07-14
 
 [ngrok](https://ngrok.com/) is a tool that allows you to create secure, publicly accessible URLs for your locally running code. Just a simple `./ngrok http 3000`, and your tunnel is up and running! It also comes with an inspector for all traffic traveling over its tunnels. Pretty slick right? However, for a stable domain it costs _at least_ $5/month, and it only goes up from there. Additionally, you're limited in the number of connections and tunnels that you can make.
 
-However, it can be hard to trust fancy tools like `ngrok` until you experience how the sausage is made; at least once. It may also be hard to explain yet _another_ recurring charge on the credit card to your partner. So, here is a tutorial to build yourself a DIY `ngrok` for free (at least 12 months, after that its very cheap), using the [AWS Free Tier](https://aws.amazon.com/free/), [Nginx](https://www.nginx.com/), and (of course) [Earthly](https://earthly.dev/). The result is a decent approximation that won't break the bank.
+However, it can be hard to trust fancy tools like `ngrok` until you experience how the sausage is made; at least once. It may also be hard to explain yet _another_ recurring charge on the credit card to your partner. So, here is a tutorial to build yourself a DIY `ngrok` for free (at least 12 months, after that its very cheap), using the [AWS Free Tier](https://aws.amazon.com/free/), [Nginx](https://www.nginx.com/), and (of course) [Earthly](https://cloud.earthly.dev/login). The result is a decent approximation that won't break the bank.
 
 ## So, How Does `ngrok` Work?
 

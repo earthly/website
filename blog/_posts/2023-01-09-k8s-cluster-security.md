@@ -14,7 +14,7 @@ excerpt: |
     Learn how to secure your Kubernetes cluster by applying security contexts to pods and containers. This article explains the concept of security contexts, their implementation in Kubernetes, and provides a step-by-step guide on how to apply them to enhance the overall security of your cluster.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up containerized software builds. If you're working on securing Kubernetes clusters, Earthly could be a game-changer for your container build process. [Check it out](/).**
+**This article provides a clear understanding of Kubernetes security contexts. Earthly strengthens CI pipelines with advanced caching. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 <div class="wide">
 ![K8s Security Context]({{site.images}}{{page.slug}}/FB9gnth.png)\
@@ -295,6 +295,6 @@ As you can see, that file has been created successfully with the configured UID 
 
 In this article, we dove into Kubernetes security contexts, discussing what they are and their implementation. We flagged the dangers of running apps with default or misconfigured setups. We also showed how to apply security contexts to pods and containers to limit permissions. Remember, the security context has a [bunch of options](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.25/#securitycontext-v1-core) like `capabilities` or `seLinuxOptions` to bolster your K8s security.
 
-As you continue to enhance your Kubernetes security, you might also be interested in improving your build automation. If so, why not check out [Earthly](https://www.earthly.dev/)? It could be the next step in optimizing your tech stack. Enjoy!
+As you continue to enhance your Kubernetes security, you might also be interested in improving your build automation. If so, why not check out [Earthly]((https://cloud.earthly.dev/login))? It could be the next step in optimizing your tech stack. Enjoy!
 
 {% include_html cta/bottom-cta.html %}

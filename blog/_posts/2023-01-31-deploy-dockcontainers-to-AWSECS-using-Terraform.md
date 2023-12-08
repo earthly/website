@@ -14,7 +14,7 @@ excerpt: |
     Learn how to automate the process of deploying Docker containers to AWS ECS using Terraform. This tutorial provides step-by-step instructions and code examples to help you set up the necessary infrastructure and launch your containers on AWS.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about IO and file reading in bash. If you are looking for to move beyond bash scripts for building and deploying software then [check us out](/).**
+**This article explains how to automate ECS deployment. Earthly simplifies the Docker container build process. [Check it out](https://cloud.earthly.dev/login).**
 
 [Elastic Container Service](https://docs.aws.amazon.com/AmazonECS/latest/developerguide/Welcome.html) (ECS) is a container orchestration service from AWS. It allows you to launch and manage container workloads. Recently, we published a [Deploying Docker Containers with ECS](https://earthly.dev/blog/deploy-dockercontainers-with-ecs/) guide that allows you to provision infrastructure on [ECS](/blog/how-to-setup-and-use-amazons-elastic-container-registry) . However, these steps are implemented manually.
 
@@ -687,7 +687,7 @@ terraform destroy
 
 In this tutorial, we explored using [Terraform](/blog/kubernetes-terraform) for automating cloud infrastructure tasks. We began with local application creation and then automated its deployment to the AWS ECS platform using Terraform.
 
-As you continue to refine your build process, you might want to consider other tools that can further streamline your workflow. If you're interested in efficient container-based builds, give [Earthly](https://www.earthly.dev/) a spin. It's designed to make your build process even smoother.
+As you continue to refine your build process, you might want to consider other tools that can further streamline your workflow. If you're interested in efficient container-based builds, give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's designed to make your build process even smoother.
 
 I hope this guide proved useful to you and that it opens up new possibilities for your cloud infrastructure tasks.
 

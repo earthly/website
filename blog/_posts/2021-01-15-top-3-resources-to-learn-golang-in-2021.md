@@ -9,7 +9,7 @@ excerpt: |
     Looking to learn GoLang? Check out this article for the top 3 resources recommended by an experienced developer. From interactive tours to in-depth explanations, these resources will help you get started and build familiarity with the language. Plus, there are bonus resources and recommendations for further learning. Don't miss out on this valuable guide!
 last_modified_at: 2023-08-28
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're learning Golang, Earthly can be a useful tool for streamlining your build process. [Check us out](/).**
+**In this article, we'll uncover the best resources for learning Go. Whether you're diving into cloud-native technologies such as Kubernetes and Terraform or just honing your Go skills, Earthly can streamline your build processes. [Learn more](https://cloud.earthly.dev/login).**
 
 ## Why Learn Go
 
@@ -145,4 +145,4 @@ Here are some great resources for further learning:
 - [The Go Programming Language](https://www.goodreads.com/book/show/25080953-the-go-programming-language)
 - [Head First Go](https://www.goodreads.com/book/show/36800891-head-first-go)
 
-Take advantage of them to deepen your understanding of Go. And if you're diving into Go, you might want to check out [Earthly](https://www.earthly.dev/) for efficient and consistent build automation. It could be a valuable tool in your Go development toolbox.
+Take advantage of them to deepen your understanding of Go. And if you're diving into Go, you might want to check out [Earthly]((https://cloud.earthly.dev/login)) for efficient and consistent build automation. It could be a valuable tool in your Go development toolbox.
