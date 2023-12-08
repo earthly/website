@@ -13,6 +13,7 @@ excerpt: |
     This tutorial explains how to control and optimize concurrency in GitHub Actions by utilizing features such as the `concurrency` keyword, workflow triggers, job matrixes, and caching. It also highlights the benefits of a well-implemented concurrency strategy and provides tips for avoiding common pitfalls.
 last_modified_at: 2023-10-17
 ---
+**This article explains GitHub Actions concurrency. Earthly provides robust parallel build capabilities for GitHub Actions. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 The `concurrency` keyword was introduced to [GitHub Actions](https://earthly.dev/blog/github-actions-and-docker/) in early 2021. While there are other ways to control and restrict the number of jobs running (per workflow) at any given time, the `concurrency` keyword is a cleaner solution that can be applied at both the job and workflow levels. Paired with techniques such as workflow triggers, job matrixes, and caching, GitHub Actions gives you all you need to develop a comprehensive concurrency strategy.
 
@@ -46,7 +47,7 @@ This means you should spend some time diagramming and/or charting the interconne
 
 #### Use Build Tools That Feature Caching
 
-Most build automation tools, including [Apache Maven](https://maven.apache.org/), come with build dependencies. However, some (including Maven) may not have a dependency or [build caching](https://maven.apache.org/extensions/maven-build-cache-extension/) out of the box. In comparison, build and test tools such as [Earthly](https://earthly.dev/) can optimize the build process by caching dependencies and only build what's absolutely necessary (after the initial build).
+Most build automation tools, including [Apache Maven](https://maven.apache.org/), come with build dependencies. However, some (including Maven) may not have a dependency or [build caching](https://maven.apache.org/extensions/maven-build-cache-extension/) out of the box. In comparison, build and test tools such as [Earthly](https://cloud.earthly.dev/login) can optimize the build process by caching dependencies and only build what's absolutely necessary (after the initial build).
 
 If you want to improve how quickly concurrency slots are freed up with each run, you must examine what tools you're using to compile and build your projects through GitHub Actions.
 

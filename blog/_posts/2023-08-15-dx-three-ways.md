@@ -11,7 +11,7 @@ excerpt: |
     Learn about the importance of Developer Experience (DX) and how it can impact different roles within an organization. Discover how Alice, Bob, and Carlos each prioritize DX in their respective roles as a Product Manager, Internal Tools Lead, and Director of Engineering, and how it has transformed their products, improved team collaboration, and accelerated development.
 last_modified_at: 2023-08-15
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler. Let us enhance your team's build DX. [Give it a shot](/).**
+**This article emphasizes the vital role of Developer Experience (DX) in boosting productivity and job satisfaction. Earthly improves DX with reliable and efficient build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Think of Developer Experience, or DX, as user experience but for developers. Instead of making things easier for the everyday user, DX is about making a developer's life easier when working with tools, libraries, and platforms.
 
@@ -151,4 +151,4 @@ From public-facing APIs to internal tools and across entire organizations, DX me
 
 Are there tools or apps you use that could be improved?
 
-DX can turn a tool from ignored to essential, boost a struggling product, and make a growing team run smoothly. Whether you're an Alice, a Bob, or a Carlos, improving DX is key. It ensures developer satisfaction and your organization's success. And if you're looking to improve your Developer Experience, check out [Earthly](https://www.earthly.dev/). It's a tool designed to simplify and speed up builds and accelerate development workflows.
+DX can turn a tool from ignored to essential, boost a struggling product, and make a growing team run smoothly. Whether you're an Alice, a Bob, or a Carlos, improving DX is key. It ensures developer satisfaction and your organization's success. And if you're looking to improve your Developer Experience, check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool designed to simplify and speed up builds and accelerate development workflows.

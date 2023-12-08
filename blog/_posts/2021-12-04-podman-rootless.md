@@ -14,7 +14,7 @@ excerpt: |
     Learn about Podman, a rootless Docker alternative that implements Open Container Initiative (OCI) standards. Discover its benefits, such as improved security and the ability to create and manage pods, and find out why it may be a compelling choice for developers and companies.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify software building using containerization. Earthly works great using Podman, making builds repeatable, portable, and understandable. [Check it out](/).**
+**This article discusses Podman container technology. Earthly enhances build pipelines with Podman's rootless container management. [Check it out](https://cloud.earthly.dev/login).**
 
 For many developers, [Docker](https://www.docker.com/) was their first exposure to the wonderful world of containers. Containers have changed the way we develop and ship software, and the pace of change isn't slowing down. As containerization technology matures and becomes more widely adopted, there is a growing desire to bring open standards to the field, and this is where [Podman](https://podman.io/) comes in. Podman is a rootless Docker alternative that implements Open Container Initiative (OCI) standards to give developers and companies the benefits of Docker, delivering some promising new features without some of the limitations, like requiring root access.
 
@@ -54,7 +54,7 @@ Red Hat has now adopted Podman as the default container runtime of Red Hat Enter
 
 ## Conclusion
 
-Podman is a promising development in the containerization landscape. While Docker is likely to remain the de facto tool for building images and running containers, for the time being, things, like the arrival of Podman and the Kubernetes deprecation of Docker, go to show that OCI's efforts to open up the playing field are paying off. As more and more OCI-compliant tools emerge, it will be interesting to see the impact on workflows and build tools. If you are concerned about these changes to the tool landscape impacting your [CI/CD](/blog/ci-vs-cd) and your builds, consider [Earthly](https://earthly.dev/).
+Podman is a promising development in the containerization landscape. While Docker is likely to remain the de facto tool for building images and running containers, for the time being, things, like the arrival of Podman and the Kubernetes deprecation of Docker, go to show that OCI's efforts to open up the playing field are paying off. As more and more OCI-compliant tools emerge, it will be interesting to see the impact on workflows and build tools. If you are concerned about these changes to the tool landscape impacting your [CI/CD](/blog/ci-vs-cd) and your builds, consider [Earthly](https://cloud.earthly.dev/login).
 
 Earthly provides an abstraction layer for your build process to make it repeatable, portable, and most importantly, understandable. Instead of juggling multiple different tools in your builds, Earthly handles this for you and helps you iterate on build scripts by making them run the same no matter where they are running, whether it is your laptop or CI.
 

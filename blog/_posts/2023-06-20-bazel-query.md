@@ -14,8 +14,7 @@ excerpt: |
     Learn all you need to know about Bazel queries in this article. Discover how Bazel queries can help you analyze your project's build graph, optimize build performance, and debug builds.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler—and faster—using containerization. This article is about Bazel query. If you want to see what can be done by combining ideas from a `Makefile` and a `Dockerfile` then [check us out](/).**
+**The article explains the advantages of using Bazel queries. Earthly enhances Bazel's dependency management with a simpler approach to build automation. [Check it out](https://cloud.earthly.dev/login).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/) is a build system that streamlines repetitive tasks to ensure build consistency. Thanks to features such as scalability, multilanguage platform support, [caching](https://earthly.dev/blog/bazel-build-with-caching/), remote executions, and Bazel queries, developers can use Bazel to reproduce deterministic builds and tests for their projects.
 
@@ -240,6 +239,6 @@ These are just a few examples of how to construct practical Bazel queries. Check
 
 In summary, Bazel queries provide a potent tool for managing project dependencies. This tutorial has introduced their syntax and usage within your dependencies graph. Integrate Bazel queries in your builds to maximize their effectiveness in your development process.
 
-And if you've enjoyed learning about Bazel queries and are looking for more ways to optimize your build processes, you might also enjoy exploring [Earthly](https://www.earthly.dev/). It's an alternative to Bazel that's easy to use. Check it out!
+And if you've enjoyed learning about Bazel queries and are looking for more ways to optimize your build processes, you might also enjoy exploring [Earthly]((https://cloud.earthly.dev/login)). It's an alternative to Bazel that's easy to use. Check it out!
 
 {% include_html cta/bottom-cta.html %}

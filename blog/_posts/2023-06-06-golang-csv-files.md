@@ -15,7 +15,7 @@ excerpt: |
     Learn how to work with CSV files in Go using the encoding/csv package and the goCSV library. This tutorial covers topics such as reading and appending CSV files, converting between CSV and JSON file formats, and provides code examples to help you get started. If you're a Go developer looking to manage CSV files in your projects, this article is a must-read.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify the software building process, making it fast and easy. If you're working with CSV files in Go, Earthly can help streamline your workflow. Why not [give it a look](/) for your next project?**
+**The article provides insight into the complexities of handling CSV files in Go. Earthly guarantees consistent build environments Go builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Tabular data is frequently stored in [CSV files](https://en.m.wikipedia.org/wiki/Comma-separated_values), a popular file format. In data processing and analysis projects, managing CSV files is a common task.
 
@@ -571,6 +571,6 @@ Your output should look like the following:
 
 Handling CSV files in Go is simple using the encoding/csv package and libraries like goCSV. Whether reading, adding to, or converting CSV files, Go equips you with what you need. Use the code examples in this article to delve into the perks of CSV for data storage and analysis.
 
-And if you're looking to further enhance your development processes, consider exploring [Earthly](https://www.earthly.dev/), a neat build automation tool that can streamline your builds and make them more efficient.
+And if you're looking to further enhance your development processes, consider exploring [Earthly]((https://cloud.earthly.dev/login)), a neat build automation tool that can streamline your builds and make them more efficient.
 
 {% include_html cta/bottom-cta.html %}

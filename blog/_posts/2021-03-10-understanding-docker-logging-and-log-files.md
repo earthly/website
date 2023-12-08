@@ -22,7 +22,7 @@ excerpt: |
     Learn how to effectively manage Docker logging and log files to improve the performance and reliability of your containerized applications. Discover different logging strategies, Docker logging commands, and the various logging drivers supported by Docker.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containers. Earthly is a fantastic resource for anyone digging into Docker logs. [Why not give it a try?](/)**
+**Explore effective Docker logging strategies in this article. Earthly simplifies your build process with consistent, concurrent builds as you manage Docker logs. [Discover more](https://cloud.earthly.dev/login).**
 
 Docker logging and its management are an important part of the containerization of your application. Once you've deployed your application, logging is one of the best tools to help reveal errors, aid in debugging, and optimize your application's performance.
 
@@ -311,4 +311,4 @@ While Docker containerization allows developers to encapsulate a program and its
 
 As we have seen in this post, to facilitate logging, Docker offers logging drivers and commands in the platform which gives you the mechanisms for accessing the performance data and also provides plugins to integrate with third-party logging tools as well. To maximize the logging capabilities there are several methods and strategies which help in designing your logging infrastructure, but each comes with its advantages and disadvantages.
 
-With this understanding of logging, containerization can be a powerful tool. Earthly is a containerized [continuous integration tool](https://earthly.dev/). If you've ever had to deal with flaky builds you should [check it out](https://earthly.dev/).
+With this understanding of logging, containerization can be a powerful tool. Earthly is a containerized [continuous integration tool](https://cloud.earthly.dev/login). If you've ever had to deal with flaky builds you should [check it out](https://cloud.earthly.dev/login).

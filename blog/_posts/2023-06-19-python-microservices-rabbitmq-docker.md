@@ -16,7 +16,7 @@ excerpt: |
     Learn how to convert a monolith recipe API into microservices using Django and Flask. This article covers the usage of RabbitMQ for communication between microservices and provides a step-by-step guide on Dockerizing the microservices.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly ideal for developers building microservices. [Check it out](/).**
+**This article explores the integration of microservices with Django. Earthly enhances the Docker Compose build process for containerized applications. [Check it out](https://cloud.earthly.dev/login).**
 
 Microservices are a software architectural style where an application is composed of small, independently deployable services. Each microservice has a single, narrowly defined responsibility and communicates with other microservices through APIs.
 
@@ -536,7 +536,7 @@ Now we can go to the Django admin, and we will see that a recipe was created. An
 
 So, today we went over how to connect Django and Flask microservices using RabbitMQ and Python's Pika library. We covered the basic setup for a message broker, producer, and consumer service, along with Dockerizing these microservices.
 
-If you're working on a bigger application, try splitting it into smaller bits based on features and experiment with RabbitMQ to connect them. And if you're building microservices, you might want to make your build process a breeze with [Earthly](https://www.earthly.dev/). It's a build tool worth checking out.
+If you're working on a bigger application, try splitting it into smaller bits based on features and experiment with RabbitMQ to connect them. And if you're building microservices, you might want to make your build process a breeze with [Earthly]((https://cloud.earthly.dev/login)). It's a build tool worth checking out.
 
 Happy coding!
 

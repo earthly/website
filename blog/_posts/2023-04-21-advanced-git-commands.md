@@ -15,7 +15,7 @@ excerpt: |
     Learn ten advanced Git commands that every developer should know. These commands, such as Git Rebase, Git Grep, and Git Diff, can greatly improve your workflow and help you better manage your Git repositories.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. If your build workflow could use a boost, Earthly might be your secret weapon. [Give it a whirl](/).**
+**This article explores advanced Git commands. After reading it know that Earthly consistently builds your code the same way every time. [Check it out](https://cloud.earthly.dev/login).**
 
 For many developers, truly harnessing the power of Git can be a daunting task. Git can seem intimidating when you first start using it. This is one of the reasons most developers limit themselves to using the standard push, pull, and merge commands.
 
@@ -388,6 +388,6 @@ The command forcefully removes the untracked directories in our example.
 
 Git is a powerful tool that boosts productivity and collaboration quality. Even with basic commands like push, pull, and merge, it's highly effective. To take it a step further, explore more features such as [Git aliases](https://git-scm.com/book/en/v2/Git-Basics-Git-Aliases) and [git bisect](https://git-scm.com/docs/git-bisect).
 
-And if you're looking to supercharge your dev workflow even further, don't miss [Earthly](https://www.earthly.dev/) for efficient build automation.
+And if you're looking to supercharge your dev workflow even further, don't miss [Earthly]((https://cloud.earthly.dev/login)) for efficient build automation.
 
 {% include_html cta/bottom-cta.html %}

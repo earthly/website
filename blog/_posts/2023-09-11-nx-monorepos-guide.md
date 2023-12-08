@@ -15,7 +15,7 @@ excerpt: |
     This article introduces Nx, a powerful build tool for managing monorepos. It explains the benefits of using Nx, such as seamless code sharing, efficient task management, caching, and extensibility, and provides a step-by-step guide on how to create and manage a monorepo with Nx.
 last_modified_at: 2023-10-06
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization, ideal for managing monorepos. [Give us a try](/).**
+**This article explains how to manage monorepos using Nx. Earthly ensures reproducible builds for monorepo workflows, regardless of programming language. [Check it out](https://cloud.earthly.dev/login).**
 
 Imagine you have a collection of distinct but interrelated projects. For instance, you might have an app with its own [React](https://react.dev/) frontend and [Node.js](https://nodejs.org/en/) backend, or two different [Angular](https://angular.io/) applications sharing a common collection of components. Monorepos offer an effective solution to organize these distinct but interrelated projects into a single repository.
 
@@ -425,6 +425,6 @@ All the code for this tutorial can be found in this [GitHub repo](https://github
 
 Monorepos are becoming the norm for organizing multiple interrelated projects in a single repo. To make full use of a monorepo, you must use a build tool that is capable of efficiently handling a monorepo.
 
-In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://earthly.dev/)
+In this article, you explored a powerful tool called Nx. You learned about its pros and cons and saw how easy it is to build a monorepo with it. If your projects are predominantly in JavaScript or TypeScript, then you can't go wrong with Nx. If your projects include use of other languages, Nx can still work but you might want to take a look at [Earthly.](https://cloud.earthly.dev/login)
 
 {% include_html cta/bottom-cta.html %}

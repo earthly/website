@@ -13,7 +13,7 @@ excerpt: |
     Learn how to optimize your Docker images and containers with Docker Slim, a tool that can reduce image size up to thirty times without any manual optimization. Discover how Docker Slim performs static and dynamic analysis to generate smaller and more efficient Docker containers, and how it can help you analyze, compress, and secure your Docker resources.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about optimizing Docker images with Docker Slim. Earthly is a powerful build tool can help streamline your Docker development process. [Check it out](/).**
+**The article focuses on optimizing Docker Slim. Earthly boosts Docker Slim, making CI builds more efficient. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [Docker](https://www.docker.com/) is an open containerization platform for developing, shipping, and running applications. It enables you to package your applications in isolated environments, called containers, where they can run independently from infrastructure. In the container, they have all the dependencies needed for the application to run.
 
@@ -175,6 +175,6 @@ This command utilizes the created `apparmor` security profile in the working dir
 
 Docker Slim is a handy tool. It uses static and dynamic analysis to clear out unnecessary stuff from your Docker images, making them safer and more effective. Despite Docker's contribution to DevOps, it's not flawless and that's where Docker Slim can help. Through this tutorial, we've guided you on how to use Docker Slim and its commands: `lint`, `xray`, `profile`, and `build` to tweak your Docker images and containers.
 
-Also if you're craving more efficiency in your build processes, you might want to give [Earthly](https://www.earthly.dev/) a spin! This open-source build automation tool could be the next step in optimizing your development workflow.
+Also if you're craving more efficiency in your build processes, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin! This open-source build automation tool could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

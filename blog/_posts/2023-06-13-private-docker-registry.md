@@ -16,8 +16,7 @@ excerpt: |
     Learn how to set up a private Docker registry on Linux and secure your Docker images in an enterprise environment. This step-by-step guide covers everything from installing Docker and Docker Compose to configuring NGINX and implementing authentication, allowing you to have full control over your Docker registry and ensure the security of your images.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers setting up a private Docker registry on Linux. If you want to know more about building in containers then [check us out](/).**
+**This article outlines the key steps to setting up a Docker registry. Earthly precisely optimizes Docker image build processes. [Learn how](https://cloud.earthly.dev/login).**
 
 If you're working with Docker images in an enterprise environment where security is a concern, a private Docker registry is a great solution. While public registries like Docker Hub allow anyone to push and pull images, they have limitations on the number of image pull requests per six hours and limited control over the registry security.
 
@@ -552,6 +551,6 @@ In this guide, we've covered how to establish a private Docker registry server o
 
 With the knowledge you've gained today, you're now prepared to implement security best practices for Docker containers and images in an enterprise setting.
 
-If you've enjoyed setting up your own Docker registry and are interested in further boosting your container build processes, take a peek at [Earthly](https://www.earthly.dev/). It's a tool that can help optimize your builds with its unique features like reproducible, portable, and parallel builds.
+If you've enjoyed setting up your own Docker registry and are interested in further boosting your container build processes, take a peek at [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can help optimize your builds with its unique features like reproducible, portable, and parallel builds.
 
 {% include_html cta/bottom-cta.html %}

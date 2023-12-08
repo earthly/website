@@ -16,7 +16,7 @@ excerpt: |
     Learn how to compile C++ programs with the g++ compiler provided by GCC and automate the compilation process using Make. This tutorial covers the installation of GCC on Linux, Mac, and Windows, as well as the compilation process and the use of the make utility to simplify complex compilation tasks.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers GNU's gcc compiler. If you're interested in an approach to builds that allows you to keep gcc and build everywhere then [check us out](/).**
+**In this article, we'll dive into GCC and Make. If you know the challenges of compiling C++ with Makefiles, Earthly provides a containerized approach to streamline and speed up your builds. [Explore Earthly](https://cloud.earthly.dev/login).**
 
 <!-- vale WritingSuggestions.Cliches = NO -->
 C++ is one of the [most dominant programming languages](https://www.tiobe.com/tiobe-index/cplusplus/). Although there are many compilers available, [GCC](http://gcc.gnu.org/) still ranks as one of the most popular choices for C++. GCC is part of the GNU toolchain, which comes with utilities like GNU make, GNU bison, and GNU [AutoTools](/blog/autoconf).
@@ -380,6 +380,6 @@ Because `make` is a feature rich utility and supports a wide range of systems, i
 
 {% include_html cta/makefile-cta.html %}
 
-<!-- If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://earthly.dev/).
+<!-- If you are looking for a solution to avoid the complexities of Makefile, check out [Earthly](https://cloud.earthly.dev/login).
 
-**[Earthly](https://earthly.dev/) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.** -->
+**[Earthly](https://cloud.earthly.dev/login) takes the best ideas from Makefile and Dockerfile, and provides understandable and repeatable build scripts, minus the head-scratching parts of the Makefile.** -->

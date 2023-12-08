@@ -16,7 +16,7 @@ excerpt: |
     Learn how to setup and use Amazon's Elastic Container Registry (ECR) to store and manage your container images. Discover the benefits of using ECR over Docker Hub and how it integrates with other AWS services like IAM, EKS, and ECS.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're setting up and using Amazon's ECR, using Earthly to build your containers could really enhance your workflow. [Check it out](/).**
+**In this article, you'll discover the benefits of Amazon ECR. If you're an AWS user, then Earthly is worth a look. [Check it out](https://cloud.earthly.dev/login).**
 
 A container is a simple unit that packages all your code and its dependencies so your application can run quickly and reliably from any computing environment. That means you could quickly move from your local environment to your staging and into production. Due to their portability, small size, and convenience, containers are becoming [a method of choice](https://www.cio.com/article/3434010/more-enterprises-are-using-containers-here-s-why.html) for shipping modern applications.
 
@@ -245,4 +245,4 @@ In this tutorial, you learned the basics of containers and container registries.
 
 Whether you're using Docker images in production or not, ECR is a useful tool if you're already embedded in the AWS ecosystem. It gives you the advantage of working well with other Amazon services like IAM for security and ECS or EKS for deployments.
 
-If you are pushing images to ECR as part of your build pipeline, check out Earthly's support for [ECR credentials](https://docs.earthly.dev/docs/guides/configuring-registries/aws-ecr). Unlike other build tools, Earthly executes each CI build in an isolated containerized environment, and it can pull images from ECR or any other container registry you choose. It's free to use, so [check Earthly out today](https://earthly.dev/).
+If you are pushing images to ECR as part of your build pipeline, check out Earthly's support for [ECR credentials](https://docs.earthly.dev/docs/guides/configuring-registries/aws-ecr). Unlike other build tools, Earthly executes each CI build in an isolated containerized environment, and it can pull images from ECR or any other container registry you choose. It's free to use, so [check Earthly out today](https://cloud.earthly.dev/login).

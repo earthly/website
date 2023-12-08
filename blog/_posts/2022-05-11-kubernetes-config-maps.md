@@ -12,7 +12,7 @@ excerpt: |
     Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up containerized software builds. If you're into Kubernetes best practices, Earthly would be a great addition to your toolbox. [Check it out](/).**
+**This article explains the use of Kubernetes ConfigMaps. Earthly ensures your builds are as reliable as your deployments. [Check it out](https://cloud.earthly.dev/login).**
 
 Most applications have configuration parameters that need to be provided at runtime. It's common to use command line arguments, environment variables, and static files to configure software deployed using traditional methods. These techniques are also available to containerized [Kubernetes](https://kubernetes.io/) workloads via the ConfigMap API object.
 
@@ -262,4 +262,4 @@ These mechanisms help you quickly convert existing config files into ConfigMap o
 
 ConfigMaps are Kubernetes API objects for storing your application's runtime settings. You can provide their data to pods as environment variables or files in a mounted volume. ConfigMaps can also be immutable, a characteristic that forbids dynamic updates to enhance safety and performance.
 
-ConfigMap is a tool used with running containers in your Kubernetes cluster. However, correctly configuring and maintaining your container images are just as important as their runtime settings. [Earthly](https://earthly.dev) can help create a maintainable approach to build time configuration, offering a repeatable syntax that's reproducible and easy to understand. It facilitates more robust builds without the brittleness associated with poor configuration practices.
+ConfigMap is a tool used with running containers in your Kubernetes cluster. However, correctly configuring and maintaining your container images are just as important as their runtime settings. [Earthly](https://cloud.earthly.dev/login) can help create a maintainable approach to build time configuration, offering a repeatable syntax that's reproducible and easy to understand. It facilitates more robust builds without the brittleness associated with poor configuration practices.

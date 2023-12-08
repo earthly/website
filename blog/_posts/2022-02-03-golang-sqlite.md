@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use Golang's `database/sql` package to work with SQLite databases. This tutorial covers topics such as installing SQLite, creating a database schema, populating the database, inserting and retrieving data, and more. If you're interested in learning how to persist data using SQLite in Golang, this article is for you.
 last_modified_at: 2023-09-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simpler way to build then [check us out](/).**
+**This article explains how to integrate SQLite with Golang. Earthly simplifies the automation and containerization of Golang SQLite builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I made a [command-line client](/blog/golang-command-line/) to connect to the [JSON Service](/blog/golang-http/), but today is all about database persistence using `database/sql`.
@@ -577,7 +577,7 @@ ID:2    "cross country skiing "      2022-01-2
 ID:1    "christmas eve bike class"   2021-12-24
 ~~~
 
-And I can also use [Earthly](https://earthly.dev/) to test my CI integration tests:
+And I can also use [Earthly](https://cloud.earthly.dev/login) to test my CI integration tests:
 
 ~~~{.bash caption=">_"}
 > earthly -P +test
@@ -624,7 +624,7 @@ Now my activity service has a persistence layer, and I learned quite a bit about
 
 ## What's Next
 
-Next, I'm planning to explore gRPC and protocol buffers, along with considering richer records and reporting options. Also if you're building with Golang, consider giving [Earthly](https://www.earthly.dev/) a whirl for consistent and efficient builds.
+Next, I'm planning to explore gRPC and protocol buffers, along with considering richer records and reporting options. Also if you're building with Golang, consider giving [Earthly]((https://cloud.earthly.dev/login)) a whirl for consistent and efficient builds.
 
 And if you want to be notified about the next installment, sign up for the newsletter:
 

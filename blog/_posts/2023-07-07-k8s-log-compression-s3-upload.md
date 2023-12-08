@@ -15,8 +15,7 @@ excerpt: |
     Learn how to compress Kubernetes logs and send them to AWS S3 periodically using Kubernetes CronJobs. This tutorial will guide you through the process of setting up the environment, scripting and Dockerizing the solution, and creating the CronJob in your Kubernetes cluster.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster – like Dockerfile and Makefile had a baby. This article shows us how to compress Kubernetes logs and send them to S3 periodically.**
+**This article outlines the key strategies for automating Kubernetes log management. Earthly streamlines Docker build scripts to enhance your CI pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Logs are essential for monitoring and troubleshooting modern applications in a Kubernetes environment. However, as applications generate more logs, managing them can become a challenge. The storage costs can quickly add up, and retrieving relevant logs from multiple locations can be time-consuming and inefficient. To solve this problem, log compression and periodic uploading to a centralized location like AWS S3 can help reduce storage costs and make log retrieval much easier. Kubernetes CronJobs offers a powerful way to automate these tasks, allowing you to compress and upload logs at scheduled intervals with ease.
 
@@ -472,6 +471,6 @@ Once you head over to the S3 page on the AWS management console, you should see 
 
 CronJobs in Kubernetes provide valuable automation for periodic tasks like log management. This tutorial walked you through creating, building, and deploying a script for log retrieval and compression. You've now learned how to effectively schedule tasks using Kubernetes [CronJobs](/blog/kubernetes-jobs-cron-jobs/). Go ahead and implement this knowledge in your projects for a scalable solution.
 
-If you've enjoyed automating with Kubernetes, you might also love optimizing your builds. For that, check out [Earthly](https://www.earthly.dev/), a tool that can further enhance your development workflow.
+If you've enjoyed automating with Kubernetes, you might also love optimizing your builds. For that, check out [Earthly]((https://cloud.earthly.dev/login)), a tool that can further enhance your development workflow.
 
 {% include_html cta/bottom-cta.html %}

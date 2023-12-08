@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use conditionals in Bash to improve your scripting skills and automate tasks. This comprehensive guide covers everything from test commands and operators to conditional statements and case statements. Whether you're a beginner or an experienced Bash user, this article will help you level up your Bash programming skills.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using conditionals in Bash. Earthly is a powerful build tool that Bash users should get to know. [Check us out](/).**
+**Understand Bash conditionals with our new article. Earthly ensures consistent builds in different environments. [Learn more about Earthly](https://cloud.earthly.dev/login/).**
 
 [Bash (bourne again shell)](https://www.gnu.org/software/bash/manual/html_node/What-is-Bash_003f.html) has been around since 1989 and owes its longevity to its usefulness and flexibility. While it's the default login and command shell for most [Linux](https://www.linux.org) distros, its value extends beyond that.
 
@@ -359,7 +359,7 @@ The `>` redirection operator will create a new file and write the output on that
 
 Learning conditionals could be your final hurdle to truly [understanding Bash](https://earthly.dev/blog/understanding-bash) and mastering it. Up until now, you may have underestimated Bash's true capabilities. You may even find that learning about Bash's various conditional statements, expressions, and operations inspires you to rewrite old scripts and improve them with better flow control.
 
-But if you do, remember to utilize the correct syntax. Bash (especially sh) is case- and space-sensitive. Then you can transfer what you've learned from Bash and use it with [Earthly](https://earthly.dev/). Earthly lets you define and deploy your build using a Git-aware syntax that is strikingly similar to Bash.
+But if you do, remember to utilize the correct syntax. Bash (especially sh) is case- and space-sensitive. Then you can transfer what you've learned from Bash and use it with [Earthly](https://cloud.earthly.dev/login). Earthly lets you define and deploy your build using a Git-aware syntax that is strikingly similar to Bash.
 
 Because Earthly's builds are neatly encapsulated and language-independent, they're easier to initiate and manage. If you're trying to build and deploy repeatable multiplatform software, Earthly is a great solution.
 

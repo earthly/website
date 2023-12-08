@@ -11,7 +11,7 @@ excerpt: |
     Learn how to address slow performance in Jenkins and significantly improve the performance of your continuous integration workflow. This guide provides tips and strategies for overcoming common Jenkins performance issues without necessarily upgrading your hardware.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We streamline software building with containerization. Earthly can optimize your Jenkins CI/CD pipeline and help address slow performance. [Check it out](/).**
+**In this article, we dive into optimizing Jenkins for better performance. If Jenkins slowdowns frustrate you, Earthly can boost your CI build speed and help you conquer those stubborn performance issues. [Learn more](https://cloud.earthly.dev/login).**
 
 There's nothing more frustrating than a sluggish continuous integration system. It slows down feedback loops and prevents code from reaching production quickly. While quick fixes like using a bigger CI server can buy you time, you ultimately have to invest in maintaining the performance of your continuous integration workflow.
 
@@ -130,4 +130,4 @@ This can help you assess the effectiveness of your performance tweaks and guide 
 
 Jenkins' responsiveness issues are common, especially when dealing with heavier builds. Broken Jenkins CI/CD pipelines can stall your development teams and create unnecessary dependencies. The tips discussed in this article should help you boost the performance of your Jenkins CI/CD pipeline significantly.
 
-Looking to make your builds more repeatable? [Earthly](https://earthly.dev/) replaces clunky [bash scripts](/blog/understanding-bash) and Makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://earthly.dev/).
+Looking to make your builds more repeatable? [Earthly](https://cloud.earthly.dev/login) replaces clunky [bash scripts](/blog/understanding-bash) and Makefiles by giving you a single understandable, consistent definition for your CI/CD builds and it works great with Jekyll. Learn more [at Earthly.dev](https://cloud.earthly.dev/login).

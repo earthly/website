@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Grafana Loki, a powerful log aggregation tool, to collect, store, and analyze log data in Kubernetes. Discover the benefits of log aggregation and how Grafana Loki can help improve visibility, enhance security, meet compliance requirements, monitor performance, and respond to incidents more effectively.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give it a look](/).**
+**This article explores the effectiveness of Grafana Loki in managing logs. Earthly enhances and standardizes continuous integration (CI) build pipelines, and it complements Grafana Loki. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 As the application deployment landscape becomes more complex, monitoring system logs becomes even more important. From system and application logs to security events and performance metrics, this data contains valuable insights that can help organizations make informed decisions and optimize their operations. However, managing, and analyzing this data can be a daunting task, especially as the volume of data continues to grow.
 
@@ -327,6 +327,6 @@ To sum up, you set up the Grafana Loki stacks to your Kubernetes cluster, you al
 
 Grafana Loki is a robust log aggregation system that collects, stores, and queries log data in a cost-effective manner. Its distributed architecture and potent query language make it an ideal tool for businesses of all sizes aiming to optimize operations, enhance security, and make data-driven decisions.
 
-While you're optimizing your operations, you might also want to boost your build processes. If so, give [Earthly](https://www.earthly.dev/) a try! It's a valuable addition to any toolkit, just like Grafana Loki.
+While you're optimizing your operations, you might also want to boost your build processes. If so, give [Earthly]((https://cloud.earthly.dev/login)) a try! It's a valuable addition to any toolkit, just like Grafana Loki.
 
 {% include_html cta/bottom-cta.html %}

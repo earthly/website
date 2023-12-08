@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Restic, an open-source backup software, to protect your valuable data from potential threats. This tutorial will guide you through the process of configuring Restic on your Unix machine, backing up data to an AWS S3 bucket, restoring data, and automating backups with cron jobs. Don't wait any longer, start securing your data today!
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster through containerization. If you're into automating your AWS S3 backup process with Restic, Earthly can add more efficiency to your build process. [Check us out](/).**
+**This tutorial offers a step-by-step guide on using Restic for backups. For Restic users, Earthly streamlines the build process. [Check it out](https://cloud.earthly.dev/login).**
 
 In today's digital age, data is one of the most valuable assets for individuals and organizations alike. Losing data can have a significant impact on productivity, financial stability, and even an organization's reputation. This is why it is crucial to have a reliable and secure method of backing up your data.
 
@@ -431,7 +431,7 @@ To sum up, using Restic, you have set-up a back-up and recovery system that is a
 
 In this guide, you've learned how to use Restic to back up your data, thereby safeguarding it from various risks like natural disasters, cyber attacks, human error, or hardware failures. From setting up an S3 bucket and installing Restic, to initializing a repository, backing up and restoring data, and even automating backups with a cron job, you're now equipped with the skills to effectively protect your data.
 
-Now that you've got backups handled, why not consider boosting your build automation game? If you're interested in further optimizing your tech stack, give [Earthly](https://www.earthly.dev/) a try!
+Now that you've got backups handled, why not consider boosting your build automation game? If you're interested in further optimizing your tech stack, give [Earthly]((https://cloud.earthly.dev/login)) a try!
 
 Time to start backing up and building more efficiently!
 

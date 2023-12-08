@@ -16,7 +16,7 @@ excerpt: |
     Learn how to use Django template filters to transform and modify variable data in your HTML templates. Discover the built-in filters provided by Django and how to create your own custom filters.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly can streamline your Django build process. [Check it out](/).**
+**The article explains the effectiveness of Django template filters. Earthly accelerates Django template builds with its caching mechanisms. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Django is a powerful Python web framework loaded with many useful built-in features that [make](/blog/using-cmake) building complex web-focused products a lot easier; one such feature is its **templating engine**.
 
@@ -949,6 +949,6 @@ The filter name is the name of the function in our **"titlecolor_filter.py"** mo
 
 Django template filters spice up your HTML templates. We've dived into Django's built-in filters and how to create a custom one if you need something special. You're now equipped to use these filters and even make your own.
 
-Want to streamline your Django build process further? Give [Earthly](https://www.earthly.dev/) a go! It's a tool that can help optimize your build process, making it more efficient and less error-prone.
+Want to streamline your Django build process further? Give [Earthly]((https://cloud.earthly.dev/login)) a go! It's a tool that can help optimize your build process, making it more efficient and less error-prone.
 
 {% include_html cta/bottom-cta.html %}

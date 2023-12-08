@@ -15,8 +15,7 @@ excerpt: |
      With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog.
 last_modified_at: 2023-08-12
 ---
-
-**We're [Earthly](https://earthly.dev/). We simplify building software with containerization. This article shows you how to deploy Infrastructure as Code with AWS CloudFormation. However, if you are curious about getting better build times by combining ideas from Makefile and Dockerfile? [Check us out.](https://earthly.dev/)**
+**This article provides a detailed guide on using AWS CloudFormation. Earthly significantly improves CI/CD pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [AWS CloudFormation](https://aws.amazon.com/cloudformation/) is a foundational service that enables users to create and manage their cloud infrastructure in a programmable and repeatable way. With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog. Simply define your desired infrastructure state in a JSON or YAML template, and CloudFormation will help you orchestrate all aspects of provisioning and deploying those resources.
 
@@ -312,6 +311,6 @@ AWS CloudFormation is an intriguing IaC service offering so many features. If yo
 
 Fortunately, you covered a lot of ground in this article! You learned about authoring templates, deployed a stack involving multiple EC2 resources, and discovered advanced features and best practices that can help you make the most of this offering. The next step is to get your hands dirty with templates and take advantage of this powerful service.
 
-[Earthly](https://earthly.dev/) is a build automation tool that you can use in conjunction with CloudFormation. With Earthly, you create Earthfiles that define the steps to build, test, and package your CloudFormation template files. Then you can incorporate Earthly commands within your CI/CD scripts to automate deployments, which is all in line with the CloudFormation best practices you learned. Overall, Earthly gives you greater automation and control over your CloudFormation build workflows—install it and try it out today.
+[Earthly](https://cloud.earthly.dev/login) is a build automation tool that you can use in conjunction with CloudFormation. With Earthly, you create Earthfiles that define the steps to build, test, and package your CloudFormation template files. Then you can incorporate Earthly commands within your CI/CD scripts to automate deployments, which is all in line with the CloudFormation best practices you learned. Overall, Earthly gives you greater automation and control over your CloudFormation build workflows—install it and try it out today.
 
 {% include_html cta/bottom-cta.html %}

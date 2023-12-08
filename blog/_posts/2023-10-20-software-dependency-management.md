@@ -14,7 +14,7 @@ excerpt: |
     This article explores the challenges of software dependency management, including versioning conflicts, security vulnerabilities, and performance consistency. It also introduces tools like Earthly, Dependabot, Gradle, and OWASP Dependency-Check that can help improve software dependency management workflows.
 last_modified_at: 2023-10-17
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containers. Struggling with software dependency management? Earthly could be a game changer. [Check it out](/).**
+**This article explains the issue of dependency management. Earthly maintains the integrity and reproducibility of your software builds, through even the most complex dependency maze. [Learn how](https://cloud.earthly.dev/login).**
 
 At its core, dependency management involves managing numerous pieces of software (*ie* codebases, libraries, frameworks, or other modules) that a specific project depends on for proper functioning. However, as any experienced developer knows, dependency management can be very challenging. From versioning conflicts and security vulnerabilities to the maintenance of consistent performance across diverse environments, dependency management isn't for the faint of heart.
 
@@ -106,7 +106,7 @@ Now that you know some of the bad things that can happen due to poor software de
 
 Continuous integration, continuous deployment (CI/CD) tools streamline the process of automatically merging code from multiple contributors and deploying it to diverse environments, including testing, staging, and production. These tools play a crucial role in maintaining the integrity of existing functionality and ensuring that the software remains in a state that's ready for deployment.
 
-For effective build automation in CI/CD, consider using [Earthly](https://earthly.dev/). Its main purpose is to empower developers to create a reliable and replicable build process. With a syntax similar to Dockerfiles, Earthly is beginner-friendly.
+For effective build automation in CI/CD, consider using [Earthly](https://cloud.earthly.dev/login). Its main purpose is to empower developers to create a reliable and replicable build process. With a syntax similar to Dockerfiles, Earthly is beginner-friendly.
 
 Earthly is a great option if you want consistent build environments and are familiar with [Docker](https://www.docker.com/) or containers.
 
@@ -146,6 +146,6 @@ The tools and practices around dependency management continue to evolve. However
 
 Navigating the intricate web of software dependency management is akin to masterfully orchestrating a complex symphony. That's why, in this article, you learned all about dependency management, some issues that can arise if it's not managed well, and tools that can help. From challenges, such as versioning dilemmas, dependency bloat, and conflicts, to compatibility issues, it's evident that mastering this domain is vital to ensuring software robustness and efficiency.
 
-That's where tools ranging from build tools like [Earthly](https://earthly.dev/) to dependency managers like Apache Ivy can help. They enable you to combat the myriad of challenges and improve your dependency management workflow. By understanding and utilizing these tools and practices, you can fortify your software projects, ensuring they remain robust, secure, and consistently updated in an ever-evolving tech ecosystem.
+That's where tools ranging from build tools like [Earthly](https://cloud.earthly.dev/login) to dependency managers like Apache Ivy can help. They enable you to combat the myriad of challenges and improve your dependency management workflow. By understanding and utilizing these tools and practices, you can fortify your software projects, ensuring they remain robust, secure, and consistently updated in an ever-evolving tech ecosystem.
 
 {% include_html cta/bottom-cta.html %}

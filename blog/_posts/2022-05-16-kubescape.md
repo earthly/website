@@ -10,7 +10,7 @@ excerpt: |
     Learn how to improve the security of your Kubernetes cluster with Kubescape, a free tool that scans for non-compliant YAML files and image vulnerabilities. Find out how to install Kubescape on Windows, macOS, and Linux, and discover how to analyze the scan results to identify and fix security risks.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and accelerate software building with containerization. [Check us out](/).**
+**This article examines the Kubescape security tool's features. Earthly provides consistent and efficient build processes for developers securing Kubernetes with Kubescape. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Kubescape is a free tool that improves Kubernetes security by scanning clusters and detecting YAML files that are not compliant with security standards such as the [National Security Agency](https://www.nsa.gov/)(NSA) guidelines. It also scans for image vulnerabilities. After scanning and analyzing your cluster it will output your cluster's risk analysis into a report in PDF or JSON format.
 
@@ -337,6 +337,6 @@ You will get the following output:
 
 Threat visibility is essential in security analysis, keeping you informed of potential risks in your cluster. Regular scanning of clusters and YAML files aids in identifying immediate vulnerabilities. Once your environment passes the Kubescape scan with 0% risk, your cluster achieves compliance with NSA, MITRE, etc., paving the way for various compliance badges. These badges enhance your business reputation, attracting client trust due to the assurance of high security standards.
 
-And once you've secured your Kubernetes with Kubescape, why not step up your build process next? Check out [Earthly](https://www.earthly.dev/), a tool that can streamline your build process.
+And once you've secured your Kubernetes with Kubescape, why not step up your build process next? Check out [Earthly]((https://cloud.earthly.dev/login)), a tool that can streamline your build process.
 
 {% include_html cta/bottom-cta.html %}

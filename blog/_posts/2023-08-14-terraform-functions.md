@@ -16,8 +16,7 @@ excerpt: |
      One of Terraform's key features is its built-in functions that automate tasks in infrastructure management. These functions allow you to perform complex operations and calculations, making your code more flexible and reusable.
 last_modified_at: 2023-08-17
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article covers automating infrastructure using terraform functions. If you want to know more about building in containers, then [check us out](/).**
+**The article discusses Terraform functions. Users of Terraform find Earthly's declarative syntax both familiar and powerful. [Check it out](https://cloud.earthly.dev/login).**
 
 [Terraform](https://www.terraform.io/) is an open-source infrastructure as code (IaC) tool that enables developers and system administrators to define, provision, and manage cloud infrastructure using a declarative language. This powerful tool helps streamline the process of deploying and maintaining infrastructure, ensuring that resources are provisioned in a predictable and reproducible manner, ultimately improving collaboration, reducing human error, and increasing overall productivity.
 

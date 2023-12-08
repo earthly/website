@@ -16,7 +16,7 @@ excerpt: |
     Learn how to optimize Golang applications for Kubernetes and reduce server load with best practices such as resource allocation, garbage collection optimization, connection pooling, and implementing health checks and readiness probes. Improve the performance and scalability of your Golang applications in a containerized environment and ensure efficient resource utilization and cost-efficiency.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're looking to optimize your Go applications builds, Earthly can be a great addition to your toolkit. [Check it out](/).**
+**The article focuses on optimizing Golang applications for deployment on Kubernetes. Earthly significantly improves this process by enabling reproducible builds that can run in parallel. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Optimizing server load is crucial for ensuring efficient performance and scalability of Golang applications running on Kubernetes. As organizations increasingly adopt containerization and Kubernetes for deploying and managing their applications, it becomes imperative to implement best practices for reducing server load to achieve optimal resource utilization, cost-efficiency, and an improved user experience.
 
@@ -489,6 +489,6 @@ Congratulations! You've now moved closer to mastering optimization of Golang app
 
 Optimizing Golang applications for Kubernetes is essential for efficient and reliable deployment. Key practices include minimizing container size, optimizing resource allocation and garbage collection, implementing health checks and readiness probes, and leveraging Kubernetes for scaling and load balancing. These strategies reduce server load, boosting performance and cost efficiency.
 
-If you're looking for reliable, reproducible builds for your Golang apps, you might want to give [Earthly](https://www.earthly.dev/) a spin. It's a tool that can further enhance your development process, ensuring consistency across different environments.
+If you're looking for reliable, reproducible builds for your Golang apps, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's a tool that can further enhance your development process, ensuring consistency across different environments.
 
 {% include_html cta/bottom-cta.html %}

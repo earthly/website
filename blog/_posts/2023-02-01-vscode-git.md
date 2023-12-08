@@ -8,7 +8,7 @@ excerpt: |
     Learn how to store your VS Code settings in Git to easily manage and share your customizations. Keep all your settings in one place and avoid breaking anything when customizing your VS Code experience.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about storing VS Code `Settings.json` in Git. But you should also [check out Earthly](/).**
+**This article explains how to sync your VS Code settings effortlessly. Earthly improves your CI builds. [Learn how](https://cloud.earthly.dev/login).**
 
 VS Code is very extensible and you can customize it in a thousand ways using many extensions.
 
@@ -34,7 +34,7 @@ Next, locate your settings.json file by opening it in VS Code (Ctrl-Shift-P or C
 
 In your terminal, simply copy your settings and keybindings files into your new settings repo. After committing them (`git add . && git commit -a -m "settings.json"`), remove the old copies. Next, symlink the new versions in their place. Make sure VS Code is closed during this process. Now, any changes you make to your settings will be saved in the repo, allowing you to commit or undo changes as needed.
 
-Once you've got your settings optimized, you might want to consider streamlining your build process as well. Check out [Earthly](https://www.earthly.dev/) for efficient build automation. It could be the perfect complement to your newly optimized VS Code settings.
+Once you've got your settings optimized, you might want to consider streamlining your build process as well. Check out [Earthly]((https://cloud.earthly.dev/login)) for efficient build automation. It could be the perfect complement to your newly optimized VS Code settings.
 
 Here's where my [settings](https://github.com/adamgordonbell/vs-code-styles) live on GitHub.
 

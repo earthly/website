@@ -8,6 +8,7 @@ internal-links:
    - grpc
 topic: python
 funnel: 2
+topcta: false
 excerpt: |
     Learn how to use gRPC with Golang, Python, and Ruby to implement a key-value store microservice. This tutorial provides step-by-step instructions and code examples for each language, making it easy to understand and follow along.
 last_modified_at: 2023-07-14

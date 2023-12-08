@@ -15,8 +15,7 @@ excerpt: |
     Learn how to use the `uniq` command in Linux to find unique lines of text and eliminate duplicates. This practical guide covers the basic syntax of the `uniq` command, advanced techniques for counting duplicates, and alternatives like `awk` and `sort`. Whether you're a beginner or an experienced Linux user, this article will help you streamline your text-processing tasks.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about using the `uniq` command for text processing. If you're interested in a different approach to building and packaging software, then [check us out](/).**
+**The article explains how to use the Linux `uniq` command to manipulate text. Earthly maintains consistent builds with complex Linux commands. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 The `uniq` command is a useful tool in Linux that helps you find unique lines of text inside a file or from standard output. It filters out all repeated lines, leaving only the unique lines of text in an output. This can be helpful when you're working with large text files and need to quickly identify distinct lines of text and easily eliminate duplicates to streamline your text-processing tasks.
 
@@ -353,7 +352,7 @@ In this tutorial, you've learned how to use `uniq` to count distinct values in a
 
 For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org).
 
-And after you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly](https://www.earthly.dev/) a try? It's a fantastic tool for build tool that works great at the command line.
+And after you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly]((https://cloud.earthly.dev/login)) a try? It's a fantastic tool for build tool that works great at the command line.
 
 Keep experimenting and overcoming challenges that come your way!
 

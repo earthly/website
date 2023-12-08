@@ -16,8 +16,7 @@ excerpt: |
     Learn how to set up a monitoring stack using Prometheus, Grafana, and Alertmanager to track system metrics and identify performance issues. This step-by-step tutorial will guide you through the process of configuring and starting the monitoring services, accessing the web UIs, and triggering alerts to test the system.
 last_modified_at: 2023-07-19
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. This article is about monitoring system metrics but if you're interested in a different approach to building and packaging software then [check us out](/).**
+**This article outlines how to set up a monitoring stack. Earthly secures consistent builds, complementing system monitoring with Prometheus. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 In today's fast-paced world, monitoring system metrics has become essential for businesses and organizations to ensure their systems are performing at their best. As system complexity grows, it becomes increasingly important to keep track of metrics that can help identify bottlenecks, errors, and other performance issues.
 
@@ -659,7 +658,7 @@ Wait a few minutes and Check the Slack channel you created, you should have rece
 
 This guide walked you through creating a custom monitoring stack using Prometheus, Grafana, and Alertmanager, setting up alerting rules, as well as starting the stack using Docker Compose. You also learned to access and use Prometheus and Grafana web UIs and to import Grafana dashboards.
 
-Looking for a boost in your build process? Give [Earthly](https://www.earthly.dev/) a go. It could be a perfect ally to your monitoring setup, enhancing your build automation and making your development process more efficient.
+Looking for a boost in your build process? Give [Earthly]((https://cloud.earthly.dev/login)) a go. It could be a perfect ally to your monitoring setup, enhancing your build automation and making your development process more efficient.
 
 To further expand your skills, explore concepts like log aggregation, distributed tracing, and machine learning-based anomaly detection. Consider tools like [Loki](https://earthly.dev/blog/grafana-loki-log-aggregation-k8s/), [Fluentd](https://www.fluentd.org/), and [Jaeger](https://www.jaegertracing.io/) for log and tracing analysis. Remember, monitoring needs continuous attention and tweaking for optimum performance.
 

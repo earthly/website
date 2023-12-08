@@ -16,7 +16,7 @@ excerpt: |
     This tutorial explores the use of `npm` workspaces for managing monorepos in software development. It covers the benefits and limitations of using `npm` workspaces and provides a step-by-step guide on setting up and implementing them.
 last_modified_at: 2023-10-06
 ---
-<!--sgpt-->**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're dealing with a npm workspaces monorepo, you'll love how Earthly can optimize your build processes. [Check it out](/).**
+**This article discusses npm workspaces. Earthly ensures build consistency for teams utilizing npm workspaces, monorepos and many programming languages. [Check it out](https://cloud.earthly.dev/login).**
 
 In the ever-evolving world of software development, managing complex projects with multiple interconnected components can be a daunting task. However, monorepos provide an efficient organizational strategy by offering a unified repository that houses all related projects in one place.
 
@@ -402,6 +402,6 @@ You can find the complete code for this tutorial on [GitHub](https://github.com/
 
 `npm` is one of the most commonly used Node.js package managers, and the workspaces feature marks its entry into the field of monorepos. With workspaces, you can manage multiple Node.js packages in one single repo and run `npm` tasks in individual projects from the main project, making it an easy-to-use monorepo management tool.
 
-Even though `npm` workspaces are an excellent option for small monorepos, it's not mature enough to use in large, complex monorepos. The lack of defining task dependencies, result caching, and affected mechanism makes it an inferior choice to other tools like Nx or Turborepo when it comes to managing a complex js monorepo with a large number of projects and/or a lot of interdependencies. And if you need to incorporate other languages or backend services, an NPM based solution will be a limitation. For monorepos builds that support NPM and many other tools, take a look at [Earthly](http://earthly.dev). It can help keep your monorepo builds fast as your code base grows.
+Even though `npm` workspaces are an excellent option for small monorepos, it's not mature enough to use in large, complex monorepos. The lack of defining task dependencies, result caching, and affected mechanism makes it an inferior choice to other tools like Nx or Turborepo when it comes to managing a complex js monorepo with a large number of projects and/or a lot of interdependencies. And if you need to incorporate other languages or backend services, an NPM based solution will be a limitation. For monorepos builds that support NPM and many other tools, take a look at [Earthly](https://cloud.earthly.dev/login). It can help keep your monorepo builds fast as your code base grows.
 
 {% include_html cta/bottom-cta.html %}

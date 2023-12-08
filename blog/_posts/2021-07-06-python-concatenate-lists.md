@@ -15,9 +15,9 @@ excerpt: |
     Learn how to concatenate lists in Python using different methods, such as the `+` operator and the `extend()` function. Discover the best practices for combining lists and optimize performance in various scenarios.
 last_modified_at: 2023-07-14
 ---
-<iframe width="560" height="315" src="https://www.youtube.com/embed/Ko6OESfhxbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+**In this article, you'll discover how to merge lists in Python. If you're a Python developer, Earthly provides a containerized solution to simplify your build processes. [Learn More](https://cloud.earthly.dev/login).**
 
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're into Python, Earthly can optimize your build process. [Check it out](/).**
+<iframe width="560" height="315" src="https://www.youtube.com/embed/Ko6OESfhxbw" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class="narrow-code">
 
@@ -260,7 +260,7 @@ There we go, `extend` is much faster when flattening lists or concatenating many
 
 These are the main variants of combining lists in python. Use this table to guide you in the future.
 
-Also, if you are looking for a nice way to standardize the processes around your python projects -- running tests, installing dependencies, and linting code -- take a look at Earthly for [Repeatable Builds](https://earthly.dev/).
+Also, if you are looking for a nice way to standardize the processes around your python projects -- running tests, installing dependencies, and linting code -- take a look at Earthly for [Repeatable Builds](https://cloud.earthly.dev/login).
 
 |  Condition  |  Solution  | Performance Optimization[^2]   |
 |--- |--- |:-: |

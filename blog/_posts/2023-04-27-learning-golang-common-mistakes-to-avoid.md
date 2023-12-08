@@ -15,7 +15,7 @@ excerpt: |
     In this article, we explore five common mistakes to avoid when learning Golang. From understanding pointers and interfaces to utilizing concurrency and third-party libraries effectively, we cover key concepts and best practices to help you become a more proficient Go developer. Don't miss out on these valuable insights to enhance your Golang skills!
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization, making it a great tool for Golang devs. [Check it out](/).**
+**The article provides insights into the common pitfalls encountered when programming in Golang and offers guidance on how to avoid them. Earthly excels at managing Go dependencies and optimizing build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Golang (or Go) is an open-source programming language that was developed by Google engineers. It was designed to build efficient, reliable, and robust applications, and it is a [statically compiled](https://stackoverflow.com/questions/12600296/dynamically-compiled-language-vs-statically-compiled-language) language used for building modern and scalable applications.
 Go is known for it's concurrency support, which makes it easy to write programs that can perform multiple tasks simultaneously. It has a [garbage-collected runtime](https://tip.golang.org/doc/gc-guide) and a rich standard library, making it easy to develop applications without relying on external dependencies.
@@ -931,6 +931,6 @@ In conclusion, Golang is a powerful and efficient programming language that can 
 
 Let's also remember to take advantage of the vast resources available online and in the Go community, as well as to practice and experiment with different code snippets and examples to improve our skills.
 
-And if you're building in Golang, consider streamlining your process with [Earthly](https://www.earthly.dev/) for more efficient, reproducible builds. It could be a game-changer for your development workflow.
+And if you're building in Golang, consider streamlining your process with [Earthly]((https://cloud.earthly.dev/login)) for more efficient, reproducible builds. It could be a game-changer for your development workflow.
 
 {% include_html cta/bottom-cta.html %}

@@ -16,7 +16,7 @@ excerpt: |
     Learn how to build Go applications with Bazel and Gazelle, two powerful tools that automate the build process and significantly reduce build times. This tutorial covers the basics of setting up a workspace, running tests, and developing a basic application using Bazel and Gazelle.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
+**The article examines the combined strengths of Bazel and Gazelle. Earthly's caching mechanisms improve incremental builds and augment Bazel's performance. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [Bazel](https://earthly.dev/blog/bazel-build/), an open source build system created by Google, offers fast and incremental builds for your project through advanced local and distributed caching. It's popular due to its built-in support for multiple languages, extensibility, and ability to scale alongside your codebase, organization, and continuous integration (CI) systems.
 
@@ -231,8 +231,8 @@ In this tutorial, you learned how Bazel and Gazelle can be used to build a Go ap
 
 Bazel and Gazelle help simplify the build process in cases where there would have been multiple complex layers. In addition, it's also significantly faster to build with Bazel since it doesn't have to rebuild your whole project every time it runs.
 
-Yet, while Bazel is a fantastic tool for building apps, and Gazelle a great tool for generating those build files, the combination can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](/) comes into the picture.
+Yet, while Bazel is a fantastic tool for building apps, and Gazelle a great tool for generating those build files, the combination can also be complex and intricate. It may be overkill for smaller projects or for teams that aren't familiar with its intricacies. That's where [Earthly](https://cloud.earthly.dev/login) comes into the picture.
 
-Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel. [Earthly](/) can handle both small and large projects, offering you scalability without the additional complexity.
+Earthly offers a simpler approach to building monorepos and containerization, focusing on streamlining the build process, maintaining a minimal setup, and promoting the use of best practices. It aims to simplify the build system and make it accessible for more developers, offering a potentially lower learning curve compared to Bazel. [Earthly](https://cloud.earthly.dev/login) can handle both small and large projects, offering you scalability without the additional complexity.
 
 {% include_html cta/bottom-cta.html %}

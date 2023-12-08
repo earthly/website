@@ -12,7 +12,7 @@ excerpt: |
     Learn how to effectively handle errors in Go with this informative article. Discover the basics of error handling in Go, strategies for robust code, and techniques for defining and wrapping errors. Improve your error handling skills and make your Go programs more reliable and debuggable.
 last_modified_at: 2023-10-03
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. Earthly is open-source and written in go. So if you're interested in a simple way to build then [check us out](/).**
+**This article explores Go error handling. Earthly is popular with Go developers for ensuring reproducible builds. [Check it out](https://cloud.earthly.dev/login/).**
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/d2DySHJ7oVk?si=X7chMU1rfdgXK8Qt" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
@@ -368,7 +368,7 @@ That's a wrap! In summary, here's the gist of what was covered here:
 
 I hope you found this guide to effective error handling useful. If you'd like to learn more, I've attached some related articles I found interesting during my own journey to robust error handling in Go.
 
-Also, checkout [Earthly](https://earthly.dev/). I work on it and its written in go and is open source.
+Also, checkout [Earthly](https://cloud.earthly.dev/login). I work on it and its written in go and is open source.
 
 ## References
 

@@ -6,12 +6,13 @@ toc: true
 author: Vlad
 topic: earthly
 funnel: 3
+topcta: false
 excerpt: |
     Earthly CI is revolutionizing the world of CI/CD with its fast and efficient platform. Say goodbye to slow builds, complex pipelines, and outdated approaches. With Earthly CI, you can experience dramatic improvements in build times, simplified pipeline maintenance, and seamless integration with monorepos. Get started today and join the next generation of software development.
 last_modified_at: 2023-08-23
 ---
 
-**Update: This is a historical announcement. The problems highlighted in this article are now solved by [Earthly Cloud](/). Earthly CI has been deprecated.**
+**Update: This is a historical announcement. The problems highlighted in this article are now solved by [Earthly Cloud](https://cloud.earthly.dev/login/). Earthly CI has been deprecated.**
 
 *Hello world! We have partnered up with some [cool people in Silicon Valley](/blog/new-fundings-at-earthly/) [^1] to fix the world of software builds. So today we are launching [Earthly CI](https://earthly.dev/signup/earthly-ci), the world's first CI/CD solution that merges together a CI and a build system. A more fine-grained understanding of the build allows Earthly CI to run faster than a CI ever could before. And it's not an incremental improvement. It's a dramatic improvement. We're talking 100% to 2,000% faster. Here's how we did it.*
 

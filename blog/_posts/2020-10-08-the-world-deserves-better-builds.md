@@ -6,6 +6,7 @@ categories:
   - News
 topic: earthly
 funnel: 3
+topcta: false
 excerpt: |
     Learn how Earthly is revolutionizing the build process with its self-contained, reproducible, and parallel approach. Say goodbye to slow, brittle builds and hello to a more efficient and user-friendly development experience.
 last_modified_at: 2023-07-14
@@ -48,7 +49,7 @@ There are lots of other goodies that Earthly does beyond this, such as automatic
 ## What's Next?
 
 Having reproducible builds is the first step in our journey. We plan to build shared caching and highly parallel cloud-based builds next. We have a deep belief that builds can create bridges between engineering teams - not roadblocks. This has become our mission, and we will not stop until we've achieved it!  
-Since our launch, we've worked with our users to address their needs and make the experience as pleasant and friendly as possible. We love feedback - check out [Earthly](/), drop by our [slack channel](/slack) or tell us what you're building and how your experience can be improved.
+Since our launch, we've worked with our users to address their needs and make the experience as pleasant and friendly as possible. We love feedback - check out [Earthly](https://cloud.earthly.dev/login), drop by our [slack channel](/slack) or tell us what you're building and how your experience can be improved.
 
 We're excited to have you join us on our journey!
 

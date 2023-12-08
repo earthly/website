@@ -15,7 +15,7 @@ excerpt: |
     Learn how to create and use services in Kubernetes to improve the communication and scalability of your containerized applications. This article covers the different types of services, such as ClusterIP, Headless, NodePort, and LoadBalancer, and provides step-by-step instructions on how to define and configure them using YAML files. Whether you're a beginner or an experienced developer, this guide will help you understand and leverage the power of services in Kubernetes.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Kubernetes services. If you are looking for a simpler approach to building services then [check us out](/).**
+**This article sheds light on the complexities of Kubernetes services. Earthly streamlines the continuous integration (CI) build process for Kubernetes users. [Discover how](https://cloud.earthly.dev/login).**
 
 Kubernetes is a tool for managing containerized applications, designed to make it easy to deploy and scale applications. It is designed to work with a variety of container technologies like [Docker and containerd](https://earthly.dev/blog/containerd-vs-docker/). In a Kubernetes [cluster](/blog/kube-bench), your application runs in a **Pod**. In Kubernetes, Pods are *ephemeral*; they are temporary resources which are created and destroyed as needed .
 
@@ -441,6 +441,6 @@ It's important to be careful when setting up services in Kubernetes because they
 
 Services in Kubernetes provide a steady network endpoint for a specific set of pods, simplifying inter-application communication. This article gave insights into creating and using such services, focusing on the most common types; ClusterIP, Headless, NodePort, and Load Balancer Services. Understanding and correctly configuring these services is crucial in Kubernetes, ensuring effective cluster communication.
 
-If you're looking to further simplify your build processes, you might want to give [Earthly](https://www.earthly.dev/) a try. It's efficient and super easy to use, and could be the next step in optimizing your Kubernetes workflow.
+If you're looking to further simplify your build processes, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try. It's efficient and super easy to use, and could be the next step in optimizing your Kubernetes workflow.
 
 {% include_html cta/bottom-cta.html %}

@@ -16,8 +16,7 @@ excerpt: |
     Learn all about Terraform variables and how to use them in this comprehensive guide. Discover the different variable types, their usage, and workarounds for their limitations. Whether you're new to Terraform or looking to enhance your skills, this article has got you covered.
 last_modified_at: 2023-08-24
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building and automating software pipelines simpler and faster using containerization. If you're working with Terraform, Earthly can be a valuable ally. [Check it out](/).**
+**This article summarizes Terraform variables. Earthly improves your CI/CD pipeline. Improve your cloud infrastructure. [Check it out](https://cloud.earthly.dev/login).**
 
 [Terraform](https://www.terraform.io/) is a widespread [infrastructure-as-code (IaC)](https://en.wikipedia.org/wiki/Infrastructure_as_code) tool that lets you automate the provisioning and management of cloud resources using the [HashiCorp Configuration Language (HCL)](https://www.linode.com/docs/guides/introduction-to-hcl/).
 
@@ -307,6 +306,6 @@ Despite their flexibility and maintainability, Terraform variables have some lim
 
 In this article, you've learned about Terraform variables, their uses, and limitations. For a deeper understanding, check out the [official documentation](https://developer.hashicorp.com/terraform/language/values/variables) or [this detailed tutorial](https://upcloud.com/resources/tutorials/terraform-variables).
 
-And if you love automation and want to streamline your build processes even further, you might want to check out [Earthly](https://www.earthly.dev/). It's a powerful tool hat can complement your Terraform knowledge and enhance your overall development workflow.
+And if you love automation and want to streamline your build processes even further, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It's a powerful tool hat can complement your Terraform knowledge and enhance your overall development workflow.
 
 {% include_html cta/bottom-cta.html %}
