@@ -565,6 +565,14 @@ interoperate
 tutorialspot
 Backpressure
 backpressure
+nerdctl
+imgcrypt
+Stargz
+multitenant
+nonprivileged
+Nydus
+snapshotter
+Snapshotter
 rebases
 Mergify
 rustc
