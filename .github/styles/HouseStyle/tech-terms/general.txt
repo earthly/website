@@ -565,6 +565,9 @@ interoperate
 tutorialspot
 Backpressure
 backpressure
+multiarch
+Syft
+sbom
 nerdctl
 imgcrypt
 Stargz
