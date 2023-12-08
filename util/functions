@@ -222,11 +222,11 @@ next-date(){ # Get Next date for a post
     then
         today="$(date +%F)"
         fourmonths=$(date -d "$today 120 days" +%Y-%m-%d)
-        dateutils.dseq "$today"  "$fourmonths" --skip sat,sun > available-dates.txt
+        dateutils.dseq "$today"  "$fourmonths" --skip mon,wed,fri,sat,sun > available-dates.txt
     else
         today=$(date -v +1d +'%Y-%m-%d')
         fourmonths="$(date -v +4m +'%Y-%m-%d')"
-        dateseq "$today"  "$fourmonths" --skip sat,sun > available-dates.txt
+        dateseq "$today"  "$fourmonths" --skip mon,wed,fri,sat,sun > available-dates.txt
     fi
 
     find ./blog/_posts -maxdepth 1 | awk '{ print substr( $0, 15, 10 ) }' > used-dates.txt
