@@ -17,7 +17,7 @@ excerpt: |
     Learn how to automate the testing, building, and deployment processes of your applications using GitHub Actions and Docker deployments with AWS ECR. This tutorial provides step-by-step instructions on setting up the necessary tools and configuring the workflow to seamlessly deploy your applications to AWS ECR.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
+**This article explores CI/CD with GitHub Actions. Earthly guarantees reproducible Docker builds in any CI/CD pipelines. [Check it out](https://cloud.earthly.dev/login).**
 
 In this tutorial, we will explore the seamless integration of CI/CD workflows using GitHub Actions and Docker deployments with AWS ECR. By leveraging these technologies, you can automate the testing, building, and deployment processes of your applications. GitHub Actions provides a powerful platform for orchestrating development workflows, while Docker offers a consistent and portable environment for packaging and deploying applications. AWS ECR serves as a managed container registry, allowing you to store and retrieve Docker images efficiently. Together, these tools enable streamlined and scalable deployments. Let's get started by creating a GitHub Actions workflow for automating deployments to AWS ECR.
 
@@ -420,6 +420,6 @@ Go ahead and refresh your ECR repository, and your application image will be dep
 
 Deploying applications to AWS ECR with a GitHub Actions CI/CD creates a reliable pipeline that automates Docker builds and deployment cycles. This guide helped you learn how to deploy an application to AWS ECR using a GitHub Actions CI/CD pipeline. I hope you found the GitHub Actions workflow useful while leveraging automation to AWS resources.
 
-And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://earthly.dev). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and AWS.
+And if you're looking to continue building out your automation pipeline, consider using [Earthly](https://cloud.earthly.dev/login). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and AWS.
 
 {% include_html cta/gha-cta1.html %}

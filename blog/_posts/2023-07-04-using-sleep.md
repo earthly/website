@@ -16,7 +16,7 @@ excerpt: |
     Learn how to strategically use the `sleep` command in shell scripting to introduce delays and control the timing of actions in your Linux scripts. Discover its various use cases, alternatives, and how it can help you simulate delays and test your applications under different conditions.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
+**The article details the Linux `sleep` command's intricacies. Earthly optimizes build processes that incorporate `sleep` for better script automation. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Timing is key to many applications, but making things happen at the right time can be challenging. For instance, sometimes you need to introduce a delay to a script to make sure actions are taken precisely when you want them to. The good news is that the `sleep` command lets you do that. With it, you can pause your Linux scripts, ensuring everything happens when it should.
 
@@ -165,7 +165,7 @@ This lets you give users a chance to read important output; however, here, the s
 
 The `sleep` command is your handy tool in script pacing. It's great for resource conservation, task scheduling, and timing tasks perfectly. But remember, it's more than just supplying an integer, so dive into all its features for max benefits. Also, be aware of other tools like `wait` and `read` for situations where `sleep` doesn't quite fit.
 
-Bash is powerful and can do wonders for Linux users. If you're looking to supercharge your Linux scripting even further, you might want to give [Earthly](https://earthly.dev/) a spin!
+Bash is powerful and can do wonders for Linux users. If you're looking to supercharge your Linux scripting even further, you might want to give [Earthly](https://cloud.earthly.dev/login) a spin!
 
 And for more insights on `sleep`, check out the [official docs](https://man7.org/linux/man-pages/man1/sleep.1.html) or our [Bash series](https://earthly.dev/blog/series/bash/) for more Bash goodness.
 

@@ -15,7 +15,7 @@ excerpt: |
     Learn how to create powerful serverless applications with Netlify Functions. This tutorial covers the basics of Netlify Functions, different types of functions, and how they compare to AWS Lambda.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make software development simpler and faster using containerization. Want to improve your workflow when you're working with Netlify Functions? Earthly can smooth out the build process. [Check it out](/).**
+**The article provides a guide to Netlify Functions, focusing on optimization. Earthly streamlines the build process for Netlify Functions or whatever you are building. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 When building backend applications, we often have to add features that are not supported by the current stack or would slow down our applications. A possible workaround is to use cloud functions that help abstract away some of these tasks.
 
@@ -257,6 +257,6 @@ With Netlify, you can deploy your functions with a single command, while with AW
 
 Netlify Functions offer a convenient way to include serverless functionality in your web projects, simplifying the process of creating small APIs or dynamic site elements. Now that you're familiar with these Functions, delve deeper into Netlify's documentation and tutorials to enhance your usage.
 
-If you're looking to streamline your build processes for serverless apps, you might want to give [Earthly](https://www.earthly.dev/) a shot. It's an excellent tool that can help optimize your workflow.
+If you're looking to streamline your build processes for serverless apps, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a shot. It's an excellent tool that can help optimize your workflow.
 
 {% include_html cta/bottom-cta.html %}

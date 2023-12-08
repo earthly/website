@@ -16,7 +16,7 @@ excerpt: |
     Learn how to work with GitHub Actions environment variables and secrets in this tutorial. Discover when to use them, how to define them for different scopes, and even how to store sensitive information like certificates. Plus, find out how Earthly can simplify your GitHub Actions builds.
 last_modified_at: 2023-07-11
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about GitHub Actions, if you'd like to see how Earthly can improve your GitHub Actions builds then [check us out](/earthly-github-actions).**
+**This article discusses managing secrets in GitHub Actions. Earthly streamlines your GitHub Actions build process. [Check it out](https://cloud.earthly.dev/login).**
 
 When you're working with continuous integration, continuous delivery (CI/CD) platforms, you'll work with environment variables and secrets, which are resources that help you conceal and reuse sensitive information, like keys and certificates, in your CI/CD processes. These environmental variables and secrets also make it easy for you to manage your application environments by maintaining configuration sets that you can swap and use when running in different environments. You can also utilize expanding functions (*ie* functions that substitute [environment variable](/blog/bash-variables) values at runtime) and dynamic string templates (*ie* a method to help create multiple strings out of a template literal with different sets of environment variable values) to reuse secrets and simplify your code.
 
@@ -422,6 +422,6 @@ Here's a shorter list of 10 important GitHub Actions environment variables:
 
 ## Conclusion
 
-In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://earthly.dev), an build tool that can run everywhere. Including in [GitHub Actions](/earthly-github-actions).
+In this article, you learned when to use environment variables and secrets, as well as how to scope environment variables across workflows, jobs, and steps. You also learned how to store sensitive information like certificates with GitHub's repository secrets. If you're looking for a simpler experience managing environment variables and secrets, check out [Earthly](https://cloud.earthly.dev/login), an build tool that can run everywhere. Including in [GitHub Actions](/earthly-github-actions).
 
 {% include_html cta/gha-cta1.html %}

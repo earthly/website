@@ -15,7 +15,7 @@ excerpt: |
     Learn about Linux capabilities and how they allow for fine-grained control over the privileges of running processes. Discover how to use capabilities in Docker containers and Kubernetes, and understand the importance of setting the right capabilities for your containerized workloads.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. [Give us a try](/).**
+**This article explains Linux capabilities management. Earthly ensures consistent and efficient Docker image builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 In Linux, capabilities are a way to assign specific privileges to a running process. They allow us to have more fine-grained control over the privileges that processes have on a Linux system.
 
@@ -357,6 +357,6 @@ Even if you're using a multi-container pod, you can set the SecurityContext in e
 
 Understanding Linux capabilities is crucial, especially when running containerized workloads. Check the privileges of your container and assign only the minimum necessary capabilities to minimize the attack surface. Remember, setting the right capabilities helps control damage in case of a breach.
 
-And if you're looking to further optimize your containerized workloads, you might want to give [Earthly](https://www.earthly.dev/) a spin!
+And if you're looking to further optimize your containerized workloads, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin!
 
 {% include_html cta/bottom-cta.html %}

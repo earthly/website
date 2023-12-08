@@ -8,8 +8,7 @@ internal-links:
    - build automation
 topic: earthly
 funnel: 3
-# banner: Example - Page specific banner. <a href="https://earthly.dev/blog/" onclick="bannerLinkClick()">Banner Link</a>.
-# mobileBanner: Example - Page specific banner for mobile. <a href="https://earthly.dev/blog/" onclick="bannerLinkClick()">Banner Link</a>.
+topcta: false
 excerpt: |
     Introducing Earthly, a build automation tool for the container era. Learn how Earthly brings modern capabilities like reproducibility, determinism, and parallelization to your builds without the need for a complete rewrite.
 last_modified_at: 2023-07-11
@@ -27,7 +26,7 @@ Although these systems are probably some of the most advanced build automation t
 
 ![Earthly Logo]({{site.images}}{{page.slug}}/logo.png)\
 
-With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era](https://www.earthly.dev/).
+With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era]((https://cloud.earthly.dev/login)).
 
 **Earthly is not meant to replace your existing open-source tooling, but rather to leverage and augment it**. It does not replace your Gradle, your Maven, your npm, your webpack — you don't need to rewrite your build. Instead, it leverages these popular technologies and builds on top of them, acting more like the glue.
 
@@ -58,7 +57,7 @@ docker:
 
 Earthly in the future will be about much more: for example, cloud-based build parallelization that has never been possible before. For now, you can run it on top of your existing CI, and you can run it locally for development. You still get the other benefits mentioned above.
 
-There are many other goodies that Earthly provides. For more information and also installation instructions, start with [Earthly's homepage](/).
+There are many other goodies that Earthly provides. For more information and also installation instructions, visit [Earthly's sign up](https://cloud.earthly.dev/login/).
 
 This is the first release of Earthly. We will continue to iterate, make improvements and, most importantly, incorporate user feedback. We can't wait to see what you build with it!
 

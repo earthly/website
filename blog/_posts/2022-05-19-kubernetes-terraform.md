@@ -10,7 +10,7 @@ excerpt: |
     Learn how to automate the deployment process and manage complex applications using Terraform and Kubernetes. Discover the benefits of scalability, portability, and workload support that these tools offer, and how they can complement each other to streamline your infrastructure management.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds using containerization. Working with complex deployments like Terraform and Kubernetes? Earthly can help. [Check it out](/).**
+**The article explains how Kubernetes and Terraform integration works. Earthly's caching mechanisms speed up builds for those using Kubernetes and Terraform. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 As projects increase in complexity, so do the benefits of using tools to automate parts of the deployment process. Scaling your infrastructure and deploying to multiple platforms and locations can become unmanageable without the right workflows in place.
 
@@ -128,6 +128,6 @@ There are plenty of guides to show you how to do this, including [the article "U
 
 Terraform and Kubernetes efficiently handle different areas: Terraform manages infrastructure, while Kubernetes deploys containers. As your infrastructure diversifies, for example running multiple Kubernetes setups, Terraform's automation becomes increasingly beneficial. Both platforms can significantly enhance productivity individually, even more so when used together.
 
-Looking to simplify your build process even further? Give [Earthly](https://www.earthly.dev/) a try. This tool can be a great addition to your tech stack, complementing the capabilities of Terraform and Kubernetes by providing a streamlined and efficient build process.
+Looking to simplify your build process even further? Give [Earthly]((https://cloud.earthly.dev/login)) a try. This tool can be a great addition to your tech stack, complementing the capabilities of Terraform and Kubernetes by providing a streamlined and efficient build process.
 
 {% include_html cta/bottom-cta.html %}

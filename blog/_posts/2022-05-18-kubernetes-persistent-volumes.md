@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use Kubernetes persistent volumes to store data for stateful applications in your Kubernetes cluster. This article explains what persistent volumes are, why they're important, and how to create and manage them using kubectl.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're sailing the K8s seas, [check out Earthly](/).**
+**The article summarizes the complexities of managing Kubernetes storage. Earthly provides consistent and reproducible builds in any environment. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Kubernetes [persistent volumes](https://kubernetes.io/docs/concepts/storage/persistent-volumes) provide data storage for stateful applications. They abstract a storage system's implementation from how it's consumed by your pods. A persistent volume could store data locally, on a network share, or in a block storage volume provided by a cloud vendor.
 
@@ -285,6 +285,6 @@ This will empty and remove the storage that was provisioned by your provider. Th
 
 Persistent volumes in Kubernetes enable data storage independent of pods, interfacing with various types of storage through storage classes. This tutorial familiarized you with persistent volume use cases, their distinction from regular volumes, and their implementation inside a Kubernetes cluster. Additionally, you learned about kubectl commands to interact with volumes, allowing seamless running of stateful applications in Kubernetes without data loss post-container restarts.
 
-As you continue to explore and enhance your Kubernetes workflows, you might want to give [Earthly](https://www.earthly.dev/), the efficient build automation tool, a shot. It could be a valuable addition to your development toolkit.
+As you continue to explore and enhance your Kubernetes workflows, you might want to give [Earthly]((https://cloud.earthly.dev/login)), the efficient build automation tool, a shot. It could be a valuable addition to your development toolkit.
 
 {% include_html cta/bottom-cta.html %}

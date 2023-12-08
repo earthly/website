@@ -16,7 +16,7 @@ excerpt: |
     Learn how to create Abstract Base Classes (ABCs) in Python to enforce the implementation of certain methods or attributes in subclasses. ABCs promote code reuse, consistency, and modularity, and can be used for type checking at runtime. Discover the benefits of using ABCs and explore real-world use cases for this powerful feature in Python programming.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building using containerization. Earthly works great with Python projects. [Check it out](/).**
+**This article explains the benefits of using Python ABCs to create consistent interfaces. Earthly provides a reliable build process that complements your dependable Python code. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Object-oriented programming (OOP) is a popular programming paradigm used in many modern programming languages, including Python. At the core of OOP are classes that allow us to create objects with attributes and methods. However, regular classes in Python have limitations that can make it challenging to create modular and maintainable code.
 
@@ -475,6 +475,6 @@ Throughout the article we have covered how to create ABCs and the application of
 
 In this piece, we've covered the ins and outs of abstract base classes (ABCs) - what they are, how they differ from regular classes, and their relation to interfaces in object-oriented programming. We walked you through creating and using ABCs while sharing some practical examples. We also shed light on how ABCs in Python shape your code, making it more reusable, modular, consistent, and organized.
 
-Just as ABCs simplify and streamline your Python code, [Earthly](https://www.earthly.dev/) can simplify your build process. If you've enjoyed exploring Python's ABCs, you'll love how Earthly can make your build process more efficient and manageable. Give it a try!
+Just as ABCs simplify and streamline your Python code, [Earthly]((https://cloud.earthly.dev/login)) can simplify your build process. If you've enjoyed exploring Python's ABCs, you'll love how Earthly can make your build process more efficient and manageable. Give it a try!
 
 {% include_html cta/bottom-cta.html %}

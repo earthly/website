@@ -14,7 +14,7 @@ excerpt: |
     Learn about different deployment strategies, their pros and cons, and how they can impact downtime and deployment complexity. Find the best approach for your application and gain insights into optimizing your deployment process.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're into deployment strategies, Earthly can streamline your build process. [Check it out](/).**
+**In this article, we'll explore different deployment strategies. If you're struggling with deployment complexities, Earthly simplifies your CI builds, regardless of the strategy you choose. [Discover how Earthly can streamline your process](https://cloud.earthly.dev/login).**
 
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 
@@ -141,6 +141,6 @@ The cost of this approach is in the implementation. A service mesh like Istio is
 
 ## Summary
 
-There's a wide range of deployment methods, each with its pros and cons. The best strategy depends on your need to balance downtime cost and deployment complexity. If you're keen to streamline your build process before deployment, you might want to give [Earthly](https://www.earthly.dev/) a try.
+There's a wide range of deployment methods, each with its pros and cons. The best strategy depends on your need to balance downtime cost and deployment complexity. If you're keen to streamline your build process before deployment, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try.
 
 If you'd like to learn about other deployment strategies or continuous deployment terms, feel free to contact us through [Twitter](https://twitter.com/earthlytech) or [email](adam@earthly.dev).

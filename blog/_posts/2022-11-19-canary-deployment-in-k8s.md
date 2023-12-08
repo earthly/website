@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use canary deployments in Kubernetes to mitigate the risks of application updates and ensure zero downtime for your users. This article explains the concept of canary deployments, how they work in Kubernetes, and how to implement them in your CI/CD pipeline.
 last_modified_at: 2023-08-17
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Earthly is a fantastic tool to help manage and streamline your build process. Once you've got canary builds in place, [give it a look](/).**
+**The article provides an in-depth look at Kubernetes canary deployments. Earthly streamlines the build process in canary deployment workflows for Kubernetes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Has a seemingly harmless update ever caused your application to fail in production? [Canary deployments](https://earthly.dev/blog/canary-deployment/), like the proverbial canary in a coal mine, can help you mitigate the chaotic outcomes of such updates that can potentially cause critical downtime.
 
@@ -223,7 +223,7 @@ With canary deployment, your stable version is still online, ideally taking up o
 
 ![Deployment]({{site.images}}{{page.slug}}/deploy.png)\
 
-You can use canary deployments in a CI/CD process, in synergy with monitoring and telemetry. In addition, CI/CD frameworks like [Earthly](https://earthly.dev/) allow you to set automated shifts between versions—with percentages of your user base utilizing different versions of your application—generating metrics that are critical to optimizing application performance and user experience.
+You can use canary deployments in a CI/CD process, in synergy with monitoring and telemetry. In addition, CI/CD frameworks like [Earthly](https://cloud.earthly.dev/login) allow you to set automated shifts between versions—with percentages of your user base utilizing different versions of your application—generating metrics that are critical to optimizing application performance and user experience.
 
 You can build a [CI/CD](/blog/ci-vs-cd) pipeline that accepts application updates, adjusts traffic for a section of users, and collates data to be compared with the stable version. With checks on which version performs better, traffic can be fully rerouted to the updated version, or the updated version can be taken offline.
 
@@ -237,6 +237,6 @@ Automating your Kubernetes process is especially helpful for large architectures
 
 You've now got the lowdown on canary deployments in Kubernetes - why they matter, what they do, how they're different from standard deployments, and how to put them to work. If you're frequently updating apps in Kubernetes, canary deployments could be a real game-changer for you.
 
-To further supercharge your build process while working with Kubernetes, you might want to take a peek at [Earthly](https://www.earthly.dev/). This tool could be the next step in optimizing your development workflow.
+To further supercharge your build process while working with Kubernetes, you might want to take a peek at [Earthly]((https://cloud.earthly.dev/login)). This tool could be the next step in optimizing your development workflow.
 
 {% include_html cta/bottom-cta.html %}

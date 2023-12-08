@@ -13,7 +13,7 @@ excerpt: |
     Learn how to use concurrency in Go to run multiple processes simultaneously, improve speed and performance, and communicate between goroutines using channels. Discover the benefits and challenges of concurrent programming in this informative article.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. Love Go's concurrency model? Check out Earthly for managing your builds efficiently. [Check us out](/).**
+**This article explains Go concurrency essentials. Earthly accelerates Go development with its cache for faster builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 ## Introduction
 
@@ -296,6 +296,6 @@ Here's [an article by Tarun Kundhiya](https://medium.com/geekculture/concurrency
 
 Go provides tools like `Mutex` and `Cond` from [the `sync` package](https://pkg.go.dev/sync) to aid in writing concurrent programs. While concurrent programming can introduce complexity and challenges, with correct implementation, it can boost speed and performance. Be mindful of its pros and cons as you continue your programming journey.
 
-If our discussion about concurrency in Go has piqued your interest, you might want to explore [Earthly](https://www.earthly.dev/). It's a tool that can increase the parallelism of your CI/CD build.
+If our discussion about concurrency in Go has piqued your interest, you might want to explore [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can increase the parallelism of your CI/CD build.
 
 {% include_html cta/bottom-cta.html %}

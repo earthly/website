@@ -17,8 +17,7 @@ excerpt: |
     This article explores how to streamline your container workflow with the GitHub Container Registry. It covers configuring access, deploying Docker images, integrating with GitHub Actions, and integrating with Kubernetes.
 last_modified_at: 2023-08-28
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and, therefore, faster by using containerization. If you're interested in a different approach to building and packaging software, then [check us out](/).**
+**The article discusses the GitHub Container Registry. DevOps professionals using GHCR benefit from Earthly's approach to fast, reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 
 If you have been using GitHub lately, you might have encountered the GitHub Container Registry. In this era of containerization, it has undeniably become a cornerstone of modern application development and deployment. Containers have transformed how developers package their applications and dependencies, ensuring consistency and portability across different environments.
 

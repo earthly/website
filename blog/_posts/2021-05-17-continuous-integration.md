@@ -13,7 +13,7 @@ excerpt: |
     Learn the basics of continuous integration, the differences between CI and CD, and common CI tools in this informative article. Discover how CI can help developers catch bugs earlier, increase productivity, and deliver higher-quality releases.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software builds with containerization. Got a continuous integration process in place? Earthly can boost it with faster iterations and simpler debugging. [Check it out](/).**
+**In this article, you'll learn the principles of continuous integration. Earthly can improve this process. [Check it out](https://cloud.earthly.dev/login).**
 
 Continuous integration has become prevalent in software development, but it's still a complex and wide-ranging topic. In this post, we'll cover the basics of continuous integration, the differences between CI and CD, and common CI tools. You'll also find some tips for the best way to set up CI in your environment.
 
@@ -161,6 +161,6 @@ In the "Build Once" best practice, the build process always occurs as the first 
 
 Continuous integration speeds up the software development process and helps development teams avoid common pitfalls such as broken application builds, and chaotic release cycles. Rather than catching issues just before (or even after) they're released, continuous integration allows you to mitigate errors *while* you're working on a feature.
 
-[Earthly](https://earthly.dev/) is a free and open-source build automation tool that works with your existing build systems to create repeatable, containerized, language-agnostic builds. It acts as a layer between language-specific tools such as Gradle and Apache Maven and the CI buildspec and allows for faster iteration on build scripts and easier debugging. You can discuss automation and other topics in the [Earthly Community on Slack](https://earthly.dev/slack).
+[Earthly](https://cloud.earthly.dev/login) is a free and open-source build automation tool that works with your existing build systems to create repeatable, containerized, language-agnostic builds. It acts as a layer between language-specific tools such as Gradle and Apache Maven and the CI buildspec and allows for faster iteration on build scripts and easier debugging. You can discuss automation and other topics in the [Earthly Community on Slack](https://earthly.dev/slack).
 
 To find out more about how Earthly can help you simplify your CI systems, check us out on [GitHub](https://github.com/earthly/earthly "Earthly build automation tool documentation and download"). With CI automation in place, developers can push changes more frequently, get faster feedback, and ensure that every change is integrated, tested, and verified.

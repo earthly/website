@@ -14,7 +14,7 @@ excerpt: |
     Learn how to create and deploy a facial recognition system using Jupyter Notebooks and Anvil. This tutorial will guide you through the process of building the logic in Deepnote and creating the interface in Anvil, allowing you to serve models from your notebooks and quickly build minimal interfaces.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you're dealing with deploying applications developed originally developed in Jupyter Notebooks, Earthly can streamline the process. [Check it out](/).**
+**The article provides insights into the advancements in facial recognition technology. Earthly ensures consistent and reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 
 The process of building systems to deploy the models that data scientists and machine learning engineers have created is non-trivial. This is because other developers and designers are not always available to create the required [APIs](https://aws.amazon.com/what-is/api/) and user interfaces. You could decide to learn to use the technologies required for this, but that takes considerable effort and could extend project completion by months. Due to this, you may just resort to leaving the models in notebooks on Github.
 
@@ -694,7 +694,7 @@ Finally, to share and test your app on another device, click the "Publish this a
 
 This tutorial guided you through leveraging Deepnote and Anvil to build a face recognition system using Python. The process highlights that mastering a framework isn't a prerequisite for rapidly developing or enhancing a tool. What you've learned here can be applied to any Python script running on a server.
 
-If you're looking to optimize your Python builds further, you might want to give [Earthly](https://www.earthly.dev/) a shot. It's designed for efficiency and reproducibility.
+If you're looking to optimize your Python builds further, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a shot. It's designed for efficiency and reproducibility.
 
 And remember, you can upscale your Deepnote for more complex applications. Stay creative.
 

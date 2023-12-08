@@ -16,8 +16,7 @@ excerpt: |
     Learn how to improve your automated test suite using Bazel, an open source software tool. Bazel can speed up the testing process, save time and computing resources, and ensure reliable and scalable deployments.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly](https://earthly.dev/). We make building software simpler and therefore faster. This article is about when to reach for Bazel. If you are looking for a simpler approach to building monorepos then [check us out](/).**
+**This article explores the use of Bazel for testing. Earthly enhances Bazel by offering reproducible and parallel build features. [Check it out](https://cloud.earthly.dev/login).**
 
 To ensure that your code works as expected even when you ship it to production, you need to integrate automated testing. Automated testing is critical for enterprise-grade software development and delivery. It saves you time and money by rapidly running tests and improves software quality by allowing engineers to run lengthy and time-consuming tests in the background.
 
@@ -379,6 +378,6 @@ In this article, you learned about Bazel, a fast and reliable tool that supports
 
 [Bazel](/blog/monorepo-with-bazel) is useful when you're working with different operating systems utilizing different languages, as you would only have to write the code once. Bazel enables users to create rules for rapid application testing and provides the ability to define custom rules, resulting in increased flexibility.
 
-Another useful tool to speed up automated testing is [Earthly](https://earthly.dev/). Earthly is a simple framework that enables the creation of pipelines that can be developed locally and executed on any platform. It uses containers to run the pipelines, making them self-sufficient, repeatable, portable, and capable of running in parallel. It helps speed up builds since the cache is retained between builds.
+Another useful tool to speed up automated testing is [Earthly](https://cloud.earthly.dev/login). Earthly is a simple framework that enables the creation of pipelines that can be developed locally and executed on any platform. It uses containers to run the pipelines, making them self-sufficient, repeatable, portable, and capable of running in parallel. It helps speed up builds since the cache is retained between builds.
 
 {% include_html cta/bottom-cta.html %}

@@ -11,7 +11,7 @@ excerpt: |
     Learn how and when to use Kubernetes namespaces to isolate workloads and manage resources more efficiently in your Kubernetes cluster. Discover the benefits of namespaces and how to create and manage them effectively.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. [Check it out](/).**
+**The article explains how Kubernetes namespaces effectively manage resources. Earthly strengthens your CI/CD toolkit by ensuring builds are reproducible, which supports your Kubernetes approach. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 When you start learning about Kubernetes, you quickly learn about the key components that you need in order to run your applications, such as pods, deployments, and persistent volumes, but the components that aren't absolute necessities often come a little later in your learning journey. One of these components is namespaces, which helps you isolate workloads. This comes in handy when you have several different projects under the same cluster. For example you may have your main application and several internal tools all running together on the same cluster.
 
@@ -132,6 +132,6 @@ If you want to supercharge the utility, you should also install [Fzf](https://gi
 
 By now, you should have a good grasp of what namespaces are, what the default namespaces do, and how you can create your own. Additionally, you've learned about when you should use namespaces to create a logical separation of your applications and workloads.
 
-If you're running your applications on Kubernetes and you want a simple and effective way of deploying your application to your clusters, check out [Earthly](https://earthly.dev/), a tool designed to help with repeatable and easy builds.
+If you're running your applications on Kubernetes and you want a simple and effective way of deploying your application to your clusters, check out [Earthly](https://cloud.earthly.dev/login), a tool designed to help with repeatable and easy builds.
 
 {% include_html cta/bottom-cta.html %}

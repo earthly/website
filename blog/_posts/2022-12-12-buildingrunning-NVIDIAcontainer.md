@@ -14,7 +14,7 @@ excerpt: |
     Learn how to build and run NVIDIA containers with GPU access using the NVIDIA Container Runtime. This tutorial explains the architecture of the runtime, installation steps, and how to configure GPU access in Docker containers.
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. Earthly can ease your container build process. [Check it out](/).**
+**This article examines the NVIDIA Container Runtime's features for AI and ML. Earthly simplifies the build process, whatever you build. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [NVIDIA Container Runtime](https://github.com/NVIDIA/nvidia-container-runtime) allows containerized applications to access your host's GPU hardware. It facilitates the containerization of systems that would otherwise be off-limits, such as artificial intelligence (AI) and machine learning (ML) workloads. With NVIDIA [Container](/blog/docker-slim) Runtime installed, you can run these apps in containers on *any* host with an NVIDIA GPU.
 
@@ -287,6 +287,6 @@ Multiple constraints passed to the same environment variable are always combined
 
 Docker containers can't directly access your GPU, as they need a vendor-specific layer to expose GPUs. If you're rocking NVIDIA hardware, their container runtime helps connect your docker with NVIDIA drivers. You can then add GPU support to your images, either using NVIDIA CUDA image or by manually installing CUDA libraries in your Dockerfile. This makes your CI pipelines not only reproducible but also capable of handling AI and ML workloads.
 
-Pretty cool, right? And if you're looking to streamline your container build process, give [Earthly](https://www.earthly.dev/) a look! It's a tool that can further enhance your build automation.
+Pretty cool, right? And if you're looking to streamline your container build process, give [Earthly]((https://cloud.earthly.dev/login)) a look! It's a tool that can further enhance your build automation.
 
 {% include_html cta/bottom-cta.html %}

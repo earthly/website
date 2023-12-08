@@ -16,7 +16,7 @@ excerpt: |
     In this article, the author shares six command-line tools that can enhance productivity for programmers. These tools include `broot` for navigating directories, `funky` for customizing shell functions, `FZF` for fuzzy searching, `McFly` for command-line completion, `zoxide` for improved directory navigation, and `GitUpdate` for simplified git commits. The author also mentions other helpful command-line tools and invites readers to share their own suggestions.
 last_modified_at: 2023-07-14
 ---
-**We're [Earthly](https://earthly.dev/). We make building software simpler and faster using containerization. If you're into boosting your productivity with command-line tools, Earthly is something you'll definitely want to check out. [Give it a go](/)!**
+**In this article, you'll discover how command-line tools can do more for you.Earthly can transform your build processes. [Learn more](https://cloud.earthly.dev/login).**
 
 Lately, I've been doing a lot more things at the command line. I'm not a hard-core terminal guy -- I use VSCode more than Vim -- but I'm always surprised at the number of complex tasks that can be done using just the POSIX standard command-line tools like `grep`, `cat` and `sort`.
 
@@ -268,6 +268,6 @@ sudo cp gitupdate /usr/local/bin
 
 There are many other helpful command-line tools. More than can be covered well in a single article. JQ, [`mitmproxy`](/blog/mitmproxy), [Pandoc](https://pandoc.org/), and [PSTree](https://man7.org/linux/man-pages/man1/pstree.1.html) are some I use frequently. There is also a whole class of Rust rewrites of common POSIX tools that warrant an article of their own.  
 
-Of course, [Earthly](https://earthly.dev/) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint), have become a standard part of how I work.
+Of course, [Earthly](https://cloud.earthly.dev/login) itself is a command-line tool, and one I constantly use for gluing together various development steps together. It, and the tools I use for [linting prose](/blog/markdown-lint), have become a standard part of how I work.
 
 What less common command-line tools do you use? If you have tool suggestions, I'd love to hear them. You can find my Twitter account and email below, and I'd love to hear what you are using.

@@ -17,8 +17,7 @@ excerpt: |
     Learn how to secure your Grafana site with HTTPS using Nginx and Certbot in this comprehensive guide. Protect your sensitive data, establish trust, and enhance your website's reputation with HTTPS encryption and enhanced security.
 last_modified_at: 2023-07-11
 ---
-
-**We're [Earthly.dev](https://earthly.dev/). We make building software simpler and therefore faster using containerization. If you want to know more about building in containers then [check us out](/).**
+**This article explains how to secure Grafana using HTTPS. Earthly strengthens security with consistent, containerized builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [Grafana](https://grafana.com/), a widely used open-source analytics and monitoring platform, has gained immense importance as an essential tool for tech companies and organizations globally. Its real-time [data visualization](https://www.tableau.com/learn/articles/data-visualization#:~:text=Data%20visualization%20is%20the%20graphical,outliers%2C%20and%20patterns%20in%20data.), querying, and analysis capabilities make it invaluable for monitoring system performance, network traffic, and other metrics.
 

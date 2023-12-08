@@ -13,8 +13,6 @@ internal-links:
   - intercal
 last_modified_at: 2023-07-19
 ---
-**We're [Earthly](https://earthly.dev/). We simplify and speed up software building with containerization. Earthly helps you avoid YAML hell. [Check it out](/).**
-
 ## PROGRAM REJECTED FOR MENTAL HEALTH REASONS
 
 In 1972, two students learning FORTRAN came up with a fantastic new programming language called INTERCAL. INTERCAL is a bit unusual. For example, single quotes are called *sparks*, and double quotes are called *rabbit ears*, less than (<) is an *angle*, and a dash (-) is a *worm*. This makes the manual read like a word puzzle combined with an extended in-joke.
