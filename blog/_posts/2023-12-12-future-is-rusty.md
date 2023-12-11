@@ -44,7 +44,7 @@ Imagine you've chosen Rust for your next big project - you're ambitious and read
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5450.png --alt {{ There is a large volume of material you need to grasp to get through the intermediate learning stage. It usually is not covered by tutorials but involves exploration. }} %}
-<figcaption>There is a large volume of material you need to grasp to get through the intermediate learning stage. It usually is not covered by tutorials but involves exploration.</figcaption>
+<figcaption>There is a large volume of material you need to grasp to get through the intermediate learning stage. It is not covered by tutorials but involves exploration.</figcaption>
 </div>
 
 The leap from basic Rust tutorials to implementing complex graphics rendering is immense. You find yourself wrestling with Rust's ownership rules, deciphering compiler errors, and trying to understand how to efficiently manage memory. It's not just about coding anymore. It's about thinking in Rust, and that's a steep curve to climb.
