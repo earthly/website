@@ -1,4 +1,5 @@
 publically
+journaling
 unsexy
 bursty
 vulns

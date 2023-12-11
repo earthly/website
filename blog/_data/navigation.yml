@@ -117,6 +117,8 @@ thoughts:
         url: /printf-debugging/
       - title: "Programming Language Tooling"
         url: /programming-language-improvements/
+      - title: "The Future is Rusty"
+        url: /future-is-rusty/
 activity-tracker:
   - title: "Activity Tracker Series"
     children:

@@ -35,7 +35,6 @@ jobs:
               echo '\n' >> $GITHUB_ENV
               echo 'EOF' >> $GITHUB_ENV
             fi
-            cat posts.txt
            fi
 
       ## Check output value for whether file exists
