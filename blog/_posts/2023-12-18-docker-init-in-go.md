@@ -34,9 +34,9 @@ Before Docker Init came into existence, turning a Go project into a containerize
 
 For a quick test setup, you could get away with writing a basic Dockerfile, like so:
 
-~~~
+~~~{.dockerfile caption=""}
 ARG GO_VERSION=1.21.3
-FROM golang:${GO_VERSION}
+FROM golang:{% raw %}${GO_VERSION}{% endraw %}
 WORKDIR /src
 
 COPY . . 
