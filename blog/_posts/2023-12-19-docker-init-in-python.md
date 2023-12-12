@@ -211,6 +211,7 @@ In this article, you learned all about Docker Init, a valuable utility that simp
 
 Docker Init is a valuable tool for developers who want to quickly and easily create Docker configuration files while following industry best practices. Its user-friendly interface and efficiency make it a useful asset for any developer getting started with containerization.
 
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
@@ -221,4 +222,3 @@ Docker Init is a valuable tool for developers who want to quickly and easily cre
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
