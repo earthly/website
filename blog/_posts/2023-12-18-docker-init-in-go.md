@@ -6,7 +6,10 @@ toc: true
 author: Christoph Berger
 
 internal-links:
- - just an example
+ - docker init
+ - init in go 
+ - using docker in go
+ - how to use docker init in go
 last_modified_at: 2023-09-08
 ---
 
@@ -393,7 +396,3 @@ With a few keystrokes, you've turned a plain Go web app into a containerized, Co
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
