@@ -31,7 +31,7 @@ Before Docker Init came into existence, turning a Go project into a containerize
 
 For a quick test setup, you could get away with writing a basic Dockerfile, like so:
 
-```dockerfile
+~~~
 ARG GO_VERSION=1.21.3
 FROM golang:${GO_VERSION}
 WORKDIR /src
@@ -45,7 +45,7 @@ RUN CGO_ENABLED=0 go build -o /bin/server.
 EXPOSE 7890
 
 ENTRYPOINT [ "/bin/server" ]
-```
+~~~
 
 Even though this is a super minimal Dockerfile, it's boring and repetitive to have to write the same type of file over and over again.
 
@@ -84,48 +84,48 @@ Imagine that it's Friday afternoon, and your task this week has been to write a 
 
 To do so, you create a new Go project in an empty folder by calling the following:
 
-```sh
+~~~{.bash caption=">_"}
 go mod init mywebapp
-```
+~~~
 
 Then, you create a `main.go` file with the following content:
 
-```go
+~~~{.go caption="main.go"}
 package main
 
 import (
-	"fmt"
-	"log"
-	"net/http"
+    "fmt"
+    "log"
+    "net/http"
 )
 
 func main() {
-	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
-		fmt.Fprintf(w, `<h1>Hello, World! <span style="color:#55D7E5">ʕ◔ϖ◔ʔ</span></h1>`)
-	})
+    http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+        fmt.Fprintf(w, `<h1>Hello, World! <span style="color:#55D7E5">ʕ◔ϖ◔ʔ</span></h1>`)
+    })
 
-	log.Println("Listening on http://localhost:7890")
-	log.Println(http.ListenAndServe(":7890", nil))
+    log.Println("Listening on http://localhost:7890")
+    log.Println(http.ListenAndServe(":7890", nil))
 }
-```
+~~~
 
 To make sure all your dependencies are up to date, you run this:
 
-```sh
+~~~{.bash caption=">_"}
 go mod tidy
-```
+~~~
 
 As you'll see later, the generated Dockerfile creates bind mounts to `go.mod` *and* `go.sum`. However, the Go toolchain does not generate a `go.sum` file if it's not necessary. Therefore, you need to create an empty `go.mod` file to make the Dockerfile succeed, like this:
 
-```sh
+~~~{.bash caption=">_"}
 touch go.sum
-```
+~~~
 
 You implement a test run of the app:
 
-```sh
+~~~{.bash caption=">_"}
 go run .
-```
+~~~
 
 Then, you point your browser to `http://localhost:7890` and see a "Hello, World!" message.
 
@@ -137,27 +137,31 @@ The demo environment requires a containerized app, but you know that with `docke
 
 To containerize the app, all you need to do is `cd` into the project directory and ensure that everything is there:
 
-```sh
+~~~{.bash caption=">_"}
 $ cd webapp
 $ ls
 go.mod     go.sum     main.go
-```
+~~~
 
 Then, type the following command:
 
-```
+~~~{.bash caption=">_"}
 $ docker init
-```
+~~~
 
 This command starts `docker init` in interactive mode and presents a list of application platforms to choose from:
 
-![Docker Init CLI start screen](https://i.imgur.com/hDzhuRD.png)
+<div class="wide">
+![Docker Init CLI start screen]({{site.images}}{{page.slug}}/hDzhuRD.png)
+</div>
 
 Select **Go** and hit **Enter**.
 
 Then, Docker Init will ask you which Go version to use:
 
-![Docker Init offers to enter a Go version](https://i.imgur.com/Q3aJPYL.png)
+<div class="wide">
+![Docker Init offers to enter a Go version]({{site.images}}{{page.slug}}/Q3aJPYL.png)
+</div>
 
 Specify the Go version as `1.M.m`, where `M` is the major version and `m` is the minor version (*eg* Go 1.21.3). If you create the Dockerfile for testing, you can also use the string `latest` instead of the version number. Docker will then use the latest `golang` image at the time the Dockerfile is processed.
 
@@ -165,17 +169,23 @@ Specify the Go version as `1.M.m`, where `M` is the major version and `m` is the
 
 Next, specify the path of your main package relative to the current directory where you invoked `docker init`:
 
-![Enter the path of the main package](https://i.imgur.com/2qZuV7k.png)
+<div class="wide">
+![Enter the path of the main package]({{site.images}}{{page.slug}}/2qZuV7k.png)
+</div>
 
 Finally, specify the port your server listens on:
 
-![Specify the server port](https://i.imgur.com/kerStSz.png)
+<div class="wide">
+![Specify the server port]({{site.images}}{{page.slug}}/kerStSz.png)
+</div>
 
 Note that the provided port number is the one that the web app code uses. `docker init` searches the app's source code for data like the Go version or a port number to present this data as suitable default values. This is not only convenient but also removes a possible source of errors.
 
 After all the settings are confirmed, `docker init` creates a Dockerfile, a `compose.yaml` file, and a `.dockerignore` file, and provides instructions on how to run the app:
 
-![Docker Init has generated all files](https://i.imgur.com/hy3ffJ7.png)
+<div class="wide">
+![Docker Init has generated all files]({{site.images}}{{page.slug}}/hy3ffJ7.png)
+</div>
 
 Now, start the app with `docker compose up --build`, and your browser will show the "Hello, World!" message again at `https://localhost:7890`.
 
@@ -191,15 +201,15 @@ The generated Dockerfile contains two stages: `build` and `final`.
 
 In the `build` stage, Docker uses the `golang` image to download all dependencies and build the app binary. In the `final` stage, Docker:
 
-- sets up an Alpine Linux image
-- downloads TLS certificates
-- creates a non-root user
-- copies the app binary over from the `build` stage
-- sets the exposed port and the entry point for your app
+- Sets up an Alpine Linux image
+- Downloads TLS certificates
+- Creates a non-root user
+- Copies the app binary over from the `build` stage
+- Sets the exposed port and the entry point for your app
 
 In addition, `docker init` generously adds comments to all the steps and actions so that even Docker newcomers can quickly navigate their way through the build steps:
 
-```dockerfile
+~~~{ caption=""}
 # syntax=docker/dockerfile:1
 
 # Comments are provided throughout this file to help you get started.
@@ -272,7 +282,7 @@ EXPOSE 7890
 
 # What the container should run when it is started.
 ENTRYPOINT [ "/bin/server" ]
-```
+~~~
 
 #### The Docker Compose File
 
@@ -280,7 +290,7 @@ Most containerized apps are composed of multiple components that live in separat
 
 The default `compose.yaml` defines a single service: your app. Like the Dockerfile, the compose file contains extensive comments, including an example configuration for adding a PostgreSQL database, defining a volume, and setting secrets:
 
-```yaml
+~~~{.yaml caption="compose.yaml"}
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
@@ -330,15 +340,15 @@ services:
 # secrets:
 #   db-password:
 #     file: db/password.txt
-```
+~~~
 
-#### The .dockerignore File
+#### The `.dockerignore` File
 
 The third file that `docker init` generates is a `.dockerignore` file with a sensible default list of files that should not be copied into the container image.
 
 If your Go build process is more complex than a simple `go build`, you'll want to review the output for artifacts that should stay out of the image and add them here:
 
-```
+~~~{ caption=""}
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #
@@ -371,7 +381,7 @@ If your Go build process is more complex than a simple `go build`, you'll want t
 **/values.dev.yaml
 LICENSE
 README.md
-```
+~~~
 
 ## Conclusion: A New Time Saver
 
@@ -385,6 +395,5 @@ With a few keystrokes, you've turned a plain Go web app into a containerized, Co
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
   - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
