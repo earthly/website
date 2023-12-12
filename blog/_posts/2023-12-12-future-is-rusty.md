@@ -36,7 +36,7 @@ Why is that? Well, language design is about trade-offs. If a shallow learning cu
 
 Languages that take a different approach, Rust, Kotlin, Ocaml, or whatever, get a lot of newcomers struggling to learn their language. It can be intimidating and demotivating how slow things go. And that is just going through the beginner parts of learning. The trickier part is the intermediate stage, where you want to build things on your own.
 
-**That situation – the steep learning curve problem – has now gotten a lot easier, thanks to LLMs.** Rust, Haskell, and everything this side of INTERCAL are now easier to learn. In fact, **if you aren't using an LLM to help you learn tricky material, you aren't learning optimally.** That's my conjecture, at least. But let me explain.
+**That situation – the steep learning curve problem – has now gotten a lot easier, thanks to LLMs.** Rust, Haskell, and everything this side of INTERCAL are now easier to learn. In fact, **if you aren't using an LLM to help you learn tricky material, you aren't learning optimally.** That's my conjecture, at least. Let me explain.
 
 ## The Intermediate Material Problem
 
@@ -82,7 +82,7 @@ I decided to share my experience in case it encourages others to perform similar
 
 If ChatGPT can help Tao navigate the solution space around Diaconis-Graham inequalities, it can help you understand a basic lifetime compiler error in Rust.
 
-Here are some [personal examples](https://chat.openai.com/share/becb4600-c3a8-4ff8-8501-5e82fec06c3f) of [what I'm talking about](https://chat.openai.com/share/39142fe5-af12-465a-b5a1-150ddcde77b8) from a little python side-project I've been working on.
+Here are some [personal examples](https://chat.openai.com/share/d08ea465-e3b1-429b-9916-e5fdde4797ad) of [what I'm](https://chat.openai.com/share/becb4600-c3a8-4ff8-8501-5e82fec06c3f)[talking about](https://chat.openai.com/share/39142fe5-af12-465a-b5a1-150ddcde77b8) from a little python and rust side-project I've been working on.
 
 ## Learning Suffers Without Struggle?
 
