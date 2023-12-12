@@ -377,6 +377,8 @@ README.md
 
 With a few keystrokes, you've turned a plain Go web app into a containerized, Compose-ready app that works out of the box. Docker Init takes the tedious parts of creating a Go web app off your to-do list.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -386,4 +388,3 @@ With a few keystrokes, you've turned a plain Go web app into a containerized, Co
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
