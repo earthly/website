@@ -62,7 +62,7 @@ Docker Init guarantees stability out of the box by generating `Dockerfile`, `com
 Before you begin this tutorial, make sure you have [Docker Desktop](https://www.docker.com/products/docker-desktop/) version 4.18 or newer installed on your system. You can check this by navigating to **Settings** in Docker Desktop. Click **Software updates** on the left-hand side of your screen, and you'll see what version of Docker Desktop you're using:
 
 <div class="wide">
-![Docker Desktop version](https://i.imgur.com/dg4i6sO.png)
+![Docker Desktop version]({{site.images}}{{page.slug}}/dg4i6sO.png)
 </div>
 
 To demonstrate the functionality of `docker init`, you'll use a simple Python web application based on [Django](https://www.djangoproject.com/). Go ahead and [clone the application](https://github.com/vivekthedev/docker-init-tutorial).
@@ -78,7 +78,7 @@ docker init
 Once you execute this command, you'll be greeted by the Docker Init CLI welcome screen:
 
 <div class="wide">
-![Docker Init CLI welcome screen](https://i.imgur.com/GN3OUFS.png)
+![Docker Init CLI welcome screen]({{site.images}}{{page.slug}}/GN3OUFS.png)
 </div>
 
 This screen will prompt you to select the platform on which your project will run. Select **Python** and press **Enter** to confirm your selection.
@@ -86,25 +86,25 @@ This screen will prompt you to select the platform on which your project will ru
 Subsequently, the CLI will prompt you to enter the Python version you'd like to use for this specific project. You can either type in the version or opt for the default Python version installed on your system by simply pressing **Enter**:
 
 <div class="wide">
-![Select Python version](https://i.imgur.com/pgWOeqO.png)
+![Select Python version]({{site.images}}{{page.slug}}/pgWOeqO.png)
 </div>
 
 Next, the CLI will ask you to specify the port number where the application will be listening. You can input the port by typing or selecting Django's default port, 8000:
 
 <div class="wide">
-![Select a port in the CLI](https://i.imgur.com/v2JX2tt.png)
+![Select a port in the CLI]({{site.images}}{{page.slug}}/v2JX2tt.png)
 </div>
 
 Finally, the CLI will ask you to enter the command that will be used to run the app. In this case, the app utilizes the default server provided by Django, which is initiated using the command `python manage.py runserver 0.0.0.0:8000`:
 
 <div class="wide">
-![Run the command input in Docker Init](https://i.imgur.com/HdwlWeE.png)
+![Run the command input in Docker Init]({{site.images}}{{page.slug}}/HdwlWeE.png)
 </div>
 
 Run `python manage.py runserver 0.0.0.0:8000` and press **Enter**:
 
 <div class="wide">
-![Docker Init final screen](https://i.imgur.com/VFq0YI2.png)
+![Docker Init final screen]({{site.images}}{{page.slug}}/VFq0YI2.png)
 </div>
 
 The Docker Init CLI confirms that the Docker files have been prepared and provides you with a `docker compose up --build` command to start your application within the Docker container.
@@ -214,7 +214,7 @@ dinit-server-1  | Quit the server with CONTROL-C.
 This application is running on port 8000. You can test it by opening the browser on your system and visiting `http://127.0.0.1:8000/`. When you visit the URL, you'll see the following application window:
 
 <div class="wide">
-![Application main window](https://i.imgur.com/9DzZW8H.png)
+![Application main window]({{site.images}}{{page.slug}}/9DzZW8H.png)
 </div>
 
 As you can see, the Django app is working perfectly inside the container, and you can view and test the app locally.
@@ -231,8 +231,6 @@ Docker Init is a valuable tool for developers who want to quickly and easily cre
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
+
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
