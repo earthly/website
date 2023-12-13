@@ -8,7 +8,6 @@ sidebar:
 author: Adam
 internal-links:
  - approachability
-last_modified_at: 2023-09-08
 excerpt: |
     The article discusses the challenges of learning complex programming languages like Rust and how the use of Large Language Models (LLMs) can help bridge the gap for intermediate learners by providing instant and contextual assistance. It emphasizes that with the assistance of LLMs, the steep learning curves of programming languages can be overcome, allowing for more expressive and rigorous languages to be learned.
 ---

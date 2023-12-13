@@ -9,7 +9,6 @@ internal-links:
  - starting with containerd
  - containerd in docker
  - how to use containerd in docker
-last_modified_at: 2023-09-08
 ---
 
 [`containerd`](https://containerd.io) is a leading container runtime that manages the complete lifecycle of the containers running on your system. It provides an interface that higher-level tools like Docker can use to start and manage containers.
