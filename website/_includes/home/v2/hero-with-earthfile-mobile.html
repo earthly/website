@@ -1,0 +1,96 @@
+<div class="flex flex-col mt-[70px] mb-6">
+  <main class="homepage wave-main">
+    <div class="wave"></div>
+    <div class="wave"></div>
+    <div class="wave"></div>
+
+    <div class="max-w-7xl mx-auto px-6 relative z-10" style="padding-top: 48px;">
+      <h1 class="font-medium text-5xl sm:text-7xl text-center text-slate-900 tracking-tight">
+        Earthly makes builds
+        <span class="block pt-4 text-[#2d7e5d] whitespace-nowrap">super simple</span>
+      </h1>
+
+      <p class="max-w-lg mt-10 mx-auto text-center text-xl text-slate-600 tracking-tight">
+        Fast, consistent builds with an instantly familiar syntax – like
+        Dockerfile and Makefile had a baby.
+      </p>
+
+      <p class="mt-9 text-center text-slate-400 text-xl">Simple, Fast, Consistent Builds</p>
+
+      <div class="max-w-md mx-auto">
+        <a
+          class="w-full bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer inline-block my-0.5 py-6 rounded-lg shadow-sm text-2xl text-center text-white"
+          href="https://cloud.earthly.dev/login"
+          onclick="homepageGetEarthlyClick()"
+        >
+          Get Started Free
+        </a>
+      </div>
+
+      <div id="homepage-hero-install-no-login">
+        <p class="text-center text-slate-400 text-sm">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="underline" href="https://earthly.dev/get-earthly" onclick="homepageHeroInstallNoLoginClick()">Install Earthly w/o logging in</a></p>
+      </div>
+    </div>
+  </main>
+
+  <div class="bg-gray-600 mt-7 mx-6 rounded-xl overflow-hidden shadow-md z-10">
+    <div class="">
+      <header class="pt-1 pb-1.5 text-center reelative text-white/80 ">
+        <div class="flex absolute pt-2 ml-2">
+          <svg fill="none" height="12" viewBox="0 0 12 12" width="12" class="mr-1 chrome-button1">
+            <circle cx="6" cy="6" class="fillStd" r="6"></circle>
+            <circle cx="6" cy="6" r="5.75" class="primaryStroke" strokeOpacity=".16" strokeWidth=".5"></circle>
+          </svg>
+          <svg fill="none" height="12" viewBox="0 0 12 12" width="12" class="mr-1 chrome-button2">
+            <circle cx="6" cy="6" class="fillStd" r="6"></circle>
+            <circle cx="6" cy="6" r="5.75" class="primaryStroke" strokeOpacity=".16" strokeWidth=".5"></circle>
+          </svg>
+          <svg fill="none" height="12" viewBox="0 0 12 12" width="12" class="chrome-button3">
+            <circle cx="6" cy="6" class="fillStd" r="6"></circle>
+            <circle cx="6" cy="6" r="5.75" class="primaryStroke" strokeOpacity=".16" strokeWidth=".5"></circle>
+          </svg>
+        </div>
+        Earthfile
+      </header>
+
+      <code class="text-sm sm:text-md pt-6 lg:pt-10 lg:pl-6 pb-6 font-mono block bg-[#111214] text-gray-100 min-h-[310px] lg:min-h-[350px]">
+        <div class=" rounded-lg pb-4 text-white text-sm font-mono relative">
+          <div class="cursor-default pl-6"><span class="text-[#7dcfff]">VERSION</span> 0.7</div> 
+          <div class="cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> golang:1.13-alpine3.11</div>
+          <div class="cursor-default pl-6"><span class="text-[#7dcfff]">RUN</span> apk --update --no-cache add git</div>
+          <div class="cursor-default pl-6"><span class="text-[#7dcfff]">WORKDIR</span> /go-example</div>
+
+          <div class="mt-3 text-[#b395ed] cursor-default pl-6">all:</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">BUILD</span> +build</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">BUILD</span> +lint</div>
+
+          <div class="mt-3 text-[#b395ed] cursor-default pl-6">build:</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go build -o build/go-example main.go</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">SAVE ARTIFACT</span> build/go-example <span class="text-[#7dcfff]">AS LOCAL</span> build/go-example</div>
+
+          <div class="mt-3 text-[#b395ed] cursor-default pl-6">lint:</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go get golang.org/x/lint/golint</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> golint -set_exit_status ./...</div>
+        </div>
+      </code>
+    </div>
+  </div>
+</div>
+
+<script>
+  function homepageGetEarthlyClick() {
+    analytics.track('homepage-get-started-free-click', {
+      category: 'Get Started Free Click',
+      label: 'homepage-get-started-free-click'
+    });
+  }
+
+  function homepageHeroInstallNoLoginClick() {
+    analytics.track('homepage-hero-install-no-login-click', {
+      category: 'Install No Login Click',
+      label: 'homepage-hero-install-no-login-click'
+    });
+  }
+</script>
