@@ -25,32 +25,6 @@
   document.addEventListener("DOMContentLoaded", function () {
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
-      // console.log("Features loaded");
-      
-      // Example
-      /*const twoButtonsTestOn = gb.isOn("blog-nav-two-buttons")
-      if(document.getElementById("blog-nav-two-buttons-test-control-01")){
-        if(twoButtonsTestOn) {
-          document.getElementById("blog-nav-two-buttons-test-control-01").style.display = "none";
-          document.getElementById("blog-nav-two-buttons-test-test-01").style.display = "inline-flex";
-        } else {
-          document.getElementById("blog-nav-two-buttons-test-control-01").style.display = "inline-flex";
-          document.getElementById("blog-nav-two-buttons-test-test-01").style.display = "none";
-        }
-      }
-      if(document.getElementById("blog-nav-two-buttons-test-control-02")){
-        if(twoButtonsTestOn) {
-          document.getElementById("blog-nav-two-buttons-test-control-02").style.display = "none";
-          document.getElementById("blog-nav-two-buttons-test-test-02").style.display = "flex";
-          document.getElementById("blog-nav-two-buttons-test-test-03").style.display = "flex";
-        } else {
-          document.getElementById("blog-nav-two-buttons-test-control-02").style.display = "flex";
-          document.getElementById("blog-nav-two-buttons-test-test-02").style.display = "none";
-          document.getElementById("blog-nav-two-buttons-test-test-03").style.display = "none";
-        }
-      }*/
-
-
       if(document.getElementById("makefile-cta-control")){
         if(gb.isOn("makefile-blog-bottom-cta-20230615")) {
             console.log("makefile-blog-bottom-cta-20230615 on");
