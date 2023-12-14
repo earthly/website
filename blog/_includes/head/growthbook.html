@@ -25,17 +25,17 @@
   document.addEventListener("DOMContentLoaded", function () {
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
-      if(document.getElementById("makefile-cta-control")){
-        if(gb.isOn("makefile-blog-bottom-cta-20230615")) {
-            console.log("makefile-blog-bottom-cta-20230615 on");
-            document.getElementById("makefile-cta-control").style.display = "none";
-            document.getElementById("makefile-cta-change").style.display = "";
-          } else {
-            console.log("bmakefile-blog-bottom-cta-20230615 off");
-            document.getElementById("makefile-cta-control").style.display = "";
-            document.getElementById("makefile-cta-change").style.display = "none";
-          }
-      } 
+      console.log("starting growthbook");
+      const pElement = document.querySelector('.prose.content-block > p:first-child');
+      const strongElement = pElement.querySelector('strong');
+      if (strongElement) {
+        console.log("starting Test");
+
+      // Randomly decide whether to remove the strong tag
+      if (Math.random() < 0.5) {
+          strongElement.outerHTML = strongElement.innerHTML;
+      }
+    }
     });
   });
 </script>
