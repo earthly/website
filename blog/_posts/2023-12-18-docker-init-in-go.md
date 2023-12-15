@@ -34,7 +34,7 @@ Before Docker Init came into existence, turning a Go project into a containerize
 
 For a quick test setup, you could get away with writing a basic Dockerfile, like so:
 
-~~~{.dockerfile caption=""}
+~~~{.dockerfile caption="Dockerfile"}
 ARG GO_VERSION=1.21.3
 FROM golang:{% raw %}${GO_VERSION}{% endraw %}
 WORKDIR /src
@@ -212,7 +212,7 @@ In the `build` stage, Docker uses the `golang` image to download all dependencie
 
 In addition, `docker init` generously adds comments to all the steps and actions so that even Docker newcomers can quickly navigate their way through the build steps:
 
-~~~{ caption=""}
+~~~{.dockerfile caption="Dockerfile"}
 # syntax=docker/dockerfile:1
 
 # Comments are provided throughout this file to help you get started.
@@ -351,7 +351,7 @@ The third file that `docker init` generates is a `.dockerignore` file with a sen
 
 If your Go build process is more complex than a simple `go build`, you'll want to review the output for artifacts that should stay out of the image and add them here:
 
-~~~{ caption=""}
+~~~{ caption=".dockerignore"}
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #
