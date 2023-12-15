@@ -14,7 +14,6 @@ last_modified_at: 2023-07-19
 ---
 **In this article, we'll explore the fundamentals of Awk, a tool that simplifies text processing. Earthly streamlines your build processes with ease and effectiveness. [Learn more](https://cloud.earthly.dev/login).**
 
-
 <iframe width="560" height="315" src="https://www.youtube.com/embed/15DvGiWVNj0?si=rzojrcrTlNA_BhgK" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 ## Background
