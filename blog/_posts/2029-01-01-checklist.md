@@ -7,7 +7,6 @@ author: Adam
 published: false
 internal-links:
  - just an example
-last_modified_at: 2023-09-08
 ---
 
 ### Writing Article Checklist

@@ -9,7 +9,6 @@ internal-links:
  - rust builds in ci
  - rust builds
  - incremental builds
-last_modified_at: 2023-09-08
 ---
 
 In this post, we present [lib/rust](https://github.com/earthly/lib/tree/main/rust), an open-source [Earthly](https://earthly.dev/) library created in collaboration with the [ExpressVPN](https://github.com/expressvpn) core team, that will help you get maximum performance on Rust builds in CI when used in combination with persistent build runners.

@@ -11,6 +11,9 @@ GEM
     eventmachine (1.2.7)
     ffi (1.15.5)
     forwardable-extended (2.6.0)
+    google-protobuf (3.25.1)
+    google-protobuf (3.25.1-x86_64-darwin)
+    google-protobuf (3.25.1-x86_64-linux)
     http_parser.rb (0.8.0)
     i18n (1.10.0)
       concurrent-ruby (~> 1.0)
@@ -82,6 +85,7 @@ GEM
     public_suffix (4.0.7)
     racc (1.6.0)
     rainbow (3.1.1)
+    rake (13.1.0)
     rb-fsevent (0.11.1)
     rb-inotify (0.10.1)
       ffi (~> 1.0)
@@ -90,6 +94,13 @@ GEM
     ruby-vips (2.0.17)
       ffi (~> 1.9)
     safe_yaml (1.0.5)
+    sass-embedded (1.63.6)
+      google-protobuf (~> 3.23)
+      rake (>= 13.0.0)
+    sass-embedded (1.63.6-x86_64-darwin)
+      google-protobuf (~> 3.23)
+    sass-embedded (1.63.6-x86_64-linux-gnu)
+      google-protobuf (~> 3.23)
     sassc (2.4.0)
       ffi (~> 1.9)
     svg_optimizer (0.2.6)
@@ -115,6 +126,7 @@ DEPENDENCIES
   liquid-c
   pandoc-ruby
   rouge
+  sass-embedded (= 1.63.6)
   tzinfo (~> 1.2)
   tzinfo-data
 
