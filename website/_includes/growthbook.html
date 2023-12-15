@@ -27,9 +27,8 @@
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
       // console.log("Features loaded");
       
-      // Example
-      // Gavin, 20231109, A/B test homepage-hero-earthfile-image
-      if(document.getElementById("homepage-hero-earthfile-image-control-01")){
+      // Example of how to use a feature flag
+      /*if(document.getElementById("homepage-hero-earthfile-image-control-01")){
         //console.log("control element rendered");
         
         const testOn = gb.isOn("homepage-hero-earthfile-image")
@@ -40,7 +39,7 @@
           document.getElementById("homepage-hero-earthfile-image-control-01").style.display = "block";
           document.getElementById("homepage-hero-earthfile-image-test-01").style.display = "none";
         }
-      }
+      }*/
     });
   });
 </script>
