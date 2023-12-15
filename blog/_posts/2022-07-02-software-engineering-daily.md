@@ -2,11 +2,14 @@
 title: "Earthly on Software Engineering Daily"
 categories:
   - News
+topcta: false
 author: Earthly
 excerpt: |
     Learn more about Earthly, a powerful tool for building software in a repeatable and understandable way, as Adam Gordon Bell discusses its features and the problems it solves in his interview on Software Engineering Daily. Discover how Earthly simplifies build scripts and why it's a valuable tool for developers.
 last_modified_at: 2023-07-11
 ---
+**This article examines Earthly's podcast feature. Earthly transforms CI/CD pipelines with reproducible builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
+
 Adam was interviewed on [Software Engineering Daily](https://softwareengineeringdaily.com/2022/07/01/earthly-builds-with-adam-gordon-bell/) where the topics covered how Earthly works and what problems we are trying to solve.
 
 <blockquote class="twitter-tweet"><p lang="en" dir="ltr">In this episode we spoke with Adam Gordon Bell who works in developer relations at Earthly. Adam is also the host of the CoRecursive podcast.<a href="https://t.co/i08OLkzhyJ">https://t.co/i08OLkzhyJ</a> <a href="https://twitter.com/adamgordonbell?ref_src=twsrc%5Etfw">@adamgordonbell</a> <a href="https://twitter.com/EarthlyTech?ref_src=twsrc%5Etfw">@EarthlyTech</a></p>&mdash; Software Daily (@software_daily) <a href="https://twitter.com/software_daily/status/1543131939376631810?ref_src=twsrc%5Etfw">July 2, 2022</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

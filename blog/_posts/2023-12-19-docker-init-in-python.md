@@ -11,7 +11,10 @@ internal-links:
  - using docker in python
  - how to use docker init in python
 last_modified_at: 2023-09-08
+excerpt: |
+    This tutorial explains how to use Docker Init with Python to simplify the creation of Docker configuration files like `Dockerfile`, `compose.yaml`, and `.dockerignore`. Docker Init is a user-friendly tool that generates these files based on project-specific needs, making it easier for developers to containerize their Python applications.
 ---
+**This tutorial explains Docker Init. Earthly optimizes Docker configurations. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 [Docker Init](https://docs.docker.com/engine/reference/commandline/init/) is a new plugin for Docker Desktop that's equipped with a CLI tool that helps you set up project files automatically. It guides you by asking questions that help customize the Docker settings for your project.
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn the differences between unit testing and integration testing and when to use each approach. Discover how unit tests focus on small, isolated pieces of code, while integration tests ensure that different components of your software work together seamlessly.
 last_modified_at: 2023-07-19
 ---
-**In this article, we'll delve into unit and integration testing. Earthly streamlines your build processes, simplifying the management of both testing approaches. [Learn how](https://cloud.earthly.dev/login).**
+**This article discusses the balance between unit testing and integration testing. Earthly guarantees consistent builds for every test cycle. [Check it out](https://cloud.earthly.dev/login).**
 
 In 1998, Kent Beck wrote sUnit, a unit testing framework for SmallTalk. Beck later ported this framework to Java as jUnit. From there, xUnit frameworks spread to the most popular languages. Newer languages, like [GoLang](/blog/top-3-resources-to-learn-golang-in-2021) and Rust, have incorporated testing into the compiler and standard library directly.
 
