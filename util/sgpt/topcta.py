@@ -363,8 +363,8 @@ def make_shorter(input: str) -> str:
 
     3. Link: The link should be a short invitation to learn more about earthly. It should be a link.
     Do not reject based on the link, unless the link is missing.
-    "[Check it out](/)" - Good
-    "Learn more about Earthly](/)" - Good
+    "[Check it out]https://cloud.earthly.dev/login" - Good
+    "[Learn more about Earthly](https://cloud.earthly.dev/login)" - Good
     
     After rejecting options. Please go through remaining options and state pros and cons based on Other criteria. 
 
