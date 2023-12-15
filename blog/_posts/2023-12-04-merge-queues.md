@@ -15,7 +15,6 @@ excerpt: |
 ---
 **Merge queues streamline development workflows. Earthly ensures consistent and reproducible builds for developers. [Check it out](https://cloud.earthly.dev/login).**
 
-
 What is a Merge Queue, and how to use it? Merge queues (or trains, if you use GitLab) are created in order to arrange multiple pull requests consecutively. Each pull request is individually reviewed before being merged into the target branch. GitHub and GitLab offer in-house solutions for this process, but there are also third-party companies, like [Mergify](https://mergify.com/), that offer this service.
 
 Generally speaking, merge queues are helpful for organizations with high-traffic repositories where merge conflicts occur frequently. In this article, you'll learn all about merge queues, including what they are, when they're helpful, and how to manage them.

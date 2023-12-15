@@ -16,8 +16,6 @@ excerpt: |
 ---
 **This article explains how generating a Software Bill of Materials (SBOM) for Docker can secure your images. Earthly improves the SBOM generation process, providing stronger security for Docker. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-
-
 A software bill of materials (SBOM) is a manifest that lists all the dependencies and third-party components included in your application's codebase. It gives you visibility into your software supply chain, allowing you to verify that your application only uses secure and updated dependencies.
 
 In this article, you'll learn more about what SBOMs are and why they're important in the context of containerized apps that use Docker. Then, you'll learn how to generate a SBOM for your Docker images using the experimental `docker sbom` command.

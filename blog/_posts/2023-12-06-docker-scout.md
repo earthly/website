@@ -15,8 +15,6 @@ excerpt: |
 ---
 **The article summarizes how Docker Scout enhances security in continuous integration (CI). Earthly provides reproducible builds that complement Docker Scout's vulnerability analysis. [Check it out](https://cloud.earthly.dev/login).**
 
-
-
 [Docker Scout](https://docs.docker.com/scout/quickstart/) is an innovative tool that simplifies securing Docker images by analyzing their contents and generating a detailed report of any vulnerabilities detected during the process. Docker Scout's key features include inspecting for [common vulnerabilities and exposures](https://www.redhat.com/en/topics/security/what-is-cve) (CVE), providing security recommendations, and seamless integration with continuous integration, continuous delivery (CI/CD) workflows, helping you discover and remediate vulnerabilities during development.
 
 In this tutorial, you'll learn all about Docker Scout, including how to use the Docker Scout CLI and UI and how to seamlessly integrate it into your CI/CD workflows.

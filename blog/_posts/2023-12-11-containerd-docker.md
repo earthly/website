@@ -14,8 +14,6 @@ excerpt: |
 ---
 **The article discusses Docker's `containerd` tool. Earthly ensures consistent and reproducible builds for developers using `containerd`. [Check it out](https://cloud.earthly.dev/login).**
 
-
-
 [`containerd`](https://containerd.io) is a leading container runtime that manages the complete lifecycle of the containers running on your system. It provides an interface that higher-level tools like Docker can use to start and manage containers.
 
 Originally, Docker used its own container runtime to perform these functions. However, this approach proved restrictive as the container ecosystem grew. Projects such as Kubernetes had to wrap the full Docker application, even though they only needed the subset of features used to run containers. As a result, Docker [spun its runtime out](https://www.docker.com/blog/introducing-containerd) into a separate [CNCF-maintained](https://www.cncf.io) containerd project at the end of 2016.

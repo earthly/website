@@ -16,8 +16,6 @@ excerpt: |
 ---
 **This tutorial explains Docker Init. Earthly optimizes Docker configurations. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-
-
 [Docker Init](https://docs.docker.com/engine/reference/commandline/init/) is a new plugin for Docker Desktop that's equipped with a CLI tool that helps you set up project files automatically. It guides you by asking questions that help customize the Docker settings for your project.
 
 Docker Init currently supports a variety of popular languages and frameworks, including Python, Node.js, ASP.NET, and Rust. One of its advantages is that it simplifies creating Docker-based Python projects by generating essential files like `Dockerfile`, `.dockerignore`, and `compose.yaml`. Docker Init is particularly useful for Python server applications, where you often need similar configurations for different projects.

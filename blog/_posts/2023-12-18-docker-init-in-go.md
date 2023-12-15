@@ -16,8 +16,6 @@ excerpt: |
 ---
 **The article explains how to use Docker Init. Earthly simplifies build workflows for Docker Compose users. [Check it out](https://cloud.earthly.dev/login).**
 
-
-
 If your main job is writing [Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/), you probably spend too much time creating and editing Dockerfiles and [Docker Compose](https://docs.docker.com/compose/) configurations. Maybe you've already created some template files to save some time, but in the end, it doesn't help much because plain files have static content, and no project is the same.
 
 The [`docker init`](https://docs.docker.com/engine/reference/commandline/init/) command, which was introduced with [Docker Desktop](https://www.docker.com/products/docker-desktop/) 4.18, promises to be a faster and more flexible way of setting up a new Dockerfile. If successful, it could become the new standard way of initializing a container-based project.

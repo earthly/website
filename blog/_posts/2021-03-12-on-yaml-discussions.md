@@ -11,7 +11,6 @@ last_modified_at: 2023-07-11
 ---
 **The article examines YAML's limitations in CI configurations. Earthly provides clear and reproducible build definitions that overcome YAML's limitations. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-
 My article about how [YAML makes a bad programming language](https://earthly.dev/blog/intercal-yaml-and-other-horrible-programming-languages/) [^1] generated a lot of great discussions online.
 
 Here are some highlights, lightly edited:
