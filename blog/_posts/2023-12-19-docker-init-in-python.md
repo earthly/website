@@ -25,7 +25,7 @@ Setting up an application on Docker involves configuring numerous settings to en
 
 For instance, here's a sample `Dockerfile` file for a Python project:
 
-~~~{.dockerfile caption="Earthfile"}
+~~~{.dockerfile caption="Dockerfile"}
 FROM python:latest
 
 ENV PYTHONUNBUFFERED=1
@@ -118,7 +118,7 @@ Now, if you take a look at your project directory, you should see the addition o
 
 If you open the `Dockerfile`, you'll find that each line is extensively commented on, providing thorough guidance for developers regarding the configurations for the project. The `Dockerfile` adheres to best practices, including the use of [`ARG`](https://docs.docker.com/engine/reference/builder/#arg) instructions for defining variables like the Python version and user ID:
 
-~~~{.dockerfile caption="Earthfile"}
+~~~{.dockerfile caption="Dockerfile"}
 ARG PYTHON_VERSION=3.11.5
 FROM python:${PYTHON_VERSION}-slim as base
 ~~~
@@ -127,7 +127,7 @@ This snippet showcases the utilization of `ARG` to specify the Python version an
 
 Additionally, the `Dockerfile` creates a non-root user named `appuser` to run the application in the container for security purposes:
 
-~~~{.dockerfile caption="Earthfile"}
+~~~{.dockerfile caption="Dockerfile"}
 ARG UID=10001
 RUN adduser \
     --disabled-password \
