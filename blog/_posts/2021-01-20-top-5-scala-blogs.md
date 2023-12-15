@@ -11,7 +11,7 @@ excerpt: |
     Looking for some interesting Scala blogs to celebrate Scala's birthday? Check out this list of active Scala blogs that cover a range of topics, from library insights to Scala 3 updates and functional programming. Whether you're a beginner or an experienced developer, these blogs are sure to keep you informed and inspired.
 last_modified_at: 2023-07-19
 ---
-**In this article, we present our top picks for Scala blogs. If you love Scala and want to improve your build process and CI pipeline, Earthly can help you. [Learn more](https://cloud.earthly.dev/login).**
+**This article discusses Scala blogs. Earthly ensures more reliable builds for users within the Scala ecosystem. [Check it out](https://cloud.earthly.dev/login/).**
 
 The public release of Scala was [17 years ago](https://en.wikipedia.org/wiki/Scala_(programming_language)#History) today. &nbsp;The language and its community are certainly not standing still, so I've put together a list of my favorite active Scala blogs.
 

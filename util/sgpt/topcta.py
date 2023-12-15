@@ -22,7 +22,8 @@ from datetime import datetime
 # gpt-4-1106-preview is cheaper and with more context
 # But doesn't work with guidance's latest, so must revert back in CI
 # Hand patched on Adam's machine
-gpt4 = guidance.llms.OpenAI("gpt-4")
+gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
+# gpt4 = guidance.llms.OpenAI("gpt-4")
 
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
@@ -279,29 +280,29 @@ def build_cta(content):
     article_sentence = this_article_sentence(summary)
     tie_in_sentence = earthly_statement(summary)
     template = dedent(f"""
-        **{article_sentence} {tie_in_sentence}. [Check it out](/).**
+        **{article_sentence} {tie_in_sentence}. [Check it out](https://cloud.earthly.dev/login).**
                 """).strip()
     return template
 
 shorter_examples = [
     {'input': dedent("""
-    This article is a celebration of Scala's Birthday and shares some favorite Scala blogs. Earthly is a powerful build tool that can be used in conjunction with Scala projects, making it a valuable tool for developers interested in building and managing their Scala code efficiently. [Check us out](/).
+    This article is a celebration of Scala's Birthday and shares some favorite Scala blogs. Earthly is a powerful build tool that can be used in conjunction with Scala projects, making it a valuable tool for developers interested in building and managing their Scala code efficiently. [Check us out](https://cloud.earthly.dev/login/).
     """),
     'output': """
-    Join us in celebrating Scala's Birthday with our top picks of Scala blogs. We're Earthly: A powerful build tool that can be used with Scala projects. [Check us out](/).
+    Join us in celebrating Scala's Birthday with our top picks of Scala blogs. We're Earthly: A powerful build tool that can be used with Scala projects. [Check us out](https://cloud.earthly.dev/login/).
     """},
 
     {'input': dedent("""
-    This article is about installing `matplotlib` in a Docker container. Earthly is a powerful build tool that can greatly simplify the process of building and managing Docker containers, making it an ideal tool for readers interested in installing `matplotlib` in a Docker container. [Learn More](/).
+    This article is about installing `matplotlib` in a Docker container. Earthly is a powerful build tool that can greatly simplify the process of building and managing Docker containers, making it an ideal tool for readers interested in installing `matplotlib` in a Docker container. [Learn More](https://cloud.earthly.dev/login/).
     """),
     'output': """
-    This article is about installing `matplotlib` in a Docker container. Earthly is a powerful build tool that can greatly simplify the process of building and managing Docker containers. [Check it out](/).
+    This article is about installing `matplotlib` in a Docker container. Earthly is a powerful build tool that can greatly simplify the process of building and managing Docker containers. [Check it out](https://cloud.earthly.dev/login/).
     """},
     {'input': dedent("""
-    This article is about monorepo versus polyrepo strategies. Earthly is favored by developers navigating the complexities of monorepo and polyrepo build strategies. [Check it out](/).
+    This article is about monorepo versus polyrepo strategies. Earthly is favored by developers navigating the complexities of monorepo and polyrepo build strategies. [Check it out](https://cloud.earthly.dev/login/).
     """),
     'output': """
-    In this article, you'll delve into the intricacies of monorepo versus polyrepo strategies. If you're grappling with these build architectures, Earthly can streamline your workflow, no matter which path you choose. [Learn more about Earthly](/).
+    In this article, you'll delve into the intricacies of monorepo versus polyrepo strategies. If you're grappling with these build architectures, Earthly can streamline your workflow, no matter which path you choose. [Learn more about Earthly](https://cloud.earthly.dev/login/).
     """},
 ]
 
