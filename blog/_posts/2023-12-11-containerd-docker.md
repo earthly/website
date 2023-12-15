@@ -9,6 +9,8 @@ internal-links:
  - starting with containerd
  - containerd in docker
  - how to use containerd in docker
+excerpt: |
+    This tutorial explains how to use `containerd`, a container runtime, with Docker. It covers the benefits of using `containerd` as the default container runtime and how to enable and use the `containerd` image store in Docker.
 ---
 
 [`containerd`](https://containerd.io) is a leading container runtime that manages the complete lifecycle of the containers running on your system. It provides an interface that higher-level tools like Docker can use to start and manage containers.

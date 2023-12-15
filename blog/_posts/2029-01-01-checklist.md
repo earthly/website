@@ -7,6 +7,8 @@ author: Adam
 published: false
 internal-links:
  - just an example
+excerpt: |
+    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
 
 ### Writing Article Checklist

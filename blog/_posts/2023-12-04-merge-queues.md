@@ -10,6 +10,8 @@ internal-links:
  - what is merge queues
  - introduction to merge queues
  - merge queues for pull requests 
+excerpt: |
+    Merge queues, also known as trains, are used to arrange and consecutively merge multiple pull requests in high-traffic repositories to avoid merge conflicts. They automate the merging process, ensuring stability in the main branch and allowing developers to focus on code modifications.
 ---
 
 What is a Merge Queue, and how to use it? Merge queues (or trains, if you use GitLab) are created in order to arrange multiple pull requests consecutively. Each pull request is individually reviewed before being merged into the target branch. GitHub and GitLab offer in-house solutions for this process, but there are also third-party companies, like [Mergify](https://mergify.com/), that offer this service.

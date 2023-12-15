@@ -11,6 +11,8 @@ internal-links:
  - how to generate sbom
  - generating sbom from docker images
  - software bill of materials
+excerpt: |
+    This tutorial explains how to generate a Software Bill of Materials (SBOM) for Docker images using the `docker sbom` command. SBOMs provide visibility into the dependencies and components included in containerized applications, allowing for better software supply chain security.
 ---
 
 A software bill of materials (SBOM) is a manifest that lists all the dependencies and third-party components included in your application's codebase. It gives you visibility into your software supply chain, allowing you to verify that your application only uses secure and updated dependencies.
