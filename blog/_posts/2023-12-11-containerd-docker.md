@@ -12,6 +12,9 @@ internal-links:
 excerpt: |
     This tutorial explains how to use `containerd`, a container runtime, with Docker. It covers the benefits of using `containerd` as the default container runtime and how to enable and use the `containerd` image store in Docker.
 ---
+**The article discusses Docker's `containerd` tool. Earthly ensures consistent and reproducible builds for developers using `containerd`. [Check it out](https://cloud.earthly.dev/login).**
+
+
 
 [`containerd`](https://containerd.io) is a leading container runtime that manages the complete lifecycle of the containers running on your system. It provides an interface that higher-level tools like Docker can use to start and manage containers.
 

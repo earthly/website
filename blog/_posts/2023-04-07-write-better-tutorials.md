@@ -4,6 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Josh
+topcta: false
 bottomcta: false
 internal-links:
  - just an example
