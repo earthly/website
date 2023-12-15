@@ -27,7 +27,7 @@ gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
 
 gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
 
-rerun = True
+rerun = False
 debug = False
 
 cache = True

@@ -2,6 +2,7 @@
 title: "Earthly On Tech and Main Podcast"
 categories:
   - News
+topcta: false
 toc: true
 author: Josh
 topcta: false

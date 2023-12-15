@@ -19,6 +19,9 @@ internal-links:
 as_related: false
 last_modified_at: 2023-07-14
 ---
+**McKinney endorses Earthly's capabilities. Earthly simplifies complex builds for the Python community. [Check it out](https://cloud.earthly.dev/login).**
+
+
 In our journey to bring repeatable builds to the world, we have had the pleasure to talk to a number of industry veterans about the challenges surrounding CIs today. One person that was particularly excited about our mission is [Wes McKinney](https://en.wikipedia.org/wiki/Wes_McKinney), the author of [Python for Data Analysis](https://www.oreilly.com/library/view/python-for-data/9781449323592/), the creator of the very popular [pandas](https://github.com/pandas-dev/pandas) Python package, co-creator of [Apache Arrow](https://arrow.apache.org/), and CEO of [Ursa Computing](https://ursacomputing.com/).
 
 Wes immediately recognized the issues of modern builds, including the need for better and more scalable tooling for monorepos, the need for reducing duplication, and the need to improve build speeds through the use of distributed compute and distributed caching.

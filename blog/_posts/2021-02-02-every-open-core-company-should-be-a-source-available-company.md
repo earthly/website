@@ -16,10 +16,9 @@ internal-links:
 as_related: false
 excerpt: |
     Earthly, a developer tooling and cloud infrastructure company, has announced a switch to the Business Source License 1.1 (BSL) in order to ensure a sustainable business model. While the code will be available for free immediately, it will become open-source after three years. This change will not impact users unless they intend to create a competing commercial offering based on Earthly.
+topcta: false
 last_modified_at: 2023-07-24
 ---
-**The article discusses Earthly's switch to the Business Source License (BSL). Earthly has adopted BSL to provide a balance between open-source access and commercial protection. [Check it out](https://cloud.earthly.dev/login/).**
-
 
 ## EDIT April 20, 2022
 

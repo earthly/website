@@ -4,7 +4,7 @@ categories:
   - News
 toc: true
 author: Vlad
-
+topcta: false
 internal-links:
  - earthly ci shutting down
  - earthly ci failed
