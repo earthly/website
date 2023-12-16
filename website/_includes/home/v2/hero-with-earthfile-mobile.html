@@ -56,7 +56,7 @@
       <code class="text-sm sm:text-md pt-6 lg:pt-10 lg:pl-6 pb-6 font-mono block bg-[#111214] text-gray-100 min-h-[310px] lg:min-h-[350px]">
         <div class=" rounded-lg pb-4 text-white text-sm font-mono relative">
           <div class="cursor-default pl-6"><span class="text-[#7dcfff]">VERSION</span> 0.7</div> 
-          <div class="cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> golang:1.13-alpine3.11</div>
+          <div class="cursor-default pl-6"><span class="text-[#7dcfff]">FROM</span> golang:1.21-alpine3.19</div>
           <div class="cursor-default pl-6"><span class="text-[#7dcfff]">RUN</span> apk --update --no-cache add git</div>
           <div class="cursor-default pl-6"><span class="text-[#7dcfff]">WORKDIR</span> /go-example</div>
 
@@ -70,7 +70,7 @@
           <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">SAVE ARTIFACT</span> build/go-example <span class="text-[#7dcfff]">AS LOCAL</span> build/go-example</div>
 
           <div class="mt-3 text-[#b395ed] cursor-default pl-6">lint:</div>
-          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go get golang.org/x/lint/golint</div>
+          <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> go install golang.org/x/lint/golint@latest</div>
           <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">COPY</span> main.go .</div>
           <div class="pl-10 cursor-default"><span class="text-[#7dcfff]">RUN</span> golint -set_exit_status ./...</div>
         </div>
