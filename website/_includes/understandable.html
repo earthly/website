@@ -30,7 +30,7 @@
                                 </div>
                                 Earthfile
                             </header>
-<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> golang:1.13-alpine3.11
+<code class="Home-product-Earthfile-code"><span class="earthfile-term">FROM</span> golang:1.21-alpine3.19
 <span class="earthfile-term">RUN</span> apk --update --no-cache add git
 <span class="earthfile-term">WORKDIR</span> /go-example                                    
 
@@ -44,7 +44,7 @@
     <span class="earthfile-term">SAVE ARTIFACT</span> build/go-example <span class="earthfile-term">AS LOCAL</span> build/go-example
 
 <span class="earthfile-target">lint:</span>
-    <span class="earthfile-term">RUN</span> go get golang.org/x/lint/golint
+    <span class="earthfile-term">RUN</span> go install golang.org/x/lint/golint@latest
     <span class="earthfile-term">COPY</span> main.go .
     <span class="earthfile-term">RUN</span> golint -set_exit_status ./...</code>
                         </div>
