@@ -43,26 +43,27 @@ For this guide, imagine that you have a Python backend REST API application that
 
 Once Docker Desktop is installed, it's possible to verify the existence of Docker Init by running the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 docker init --version
 ~~~
 
 This command will display the version of the Docker Init plugin:
 
-~~~
+~~~{.bash caption=">_"}
 Version:    v0.1.0-beta.8
 Git commit: b06d94d
 ~~~
 
 After you've verified what version of Docker Init you have, you can navigate to the project's directory (`flask-app`). This is where the Flask application will be built:
 
-~~~
+~~~{.bash caption=">_"}
 cd flask-app
 ~~~
 
 The skeleton demo project can be accessed by cloning the repository from GitHub:
 
-~~~
+~~~{.bash caption=">_"}
+
 git clone https://github.com/rajkumarvenkatasamy/getting-started-with-docker-init.git
 ~~~
 
@@ -72,7 +73,7 @@ Note that the Docker-related files are not present at this phase.
 
 Once the project is cloned, it's time to set up a Python virtual environment from the project directory to test the project locally before containerizing the app using the `docker init` command:
 
-~~~
+~~~{.bash caption=">_"}
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
@@ -80,16 +81,17 @@ pip install -r requirements.txt
 
 Once the environment is set up and the necessary requirements are installed, you can run the demo application:
 
-~~~
+~~~{.bash caption=">_"}
 python main.py
 ~~~
 
 Upon successful execution, an output is displayed indicating that the application is running:
 
-~~~
+~~~{ caption="Output"}
  * Serving Flask app 'main'
  * Debug mode: off
-WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+WARNING: This is a development server. Do not use it in a production 
+deployment. Use a production WSGI server instead.
  * Running on all addresses (0.0.0.0)
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.29.207:5000
@@ -106,30 +108,32 @@ When you open a browser and access [http://localhost:5000/](http://localhost:500
 
 With the local non-Dockerized environment set up and verified, the next step is to initialize the project with the `docker init` command:
 
-~~~
+~~~{.bash caption=">_"}
 docker init
 ~~~
 
 This command will generate a `Dockerfile`, a `.dockerignore` file, and a `compose.yaml` file in the project directory. After following the prompts in the interactive terminal window, you'll see a message indicating that the Docker files are ready and the application can be started:
 
-~~~
+~~~{.bash caption=">_"}
 Welcome to the Docker Init CLI!
 
-This utility will walk you through creating the following files with sensible defaults for your project:
+This utility will walk you through creating the following files 
+with sensible defaults for your project:
   - .dockerignore
   - Dockerfile
   - compose.yaml
 
 Let's get started!
 
-? What application platform does your project use? Python                               
+? What application platform does your project use? Python   
 ? What version of Python do you want to use? (3.11.5)         
                                            
 ? What version of Python do you want to use? 3.11.5
 ? What port do you want your app to listen on? (8000) 5000
                                                
-? What port do you want your app to listen on? 5000                         
-? What is the command to run your app? (gunicorn 'venv.Lib.site-packages.werkzeug.wsgi' --bind=0.0.0.0:5000) python main.py
+? What port do you want your app to listen on? 5000     
+? What is the command to run your app? (gunicorn 
+'venv.Lib.site-packages.werkzeug.wsgi' --bind=0.0.0.0:5000) python main.py
 
 ? What is the command to run your app? python main.py
 
@@ -141,7 +145,8 @@ CREATED: compose.yaml
 
 Take a moment to review them and tailor them to your application.
 
-When you're ready, start your application by running: docker compose up --build
+When you're ready, start your application by running: docker compose 
+up --build
 
 Your application will be available at http://localhost:5000
 ~~~
@@ -152,7 +157,7 @@ After generating the Docker-related files, you can review them in an editor of y
 
 `.dockerignore` contains:
 
-~~~
+~~~{ caption=".dockerignore"}
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #
@@ -191,7 +196,7 @@ README.md
 
 `Dockerfile` contains:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 # syntax=docker/dockerfile:1
 
 # Comments are provided throughout this file to help you get started.
@@ -222,7 +227,8 @@ RUN adduser \
    --uid "${UID}" \
    appuser
 
-# Download dependencies as a separate step to take advantage of Docker's caching.
+# Download dependencies as a separate step to take advantage of 
+# Docker's caching.
 # Leverage a cache mount to /root/.cache/pip to speed up subsequent builds.
 # Leverage a bind mount to requirements.txt to avoid having to copy them into
 # into this layer.
@@ -245,7 +251,7 @@ CMD python main.py
 
 `compose.yaml` contains:
 
-~~~
+~~~{.yaml caption="compose.yaml"}
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
@@ -265,7 +271,7 @@ services:
 
 By default, the Docker Init plugin adds sensible contents to each of these files, which are now ready to be used. However, they can be further modified to fit the project's needs. For instance, the image name (`image: flask-app:1.0`) can be added explicitly in the `compose.yaml` file:
 
-~~~
+~~~{.yaml caption="compose.yaml"}
 services:
  server:
    image: flask-app:1.0
@@ -281,32 +287,33 @@ This builds the Docker image of this demo app with the image name `flask-app` an
 
 The next step is to build the Docker image of the demo app and execute the app. This can be done using a specific command that builds the `flask-app` image and then uses the image to run the app automatically:
 
-~~~
+~~~{.bash caption=">_"}
 docker compose up --build
 ~~~
 
 The generated image can be checked on the machine by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker images
 ~~~
 
 Your output should look something like this:
 
-~~~
-REPOSITORY                    TAG                            IMAGE ID       CREATED          SIZE 
-flask-app                     1.0                            e31234df2eda   2 minutes ago    149MB
+~~~{ caption="Output"}
+REPOSITORY      TAG    IMAGE ID       CREATED          SIZE 
+flask-app       1.0    e31234df2eda   2 minutes ago    149MB
 ~~~
 
 Once the app is running, you can check the status of the container with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker ps
 ~~~
 
 Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
+
 CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS         PORTS                    NAMES
 e3dbf0bbd61c   flask-app:1.0   "/bin/sh -c 'python …"   11 seconds ago   Up 9 seconds   0.0.0.0:5000->5000/tcp   getting-started-with-docker-init-server-1
 ~~~
