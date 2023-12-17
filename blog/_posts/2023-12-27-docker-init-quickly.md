@@ -330,6 +330,8 @@ If you're looking to learn even more about `docker init`, check out our other re
 * [Using Docker Init in Go](add link when published)
 * [Using Docker Init in Python](add link when published)
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -337,4 +339,3 @@ If you're looking to learn even more about `docker init`, check out our other re
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
