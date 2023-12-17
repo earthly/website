@@ -314,8 +314,3 @@ In this article, you learned about the `docker init` command and its advantages 
 `docker init` isn't just a time-saver; it's a tool that brings stability and efficiency to your development workflow.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
