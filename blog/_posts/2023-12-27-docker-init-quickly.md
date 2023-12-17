@@ -329,14 +329,9 @@ The key to mastering any tool is practice, so get started experimenting with `do
 
 If you're looking to learn even more about `docker init`, check out our other resources:
 
-* [Using Docker Init in Rust](add link when published)
-* [Using Docker Init in Node.js](add link when published)
-* [Using Docker Init in Go](add link when published)
-* [Using Docker Init in Python](add link when published)
+* [Using Docker Init in Rust](https://earthly.dev/blog/ocker-init-rust/)
+* [Using Docker Init in Node.js](https://earthly.dev/blog/docker-init-nodejs/)
+* [Using Docker Init in Go](https://earthly.dev/blog/docker-init-in-go/)
+* [Using Docker Init in Python](https://earthly.dev/blog/docker-init-in-python/)
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
