@@ -31,7 +31,7 @@ If any of these files are already present, a cautionary prompt will be displayed
 
 Docker Init supports [Docker Compose](https://docs.docker.com/compose/) out of the box, making it easy to manage multicontainer applications. Moreover, `docker init` is straightforward to use, making it accessible to developers of all skill levels.
 
-## Getting Started with Docker Init
+## Getting Started With Docker Init
 
 For this guide, imagine that you have a Python backend REST API application that you want to containerize using Docker. This application uses [Flask](https://flask.palletsprojects.com/), a lightweight framework for Python that's widely used to build APIs. For demo purposes, this app has been prebuilt to serve a GET endpoint that returns the string "Welcome to the Docker Init tutorial".
 
@@ -39,28 +39,28 @@ For this guide, imagine that you have a Python backend REST API application that
 
 Once Docker Desktop is installed, it's possible to verify the existence of Docker Init by running the following command in your terminal:
 
-```bash
+~~~
 docker init --version
-```
+~~~
 
 This command will display the version of the Docker Init plugin:
 
-```
+~~~
 Version:    v0.1.0-beta.8
 Git commit: b06d94d
-```
+~~~
 
 After you've verified what version of Docker Init you have, you can navigate to the project's directory (`flask-app`). This is where the Flask application will be built:
 
-```
+~~~
 cd flask-app
-```
+~~~
 
 The skeleton demo project can be accessed by cloning the repository from GitHub:
 
-```bash
+~~~
 git clone https://github.com/rajkumarvenkatasamy/getting-started-with-docker-init.git
-```
+~~~
 
 Note that the Docker-related files are not present at this phase.
 
@@ -68,21 +68,21 @@ Note that the Docker-related files are not present at this phase.
 
 Once the project is cloned, it's time to set up a Python virtual environment from the project directory to test the project locally before containerizing the app using the `docker init` command:
 
-```bash
+~~~
 python -m venv venv
 venv\Scripts\activate
 pip install -r requirements.txt
-```
+~~~
 
 Once the environment is set up and the necessary requirements are installed, you can run the demo application:
 
-```bash
+~~~
 python main.py
-```
+~~~
 
 Upon successful execution, an output is displayed indicating that the application is running:
 
-```
+~~~
  * Serving Flask app 'main'
  * Debug mode: off
 WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
@@ -90,23 +90,25 @@ WARNING: This is a development server. Do not use it in a production deployment.
  * Running on http://127.0.0.1:5000
  * Running on http://192.168.29.207:5000
 Press CTRL+C to quit
-```
+~~~
 
 When you open a browser and access [http://localhost:5000/](http://localhost:5000/), you'll be able to see the output in your browser window:
 
-![Welcome page](https://i.imgur.com/M247jfD.png)
+<div class="wide">
+![Welcome page]({{site.images}}{{page.slug}}/M247jfD.png)
+</div>
 
 ### Initializing the Project with Docker Init
 
 With the local non-Dockerized environment set up and verified, the next step is to initialize the project with the `docker init` command:
 
-```bash
+~~~
 docker init
-```
+~~~
 
 This command will generate a `Dockerfile`, a `.dockerignore` file, and a `compose.yaml` file in the project directory. After following the prompts in the interactive terminal window, you'll see a message indicating that the Docker files are ready and the application can be started:
 
-```output
+~~~
 Welcome to the Docker Init CLI!
 
 This utility will walk you through creating the following files with sensible defaults for your project:
@@ -138,7 +140,7 @@ Take a moment to review them and tailor them to your application.
 When you're ready, start your application by running: docker compose up --build
 
 Your application will be available at http://localhost:5000
-```
+~~~
 
 ## Docker Init: A Closer Look at the Generated Files
 
@@ -146,7 +148,7 @@ After generating the Docker-related files, you can review them in an editor of y
 
 `.dockerignore` contains:
 
-```
+~~~
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #
@@ -181,11 +183,11 @@ After generating the Docker-related files, you can review them in an editor of y
 **/values.dev.yaml
 LICENSE
 README.md
-```
+~~~
 
 `Dockerfile` contains:
 
-```
+~~~
 # syntax=docker/dockerfile:1
 
 # Comments are provided throughout this file to help you get started.
@@ -235,11 +237,11 @@ EXPOSE 5000
 
 # Run the application.
 CMD python main.py
-```
+~~~
 
 `compose.yaml` contains:
 
-```yaml
+~~~
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
@@ -255,11 +257,11 @@ services:
      context: .
    ports:
      - 5000:5000
-```
+~~~
 
 By default, the Docker Init plugin adds sensible contents to each of these files, which are now ready to be used. However, they can be further modified to fit the project's needs. For instance, the image name (`image: flask-app:1.0`) can be added explicitly in the `compose.yaml` file:
 
-```
+~~~
 services:
  server:
    image: flask-app:1.0
@@ -267,7 +269,7 @@ services:
      context: .
    ports:
      - 5000:5000
-```
+~~~
 
 This builds the Docker image of this demo app with the image name `flask-app` and the version label `1.0`.
 
@@ -275,45 +277,47 @@ This builds the Docker image of this demo app with the image name `flask-app` an
 
 The next step is to build the Docker image of the demo app and execute the app. This can be done using a specific command that builds the `flask-app` image and then uses the image to run the app automatically:
 
-```bash
+~~~
 docker compose up --build
-```
+~~~
 
 The generated image can be checked on the machine by running the following command:
 
-```bash
+~~~
 docker images
-```
+~~~
 
 Your output should look something like this:
 
-```
+~~~
 REPOSITORY                    TAG                            IMAGE ID       CREATED          SIZE 
 flask-app                     1.0                            e31234df2eda   2 minutes ago    149MB
-```
+~~~
 
 Once the app is running, you can check the status of the container with the following command:
 
-```bash
+~~~
 docker ps
-```
+~~~
 
 Your output will look like this:
 
-```
+~~~
 CONTAINER ID   IMAGE           COMMAND                  CREATED          STATUS         PORTS                    NAMES
 e3dbf0bbd61c   flask-app:1.0   "/bin/sh -c 'python …"   11 seconds ago   Up 9 seconds   0.0.0.0:5000->5000/tcp   getting-started-with-docker-init-server-1
-```
+~~~
 
 You can open a browser and access [http://localhost:5000/](http://localhost:5000/) to view the output:
 
-![Welcome page with Docker-based app](https://i.imgur.com/M247jfD.png)
+<div class="wide">
+![Welcome page with Docker-based app]({{site.images}}{{page.slug}}/M247jfD.png)
+</div>
 
 Recall that this is the same output that was obtained before containerizing the demo app.
 
 ## Conclusion
 
-Congratulations! You've successfully explored the new `docker init` command using Python's Flask framework. The concepts that you learned about here can be applied to [any application platform supported by the Docker Init plugin](https://docs.docker.com/engine/reference/commandline/init/#:~:text=choose%20one%20of%20the%20following%20templates).  For instance, apart from Flask, Docker Init also supports other Python frameworks including [Django](https://www.djangoproject.com/) and [Pyramid](https://trypyramid.com/). For [ASP.Net Core](https://dotnet.microsoft.com/en-us/apps/aspnet), Docker Init can be used to develop ASP.Net core-based applications and projects.
+Congratulations! You've successfully explored the new `docker init` command using Python's Flask framework. The concepts that you learned about here can be applied to [any application platform supported by the Docker Init plugin](https://docs.docker.com/engine/reference/commandline/init/#:~:text=choose%20one%20of%20the%20following%20templates). For instance, apart from Flask, Docker Init also supports other Python frameworks including [Django](https://www.djangoproject.com/) and [Pyramid](https://trypyramid.com/). For [ASP.Net Core](https://dotnet.microsoft.com/en-us/apps/aspnet), Docker Init can be used to develop ASP.Net core-based applications and projects.
 
 You can use Docker Init with [Rust](https://www.rust-lang.org/) to leverage its performance and safety, or you can use Docker Init with [Go](https://go.dev/) to initialize Go applications for building and deploying Go-based microservices. Docker Init also supports [Node.js](https://nodejs.org/en) frameworks such as [Express.js](https://expressjs.com/), [Koa.js](https://koajs.com/#introduction), and [Sails.js](https://sailsjs.com/).
 
@@ -328,11 +332,9 @@ If you're looking to learn even more about `docker init`, check out our other re
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
