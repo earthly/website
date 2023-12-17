@@ -6,7 +6,11 @@ toc: true
 author: Rajkumar Venkatasamy
 
 internal-links:
- - just an example
+ - docker init 
+ - using docker init
+ - how to use docker init
+ - getting started with docker init
+ - using docker init quickly
 excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
@@ -336,6 +340,3 @@ If you're looking to learn even more about `docker init`, check out our other re
 
 * [ ] Create header image in Canva
 * [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
