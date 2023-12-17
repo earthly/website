@@ -27,7 +27,7 @@ Before its introduction, the initial setup of a Docker environment for a project
 
 For example, before `docker init`, developers would have to manually write Dockerfiles like this, which required an understanding of both Docker and Rust's compilation process:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 # Use the official Rust image as a base
 FROM rust:1.58 as builder
 
@@ -66,7 +66,7 @@ This Dockerfile demonstrates a multistage build, which is an advanced Docker con
 
 The command syntax for `docker init` is straightforward:
 
-~~~
+~~~{.bash caption=">_"}
 docker init [OPTIONS]
 ~~~
 
@@ -88,16 +88,17 @@ Navigate to the root directory of your Rust project in the terminal. If you have
 
 Once you've created your root directory, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker init
 ~~~
 
 This command kicks off the initialization process. It prompts you to select the type of application you're working on; choose Rust. Then, `docker init` generates configuration files tailored for a Rust environment. This step is crucial, as it lays down the Docker framework for your project and ensures that the containerization is optimized for Rust's ecosystem:
 
-~~~
+~~~{.bash caption=">_"}
 Welcome to the Docker Init CLI!
 
-This utility will walk you through creating the following files with sensible defaults for your project:
+This utility will walk you through creating the following files with 
+sensible defaults for your project:
   - dockerignore
   - Dockertile
   - compose-yaml
@@ -116,9 +117,11 @@ CREATED: compose.yaml
 
 Take a moment to review them and tailor them to your application.
 
-WARNING: Cargo.lock was not found but is required to run your application. You can create it by running cargo generate-lockfile
+WARNING: Cargo.lock was not found but is required to run your application. 
+You can create it by running cargo generate-lockfile
 
-When you're ready, start your application by running: docker compose up --build
+When you're ready, start your application by running: 
+docker compose up --build
 
 Your application will be available at http://localhost:8080
 ~~~
@@ -131,14 +134,14 @@ After running `docker init` and selecting Rust, the following files are typicall
 
 `Dockerfile` contains the instructions Docker uses to build the image for your Rust application:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 # syntax=docker/dockerfile:1
 
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Dockerfile reference guide at
 # https://docs.docker.com/engine/reference/builder/
 
-################################################################################
+#######################################################################
 # Create a stage for building the application.
 
 ARG RUST_VERSION=1.73.0
@@ -165,16 +168,17 @@ cargo build --locked --release
 cp ./target/release/$APP_NAME /bin/server
 EOF
 
-################################################################################
+###########################################################################
 # Create a new stage for running the application that contains the minimal
 # runtime dependencies for the application. This often uses a different base
-# image from the build stage where the necessary files are copied from the build
-# stage.
+# image from the build stage where the necessary files are copied from 
+# the build stage.
 #
-# The example below uses the debian bullseye image as the foundation for running the app.
-# By specifying the "bullseye-slim" tag, it will also use whatever happens to be the
-# most recent version of that tag when you build your Dockerfile. If
-# reproducability is important, consider using a digest
+# The example below uses the debian bullseye image as the foundation for 
+# running the app.
+# By specifying the "bullseye-slim" tag, it will also use whatever happens 
+# to be the most recent version of that tag when you build your Dockerfile.
+# If reproducability is important, consider using a digest
 # (e.g., debian@sha256:ac707220fbd7b67fc19b112cee8170b41a9e97f703f588b2cdbbcdcecdd8af57).
 FROM debian:bullseye-slim AS final
 
@@ -207,7 +211,7 @@ This `Dockerfile` template can be used to build and run Rust applications in Doc
 
 `compose.yaml` defines how your Rust application runs and interacts with other services:
 
-~~~
+~~~{.yaml caption="compose.yaml"}
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
@@ -226,11 +230,12 @@ services:
       - 8080:8080
 
 # The commented out section below is an example of how to define a PostgreSQL
-# database that your application can use. `depends_on` tells Docker Compose to
-# start the database before your application. The `db-data` volume persists the
-# database data between container restarts. The `db-password` secret is used
-# to set the database password. You must create `db/password.txt` and add
-# a password of your choosing to it before running `docker compose up`.
+# database that your application can use. `depends_on` tells Docker Compose 
+# to start the database before your application. The `db-data` volume 
+# persists the database data between container restarts. The `db-password` 
+# secret is used to set the database password. You must create 
+# `db/password.txt` and add a password of your choosing to it before 
+# running `docker compose up`.
 #     depends_on:
 #       db:
 #         condition: service_healthy
@@ -267,7 +272,7 @@ The `compose.yaml` file is designed to be flexible and easily extendable to fit 
 
 `.dockerignore` includes any files or directories you wish to exclude from being copied into your container:
 
-~~~
+~~~{ caption=".dockerignore"}
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #
@@ -314,14 +319,14 @@ Consider a scenario where you have a `main.rs` file with a basic HTTP server or 
 
 In this example, you'll use `actix-web` because it performs well and is easy to use. Add `actix-web` to your `Cargo.toml` file under `[dependencies]`:
 
-~~~
+~~~{.toml caption="Cargo.toml"}
 [dependencies]
 actix-web = "4"
 ~~~
 
 Next, it's time to write some basic code to handle CRUD operations. Open the `main.rs` file in the `src` directory and replace its contents with the following:
 
-~~~
+~~~{.rust caption="main.rs"}
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 
 async fn create_post() -> impl Responder {
@@ -365,7 +370,7 @@ For instance, you can update the `Dockerfile` and `compose.yaml` files to use po
 
 Make the following changes to `Dockerfile`:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 ...
 ARG APP_NAME=earthly-docker-init-x
 ...
@@ -376,7 +381,7 @@ EXPOSE 8081
 
 Make the following change to `compose.yaml`:
 
-~~~
+~~~{.yaml caption="compose.yaml"}
 ...
 services:
   server:
@@ -394,7 +399,7 @@ services:
 
 Finally, it's time to build and run your application by executing the following:
 
-~~~
+~~~{.bash caption=">_"}
 docker-compose up --build
 ~~~
 
@@ -408,7 +413,7 @@ Running the app in a container—and making an HTTP request to it—is the ultim
 
 Use the following curl command to make a request to the running server, like this:
 
-~~~
+~~~{.bash caption=">_"}
 curl "http://localhost:8081/posts"
 Here are all the posts
 ~~~
