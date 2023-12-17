@@ -30,7 +30,7 @@ Before you begin this tutorial, make sure you have the following installed on yo
 
 You can verify the installations by running `node -v`, `npm -v`, and `docker --version` in your terminal. The output should look something like this:
 
-~~~
+~~~{.bash caption=">_"}
 $ node -v
 v16.15.1
 
@@ -47,7 +47,7 @@ This confirms that Node.js, npm, and Docker are correctly installed on your syst
 
 To set up the project, you need to clone a sample Node.js project and switch to the starter branch. To do so, open your terminal and run the following:
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/Umoren/nodejs-sample-dockerinit.git
 cd nodejs-sample-dockerinit
 git checkout starter
@@ -59,7 +59,7 @@ For this project, `index.js` is the main entry point, and `data.js` handles data
 
 Before the advent of `docker init`, you'd typically start your project on Docker by manually writing a Dockerfile and a `docker-compose.yaml` file. For instance, for this project, you'd create a file named `Dockerfile` in the root directory of your project and add the following content:
 
-~~~
+~~~{.yaml caption="docker-compose.yaml"}
 # Use the official Node.js image from Docker Hub
 FROM node:16
 
@@ -81,7 +81,7 @@ CMD ["node", "index.js"]
 
 Then, you'd create a `docker-compose.yaml` file in the same directory with the following content:
 
-~~~
+~~~{.yaml caption="docker-compose.yaml"}
 version: '3'
 services:
   web:
@@ -138,7 +138,7 @@ To get started with the tutorial, clone the project from the master branch of [t
 
 Navigate to the root directory of the cloned project and run the following:
 
-~~~
+~~~{.bash caption=">_"}
 docker init
 ~~~
 
@@ -160,7 +160,7 @@ This process generates three files: `.dockerignore`, `compose.yaml`, and `Docker
 
 `.dockerignore` specifies files to ignore when building the image, including:
 
-~~~
+~~~{ caption=".dockerignore"}
 **/.classpath
 **/.dockerignore
 **/.env
@@ -197,7 +197,7 @@ This is crucial for excluding sensitive files like environment variables or unne
 
 The `compose.yaml` file specifies the services to run in your project (*ie* the Node.js application and the PostgreSQL database):
 
-~~~
+~~~{.yaml caption="compose.yaml"}
 services:
   server:
     build:
@@ -212,7 +212,7 @@ It uses the `Dockerfile` in the current directory to build the image and sets th
 
 You have to modify this file to suit your application's needs. To do so, modify `compose.yaml` to contain the following:
 
-~~~
+~~~{.yaml caption="compose.yaml"}
 services:
   server:
     build:
@@ -222,7 +222,8 @@ services:
     ports:
       - 5000:5000
 
-# You must create `db/password.txt` and add a password of your choosing to it before running `docker-compose up`.
+# You must create `db/password.txt` and add a password of your choosing 
+# to it before running `docker-compose up`.
     depends_on:
       db:
         condition: service_healthy
@@ -266,7 +267,7 @@ Lastly, you add a `healthcheck` that uses PostgreSQL's `pg_isready` command to e
 
 The `Dockerfile` file specifies the base Node.js image to use, sets the working directory in the container, and defines the commands to run the application:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 # syntax=docker/dockerfile:1
 
 ARG NODE_VERSION=16.15.1
@@ -295,7 +296,7 @@ CMD node index.js
 
 To build and run the application, execute the following:
 
-~~~
+~~~{.bash caption=">_"}
 docker-compose up
 ~~~
 
