@@ -13,7 +13,7 @@ excerpt: |
 
 Docker has revolutionized the way developers build, ship, and run applications. However, the initial setup can sometimes be daunting, especially for Node.js developers who are new to containerization. Thankfully, `docker init` can help.
 
-The `docker init `command expedites the process of launching your Node.js application within a Docker container, guaranteeing that the configuration is fine-tuned for a Node.js environment. As part of the Docker CLI, this command simplifies the process of Dockerizing your project by automatically generating essential files like `Dockerfile`, `.dockerignore`, and `compose.yaml`. This means you spend less time wrestling with configurations and more time focusing on your application logic.
+The `docker init`command expedites the process of launching your Node.js application within a Docker container, guaranteeing that the configuration is fine-tuned for a Node.js environment. As part of the Docker CLI, this command simplifies the process of Dockerizing your project by automatically generating essential files like `Dockerfile`, `.dockerignore`, and `compose.yaml`. This means you spend less time wrestling with configurations and more time focusing on your application logic.
 
 In this article, you'll learn all about `docker init` in the context of a Node.js project. First, you'll set up a project and use `Dockerfile` and `docker-compose.yaml` files to manually build and run your Docker containers. Then, you'll learn about the syntax and application of `docker init` and how you can use it to simplify your containerization process.
 
@@ -26,7 +26,7 @@ Before you begin this tutorial, make sure you have the following installed on yo
 
 You can verify the installations by running `node -v`, `npm -v`, and `docker --version` in your terminal. The output should look something like this:
 
-```bash
+~~~
 $ node -v
 v16.15.1
 
@@ -35,7 +35,7 @@ $ npm -v
 
 $ docker --version
 Docker version 24.0.6, build ed223bc
-```
+~~~
 
 This confirms that Node.js, npm, and Docker are correctly installed on your system.
 
@@ -43,11 +43,11 @@ This confirms that Node.js, npm, and Docker are correctly installed on your syst
 
 To set up the project, you need to clone a sample Node.js project and switch to the starter branch. To do so, open your terminal and run the following:
 
-```bash
+~~~
 git clone https://github.com/Umoren/nodejs-sample-dockerinit.git
 cd nodejs-sample-dockerinit
 git checkout starter
-```
+~~~
 
 For this project, `index.js` is the main entry point, and `data.js` handles data manipulation. For database interactions, `db.js` manages connections, and `init.sql` initializes the database schema. Security credentials for the database are stored in `db/password.txt`, and `error.log` captures any errors. This setup leverages Express for routing and PostgreSQL for data storage.
 
@@ -55,7 +55,7 @@ For this project, `index.js` is the main entry point, and `data.js` handles data
 
 Before the advent of `docker init`, you'd typically start your project on Docker by manually writing a Dockerfile and a `docker-compose.yaml` file. For instance, for this project, you'd create a file named `Dockerfile` in the root directory of your project and add the following content:
 
-```dockerfile
+~~~
 # Use the official Node.js image from Docker Hub
 FROM node:16
 
@@ -73,11 +73,11 @@ COPY . .
 
 # Set the command to run your application
 CMD ["node", "index.js"]
-```
+~~~
 
 Then, you'd create a `docker-compose.yaml` file in the same directory with the following content:
 
-```yaml
+~~~
 version: '3'
 services:
   web:
@@ -97,7 +97,7 @@ services:
 
 volumes:
   db-data:
-```
+~~~
 
 At this point, you could build and run your Docker container with these files, but if you frequently work on multiple Node.js projects, you'll quickly realize that this process becomes repetitive and time-consuming. Each new project requires you to create a new Dockerfile and Docker Compose file. Even tiny mistakes—such as incorrect file paths, syntax errors, or misconfigured environment variables—can lead to issues such as failed builds, application errors, or security vulnerabilities.
 
@@ -119,10 +119,10 @@ One of the key benefits of using `docker init` is that it generates a Dockerfile
 
 The following are a few other use cases where you should use `docker init`:
 
-* **Rapid prototyping:** If you're in the early stages of development, `docker init` helps you get up and running quickly without worrying about setting up your environment. For more information on how Docker aids in rapid prototyping, check out [Docker's Get Started Guide](https://docs.docker.com/get-started/).
-* **Automated configuration:** `docker init` takes the guesswork out of setting up your Docker environment by automatically generating configuration files tailored to your project. This is especially useful for complex projects that require specific dependencies, as it ensures you won't miss any critical setup steps.
-* **Streamlined CI/CD:** With `Dockerfile` and `compose.yaml` files already set up, integrating your Node.js app into a CI/CD pipeline is easy.
-* **Microservices management:** If you're building a microservices architecture, `docker init` can quickly generate Docker setups for each individual service. This makes it quicker to manage the deployment, scaling, and networking of these services in a unified manner.
+- **Rapid prototyping:** If you're in the early stages of development, `docker init` helps you get up and running quickly without worrying about setting up your environment. For more information on how Docker aids in rapid prototyping, check out [Docker's Get Started Guide](https://docs.docker.com/get-started/).
+- **Automated configuration:** `docker init` takes the guesswork out of setting up your Docker environment by automatically generating configuration files tailored to your project. This is especially useful for complex projects that require specific dependencies, as it ensures you won't miss any critical setup steps.
+- **Streamlined CI/CD:** With `Dockerfile` and `compose.yaml` files already set up, integrating your Node.js app into a CI/CD pipeline is easy.
+- **Microservices management:** If you're building a microservices architecture, `docker init` can quickly generate Docker setups for each individual service. This makes it quicker to manage the deployment, scaling, and networking of these services in a unified manner.
 
 ## How to Use Docker Init with Node.js
 
@@ -134,25 +134,29 @@ To get started with the tutorial, clone the project from the master branch of [t
 
 Navigate to the root directory of the cloned project and run the following:
 
-```bash
+~~~
 docker init
-```
+~~~
 
 You'll be prompted to choose the application platform your project uses (options include Node.js, Go, Python, Rust, and ASP.NET). The Docker Init CLI will automatically detect that you're working with a Node.js project, the version of Node.js you're using, the package manager, and the start script:
 
-![Docker Init CLI setup](https://i.imgur.com/msqazJa.png)
+<div class="wide">
+![Docker Init CLI setup]({{site.images}}{{page.slug}}/msqazJa.png)
+</div>
 
 The CLI walks you through the rest of the options, which are straightforward thanks to `docker init` automatically detecting your project environment. When you're done, your terminal will look like this:
 
-![Completed Docker Init CLI setup](https://i.imgur.com/pPf3Kjp.png)
+<div class="wide">
+![Completed Docker Init CLI setup]({{site.images}}{{page.slug}}/pPf3Kjp.png)
+</div>
 
 This process generates three files: `.dockerignore`, `compose.yaml`, and `Dockerfile`.
 
-#### .dockerignore
+#### `.dockerignore`
 
 `.dockerignore` specifies files to ignore when building the image, including:
 
-```bash
+~~~
 **/.classpath
 **/.dockerignore
 **/.env
@@ -181,15 +185,15 @@ This process generates three files: `.dockerignore`, `compose.yaml`, and `Docker
 **/dist
 LICENSE
 README.md
-```
+~~~
 
 This is crucial for excluding sensitive files like environment variables or unnecessary files that can make the image bulky, such as `node_modules`, `npm-debug.log`, or `/dist` and `.yaml` configuration files.
 
-#### compose.yaml
+#### `compose.yaml`
 
 The `compose.yaml` file specifies the services to run in your project (*ie* the Node.js application and the PostgreSQL database):
 
-```yaml
+~~~
 services:
   server:
     build:
@@ -198,13 +202,13 @@ services:
       NODE_ENV: production
     ports:
       - 5000:5000
-```
+~~~
 
 It uses the `Dockerfile` in the current directory to build the image and sets the environment variable `NODE_ENV` to `production`. It also maps port 5000 inside the container to port 5000 on the host machine.
 
 You have to modify this file to suit your application's needs. To do so, modify `compose.yaml` to contain the following:
 
-```yaml
+~~~
 services:
   server:
     build:
@@ -242,7 +246,7 @@ volumes:
 secrets:
   db-password:
     file: db/password.txt
-```
+~~~
 
 In this code, you introduce several fundamental changes to accommodate the PostgreSQL database alongside your Node.js application. First, you add a `depends_on` field under the `server` service, specifying that the database service (`db`) must be healthy before the server starts. This ensures a smooth startup sequence where the database is fully initialized before the application tries to connect to it.
 
@@ -258,7 +262,7 @@ Lastly, you add a `healthcheck` that uses PostgreSQL's `pg_isready` command to e
 
 The `Dockerfile` file specifies the base Node.js image to use, sets the working directory in the container, and defines the commands to run the application:
 
-```docker
+~~~
 # syntax=docker/dockerfile:1
 
 ARG NODE_VERSION=16.15.1
@@ -281,19 +285,21 @@ COPY . .
 EXPOSE 5000
 
 CMD node index.js
-```
+~~~
 
 ### Run the App in a Docker Container
 
 To build and run the application, execute the following:
 
-```bash
+~~~
 docker-compose up
-```
+~~~
 
 You should see the following in your terminal:
 
-![Project running with `docker-compose up` command](https://i.imgur.com/OvWufx7.png)
+<div class="wide">
+![Project running with `docker-compose up` command]({{site.images}}{{page.slug}}/OvWufx7.png)
+</div>
 
 This command builds the Docker image and runs the containers defined in `compose.yaml`. This lets you see your Node.js app in action within a Dockerized environment.
 
@@ -307,9 +313,7 @@ In this article, you learned about the `docker init` command and its advantages 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
