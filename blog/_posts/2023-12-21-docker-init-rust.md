@@ -24,7 +24,7 @@ Before its introduction, the initial setup of a Docker environment for a project
 
 For example, before `docker init`, developers would have to manually write Dockerfiles like this, which required an understanding of both Docker and Rust's compilation process:
 
-```dockerfile
+~~~
 # Use the official Rust image as a base
 FROM rust:1.58 as builder
 
@@ -55,7 +55,7 @@ COPY --from=builder /myapp/target/release/myapp .
 
 # Set the startup command to run your binary
 CMD ["./myapp"]
-```
+~~~
 
 This Dockerfile demonstrates a multistage build, which is an advanced Docker concept. It first creates a build environment, compiles the Rust application, and then creates a lean final image by copying over the compiled binary. This approach minimizes the final image size, which is crucial for deployment efficiency, but setting it up manually can be time-consuming and repetitive, especially if you're working with multiple images.
 
@@ -63,9 +63,9 @@ This Dockerfile demonstrates a multistage build, which is an advanced Docker con
 
 The command syntax for `docker init` is straightforward:
 
-```shell
+~~~
 docker init [OPTIONS]
-```
+~~~
 
 When executed, `docker init` prompts you to select the type of application you're working on. Once you select Rust and specify the version and your port number, the command produces `Dockerfile`, `compose.yaml`, and `.dockerignore` files that are functional and that adhere to best practices for Rust applications.
 
@@ -75,7 +75,7 @@ The use cases for `docker init` are numerous. It allows developers to quickly se
 
 For any existing open source Rust projects that lack or are yet to adopt containerization, `docker init` offers a significant advantage. It automates the process of creating Dockerfile and Docker Compose files, thus removing the need to manually comb through the repository to identify essential configurations like ports or environment variables. This makes setting up containerized environments for contributors much easier and faster.
 
-## Using Docker Init with Rust
+## Using Docker Init With Rust
 
 Now that you know a little more about `docker init`, it's time to see it in action. In this section, you'll learn how to use `docker init` to set up a Rust project. All the code for this tutorial is available in [this GitHub repo](https://github.com/Ikeh-Akinyemi/earthly-docker-init).
 
@@ -85,13 +85,13 @@ Navigate to the root directory of your Rust project in the terminal. If you have
 
 Once you've created your root directory, run the following command:
 
-```shell
+~~~
 docker init
-```
+~~~
 
 This command kicks off the initialization process. It prompts you to select the type of application you're working on; choose Rust. Then, `docker init` generates configuration files tailored for a Rust environment. This step is crucial, as it lays down the Docker framework for your project and ensures that the containerization is optimized for Rust's ecosystem:
 
-```shell
+~~~
 Welcome to the Docker Init CLI!
 
 This utility will walk you through creating the following files with sensible defaults for your project:
@@ -118,7 +118,7 @@ WARNING: Cargo.lock was not found but is required to run your application. You c
 When you're ready, start your application by running: docker compose up --build
 
 Your application will be available at http://localhost:8080
-```
+~~~
 
 ### The Generated Files
 
@@ -128,7 +128,7 @@ After running `docker init` and selecting Rust, the following files are typicall
 
 `Dockerfile` contains the instructions Docker uses to build the image for your Rust application:
 
-```dockerfile
+~~~
 # syntax=docker/dockerfile:1
 
 # Comments are provided throughout this file to help you get started.
@@ -196,15 +196,15 @@ EXPOSE 8080
 
 # What the container should run when it is started.
 CMD ["/bin/server"]
-```
+~~~
 
 This `Dockerfile` template can be used to build and run Rust applications in Docker. It demonstrates best practices like using multistage builds, caching dependencies, running the application as a non-privileged user, and keeping the final image size small. The use of arguments like `ARG APP_NAME` allows for customization of the `Dockerfile` without modifying the file itself, making it reusable for different applications.
 
-#### compose.yaml
+#### `compose.yaml`
 
 `compose.yaml` defines how your Rust application runs and interacts with other services:
 
-```yaml
+~~~
 # Comments are provided throughout this file to help you get started.
 # If you need more help, visit the Docker compose reference guide at
 # https://docs.docker.com/compose/compose-file/
@@ -254,17 +254,17 @@ services:
 # secrets:
 #   db-password:
 #     file: db/password.txt
-```
+~~~
 
 This file is set up to build and run a Rust application as defined in the `Dockerfile`. It also provides a template for adding a database service, which can be customized and activated as needed.
 
 The `compose.yaml` file is designed to be flexible and easily extendable to fit the requirements of different applications. You can simply uncomment and configure the relevant sections.
 
-#### .dockerignore
+#### `.dockerignore`
 
 `.dockerignore` includes any files or directories you wish to exclude from being copied into your container:
 
-```.dockerignore
+~~~
 # Include any files or directories that you don't want to be copied to your
 # container here (e.g., local build artifacts, temporary files, etc.).
 #
@@ -297,7 +297,7 @@ The `compose.yaml` file is designed to be flexible and easily extendable to fit 
 /target
 LICENSE
 README.md
-```
+~~~
 
 The `.dockerignore` file helps maintain project security by preventing unintended secrets and sensitive files from being included in the Docker image. Overall, this file ensures that Docker images are built efficiently and without unnecessary bloat.
 
@@ -311,14 +311,14 @@ Consider a scenario where you have a `main.rs` file with a basic HTTP server or 
 
 In this example, you'll use `actix-web` because it performs well and is easy to use. Add `actix-web` to your `Cargo.toml` file under `[dependencies]`:
 
-```toml
+~~~
 [dependencies]
 actix-web = "4"
-```
+~~~
 
 Next, it's time to write some basic code to handle CRUD operations. Open the `main.rs` file in the `src` directory and replace its contents with the following:
 
-```rust
+~~~
 use actix_web::{web, App, HttpResponse, HttpServer, Responder};
 
 async fn create_post() -> impl Responder {
@@ -350,7 +350,7 @@ async fn main() -> std::io::Result<()> {
     .run()
     .await
 }
-```
+~~~
 
 This code sets up a basic HTTP server with routes for creating, reading, updating, and deleting posts. Each route is associated with a function that, in this example, returns a simple text response.
 
@@ -362,19 +362,18 @@ For instance, you can update the `Dockerfile` and `compose.yaml` files to use po
 
 Make the following changes to `Dockerfile`:
 
-
-```dockerfile
+~~~
 ...
 ARG APP_NAME=earthly-docker-init-x
 ...
 # Expose the port that the application listens on.
 EXPOSE 8081
 ...
-```
+~~~
 
 Make the following change to `compose.yaml`:
 
-```yaml
+~~~
 ...
 services:
   server:
@@ -384,7 +383,7 @@ services:
     ports:
       - 8081:8081
 ...
-```
+~~~
 
 `docker init` provides a strong starting point, but every Rust project is unique. Modifications may be necessary to align the Docker configuration with your application's needs and ensure that when the application is containerized, it behaves as expected.
 
@@ -392,22 +391,24 @@ services:
 
 Finally, it's time to build and run your application by executing the following:
 
-```shell
+~~~
 docker-compose up --build
-```
+~~~
 
 This command builds the Docker image for your application using the instructions from your `Dockerfile` and then starts a container based on that image. The `--build` flag ensures that Docker rebuilds the image to include any changes you've made.
 
 Running the app in a container—and making an HTTP request to it—is the ultimate test to confirm that your application is correctly set up to run in a Dockerized environment:
 
-![`docker compose` command sample](https://i.imgur.com/emr8669.png)
+<div class="wide">
+![`docker compose` command sample]({{site.images}}{{page.slug}}/emr8669.png)
+</div>
 
 Use the following curl command to make a request to the running server, like this:
 
-```bash
+~~~
 curl "http://localhost:8081/posts"
 Here are all the posts
-```
+~~~
 
 You've now effectively set up a Docker environment for a Rust project using `docker init` and ensured that your application can run within a container, thus replicating a production-like environment on your local machine.
 
@@ -421,10 +422,8 @@ As you continue to develop Rust applications, the knowledge and practices outlin
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
+
+
+]- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
