@@ -6,7 +6,11 @@ toc: true
 author: Ikeh Akinyemi
 
 internal-links:
- - just an example
+ - docker init
+ - init in rust 
+ - using docker in rust
+ - how to use docker init in rust
+ - using rust with docker
 excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
@@ -424,7 +428,3 @@ As you continue to develop Rust applications, the knowledge and practices outlin
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-
-
-]- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
