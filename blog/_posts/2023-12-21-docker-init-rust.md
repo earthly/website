@@ -418,6 +418,8 @@ You've now effectively set up a Docker environment for a Rust project using `doc
 
 As you continue to develop Rust applications, the knowledge and practices outlined here will serve as a foundation for incorporating `docker init` into your development process and ensure that your focus remains on crafting quality code while Docker handles the intricacies of containerization.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -426,4 +428,3 @@ As you continue to develop Rust applications, the knowledge and practices outlin
 
 ]- [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
