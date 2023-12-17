@@ -6,7 +6,11 @@ toc: true
 author: Samuel Umoren
 
 internal-links:
- - just an example
+ - docker init
+ - init in nodejs 
+ - using docker in nodejs
+ - how to use docker init in nodejs
+ - nodejs with docker init
 excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
@@ -315,6 +319,3 @@ In this article, you learned about the `docker init` command and its advantages 
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
