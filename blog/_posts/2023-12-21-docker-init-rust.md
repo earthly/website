@@ -15,7 +15,6 @@ excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
 
-
 [Docker](https://www.docker.com/) has consistently evolved to meet the needs of developers, and the [Docker Init](https://docs.docker.com/engine/reference/commandline/init/) plugin is one of its recent additions. It simplifies the process of setting up Docker-related files for projects, eliminating the need to start from scratch.
 
 In this tutorial, you'll learn how `docker init` can be used with Rust, a language known for its performance and safety. If you're looking to leverage Docker for containerization, this article will show you how `docker init` can be an invaluable tool for quickly bootstrapping projects and ensuring a stable and efficient development environment.
@@ -423,8 +422,3 @@ You've now effectively set up a Docker environment for a Rust project using `doc
 As you continue to develop Rust applications, the knowledge and practices outlined here will serve as a foundation for incorporating `docker init` into your development process and ensure that your focus remains on crafting quality code while Docker handles the intricacies of containerization.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Add in Author page
-- [ ] Create header image in Canva
