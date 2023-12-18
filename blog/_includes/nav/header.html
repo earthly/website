@@ -113,5 +113,31 @@
           label: 'blog-nav-earthly-logo-click'
         });
       }
+
+      function blogpostTopCTAClick() {
+        analytics.track('blog-top-cta-link-click', {
+          category: 'CTA Click',
+          label: 'blog-top-cta-link-click'
+        });
+      }
+      
+      //Adding clicktracking for blog post top CTA link, where it exists
+      //Links unique to each page, so dynamically adding event listener
+      document.addEventListener('DOMContentLoaded', function() {
+        // Select the first paragraph
+        var firstParagraph = document.querySelector('.prose.content-block > p:first-child');
+        if (firstParagraph) {
+            // Select the first link within that paragraph
+            var firstLink = firstParagraph.querySelector('a');
+            if (firstLink) {
+                // Add the click event listener
+                firstLink.addEventListener('click', function() {
+                    blogpostTopCTAClick();
+                });
+            }
+        }
+    });
+
+
     </script>
 </header>
