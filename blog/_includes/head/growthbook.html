@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
 <script>
   // Uncomment uuidv4() for testing / Uncomment getAnalyticCookie() for production
-  //var earthlyID = uuidv4();
+  // var earthlyID = uuidv4();
   var earthlyID = getAnalyticCookie();
 
   // Create a GrowthBook instance
@@ -9,7 +9,7 @@
     apiHost: "https://cdn.growthbook.io",
     clientKey: "sdk-7wtJG1WYaaYBiQ",
     // Uncomment for testing
-    //enableDevMode: true,
+    // enableDevMode: true,
     attributes: {
       id: earthlyID
     },
@@ -21,7 +21,7 @@
     }
   });
 
-  //Page loaded
+  //Adding test for bolding the first paragraph of blog posts
   document.addEventListener("DOMContentLoaded", function () {
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
@@ -30,12 +30,34 @@
       const strongElement = pElement.querySelector('strong');
       if (strongElement) {
         console.log("starting Test");
-
-      // Randomly decide whether to remove the strong tag
-      if (Math.random() < 0.5) {
+        const boldOn = gb.isOn("blog-top-cta-link-bold")
+      if (!boldOn) {
           strongElement.outerHTML = strongElement.innerHTML;
       }
     }
     });
   });
+
+  //Adding clicktracking for blog post top CTA link
+  document.addEventListener('DOMContentLoaded', function() {
+    // Select the first paragraph
+    var firstParagraph = document.querySelector('.prose.content-block > p:first-child');
+    if (firstParagraph) {
+        // Select the first link within that paragraph
+        var firstLink = firstParagraph.querySelector('a');
+        if (firstLink) {
+            // Add the click event listener
+            firstLink.addEventListener('click', function() {
+                blogpostTopCTAClick();
+            });
+        }
+    }
+});
+
+  function blogpostTopCTAClick() {
+    analytics.track('blog-top-cta-link-bold-click', {
+      category: 'CTA Click',
+      label: 'blog-top-cta-link-bold-click'
+    });
+  }
 </script>
