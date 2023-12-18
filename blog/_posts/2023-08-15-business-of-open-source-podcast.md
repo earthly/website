@@ -3,6 +3,7 @@ title: "Earthly On The Business of Open Source Podcast"
 categories:
   - News
 toc: true
+topcta: false
 author: Josh
 topcta: false
 excerpt: |

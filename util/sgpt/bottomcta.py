@@ -57,11 +57,11 @@ def merge_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
 
         If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects.
         """),
-        'tie_in' : "Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/)",
+        'tie_in' : "Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](https://cloud.earthly.dev/login/)",
         'result' :  dedent("""
         Awk has more to it than this. There are more built-in variables and built-in functions. It has range patterns and substitution rules, and you can easily use it to modify content, not just add things up.
 
-        If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects. Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/)
+        If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects. Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](https://cloud.earthly.dev/login/)
         """)
         },
          {
@@ -70,13 +70,13 @@ def merge_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
 
         If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects.
         """),
-        'tie_in' : "Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/)",
+        'tie_in' : "Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](https://cloud.earthly.dev/login/)",
         'result' :  dedent("""
         Awk has more to it than this. There are more built-in variables and built-in functions. It has range patterns and substitution rules, and you can easily use it to modify content, not just add things up.
 
         If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects. 
                            
-        (Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/))
+        (Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](https://cloud.earthly.dev/login/))
         """)
         },
     ]
@@ -150,7 +150,7 @@ def generate_tie_in(summary: str, conclusion : str) -> str:
 
     If you want to learn more about Awk, [The Awk Programming Language](https://www.amazon.ca/AWK-Programming-Language-Alfred-Aho/dp/020107981X/) is the definitive book. It covers the language in depth. It also covers how to build a small programming language in Awk, how to build a database in Awk, and some other fun projects.
     """),
-    'result' : "Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](/)"},
+    'result' : "Also, if you're the type of person who's not afraid to do things on the command line then you might like [Earthly](https://cloud.earthly.dev/login/)"},
  
 ]
     score = guidance(dedent('''

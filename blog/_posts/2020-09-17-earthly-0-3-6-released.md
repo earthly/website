@@ -6,7 +6,9 @@ as_related: false
 excerpt: |
     Check out the latest release of Earthly 0.3.6! This update brings new features like enhanced command access and support for in-line comments. Don't miss out on the improved autocompletion and user terminal environment variable pass-along.
 last_modified_at: 2023-07-14
+topcta: false
 ---
+
 Release Notes:
 
 - Introduced `--ssh` flag for `RUN` which allows commands to access the ssh authentication host agent via the socket `$SSH_AUTH_SOCK` (fixes [#292](https://github.com/earthly/earthly/pull/292))

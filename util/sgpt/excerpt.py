@@ -26,9 +26,6 @@ def get_excerpt(content):
   return out['summary'].strip() 
 
 def run_llm_program(program, *args, **kwargs):
-    with open("log.txt", "a") as f, contextlib.redirect_stdout(
-        f
-    ), contextlib.redirect_stderr(f):
         return program(*args, **kwargs)
 
 def add_excerpt_to_md_file(filename):
