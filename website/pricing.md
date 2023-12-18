@@ -9,7 +9,7 @@ layout: default
   <div class="max-w-7xl mx-auto mt-[70px] px-6 lg:px-10">
     {% include /pricing/v2/hero.html %}
 
-    <div class="text-[40px] font-semibold mt-2 text-center">Earthly Cloud Pricing<span class="text-xl font-light"> <a id="cloud-pricing" href="#cloud-pricing">¶</a></span></div>
+    <div id="cloud-pricing" class="text-[40px] font-semibold mt-2 text-center">Earthly Cloud Pricing</div>
 
     <div class="flex justify-center mt-8">
       <label class="toggle-switch">
