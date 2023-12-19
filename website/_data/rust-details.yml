@@ -6,13 +6,13 @@
 
 - title: Local Optimizations vs. CI Limitations
   points:
-    - Developers utilize local optimizations such as Cargo caching, which are less effective in CI due to the stateless nature of CI builds.
+    - Developers utilize local optimizations such as Cargo caching, which are less effective in CI.
     - The stateless nature CI builds often undermines these local optimizations, leading to full rebuilds and slower build times.
   image: ci-limitations.svg
 
 - title: Challenges with Cargo Caching in CI
   points:
-    - Cargo caching enables incremental builds locally, significantly reducing build times locally.
-    - However, it’s difficult to reproduce incremental builds in CI, because Cargo’s cache folders mix cacheable, intermediate artifacts and non-cacheable, output artifacts.
-    - Caching solutions in CI tools also pose a challenge. They frequently require the cache to be downloaded and uploaded for each build, increasing build times. Many also have cache size limits which Cargo caching can easily eclipse.
+    - Cargo caching enables incremental builds, significantly reducing build times.
+    - Incremental builds are difficult to reproduce in CI, because Cargo’s cache folders mix cacheable artifacts and non-cacheable artifacts.
+    - Caching in CI often requires a cache download and upload for each build, increasing build times, and has size limits which Cargo may exceed.
   image: challenges-with-cargo-caching.svg

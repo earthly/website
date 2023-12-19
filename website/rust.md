@@ -1,6 +1,6 @@
 ---
 title: Earthly for Rust
-description: Earthly gives you the fastest, most efficient Rust builds in CI, enabling incremental builds in CI that mirror local build efficiency.
+description: Earthly gives you fast, incremental Rust builds in CI, making your Rust builds as fast in CI as they are locally.
 layout: default
 ---
 
