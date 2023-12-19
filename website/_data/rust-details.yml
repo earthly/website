@@ -1,0 +1,18 @@
+- title: Intricacies of Rust Compilation
+  points:
+    - Rust has one of the most advanced compilers available. Its compilation process is thorough, emphasizing safety and concurrency. This is great but has a cost, build speed.
+    - The language's extensive checks and optimizations, essential for runtime performance, contribute to its inherently slow compilation.
+  image: rust-compilation.svg
+
+- title: Local Optimizations vs. CI Limitations
+  points:
+    - Developers utilize local optimizations such as Cargo caching, which are less effective in CI due to the stateless nature of CI builds.
+    - The stateless nature CI builds often undermines these local optimizations, leading to full rebuilds and slower build times.
+  image: ci-limitations.svg
+
+- title: Challenges with Cargo Caching in CI
+  points:
+    - Cargo caching enables incremental builds locally, significantly reducing build times locally.
+    - However, it’s difficult to reproduce incremental builds in CI, because Cargo’s cache folders mix cacheable, intermediate artifacts and non-cacheable, output artifacts.
+    - Caching solutions in CI tools also pose a challenge. They frequently require the cache to be downloaded and uploaded for each build, increasing build times. Many also have cache size limits which Cargo caching can easily eclipse.
+  image: challenges-with-cargo-caching.svg
