@@ -8,9 +8,8 @@ author: Adam
 internal-links:
  - just an example
 ---
-Langauages: Scala, Kotlin, Ruby, Rust and f#
 
-In my mind, there a bunch of concepts related together in programming languages syntax that all work together to make code more readable and understandable and consise. But sometimes I see people who haven't worked with these ideas, and they find the whole thing confusing and decreasing readability, because it strays from the c family standard way of doing things.
+In my mind, there a bunch of concepts related together in programming languages syntax that all work together to make code more readable and understandable and concise. But sometimes I see people who haven't worked with these ideas, and they find the whole thing confusing and decreasing readability, because it strays from the c family standard way of doing things.
 
 I think though, that it is all just an issue of familarity and that once you get used to these ideas then you will want them in your language. They are implicit returns, if expressions and single expression functions.
 
@@ -18,99 +17,238 @@ But lets start with expressions:
 
 ## Expressions
 
-In programming languages, you've got expressions and you've got statements. An expressions.
+In programming languages, you've got expressions and you've got statements. I'm going to cycle through some different programming languages in this article, but lets start with Rust:
 
-... examples
+Expressions:
+```
+x + 10
+add(x, y) 
+```
 
+Statements:
+```
+let y = x + 10;
+let z = add(x, y);
+println!("Hello, Rust!");
+```
+
+You get the idea. Expressions evaluate to a value and statements are instructions that perform some action. They don't evaluate to a value.
 
 ## Implicit Returns
 
-In programming langauges that are old, you can return the value of an expression in the last statement of a function. ( fucntion / method  / proc / whatever ). Let's ignore early returns for now.
+In C-like languages, you can return the value of an expression using the return keyword. There can be early returns, but usually you are returning in the last executed statement of the function.
 
 ```
-def x():
-  return x
+int functionName(int p1, int p2) {
+    return p1 + p2;
+}
 ```
 
-You can return statements, that just doesnt' make sense.
+You can return statements, that just doesn't make sense.
 
 ```
-def x():
-  return x = y + z //???
+int functionName(int p1, int parameter2) {
+    int a; 
+    return a = p1 + p2; //What??!
+}
 ```
 
-Note that this often makes the return statement redundant. If a function has return types and the last executed line in any branch must return those values. So you can omit the return and get an implicit return:
+This may seem obvious but I'm going somewhere. Note that this often makes the return statement redundant. If a function has a return type then the last executed line in any branch must return a value of that type. So you can omit the return and get an implicit return.
 
+Here is Ruby:
 ```
-def x():
-  x + y
+def add_numbers_explicit_return(a, b)
+  return a + b
+end
+
+def add_numbers_implicit_return(a, b)
+  a + b
+end
 ```
+
+Ruby is not exactly a C-like langauge. Instead of braces it uses a keyword like `def` to start a block of code and `end` to end things, but nevertheless, early returns work the same in it as in other languages that support it.
 
 When you have branching this works as well, you just have implicit returns per branch:
 
 ```
-def x():
-  if(bla):
-    x
-  else:
-    y
+def check_number(number)
+  if number > 0
+    "Positive"
+  elsif number < 0
+    "Negative"
+  else
+    "Zero"
+  end
+end
+
 ```
 If you aren't used to this, you might not like it at first. You want things to be explicit but I think once you get used to it's very easy to read. 
 
-You almost never have an explicit return statement. That only happens if you need an early return and at least in some languages with impliciti returns early returns are a bit frowned upon. That's probably just style.
+You never have to have an explicit return statement unless you need to return early. And often with implicit returns you just write in a style that avoids early returns. 
+
+So this c:
+
+```const char* check_number(int number) {
+    if (number > 0) {
+        return "Positive";
+    }
+    if (number < 0) {
+        return "Negative";
+    }
+    return "Zero";
+}
+```
+
+Becomes this Rust:
+```
+fn check_number(number: i32) -> &'static str {
+    if number > 0 {
+        "Positive"
+    } else if number < 0 {
+        "Negative"
+    } else {
+        "Zero"
+    }
+}
+```
+
+Or this Kotlin:
+```
+fun checkNumber(number: Int): String {
+  if (number > 0) {
+      "Positive"
+  } else if (number < 0) {
+      "Negative"
+  } else {
+      "Zero"
+  }
+}
+```
 
 >> Side bar
 
-For me personally, this transition to implicit returns (and the other changes coming) felt like the change from `List<String> myList = new ArrayList<String>();` style in C# and Java to `var myList = new ArrayList<String>();`. At first it seemed wrong and problematic after years of doing things one way, but once I realized I was just typing and reading redundant information, it became natural.
+For me personally, this transition to implicit returns felt like the change from `List<String> myList = new ArrayList<String>();` style in C# and Java to `var myList = new ArrayList<String>();`. At first it seemed wrong after years of doing things one way, but once I realized I was just typing and reading redundant information, it became natural.
+
+I realize that readability is something that is hard to quatify and generally what's readable is what familar but I want to say that to once you are used to this implicit return stlye its as if not more readable then an early return style.
 
 << Side Bar
 
 # If Expressions
 
-Ok, once you have this idea that expressions return something, and you don't need returns because its implicit you have code like this:
+Ok, once you have this idea that expressions return something, and you don't need returns because its implicit you have code like this in Kotlin:
 
 ```
-def x():
-  if(bla):
-    x
-  else:
-    y
+fun checkNumber(number: Int): String {
+  if (number > 0) {
+      "Positive"
+  } else if (number < 0) {
+      "Negative"
+  } else {
+      "Zero"
+  }
+}
 
-def y():
-  z = x()
-  z++
-  ...
+fun exclaimNumber(number: Int): String {
+  s = checkNumber(number)
+  return s+"!" 
+}
 ```
 
-But what if you need to do all these in one function. That is you need to setup the values of x and then do something with them. Then you need to transform your if so that each branch is a assignment statement and not a implicitly returned expression.
+That example is super contrived, but notice what happens if I inline `checkNumber` into `exclaimNumber`. All the sudden I need to declare a mutable string before my if.
 
 ```
-val z = Int
-if(bla):
-    z = x
-  else:
-    z = y
-z++
+fun checkNumber(number: Int): String {
+  
+}
+
+fun exclaimNumber(number: Int): String {
+  s = ""
+  if (number > 0) {
+      s = "Positive"
+  } else if (number < 0) {
+      s = "Negative"
+  } else {
+      s= "Zero"
+  }
+  return s+"!" 
+}
 ```
 
-But, lightbulb moment, if the if above from our `x()` had each branch implicitly returning an expression, then isn't it really an expression itself? Supporting this is how we get if expressions:
+Yuck, you need to transform your if so that each branch is a assignment statement and not a implicitly returned expression.
+
+But, lightbulb moment, if the if above from our `checkNumber` had each branch implicitly returning an expression, then isn't the if really an expression itself?
 
 ```
-val z = if(bla):
-    z = x
-  else:
-    z = y
-z++
+fun exclaimNumber(number: Int): String {
+  s = if (number > 0) {
+      "Positive"
+  } else if (number < 0) {
+      "Negative"
+  } else {
+      "Zero"
+  }
+  return s+"!" 
+}
 ```
-And there you have if expressions. Turns out a special syntax isn't need for ternary operators if you can treat your if's as expressions. They are things that return values.
 
-All this is great right? Some people don't like this and prefer explicit returns, early returns and ternary operators to all this, but I honestly think and hope that it's just inheria and that simple readability that falls out of this expression focus continues to spread. 
+And there you have if expressions. Turns out a special syntax isn't need for ternary operators if you can treat your if's as expressions. They are things that return values so lets treat them as such. 
 
-( A natural question you might have after this is what about other control flow? Can a while be an expression? Can a switch case be an expression? Yes, yes, and yes! But I"m not covering that, I want to more onward)
+I love this kind of stuff, the if/else control flow I already knew can work as a expression and simplify code without needing any new syntax, it just follows how assignment already works.
 
-## Single Expression Functions
+Some people don't like this and prefer ternary operators, but I honestly think and hope that it's just inertia and that simple readability that falls out of this expression focus continues to spread. ( But, I understand that readablity is highly subject and somewhat about familarity so I'm not holding my breath. )
 
-Ok, here is where I feel like I'm going to start losing people. Like not conceptually, but aesthetically. Because thinking in expressions can take you further and I love how this simple idea can keep improving code. But I'll admit my sense of whether something is an improvement or not might diverge with others at this point. But lets do it.
+These if expressions of course work in all the langauges we touched on so far.
+
+Rust:
+```
+fn exclaim_number(number: i32) -> String {
+    let s = if number > 0 {
+        "Positive"
+    } else if number < 0 {
+        "Negative"
+    } else {
+        "Zero"
+    };
+    format!("{}!", s)
+}
+```
+Ruby:
+```
+def exclaim_number(number)
+  s = if number > 0
+        "Positive"
+      elsif number < 0
+        "Negative"
+      else
+        "Zero"
+      end
+  "#{s}!"
+end
+
+```
+
+A natural question you might have after this is what about other control flow? Can a while be an expression? Can a switch case be an expression? Yes, yes, and yes! 
+
+Here is a Rust match.
+
+```
+fn describe_number(number: i32) -> String {
+    let description = match number {
+        n if n > 0 => "Positive",
+        n if n < 0 => "Negative",
+        _ => "Zero"
+    };
+
+    format!("{}!", description)
+}
+
+```
+
+But now, lets push thinking in expressions a bit further.
+
+## Block Expressions & Single Expression Functions
+
+Ok, here is where I feel like I'm going to start losing people. Like not conceptually, but aesthetically. I love how this simple idea can keep improving code. But I'll admit my sense of whether something is an improvement or not might diverge with others at this point. But lets do it.
 
 Ok so these are expressions:
 ```
@@ -139,8 +277,9 @@ z = if (x)
 }
 ```
 
-It can be assigned to a variable:
+It can be assigned to a variable. 
 
+Scala
 ```
 val result = {
   val x = 3
@@ -149,7 +288,16 @@ val result = {
 }
 ```
 
-If fact, once you notice that a block can be an expression, then function declarion seems like just assigning an expression to signature:
+Rust:
+```
+let result = {
+    let x = 3;
+    let y = 4;
+    x + y 
+};
+```
+
+If fact, once you notice that a block can be an expression, then function declaration seems like just assigning an expression to function signature:
 
 ```
 def x():
@@ -160,16 +308,62 @@ def x():
 }
 ```
 
-And then you might be thinking well why can I assign any expression to a function signature and you can! These are single expression functions
+And then you might be thinking well, ok, I can assign a block expression to a function signature then why can I assign any expression to a function signature and you can if your languages supports single expression functions:
+
+Ruby does:
+```
+def double(x) = x * 2
+
+def is_even?(num) = num.even?
+
+def fahrenheit_to_celsius(fahrenheit) = (fahrenheit - 32) * 5.0 / 9.0
+```
+
+Kotlin and Scala do:
+```
+// Scala ( s/def/fun/ for Kotlin)
+def double(x: Int): Int = x * 2
+def isEven(num: Int): Boolean = num % 2 == 0
+def fahrenheitToCelsius(fahrenheit: Double): Double = (fahrenheit - 32) * 5.0 / 9.0
+
+```
+
+I find this approach to be both beautiful and concise, as well as highly readable. It's interesting to note the similarity between the single-line and block definitions in function expressions, and the analogous distinction between single-statement and block-statement if constructs.
+
+```
+if (condition) doSomething()
+```
+
+```
+if (condition) {
+    doSomething()
+    doSomethingElse()
+}
+```
+
+The single expression function is a mirror of single statement if form. The single statement if of course is not liked by all. The complaint is that once you need to add a second statement you need to add braces and that is just exhausting work, error prone and therefore we should never use this form. 
+
+Rust in fact, does not support the dropping of braces in an if and also does not have a single expression function declartion. On our bus to expression town, this is where Rust pulls the rope and gets off because in Rust you always need the braces.
 
 
 ```
-def x() = 5
+fn double(x: i32) -> i32 {
+    x * 2
+}
 
-def double(x : int) = x * x
+fn is_even(num: i32) -> bool {
+    num % 2 == 0
+}
+
+fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
+    (fahrenheit - 32.0) * 5.0 / 9.0
+}
 ```
+There is probably a certain practically to Rust saying, nah, function defs always look this one way.
 
-How beatiful and how cool is that. And it works for any expressions. We can take this:
+But Ruby/Kotlin/ Scala with their mirroring the assignment syntax can push on because a single expression functions can of course be combined with an if expression or any other expression.
+
+So that this:
 
 ```
 def max(x : int, y : int){
@@ -180,7 +374,8 @@ def max(x : int, y : int){
   }
 }
 ```
-and express the idea more clearly, in a way that I find more readable:
+
+Becomes the concise:
 
 ```
 def max(x : int, y : int) = if (a > b) a else b
@@ -202,7 +397,8 @@ fun categorizeTemperature(temp: Int): String {
 }
 ```
 
-And change it to this:
+And change it to use an if
+
 ```
 fun categorizeTemperature(temp: Int): String = 
     if (temp < 0) "Freezing"
@@ -210,17 +406,62 @@ fun categorizeTemperature(temp: Int): String =
     else if (temp < 25) "Mild"
     else "Hot"
 ```
+And then change that using Kotlin version of a switch, the when:
 
-Practially speaking a single expression function that is a if expression is probably not that common, but I wanted to show how these ideas all come together. And it gets me so excited that thinking carefully about some little distinction in programming lead to such nice ergonomics and improved readability. Of course, all these ideas are imports from fp land. But I like the idea that you can start with c type language and notice that returns are often redundant when you last statement is an expression and then go to control from being expression and then to actual function just being statments that assign expression to a signature. Of course, all that gloss over some of hte fine details, a function declartion might not actually be a statement that assigns an expression to a statement in any of the langauges shown, Scala, Kotlin, Rust or Ruby, but it certainly feels to me like fucntion declarations are statementy and I love that concepts in these lanagues are so geneartive and recombinatable. It makes me feel like I'm using a finely crafted tool where the how everything fits together has been deeply thought out. 
+```
+fun categorizeTemperature(temp: Int): String = 
+    when {
+        temp < 0 -> "Freezing"
+        temp < 15 -> "Cold"
+        temp < 25 -> "Mild"
+        else -> "Hot"
+    }
+```
+Or the Scala match:
+```
+def categorizeTemperature(temp: Int): String = temp match {
+    case t if t < 0 => "Freezing"
+    case t if t < 15 => "Cold"
+    case t if t < 25 => "Mild"
+    case _ => "Hot"
+}
+```
 
-People disagree with me though. My opinions here are actively consider wrong and the opposite of progress by some core Earthly devs ( Hey Alex). But as they say, even though this is literally the Earthly corporate blog, opinions expressed are mine, and not those of my employer.
+Practially speaking a single expression function that is a if or match or other control flow is probably pushing things a bit to far. The Rust approach of keeping braces works pretty well once the expression starts to allow branching. 
 
+I think this Rust match expression code reads pretty well:
 
-## Need to add
-- problems with single expression functions
-- 
+```
+enum TrafficLight {
+    Red,
+    Yellow,
+    Green,
+}
 
+fn action_for_light(light: TrafficLight) -> &'static str {
+    match light {
+        TrafficLight::Red => "Stop",
+        TrafficLight::Yellow => "Caution",
+        TrafficLight::Green => "Go",
+    }
+}
+```
+And this Kotlin if doesn't seem more verbose for having braces around it:
+```
+fun categorizeTemperature(temp: Int): String {
+    if (temp < 0) "Freezing"
+    else if (temp < 15) "Cold"
+    else if (temp < 25) "Mild"
+    else "Hot"
+}
+```
 
-https://chat.openai.com/c/0954b0da-6e7a-4fe5-8e75-eca0696c5182
+But isn't embracing expressions powerful! I wanted to show how these ideas all come together. It gets me excited that thinking carefully about some little distinctions in programming, expressions vs statments and what information can be inferred, can lead to such improved ergonomics and readability.
 
-https://chat.openai.com/c/e1883c40-b1d9-40fc-97f6-b59dfac18fa0
+Of course, all these ideas are imports from fp land. But I like the idea that you can start with c type language and notice that the return keyword is often redundant and pull on that thread until you can assign expressions directly to function signatures.
+
+I love that concepts in programming languages can be so well thought out and geneartive and recombinable. It makes me feel like I'm using a finely crafted tool where the how of how everything fits together has been deeply thought out.
+
+Basically I'm just trying to write down something I find exciting about in programming languages and hopefully some people find it exciting too.
+
+I get though that people disagree with me. My opinions here are – I'm sure – actively considered suspect by some core Earthly devs ( Hey Alex). But as they say, even though this is literally the Earthly corporate blog, opinions expressed are mine, and not those of my employer.
