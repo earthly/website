@@ -213,3 +213,14 @@ fun categorizeTemperature(temp: Int): String =
 
 Practially speaking a single expression function that is a if expression is probably not that common, but I wanted to show how these ideas all come together. And it gets me so excited that thinking carefully about some little distinction in programming lead to such nice ergonomics and improved readability. Of course, all these ideas are imports from fp land. But I like the idea that you can start with c type language and notice that returns are often redundant when you last statement is an expression and then go to control from being expression and then to actual function just being statments that assign expression to a signature. Of course, all that gloss over some of hte fine details, a function declartion might not actually be a statement that assigns an expression to a statement in any of the langauges shown, Scala, Kotlin, Rust or Ruby, but it certainly feels to me like fucntion declarations are statementy and I love that concepts in these lanagues are so geneartive and recombinatable. It makes me feel like I'm using a finely crafted tool where the how everything fits together has been deeply thought out. 
 
+People disagree with me though. My opinions here are actively consider wrong and the opposite of progress by some core Earthly devs ( Hey Alex). But as they say, even though this is literally the Earthly corporate blog, opinions expressed are mine, and not those of my employer.
+
+
+## Need to add
+- problems with single expression functions
+- 
+
+
+https://chat.openai.com/c/0954b0da-6e7a-4fe5-8e75-eca0696c5182
+
+https://chat.openai.com/c/e1883c40-b1d9-40fc-97f6-b59dfac18fa0
