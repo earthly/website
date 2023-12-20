@@ -23,16 +23,12 @@ Lets start with expressions.
 
 In programming languages, you've got expressions and you've got statements. I'm going to cycle through some different programming languages in this article, but lets start with Rust:
 
-Expressions:
-
-~~~
+~~~{.rust caption="Expressions (in Rust)"}
 x + 10
 add(x, y) 
 ~~~
 
-Statements:
-
-~~~
+~~~{.rust caption="Statements (in Rust)"}
 let y = x + 10;
 let z = add(x, y);
 println!("Hello, Rust!");
@@ -44,40 +40,42 @@ You get the idea. Expressions evaluate to a value and statements are instruction
 
 In C-like languages, you can return the value of an expression using the return keyword. There can be early returns, but usually you are returning in the last executed statement of the function.
 
-~~~
+~~~{.c caption="function in C"}
 int functionName(int p1, int p2) {
     return p1 + p2;
 }
 ~~~
 
-You can return statements, that just doesn't make sense.
+You can't return statements, that just doesn't make sense.
 
-~~~
+~~~{.c caption="invalid function in C"}
 int functionName(int p1, int parameter2) {
     int a; 
     return a = p1 + p2; //What??!
 }
 ~~~
 
-This may seem obvious but I'm going somewhere. Note that this often makes the return statement redundant. If a function has a return type then the last executed line in any branch must return a value of that type. So you can omit the return and get an implicit return.
+This may seem obvious but I'm going somewhere. Note that if a function has a return type then the last executed line in any branch must return a value of that type. The return keyword itself is often redundant. So you can omit the return and get an implicit return.
 
 Here is Ruby:
 
-~~~
+~~~{.ruby caption="Explicit Return (Ruby)"}
 def add_numbers_explicit_return(a, b)
   return a + b
 end
+~~~
 
+~~~{.ruby caption="Implicit Return (Ruby)"}
 def add_numbers_implicit_return(a, b)
   a + b
 end
 ~~~
 
-Ruby is not exactly a C-like language. Instead of braces it uses a keyword like `def` to start a block of code and `end` to end things, but nevertheless, early returns work the same in it as in other languages that support it.
+Ruby is not exactly a C-like language. Instead of braces it uses a keyword like `def` to start a block of code and `end` to end things, but nevertheless, early returns work the same as in other languages that support it.
 
 When you have branching this works as well, you just have implicit returns per branch:
 
-~~~
+~~~{.ruby caption="Implicit Return With Branches (Ruby)"}
 def check_number(number)
   if number > 0
     "Positive"
@@ -96,7 +94,8 @@ You never have to have an explicit return statement unless you need to return ea
 
 So this c:
 
-~~~{.char* caption=""}
+~~~{.c caption="Early Returns in C"}
+const char* check_number(int number) {
     if (number > 0) {
         return "Positive";
     }
@@ -109,7 +108,7 @@ So this c:
 
 Becomes this Rust:
 
-~~~
+~~~{.rust caption="Implicit Returns in Rust"}
 fn check_number(number: i32) -> &'static str {
     if number > 0 {
         "Positive"
@@ -123,7 +122,7 @@ fn check_number(number: i32) -> &'static str {
 
 Or this Kotlin:
 
-~~~
+~~~{.kotlin caption="Implicit Returns in Kotlin"}
 fun checkNumber(number: Int): String {
   if (number > 0) {
       "Positive"
@@ -135,11 +134,13 @@ fun checkNumber(number: Int): String {
 }
 ~~~
 
+This reads better to my eyes. No reading redundant information. Each branch returns a value directly. No early exiting to trace. But let's keep going.
+
 ## If Expressions
 
-Ok, once you have this idea that expressions return something, and you don't need returns because its implicit you have code like this in Kotlin:
+Once you have this idea that expressions return something, and you don't need returns because its implicit you have code like this in Kotlin:
 
-~~~
+~~~{.kotlin caption="exclaiming in Kotlin"}
 fun checkNumber(number: Int): String {
   if (number > 0) {
       "Positive"
@@ -158,31 +159,27 @@ fun exclaimNumber(number: Int): String {
 
 That example is super contrived, but notice what happens if I inline `checkNumber` into `exclaimNumber`. All the sudden I need to declare a mutable string before my if.
 
-~~~
-fun checkNumber(number: Int): String {
-  
-}
-
+~~~{.kotlin caption="inlined exclaiming in Kotlin"}
 fun exclaimNumber(number: Int): String {
-  s = ""
+  var s = ""
   if (number > 0) {
       s = "Positive"
   } else if (number < 0) {
       s = "Negative"
   } else {
-      s= "Zero"
+      s = "Zero"
   }
   return s+"!" 
 }
 ~~~
 
-Yuck, you need to transform your if so that each branch is a assignment statement and not a implicitly returned expression.
+Yuck, you need to transform your `if` so that each branch is a assignment statement and not a implicitly returned expression.
 
-But, light-bulb moment, if the if above from our `checkNumber` had each branch implicitly returning an expression, then isn't the if really an expression itself?
+But, light-bulb moment: in the `if` above from our `checkNumber` each branch was implicitly returning an expression. So then isn't the `if` really an expression itself? Can't we then assign it to variable.
 
-~~~
+~~~{.kotlin caption="if expression in Kotlin"}
 fun exclaimNumber(number: Int): String {
-  s = if (number > 0) {
+  val s = if (number > 0) {
       "Positive"
   } else if (number < 0) {
       "Negative"
@@ -193,7 +190,7 @@ fun exclaimNumber(number: Int): String {
 }
 ~~~
 
-And there you have if expressions. Turns out a special syntax isn't need for ternary operators if you can treat your if's as expressions. They are things that return values so lets treat them as such.
+And there you have `if` expressions. Turns out a special syntax isn't need for ternary operators if you can treat your if's as expressions. They are things that return values so lets treat them as such.
 
 I love this kind of stuff, the if/else control flow I already knew can work as a expression and simplify code without needing any new syntax, it just follows how assignment already works.
 
@@ -201,9 +198,7 @@ Some people don't like this and prefer ternary operators, but I honestly think a
 
 These if expressions of course work in all the languages we touched on so far.
 
-Rust:
-
-~~~
+~~~{.rust caption="if expression in Rust"}
 fn exclaim_number(number: i32) -> String {
     let s = if number > 0 {
         "Positive"
@@ -216,9 +211,7 @@ fn exclaim_number(number: i32) -> String {
 }
 ~~~
 
-Ruby:
-
-~~~
+~~~{.ruby caption="if expression in Ruby"}
 def exclaim_number(number)
   s = if number > 0
         "Positive"
@@ -229,14 +222,11 @@ def exclaim_number(number)
       end
   "#{s}!"
 end
-
 ~~~
 
-A natural question you might have after this is what about other control flow? Can a while be an expression? Can a switch case be an expression? Yes, yes, and yes!
+A natural question you might have after this is what about other control flow? Can a switch be an expression? Yes it can!
 
-Here is a Rust match.
-
-~~~
+~~~{.rust caption="match expression in Rust"}
 fn describe_number(number: i32) -> String {
     let description = match number {
         n if n > 0 => "Positive",
@@ -257,7 +247,7 @@ Ok, here is where I feel like I'm going to start losing people. Like not concept
 
 Ok so these are expressions:
 
-~~~
+~~~{.scala}
 4
 4+3
 getError(x,y,z)
@@ -265,7 +255,7 @@ getError(x,y,z)
 
 But so is this:
 
-~~~
+~~~{.scala caption="Block Expression"}
 {
   val x = 3
   val y = 4
@@ -273,9 +263,9 @@ But so is this:
 }
 ~~~
 
-That block statement can we used like any other expression. If can go in an if expression:
+That block expression can we used like any other expression. It can go in an if expression:
 
-~~~
+~~~{.scala caption="Scala standard if block"}
 z = if (x)
 {
   val x = 3
@@ -286,11 +276,9 @@ z = if (x)
 }
 ~~~
 
-It can be assigned to a variable.
+But it can also be assigned to a variable.
 
-Scala
-
-~~~
+~~~{.scala caption="Block expression assignment in Scala"}
 val result = {
   val x = 3
   val y = 4
@@ -298,9 +286,7 @@ val result = {
 }
 ~~~
 
-Rust:
-
-~~~
+~~~{.rust caption="Block expression assignment in Rust"}
 let result = {
     let x = 3;
     let y = 4;
@@ -308,22 +294,22 @@ let result = {
 };
 ~~~
 
-If fact, once you notice that a block can be an expression, then function declaration seems like just assigning an expression to function signature:
+If fact, once you notice that a block can be an expression, then a function declaration starts to seem like just assigning an expression to function signature:
 
-~~~
-def x():
-{
-  val x = 3
-  val y = 4
-  x + y
-}
+~~~{.scala }
+def x(): // <- Function Signature = ...
+{        // <- Block Expression Start
+  val a = 3
+  val b = 4
+  a + b
+}     // <- Block Expression End
 ~~~
 
-And then you might be thinking well, ok, I can assign a block expression to a function signature then why can I assign any expression to a function signature and you can if your languages supports single expression functions:
+And then you might be thinking well, ok, I can assign a block expression to a function signature then why can't I assign any expression to a function signature? Well you can if your languages supports single expression functions:
 
 Ruby does:
 
-~~~
+~~~{.Ruby caption="single expression functions in Ruby"}
 def double(x) = x * 2
 
 def is_even?(num) = num.even?
@@ -333,19 +319,18 @@ def fahrenheit_to_celsius(fahrenheit) = (fahrenheit - 32) * 5.0 / 9.0
 
 Kotlin and Scala do:
 
-~~~
-// Scala ( s/def/fun/ for Kotlin)
+~~~{.scala caption="single expression functions in Scala And Kotlin"}
 def double(x: Int): Int = x * 2
 def isEven(num: Int): Boolean = num % 2 == 0
 def fahrenheitToCelsius(fahrenheit: Double): Double = (fahrenheit - 32) * 5.0 / 9.0
-
+// s/def/fun/ for Kotlin version
 ~~~
 
-I find this approach to be both beautiful and concise, as well as highly readable.
+I find this approach to be both beautiful and concise, as well as highly readable. Some people do not though. Let's talk about that next.
 
 ### Ifs and Blocks
 
-Note the similarity between the single-line and block definitions in function expressions, and the analogous distinction between single-statement and block-statement if constructs.
+Note the similarity between the single-line and block definitions in function expressions, and the analogous distinction between single-statement and block-statement `if`` constructs.
 
 ~~~
 if (condition) doSomething()
@@ -358,11 +343,17 @@ if (condition) {
 }
 ~~~
 
-The single expression function is a mirror of single statement if form. The single statement if of course is not liked by all. The complaint is that once you need to add a second statement you need to add braces and that is just exhausting work, error prone and therefore we should never use this form.
+The single expression function is a mirror of single statement `if` form. The single statement `if` of course is not liked by all. The complaint is that once you need to add a second statement you need to add braces and that is error prone and therefore we should never use this form.
 
-Rust in fact, does not support the dropping of braces in an if and also does not have a single expression function declaration. On our bus to expression town, this is where Rust pulls the rope and gets off because in Rust you always need the braces.
+Rust in fact, does not support the dropping of braces in an if. Even a one-line if statement needs braces.
 
+~~~{.rust caption="single line if expression in Rust"}
+let result = if condition { value_if_true } else { value_if_false };
 ~~~
+
+Rust also does not have a single expression function declaration. On our bus to expression town, this is where Rust pulls the rope and gets off because in Rust you always need the braces.
+
+~~~{.rust caption="Rust needs the braces"}
 fn double(x: i32) -> i32 {
     x * 2
 }
@@ -376,13 +367,13 @@ fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
 }
 ~~~
 
-There is a certain practically to Rust saying, nah, function defs always look this one way.
+There is a certain practically to Rust saying: "nah, function defs always look this one way".
 
-But Ruby/Kotlin/ Scala by mirroring the assignment syntax can push on, because a single expression functions can of course be combined with an if expression or any other expression.
+But Ruby, Kotlin, Scala, and others by mirroring the assignment syntax can push on, because a single expression functions can of course be combined with an `if`` expression or any other expression.
 
 So that this:
 
-~~~
+~~~{.scala caption="Explicit Return Scala"}
 def max(x : int, y : int){
   if (x > y){
     return x
@@ -394,13 +385,13 @@ def max(x : int, y : int){
 
 Becomes the concise:
 
-~~~
+~~~{.scala caption="Single Expression Scala"}
 def max(x : int, y : int) = if (x > y) x else y
 ~~~
 
 Or we can take this early return style:
 
-~~~
+~~~{.kotlin caption="Early Return Kotlin"}
 fun categorizeTemperature(temp: Int): String {
     if (temp < 0) {
         return "Freezing"
@@ -415,9 +406,9 @@ fun categorizeTemperature(temp: Int): String {
 }
 ~~~
 
-And change it to use an if
+And change it to use an if expression and a single expression style.
 
-~~~
+~~~{.kotlin caption="Single Expression Function in Kotlin"}
 fun categorizeTemperature(temp: Int): String = 
     if (temp < 0) "Freezing"
     else if (temp < 15) "Cold"
@@ -425,9 +416,9 @@ fun categorizeTemperature(temp: Int): String =
     else "Hot"
 ~~~
 
-And then change that using Kotlin version of a switch, the when:
+And then change that using Kotlin version of a switch ( the `when`):
 
-~~~
+~~~{.kotlin caption="Single Expression When in Kotlin"}
 fun categorizeTemperature(temp: Int): String = 
     when {
         temp < 0 -> "Freezing"
@@ -439,7 +430,7 @@ fun categorizeTemperature(temp: Int): String =
 
 Or the Scala match:
 
-~~~
+~~~{.scala caption="Single Expression Function in Scala"}
 def categorizeTemperature(temp: Int): String = temp match {
     case t if t < 0 => "Freezing"
     case t if t < 15 => "Cold"
@@ -452,7 +443,7 @@ Practically speaking a single expression function that is a if or match or other
 
 I think this Rust match expression code reads pretty well:
 
-~~~
+~~~{.Rust caption="Match expression in Rust"}
 enum TrafficLight {
     Red,
     Yellow,
@@ -470,7 +461,7 @@ fn action_for_light(light: TrafficLight) -> &'static str {
 
 And this Kotlin if doesn't seem more verbose for having braces around it:
 
-~~~
+~~~{.kotlin caption="Using braces in Kotlin Function Definitions"}
 fun categorizeTemperature(temp: Int): String {
     if (temp < 0) "Freezing"
     else if (temp < 15) "Cold"
@@ -479,11 +470,15 @@ fun categorizeTemperature(temp: Int): String {
 }
 ~~~
 
+So maybe these ideas work best when used with care, and not pushed all the way to the extremes like Ruby and Scala let you do. But embraced whole-heartedly but thoughtfully like Rust does.
+
+( Of course, there are languages that take expressions much further. Maybe that will be my next post. But I think we've covered enough for now. )
+
 ## Expressions for the Win
 
 Isn't embracing expressions powerful? I wanted to show how these ideas all come together. It excites me that thinking carefully about some little distinctions in programming can lead to improved ergonomics and readability.
 
-Of course, all these ideas are imports from fp land. But I like the idea that you can start with c-type language, notice that the return keyword is often redundant, and pull on that thread until you can assign expressions directly to function signatures.
+Of course, all these ideas are imports from fp land. But I like the idea that you can start with C-type language, notice that the return keyword is often redundant, and pull on that thread until you can assign expressions directly to function signatures.
 
 I love that programming language concepts can be well thought out, generative, and combinable. It makes me feel like I'm using a finely crafted tool where how everything fits together has been deeply thought out.
 
