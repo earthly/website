@@ -9,7 +9,7 @@ internal-links:
  - just an example
 ---
 
-If you are familiar with C-style programming languages, and every touch Rust, Ruby, Kotlin, Scala, or even Julia there are some syntax and concepts that could initially appear confusing, unfamiliar, or unnecessary. I'm talking about implicit returns, if-expressions, match-expressions, and single-expression functions.
+If you are familiar with C-style programming languages, and ever touch Rust, Ruby, Kotlin, Scala, or even Julia there are some syntax and concepts that could initially appear confusing, unfamiliar, or unnecessary. I'm talking about implicit returns, if-expressions, match-expressions, and single-expression functions.
 
 These expression-based concepts can significantly enhance code readability, clarity, and conciseness. If they aren't in your language today, they might be at some point.
 
