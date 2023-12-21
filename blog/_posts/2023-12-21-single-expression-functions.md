@@ -13,7 +13,7 @@ If you are familiar with C-style programming languages, and every touch Rust, Ru
 
 These expression-based concepts can significantly enhance code readability, clarity, and conciseness. If they aren't in your language today, they might be at some point.
 
-For me personally, this transition to these expressions forms feels like the change from `List<String> myList = new ArrayList<String>();` style in C# and Java to `var myList = new ArrayList<String>();`. At first, it seemed wrong because I had years of doing things one way, but once familiarity was built it seemed natural and correct.
+For me personally, this transition to these expression forms feels like the change from `List<String> myList = new ArrayList<String>();` style in C# and Java to `var myList = new ArrayList<String>();`. At first, it seemed wrong because I had years of doing things one way, but once familiarity was built it seemed natural and correct.
 
 But let me just show you some code. They all follow from a simple concept and fit together really nicely. And then you can decide for yourself what you think.
 
