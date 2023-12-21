@@ -369,7 +369,7 @@ fn fahrenheit_to_celsius(fahrenheit: f64) -> f64 {
 
 There is a certain practically to Rust saying: "nah, function defs always look this one way".
 
-But Ruby, Kotlin, Scala, and others by mirroring the assignment syntax can push on, because a single expression functions can of course be combined with an `if`` expression or any other expression.
+But Ruby, Kotlin, Scala, and others by mirroring the assignment syntax can push on, because a single expression functions can of course be combined with an `if` expression or any other expression.
 
 So that this:
 
