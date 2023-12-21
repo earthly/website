@@ -194,7 +194,7 @@ And there you have `if` expressions. Turns out a special syntax isn't need for t
 
 I love this kind of stuff, the if/else control flow I already knew can work as a expression and simplify code without needing any new syntax, it just follows how assignment already works.
 
-Some people don't like this and prefer ternary operators, but I honestly think and hope that it's just inertia and that simple readability that falls out of this expression focus continues to spread. ( But, I understand that readability is highly subject and somewhat about familiarity so I'm not holding my breath. )
+Some people don't like this and prefer ternary operators, but I honestly think and hope that it's just inertia and that simple readability that falls out of this expression focus continues to spread. ( But, I understand that readability is highly subjective and somewhat about familiarity so I'm not holding my breath. )
 
 These if expressions of course work in all the languages we touched on so far.
 
