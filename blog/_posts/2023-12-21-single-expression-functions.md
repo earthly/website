@@ -330,7 +330,7 @@ I find this approach to be both beautiful and concise, as well as highly readabl
 
 ### Ifs and Blocks
 
-Note the similarity between the single-line and block definitions in function expressions, and the analogous distinction between single-statement and block-statement `if`` constructs.
+Note the similarity between the single-line and block definitions in function expressions, and the analogous distinction between single-statement and block-statement `if` constructs.
 
 ~~~
 if (condition) doSomething()
