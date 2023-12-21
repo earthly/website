@@ -11,7 +11,7 @@ internal-links:
 
 If you are familiar with C-style programming languages, and every touch Rust, Ruby, Kotlin, Scala, or even Julia there are some syntax and concepts that could initially appear confusing, unfamiliar, or unnecessary. I'm talking about implicit returns, if-expressions, match-expressions, and single-expression functions.
 
-These expressions based concepts can significantly enhance code readability, clarity, and conciseness. If they aren't in your language today, they might be at some point.
+These expression-based concepts can significantly enhance code readability, clarity, and conciseness. If they aren't in your language today, they might be at some point.
 
 For me personally, this transition to these expressions forms feels like the change from `List<String> myList = new ArrayList<String>();` style in C# and Java to `var myList = new ArrayList<String>();`. At first, it seemed wrong because I had years of doing things one way, but once familiarity was built it seemed natural and correct.
 
