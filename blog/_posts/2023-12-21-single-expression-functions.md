@@ -49,7 +49,7 @@ int functionName(int p1, int p2) {
 You can't return statements, that just doesn't make sense.
 
 ~~~{.c caption="invalid function in C"}
-int functionName(int p1, int parameter2) {
+int functionName(int p1, int p2) {
     int a; 
     return a = p1 + p2; //What??!
 }
