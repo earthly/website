@@ -50,10 +50,8 @@ int sum(int p1, int p2) {
 You can't return statements, that just doesn't make sense.
 
 ~~~{.java caption="Error: unexpected return value in Java"}
-import static java.lang.System.out;
-
 void printSum(int p1, int p2) {
-    return println(p1 + p2);
+    return System.out.println(p1 + p2);
 }
 ~~~
 
