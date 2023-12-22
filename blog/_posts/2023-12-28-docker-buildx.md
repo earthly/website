@@ -65,7 +65,7 @@ As you can see, this instance is only usable for the AMD64 and 386 platforms. If
 
 With the builder created, the next thing you need is a Dockerfile to build. For demonstrative purposes, you can use a simple Node.js application to respond to web requests with a string denoting the host's architecture. If you want to follow along, create a new directory to hold the relevant files, and then in that directory, create a file called `index.js` and add the following code to it:
 
-~~~
+~~~{.js caption="index.js"}
 const http = require('http');
 const os = require('os');
 
@@ -88,7 +88,7 @@ server.listen(port, () => {
 
 Next, in that same directory, create a file called `Dockerfile` with the following content:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 # Use the official Node.js image as the base image
 FROM node:14
 
@@ -115,8 +115,9 @@ To authenticate with Docker Hub, run `docker login` and follow the prompts:
 
 Once authenticated, you can build and push your multiplatform image with a single command:
 
-~~~
-docker buildx build --platform linux/amd64,linux/arm64 -t cpave3/node-arch-test:latest --push .
+~~~{.bash caption=">_"}
+docker buildx build --platform linux/amd64,linux/arm64 \
+-t cpave3/node-arch-test:latest --push .
 ~~~
 
 Remember to substitute `cpave3/node-arch-test:latest` for your own preferred value, in the form of `{username}/{image}:{tag}`.
@@ -133,7 +134,7 @@ Finally, it's time to verify that this image runs as intended on each architectu
 
 On each of the machines you'd like to check, run the following command to pull and run the image (again, substituting the username, image, and tag as needed):
 
-~~~
+~~~{.bash caption=">_"}
 docker run -p 3000:3000 cpave3/node-arch-test:latest
 ~~~
 
