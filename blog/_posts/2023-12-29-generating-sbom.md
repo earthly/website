@@ -327,6 +327,8 @@ In this article, you learned about five popular tools that you can use to produc
 
 Whether you choose [Syft](https://github.com/anchore/syft), [Tern](https://github.com/tern-tools/tern), [Kubernetes bom](https://github.com/kubernetes-sigs/bom), [SPDX SBOM Generator](https://github.com/opensbom-generator/spdx-sbom-generator), [CycloneDX Generator](https://github.com/CycloneDX/cdxgen), or another solution altogether, regularly generating SBOMs is a best practice step to reduce risks and stay informed about your supply chain security.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -336,4 +338,3 @@ Whether you choose [Syft](https://github.com/anchore/syft), [Tern](https://githu
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
