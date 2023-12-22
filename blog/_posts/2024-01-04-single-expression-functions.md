@@ -41,22 +41,23 @@ You get the idea. Expressions evaluate to a value and statements are instruction
 
 In C-like languages, you can return the value of an expression using the return keyword. There can be early returns, but usually you are returning in the last executed statement of the function.
 
-~~~{.c caption="function in C"}
-int functionName(int p1, int p2) {
+~~~{.java caption="function in Java returning int"}
+int sum(int p1, int p2) {
     return p1 + p2;
 }
 ~~~
 
 You can't return statements, that just doesn't make sense.
 
-~~~{.c caption="invalid function in C"}
-int functionName(int p1, int p2) {
-    int a; 
-    return a = p1 + p2; //What??!
+~~~{.java caption="Error: unexpected return value in Java"}
+import static java.lang.System.out;
+
+void printSum(int p1, int p2) {
+    return println(p1 + p2);
 }
 ~~~
 
-This may seem obvious but I'm going somewhere. Note that if a function has a return type then the last executed line in any branch must return a value of that type. The return keyword itself is often redundant. So you can omit the return and get an implicit return.
+This may seem obvious and contrived but I'm going somewhere. Note that if a function has a return type then the last executed line in any branch must return a value of that type. The return keyword itself is often redundant. So you can omit the return and get an implicit return.
 
 Here is Ruby:
 
