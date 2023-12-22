@@ -57,3 +57,8 @@ ack
 
 nc
 dsn
+
+bom
+ko
+dpkg
+apk
