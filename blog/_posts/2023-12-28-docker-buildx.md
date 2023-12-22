@@ -176,8 +176,3 @@ In this article, you learned about Docker's Buildx plugin, which gives you a bui
 One of its most useful features is the ability to build images that can run natively on multiple CPU architectures. Multiplatform images allow you to leverage more powerful or cost-effective hardware, such as AWS Graviton instances and Apple silicon MacBooks, without relying on emulation or virtualization.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-
