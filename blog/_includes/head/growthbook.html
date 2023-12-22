@@ -1,7 +1,7 @@
 <script src="https://cdn.jsdelivr.net/npm/@growthbook/growthbook/dist/bundles/index.js"></script>
 <script>
   // Uncomment uuidv4() for testing / Uncomment getAnalyticCookie() for production
-  //var earthlyID = uuidv4();
+  // var earthlyID = uuidv4();
   var earthlyID = getAnalyticCookie();
 
   // Create a GrowthBook instance
@@ -9,7 +9,7 @@
     apiHost: "https://cdn.growthbook.io",
     clientKey: "sdk-7wtJG1WYaaYBiQ",
     // Uncomment for testing
-    //enableDevMode: true,
+    // enableDevMode: true,
     attributes: {
       id: earthlyID
     },
@@ -21,47 +21,22 @@
     }
   });
 
-  //Page loaded
+  //Adding test for bolding the first paragraph of blog posts
   document.addEventListener("DOMContentLoaded", function () {
     // Wait for features to be available
     gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
-      // console.log("Features loaded");
-      
-      // Example
-      /*const twoButtonsTestOn = gb.isOn("blog-nav-two-buttons")
-      if(document.getElementById("blog-nav-two-buttons-test-control-01")){
-        if(twoButtonsTestOn) {
-          document.getElementById("blog-nav-two-buttons-test-control-01").style.display = "none";
-          document.getElementById("blog-nav-two-buttons-test-test-01").style.display = "inline-flex";
-        } else {
-          document.getElementById("blog-nav-two-buttons-test-control-01").style.display = "inline-flex";
-          document.getElementById("blog-nav-two-buttons-test-test-01").style.display = "none";
-        }
+      console.log("starting growthbook");
+      const pElement = document.querySelector('.prose.content-block > p:first-child');
+      const strongElement = pElement.querySelector('strong');
+      if (strongElement) {
+        console.log("starting Test");
+        const boldOn = gb.isOn("blog-top-cta-link-bold")
+      if (!boldOn) {
+          strongElement.outerHTML = strongElement.innerHTML;
       }
-      if(document.getElementById("blog-nav-two-buttons-test-control-02")){
-        if(twoButtonsTestOn) {
-          document.getElementById("blog-nav-two-buttons-test-control-02").style.display = "none";
-          document.getElementById("blog-nav-two-buttons-test-test-02").style.display = "flex";
-          document.getElementById("blog-nav-two-buttons-test-test-03").style.display = "flex";
-        } else {
-          document.getElementById("blog-nav-two-buttons-test-control-02").style.display = "flex";
-          document.getElementById("blog-nav-two-buttons-test-test-02").style.display = "none";
-          document.getElementById("blog-nav-two-buttons-test-test-03").style.display = "none";
-        }
-      }*/
-
-
-      if(document.getElementById("makefile-cta-control")){
-        if(gb.isOn("makefile-blog-bottom-cta-20230615")) {
-            console.log("makefile-blog-bottom-cta-20230615 on");
-            document.getElementById("makefile-cta-control").style.display = "none";
-            document.getElementById("makefile-cta-change").style.display = "";
-          } else {
-            console.log("bmakefile-blog-bottom-cta-20230615 off");
-            document.getElementById("makefile-cta-control").style.display = "";
-            document.getElementById("makefile-cta-change").style.display = "none";
-          }
-      } 
+    }
     });
   });
+
+ 
 </script>
