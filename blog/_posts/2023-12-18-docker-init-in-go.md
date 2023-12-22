@@ -391,6 +391,6 @@ README.md
 
 ## Conclusion: A New Time Saver
 
-With a few keystrokes, you've turned a plain Go web app into a containerized, Compose-ready app that works out of the box. Docker Init takes the tedious parts of creating a Go web app off your to-do list.
+In just a few steps, you've successfully containerized your Go web app, making it Docker Compose-ready for effortless deployment. Docker Init has streamlined the process, handling the initial grunt work for you. But why stop there? Take your container management to the next level with [Earthly](https://cloud.earthly.dev/login). This powerful tool can further enhance your build automation, ensuring that your builds are reproducible, portable, and efficient. Dive in and see how Earthly can complement your Docker setup and elevate your development workflow.
 
 {% include_html cta/bottom-cta.html %}
