@@ -1,12 +1,13 @@
 ---
-title: "The Power of Expressions to Improve C-Style Programming"
+title: "Rust, Ruby, and the Art of Implicit Returns"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Adam
 
 internal-links:
- - just an example
+ - expressions
+ - if-expressions
 ---
 
 If you are familiar with C-style programming languages, and ever touch Rust, Ruby, Kotlin, Scala, or even Julia there are some syntax and concepts that could initially appear confusing, unfamiliar, or unnecessary. I'm talking about implicit returns, if-expressions, match-expressions, and single-expression functions.
@@ -19,7 +20,7 @@ But let me just show you some code. They all follow from a simple concept and fi
 
 Lets start with expressions.
 
-## Expressions
+## From Statements to Values
 
 In programming languages, you've got expressions and you've got statements. I'm going to cycle through some different programming languages in this article, but lets start with Rust:
 
@@ -153,7 +154,7 @@ fun checkNumber(number: Int): String {
 
 fun exclaimNumber(number: Int): String {
   s = checkNumber(number)
-  return s+"!" 
+  s+"!" 
 }
 ~~~
 
@@ -169,7 +170,7 @@ fun exclaimNumber(number: Int): String {
   } else {
       s = "Zero"
   }
-  return s+"!" 
+  s+"!" 
 }
 ~~~
 
@@ -186,15 +187,15 @@ fun exclaimNumber(number: Int): String {
   } else {
       "Zero"
   }
-  return s+"!" 
+  s+"!" 
 }
 ~~~
 
-And there you have `if` expressions. Turns out a special syntax isn't need for ternary operators if you can treat your if's as expressions. They are things that return values so lets treat them as such.
+And there you have `if` expressions. Turns out a special syntax isn't need for ternary operators if you can treat your `if`s as expressions. They are things that return values so lets treat them as such.
 
 I love this kind of stuff, the if/else control flow I already knew can work as a expression and simplify code without needing any new syntax, it just follows how assignment already works.
 
-Some people don't like this and prefer ternary operators, but I honestly think and hope that it's just inertia and that simple readability that falls out of this expression focus continues to spread. ( But, I understand that readability is highly subjective and somewhat about familiarity so I'm not holding my breath. )
+Some people prefer ternary operators, but I honestly hope that it's just inertia and that simple readability that falls out of this expression focus continues to spread. ( But, I understand that readability is highly subjective and somewhat about familiarity so I'm not holding my breath. )
 
 These if expressions of course work in all the languages we touched on so far.
 
@@ -428,7 +429,7 @@ fun categorizeTemperature(temp: Int): String =
     }
 ~~~
 
-Or the Scala match:
+Or the Scala `match`:
 
 ~~~{.scala caption="Single Expression Function in Scala"}
 def categorizeTemperature(temp: Int): String = temp match {
@@ -439,9 +440,9 @@ def categorizeTemperature(temp: Int): String = temp match {
 }
 ~~~
 
-Practically speaking a single expression function that is a if or match or other control flow is probably pushing things a bit to far. The Rust approach of keeping braces works pretty well once the expression starts to allow branching.
+Practically speaking a single expression function that is a `if` or `match` or other control flow is probably pushing things a bit to far. The Rust approach of keeping braces works pretty well once the expression starts to have branching.
 
-I think this Rust match expression code reads pretty well:
+For instance, I think this Rust match expression code reads pretty well:
 
 ~~~{.Rust caption="Match expression in Rust"}
 enum TrafficLight {
@@ -459,7 +460,7 @@ fn action_for_light(light: TrafficLight) -> &'static str {
 }
 ~~~
 
-And this Kotlin if doesn't seem more verbose for having braces around it:
+And this Kotlin `if` doesn't seem more verbose for having braces around it:
 
 ~~~{.kotlin caption="Using braces in Kotlin Function Definitions"}
 fun categorizeTemperature(temp: Int): String {
@@ -470,16 +471,14 @@ fun categorizeTemperature(temp: Int): String {
 }
 ~~~
 
-So maybe these ideas work best when used with care, and not pushed all the way to the extremes like Ruby and Scala let you do. But embraced whole-heartedly but thoughtfully like Rust does.
+So maybe these ideas work best when used with care, and not pushed all the way to the extremes, but embraced whole-heartedly and thoughtfully like Rust does.
 
 ( Of course, there are languages that take expressions much further. Maybe that will be my next post. But I think we've covered enough for now. )
 
-## Expressions for the Win
+## When Less Code Speaks More
 
-Isn't embracing expressions powerful? I wanted to show how these ideas all come together. It excites me that thinking carefully about some little distinctions in programming can lead to improved ergonomics and readability.
+Isn't embracing expressions powerful? I encourage you to dive into these languages, experiment with the code, and see for yourself the elegance and clarity that they can bring.
 
-Of course, all these ideas are imports from fp land. But I like the idea that you can start with C-type language, notice that the return keyword is often redundant, and pull on that thread until you can assign expressions directly to function signatures.
+It excites me that thinking carefully about some little distinctions in programming can lead to improved ergonomics and readability. I like the idea that you can start with C-type language, notice that the return keyword is often redundant, and pull on that thread until you can assign expressions directly to function signatures.
 
 I love that programming language concepts can be well thought out, generative, and combinable. It makes me feel like I'm using a finely crafted tool where how everything fits together has been deeply thought out.
-
-I get, though, that people disagree with me. My opinions here are my own, and some here at Earthly even disagree with me about leaning into expressions. But as they say, even though this is the Earthly corporate blog, the opinions expressed are mine and not necessarily those of my employer.
