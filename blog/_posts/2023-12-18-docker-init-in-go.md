@@ -10,7 +10,6 @@ internal-links:
  - init in go 
  - using docker in go
  - how to use docker init in go
-last_modified_at: 2023-09-08
 excerpt: |
     This tutorial explores the use of Docker Init in Go to simplify the process of creating Dockerfiles and Docker Compose configurations. Docker Init is a language-aware generator that automatically determines suitable default settings based on your project, saving time and providing a stable container configuration.
 ---

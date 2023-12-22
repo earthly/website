@@ -309,9 +309,9 @@ You should see the following in your terminal:
 This command builds the Docker image and runs the containers defined in `compose.yaml`. This lets you see your Node.js app in action within a Dockerized environment.
 
 ## Conclusion
+<!--sgpt-->
+In this article, we've covered the `docker init` command and its benefits for Dockerizing Node.js projects. You've seen how it automates file creation, customizes to your project, and streamlines development workflows, making it a valuable asset for efficient and stable development. 
 
-In this article, you learned about the `docker init` command and its advantages for Node.js projects. You explored Docker Init's automated file generation, how it tailors these files to your project's needs, and how it simplifies the Dockerization process.
-
-`docker init` isn't just a time-saver; it's a tool that brings stability and efficiency to your development workflow.
+To take your containerization skills even further, consider exploring [Earthly](https://cloud.earthly.dev/login). It's a powerful tool that complements Docker by ensuring your builds are reproducible and consistent across different environments. With Earthly, you can define your build process in a clear and declarative manner, just as you've learned to define your Docker environment with `docker init`. Keep your Docker game strong and your builds reliable with Earthly.
 
 {% include_html cta/bottom-cta.html %}
