@@ -6,7 +6,10 @@ toc: true
 author: Cameron Pavey
 
 internal-links:
- - just an example
+ - Introducing docker
+ - what is docker buildx
+ - using docker buildx
+ - what is buildx
 excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
@@ -177,9 +180,4 @@ One of its most useful features is the ability to build images that can run nati
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
