@@ -44,29 +44,35 @@ Multiplatform images can be useful in a variety of situations. For instance, may
 
 By default, when you have Buildx configured properly, there will be a default builder instance. You can see all your builder instances by running `docker buildx ls`:
 
-![Running `docker buildx ls`](https://i.imgur.com/p3NKhIE.png)
+<div class="wide">
+![Running `docker buildx ls`]({{site.images}}{{page.slug}}/p3NKhIE.png)
+</div>
 
 This command lists all your configured builders. In this case, there's only one, and it's named `default`. To view more details about this builder, you can run `docker buildx inspect default`:
 
-![Running `docker buildx inspect default`](https://i.imgur.com/k1W1b6I.png)
+<div class="wide">
+![Running `docker buildx inspect default`]({{site.images}}{{page.slug}}/k1W1b6I.png)
+</div>
 
 As you can see, this instance is only usable for the AMD64 and 386 platforms. If you want to build an image for ARM64, you must create a new builder. Luckily, thanks to Buildx's various drivers, you can create a builder for ARM64 from your AMD64 host by running `docker buildx create --platform arm64 --name arm_builder --use`:
 
-![Running `docker buildx create`](https://i.imgur.com/8HeNCRk.png)
+<div class="wide">
+![Running `docker buildx create`]({{site.images}}{{page.slug}}/8HeNCRk.png)
+</div>
 
 With the builder created, the next thing you need is a Dockerfile to build. For demonstrative purposes, you can use a simple Node.js application to respond to web requests with a string denoting the host's architecture. If you want to follow along, create a new directory to hold the relevant files, and then in that directory, create a file called `index.js` and add the following code to it:
 
-```js
+~~~
 const http = require('http');
 const os = require('os');
 
 const server = http.createServer((req, res) => {
   if (req.url === '/') {
-	res.setHeader('Content-Type', 'text/plain');
-	res.end(`CPU Architecture: ${os.arch()}\n`);
+    res.setHeader('Content-Type', 'text/plain');
+    res.end(`CPU Architecture: ${os.arch()}\n`);
   } else {
-	res.statusCode = 404;
-	res.end('Not Found');
+    res.statusCode = 404;
+    res.end('Not Found');
   }
 });
 
@@ -75,11 +81,11 @@ const port = 3000; // You can change this to the desired port number
 server.listen(port, () => {
   console.log(`Server is running on http://localhost:${port}`);
 });
-```
+~~~
 
 Next, in that same directory, create a file called `Dockerfile` with the following content:
 
-```dockerfile
+~~~
 # Use the official Node.js image as the base image
 FROM node:14
 
@@ -94,19 +100,21 @@ EXPOSE 3000
 
 # Define the command to start your Node.js application
 CMD ["node", "index.js"]
-```
+~~~
 
 These files, in tandem, create a container running the Node.js application. However, before building the image, you should ensure that your Docker client is authenticated with Docker Hub or your registry of choice. This allows Buildx to push the newly created image, as you'll need to pull the image down onto a different device to verify that it's working as intended.
 
 To authenticate with Docker Hub, run `docker login` and follow the prompts:
 
-![Running `docker login`](https://i.imgur.com/nDlYd0Q.png)
+<div class="wide">
+![Running `docker login`]({{site.images}}{{page.slug}}/nDlYd0Q.png)
+</div>
 
 Once authenticated, you can build and push your multiplatform image with a single command:
 
-```bash
+~~~
 docker buildx build --platform linux/amd64,linux/arm64 -t cpave3/node-arch-test:latest --push .
-```
+~~~
 
 Remember to substitute `cpave3/node-arch-test:latest` for your own preferred value, in the form of `{username}/{image}:{tag}`.
 
@@ -114,35 +122,47 @@ This command uses the builder instance you created previously to facilitate the 
 
 When you hover over the OS indicator, you'll see the supported architectures—in this case, AMD64 and ARM64:
 
-![Supported architectures of Docker Hub](https://i.imgur.com/flCqT8J.png)
+<div class="wide">
+![Supported architectures of Docker Hub]({{site.images}}{{page.slug}}/flCqT8J.png)
+</div>
 
 Finally, it's time to verify that this image runs as intended on each architecture. You could use virtualization for this if you prefer, but if you have machines of the appropriate architectures handy (like a desktop and an M1 MacBook), then using real devices is likely the more straightforward solution.
 
 On each of the machines you'd like to check, run the following command to pull and run the image (again, substituting the username, image, and tag as needed):
 
-```bash
+~~~
 docker run -p 3000:3000 cpave3/node-arch-test:latest
-```
+~~~
 
 Once the image is running on each machine, navigate to the host's IP address on port 3000, and you should see the output. On AMD64 (AMD Ryzen Desktop), the output will look like this:
 
-![AMD64 web browser](https://i.imgur.com/RDVQx3I.png)
+<div class="wide">
+![AMD64 web browser]({{site.images}}{{page.slug}}/RDVQx3I.png)
+</div>
 
 And on ARM64 (MacBook Pro M1), the output will look like this:
 
-![ARM64 web browser](https://i.imgur.com/RDfmknT.png)
+<div class="wide">
+![ARM64 web browser]({{site.images}}{{page.slug}}/RDfmknT.png)
+</div>
 
 As you can see, Node.js identifies that it's running on the expected architecture in both cases. In cases where it's not so obvious when an image is built for multiple architectures, you can use `imagetools` to inspect an image. This utility is bundled with Buildx and can be accessed with `docker buildx imagetools inspect cpave3/node-arch-test:latest`:
 
-![Running `imagetools inspect node-arch-test`](https://i.imgur.com/OCBjqlE.png)
+<div class="wide">
+![Running `imagetools inspect node-arch-test`]({{site.images}}{{page.slug}}/OCBjqlE.png)
+</div>
 
 Here, you can see manifests for both expected architectures. You can use this tool to inspect images directly on Docker Hub as well. For instance, by running `docker buildx imagetools inspect alpine`, you can see that the `alpine` image is built for even more architectures:
 
-![Running `imagetools inspect alpine`](https://i.imgur.com/1YVW57Q.png)
+<div class="wide">
+![Running `imagetools inspect alpine`]({{site.images}}{{page.slug}}/1YVW57Q.png)
+</div>
 
 Aside from the fact that Alpine-based images tend to be smaller, this makes Alpine an excellent candidate to serve as the basis of your own images, as you'll need whatever image you build upon to also support the architectures you want to build for. As you can see, this is the case for the `node:14` image used as the base for the `node-arch-test` image:
 
-![Running `imagetools inspect node`](https://i.imgur.com/VhQhL3O.png)
+<div class="wide">
+![Running `imagetools inspect node`]({{site.images}}{{page.slug}}/VhQhL3O.png)
+</div>
 
 Between BuildKit, Buildx, and `imagetools`, you should have everything you need to start working with and building multiplatform Docker images for your applications.
 
