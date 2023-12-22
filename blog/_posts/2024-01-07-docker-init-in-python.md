@@ -226,7 +226,7 @@ As you can see, the Django app is working perfectly inside the container, and yo
 
 ## Conclusion
 <!--sgpt-->
-In this tutorial, we've covered Docker Init, an essential tool for effortlessly generating `Dockerfile`, `compose.yaml`, and `.dockerignore` files. Docker Init streamlines the process, promoting best practices and offering a straightforward path for developers diving into containerization. 
+In this tutorial, we've covered Docker Init, an essential tool for effortlessly generating `Dockerfile`, `compose.yaml`, and `.dockerignore` files. Docker Init streamlines the process, promoting best practices and offering a straightforward path for developers diving into containerization.
 
 Loved how Docker Init simplified your setup? Take it further with [Earthly](https://cloud.earthly.dev/login) to make your builds just as smooth and repeatable. Earthly can complement Docker by ensuring that your build process is not only straightforward but also consistent across different environments. Check it out for an even tighter build process that integrates seamlessly with your Docker workflow!
 

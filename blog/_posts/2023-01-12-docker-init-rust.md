@@ -422,7 +422,7 @@ You've now effectively set up a Docker environment for a Rust project using `doc
 
 ## Conclusion
 <!--sgpt-->
-`docker init` is a straightforward command that simplifies setting up Docker in Rust projects. It saves time by creating `Dockerfile`, `compose.yaml`, and `.dockerignore` files for you, ensuring they follow best practices. As you develop more Rust applications, use `docker init` to help maintain your focus on coding, while it takes care of the container setup. 
+`docker init` is a straightforward command that simplifies setting up Docker in Rust projects. It saves time by creating `Dockerfile`, `compose.yaml`, and `.dockerignore` files for you, ensuring they follow best practices. As you develop more Rust applications, use `docker init` to help maintain your focus on coding, while it takes care of the container setup.
 
 To further streamline your Rust development workflow, consider integrating [Earthly](hhttps://cloud.earthly.dev/login) into your build process. Earthly provides a consistent and efficient build system that works seamlessly with Docker, allowing you to achieve reproducible builds every time. It's a powerful tool that complements `docker init` by managing complex build steps and dependencies with ease. Elevate your Rust builds with Earthly and keep your build process simple and efficient.
 
