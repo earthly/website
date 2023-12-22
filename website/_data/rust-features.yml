@@ -1,0 +1,31 @@
+- title: Incremental Rust Builds in CI
+  points:
+    - Earthly speeds up Rust builds in CI by effectively implementing Cargo's caching and Rust's incremental compilation.
+    - This approach significantly reduces unnecessary rebuilds in CI, mirroring the efficiency of local Rust builds.
+  image: incremental-rust-builds.svg
+
+- title: "Earthly Satellites: Persistent Remote Build Runners"
+  points:
+    - Earthly Satellites are persistent remote build runners that retain cache data locally.
+    - This drastically speeds up CI build times by eliminating cache uploads and downloads.
+    - Instead of bringing the cache data to the compute, we colocate the cache data and compute, eliminating cache transfers altogether.
+  image: persistent-remote-build.svg
+
+- title: Optimizing Rust Builds with Earthly's <code>lib/rust</code> Library
+  points:
+    - Earthly's <code>lib/rust</code> library optimizes caching for Rust in CI.
+    - It abstracts away cache configuration entirely while also resolving common duplication and inefficiency issues.
+    - This makes it easy to ensure Rust is caching correctly and building incrementally in CI, while also keeping your build files clean and readable.
+  image: optimizing-rust-builds.svg
+
+- title: BuildKit Layer Caching + Advanced Cache Mounts
+  points:
+    - Earthly leverages Docker layer caching via BuildKit. Every step of your build is cached and reused if possible.
+    - Earthly also offers cache mounts to augment layer caching and support use cases such as partial cache invalidation which is not possible with layer caching and required for incremental builds.
+  image: buildkit-layer-caching.svg
+
+- title: Streamlined Build Workflow with Earthly
+  points:
+    - Earthly’s <a href="https://docs.earthly.dev/featured-guides/rust">Guide for Rust</a> details a simple Rust example with optimized caching and compilation steps that enhance overall build efficiency.
+    - The Earthly approach focuses on incremental builds, ensuring rapid and effective Rust builds in CI.
+  image: streamlined-build-workflow.svg
