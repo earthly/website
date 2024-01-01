@@ -216,10 +216,10 @@ def generate_tie_in(summary: str, conclusion : str) -> str:
 def generate_better_tie_in(summary: str, conclusion : str, tie_in : str) -> str:
     examples = [
     {'tie_in': dedent("""
-    For more efficient and reproducible build automation in your Linux environment, you might find [Earthly](https://www.earthly.dev/) a valuable tool to explore. 
+    For more efficient and reproducible build automation in your Linux environment, you might find [Earthly](https://cloud.earthly.dev/login) a valuable tool to explore. 
                       """),
     'better': dedent("""
-    Ready to take your Linux build automation to the next level? Check out [Earthly](https://www.earthly.dev/).    
+    Ready to take your Linux build automation to the next level? Check out [Earthly](https://cloud.earthly.dev/login).    
                      """),
     }
 ]
@@ -368,9 +368,6 @@ def generate_better_conclusion(conclusion : str) -> str:
     return out["answer"].strip()
 
 def run_llm_program(program, *args, **kwargs):
-    with open("log.txt", "a") as f, contextlib.redirect_stdout(
-        f
-    ), contextlib.redirect_stderr(f):
         return program(*args, **kwargs)
 
 def add_comment_to_section(text_after_last_heading: str, excerpt : str) -> str:
