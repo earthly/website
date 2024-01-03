@@ -335,4 +335,6 @@ In this article, you learned about five popular tools that you can use to produc
 
 Whether you choose [Syft](https://github.com/anchore/syft), [Tern](https://github.com/tern-tools/tern), [Kubernetes bom](https://github.com/kubernetes-sigs/bom), [SPDX SBOM Generator](https://github.com/opensbom-generator/spdx-sbom-generator), [CycloneDX Generator](https://github.com/CycloneDX/cdxgen), or another solution altogether, regularly generating SBOMs is a best practice step to reduce risks and stay informed about your supply chain security.
 
+As you integrate these tools into your workflow, consider enhancing your build process with [Earthly](https://cloud.earthly.dev/login). Earthly complements SBOM tools by providing a consistent and secure environment for your builds, ensuring that the transparency you achieve with SBOMs extends to the build process itself.
+
 {% include_html cta/bottom-cta.html %}
