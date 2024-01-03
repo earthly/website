@@ -33,22 +33,24 @@ In this scenario, you're going to be working with a software company named XYZ C
 
 However, developers at XYZ Corporation currently embed the credentials directly into Dockerfiles or environment variables during the build process. This poses a security risk because the keys may accidentally end up in the final Docker image or be exposed in source control.
 
-To emulate this scenario, you'll write a simple Python program that reads a file and prints its output. The file is populated during the build process by making an HTTP request to a remote server. The remote server is protected by basic authentication, so you’ll need to pass the proper username and password to it.
+To emulate this scenario, you'll write a simple Python program that reads a file and prints its output. The file is populated during the build process by making an HTTP request to a remote server. The remote server is protected by basic authentication, so you'll need to pass the proper username and password to it.
 
 To illustrate the issue with the current approach, consider a Dockerfile with a snippet like this:
 
-```Dockerfile
+~~~
 # Dockerfile (insecure method)
 FROM base-image
 COPY .netrc /app
 # Other statements as per the app setup and run requirements
-```
+~~~
 
 This approach copies the [`netrc`](https://everything.curl.dev/usingcurl/netrc) file with credentials into the image, making it vulnerable to exposure. Even if you remove the `netrc` file after copying it, the file won't actually get deleted from the image due to the layer caching techniques followed by Docker.
 
 In this scenario, you need to implement a secure solution, which you can do using BuildKit's secrets handling feature. The following is a workflow diagram using BuildKit to handle secrets:
 
-![Architecture diagram using BuildKit to handle secrets courtesy of Aniket Bhattacharyea](https://i.imgur.com/Addx8b8.png)
+<div class="wide">
+![Architecture diagram using BuildKit to handle secrets courtesy of Aniket Bhattacharyea]({{site.images}}{{page.slug}}/Addx8b8.png)
+</div>
 
 The "build machine" is the environment where the Docker image is built and where the BuildKit secrets handling process takes place. The build machine should have access to the API key files.
 
@@ -56,7 +58,7 @@ In this flow, you store the sensitive files required for communication with othe
 
 The Dockerfile defines the instructions for building the Docker image. In this scenario, you have to modify it to include BuildKit secrets handling features to securely pass the secrets to the image.
 
-The Docker BuildKit build process is responsible for constructing the Docker image. It securely retrieves the secrets from the build machine and makes them available to the Docker image during the build process, but doesn’t store them in the final image (or, in any intermediate image). The resulting Docker image is securely embedded with the secrets during the build process. The secrets are not exposed in the final image, making it safe for deployment.
+The Docker BuildKit build process is responsible for constructing the Docker image. It securely retrieves the secrets from the build machine and makes them available to the Docker image during the build process, but doesn't store them in the final image (or, in any intermediate image). The resulting Docker image is securely embedded with the secrets during the build process. The secrets are not exposed in the final image, making it safe for deployment.
 
 ### Preparation
 
@@ -67,80 +69,80 @@ To follow along with this tutorial, you'll need:
 
 To start, you need to create a project directory named `handling-secrets-with-docker-buildkit` and create a `main.go` file with the following code:
 
-```go
+~~~
   package main
  
   import (
-  	"fmt"
-  	"log"
-  	"net/http"
-  	"crypto/sha256"
-  	"crypto/subtle"
-  	)
+      "fmt"
+      "log"
+      "net/http"
+      "crypto/sha256"
+      "crypto/subtle"
+      )
  
   func handler(w http.ResponseWriter, r *http.Request) {
-  	username, password, ok := r.BasicAuth()
-      	if ok {
-          	usernameHash := sha256.Sum256([]byte(username))
-          	passwordHash := sha256.Sum256([]byte(password))
-          	expectedUsernameHash := sha256.Sum256([]byte("admin"))
-          	expectedPasswordHash := sha256.Sum256([]byte("password"))
+      username, password, ok := r.BasicAuth()
+          if ok {
+              usernameHash := sha256.Sum256([]byte(username))
+              passwordHash := sha256.Sum256([]byte(password))
+              expectedUsernameHash := sha256.Sum256([]byte("admin"))
+              expectedPasswordHash := sha256.Sum256([]byte("password"))
  
-          	usernameMatch := (subtle.ConstantTimeCompare(usernameHash[:], expectedUsernameHash[:]) == 1)
-          	passwordMatch := (subtle.ConstantTimeCompare(passwordHash[:], expectedPasswordHash[:]) == 1)
-         	 
-          	fmt.Println(username, password)
-          	if usernameMatch && passwordMatch {
-              	fmt.Fprintf(w, "Hello, Admin")
-              	return
-          	}
-      	}
+              usernameMatch := (subtle.ConstantTimeCompare(usernameHash[:], expectedUsernameHash[:]) == 1)
+              passwordMatch := (subtle.ConstantTimeCompare(passwordHash[:], expectedPasswordHash[:]) == 1)
+              
+              fmt.Println(username, password)
+              if usernameMatch && passwordMatch {
+                  fmt.Fprintf(w, "Hello, Admin")
+                  return
+              }
+          }
  
-  	fmt.Fprintf(w, "Hello, guest")
+      fmt.Fprintf(w, "Hello, guest")
   }
  
   func main() {
-  	http.HandleFunc("/", handler)
-  	log.Fatal(http.ListenAndServe(":8080", nil))
+      http.HandleFunc("/", handler)
+      log.Fatal(http.ListenAndServe(":8080", nil))
   }
-```
+~~~
 
 This code sets up a Go server with basic authentication. If you use the username `admin` and password `password`, it responds with `Hello, Admin`. Otherwise, it returns `Hello, guest`.
 
-Run this server with `go run main.go`. 
+Run this server with `go run main.go`.
 
 Then, in another terminal, run ngrok:
 
-```bash
+~~~
 ngrok http 8080
-```
+~~~
 
 > Please make note of the URL generated by Ngrok.
 
 In the same folder, create a file named `netrc` with the following content:
 
-```
+~~~
  machine <Ngrok-Hostname>
  login admin
  password password
-```
+~~~
 
 Replace `<Ngrok-Hostname>` with the hostname of the URL generated by Ngrok.
 
 Test out the server by running the following command:
 
-```bash
+~~~
 curl -n --netrc-file ./netrc <YOUR_NGROK_URL>
-```
+~~~
 
 You should get the output `Hello, Admin`.
 
 Omitting the credentials will return `Hello, guest`:
 
-```bash
+~~~
 $ curl <YOUR_NGROK_URL>
 Hello, guest
-```
+~~~
 
 Your goal is to pass the credentials in the `netrc` file to the Docker build process without exposing it in the final image.
 
@@ -148,10 +150,10 @@ Your goal is to pass the credentials in the `netrc` file to the Docker build pro
 
 Next, you need to create a `main.py` file and paste the following code into it:
 
-```python
+~~~
   with open('message.txt', 'r') as f:
-  	print(f.readline())
-```
+      print(f.readline())
+~~~
 
 This file opens the `message.txt` file and prints its contents. The `message.txt` file is populated using the output of the server prepared in the previous step.
 
@@ -159,21 +161,21 @@ This file opens the `message.txt` file and prints its contents. The `message.txt
 
 Ensure that Docker BuildKit is enabled by setting the `DOCKER_BUILDKIT` environment variable. If you're using a Linux-based operating system, you can set this environment variable with the following command:
 
-```bash
+~~~
 export DOCKER_BUILDKIT=1
-```
+~~~
 
 If you're using a Windows-based operating system, use the following command:
 
-```bash
+~~~
 set DOCKER_BUILDKIT=1
-```
+~~~
 
-### Build Docker Image with Secrets Using --secret
+### Build Docker Image with Secrets Using `--secret`
 
 To build a Docker image with secrets, create a Dockerfile in the project directory:
 
-```Dockerfile
+~~~
  # Use the official Python 3.9 image as the base image
  FROM python:3.9-slim
  
@@ -184,56 +186,56 @@ To build a Docker image with secrets, create a Dockerfile in the project directo
 
 # Mount the secret and use it to make HTTP request
  RUN --mount=type=secret,id=netrc,target=/root/.netrc \
- 	curl -n <YOUR_NGROK_URL> > message.txt
-	 
+     curl -n <YOUR_NGROK_URL> > message.txt
+     
  # Your application code and instructions can follow below
  # For example, install dependencies or copy your application files
  
  COPY main.py .
  
  CMD ["python", "main.py"]
-```
+~~~
 
 Following is the most important part of this code:
 
-```Dockerfile
+~~~
 RUN --mount=type=secret,id=netrc,target=/root/.netrc \
- 	curl -n <YOUR_NGROK_URL> > message.txt
-```
+     curl -n <YOUR_NGROK_URL> > message.txt
+~~~
 
-This line mounts the secret with the ID `netrc` to `/root/.netrc`. By passing the `-n` flag, you instruct `curl` to use credentials from the `netrc` file. (Note that, here the `--netrc-file` parameter is not needed because `/root/.netrc` is the default location where `curl` looks for this file.) The output of the request is then stored in the `message.txt` file. Using this syntax, the `netrc` file is not exposed in the final image, any intermediate image, or the image history. 
+This line mounts the secret with the ID `netrc` to `/root/.netrc`. By passing the `-n` flag, you instruct `curl` to use credentials from the `netrc` file. (Note that, here the `--netrc-file` parameter is not needed because `/root/.netrc` is the default location where `curl` looks for this file.) The output of the request is then stored in the `message.txt` file. Using this syntax, the `netrc` file is not exposed in the final image, any intermediate image, or the image history.
 
 Next, you need to build the Docker image, passing the secrets using the `--secret` flag:
 
-```bash
+~~~
 docker build --secret id=netrc,src=./netrc -t my-app .
-```
+~~~
 
 In this command, `--secret` is used to specify the secret to be passed, where `id=netrc` matches the defined identifier for the secret and `src=./netrc` is the path on the build machine to the secrets file.
 
 Now you can run the container and ensure that you can see the `Hello, Admin` message:
 
-```bash
+~~~
 $ docker run my-app
 Hello, Admin
-```
+~~~
 
 ### Security Assurance
 
-The credentials are now securely passed to the Docker image during the build process and are not exposed in the Dockerfile. You're not passing the hard-coded value of the credentials anywhere in the Dockerfile content coded earlier or the final image. 
+The credentials are now securely passed to the Docker image during the build process and are not exposed in the Dockerfile. You're not passing the hard-coded value of the credentials anywhere in the Dockerfile content coded earlier or the final image.
 
 To check verify the security of your application, open a shell on the container with the following command:
 
-```bash
+~~~
 docker run -it my-app /bin/sh
-```
+~~~
 
-If you try to read the `netrc` file, you’ll get an error message:
+If you try to read the `netrc` file, you'll get an error message:
 
-```bash
+~~~
 # cat /root/.netrc
 cat: /root/.netrc: No such file or directory
-```
+~~~
 
 This proves that using the `--secret` flag with Docker BuildKit provides a secure way to pass secrets during the build process, and the secrets remain hidden from the Dockerfile, build cache, and final image.
 
@@ -245,14 +247,10 @@ As you wrap up your exploration of BuildKit, it's essential to emphasize how imp
 
 All the source code for this tutorial can be found in [this GitHub repository](https://github.com/heraldofsolace/docker-buildkit-secrets).
 
-
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
