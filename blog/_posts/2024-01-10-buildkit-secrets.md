@@ -247,10 +247,11 @@ As you wrap up your exploration of BuildKit, it's essential to emphasize how imp
 
 All the source code for this tutorial can be found in [this GitHub repository](https://github.com/heraldofsolace/docker-buildkit-secrets).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
