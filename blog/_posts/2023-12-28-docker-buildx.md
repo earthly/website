@@ -172,8 +172,8 @@ Between BuildKit, Buildx, and `imagetools`, you should have everything you need 
 
 ## Conclusion
 
-In this article, you learned about Docker's Buildx plugin, which gives you a build client that combines the extended functionality of BuildKit with the familiar syntax of the legacy build client. Buildx boasts several advanced features that make it robust and adaptable enough for just about any use case.
+This article introduced Docker's Buildx plugin, combining BuildKit's capabilities with the classic Docker build syntax. With Buildx, you can create multiplatform images compatible with various CPU architectures, allowing for greater flexibility and efficiency across devices like AWS Graviton and Apple silicon MacBooks, without needing emulation. 
 
-One of its most useful features is the ability to build images that can run natively on multiple CPU architectures. Multiplatform images allow you to leverage more powerful or cost-effective hardware, such as AWS Graviton instances and Apple silicon MacBooks, without relying on emulation or virtualization.
+To further enhance your container build process, consider [Earthly](https://cloud.earthly.dev/login). Earthly provides additional efficiency and reproducibility in your builds, ensuring that they are consistent across different environments. It's a powerful combination for developers looking to streamline their Docker workflows. Check it out and boost your Docker game!
 
 {% include_html cta/bottom-cta.html %}
