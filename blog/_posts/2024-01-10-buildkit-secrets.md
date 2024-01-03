@@ -6,7 +6,11 @@ toc: true
 author: Rajkumar Venkatasamy
 
 internal-links:
- - just an example
+ - handle secrets
+ - handling secrets with buildkit
+ - using buildkit to handle secrets
+ - how to handle secrets
+ - how to use buildkit to handle secrets
 excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
@@ -252,6 +256,3 @@ All the source code for this tutorial can be found in [this GitHub repository](h
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
