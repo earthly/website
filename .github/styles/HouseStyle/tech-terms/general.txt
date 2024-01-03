@@ -594,4 +594,7 @@ swappable
 snapshotters
 Wasm
 imgcrypt
+buildx
+Ryzen
+imagetools
 multicontainer
