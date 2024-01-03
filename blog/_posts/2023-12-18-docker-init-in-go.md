@@ -10,7 +10,6 @@ internal-links:
  - init in go 
  - using docker in go
  - how to use docker init in go
-last_modified_at: 2023-09-08
 excerpt: |
     This tutorial explores the use of Docker Init in Go to simplify the process of creating Dockerfiles and Docker Compose configurations. Docker Init is a language-aware generator that automatically determines suitable default settings based on your project, saving time and providing a stable container configuration.
 ---
@@ -391,6 +390,6 @@ README.md
 
 ## Conclusion: A New Time Saver
 
-With a few keystrokes, you've turned a plain Go web app into a containerized, Compose-ready app that works out of the box. Docker Init takes the tedious parts of creating a Go web app off your to-do list.
+In just a few steps, you've successfully containerized your Go web app, making it Docker Compose-ready for effortless deployment. Docker Init has streamlined the process, handling the initial grunt work for you. But why stop there? Take your container management to the next level with [Earthly](https://cloud.earthly.dev/login). This powerful tool can further enhance your build automation, ensuring that your builds are reproducible, portable, and efficient. Dive in and see how Earthly can complement your Docker setup and elevate your development workflow.
 
 {% include_html cta/bottom-cta.html %}
