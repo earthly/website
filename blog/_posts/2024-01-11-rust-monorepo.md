@@ -41,7 +41,7 @@ A monorepo can contain multiple components, such as services and libraries. For 
 
 Here's what the directory structure for such a monorepo would look like:
 
-```bash
+~~~
 .
 ├── libs
 │   └── filter
@@ -54,11 +54,11 @@ Here's what the directory structure for such a monorepo would look like:
     └── ingest
         └── src
             └── main.rs
-```
+~~~
 
 The `filter` library makes use of a dependency called [`censor`](https://docs.rs/censor). The two service modules use the library as a dependency to access the censoring functionality.
 
-## How to Build a Monorepo with Rust
+## How to Build a Monorepo With Rust
 
 Using the previous example, the following sections show you how you can build a monorepo with Rust.
 
@@ -66,7 +66,7 @@ Using the previous example, the following sections show you how you can build a 
 
 First, you need to create the Rust modules listed above. Here's what the `filter` library looks like:
 
-```rust
+~~~
 use censor::*;
 
 pub fn filter_ableism(text: String) -> String {
@@ -81,13 +81,13 @@ pub fn filter_violence(text: String) -> String {
 
     return censor.censor(&text);
 }
-```
+~~~
 
 It essentially censors out a standard set of blacklisted words, along with a few custom words defined by the user.
 
 The `ingest` service looks like this:
 
-```rust
+~~~
 use filter::filter_violence;
 
 fn main() {
@@ -98,13 +98,13 @@ fn main() {
 
     println!("{}", clean_text);
 }
-```
+~~~
 
 Currently, the implementation is merely a `main` function that calls the `filter_violence` function from the `filter` library. In a real-world scenario, you would probably implement this as a REST endpoint that receives user-generated content, runs the moderation on it, and then saves the cleaned content to the data store.
 
 Here's what the `cleanup` service looks like:
 
-```rust
+~~~
 use filter::*;
 
 fn main() {
@@ -116,7 +116,7 @@ fn main() {
 
     println!("{}", clean_text);
 }
-```
+~~~
 
 This is similar to the `ingest` service, except that it uses two of the `filter` functions, `filter_ableism` and `filter_violence`, and is distinct from the `ingest` service. In a real-world project, you would implement this as a routine job that reads newly added records in a data store, runs the cleanup operations on them, and then writes the clean data back to the store.
 
@@ -140,7 +140,7 @@ In this article, you'll learn how to use Cargo to manage the monorepo you've jus
 
 As mentioned previously, each Rust module needs to contain its own `Cargo.toml` file. Here's the `Cargo.toml` file for the `filter` library:
 
-```toml
+~~~
 [package]
 name = "filter"
 version = "0.1.0"
@@ -148,13 +148,13 @@ edition = "2021"
 
 [dependencies]
 censor = "0.3.0"
-```
+~~~
 
 This file sets the basic package details of the library and then defines an external dependency to be used in it (`censor`).
 
 The `Cargo.toml` file for the `ingest` service looks like this:
 
-```toml
+~~~
 [package]
 name = "ingest"
 version = "0.1.0"
@@ -162,7 +162,7 @@ edition = "2021"
 
 [dependencies]
 filter = { workspace = true }
-```
+~~~
 
 After setting the basic package details of the service, this file imports the `filter` library as a dependency. However, since it's a local dependency, you can't specify a version for it as you did for `censor`. Instead, you would normally need to provide its path to Cargo, such as `filter = { path = "libs/filter" }`.
 
@@ -170,7 +170,7 @@ In this case, you need to provide the same path twice to the two services since 
 
 The `Cargo.toml` file for the `cleanup` service looks similar to that of `ingest`:
 
-```toml
+~~~
 [package]
 name = "cleanup"
 version = "0.1.0"
@@ -178,11 +178,11 @@ edition = "2021"
 
 [dependencies]
 filter = { workspace = true }
-```
+~~~
 
 This is what the `Cargo.toml` file for the workspace looks like:
 
-```toml
+~~~
 [workspace]
 members = [
     "services/cleanup",
@@ -191,13 +191,13 @@ members = [
 
 [workspace.dependencies]
 filter = { path = "libs/filter" }
-```
+~~~
 
-This differs from the package-level files because it defines the members of the workspace and references the `filter` library as a workspace-level dependency. Any member of the package can now easily inherit the library. 
+This differs from the package-level files because it defines the members of the workspace and references the `filter` library as a workspace-level dependency. Any member of the package can now easily inherit the library.
 
 This is what your directory structure should look like now:
 
-```bash
+~~~
 .
 ├── Cargo.toml
 ├── libs
@@ -214,18 +214,18 @@ This is what your directory structure should look like now:
 │       ├── Cargo.toml
 │       └── src
 │           └── main.rs
-```
+~~~
 
 At this point, you can build the monorepo by running the command `cargo build` at the root of your repo. Here's what the output looks like:
 
-```bash
+~~~
 Compiling ingest v0.1.0 (/Users/kumarharsh/Work/Draft/rust-mono/services/ingest)
 Finished dev [unoptimized + debuginfo] target(s) in 0.07s
-```
+~~~
 
 Run `cargo run --bin ingest` or `cargo run --bin cleanup` to run the individual binaries built by Cargo. The outputs look like this:
 
-```bash
+~~~
 $ cargo run --bin ingest
 Finished dev [unoptimized + debuginfo] target(s) in 0.01s
 Running `target/debug/ingest`
@@ -235,7 +235,7 @@ $ cargo run --bin cleanup
 Finished dev [unoptimized + debuginfo] target(s) in 0.00s
 Running `target/debug/cleanup`
 A ***** person was ****ed in yesterday's riots
-```
+~~~
 
 This confirms that the dependencies have been correctly configured in your project. You can now use `cargo add <dependency> --package <package-name>` to easily add new dependencies to the packages.
 
@@ -247,7 +247,7 @@ Earthly is a build tool that enables each service or library to independently ha
 
 To configure Earthly in this project, you need to add an `Earthfile` in each of the packages and one parent `Earthfile` at the root of the project. Here's the `Earthfile` for the `filter` library:
 
-```Earthfile
+~~~
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -267,11 +267,11 @@ build:
 test: 
     FROM +build
     RUN cargo test
-```
+~~~
 
 This file enables the package to be built into a self-contained artifact, which you can then reference easily in other services. Here's the `Earthfile` for the `ingest` service:
 
-```Earthfile
+~~~
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -304,13 +304,13 @@ docker:
     FROM +build
     ENTRYPOINT ["./ingest"]
     SAVE IMAGE ingest:latest
-```
+~~~
 
 This file defines its own build and Docker steps and makes use of the artifact generated by the `filter` library to include it in the final binary.
 
 The `Earthfile` for the `cleanup` service is quite similar to that of `ingest`:
 
-```Earthfile
+~~~
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -343,11 +343,11 @@ docker:
     FROM +build
     ENTRYPOINT ["./cleanup"]
     SAVE IMAGE cleanup:latest
-```
+~~~
 
 Finally, here's the parent `Earthfile` that allows you to use the steps defined in the package `Earthfile`s easily:
 
-```Earthfile
+~~~
 VERSION 0.7
 
 all-docker:
@@ -358,7 +358,7 @@ all-test:
     BUILD ./libs/filter+test
     BUILD ./services/cleanup+test
     BUILD ./services/ingest+test
-```
+~~~
 
 You can now build the entire monorepo using the command `earthly +all-docker`. You can also run tests for all packages using the command `earthly +all-test`.
 
@@ -370,14 +370,13 @@ In this article, you learned that [Cargo workspaces](https://doc.rust-lang.org/b
 
 You can find the complete monorepo created as part of this article in [this GitHub repository](https://github.com/krharsh17/rust-monorepo.git). Make sure to check out the [Earthly blog](https://earthly.dev/blog/) to learn more ways you can simplify your DevOps efforts.
 
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-  - Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+  * Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
