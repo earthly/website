@@ -1,14 +1,31 @@
-<div class="flex flex-col items-center max-w-lg mx-auto mb-6 lg:mb-12 -mt-20 md:-mt-32 px-6 lg:px-10">
+<div class="flex flex-col items-center max-w-3xl mx-auto mb-6 lg:mb-12 -mt-20 md:-mt-32 px-6 lg:px-10">
   <div class="text-center text-slate-400 text-xl">
     Fast Rust Builds in CI
   </div>
-  <a
-    href="https://cloud.earthly.dev/login"
-    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
-    onclick="earthlyCoreTryEarthlyClick()"
-  >
-    Get Started Free
-  </a>
+
+  <div class="w-full flex flex-col md:flex-row gap-5 mt-3 my-0.5 lg:my-2">
+    <a
+      href="https://cloud.earthly.dev/login"
+      class="h-20 flex items-center justify-center text-2xl cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full md:max-w-60"
+      onclick="earthlyCoreTryEarthlyClick()"
+    >
+      Get Started Free
+    </a>
+
+    <div
+      id="copy-code-block"
+      class="min-h-20 bg-[#111214] border-2 border-transparent hover:border-[#32f8b9] cursor-pointer flex flex-1 group items-center justify-center relative rounded-lg text-center text-lg text-white tracking-tighter transition"
+      data-clipboard-text="IMPORT github.com/earthly/lib/rust"
+    >
+      <code><span class="text-[#7dcfff]">IMPORT</span> github.com/earthly/lib/rust</code>
+
+      <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 20 20" fill="none" class="absolute invisible group-hover:visible right-1 top-1">
+        <path d="M5.83337 8.05583C5.83337 7.46638 6.06753 6.90108 6.48433 6.48428C6.90113 6.06748 7.46643 5.83333 8.05587 5.83333H15.2775C15.5694 5.83333 15.8584 5.89082 16.1281 6.00251C16.3977 6.1142 16.6427 6.27791 16.8491 6.48428C17.0555 6.69066 17.2192 6.93567 17.3309 7.20531C17.4426 7.47496 17.5 7.76397 17.5 8.05583V15.2775C17.5 15.5694 17.4426 15.8584 17.3309 16.128C17.2192 16.3977 17.0555 16.6427 16.8491 16.849C16.6427 17.0554 16.3977 17.2191 16.1281 17.3308C15.8584 17.4425 15.5694 17.5 15.2775 17.5H8.05587C7.76401 17.5 7.47501 17.4425 7.20536 17.3308C6.93571 17.2191 6.69071 17.0554 6.48433 16.849C6.27795 16.6427 6.11424 16.3977 6.00255 16.128C5.89086 15.8584 5.83337 15.5694 5.83337 15.2775V8.05583Z" stroke="#32F8B9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M3.34333 13.9475C3.08779 13.8018 2.87523 13.5912 2.72715 13.3371C2.57906 13.0829 2.50071 12.7942 2.5 12.5V4.16667C2.5 3.25 3.25 2.5 4.16667 2.5H12.5C13.125 2.5 13.465 2.82083 13.75 3.33333" stroke="#32F8B9" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M10.5312 14.4534L7.8894 11.8115L8.54986 11.1511L10.5312 13.1325L14.7836 8.88005L15.4441 9.54051L10.5312 14.4534Z" fill="#32F8B9" class="invisible"/>
+      </svg>
+    </div>
+  </div>
 </div>
 
 <script>
@@ -18,4 +35,18 @@
       label: 'rust-get-started-free-click'
     });
   }
+
+  $(document).ready(function () {
+    new ClipboardJS("#copy-code-block");
+
+    $("body").on("click", "#copy-code-block", function () {
+      const classes = $(this).find("svg path:last-child")[0].classList;
+
+      classes.remove("invisible");
+
+      setTimeout(function () {
+        classes.add("invisible");
+      }, 2000);
+    });
+  });
 </script>
