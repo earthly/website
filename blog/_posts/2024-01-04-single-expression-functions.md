@@ -471,5 +471,5 @@ It excites me that thinking carefully about some little distinctions in programm
 I love that programming language concepts can be well thought out, generative, and combinable. It makes me feel like I'm using a finely crafted tool where how everything fits together has been deeply thought out.
 
 <!-- markdownlint-disable MD036 -->
- [^1]: 
+ [^1]:
   *Update: 2024-01-04 - I found some problems with a couple Kotlin examples and so changed them to Scala. Kotlin is not my strong suit. It turns out it only supports implicit returns with single expression functions and not block functions.*
