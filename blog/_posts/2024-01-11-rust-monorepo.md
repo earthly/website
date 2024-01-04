@@ -6,7 +6,11 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - building a monorepo
+ - monorepo with rust
+ - how to build a monorepo with rust
+ - building a monorepo with rust
+ - build your monorepo with rust
 excerpt: |
     This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
@@ -375,8 +379,4 @@ You can find the complete monorepo created as part of this article in [this GitH
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-  * Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
