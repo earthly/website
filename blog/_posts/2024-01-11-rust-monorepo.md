@@ -75,7 +75,8 @@ use censor::*;
 
 pub fn filter_ableism(text: String) -> String {
 
-    let censor = Censor::Standard + "lame" + "dumb" + "retarded" + "blind" + "deaf";
+    let censor = Censor::Standard + "lame" + "dumb" + "retarded" \
+    + "blind" + "deaf";
 
     return censor.censor(&text);
 }
@@ -223,6 +224,7 @@ This is what your directory structure should look like now:
 At this point, you can build the monorepo by running the command `cargo build` at the root of your repo. Here's what the output looks like:
 
 ~~~{ caption="Output"}
+
 Compiling ingest v0.1.0 (/Users/kumarharsh/Work/Draft/rust-mono/services/ingest)
 Finished dev [unoptimized + debuginfo] target(s) in 0.07s
 ~~~
@@ -264,7 +266,8 @@ build:
     # See https://github.com/earthly/lib/tree/main/rust
     DO rust+INIT --keep_fingerprints=true
     COPY --keep-ts --dir src Cargo.lock Cargo.toml .
-    DO rust+CARGO --args="build --release --lib" --output="release/(.*).rlib"
+    DO rust+CARGO --args="build --release --lib" \
+    --output="release/(.*).rlib"
     SAVE ARTIFACT target/release/libfilter.rlib filter
 
 # test runs the tests present in the package
@@ -294,7 +297,8 @@ build:
     COPY --dir +deps/src .
     WORKDIR src
     DO rust+INIT --keep_fingerprints=true
-    DO rust+CARGO --args="build --release --bin ingest" --output="release/[^/\.]+"
+    DO rust+CARGO --args="build --release --bin ingest" \
+    --output="release/[^/\.]+"
     SAVE ARTIFACT target/release cleanup
 
 
@@ -333,7 +337,8 @@ build:
     COPY --dir +deps/src .
     WORKDIR src
     DO rust+INIT --keep_fingerprints=true
-    DO rust+CARGO --args="build --release --bin cleanup" --output="release/[^/\.]+"
+    DO rust+CARGO --args="build --release --bin cleanup" \
+    --output="release/[^/\.]+"
     SAVE ARTIFACT target/release cleanup
 
 
