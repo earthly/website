@@ -123,7 +123,7 @@ fn check_number(number: i32) -> &'static str {
 Or this Kotlin:
 
 ~~~{.kotlin caption="Implicit Returns in Kotlin"}
-fun checkNumber(number: Int): String {
+fun checkNumber(number: Int): String =
   if (number > 0) {
       "Positive"
   } else if (number < 0) {
@@ -131,45 +131,44 @@ fun checkNumber(number: Int): String {
   } else {
       "Zero"
   }
-}
 ~~~
 
 This reads better to my eyes. No reading redundant information. Each branch returns a value directly. No early exiting to trace. But let's keep going.
 
 ## If Expressions
 
-Once you have this idea that expressions return something, and you don't need returns because its implicit you have code like this in Kotlin:
+Once you have this idea that expressions return something, and you don't need returns because its implicit you have code like this in Scala:
 
-~~~{.kotlin caption="exclaiming in Kotlin"}
-fun checkNumber(number: Int): String {
+~~~{.scala caption="exclaiming in Scala"}
+def checkNumber(number: Int): String = {
   if (number > 0) {
-      "Positive"
+    "Positive"
   } else if (number < 0) {
-      "Negative"
+    "Negative"
   } else {
-      "Zero"
+    "Zero"
   }
 }
 
-fun exclaimNumber(number: Int): String {
-  s = checkNumber(number)
-  s+"!" 
+def exclaimNumber(number: Int): String = {
+  val s = checkNumber(number)
+  s + "!"
 }
 ~~~
 
 That example is super contrived, but notice what happens if I inline `checkNumber` into `exclaimNumber`. All the sudden I need to declare a mutable string before my if.
 
-~~~{.kotlin caption="inlined exclaiming in Kotlin"}
-fun exclaimNumber(number: Int): String {
+~~~{.scala caption="inlined exclaiming in Scala"}
+def exclaimNumber(number: Int): String = {
   var s = ""
   if (number > 0) {
-      s = "Positive"
+    s = "Positive"
   } else if (number < 0) {
-      s = "Negative"
+    s = "Negative"
   } else {
-      s = "Zero"
+    s = "Zero"
   }
-  s+"!" 
+  s + "!"
 }
 ~~~
 
@@ -177,8 +176,8 @@ Yuck, you need to transform your `if` so that each branch is a assignment statem
 
 But, light-bulb moment: in the `if` above from our `checkNumber` each branch was implicitly returning an expression. So then isn't the `if` really an expression itself? Can't we then assign it to variable.
 
-~~~{.kotlin caption="if expression in Kotlin"}
-fun exclaimNumber(number: Int): String {
+~~~{.scala caption="if expression in Scala"}
+def exclaimNumber(number: Int): String = {
   val s = if (number > 0) {
       "Positive"
   } else if (number < 0) {
@@ -459,17 +458,6 @@ fn action_for_light(light: TrafficLight) -> &'static str {
 }
 ~~~
 
-And this Kotlin `if` doesn't seem more verbose for having braces around it:
-
-~~~{.kotlin caption="Using braces in Kotlin Function Definitions"}
-fun categorizeTemperature(temp: Int): String {
-    if (temp < 0) "Freezing"
-    else if (temp < 15) "Cold"
-    else if (temp < 25) "Mild"
-    else "Hot"
-}
-~~~
-
 So maybe these ideas work best when used with care, and not pushed all the way to the extremes, but embraced whole-heartedly and thoughtfully like Rust does.
 
 ( Of course, there are languages that take expressions much further. Maybe that will be my next post. But I think we've covered enough for now. )
@@ -481,3 +469,6 @@ Isn't embracing expressions powerful? I encourage you to dive into these languag
 It excites me that thinking carefully about some little distinctions in programming can lead to improved ergonomics and readability. I like the idea that you can start with C-type language, notice that the return keyword is often redundant, and pull on that thread until you can assign expressions directly to function signatures.
 
 I love that programming language concepts can be well thought out, generative, and combinable. It makes me feel like I'm using a finely crafted tool where how everything fits together has been deeply thought out.
+
+<!-- markdownlint-disable MD036 -->
+*Update: 2024-01-04 - Found some problems with a couple Kotlin examples and so changed them to Scala. Kotlin is not my strong suit.*
