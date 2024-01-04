@@ -45,7 +45,7 @@ A monorepo can contain multiple components, such as services and libraries. For 
 
 Here's what the directory structure for such a monorepo would look like:
 
-~~~
+~~~{.bash caption=""}
 .
 ├── libs
 │   └── filter
@@ -70,7 +70,7 @@ Using the previous example, the following sections show you how you can build a 
 
 First, you need to create the Rust modules listed above. Here's what the `filter` library looks like:
 
-~~~
+~~~{.rust caption="main.rs"}
 use censor::*;
 
 pub fn filter_ableism(text: String) -> String {
@@ -91,7 +91,7 @@ It essentially censors out a standard set of blacklisted words, along with a few
 
 The `ingest` service looks like this:
 
-~~~
+~~~{.rust caption="main.rs"}
 use filter::filter_violence;
 
 fn main() {
@@ -108,7 +108,7 @@ Currently, the implementation is merely a `main` function that calls the `filter
 
 Here's what the `cleanup` service looks like:
 
-~~~
+~~~{.rust caption="main.rs"}
 use filter::*;
 
 fn main() {
@@ -144,7 +144,7 @@ In this article, you'll learn how to use Cargo to manage the monorepo you've jus
 
 As mentioned previously, each Rust module needs to contain its own `Cargo.toml` file. Here's the `Cargo.toml` file for the `filter` library:
 
-~~~
+~~~{.toml caption="Cargo.toml"}
 [package]
 name = "filter"
 version = "0.1.0"
@@ -158,7 +158,7 @@ This file sets the basic package details of the library and then defines an exte
 
 The `Cargo.toml` file for the `ingest` service looks like this:
 
-~~~
+~~~{.toml caption="Cargo.toml"}
 [package]
 name = "ingest"
 version = "0.1.0"
@@ -174,7 +174,7 @@ In this case, you need to provide the same path twice to the two services since 
 
 The `Cargo.toml` file for the `cleanup` service looks similar to that of `ingest`:
 
-~~~
+~~~{.toml caption="Cargo.toml"}
 [package]
 name = "cleanup"
 version = "0.1.0"
@@ -186,7 +186,7 @@ filter = { workspace = true }
 
 This is what the `Cargo.toml` file for the workspace looks like:
 
-~~~
+~~~{.toml caption="Cargo.toml"}
 [workspace]
 members = [
     "services/cleanup",
@@ -201,7 +201,7 @@ This differs from the package-level files because it defines the members of the 
 
 This is what your directory structure should look like now:
 
-~~~
+~~~{ caption=""}
 .
 ├── Cargo.toml
 ├── libs
@@ -222,14 +222,14 @@ This is what your directory structure should look like now:
 
 At this point, you can build the monorepo by running the command `cargo build` at the root of your repo. Here's what the output looks like:
 
-~~~
+~~~{ caption="Output"}
 Compiling ingest v0.1.0 (/Users/kumarharsh/Work/Draft/rust-mono/services/ingest)
 Finished dev [unoptimized + debuginfo] target(s) in 0.07s
 ~~~
 
 Run `cargo run --bin ingest` or `cargo run --bin cleanup` to run the individual binaries built by Cargo. The outputs look like this:
 
-~~~
+~~~{.bash caption=">_"}
 $ cargo run --bin ingest
 Finished dev [unoptimized + debuginfo] target(s) in 0.01s
 Running `target/debug/ingest`
@@ -251,7 +251,7 @@ Earthly is a build tool that enables each service or library to independently ha
 
 To configure Earthly in this project, you need to add an `Earthfile` in each of the packages and one parent `Earthfile` at the root of the project. Here's the `Earthfile` for the `filter` library:
 
-~~~
+~~~{.earthfile caption="Earthfile"}
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -275,7 +275,7 @@ test:
 
 This file enables the package to be built into a self-contained artifact, which you can then reference easily in other services. Here's the `Earthfile` for the `ingest` service:
 
-~~~
+~~~{.earthfile caption="Earthfile"}
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -314,7 +314,7 @@ This file defines its own build and Docker steps and makes use of the artifact g
 
 The `Earthfile` for the `cleanup` service is quite similar to that of `ingest`:
 
-~~~
+~~~{.earthfile caption="Earthfile"}
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -351,7 +351,7 @@ docker:
 
 Finally, here's the parent `Earthfile` that allows you to use the steps defined in the package `Earthfile`s easily:
 
-~~~
+~~~{.earthfile caption="Earthfile"}
 VERSION 0.7
 
 all-docker:
@@ -375,8 +375,3 @@ In this article, you learned that [Cargo workspaces](https://doc.rust-lang.org/b
 You can find the complete monorepo created as part of this article in [this GitHub repository](https://github.com/krharsh17/rust-monorepo.git). Make sure to check out the [Earthly blog](https://earthly.dev/blog/) to learn more ways you can simplify your DevOps efforts.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-
