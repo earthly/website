@@ -1,7 +1,7 @@
 ---
 title: "Earthly Featured On star-history.com"
 categories:
-  - Tutorials
+  - News
 toc: true
 author: Gavin Johnson
 
