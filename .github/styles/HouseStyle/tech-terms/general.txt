@@ -594,4 +594,14 @@ swappable
 snapshotters
 Wasm
 imgcrypt
+Anchore
+cdxgen
+subpaths
+microsite
+Grype
+vmlinuz
+
+buildx
+Ryzen
+imagetools
 multicontainer

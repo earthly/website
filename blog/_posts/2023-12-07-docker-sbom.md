@@ -246,4 +246,6 @@ SBOMs are particularly important for containerized applications because the pack
 
 Generating a SBOM for your images using `docker sbom` allows you to easily access this information and then distribute it to your clients and customers. This increases trust in your software, lets you efficiently address new zero-day vulnerabilities, and could [even be a requirement](https://www.isaca.org/resources/news-and-trends/industry-news/2023/why-are-regulations-demanding-sbom-adoption) when tendering for future software delivery contracts.
 
+To further enhance the security and reproducibility of your container builds, consider integrating [Earthly](https://cloud.earthly.dev/login) into your workflow. Earthly provides a consistent, container-based build automation system that complements the transparency and accountability SBOMs offer. With Earthly, you can ensure that your build processes are as secure and reliable as the SBOMs you generate, giving you peace of mind and a robust foundation for your CI/CD pipeline.
+
 {% include_html cta/bottom-cta.html %}
