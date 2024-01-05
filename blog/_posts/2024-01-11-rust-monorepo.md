@@ -253,7 +253,7 @@ Earthly is a build tool that enables each service or library to independently ha
 
 To configure Earthly in this project, you need to add an `Earthfile` in each of the packages and one parent `Earthfile` at the root of the project. Here's the `Earthfile` for the `filter` library:
 
-~~~{.earthfile caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -278,7 +278,7 @@ test:
 
 This file enables the package to be built into a self-contained artifact, which you can then reference easily in other services. Here's the `Earthfile` for the `ingest` service:
 
-~~~{.earthfile caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -318,7 +318,7 @@ This file defines its own build and Docker steps and makes use of the artifact g
 
 The `Earthfile` for the `cleanup` service is quite similar to that of `ingest`:
 
-~~~{.earthfile caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION --global-cache 0.7
 IMPORT github.com/earthly/lib/rust:2.2.10 AS rust
 
@@ -356,7 +356,7 @@ docker:
 
 Finally, here's the parent `Earthfile` that allows you to use the steps defined in the package `Earthfile`s easily:
 
-~~~{.earthfile caption="Earthfile"}
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.7
 
 all-docker:
