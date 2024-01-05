@@ -553,3 +553,7 @@ Samuel Umoren:
     name    : "Samuel Umoren"
     bio     : "Samuel Umoren is a software developer and technical writer passionate about simplifying complex technology. His mission is to create clear, concise, and engaging content that helps users easily understand tools, products, and concepts."
     avatar  : "/assets/images/authors/samuel-umoren.jpg"
+Rajkumar Venkatasamy:
+    name    : "Rajkumar Venkatasamy"
+    bio     : "Rajkumar has nearly sixteen years of experience in the software industry as a developer, data modeler, tester, project lead, product consultant, data architect, ETL specialist, and technical architect. Currently he is a principal architect at an MNC. He has hands-on experience in various technologies, tools, and libraries."
+    avatar  : "/assets/images/authors/rajkumar-venkatasamy.jpg"
