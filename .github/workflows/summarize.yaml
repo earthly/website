@@ -38,7 +38,7 @@ jobs:
         git checkout -b $branch_name
 
         curl -sSL https://install.python-poetry.org | python3 -
-        poetry install --no-root
+        poetry install
 
         poetry run python util/psupport/psupport/scripts/excerpt.py --dir ./blog/_posts
         poetry run python util/psupport/psupport/scripts/topcta.py --dir ./blog/_posts
