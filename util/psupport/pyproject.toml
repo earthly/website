@@ -1,0 +1,19 @@
+[tool.poetry]
+name = "psupport"
+version = "0.1.0"
+description = ""
+authors = ["Your Name <you@example.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+openai = "^1.7.0"
+requests-cache = "^1.1.1"
+python-dotenv = "^1.0.0"
+guidance = "^0.0.64"
+portalocker = "^2.8.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
