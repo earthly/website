@@ -69,7 +69,7 @@ def main():
         # Process each markdown file in the directory
         for root, dirs, files in os.walk(args.dir):
             for file in files:
-                if file.endswith('.md'):
+                if file.endswith('.md') and not file.startswith('2029'):
                     path = os.path.join(root, file)
                     add_excerpt_to_md_file(os.path.join(root, file), args.dryrun)
     elif args.file:
