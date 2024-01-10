@@ -12,8 +12,9 @@ internal-links:
  - building a monorepo with rust
  - build your monorepo with rust
 excerpt: |
-    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
+    This article explores the benefits of using monorepos in Rust projects, including simplified dependency management, consistent versioning, enhanced code reuse, facilitated cross-project testing, and improved collaboration. It also provides a step-by-step guide on how to set up a monorepo using Cargo, Rust's package manager, and introduces Earthly as a build tool for containerization and testing.
 ---
+**This article is all about managing monorepos in Rust projects. Earthly is a tool that can make your build process as a Rust developer much simpler. [See how it works](https://cloud.earthly.dev/login).**
 
 Managing multiple software projects and their dependencies can often become a complex and time-consuming task, but monorepos can help.
 

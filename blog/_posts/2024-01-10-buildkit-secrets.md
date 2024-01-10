@@ -12,8 +12,9 @@ internal-links:
  - how to handle secrets
  - how to use buildkit to handle secrets
 excerpt: |
-    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
+    This tutorial explores how to handle secrets securely during the Docker image build process using BuildKit. It covers the steps to enable Docker BuildKit secrets, securely pass secrets to the Docker image, and ensure that the secrets remain hidden from the Dockerfile, build cache, and final image.
 ---
+**This article explores the use of BuildKit for secure Docker image building. Earthly enhances your build automation capabilities by leveraging BuildKit. You can find more information about Earthly at [this link](https://cloud.earthly.dev/login).**
 
 When it comes to modern containerization and Docker image building, security and efficiency are important. From API keys and database passwords to encryption keys and access tokens, secrets are the digital guardians of your applications' most sensitive information, and handling these secrets in an age of cloud-native architectures can be tricky.
 

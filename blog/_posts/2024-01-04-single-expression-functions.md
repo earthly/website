@@ -11,6 +11,7 @@ internal-links:
 excerpt: |
     This article explores the concept of implicit returns, if-expressions, match-expressions, and single-expression functions in programming languages like Rust, Ruby, Kotlin, and Scala, highlighting how they can enhance code readability and conciseness. The author demonstrates the use of these expression-based concepts and encourages readers to embrace the power of expressions in their code.
 ---
+**This article delves into the specific aspects of expression-based programming. Earthly's compatibility expression based and statement based programming languages. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 If you are familiar with C-style programming languages, and ever touch Rust, Ruby, Kotlin, Scala, or even Julia there are some syntax and concepts that could initially appear confusing, unfamiliar, or unnecessary. I'm talking about implicit returns, if-expressions, match-expressions, and single-expression functions.
 

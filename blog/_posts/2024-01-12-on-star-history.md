@@ -12,9 +12,8 @@ internal-links:
  - we just got featured
 topcta: false
 excerpt: |
-    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
+    Earthly, a tool that combines Docker and Make for consistent build results, was recently featured on star-history.com's Starlet List. Earthly offers advanced caching and easy integration with any CI system, making it a valuable tool for fast and reliable builds.
 ---
-
 Earthly was featured on [star-history.com's Starlet List.](https://star-history.com/blog/earthly)
 
 ![Image]({{site.images}}{{page.slug}}/img.png)\
