@@ -177,99 +177,93 @@ earthly_facts = dedent("""
 """)
 
 def build_cta(content):
-    def get_summary(content):
-        score = guidance("""
-        {{#system~}}
-        You generate one paragraph, three sentence, summaries from markdown content.
-        {{~/system}}
+    def get_summary(content: str) -> str:
+        lm = gpt35turbo
+        with system():
+            lm += "You generate one paragraph, three sentence summaries from markdown content."
+        
+        with user():
+            lm += dedent(f"""
+                <content>
+                {content}
+                </content>
+                You generate two sentence summaries from markdown content.
+                Can you summarize this entire article into one descriptive paragraph?
+                """)
+        
+        with assistant():
+            lm += gen('summary', max_tokens=100, temperature=0)
+        
+        return lm['summary'].strip()
 
-        {{#user~}}
-        <content>
-        {{content}}
-        </content>
-        You generate two sentence summaries from markdown content.
-        Can you summarize this entire article into one descriptive paragraph?
-        {{~/user}}
+    def this_article_sentence(content: str) -> str:
+        lm = gpt4
+        with system():
+            lm += "You summarize markdown blog posts."
+        
+        with user():
+            lm += dedent(f"""
+                Post:
+                ---
+                {content}
+                ---
+                Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? Do not put the summary in quotes.
+                Examples:
+                - This article is about gmail API changes.
+                - This blog post is about Python CLIs.
+                - This article is about OpenCore company's using MITMproxy.
 
-        {{#assistant~}}
-        {{gen 'summary' max_tokens=100 temperature=0}}
-        {{~/assistant}}
-        """, llm=gpt35turbo)
-        out = score(content=content)
-        return out['summary'].strip() 
-
-    def this_article_sentence(content) -> str:
-        score = guidance(dedent("""
-        {{#system~}}
-        You summarize markdown blog posts.
-        {{~/system}}
-        {{#user~}}
-    
-        Post:
-        ---
-        {{content}} 
-        ---
-        Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? Do no put the summary in quotes.
-        Examples:
-        - This article is about gmail API changes.
-        - This blog post is about Python CLIs. 
-        - This article is about OpenCore company's using MITMproxy. 
-                                
-        Can you summarize this blog post in a short sentence of the form 'This article is about ....'? 
-        {{~/user}}
-        {{#assistant~}}
-        {{gen 'summary' max_tokens=100 temperature=0}}
-        {{~/assistant}}
-        """),llm=gpt4, silent=False)
-        out = score(content=content)
-        article_sentence = out["summary"].strip()
-        log(f"Summary:\n"+ article_sentence)
+                Can you summarize this blog post in a short sentence of the form 'This article is about ....'? 
+                """)
+        
+        with assistant():
+            lm += gen('summary', max_tokens=100, temperature=0)
+        
+        article_sentence = lm['summary'].strip()
+        log(f"Summary:\n" + article_sentence)
         return article_sentence
-    
-    def earthly_statement(content) -> str:
-        score = guidance(dedent("""
-        {{#system~}}
-        You: You are an expert on Earthly and use your background knowledge to assist with Earthly questions.
-        <background>
-        {{earthly_facts}}
-        </background>
 
-        Task: Can you provide a short sentence explaining why Earthly would be interested to readers of this article? Earthly is an open source build tool for CI. The sentence should be of the form 'Earthly is popular with users of bash.' The sentence should be a statement.
+    def earthly_statement(content: str) -> str:
+        lm = gpt4  # Assuming gpt4 is defined elsewhere in your code
+        with system():
+            lm += dedent(f"""
+                You: You are an expert on Earthly and use your background knowledge to assist with Earthly questions.
+                <background>
+                {earthly_facts}
+                </background>
 
-        Examples:
-        - If you're a Jenkins fan, Earthly could give your build a boost.
-        - Earthly works well with Go Builds.
-        - If you're into Azure Functions, you'll love how Earthly optimizes your CI build tools.
-        - If you're into command line tools, then Earthly is worth a look.
+                Task: Can you provide a short sentence explaining why Earthly would be interested to readers of this article? Earthly is an open source build tool for CI. The sentence should be of the form 'Earthly is popular with users of bash.' The sentence should be a statement.
 
-        Please provide a list of potential options.
-        {{~/system}}
-        {{#user~}}
-        {{content}} 
-        {{~/user}}
-        {{#assistant~}}
-        {{gen 'options' max_tokens=1500 temperature=0}}
-        {{~/assistant}}
-        {{#user~}}
-        Can you please comment on the pros and cons of each of these. 
-        Sparking curosity in the reader is a goal.
-        Not misleading about what Earthly is is another goal.
-        Being consise is a goal.
-        {{~/user}}
-        {{#assistant~}}
-        {{gen 'thinking' temperature=0 max_tokens=2000}}
-        {{~/assistant}}
-        {{#user~}} 
-        Please return the text of the best option, based on above thinking.
-        {{~/user}}
-        {{#assistant~}}
-        {{gen 'answer' temperature=0 max_tokens=500}}
-        {{~/assistant}}
-        """),llm=gpt4, silent=False)
-        out = score(content=content, earthly_facts=earthly_facts)
-        tie_in_sentence = out["answer"].strip().split(".",1)[0]
-        log(out.__str__())
-        log(f"Earthly Tie in:\n"+ tie_in_sentence)
+                Examples:
+                - If you're a Jenkins fan, Earthly could give your build a boost.
+                - Earthly works well with Go Builds.
+                - If you're into Azure Functions, you'll love how Earthly optimizes your CI build tools.
+                - If you're into command line tools, then Earthly is worth a look.
+
+                Please provide a list of potential options.
+                """)
+        
+        with user():
+            lm += content
+        
+        with assistant():
+            lm += gen('options', max_tokens=1500, temperature=0)
+
+        with user():
+            lm += "Can you please comment on the pros and cons of each of these. Sparking curiosity in the reader is a goal. Not misleading about what Earthly is is another goal. Being concise is a goal."
+        
+        with assistant():
+            lm += gen('thinking', temperature=0, max_tokens=2000)
+        
+        with user():
+            lm += "Please return the text of the best option, based on the above thinking."
+        
+        with assistant():
+            lm += gen('answer', temperature=0, max_tokens=500)
+        
+        tie_in_sentence = lm['answer'].strip().split(".", 1)[0]
+        log(lm.__str__())
+        log(f"Earthly Tie in:\n" + tie_in_sentence)
         return tie_in_sentence
 
     summary = get_summary(content)
@@ -303,152 +297,157 @@ shorter_examples = [
 ]
 
 def make_shorter(input: str) -> str:
-    score = guidance(dedent('''
-    {{#system~}}
-    <background> 
-    {{earthly_facts}} 
-    </background> 
+    lm = gpt4  # Assuming gpt4 is defined elsewhere in your code
+    with system():
+        lm += dedent(f"""
+            <background> 
+            {earthly_facts} 
+            </background> 
 
-    Task:
-    Revise this call to action to make it more engaging and informative for the Earthly blog readers. The call to action should clearly introduce the specific topic of the article and emphasize the unique insights or benefits offered by Earthly. Aim for a concise, casual tone, while ensuring clarity and directness in language.
+            Task:
+            Revise this call to action to make it more engaging and informative for the Earthly blog readers. The call to action should clearly introduce the specific topic of the article and emphasize the unique insights or benefits offered by Earthly. Aim for a concise, casual tone, while ensuring clarity and directness in language.
     
-    When in doubt, stay close to:
-    {{input}} 
-    Do not use the word Dive. Only return the revised call to action.
+            When in doubt, stay close to:
+            {input}
+            Do not use the word Dive. Only return the revised call to action.
 
-    Revised should be made of these parts:
-    Summary: Each should start with a sentence summarizing the article. 
-    Statement: Each should then have a statement about Earthly. 
-    Link: Each should then end with a link.
-                            
-    Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
-    It should be direct, assertive statements rather than those that invite the reader to discover or explore further.
-    The statement should contain clear, unambiguous statements that directly convey information.
+            Revised should be made of these parts:
+            Summary: Each should start with a sentence summarizing the article. 
+            Statement: Each should then have a statement about Earthly. 
+            Link: Each should then end with a link.
 
-    {{~/system}}
-    {{~#each examples}}
-    {{#user~}}
-    {{this.input}}
-    {{~/user}}
-    {{#assistant~}}
-    {{this.output}}
-    {{~/assistant}}    
-    {{~/each}}
-    {{#user~}} 
-    {{input}}
-    {{~/user}}
-    {{#assistant~}}
-    {{gen 'options' n=7 temperature=0.1 max_tokens=500}}
-    {{~/assistant}}
-    {{#user~}}
-    Can you please comment on the pros and cons of each of these replacements and which should be rejected? 
-                            
-    Rejection Criteria:
-    Summary: Each should start with a sentence summarizing the article. 
-    Statement: Each should then have a statement about Earthly. 
-    Link: Each should then end with a link.
+            Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
+            It should be direct, assertive statements rather than those that invite the reader to discover or explore further.
+            The statement should contain clear, unambiguous statements that directly convey information.
+            """)
 
-    Reject An Options If:
-    1. Summary: Reject if summary does not mention the article directly. Or mentions the article, or content last.
-    "In this article, we'll dive into the latest DevOps practices." - Good.
-    "We'll dive into the latest DevOps practices, in this article." - Bad
-    
-    2. Statement: Reject statement if not a statement. Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
-    "If you're a DevOps enthusiast, Earthly can streamline your CI workflows with containerized build automation." - Good.
-    "If you're a DevOps enthusiast, discover how Earthly can streamline your CI workflows with containerized build automation." - Bad - Use of discover 
+    # Process each example using a for loop
+    for example in shorter_examples:
+        with user():
+            lm += example['input']
+        
+        with assistant():
+            lm += example['output']
 
-    3. Link: The link should be a short invitation to learn more about earthly. It should be a link.
-    Do not reject based on the link, unless the link is missing.
-    "[Check it out]https://cloud.earthly.dev/login" - Good
-    "[Learn more about Earthly](https://cloud.earthly.dev/login)" - Good
-    
-    After rejecting options. Please go through remaining options and state pros and cons based on Other criteria. 
+    with user():
+        lm += input
 
-    Other criteria
-    Shorter is better. More connected to the topic at hand is better. Natural sounding and casual is better.
-    
-    It's important that the first sentence signpost the article by saying something like "This article is about X" or "In this article you'll learn X". For this reason, "Discover X!" is worse than "In this article you'll discover X" because it lacks explicit reference to the article.
+    options = []
+    with assistant():
+        for i in range(1,7):
+            temp = lm + gen('options', temperature=0.1, max_tokens=500)
+            options.append(temp["options"])
 
-    It's important that, following the sign posting, the next part is a statement about Earthly. This statement should connect the topic to Earthly without overstating Earthly's benefits. The statement can be direct or a implied second person or direct second person. Like "If leveraging zsh for command-line speed, Earthly can streamline your build processes."
+    with user():
+        lm2 = gpt4
+        for i in range(0,6):
+            lm2 += f"Option {i}: {options[i]}"
+        lm2 += dedent("""
+            ---
+            Can you please comment on the pros and cons of each of these replacements and which should be rejected? 
 
-    Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
+            Rejection Criteria:
+            Summary: Each should start with a sentence summarizing the article. 
+            Statement: Each should then have a statement about Earthly. 
+            Link: Each should then end with a link.
 
-    If options all rejected, choose the default:
-    
-    ---
-    Default: {{input}} 
-    {{#each options}}
-    Option {{@index}}: {{this}}{{/each}}
-    ---
-    {{~/user}}
-    {{#assistant~}}
-    {{gen 'thinking' temperature=0 max_tokens=2000}}
-    {{~/assistant}}
-    {{#user~}} 
-    Please return the text of the best option, based on above thinking.
-    {{~/user}}
-    {{#assistant~}}
-    {{gen 'answer' temperature=0 max_tokens=500}}
-    {{~/assistant}}
-    '''), llm=gpt4, silent=False, logging=True)
-    out = score(examples=shorter_examples,input=input,earthly_facts=earthly_facts) 
-    log(out.__str__())
-    return out["answer"].strip()
+            Reject An Option If:
+            1. Summary: Reject if summary does not mention the article directly. Or mentions the article, or content last.
+            "In this article, we'll dive into the latest DevOps practices." - Good.
+            "We'll dive into the latest DevOps practices, in this article." - Bad
 
+            2. Statement: Reject statement if not a statement. Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
+            "If you're a DevOps enthusiast, Earthly can streamline your CI workflows with containerized build automation." - Good.
+            "If you're a DevOps enthusiast, discover how Earthly can streamline your CI workflows with containerized build automation." - Bad - Use of discover 
 
+            3. Link: The link should be a short invitation to learn more about earthly. It should be a link.
+            Do not reject based on the link, unless the link is missing.
+            "[Check it out](https://cloud.earthly.dev/login)" - Good
+            "[Learn more about Earthly](https://cloud.earthly.dev/login)" - Good
+
+            After rejecting options, please go through remaining options and state pros and cons based on Other criteria. 
+
+            Other criteria:
+            Shorter is better. More connected to the topic at hand is better. Natural sounding and casual is better.
+
+            It's important that the first sentence signpost the article by saying something like "This article is about X" or "In this article you'll learn X". For this reason, "Discover X!" is worse than "In this article you'll discover X" because it lacks explicit reference to the article.
+
+            It's important that, following the sign posting, the next part is a statement about Earthly. This statement should connect the topic to Earthly without overstating Earthly's benefits. The statement can be direct or implied second person or direct second person. Like "If leveraging zsh for command-line speed, Earthly can streamline your build processes."
+
+            Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
+
+            If options all rejected, choose the default:
+
+            ---
+            Default: {input}
+            ---""")
+
+    with assistant():
+        lm2 += gen('thinking', temperature=0, max_tokens=2000)
+
+    with user():
+        lm2 += "Please return the text of the best option, based on the above thinking."
+
+    with assistant():
+        lm2 += gen('answer', temperature=0, max_tokens=500)
+
+    log(str(lm2))
+    return lm2["answer"].strip()
 
 def make_cleaner(input: str) -> str:
     def clean_string(s):
         return s.strip('"*')
-    score = guidance(dedent('''
-    {{#system~}}
-    You are William Zinsser. You improve writing by making it simpler and more active. You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
 
-    Your general editing rules:
-    Clarity: Ensure your writing is clear and easy to understand. Every sentence should convey its meaning without ambiguity.
-    Simplicity: Use simple words and sentences. Avoid complex vocabulary where a simpler word would work just as well.  
-    Strong Verbs: Use strong, specific verbs to convey action. They often eliminate the need for adverbs and make the writing more vivid and precise.
-    Avoiding Clichés and Redundancies: Steer clear of clichés and redundant phrases. 
+    lm = gpt4  # Assuming gpt4 is defined elsewhere in your code
+    with system():
+        lm += dedent("""
+            You are William Zinsser. You improve writing by making it simpler and more active. You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
 
-    Specific editing rules:
-    The resulting paragraph should be made of these parts:
-    Summary: Each should start with a sentence summarizing the article. 
-    Statement: Each should then have a statement about Earthly. 
-    Link: Each should then end with a link.
-                            
-    Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
-    It should be direct, assertive statements rather than those that invite the reader to discover or explore further.
-    The statement should contain clear, unambiguous statements that directly convey information.
+            Your general editing rules:
+            Clarity: Ensure your writing is clear and easy to understand. Every sentence should convey its meaning without ambiguity.
+            Simplicity: Use simple words and sentences. Avoid complex vocabulary where a simpler word would work just as well.
+            Strong Verbs: Use strong, specific verbs to convey action. They often eliminate the need for adverbs and make the writing more vivid and precise.
+            Avoiding Clichés and Redundancies: Steer clear of clichés and redundant phrases.
 
-    Specific editing rules take precendence over rour general editing rules. 
-    You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
+            Specific editing rules:
+            The resulting paragraph should be made of these parts:
+            Summary: Each should start with a sentence summarizing the article.
+            Statement: Each should then have a statement about Earthly.
+            Link: Each should then end with a link.
 
-    Important: Do Not change the meaning.
-    Important: Do Not Remove the markdown link.
+            Earthly statement should be a direct statement of something about Earthly. It should not be an invitation.
+            It should be direct, assertive statements rather than those that invite the reader to discover or explore further.
+            The statement should contain clear, unambiguous statements that directly convey information.
 
-    First discuss what improvements could be made. Discuss some options.
-    {{~/system}}
-    {{#user~}} 
-    {{input}}
-    {{~/user}}
-    {{#assistant~}}
-    {{gen 'options' max_tokens=1500 temperature=0}}
-    {{~/assistant}}
-    {{#user~}}
-    Can you please comment on the pros and cons of each of these changes. 
-    {{~/user}}
-    {{#assistant~}}
-    {{gen 'thinking' temperature=0 max_tokens=2000}}
-    {{~/assistant}}
-    {{#user~}} 
-    Identify the best option based on the previous analysis and return only the text of that option, without any additional context, explanation, or analysis. 
-    Please provide only the selected text.
-    {{~/user}}
-    {{#assistant~}}
-    {{gen 'answer' temperature=0 max_tokens=500}}
-    {{~/assistant}}
-    '''), llm=gpt4, silent=False, logging=True)
-    out = score(examples=shorter_examples,input=input) 
+            Specific editing rules take precedence over your general editing rules.
+            You are given a short paragraph of text and return an improved version. If it can't be improved, you return it verbatim.
+
+            Important: Do Not change the meaning.
+            Important: Do Not Remove the markdown link.
+
+            First discuss what improvements could be made. Discuss some options.
+            """)
+
+    with user():
+        lm += input
+
+    with assistant():
+        lm += gen('options', max_tokens=1500, temperature=0)
+
+    with user():
+        lm += "Can you please comment on the pros and cons of each of these changes."
+
+    with assistant():
+        lm += gen('thinking', temperature=0, max_tokens=2000)
+
+    with user():
+        lm += "Identify the best option based on the previous analysis and return only the text of that option, without any additional context, explanation, or analysis. Please provide only the selected text."
+
+    with assistant():
+        lm += gen('answer', temperature=0, max_tokens=500)
+
+    # Execute LLM with the accumulated instructions
+    out = lm  
     log(out.__str__())
     return clean_string(out["answer"].strip())
 

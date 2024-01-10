@@ -14,7 +14,8 @@ last_modified_at: 2023-08-17
 excerpt: |
     This article explores different deployment strategies, including the recreate deployment strategy, rolling update deployment strategy, blue-green deployment, canary deployment, and shadow deployment. Each strategy has its pros and cons, and the best strategy depends on the need to balance downtime cost and deployment complexity.
 ---
-**In this article, we'll explore different deployment strategies. If you're struggling with deployment complexities, Earthly simplifies your CI builds, regardless of the strategy you choose. [Discover how Earthly can streamline your process](https://cloud.earthly.dev/login).**
+**Our latest article delves into effective deployment strategies. Earthly guarantees consistent and reliable builds for uninterrupted deployments. [Read the insights](https://cloud.earthly.dev/login).**
+
 
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 
