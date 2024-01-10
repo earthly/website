@@ -10,8 +10,6 @@ internal-links:
  - generating sbom
  - top 5 tools to generate sbom
  - generate your sbom
-excerpt: |
-    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
 ---
 
 Producing a software bill of materials (SBOM) is an increasingly important stage in the software development lifecycle (SDLC). SBOMs catalog the open source components used in your product, providing a reference to the version numbers, vendors, and licenses you depend on.

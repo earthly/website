@@ -1,5 +1,0 @@
-openai
-requests-cache
-python-dotenv
-guidance
-portalocker

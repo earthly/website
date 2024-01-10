@@ -28,7 +28,7 @@ def get_excerpt(content):
 def run_llm_program(program, *args, **kwargs):
         return program(*args, **kwargs)
 
-def add_excerpt_to_md_file(filename):
+def add_excerpt_to_md_file(filename, dryrun):
 
     with open(filename, 'r') as f:
         lines = f.readlines()
@@ -42,12 +42,14 @@ def add_excerpt_to_md_file(filename):
             break
 
     if not excerpt_exists:
-        # Generate the excerpt
-        file_content = Path(filename).read_text()
-        excerpt = get_excerpt(file_content)
+        print(f"Starting: {filename}")
+        if not dryrun:
+            # Generate the excerpt
+            file_content = Path(filename).read_text()
+            excerpt = get_excerpt(file_content)
 
-        # Insert the excerpt
-        lines.insert(i, f"excerpt: |\n    {excerpt}\n")
+            # Insert the excerpt
+            lines.insert(i, f"excerpt: |\n    {excerpt}\n")
 
     with open(filename, 'w') as f:
         f.writelines(lines)
@@ -56,8 +58,12 @@ def main():
     parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
     parser.add_argument('--dir', help='The directory containing the markdown files.')
     parser.add_argument('--file', help='The path to a single markdown file.')
+    parser.add_argument('--dryrun', help='Dry run it.', action='store_true')
 
     args = parser.parse_args()
+    
+    if args.dryrun:
+        print("Dryrun mode activated. No changes will be made.")
 
     if args.dir:
         # Process each markdown file in the directory
@@ -65,9 +71,7 @@ def main():
             for file in files:
                 if file.endswith('.md'):
                     path = os.path.join(root, file)
-                    print(f"Starting: {path}")
-                    add_excerpt_to_md_file(os.path.join(root, file))
-                    print(f"Finishing: {path}")
+                    add_excerpt_to_md_file(os.path.join(root, file), args.dryrun)
     elif args.file:
         add_excerpt_to_md_file(args.file)
     else:
