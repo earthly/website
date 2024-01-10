@@ -5,6 +5,7 @@ from textwrap import dedent
 
 from typing import List, Optional
 import guidance
+from guidance import user, system, assistant, gen
 from typing import List, Dict, Tuple
 import os
 from pathlib import Path
@@ -17,15 +18,8 @@ import pickle
 import portalocker
 from datetime import datetime
 
-
-
-# gpt-4-1106-preview is cheaper and with more context
-# But doesn't work with guidance's latest, so must revert back in CI
-# Hand patched on Adam's machine
-# gpt4 = guidance.llms.OpenAI("gpt-4-1106-preview")
-gpt4 = guidance.llms.OpenAI("gpt-4")
-
-gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
+gpt4 = guidance.models.OpenAI("gpt-4-1106-preview")
+gpt35turbo = guidance.models.OpenAI("gpt-3.5-turbo-16k")
 
 rerun = False
 debug = False
@@ -475,7 +469,7 @@ def main():
     parser = argparse.ArgumentParser(description='Add an excerpt to a markdown file.')
     parser.add_argument('--dir', help='The directory containing the markdown files.')
     parser.add_argument('--file', help='The path to a single markdown file.')
-    parser.add_argument('--dryrun', help='Dry run mode', action='store_true')
+    parser.add_argument('--dryrun', help='Dry run mode', action='store_true',default=False)
     parser.add_argument('--after-date', help='Filter files modified after this date (format: YYYY-MM-DD)', type=str, default=None)
 
     args = parser.parse_args()

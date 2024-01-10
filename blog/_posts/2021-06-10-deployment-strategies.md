@@ -10,9 +10,9 @@ internal-links:
  - deployment strategies
  - deployment
  - continous deployment
-excerpt: |
-    Learn about different deployment strategies, their pros and cons, and how they can impact downtime and deployment complexity. Find the best approach for your application and gain insights into optimizing your deployment process.
 last_modified_at: 2023-08-17
+excerpt: |
+    This article explores different deployment strategies, including the recreate deployment strategy, rolling update deployment strategy, blue-green deployment, canary deployment, and shadow deployment. Each strategy has its pros and cons, and the best strategy depends on the need to balance downtime cost and deployment complexity.
 ---
 **In this article, we'll explore different deployment strategies. If you're struggling with deployment complexities, Earthly simplifies your CI builds, regardless of the strategy you choose. [Discover how Earthly can streamline your process](https://cloud.earthly.dev/login).**
 

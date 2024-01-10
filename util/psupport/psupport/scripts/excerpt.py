@@ -2,31 +2,27 @@ import argparse
 import subprocess
 import os
 import guidance
+from guidance import user, system, assistant, gen
 from pathlib import Path
 import contextlib
+from textwrap import dedent
 
-gpt35turbo = guidance.llms.OpenAI("gpt-3.5-turbo-16k")
+gpt35turbo = guidance.models.OpenAI("gpt-3.5-turbo-16k")
 
-def get_excerpt(content):
-  score = guidance("""
-  {{#system~}}
-  You generate two sentence summaries from markdown content.
-  {{~/system}}
-
-  {{#user~}}
-  {{content}}
-  Can you summarize this in two sentences?
-  {{~/user}}
-
-  {{#assistant~}}
-  {{gen 'summary' max_tokens=100 temperature=0}}
-  {{~/assistant}}
-  """, llm=gpt35turbo)
-  out = run_llm_program(score, content=content)
-  return out['summary'].strip() 
-
-def run_llm_program(program, *args, **kwargs):
-        return program(*args, **kwargs)
+def get_excerpt(content : str) -> str:
+  lm = gpt35turbo
+  with system():
+    lm += "You generate two sentence summaries from markdown content."
+  with user():
+    lm += dedent(f"""
+            Can you summarize this in two sentences?
+            ---
+            {content}
+            ---
+            """)
+  with assistant():
+    lm += gen('summary', max_tokens=100)
+  return lm['summary'].strip() 
 
 def add_excerpt_to_md_file(filename, dryrun):
 
@@ -73,7 +69,7 @@ def main():
                     path = os.path.join(root, file)
                     add_excerpt_to_md_file(os.path.join(root, file), args.dryrun)
     elif args.file:
-        add_excerpt_to_md_file(args.file)
+        add_excerpt_to_md_file(args.file, args.dryrun)
     else:
         print("Please provide either --dir or --file.")
         exit(1)

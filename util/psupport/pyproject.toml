@@ -6,10 +6,10 @@ authors = ["Your Name <you@example.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
-openai = "^0.28.1"
+openai = "^1.7.1"
 requests-cache = "^1.1.1"
 python-dotenv = "^1.0.0"
-guidance = "^0.0.64"
+guidance = "^0.1.10"
 portalocker = "^2.8.2"
 
 
