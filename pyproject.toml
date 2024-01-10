@@ -2,8 +2,7 @@
 name = "earthly-website"
 version = "0.1.0"
 description = ""
-authors = ["Adam Gordon Bell <adam@corecursive.com>"]
-readme = "README.md"
+authors = ["Adam Gordon Bell <adam@earthly.dev>"]
 
 [tool.poetry.dependencies]
 python = "^3.11"
