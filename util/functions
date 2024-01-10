@@ -343,3 +343,10 @@ lint-frontmatter(){ # Use when you are getting a weird error about frontmatter o
     # pip install --user yamllint
     frontmatter | yamllint -c ./util/yamlconfig.yaml -
 }
+
+## CTA Changes
+
+cta_top() { # Change CTA Top
+    poetry run python util/psupport/psupport/scripts/excerpt.py --file "$(post)"
+    poetry run python util/psupport/psupport/scripts/topcta.py --file "$(post)"
+}

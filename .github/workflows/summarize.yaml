@@ -44,7 +44,7 @@ jobs:
         poetry run python util/psupport/psupport/scripts/topcta.py --dir ./blog/_posts
         git restore ./blog/_posts/2029-01-01-checklist.md
 
-        npm install -g markdownlint-cli
+        npm install -g markdownlint-cli@0.32.0
         markdownlint --fix "./blog/_posts/*.md" || true
 
       env:
