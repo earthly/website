@@ -37,13 +37,14 @@ jobs:
         branch_name="automated-changes-$(date +'%d%m%Y')"  # create a branch name based on the current day/month/year
         git checkout -b $branch_name
 
-        pip install -r ./util/sgpt/requirements.txt
+        curl -sSL https://install.python-poetry.org | python3 -
+        poetry install --no-root
 
-        python ./util/sgpt/excerpt.py  --dir ./blog/_posts
-        python ./util/sgpt/topcta.py  --dir ./blog/_posts
+        poetry run python util/psupport/psupport/scripts/excerpt.py --dir ./blog/_posts
+        poetry run python util/psupport/psupport/scripts/topcta.py --dir ./blog/_posts
         git restore ./blog/_posts/2029-01-01-checklist.md
 
-        npm install -g markdownlint-cli
+        npm install -g markdownlint-cli@0.32.0
         markdownlint --fix "./blog/_posts/*.md" || true
 
       env:

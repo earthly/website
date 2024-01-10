@@ -12,8 +12,9 @@ internal-links:
  - getting started with docker init
  - using docker init quickly
 excerpt: |
-    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
+    This tutorial explores the `docker init` command in Docker Desktop 4.18, which simplifies the setup of new Docker projects by generating Docker assets. It provides step-by-step instructions on how to use `docker init` with a Python Flask application.
 ---
+**This article delves into Docker Init's application with Python Flask. [Learn how Earthly can enhance this process.](https://cloud.earthly.dev/login).**
 
 [Docker](https://www.docker.com/) is a powerful tool that has revolutionized the way developers develop, package, and deploy applications. As part of the [Docker Desktop 4.18](https://docs.docker.com/desktop/release-notes/#4180) release, several new features were introduced, including a [Learning Center](https://docs.docker.com/desktop/use-desktop/#:~:text=The-,Learning%20center,-view%20helps%20you), an [experimental file-watch command](https://docs.docker.com/desktop/release-notes/#:~:text=experimental%20file%2Dwatch%20command), and [`docker init`](https://docs.docker.com/engine/reference/commandline/init/), which is the focus of this article.
 

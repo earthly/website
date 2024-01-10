@@ -11,8 +11,9 @@ internal-links:
  - using docker buildx
  - what is buildx
 excerpt: |
-    This markdown content provides a checklist for writing and publishing an article, including steps such as outlining, drafting, proofreading, creating a header image, and adding internal links. It also includes a checklist for optimizing an article for external publication, including adding an author page, optimizing images, and incorporating external links.
+    This article introduces Docker's Buildx plugin, which combines BuildKit's capabilities with the classic Docker build syntax. Buildx allows you to create multiplatform images compatible with various CPU architectures, providing greater flexibility and efficiency across devices.
 ---
+**This article delves into Docker's Buildx plugin functionalities. Earthly significantly boosts your build process efficiency with its container-focused build automation. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Getting started with Docker is relatively straightforward, thanks to the vast repository of publicly available images that you can use to help build your applications. However, if you spend enough time working with Docker, you'll inevitably need to create your own images. In most cases, the tool that you'll use to do this is [Buildx](https://github.com/docker/buildx), a Docker CLI plugin that allows you to build images by leveraging the capabilities of [BuildKit](https://github.com/moby/buildkit).
 

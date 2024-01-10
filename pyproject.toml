@@ -1,0 +1,13 @@
+[tool.poetry]
+name = "earthly-website"
+version = "0.1.0"
+description = ""
+authors = ["Adam Gordon Bell <adam@earthly.dev>"]
+
+[tool.poetry.dependencies]
+python = "^3.11"
+psupport = {path = "util/psupport", develop = true}
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
