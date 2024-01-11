@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-from pandocfilters import toJSONFilter, Image, RawInline
+from pandocfilters import toJSONFilter, RawInline
 
 def embed_svg(key, value, format, meta):
   if key == 'Image':

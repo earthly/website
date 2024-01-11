@@ -7,7 +7,13 @@ authors = ["Adam Gordon Bell <adam@earthly.dev>"]
 [tool.poetry.dependencies]
 python = "^3.11"
 psupport = {path = "util/psupport", develop = true}
+vulture = "^2.10"
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+# Exclude a variety of commonly ignored directories.
+exclude = [
+    "blog",
+]

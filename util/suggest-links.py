@@ -1,10 +1,7 @@
 # pip install python-frontmatter
 import frontmatter
 import glob
-import pprint
 import re
-import os
-from io import BytesIO
 import sys
 
 def findmatches(filepath):
@@ -55,7 +52,7 @@ def links(filepath):
             keywords = post["internal-links"]
             dic = { key.strip() : [get_slug(filepath)] for key in keywords}
             return dic
-    except:
+    except Exception:
         return {}
 
 def disallow_links(m):
@@ -86,22 +83,20 @@ def find_with_line_numbers(phrase, string, links, padline = 0):
     # Failing to find the newline is OK, -1 maps to 0.
     for m in matches:
         newline_offset = string.rfind('\n', 0, m.start())
-        newline_end = string.find('\n', m.end())  # '-1' gracefully uses the end.
-        line = string[newline_offset + 1:newline_end]
         line_number = newline_table[newline_offset]
         yield (phrase, m.group(0), line_number + padline, links)
 
 get_file = {}
 
 # remove date and extention from filename
-def get_slug(l):
-    r = l
+def get_slug(filename : str):
+    r = filename
     try:
-        m = re.search(r"(\d\d\d\d\-\d\d\-\d\d\-)(.*)(\.md)",l)
+        m = re.search(r"(\d\d\d\d\-\d\d\-\d\d\-)(.*)(\.md)",filename)
         r = m.group(2)
-    except:
-        r= l
-    get_file[r] = l
+    except Exception:
+        r= filename
+    get_file[r] = filename
     return r
 
 if __name__ == "__main__":
@@ -109,5 +104,5 @@ if __name__ == "__main__":
     matches = findmatches(filename)
     for m in matches:
         context = "\"... " + m[1].replace('\n', ' ') + " ... \""
-        for l in m[3]:
-            print(f"Match:\t{m[0]}:\t{context}\t -> \t[{m[0]}](/blog/{l})\t{filename}:{m[2]}")
+        for l1 in m[3]:
+            print(f"Match:\t{m[0]}:\t{context}\t -> \t[{m[0]}](/blog/{l1})\t{filename}:{m[2]}")

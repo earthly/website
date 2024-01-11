@@ -1,6 +1,5 @@
 import os
 import subprocess
-import yaml
 
 
 # Goal: Set last_modified_at for all blog posts using git data
@@ -33,7 +32,7 @@ for filename in os.listdir(POSTS_DIR):
         # Get last modified date from Git
         try:
             date = subprocess.check_output(["git", "log", "-1", "--format=%ad", "--date=short", "--", filepath]).decode('utf-8').strip()
-        except:
+        except Exception:
             date = "Unknown"  
         
         with open(filepath, 'r') as file:
