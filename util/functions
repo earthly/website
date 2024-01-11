@@ -350,3 +350,9 @@ cta_top() { # Change CTA Top
     poetry run python util/psupport/psupport/scripts/excerpt.py --file "$(post)"
     poetry run python util/psupport/psupport/scripts/topcta.py --file "$(post)"
 }
+
+check_python_code() { # type check python code 
+    poetry run ruff . --fix
+    poetry run mypy --disallow-untyped-defs --ignore-missing-imports --exclude 'blog/_plugins/' --exclude 'util/suggest-links.py' --exclude 'util/cluster.py' .
+    poetry run vulture ./util/psupport
+}
