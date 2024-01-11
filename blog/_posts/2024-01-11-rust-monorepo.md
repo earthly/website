@@ -11,7 +11,11 @@ internal-links:
  - how to build a monorepo with rust
  - building a monorepo with rust
  - build your monorepo with rust
+excerpt: |
+    This article explains the benefits of using a monorepo for managing Rust projects, including simplified dependency management, consistent versioning, enhanced code reuse, facilitated cross-project testing, and improved collaboration. It also provides a step-by-step guide on how to build a monorepo with Rust using Cargo, Rust's package manager, and introduces the use of Earthly as a build tool for containerization and testing.
 ---
+**This article zeroes in on setting up Rust monorepos. Earthly ensures build consistency for Rust developers working with monorepos. [Check it out](https://cloud.earthly.dev/login).**
+
 Managing multiple software projects and their dependencies can often become a complex and time-consuming task, but monorepos can help.
 
 A monorepo, or monolithic repository, is a single repository that houses all of the code for an organization or project, including its libraries, applications, and tools. This approach offers several advantages over traditional multirepository setups, particularly for Rust projects.
