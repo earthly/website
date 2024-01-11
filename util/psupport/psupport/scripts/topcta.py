@@ -448,9 +448,8 @@ def make_cleaner(input: str) -> str:
         lm += gen('answer', temperature=0, max_tokens=500)
 
     # Execute LLM with the accumulated instructions
-    out = lm  
-    log(out.__str__())
-    return clean_string(out["answer"].strip())
+    log(str(lm))
+    return clean_string(lm["answer"].strip())
 
 def parse_date(date_str):
     try:
