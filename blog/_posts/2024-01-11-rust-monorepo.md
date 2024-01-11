@@ -12,7 +12,7 @@ internal-links:
  - building a monorepo with rust
  - build your monorepo with rust
 ---
-Managing multiple software projects and their dependencies can often become a complex and time-consuming task, but monorepos can help.
+managing multiple software projects and their dependencies can often become a complex and time-consuming task, but monorepos can help.
 
 A monorepo, or monolithic repository, is a single repository that houses all of the code for an organization or project, including its libraries, applications, and tools. This approach offers several advantages over traditional multirepository setups, particularly for Rust projects.
 
