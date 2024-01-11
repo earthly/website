@@ -332,17 +332,18 @@ def make_shorter(input: str) -> str:
     with user():
         lm += input
 
-    options = []
+    lm2 = gpt4
     with assistant():
         for i in range(1,7):
-            temp = lm + gen('options', temperature=0.1, max_tokens=500)
-            options.append(temp["options"])
+            r = lm + gen('options', temperature=0.1, max_tokens=500)
+            lm2 += dedent(f"""
+                          ---
+                          Option {i}:
+                          {r["options"]}
+                        """)
 
     with user():
-        lm2 = gpt4
-        for i in range(0,6):
-            lm2 += f"Option {i}: {options[i]}"
-        lm2 += dedent("""
+        lm2 += dedent(f"""
             ---
             Can you please comment on the pros and cons of each of these replacements and which should be rejected? 
 
