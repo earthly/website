@@ -1,0 +1,71 @@
+name: Add CTAs and summaries to articles
+
+on:
+  pull_request:
+    types: [opened, reopened]
+
+jobs:
+  create-pr:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout PR
+      uses: actions/checkout@v2
+      with:
+        ref: ${{ github.event.pull_request.head.ref }}
+    - name: Set up Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+    - name: Set up GitHub CLI
+      run: |
+        curl -sSL https://github.com/cli/cli/releases/download/v2.0.0/gh_2.0.0_linux_amd64.tar.gz -o ghcli.tar.gz
+        tar xzf ghcli.tar.gz
+        sudo mv gh_*/bin/gh /usr/local/bin/
+        rm -rf gh_2.0.0_linux_amd64/ ghcli.tar.gz
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.11'  # This will get the latest version of Python 3
+
+    - name: Create a new branch and make changes
+      run: |
+        git config user.name 'GitHub Actions Bot'
+        git config user.email 'actions@github.com'
+        branch_name="automated-changes-$(date +'%d%m%Y')"  # create a branch name based on the current day/month/year
+        git checkout -b $branch_name
+
+        curl -sSL https://install.python-poetry.org | python3 -
+        poetry install --no-root
+
+        poetry run python util/psupport/psupport/scripts/excerpt.py --dir ./blog/_posts
+        poetry run python util/psupport/psupport/scripts/topcta.py --dir ./blog/_posts
+        git restore ./blog/_posts/2029-01-01-checklist.md
+
+        npm install -g markdownlint-cli@0.32.0
+        markdownlint --fix "./blog/_posts/*.md" || true
+
+      env:
+        OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
+        ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
+    - name: Check for changes
+      id: changes
+      run: |
+        git diff --exit-code || echo "::set-output name=has_changes::true"
+    - name: Commit changes
+      if: steps.changes.outputs.has_changes == 'true'  
+      run: | 
+        git add -A
+        git commit -m "Automated code changes"
+    - name: Push changes and create PR
+      if: steps.changes.outputs.has_changes == 'true'
+      run: |
+        branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
+        git push --force --set-upstream origin HEAD:$branch_name  
+        gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
+        original_title=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq .title)
+        modified_title="$original_title - CTA change"
+        gh pr create --base ${{ github.base_ref }} --head $new_branch --title "$modified_title" --body "This PR includes changes for CTA."
+      env:
+        GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
