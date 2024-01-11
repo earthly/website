@@ -16,7 +16,6 @@ excerpt: |
 ---
 **This article explores deployment strategies. Earthly significantly enhances CI pipelines with its portable builds. [Check it out](https://cloud.earthly.dev/login).**
 
-
 There are many ways to deploy applications to a production server environment, and the terminology around deploy strategies is often confusing. In this short guide, I'll review software deployment options starting from the most basic and straightforward and moving towards the more complex.  
 
 ## Recreate Deployment Strategy
