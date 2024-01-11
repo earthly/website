@@ -284,12 +284,31 @@ def generate_better_tie_in(summary: str, conclusion: str, tie_in: str) -> str:
             A great call to action explains why Earthly might interest them by connecting to the topic of the article. But if the connection is not clear, a straight-forward request to look at Earthly is second best.
             Shorter and casual is preferred, and the benefits of Earthly or Description of Earthly can be changed to better match the topic at hand.
             """)
+    lm2 = gpt4
     with assistant():
-        lm += gen('options', n=7, temperature=0.9, max_tokens=100)
+        for i in range(1, 8):  # Generating 7 options
+            r = lm + gen('options', temperature=0.9, max_tokens=100)
+            lm2 += dedent(f"""
+                          ---
+                          Option {i}:
+                          {r["options"]}
+                        """)
+    with user():
+        lm2 += dedent("""
+            Can you please comment on the pros and cons of each of these options?
+            Shorter is better. More connected to the topic at hand is better. Natural sounding, like a casual recommendation is better.
+            Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
+            """)
 
-    # Further sections for pros and cons analysis and final selection
+    with assistant():
+        lm2 += gen('thinking', temperature=0, max_tokens=2000)
 
-    return lm['answer'].strip()
+    with user():
+        lm2 += "Please return the text of the best option, based on above thinking."
+
+    with assistant():
+        lm2 += gen('answer', temperature=0, max_tokens=500)
+    return lm2["answer"].strip()
 
 def generate_better_conclusion(conclusion: str) -> str:
     examples = [
