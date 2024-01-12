@@ -1,4 +1,4 @@
-name: Add CTAs and summaries to articles
+name: Create Top CTAs PR
 
 on:
   pull_request_target:
@@ -58,8 +58,7 @@ jobs:
     - name: Run Code
       run: |
         set -x
-        poetry run python util/psupport/psupport/scripts/excerpt.py --dir ./blog/_posts
-        poetry run python util/psupport/psupport/scripts/topcta.py --dir ./blog/_posts
+        poetry run python util/psupport/psupport/scripts/bottomcta.py --dir ./blog/_posts
         git restore ./blog/_posts/2029-01-01-checklist.md
 
         npm install -g markdownlint-cli@0.32.0
@@ -92,7 +91,7 @@ jobs:
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         original_title=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq .title)
         echo "Original title: '$original_title'"
-        modified_title="$original_title - CTA change"
+        modified_title="$original_title - Bottom CTA change"
         echo "Modified title: '$modified_title'"
 
         ## Nope, not working
