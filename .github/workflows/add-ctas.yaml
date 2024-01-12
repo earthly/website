@@ -1,14 +1,14 @@
 name: Add CTAs and summaries to articles
 
 on:
-  pull_request:
+  pull_request_target:
     types: [opened, reopened]
   workflow_dispatch:
 
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-
+    if: github.event.pull_request.head.repo.owner.login == 'earthly' || github.event.pull_request.head.repo.owner.login == 'Earthly-Staging'
     steps:
     - name: Check Required Secrets
       run: |
