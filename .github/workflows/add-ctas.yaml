@@ -87,6 +87,11 @@ jobs:
         echo "Original title: '$original_title'"
         modified_title="$original_title - CTA change"
         echo "Modified title: '$modified_title'"
-        gh pr create --base ${{ github.event.pull_request.head.ref }} --head $branch_name --title "$modified_title" --body "This PR includes changes for CTA."
+
+        # Extract organization and repo name for base and head
+        base_org_repo="${ORG_REPO}:${{ github.event.pull_request.head.ref }}"
+        head_org_repo="${ORG_REPO}:$branch_name"
+
+        gh pr create --base $base_org_repo --head $head_org_repo --title "$modified_title" --body "This PR includes changes for CTA."
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
