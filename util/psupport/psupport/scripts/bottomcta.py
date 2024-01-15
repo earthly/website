@@ -6,8 +6,8 @@ from typing import Optional
 import guidance
 from guidance import assistant, gen, system, user
 
-gpt4 = guidance.models.OpenAI("gpt-4-1106-preview")
-gpt35turbo = guidance.models.OpenAI("gpt-3.5-turbo-16k")
+gpt4 : guidance.models.Model = guidance.models.OpenAI("gpt-4-1106-preview")
+gpt35turbo : guidance.models.Model = guidance.models.OpenAI("gpt-3.5-turbo-16k")
 
 # should_cache = True
 # should_cache = False
@@ -297,7 +297,7 @@ def generate_better_tie_in(summary: str, conclusion: str, tie_in: str) -> str:
         lm2 += dedent("""
             Can you please comment on the pros and cons of each of these options?
             Shorter is better. More connected to the topic at hand is better. Natural sounding, like a casual recommendation is better.
-            Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse. 
+            Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse.
             """)
 
     with assistant():
