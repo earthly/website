@@ -5,6 +5,7 @@ from typing import Optional
 
 import guidance
 from guidance import assistant, gen, system, user
+from psupport.core import prompts
 
 gpt4 : guidance.models.Model = guidance.models.OpenAI("gpt-4-1106-preview")
 gpt35turbo : guidance.models.Model = guidance.models.OpenAI("gpt-3.5-turbo-16k")
@@ -28,7 +29,6 @@ def get_summary(lines: str) -> str:
     with assistant():
         lm += gen('answer', max_tokens=100, temperature=0)
     return lm['answer'].strip()
-
 
 def add_tie_in(summary: str, conclusion : str) -> str:
     # print(f"Summary:{summary}")
@@ -285,30 +285,17 @@ def generate_better_tie_in(summary: str, conclusion: str, tie_in: str) -> str:
             Shorter and casual is preferred, and the benefits of Earthly or Description of Earthly can be changed to better match the topic at hand.
             """)
     lm2 = gpt4
-    with assistant():
-        for i in range(1, 8):  # Generating 7 options
-            r = lm + gen('options', temperature=0.9, max_tokens=100)
-            lm2 += dedent(f"""
-                          ---
-                          Option {i}:
-                          {r["options"]}
-                        """)
-    with user():
-        lm2 += dedent("""
-            Can you please comment on the pros and cons of each of these options?
+    answer, _ = prompts.run_n_and_judge(
+       lm2,
+       lambda: lm + gen('options', temperature=0.9, max_tokens=100),
+       8,
+       'options',
+       dedent("""
             Shorter is better. More connected to the topic at hand is better. Natural sounding, like a casual recommendation is better.
             Overstating things, with many adjectives, is worse. Implying Earthly does something it does not is worse.
-            """)
-
-    with assistant():
-        lm2 += gen('thinking', temperature=0, max_tokens=2000)
-
-    with user():
-        lm2 += "Please return the text of the best option, based on above thinking."
-
-    with assistant():
-        lm2 += gen('answer', temperature=0, max_tokens=500)
-    return lm2["answer"].strip()
+            """),
+    )
+    return answer
 
 def generate_better_conclusion(conclusion: str) -> str:
     examples = [
@@ -350,30 +337,14 @@ def generate_better_conclusion(conclusion: str) -> str:
         lm += conclusion
 
     lm2 = gpt4
-    with assistant():
-        for i in range(1, 8):
-            r = lm + gen('options', temperature=0.9, max_tokens=500)
-            lm2 += dedent(f"""
-                          ---
-                          Option {i}:
-                          {r["options"]}
-                        """)
-
-    with user():
-        lm2 += dedent("""
-            Can you please comment on the pros and cons of each of these replacements?
-            How do they work as tutorial conclusions? Are they concise, informative, and natural sounding without being too formal or flippant?
-            """)
-
-    with assistant():
-        lm2 += gen('thinking', temperature=0, max_tokens=2000)
-
-    with user():
-        lm2 += "Please return the text of the best option, based on the above thinking. Return just the text, not its option number."
-
-    with assistant():
-        lm2 += gen('answer', temperature=0, max_tokens=500)
-    return lm2["answer"].strip()
+    answer, _ = prompts.run_n_and_judge(
+       lm2,
+       lambda: lm + gen('options', temperature=0.9, max_tokens=500),
+       8,
+       'options',
+       "How do they work as tutorial conclusions? Are they concise, informative, and natural sounding without being too formal or flippant?",
+    )
+    return answer
 
 def add_comment_to_section(text_after_last_heading: str, excerpt : str) -> str:
     comment = '<!--sgpt-->\n'
