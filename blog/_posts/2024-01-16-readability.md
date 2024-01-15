@@ -178,3 +178,11 @@ i++?
 operator overloading?
 val in c#, type inference in general
 
+Misfeatures:
+
+Python stuff:
+
+https://chat.openai.com/c/4bb48ac2-3fc0-4e99-9710-c64220736baf
+
+
+Go slices?
