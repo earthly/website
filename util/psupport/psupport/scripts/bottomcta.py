@@ -107,6 +107,7 @@ def merge_tie_in(summary: str, conclusion: str, tie_in: str) -> str:
         Earthly helps with continuous development but not with continuous deployment and works with any programming language.
         Earthly helps with build software on linux, using containers. It doesn't help with every SDLC process, but it improves build times which can help other steps indirectly.
         ---
+        Can you add the tie in to the conclusion in a way that makes sense and blends in? Rewrite it if needed.
         """)
 
     for example in examples:
@@ -117,12 +118,13 @@ def merge_tie_in(summary: str, conclusion: str, tie_in: str) -> str:
 
                 Post Conclusion:
                 {example['conclusion']}
-                ---
-                Can you add the tie in to the conclusion in a way that makes sense and blends in? Rewrite it if needed.
                 """)
         with assistant():
             lm += example['result']
-
+    with system():
+        lm += dedent(f"""
+            Can you add the tie in to the conclusion in a way that makes sense and blends in? Rewrite it if needed.
+            """)
     with user():
         lm += dedent(f"""
             Tie-in:
