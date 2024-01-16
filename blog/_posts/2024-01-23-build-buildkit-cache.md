@@ -17,13 +17,13 @@ In this tutorial, you'll learn how BuildKit cache can be used to improve Docker 
 
 ## What Is BuildKit?
 
-BuildKit is a toolkit designed to efficiently convert source code into build artifacts. Previously, Docker utilized its legacy builder to build images from Dockerfiles. However, the legacy builder isn't very inefficient because it reads the Dockerfile line by line and performs the build serially. 
+BuildKit is a toolkit designed to efficiently convert source code into build artifacts. Previously, Docker utilized its legacy builder to build images from Dockerfiles. However, the legacy builder isn't very inefficient because it reads the Dockerfile line by line and performs the build serially.
 
 In contrast, BuildKit speeds up the build process through parallelization and caching. Initially available as an experimental builder since Docker v19.03, BuildKit became the default builder with the release of Docker v23.0.
 
 BuildKit uses a [low-level build (LLB)](https://github.com/moby/buildkit#exploring-llb) definition format to define a content-addressable dependency graph that can be used to create very complex build definitions. An external [frontend](https://docs.docker.com/build/dockerfile/frontend/) converts build instructions to LLB so that BuildKit can execute them.
 
-BuildKit's uses an external frontend which means that it's essentially infinitely extensible. It's not necessarily tied to Docker, and many other projects such as [Earthly](https://earthly.dev), [GitPod](https://github.com/gitpod-io/gitpod), and [Dagger](https://dagger.io/) use BuildKit. 
+BuildKit's uses an external frontend which means that it's essentially infinitely extensible. It's not necessarily tied to Docker, and many other projects such as [Earthly](https://earthly.dev), [GitPod](https://github.com/gitpod-io/gitpod), and [Dagger](https://dagger.io/) use BuildKit.
 
 This article focuses on the [BuildKit cache mounts](https://docs.docker.com/build/guide/mounts/). Often during builds, you have to download or install packages, such as NPM or Pip packages. Rebuilding the image means you need to download and install the packages every time. With BuildKit cache mounts, you can create a persistent cache that lets you reuse the downloaded packages for subsequent builds.
 
@@ -42,16 +42,18 @@ In this scenario, each service of the payment app is containerized, and the CI s
 
 In the following sections, you'll use BuildKit's intelligent layer caching system to ramp up the build speed. Here's a rough architecture diagram showing the implemented solution's flow:
 
-![Payment app diagram](https://i.imgur.com/Pa8KqJq.png)
+<div class="wide">
+![Payment app diagram]({{site.images}}{{page.slug}}/Pa8KqJq.png)
+</div>
 
 ### Identify the Baseline
 
 Before implementing BuildKit caching to speed up your Docker build, you need to identify the baseline build time. To do so, start by cloning the project repository from the [mock payment app](https://github.com/rubaiat-hossain/buildkit-demo-app) and navigating to the app folder:
 
-```bash
+~~~
 git clone https://github.com/rubaiat-hossain/buildkit-demo-app
 cd buildkit-demo-app
-```
+~~~
 
 This demo payment app is quite basic, so it doesn't do much in terms of processing. However, the app is Kubernetes-ready, so you can quickly deploy it to one of your local clusters and test it out.
 
@@ -61,18 +63,19 @@ The Dockerfile takes care of containerizing the app. If you open this file, you 
 
 Once you clone the repository, you can identify the baseline duration your Docker image takes to build by running the following command:
 
-```bash
+~~~
 time docker build -t payment-app .
-```
+~~~
 
-> Note: If you’re using Docker Desktop and Docker Engine v23.0 and later, `docker build` will use BuildKit by default. To force it to not use BuildKit, you need to run `export DOCKER_BUILDKIT=0` before running the `build` command. If you’re using Docker Engine below v23.0, you don’t need to update anything.
+> Note: If you're using Docker Desktop and Docker Engine v23.0 and later, `docker build` will use BuildKit by default. To force it to not use BuildKit, you need to run `export DOCKER_BUILDKIT=0` before running the `build` command. If you're using Docker Engine below v23.0, you don't need to update anything.
 
 The baseline duration will be used as a reference point to compare against after implementing BuildKit's cache.
 
-
 As you can see from the following screenshot, it took over 54 seconds to build the payment app image from the Dockerfile:
 
-![Baseline build time](https://i.imgur.com/B7FO2Ho.png)
+<div class="wide">
+![Baseline build time]({{site.images}}{{page.slug}}/B7FO2Ho.png)
+</div>
 
 This build time can vary from system to system, but it should give you a baseline value you can use.
 
@@ -80,13 +83,13 @@ This build time can vary from system to system, but it should give you a baselin
 
 To use BuildKit cache mounts for your Docker build, first open the `Dockerfile` file:
 
-```bash
+~~~
 gedit Dockerfile
-```
+~~~
 
 Then, change the `RUN npm install` line to `RUN --mount=type=cache,target=/app/node_modules npm install --prefer-offline`:
 
-```Dockerfile
+~~~
 FROM node:14-alpine
 
 WORKDIR /app
@@ -101,7 +104,7 @@ COPY . .
 EXPOSE 3000
 
 CMD ["node", "index.js"]
-```
+~~~
 
 Make sure you save and close this file.
 
@@ -113,17 +116,17 @@ Now that you've changed your Dockerfile for the payment app, it's time to rebuil
 
 First, make sure to enable BuildKit for Docker by setting an environment variable:
 
-```bash
+~~~
 export DOCKER_BUILDKIT=1
-```
+~~~
 
 > Note: As before, Docker Desktop and Docker Engine v23.0 and later uses BuildKit by default. However, if you had turned off BuildKit in the previous section, you must run this command to enable it back again. For Docker Engine below v23.0, it is required to turn on BuildKit.
 
 Then, perform the initial build using the following command:
 
-```bash
+~~~
 docker build -t payment-app .
-```
+~~~
 
 Subsequent builds will use this cache to reduce build time.
 
@@ -131,13 +134,15 @@ Subsequent builds will use this cache to reduce build time.
 
 Rerun the build process using the optimized Dockerfile so that you can compare it with your baseline:
 
-```bash
+~~~
 time docker build -t payment-app .
-```
+~~~
 
 As you can see from the following image, the build process only took about 1.5 seconds:
 
-![BuildKit cache build](https://i.imgur.com/ooxKi3z.png)
+<div class="wide">
+![BuildKit cache build]({{site.images}}{{page.slug}}/ooxKi3z.png)
+</div>
 
 Compared to the baseline duration of 54 seconds, using the BuildKit cache reduced the build time of the demo payment app significantly. Although these times may vary on your local system, you should still see a significant benefit from using BuildKit caching.
 
@@ -145,7 +150,7 @@ Compared to the baseline duration of 54 seconds, using the BuildKit cache reduce
 
 In this article, you learned how to use BuildKit to speed up Docker builds, which is a crucial element in optimizing development and CI/CD pipelines. With BuildKit, developers can enjoy the benefits of reusable layers, parallelized stages, and efficient resource usage, which collectively contribute to a more streamlined and rapid build process.
 
-Cache mounts are just one weapon in BuildKit’s arsenal. With BuildKit, you get useful features such as [secrets handling](https://earthly.dev/blog/buildkit-secrets/), [garbage collection](https://docs.docker.com/build/cache/garbage-collection/), parallelization of independent build stages, detection and skipping of unused files and an overall improvement in performance and extensibility.
+Cache mounts are just one weapon in BuildKit's arsenal. With BuildKit, you get useful features such as [secrets handling](https://earthly.dev/blog/buildkit-secrets/), [garbage collection](https://docs.docker.com/build/cache/garbage-collection/), parallelization of independent build stages, detection and skipping of unused files and an overall improvement in performance and extensibility.
 
 All the source code for this tutorial is available in [this GitHub repository](https://github.com/rubaiat-hossain/buildkit-demo-app).
 
@@ -154,9 +159,7 @@ All the source code for this tutorial is available in [this GitHub repository](h
 - [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
