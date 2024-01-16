@@ -159,10 +159,3 @@ Cache mounts are just one weapon in BuildKit's arsenal. With BuildKit, you get u
 All the source code for this tutorial is available in [this GitHub repository](https://github.com/rubaiat-hossain/buildkit-demo-app).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
-
