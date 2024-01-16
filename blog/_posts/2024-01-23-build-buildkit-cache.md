@@ -54,7 +54,7 @@ In the following sections, you'll use BuildKit's intelligent layer caching syste
 
 Before implementing BuildKit caching to speed up your Docker build, you need to identify the baseline build time. To do so, start by cloning the project repository from the [mock payment app](https://github.com/rubaiat-hossain/buildkit-demo-app) and navigating to the app folder:
 
-~~~
+~~~{.bash caption=">_"}
 git clone https://github.com/rubaiat-hossain/buildkit-demo-app
 cd buildkit-demo-app
 ~~~
@@ -67,7 +67,7 @@ The Dockerfile takes care of containerizing the app. If you open this file, you 
 
 Once you clone the repository, you can identify the baseline duration your Docker image takes to build by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 time docker build -t payment-app .
 ~~~
 
@@ -87,13 +87,13 @@ This build time can vary from system to system, but it should give you a baselin
 
 To use BuildKit cache mounts for your Docker build, first open the `Dockerfile` file:
 
-~~~
+~~~{.bash caption=">_"}
 gedit Dockerfile
 ~~~
 
 Then, change the `RUN npm install` line to `RUN --mount=type=cache,target=/app/node_modules npm install --prefer-offline`:
 
-~~~
+~~~{.dockerfile caption="Dockerfile"}
 FROM node:14-alpine
 
 WORKDIR /app
@@ -120,7 +120,7 @@ Now that you've changed your Dockerfile for the payment app, it's time to rebuil
 
 First, make sure to enable BuildKit for Docker by setting an environment variable:
 
-~~~
+~~~{.bash caption=">_"}
 export DOCKER_BUILDKIT=1
 ~~~
 
@@ -128,7 +128,7 @@ export DOCKER_BUILDKIT=1
 
 Then, perform the initial build using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 docker build -t payment-app .
 ~~~
 
@@ -138,7 +138,7 @@ Subsequent builds will use this cache to reduce build time.
 
 Rerun the build process using the optimized Dockerfile so that you can compare it with your baseline:
 
-~~~
+~~~{.bash caption=">_"}
 time docker build -t payment-app .
 ~~~
 
