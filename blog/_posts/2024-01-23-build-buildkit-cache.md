@@ -6,7 +6,11 @@ toc: true
 author: Rubaiat Hossain
 
 internal-links:
- - just an example
+ - speed up your docker build
+ - docker build with buildKit cache
+ - how to speed up docker build
+ - speeding docker build
+ - how make docker build fast
 ---
 
 When it comes to building Docker images, faster build times can significantly enhance a developer's workflow by enabling rapid testing, iteration, and deployment. Thankfully, [BuildKit](https://github.com/moby/buildkit) can help. It's a modern build toolkit that's integrated with Docker, and it can help you improve the speed and reliability of the image creation process.
@@ -158,9 +162,7 @@ All the source code for this tutorial is available in [this GitHub repository](h
 
 ## Outside Article Checklist
 
-- [ ] Add in Author page
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
