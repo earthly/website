@@ -51,7 +51,12 @@ layout: default
               <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
             {% endif %}
           </div>
-
+          <div class="group mt-4">
+            <header>
+              <h4 class="font-semibold text-md mb-2">New Table of contents</h4>
+            </header>
+            </div>
+          </div>
           {% if page.toc %}
             <div class="group mt-4">
               <header>
@@ -104,7 +109,7 @@ layout: default
           <div class="lg:hidden mb-4">
             {% if page.toc %}
               <div class="border border-gray-400 flex items-center justify-between my-2 px-4 py-2 rounded-md" onclick="toggleToc()">
-                <p>Table of contents</p>
+                <p>Table of Contents</p>
                 {% svg assets/svg/chevron.svg id="toc-dropdown-icon" width="16px" height="16px" class="transition-transform" %}
               </div>
               <div id="toc-dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-2 py-4 hidden">
