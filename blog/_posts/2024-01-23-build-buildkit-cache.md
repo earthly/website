@@ -154,6 +154,8 @@ Cache mounts are just one weapon in BuildKit's arsenal. With BuildKit, you get u
 
 All the source code for this tutorial is available in [this GitHub repository](https://github.com/rubaiat-hossain/buildkit-demo-app).
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -162,4 +164,3 @@ All the source code for this tutorial is available in [this GitHub repository](h
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
