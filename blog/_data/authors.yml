@@ -557,3 +557,7 @@ Rajkumar Venkatasamy:
     name    : "Rajkumar Venkatasamy"
     bio     : "Rajkumar has nearly sixteen years of experience in the software industry as a developer, data modeler, tester, project lead, product consultant, data architect, ETL specialist, and technical architect. Currently he is a principal architect at an MNC. He has hands-on experience in various technologies, tools, and libraries."
     avatar  : "/assets/images/authors/rajkumar-venkatasamy.jpg"
+Furqan Butt:
+    name    : "Furqan Butt"
+    bio     : "Furqan is a software developer with more than three years of experience in the computer software industry. He's completed the AWS Certified Solutions Architect and Certified Cloud Practitioner certifications, writes on Medium for publications including Towards Data Science, and is part of the AWS Community Builders Program for data and analytics. His core expertise is in data engineering, big data, cloud technologies, and backend development."
+    avatar  : "/assets/images/authors/furqan-butt.jpg"
