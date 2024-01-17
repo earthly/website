@@ -30,5 +30,15 @@
                 {% endfor %}
             </ul>
         </nav>
+        <div class="group mt-4">
+            <header>
+              <h4 class="font-semibold text-md mb-2">Learn More About Earthly</h4>
+            </header>
+            <div class="">
+              <p class="prose">
+                Earthly makes builds super simple. <a href="">Learn More</a>
+            </p>
+            </div>
+          </div> 
     </div>
 </div>
