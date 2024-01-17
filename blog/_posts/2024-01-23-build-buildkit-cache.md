@@ -11,7 +11,10 @@ internal-links:
  - how to speed up docker build
  - speeding docker build
  - how make docker build fast
+excerpt: |
+    This tutorial explains how to use BuildKit cache to speed up Docker builds. By leveraging BuildKit's caching feature, developers can significantly reduce build times and improve the efficiency of their development cycle.
 ---
+**This article discusses how to optimize Docker builds using BuildKit. Earthly enhances BuildKit, elevating your continuous integration process. [Check it out](https://cloud.earthly.dev/login).**
 
 When it comes to building Docker images, faster build times can significantly enhance a developer's workflow by enabling rapid testing, iteration, and deployment. Thankfully, [BuildKit](https://github.com/moby/buildkit) can help. It's a modern build toolkit that's integrated with Docker, and it can help you improve the speed and reliability of the image creation process.
 
