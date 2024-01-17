@@ -80,7 +80,7 @@ jobs:
       run: |
         set -x
 
-        branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
+        branch_name="automated-changes-$(date +'%Y-%m-%d-%H%M%S')"
         git push --force --set-upstream origin HEAD:$branch_name  
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         original_title=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq .title)
