@@ -8,7 +8,10 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.repo.owner.login == 'earthly' || github.event.pull_request.head.repo.owner.login == 'Earthly-Staging'
+    if: >
+      (github.event.pull_request.head.repo.owner.login == 'earthly' ||
+       github.event.pull_request.head.repo.owner.login == 'Earthly-Staging') &&
+      !contains(github.event.pull_request.title, '[AUTO-PR]')
     steps:
     - name: Check Required Secrets
       run: |
