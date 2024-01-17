@@ -25,7 +25,7 @@ The monorepo setup for this application consists of multiple components, includi
 
 The application consists of two backend services and three shared packages, and the project structure is as follows:
 
-~~~
+~~~{ caption=""}
 .
 ├── README.md
 ├── health_fitness_app
@@ -61,7 +61,7 @@ The first service, `bmi_service`, calculates the BMI of the user with weight and
 
 The code for `bmi_service` looks like this:
 
-~~~
+~~~{.python caption="bmi_service.py"}
 from health_fitness_app.packages.bmi.bmi_calculator import (
     calculate_bmi,
     get_bmi_category,
@@ -79,7 +79,7 @@ The second service, `calorie_intake_service`, calculates a user's daily calorie 
 
 Here's the code for `calorie_intake_service`:
 
-~~~
+~~~{.python caption="calorie_intake_service.py"}
 from health_fitness_app.packages.bmr.bmr_calculator import calculate_bmr
 from health_fitness_app.packages.calorie.calorie_calculator import (
     calculate_calorie_intake,
@@ -101,7 +101,7 @@ def cal_calories(weight, height, age, sex, activity_level):
 
 The codebase for `bmi_calculator` looks like this:
 
-~~~
+~~~{.python caption="bmi_calculator.py"}
 # package containing methods for BMI calculations
 
 
@@ -130,7 +130,7 @@ def get_bmi_category(bmi):
 
 The codebase for `bmr_calculator` looks like this:
 
-~~~
+~~~{.python caption="bmr_calculator.py"}
 # package containing methods for BMR calculations
 
 
@@ -151,7 +151,7 @@ def calculate_bmr(weight, height, age, sex):
 
 The following is the codebase for `calorie_calculator`:
 
-~~~
+~~~{.python caption="calorie_calculator.py"}
 # package containing methods for daily calorie intake calculations
 
 
@@ -187,7 +187,7 @@ For a more in-depth tutorial on using Pants for Python projects, check out [this
 
 To initialize Pants as a project, navigate to your project root directory and run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pants
 ~~~
 
@@ -195,7 +195,7 @@ Executing this command creates hidden folders that Pants uses and a `pants.toml`
 
 Paste the following into your project's `pants.toml` file:
 
-~~~
+~~~{.toml caption="pants.toml"}
 [GLOBAL]
 pants_version = "2.18.1"
 backend_packages.add = [
@@ -226,7 +226,7 @@ search_path = [
 
 Make sure you create a `.flake8` file in your project's root directory with the following code:
 
-~~~
+~~~{.flake8 caption=""}
 [flake8]
 extend-ignore:
   E203,  # whitespace before ':'
@@ -242,7 +242,7 @@ Pants uses `BUILD` files to store metadata for each application or module that's
 
 To initialize the `BUILD` files, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pants tailor ::
 ~~~
 
@@ -250,7 +250,7 @@ This initializes a `BUILD` file in each of the directories within the project, i
 
 The project structure after initialization looks like this:
 
-~~~
+~~~{ caption=""}
 ├── BUILD
 ├── README.md
 ├── health_fitness_app
@@ -308,7 +308,7 @@ You can refer to the [GitHub repo](https://github.com/furqanshahid85-python/pyth
 
 Before you move on to the next step, make sure you run the following command to see if there are any errors in the setup of your project:
 
-~~~
+~~~{.bash caption=">_"}
 pants tailor --check ::
 ~~~
 
@@ -318,13 +318,15 @@ If you don't get an output, your project setup is ready to go.
 
 Use the following command to run the unit tests defined for your project:
 
-~~~
+~~~{.bash caption=">_"}
 pants test ::
 ~~~
 
 Your output should look like this:
 
+<div class="wide">
 ![Pants project tests]({{site.images}}{{page.slug}}/gS7g6vm.png)
+</div>
 
 ### Fixing Linting and Formatting Issues
 
@@ -332,27 +334,33 @@ Pants supports many of the popular linting and formatting tools for Python, incl
 
 To activate any linter or formatter, all you need to do is add a backend configuration in your `pants.toml` file. For instance, to run the linter, execute the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pants lint ::
 ~~~
 
 This lists all the linting issues in your project:
 
+<div class="wide">
 ![List of all the linting issues in your project]({{site.images}}{{page.slug}}/6kjQB0b.png)
+</div>
 
 To fix any linting or formatting issues in your project, execute the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pants fmt ::
 ~~~
 
 Your output should look like this:
 
+<div class="wide">
 ![Command output]({{site.images}}{{page.slug}}/H2v9VXQ.png)
+</div>
 
 To fix the linting issues, run `pants lint ::` again:
 
+<div class="wide">
 ![Fixed linting issues]({{site.images}}{{page.slug}}/89UpMjl.png)
+</div>
 
 ### Creating a Pants Package and Running the Application
 
@@ -360,13 +368,13 @@ Even though Python is not a compiled language and does not require a build, you 
 
 To create a Pants build, run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 pants package health_fitness_app/main.py ::
 ~~~
 
 This creates a `pex_binary.pex` file under `dist/health_fitness_app`:
 
-~~~
+~~~{ caption=""}
 ├── dist
 │   ├── health_fitness_app
 │   │   └── pex_binary.pex
@@ -380,13 +388,13 @@ This creates a `pex_binary.pex` file under `dist/health_fitness_app`:
 
 Execute the following command to run your application:
 
-~~~
+~~~{.bash caption=">_"}
 pants run health_fitness_app/main.py
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{ caption="Output"}
 {'bmi_value': 24, 'bmi_category': 'Normal weight'}
 {'daily_calorie_intake': 1808}
 ~~~
@@ -401,7 +409,7 @@ On the other hand, Earthly supports a wide range of languages, including JavaScr
 
 Earthly uses an [`Earthfile`](https://docs.earthly.dev/docs/earthfile) to manage each service or package. The following is a list of the various components in the application:
 
-~~~
+~~~{ caption=""}
 .
 ├── Earthfile
 ├── health_fitness_app
@@ -437,7 +445,7 @@ An `Earthfile` has a Docker-like syntax, so if you're familiar with Docker, usin
 
 The `Earthfile` for your health and fitness app looks like this:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.7
 FROM python:3
 WORKDIR /code
@@ -475,53 +483,63 @@ This `Earthfile` contains four different sections, or [targets](https://docs.ear
 
 If you want to resolve your project dependencies, you can execute the following:
 
-~~~
+~~~{.bash caption=">_"}
 earthly +deps
 ~~~
 
 Your output would look like this:
 
+<div class="wide">
 ![Resolving dependencies]({{site.images}}{{page.slug}}/DsgWeWz.png)
+</div>
 
 ### Creating the Project Build
 
 You can create your project build via the following command:
 
-~~~
+~~~{.bash caption=">_"}
 earthly +build
 ~~~
 
 This command creates your project's build, and any artifacts created in the build can be used in other targets:
 
+<div class="wide">
 ![Creating the project build]({{site.images}}{{page.slug}}/uDCOo6D.png)
+</div>
 
 ### Executing Unit Tests
 
 To execute unit tests for your services and packages, you can run the following command:
 
-~~~
+~~~{.bash caption=">_"}
 earthly +unit-tests
 ~~~
 
 Your output should look like this:
 
+<div class="wide">
 ![Running unit-tests]({{site.images}}{{page.slug}}/6VxrevN.png)
+</div>
 
 ### Containerizing Your Project
 
 Finally, if you want to containerize your project, you can do so with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 earthly +docker
 ~~~
 
 Your output will look like this:
 
+<div class="wide">
 ![Containerizing your project]({{site.images}}{{page.slug}}/FLq62Mc.png)
+</div>
 
 If you navigate to Docker Desktop, you can see that Earthly successfully created a Docker image for the project:
 
+<div class="wide">
 ![Docker image]({{site.images}}{{page.slug}}/n42OIa1.png)
+</div>
 
 Earthly provides a simpler way to manage a Python monorepo when compared to Pants. Earthly's Dockerized approach, which utilizes an `Earthfile`, allows you to define the project dependencies and individual build or test steps to easily containerize the application.
 
@@ -537,7 +555,7 @@ If your projects deal with containerized microservices, [Earthly](https://earthl
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
+
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
