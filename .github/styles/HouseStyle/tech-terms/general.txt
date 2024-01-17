@@ -606,3 +606,4 @@ Ryzen
 imagetools
 multicontainer
 retrigger
+docformatter

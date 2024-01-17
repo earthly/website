@@ -15,7 +15,7 @@ That's why many have begun to opt for a monorepo setup, where a single repositor
 
 However, creating a monorepo can be complicated, specifically in Python. That's why, in this article, you'll learn more about monorepos in Python—including how to put one together using [Earthly](https://earthly.dev/), a build tool designed for managing monorepos.
 
-## How to Build a Monorepo with Python
+## How to Build a Monorepo With Python
 
 To help you better understand how to build a monorepo Python project, let's consider a real-world use case where you, the developer, are building a health and fitness application that lets its users calculate their body mass index (BMI) and their daily calorie intake.
 
@@ -25,7 +25,7 @@ The monorepo setup for this application consists of multiple components, includi
 
 The application consists of two backend services and three shared packages, and the project structure is as follows:
 
-```
+~~~
 .
 ├── README.md
 ├── health_fitness_app
@@ -53,7 +53,7 @@ The application consists of two backend services and three shared packages, and 
 │           ├── calorie_calculator.py
 │           └── test_calorie_calculator.py
 └── requirements.txt
-```
+~~~
 
 The two services and three packages are part of a single repo. The `packages` directory is a shared space for all custom-implemented packages that can be shared between the two services (or any number of services that are added to the application in the future).
 
@@ -61,7 +61,7 @@ The first service, `bmi_service`, calculates the BMI of the user with weight and
 
 The code for `bmi_service` looks like this:
 
-```py
+~~~
 from health_fitness_app.packages.bmi.bmi_calculator import (
     calculate_bmi,
     get_bmi_category,
@@ -73,13 +73,13 @@ def cal_bmi(weight, height):
     bmi = calculate_bmi(weight, height)
     bmi_category = get_bmi_category(bmi)
     return {"bmi_value": bmi, "bmi_category": bmi_category}
-```
+~~~
 
 The second service, `calorie_intake_service`, calculates a user's daily calorie intake requirements using the following input provided by the user: `weight`, `height`, `age`, `sex`, and `activity_level`. This service also uses two shared packages, `bmr` and `calorie`, to calculate the basal metabolic rate (BMR) value and calorie intake for the user.
 
 Here's the code for `calorie_intake_service`:
 
-```py
+~~~
 from health_fitness_app.packages.bmr.bmr_calculator import calculate_bmr
 from health_fitness_app.packages.calorie.calorie_calculator import (
     calculate_calorie_intake,
@@ -95,13 +95,13 @@ def cal_calories(weight, height, age, sex, activity_level):
     calories = calculate_calorie_intake(bmr, activity_level)
 
     return {"daily_calorie_intake": calories}
-```
+~~~
 
 `bmi`, `bmr`, and `calorie` are custom packages residing in the `packages` directory. They contain `bmi_calculator.py`, `bmr_calculator.py`, and `calorie_calculator.py`, respectively.
 
 The codebase for `bmi_calculator` looks like this:
 
-```py
+~~~
 # package containing methods for BMI calculations
 
 
@@ -126,11 +126,11 @@ def get_bmi_category(bmi):
         return "Overweight"
     else:
         return "Obese"
-```
+~~~
 
 The codebase for `bmr_calculator` looks like this:
 
-```py
+~~~
 # package containing methods for BMR calculations
 
 
@@ -147,11 +147,11 @@ def calculate_bmr(weight, height, age, sex):
         return int(bmr)
     except ValueError:
         return None
-```
+~~~
 
 The following is the codebase for `calorie_calculator`:
 
-```py
+~~~
 # package containing methods for daily calorie intake calculations
 
 
@@ -169,13 +169,13 @@ def calculate_calorie_intake(bmr, activity_level):
         return int(calories)
     except ValueError:
         return None
-```
+~~~
 
 At this point, you can already start to see some of the advantages that come with a monorepo setup, including reusable code, consistent tooling, easier integration, and increased collaboration opportunities.
 
-In the upcoming sections, you'll learn how to use a couple of build tools ([Pants](https://www.pantsbuild.org/) and [Earthly](https://earthly.dev/)) to help you with monorepo management. 
+In the upcoming sections, you'll learn how to use a couple of build tools ([Pants](https://www.pantsbuild.org/) and [Earthly](https://earthly.dev/)) to help you with monorepo management.
 
-## Monorepo Management with Pants
+## Monorepo Management With Pants
 
 A build tool helps you run tests, fix linting issues, containerize your application, and create builds that would otherwise be challenging and time-consuming. There are several popular build tools available, including Pants, [Bazel](https://bazel.build/), [Buck](https://buck.build/), and Earthly.
 
@@ -187,15 +187,15 @@ For a more in-depth tutorial on using Pants for Python projects, check out [this
 
 To initialize Pants as a project, navigate to your project root directory and run the following command:
 
-```
+~~~
 pants
-```
+~~~
 
 Executing this command creates hidden folders that Pants uses and a `pants.toml` file in which the configuration of the projects is defined.
 
 Paste the following into your project's `pants.toml` file:
 
-```
+~~~
 [GLOBAL]
 pants_version = "2.18.1"
 backend_packages.add = [
@@ -222,17 +222,17 @@ interpreter_constraints = [">=3.9.*"]
 search_path = [
     "/usr/bin/python3",
 ]
-```
+~~~
 
 Make sure you create a `.flake8` file in your project's root directory with the following code:
 
-```
+~~~
 [flake8]
 extend-ignore:
   E203,  # whitespace before ':'
   E231,  # Bad trailing comma
   E501,  # line too long
-```
+~~~
 
 This will prevent any configuration errors between the different linters you'll be using later on.
 
@@ -242,15 +242,15 @@ Pants uses `BUILD` files to store metadata for each application or module that's
 
 To initialize the `BUILD` files, run the following command:
 
-```
+~~~
 pants tailor ::
-```
+~~~
 
 This initializes a `BUILD` file in each of the directories within the project, including the root.
 
 The project structure after initialization looks like this:
 
-```
+~~~
 ├── BUILD
 ├── README.md
 ├── health_fitness_app
@@ -286,11 +286,11 @@ The project structure after initialization looks like this:
 ├── .flake8
 ├── pants.toml
 └── requirements.txt
-```
+~~~
 
 As you can see, seven `BUILD` files are created. Each `BUILD` file contains targets for both non-test and test files:
 
-```
+~~~
 # This target sets the metadata for all the Python non-test files in this directory.
 python_sources(
     name="lib",
@@ -300,7 +300,7 @@ python_sources(
 python_tests(
     name="tests",
 )
-```
+~~~
 
 You can refer to the [GitHub repo](https://github.com/furqanshahid85-python/python-monerepo) to see how each of the `BUILD` files should be set up for this project.
 
@@ -308,9 +308,9 @@ You can refer to the [GitHub repo](https://github.com/furqanshahid85-python/pyth
 
 Before you move on to the next step, make sure you run the following command to see if there are any errors in the setup of your project:
 
-```
+~~~
 pants tailor --check ::
-```
+~~~
 
 If you don't get an output, your project setup is ready to go.
 
@@ -318,13 +318,13 @@ If you don't get an output, your project setup is ready to go.
 
 Use the following command to run the unit tests defined for your project:
 
-```
+~~~
 pants test ::
-```
+~~~
 
 Your output should look like this:
 
-![Pants project tests](https://i.imgur.com/gS7g6vm.png)
+![Pants project tests]({{site.images}}{{page.slug}}/gS7g6vm.png)
 
 ### Fixing Linting and Formatting Issues
 
@@ -332,27 +332,27 @@ Pants supports many of the popular linting and formatting tools for Python, incl
 
 To activate any linter or formatter, all you need to do is add a backend configuration in your `pants.toml` file. For instance, to run the linter, execute the following command:
 
-```
+~~~
 pants lint ::
-```
+~~~
 
 This lists all the linting issues in your project:
 
-![List of all the linting issues in your project](https://i.imgur.com/6kjQB0b.png)
+![List of all the linting issues in your project]({{site.images}}{{page.slug}}/6kjQB0b.png)
 
 To fix any linting or formatting issues in your project, execute the following command:
 
-```
+~~~
 pants fmt ::
-```
+~~~
 
 Your output should look like this:
 
-![Command output](https://i.imgur.com/H2v9VXQ.png)
+![Command output]({{site.images}}{{page.slug}}/H2v9VXQ.png)
 
 To fix the linting issues, run `pants lint ::` again:
 
-![Fixed linting issues](https://i.imgur.com/89UpMjl.png)
+![Fixed linting issues]({{site.images}}{{page.slug}}/89UpMjl.png)
 
 ### Creating a Pants Package and Running the Application
 
@@ -360,13 +360,13 @@ Even though Python is not a compiled language and does not require a build, you 
 
 To create a Pants build, run the following command:
 
-```
+~~~
 pants package health_fitness_app/main.py ::
-```
+~~~
 
 This creates a `pex_binary.pex` file under `dist/health_fitness_app`:
 
-```
+~~~
 ├── dist
 │   ├── health_fitness_app
 │   │   └── pex_binary.pex
@@ -376,22 +376,22 @@ This creates a `pex_binary.pex` file under `dist/health_fitness_app`:
 │   ├── health_fitness_app.bmr.bmr_calculator-0.0.1.tar.gz
 │   ├── health_fitness_app.calorie.calorie_calculator-0.0.1-py3-none-any.whl
 │   └── health_fitness_app.calorie.calorie_calculator-0.0.1.tar.gz
-```
+~~~
 
 Execute the following command to run your application:
 
-```
+~~~
 pants run health_fitness_app/main.py
-```
+~~~
 
 Your output should look like this:
 
-```
+~~~
 {'bmi_value': 24, 'bmi_category': 'Normal weight'}
 {'daily_calorie_intake': 1808}
-```
+~~~
 
-## Monorepo Management with Earthly
+## Monorepo Management With Earthly
 
 Now that you know how to use Pants for monorepo management, it's time to see how Earthly differs. As you now know, Pants supports Python, making it a suitable choice for large Python-based monorepo projects. It offers features like fine-grained caching for accelerated builds and static analysis for dependency resolution. However, it lacks support for JavaScript and Rust and primarily focuses on build and test steps within workflows.
 
@@ -399,9 +399,9 @@ On the other hand, Earthly supports a wide range of languages, including JavaScr
 
 ### Setting Up Your Monorepo with Earthly
 
-Earthly uses an [`Earthfile`](https://docs.earthly.dev/docs/earthfile) to manage each service or package. The following is a list of the various components in the application: 
+Earthly uses an [`Earthfile`](https://docs.earthly.dev/docs/earthfile) to manage each service or package. The following is a list of the various components in the application:
 
-```
+~~~
 .
 ├── Earthfile
 ├── health_fitness_app
@@ -429,7 +429,7 @@ Earthly uses an [`Earthfile`](https://docs.earthly.dev/docs/earthfile) to manage
 │           ├── calorie_calculator.py
 │           └── test_calorie_calculator.py
 └── requirements.txt
-```
+~~~
 
 An `Earthfile` has a Docker-like syntax, so if you're familiar with Docker, using it is easy.
 
@@ -437,7 +437,7 @@ An `Earthfile` has a Docker-like syntax, so if you're familiar with Docker, usin
 
 The `Earthfile` for your health and fitness app looks like this:
 
-```
+~~~
 VERSION 0.7
 FROM python:3
 WORKDIR /code
@@ -469,59 +469,59 @@ docker:
     RUN pip install --no-index --find-links=wheels -r requirements.txt
     ENTRYPOINT ["python3", "health_fitness_app/main.py"]
     SAVE IMAGE python-earthly-monorepo:$tag
-```
+~~~
 
 This `Earthfile` contains four different sections, or [targets](https://docs.earthly.dev/basics/part-1-a-simple-earthfile#creating-your-first-targets): `deps`, `build`, `unit-tests`, and `docker`. Each of these targets can be executed independently via the command `earthly +<target>`.
 
 If you want to resolve your project dependencies, you can execute the following:
 
-```
+~~~
 earthly +deps
-```
+~~~
 
 Your output would look like this:
 
-![Resolving dependencies](https://i.imgur.com/DsgWeWz.png)
+![Resolving dependencies]({{site.images}}{{page.slug}}/DsgWeWz.png)
 
 ### Creating the Project Build
 
 You can create your project build via the following command:
 
-```
+~~~
 earthly +build
-```
+~~~
 
 This command creates your project's build, and any artifacts created in the build can be used in other targets:
 
-![Creating the project build](https://i.imgur.com/uDCOo6D.png)
+![Creating the project build]({{site.images}}{{page.slug}}/uDCOo6D.png)
 
 ### Executing Unit Tests
 
 To execute unit tests for your services and packages, you can run the following command:
 
-```
+~~~
 earthly +unit-tests
-```
+~~~
 
 Your output should look like this:
 
-![Running unit-tests](https://i.imgur.com/6VxrevN.png)
+![Running unit-tests]({{site.images}}{{page.slug}}/6VxrevN.png)
 
 ### Containerizing Your Project
 
 Finally, if you want to containerize your project, you can do so with the following command:
 
-```
+~~~
 earthly +docker
-```
+~~~
 
 Your output will look like this:
 
-![Containerizing your project](https://i.imgur.com/FLq62Mc.png)
+![Containerizing your project]({{site.images}}{{page.slug}}/FLq62Mc.png)
 
 If you navigate to Docker Desktop, you can see that Earthly successfully created a Docker image for the project:
 
-![Docker image](https://i.imgur.com/n42OIa1.png)
+![Docker image]({{site.images}}{{page.slug}}/n42OIa1.png)
 
 Earthly provides a simpler way to manage a Python monorepo when compared to Pants. Earthly's Dockerized approach, which utilizes an `Earthfile`, allows you to define the project dependencies and individual build or test steps to easily containerize the application.
 
@@ -531,14 +531,12 @@ In this article, you learned all about monorepos and why you'd want to use one. 
 
 If your projects deal with containerized microservices, [Earthly](https://earthly.dev/) is an ideal tool, as it offers extensive capabilities through its Docker-like syntax and container-based approach. This facilitates the effortless creation of distinct builds for each service within your application, providing flexibility, quick build creation, and caching functionalities.
 
-
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
 - [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
