@@ -8,7 +8,10 @@ on:
 jobs:
   create-pr:
     runs-on: ubuntu-latest
-    if: github.event.pull_request.head.repo.owner.login == 'earthly' || github.event.pull_request.head.repo.owner.login == 'Earthly-Staging'
+    if: >
+      (github.event.pull_request.head.repo.owner.login == 'earthly' ||
+       github.event.pull_request.head.repo.owner.login == 'Earthly-Staging') &&
+      !contains(github.event.pull_request.title, '[AUTO-PR]')
     steps:
     - name: Check Required Secrets
       run: |
@@ -80,25 +83,15 @@ jobs:
       if: steps.changes.outputs.has_changes == 'true'
       run: |
         set -x
-        ## The idea here it to make a PR onto the existing PR.
-        ## That should be something like `gh pr create --base Earthly-Staging/website:agbell/testpr1 --head earthly/website:automated-changes-12012024`
-        ## But the tool doesn't work that way, so we are doing something simpler. 
-        # See these for clues towards a real solution
-        # - https://github.com/cli/cli/issues/1985
-        # - https://github.com/cli/cli/issues/5465
 
-        branch_name="automated-changes-$(date +'%d%m%Y')"  # re-define branch name since we're in a new step
+        branch_name="automated-changes-$(date +'%Y-%m-%d-%H%M%S')" 
         git push --force --set-upstream origin HEAD:$branch_name  
         gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         original_title=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq .title)
         echo "Original title: '$original_title'"
-        modified_title="$original_title - CTA change"
+        modified_title="[AUTO-PR] $original_title - CTA change"
         echo "Modified title: '$modified_title'"
 
-        ## Nope, not working
-        ## gh pr create --base ${{ github.event.pull_request.head.ref }} --head $branch_name --title "$modified_title" --body "This PR includes changes for CTA."
-
-        # Just create a new pull request against the main branch of the origin repository
-        gh pr create -R ${{ github.repository }} -B main -H $branch_name --title "$modified_title" --body "This PR includes changes for CTA."
+        gh pr create -R Earthly-Staging/website --base ${{ github.event.pull_request.head.ref }} --title "$modified_title" --body "This PR includes changes for CTA." >> $GITHUB_STEP_SUMMARY
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}

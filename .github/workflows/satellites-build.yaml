@@ -12,6 +12,9 @@ jobs:
   build-website:
     name: Build Website
     runs-on: ubuntu-latest
+    if: >
+      github.event_name != 'pull_request' ||
+      !contains(github.event.pull_request.title, '[AUTO-PR]')
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
