@@ -557,3 +557,7 @@ Rajkumar Venkatasamy:
     name    : "Rajkumar Venkatasamy"
     bio     : "Rajkumar has nearly sixteen years of experience in the software industry as a developer, data modeler, tester, project lead, product consultant, data architect, ETL specialist, and technical architect. Currently he is a principal architect at an MNC. He has hands-on experience in various technologies, tools, and libraries."
     avatar  : "/assets/images/authors/rajkumar-venkatasamy.jpg"
+Eddie Chayes:
+    name    : "Eddie Chayes"
+    bio     : "Eddie is an early career software engineer with a few years of experience working with AI platforms; he’s now a founding engineer at Konfig, a startup that generates SDKs for API companies."
+    avatar  : "/assets/images/authors/eddie-chayes.jpg"
