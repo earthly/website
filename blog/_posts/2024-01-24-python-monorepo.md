@@ -531,6 +531,8 @@ In this article, you learned all about monorepos and why you'd want to use one. 
 
 If your projects deal with containerized microservices, [Earthly](https://earthly.dev/) is an ideal tool, as it offers extensive capabilities through its Docker-like syntax and container-based approach. This facilitates the effortless creation of distinct builds for each service within your application, providing flexibility, quick build creation, and caching functionalities.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -539,4 +541,3 @@ If your projects deal with containerized microservices, [Earthly](https://earthl
 - [ ] Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
