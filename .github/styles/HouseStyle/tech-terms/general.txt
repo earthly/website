@@ -608,3 +608,4 @@ multicontainer
 retrigger
 
 Konfig
+docformatter
