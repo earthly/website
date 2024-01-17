@@ -99,6 +99,6 @@ jobs:
         ## gh pr create --base ${{ github.event.pull_request.head.ref }} --head $branch_name --title "$modified_title" --body "This PR includes changes for CTA."
 
         # Just create a new pull request against the main branch of the origin repository
-        gh pr create -R ${{ github.repository }} -B main -H $branch_name --title "$modified_title" --body "This PR includes changes for CTA."
+        gh pr create -R Earthly-Staging/website --base ${{ github.event.pull_request.head.ref }} --title "$modified_title" --body "This PR includes changes for CTA."
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
