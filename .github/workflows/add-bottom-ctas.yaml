@@ -1,4 +1,4 @@
-name: Create Top CTAs PR
+name: Create Bottom CTA PR
 
 on:
   pull_request_target:
