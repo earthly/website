@@ -6,7 +6,11 @@ toc: true
 author: Furqan Butt
 
 internal-links:
- - just an example
+ - building a monorepo
+ - monorepo with python
+ - build a monorepo
+ - building a monorepo with python
+ - using python to build a monorepo
 ---
 
 Many software organizations opt to create and maintain repositories based on individual projects, applications, or teams. While this approach allows for full autonomy over each project, it often results in isolated projects that impede cross-team collaboration, particularly as the organization grows and adds more projects or services.
@@ -89,7 +93,7 @@ from health_fitness_app.packages.calorie.calorie_calculator import (
 def cal_calories(weight, height, age, sex, activity_level):
     """To get your bmr and daily calorie intake enter your: weight(lbs),
     height(in), age(years), sex(male/female), and
-    activity_level(sedentary/lightly active/moderately active/ very active)"""
+    activity_level(sedentary/lightly active/moderately active/very active)"""
 
     bmr = calculate_bmr(weight, height, age, sex)
     calories = calculate_calorie_intake(bmr, activity_level)
@@ -226,7 +230,7 @@ search_path = [
 
 Make sure you create a `.flake8` file in your project's root directory with the following code:
 
-~~~{.flake8 caption=""}
+~~~{.flake8 caption="flake8"}
 [flake8]
 extend-ignore:
   E203,  # whitespace before ':'
@@ -290,13 +294,15 @@ The project structure after initialization looks like this:
 
 As you can see, seven `BUILD` files are created. Each `BUILD` file contains targets for both non-test and test files:
 
-~~~
-# This target sets the metadata for all the Python non-test files in this directory.
+~~~{ caption="BUILD"}
+# This target sets the metadata for all the Python non-test files 
+# in this directory.
 python_sources(
     name="lib",
 )
 
-# This target sets the metadata for all the Python test files in this directory.
+# This target sets the metadata for all the Python test files 
+# in this directory.
 python_tests(
     name="tests",
 )
@@ -550,12 +556,3 @@ In this article, you learned all about monorepos and why you'd want to use one. 
 If your projects deal with containerized microservices, [Earthly](https://earthly.dev/) is an ideal tool, as it offers extensive capabilities through its Docker-like syntax and container-based approach. This facilitates the effortless creation of distinct builds for each service within your application, providing flexibility, quick build creation, and caching functionalities.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
