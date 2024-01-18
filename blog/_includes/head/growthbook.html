@@ -21,42 +21,26 @@
     }
   });
 
-  //Adding test for bolding the first paragraph of blog posts
-  document.addEventListener("DOMContentLoaded", function () {
-    // Wait for features to be available
-    gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
-      console.log("starting growthbook");
-      const pElement = document.querySelector('.prose.content-block > p:first-child');
-      const strongElement = pElement.querySelector('strong');
-      if (strongElement) {
-        console.log("starting Test");
-        const boldOn = gb.isOn("blog-top-cta-link-bold")
-      if (!boldOn) {
-          strongElement.outerHTML = strongElement.innerHTML;
-      }
-    }
-    });
-  });
-
   {% if page.layout == "single" and page.sidebar.nav == "makefile" %}
   document.addEventListener("DOMContentLoaded", function () {
-    console.log("starting experiment");
-    const treatment = Math.random() >= 0.5;
-
     // Get all elements with 'cta-treatment' and 'cta-control' classes
     const ctaTreatmentElements = document.querySelectorAll('.cta-treatment');
     const ctaControlElements = document.querySelectorAll('.cta-control');
 
-    if (treatment) {
+    gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
+      console.log("starting Test");
+      const treatment = gb.isOn("blog-makefile-more-sidebar")  
+      if (treatment) {
         console.log("treatment");
         // Show 'cta-treatment' elements and hide 'cta-control' elements
         ctaTreatmentElements.forEach(element => element.classList.remove('hidden'));
         ctaControlElements.forEach(element => element.classList.add('hidden'));
-    } else {
+      } else {
         console.log("control");
         ctaTreatmentElements.forEach(element => element.classList.add('hidden'));
         ctaControlElements.forEach(element => element.classList.remove('hidden'));
-    }
+      }
+    });
   });
   {% endif %}
  
