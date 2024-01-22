@@ -20,23 +20,4 @@
       });
     }
   });
-
-  //Adding test for bolding the first paragraph of blog posts
-  document.addEventListener("DOMContentLoaded", function () {
-    // Wait for features to be available
-    gb.loadFeatures({ autoRefresh: true, timeout: 2000 }).then(() => {
-      console.log("starting growthbook");
-      const pElement = document.querySelector('.prose.content-block > p:first-child');
-      const strongElement = pElement.querySelector('strong');
-      if (strongElement) {
-        console.log("starting Test");
-        const boldOn = gb.isOn("blog-top-cta-link-bold")
-      if (!boldOn) {
-          strongElement.outerHTML = strongElement.innerHTML;
-      }
-    }
-    });
-  });
-
- 
 </script>
