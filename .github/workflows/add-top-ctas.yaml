@@ -37,6 +37,7 @@ jobs:
         node-version: '14'
     - name: Find and set first Markdown file changed
       run: |
+        git fetch --depth=1 origin main
         MD_FILE=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' | head -n 1)
         echo "First markdown file changed: $MD_FILE"
         echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
