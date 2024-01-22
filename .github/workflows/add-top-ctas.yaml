@@ -35,6 +35,11 @@ jobs:
       uses: actions/setup-node@v2
       with:
         node-version: '14'
+    - name: Find and set first Markdown file changed
+      run: |
+        MD_FILE=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' | head -n 1)
+        echo "First markdown file changed: $MD_FILE"
+        echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
     - name: Set up GitHub CLI
       run: |
         curl -sSL https://github.com/cli/cli/releases/download/v2.0.0/gh_2.0.0_linux_amd64.tar.gz -o ghcli.tar.gz
@@ -61,8 +66,8 @@ jobs:
     - name: Run Code
       run: |
         set -x
-        poetry run python util/psupport/psupport/scripts/excerpt.py --dir ./blog/_posts
-        poetry run python util/psupport/psupport/scripts/topcta.py --dir ./blog/_posts
+        poetry run python util/psupport/psupport/scripts/excerpt.py --file $MD_FILE
+        poetry run python util/psupport/psupport/scripts/topcta.py --file $MD_FILE
         git restore ./blog/_posts/2029-01-01-checklist.md
 
         npm install -g markdownlint-cli@0.32.0
