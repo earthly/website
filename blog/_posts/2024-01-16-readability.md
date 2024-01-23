@@ -220,9 +220,7 @@ Ok, so what about the other side of features. Does something that move boilerpla
 
 Like here is some crazy list comprehensions...
 
-
 And here is strange things you can do with if expressions.
-
 
 But now here is also some crazy ifs
 
