@@ -196,6 +196,25 @@ other?
 
 You can combine a bunch of stuff into a format that seems readable to those familar but some will refuse or maybe just not be able to climb the path to understanding that code.
 
+Some people will just not make this jump, into prod code that combines a bunch of things.
+
+
+Then, past this path, you have complex code uses a bunch of things together.
+
+This can be for two reasons:
+Expressivness Win
+- The problem is complex, and the expressivness of the langauge is letting us susscintly explain the problem. So it takes a bit to get up to speed with what we are doing but once you do, you'll see how we are doing things falls out of the problem at hand.
+
+
+Cleverness Masterbation / Larping as PL Researcher
+- The problem at hand is normal and could be solved in 1000 lines of python, but with my cleverness and adding constraints (hey, lets solve the whole class of problems this one belongs to, and this solution is just a specific instance) to the problem I can solve it in a fun way using the langauge.
+
+Thoughts on Cleverness:
+
+So when people complain about the readablity of something and they aren't talking about action at a distance problems like come_from or monkey patching, too much global state then probably they are talking about verbosity or code that is too clever by half. The thing is, verbosity can be spotted without familiaryt, perhaps even better then with it. Because with time, you learn to ignore the boilerplate. But when the complaint is about overly clever code then everything is very murky. Maybe what you are looking at is an idea that is very well encapsulated in the expressiveness of the languauge. A solution with just ifs and elses would be so verbose as to be difficult to hold in your head, while using chunkier building blocks the idea is clear.  
+
+But perhaps the complex code is the opposite. Maybe its a simple problem, expressed in a complex way, to entertain, to keep things interesting. Maybe shakespear if he made a cookbook would write them as sonnets. And sonnet fans would love it, but for the rest of us, we'd just be confused. A dram of milk and a peck of salt, a grain of isinglass might sound great, but struggling to get the recipe make.
+
 ## Conclusion: I don't know
 Ok, so what about the other side of features. Does something that move boilerplate make readablity worse when abused? 
 
