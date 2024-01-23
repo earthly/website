@@ -18,15 +18,17 @@ f(x,y) -> Clear and straightforward - the hallmark of practical programming.
 f x y -> Acceptable in shell scripting, but a bit odd.
 (f x y) -> Impossibly enigmatic. Approach with caution!
 
-I assume this joke was written by Lisp programmers upset that they loose so many programmers just to unfamilarity with reading s-expressions. But there is some truth to this right. Readability does have a lot to do with familarity and if you are familar with syntax that looks a certain way, then anything else can look foriegn.
+I assume this joke was written by Lisp programmers upset that they lose so many programmers just to unfamilarity with reading s-expressions. But there is some truth to this right. Readability does have a lot to do with familarity and if you are familar with syntax that looks a certain way, then anything else can look foriegn.
 
 But can we talk about readability outside of familarity? I think we can. Let's define readability like this:
 
 Newcomers Readability: How quickly you can get up to speed reading a programming language. Related to how familar it is to what you know and also how many things it has.
 
-Experienced Readability: How easy it is for someone experienced in the language to understand a piece of code by glancing at it. 
+Experienced Readability: How easy it is for someone very experienced in the language to understand a piece of code by glancing at it. 
 
-This means that you can't dismiss `(f x y)` style as less readable just because you aren't familar with it. Familarty with syntax is super unpleasant at first, but builds quickly. 
+Let's call Newcomers Readability, and Experienced Readability just readablity.
+
+This means that you can't dismiss `(f x y)` style as less readable just because you aren't familar with it. Building familarty with syntax is super unpleasant at first, but it builds before you know it. 
 
 Ok, so what effects experienced readabilty. I think there is time to read a piece of code and understand what it does, and they related time to spot any problems.
 
@@ -184,5 +186,32 @@ Python stuff:
 
 https://chat.openai.com/c/4bb48ac2-3fc0-4e99-9710-c64220736baf
 
-
+## Warts
+Scala tuples
 Go slices?
+kotlin implict returns
+other?
+
+## The Hoang FActor
+
+You can combine a bunch of stuff into a format that seems readable to those familar but some will refuse or maybe just not be able to climb the path to understanding that code.
+
+## Conclusion: I don't know
+Ok, so what about the other side of features. Does something that move boilerplate make readablity worse when abused? 
+
+Like here is some crazy list comprehensions...
+
+
+And here is strange things you can do with if expressions.
+
+
+But now here is also some crazy ifs
+
+And some crazy while non-sense...
+
+
+So, yeah, new syntax can make things denser and people can write horrible code in it. Is that worse then people writing horible code in other simpler constructus? I don't know.. 
+
+Maybe more syntaxtic constructs means the very worse code can be worse indeed. One thing that I think is more revelant is when there are so many ways to do things that you can be experiecned in a langauge, but not in the style being used in something. It muddies the water that languages that support the most styles also seem to hav the most constructs. Scala here.
+
+The problem in that case, is you become experienced enough to read a style of C++ or Scala but then another style yoy are still a beginniner. Frameworks make this worse, operatator overloading, which can be very handy, makes this worse.  
