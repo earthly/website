@@ -121,8 +121,6 @@
         });
       }
 
-
-      
       //Adding clicktracking for blog post top CTA link, where it exists
       //Links unique to each page, so dynamically adding event listener
       document.addEventListener('DOMContentLoaded', function() {
@@ -139,43 +137,5 @@
             }
         }
     });
-
-    //Heartbeat for session tracking
-    function heartbeat() {
-        analytics.track('blog-heartbeat', {
-          category: 'heartbeat',
-          label: 'blog-heartbeat'
-        });
-    }
-
-    var heartbeatInterval = null;
-
-    function startHeartbeat() {
-      if (!heartbeatInterval) {
-        heartbeatInterval = setInterval(heartbeat, 5000);
-      }
-    }
-
-    function stopHeartbeat() {
-      clearInterval(heartbeatInterval);
-      heartbeatInterval = null;
-    }
-
-    function supportsPageVisibility() {
-      return typeof document.hidden !== "undefined" || typeof document.msHidden !== "undefined";
-    }
-
-    if (supportsPageVisibility()) {
-      startHeartbeat();
-
-      // Listen for visibility change events
-      document.addEventListener('visibilitychange', function() {
-        if (document.hidden) {
-          stopHeartbeat();
-        } else {
-          startHeartbeat();
-        }
-      });
-    }
     </script>
 </header>
