@@ -28,7 +28,7 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.7.0/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
+        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.0/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Build Site
         run: |-
             earthly --push +build-base-images
