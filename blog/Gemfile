@@ -1,7 +1,8 @@
 source "https://rubygems.org"
+ruby '2.7.8'
 gem "jekyll", "~> 4.1.1"
 
-gem 'sass-embedded', '1.63.6'
+# gem 'sass-embedded'
 
 group :jekyll_plugins do
   gem "jekyll-feed"

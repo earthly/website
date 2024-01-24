@@ -10,13 +10,13 @@ ARG FLAGS=""
 ## And used as a docker image. This is because it's expensive to build
 ## There is a GHA manual action that will rebuild this image
 base-image:
-  FROM ruby:2.7
+  FROM ruby:2.7.8
   ARG TARGETARCH
   WORKDIR /site
   RUN apt-get update
   RUN apt-get install gcc cmake imagemagick gawk moreutils dateutils -y
-  RUN gem update --system
-  RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+  # RUN gem update --system
+  # RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
   RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
   RUN pip3 install pandocfilters python-frontmatter
   RUN npm install -g markdownlint-cli@0.32.0
@@ -36,6 +36,7 @@ base-image:
   ## install jekyll
   COPY Gemfile .
   COPY Gemfile.lock .
+  RUN gem install bundler -v 2.4.22
   RUN bundle install --retry 5 --jobs 20
 
   SAVE IMAGE --push agbell/blog-base-image:latest

@@ -13,8 +13,8 @@ base-image:
   ARG TARGETARCH
   WORKDIR /site
   RUN apt-get update
-  RUN apt-get install gcc cmake imagemagick -y
-  RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
+  # RUN apt-get install gcc cmake imagemagick -y
+  # RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
 
   IF [ "$TARGETARCH" = "arm64" ]
     RUN echo "arm64 - vale cannot be used."
@@ -29,6 +29,7 @@ base-image:
   ## install jekyll
   COPY Gemfile .
   COPY Gemfile.lock .
+  RUN gem install bundler -v 2.4.22
   RUN bundle install --retry 5 --jobs 20
 
   SAVE IMAGE --push agbell/website-base-image:latest
