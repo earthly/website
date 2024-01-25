@@ -4,7 +4,8 @@ FROM alpine
 # Anything but "YES" uses +base-image
 ARG CACHE_IMAGE="YES"
 # Flags passed to Jekyll
-ARG FLAGS=""
+ARG --global FLAGS=""
+ARG --global DATE=""
 
 ## This base image is pushed as agbell/blog-base-image:latest
 ## And used as a docker image. This is because it's expensive to build
@@ -99,9 +100,7 @@ lint:
 ## Build (Run in CI)
 build:
   FROM +deps
-  RUN mkdir _site
-  CACHE _site
-  ARG DATE
+  CACHE --persist _site
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site/blog/
 

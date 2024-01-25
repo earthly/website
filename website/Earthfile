@@ -1,10 +1,9 @@
-VERSION --use-cache-command 0.8 
+VERSION 0.8 
 FROM alpine
 
 # Anything but "YES" uses +base-image
-ARG CACHE_IMAGE="YES"
-# Flags passed to Jekyll
-ARG FLAGS=""
+ARG --global CACHE_IMAGE="YES"
+ARG --global FLAGS=""
 
 ## This base image is pushed as agbell/blog-base-image:latest
 ## And used as a docker image. This is because it's expensive to build
@@ -60,22 +59,13 @@ update:
 # Build website (used in CI)
 build:
   FROM +base-or-cache-image
-  RUN mkdir _site
-  CACHE _site
+  CACHE --persist _site
   COPY --dir _data _sass _styles _layouts _includes _news assets signup .
   COPY *.md *.js *.html *.yml *.json *.rb _redirects Gemfile Gemfile.lock robots.txt .
   RUN --no-cache --secret YOUTUBE_API_KEY ruby youtubeVideos.rb "$YOUTUBE_API_KEY"
   RUN bundle update
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL ./build/site/
-
-test-issue:
-  FROM alpine
-  RUN mkdir /issue
-  CACHE /issue
-  RUN mkdir /issue
-  RUN echo "hello world" > /issue/hello.txt
-  SAVE ARTIFACT /issue AS LOCAL ./issue
 
 # Manually update the Youtube videos on the Videos page (happens automatically in CI in +build)
 update-videos:

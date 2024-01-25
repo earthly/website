@@ -62,9 +62,8 @@ publish:
     COPY ./website/+build/_site ./website
   ELSE
     COPY (./blog/+build/_site --FLAGS="--future" --DATE="$DATE")  ./blog
-    COPY (./website/+build/_site --FLAGS="--future") ./website
+    COPY (./website/+build/_site --FLAGS="--future" --DATE="$DATE") ./website
   END
-
   # ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build/blog
   RUN cp -rf ./blog/* ./build/blog
