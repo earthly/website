@@ -76,7 +76,11 @@ lint:
   FROM +deps
   WORKDIR /site
   COPY ../+export/base .
-  RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
+  IF [ "$TARGETARCH" = "arm64" ]
+    RUN echo "arm64 - vale cannot be used."
+  ELSE IF [ "$TARGETARCH" = "amd64" ]
+    RUN vale --output line --minAlertLevel error ./blog/_posts/*.md
+  END
   RUN markdownlint --version
   RUN markdownlint "./blog/_posts/*.md"
   IF grep '[“”‘’]' ./blog/_posts/*.md
