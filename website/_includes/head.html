@@ -28,12 +28,13 @@
   <script defer src="/assets/js/tabs.js"></script>
   <script defer src="/assets/js/star-cta.js"></script>
   <script defer src="/assets/js/button.js"></script>
-  <script src="/assets/js/analytics.js"></script>
 
   {% if jekyll.environment == "production" %}
   {%- include segment.html -%}
   {%- include growthbook.html -%}
   {%- include clearbit.html -%}
+  <script src="/assets/js/analytics.js"></script>
+  <script src="/assets/js/heartbeat.js"></script>
   {% endif %}
 
 </head>

@@ -33,13 +33,14 @@
 <script src="/blog/assets/js/button.js"></script>
 <script src="/blog/assets/js/clipboard.js"></script>
 <script src="/blog/assets/js/star-cta.js"></script>
-<script src="/blog/assets/js/analytics.js"></script>
+
 
   {% include_cached head/segment.html %}
   {% include_cached head/growthbook.html %}
   {% include_cached head/facebookpixel.html %}
   {% include_cached head/twitterpixel.html %}
-
+  <script src="/blog/assets/js/analytics.js"></script>
+  <script src="/blog/assets/js/heartbeat.js"></script>
 {% if jekyll.environment != "production" %}
 <!-- Tailwind magic locally -->
 <!-- run `tailwind` from functions before hitting prod -->
