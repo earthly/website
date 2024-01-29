@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "Readability"
 categories:
   - Articles
 toc: true
@@ -10,7 +10,7 @@ internal-links:
  - just an example
 ---
 
-Thesis: Article: Adding new features removes boilerplate and helps with readabilty for experienced users.
+Thesis: Article: Adding new features removes boilerplate and helps with readability for experienced users.
 
 There is a joke about readability that can't find, but I goes something like this:
 
@@ -18,56 +18,57 @@ f(x,y) -> Clear and straightforward - the hallmark of practical programming.
 f x y -> Acceptable in shell scripting, but a bit odd.
 (f x y) -> Impossibly enigmatic. Approach with caution!
 
-I assume this joke was written by Lisp programmers upset that they lose so many programmers just because s-expressions can look odd to the unintiated. But there is some truth to this. Readability does have a lot to do with familarity and if you are familar with syntax that looks a certain way, then anything else can look foriegn.
+I assume this joke was written by Lisp programmers upset that they lose so many programmers just because s-expressions can look odd to the uninitiated. But there is some truth to this. Readability does have a lot to do with familiarity and if you are familiar with syntax that looks a certain way, then anything else can look foriegn.
 
-But can we talk about readability outside of familarity? I think we can. Let's define readability like this:
+But can we talk about readability outside of familiarity? I think we can. Let's define readability like this:
 
-Newcomers Readability: How quickly you can get up to speed reading a programming language. Related to how familar it is to what you know and also how many things it has.
+Newcomers Readability: How quickly you can get up to speed reading a programming language. Related to how familiar it is to what you know and also how many things it has.
 
-Experienced Readability: How easy it is for someone very experienced in the language to understand a piece of code by glancing at it. 
+Experienced Readability: How easy it is for someone very experienced in the language to understand a piece of code by glancing at it.
 
-You can't dismiss `(f x y)` style as less readable just because you aren't familar with it. Building familarty with syntax is super unpleasant at first, but it builds quickly. 
+You can't dismiss `(f x y)` style as less readable just because you aren't familiar with it. Building familiarity with syntax is super unpleasant at first, but it builds quickly.
 
-Ok, so what affects experienced readabilty? It's the time to read a piece of code, understand what it does, and spot any problems.
+Ok, so what affects experienced readability? It's the time to read a piece of code, understand what it does, and spot any problems.
 
-I think these two have pretty similar experienced readabilty:
+I think these two have pretty similar experienced readability:
 
 def max1(x : int, y : int) = if (x > y) x else y
 
 def max2(x : int, y : int){
-  if (x > y) { 
+  if (x > y) {
     return x;
     } else {
     return y;
     }
 }
 
-These are written in two different styles and `max1` has a lot fewer characters then `max2` but if you are experienced with the style I think both are eqaully readable because you read it quickly. You can read an if statement as single block. The long version, from the perspective of the short version has a lot more boiler plate, brackets and returns, but you get used to reading those pretty quickly and you end up reading that the if statement of this size as a whole.
+These are written in two different styles and `max1` has a lot fewer characters then `max2` but if you are experienced with the style I think both are equally readable because you read it quickly. You can read an if statement as single block. The long version, from the perspective of the short version has a lot more boiler plate, brackets and returns, but you get used to reading those pretty quickly and you end up reading that the if statement of this size as a whole.
 
-Maybe boilerplate even helps readability? Some may say that semicolons on the end of each statement are part of the pattern that let them quickly skim code, seperating statements from control flow. The semi-colons might be strictly speaking redundant but it could help some in the way redudancy in spoken langauge aids understanding. 
+Maybe boilerplate even helps readability? Some may say that semicolons on the end of each statement are part of the pattern that let them quickly skim code, separating statements from control flow. The semi-colons might be strictly speaking redundant but it could help some in the way redundancy in spoken language aids understanding.
 
 ## Less Characters is Not More Readable
 
 Here is two version of some code:
 
-```
+~~~
 x = 6 // picked by random dice role
 stop-word = "salad" // see pre-training data 
 exponents = 10**6 // max solution space
-```
+~~~
 
-```
+~~~
 x = 6                   // picked by random dice role
 stop-word = "salad"     // see pre-training data 
 exponents = 10**6       // max solution space
-```
+~~~
 
 Version two has more characters, they are whitespace characters, but still strictly more characters. And those lined up comments make a list of declarations more readable for me. They show that we are in some sort of setup section.
 
 But sometimes consiseness really does aid readability.
 
 This :
-```
+
+~~~
 if( x > 7){
   y = 5
 } elseif (x > 5) {
@@ -75,10 +76,11 @@ if( x > 7){
 } else {
   y' = 3
 }
-```
-vs 
+~~~
 
-```
+vs
+
+~~~
 y = if( x > 7){
   5
 } elseif (x > 5) {
@@ -86,23 +88,24 @@ y = if( x > 7){
 } else {
   3
 }
-```
+~~~
 
 There are some redudancies in the first, and because of that its possible to have errors. The boilerplate parts of code without if expressions you do learn to skim over, but those parts can have bugs and hence the error in the first version. The slightly shorter expression based could has less room for error.
 
-# Cognitive Load
+## Cognitive Load
 
-Ok, so adding concepts to a language can make it harder to learn. It becomes less accessible to people not familar with those concepts. It has more cognitive load for new users. But hopefully, the new concepts introduces more concise and expressive ways to do things, and this means the cognitive load for an experienced user is decreased. They have in their long term memory how if expressions work, and can read an if expression faster than if statements. 
+Ok, so adding concepts to a language can make it harder to learn. It becomes less accessible to people not familiar with those concepts. It has more cognitive load for new users. But hopefully, the new concepts introduces more concise and expressive ways to do things, and this means the cognitive load for an experienced user is decreased. They have in their long term memory how if expressions work, and can read an if expression faster than if statements.
 
-An important question is when you add a feature to an language how much complexity does it bring? Is the language's core philosophy and design consistent with the addition of this feature? 
+An important question is when you add a feature to an language how much complexity does it bring? Is the language's core philosophy and design consistent with the addition of this feature?
 
-# Idea - Start here
+## Idea - Start Here
+
 Todo: up to here
-Does it make sense within the langauge or is the language just a hodge-podge of features. 
+Does it make sense within the language or is the language just a hodge-podge of features.
 
 Here is some Java. The Java I learned in university was Java 1.something and the concepts behind Java were simple. "In Java, everything is a object". I mean, you had classes and abstract classes and interfaces but really objects were what we were supposed to focus on. So you'd :
 
-```
+~~~
 @FunctionalInterface
 interface Greeter {
     void greet();
@@ -119,8 +122,7 @@ public class HelloWorld {
         greeter.greet(); // Outputs: Hello, world!
     }
 }
-```
-
+~~~
 
 public class LambdaHelloWorld {
     public static void main(String[] args) {
@@ -129,32 +131,33 @@ public class LambdaHelloWorld {
     }
 }
 
-```
+~~~
 
 
 ## Missteps - Perl 6
 
 # Improvements constexp vs tempates
 
-```
+~~~
+
 template<int radius>
 struct CircleArea {
     static const double value;
 };
 
 template<int radius>
-const double CircleArea<radius>::value = radius * radius * 3.14159;
-
+const double CircleArea<radius>::value = radius *radius* 3.14159;
 
 int main() {
     const double area = CircleArea<5>::value; // Circle area for radius 5
     // ... use 'area' as needed ...
 }
 
-```
+~~~
 
 to: 
-```
+~~~
+
 constexpr double square(double x) {
     return x * x;
 }
@@ -165,8 +168,9 @@ constexpr double circleArea(double radius) {
 }
 
 constexpr double radius = 5.0;
-constexpr double area = circleArea(radius); 
-```
+constexpr double area = circleArea(radius);
+
+~~~
 
 More Ideas:
 Generics in Go
@@ -230,6 +234,3 @@ So, yeah, new syntax can make things denser and people can write horrible code i
 Maybe more syntaxtic constructs means the very worse code can be worse indeed. One thing that I think is more revelant is when there are so many ways to do things that you can be experiecned in a langauge, but not in the style being used in something. It muddies the water that languages that support the most styles also seem to hav the most constructs. Scala here.
 
 The problem in that case, is you become experienced enough to read a style of C++ or Scala but then another style yoy are still a beginniner. Frameworks make this worse, operatator overloading, which can be very handy, makes this worse.  
-
-
-
