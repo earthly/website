@@ -6,8 +6,6 @@ toc: true
 author: Adam
 sidebar:
   nav: "thoughts"
-internal-links:
- - just an example
 ---
 *Following from [Rust, Ruby, and the Art of Implicit Returns](/single-expression-functions)*
 
@@ -93,13 +91,17 @@ constexpr double circleArea(double radius) {
 constexpr double area = circleArea(5.0); 
 ~~~
 
-But if syntactical sugar and more language features are a net win for experience uses why did Java succeed so much when it was quite simple? Why is Go succeeding? Why do I know many people with an aversion to C++ and Scala?
+But if syntactical sugar and more language features are a net win for experience users why did Java succeed so much when it was quite simple? Why is Go succeeding? Why was there skepticism when Swift came out? Why do I know many people with an aversion to C++ or Scala?
 
-There are probably lots of factors. One is a steep learning curve but another is the showboaters.
+There are lots of factors. One is a steep learning curve but another is the showboaters.
 
 ## Learning Curve
 
 Expressivity has a cost. These concepts add complexity and make learning the language harder.
+
+<div class="align-left">
+ {% picture grid {{site.pimages}}{{page.slug}}/9850.png --picture --img width="260px" --alt {{ Learning Curve }} %}
+</div>
 
 First I was taught 'In Java everything is an object' and then 'In Java, everything is an object, except primitive types' and then we have to add some footnote that a lambda is just syntax for a object with one method, that is made on the fly. And so on, we keep adding on little exceptions or wrinkles. Even when all the concepts fit together nicely, there is still just strictly more for a newcomer to learn.
 
@@ -234,9 +236,26 @@ And add to that the fact that most people using an expressive languages are enjo
 
 So use some constraint. Everybody goes through a maximalist phase where they end up using some feature more than they should and pushing a concept to its limits. But maybe do that in a side project and not the thing someone else is going to inherit.
 
+~~~{.csharp caption="RayTracer in Single Statement"}
+...
+from y in Enumerable.Range(0, screenHeight)
+  let recenterY = -(y - (screenHeight / 2.0)) / (2.0 * screenHeight)
+  select from x in Enumerable.Range(0, screenWidth)
+    let recenterX = (x - (screenWidth / 2.0)) / (2.0 * screenWidth)
+    let point = ...
+    let ray = // And so on for 60 lines
+...
+~~~
+
+<figcaption>This in [LINQ Ray Tracer](https://github.com/lukehoban/LINQ-raytracer) is cool, but nobody wants to inherit it.</figcaption>
+
 If you're in a group, and you've developed a house style to solving problem that might be great. But if a new person joins, who is bright and eager and you struggle to get them up to speed, that could be a good chance to think about why that is the case.
 
 ## Give It A Chance
+
+<div class="align-right">
+ {% picture grid {{site.pimages}}{{page.slug}}/0240.png --picture --img width="300px" --alt {{ Rub Goldberg Code }} %}
+</div>
 
 The other side of this is tricky as well. If you encounter code or even a whole programming language where the code seems too clever by half, I think you should hold your opinion for a bit.
 
