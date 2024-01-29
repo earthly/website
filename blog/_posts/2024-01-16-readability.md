@@ -39,7 +39,7 @@ def max2(x : int, y : int){
     return x;
     } else {
     return y;
-    {
+    }
 }
 
 These are written in two different styles and `max1` has a lot fewer characters then `max2` but if you are experienced with the style I think both are eqaully readable because you read it quickly. You can read an if statement as single block. The long version, from the perspective of the short version has a lot more boiler plate, brackets and returns, but you get used to reading those pretty quickly and you end up reading that the if statement of this size as a whole.
@@ -230,3 +230,6 @@ So, yeah, new syntax can make things denser and people can write horrible code i
 Maybe more syntaxtic constructs means the very worse code can be worse indeed. One thing that I think is more revelant is when there are so many ways to do things that you can be experiecned in a langauge, but not in the style being used in something. It muddies the water that languages that support the most styles also seem to hav the most constructs. Scala here.
 
 The problem in that case, is you become experienced enough to read a style of C++ or Scala but then another style yoy are still a beginniner. Frameworks make this worse, operatator overloading, which can be very handy, makes this worse.  
+
+
+
