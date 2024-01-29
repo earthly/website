@@ -57,7 +57,7 @@ And my greeter could be something like:
 Greeter greeter = () -> System.out.println("Hello, world!");
 ~~~
 
-This is so much nicer. Less boilerplate to write and fewer places for bugs to hide. I feel the same way about if expressions.
+This is so much nicer—less boilerplate to write and fewer places for bugs to hide. I feel the same way about if expressions.
 
 ~~~{.scala caption="If"}
 if( x > 7){
@@ -79,9 +79,9 @@ y = if( x > 7){
 }
 ~~~
 
-There are some redundancies in the first, and because of that, it's possible to have errors. You do learn to skim over the boilerplate parts of code, but those parts can have bugs, hence the error in the first version. The slightly shorter expression-based code has less room for error.
+There are some redundancies in the first, and because of that, it's possible to have errors. You learn to skim over the boilerplate parts of code, but those parts can have bugs, hence the error in the first version. The slightly shorter expression-based code has less room for error.
 
-I'm not a C++ programmer, but C++'s `constexpr` seems like another great example. Doing things at compile time previously involved templates, but now you can use `constexpr`:
+I'm not a C++ programmer, but C++'s `constexpr` is another great example. Doing things at compile time previously involved templates, but now you can use `constexpr`:
 
 ~~~{.cpp caption="constexpr in c++"}
 constexpr double circleArea(double radius) {
@@ -91,7 +91,7 @@ constexpr double circleArea(double radius) {
 constexpr double area = circleArea(5.0); 
 ~~~
 
-But if syntactical sugar and more language features are a net win for experienced users, why did Java succeed so much when it was quite simple? Why is Go succeeding? Why was there skepticism when Swift came out? Why do I know many people with an aversion to C++ or Scala?
+But if syntactical sugar and more language features are a net win for experienced users, why did Java succeed so much when it was pretty simple? Why is Go succeeding? Why was there skepticism when Swift came out? Why do I know many people with an aversion to C++ or Scala?
 
 There are lots of factors. One is a steep learning curve, but another is the showboaters.
 
@@ -105,13 +105,13 @@ Expressivity has a cost. These concepts add complexity and make learning the lan
 
 First, I was taught 'In Java, everything is an object' and then 'In Java, everything is an object, except primitive types', and then we had to add some footnote that lambda is just syntax for an object with one method that is made on the fly. And so on, we keep adding on little exceptions or wrinkles. Even when all the concepts fit together nicely, there is still just strictly more for a newcomer to learn.
 
-But it's worth it. Learning is a cost that you just pay once, and in return, you get a more expressive language. Beginner readability suffers, but really, the readability that matters is the readability of an experienced language user, and removing repetitive boilerplate improves that.
+But it's worth it. Learning is a cost you just pay once, and you get a more expressive language in return. Beginner readability suffers, but the readability that matters is the readability of an experienced language user, and removing repetitive boilerplate improves that.
 
 However, complexity can compound.
 
 ## Compounding Complexity
 
-I may be able to show you each language feature of a language in isolation and how it makes things better. But this isn't how they get used in practice. In practice, experts use all the language features together. And to an outsider, this can be quite confusing.
+I may be able to show you each language feature of a language in isolation and how it makes things better. But this is different from how they get used in practice. In practice, experts use all the language features together. And to an outsider, this can be pretty confusing.
 
 In an expressive enough language and with a group of strong developers, you can end up with something like the 'Focused' in 'A Deepness In The Sky':
 
@@ -121,9 +121,9 @@ In an expressive enough language and with a group of strong developers, you can 
 >
 > "No. At least not in the usual way."
 
-The book is excellent, and without saying too much, in it, groups of experts obsessed with a problem can spin off into an internal jargon no outsider can make sense of. In the worst case, they may come up with powerful answers to important questions, but the whole thing is inscrutable to the outsider.
+The book is excellent, and without saying too much, in it, groups of experts obsessed with a problem can spin off into an internal jargon no outsider can make sense of. In the worst case, they may come up with powerful answers to important questions, but the whole thing is incomprehensible to the outsider.
 
-And this is sort of what happens when a developer most familiar with Java 8 inherits a Scala program that does a relatively simple task and opens it up to find it written in some sort of functional effect system.
+And this is sort of what happens when a developer most familiar with Java 8 inherits a Scala program that does a relatively simple task and opens it up to find it written in some functional effect system.
 
 ~~~{.scala caption="Call a service in an Effect Stack in Scala"}
 def program: Effect[Unit] = for {
@@ -194,11 +194,11 @@ pub fn maximum_count(nums: Vec<i32>) -> i32 {
 }
 ~~~
 
-This Scala, C++, and Rust code may all cause a certain reaction in the unfamiliar. But the examples are actually quite different. One is showboating, and one is not.
+This Scala, C++, and Rust code may all cause a particular reaction in the unfamiliar. But the examples are quite different. One is showboating, and one is not.
 
 ## Crafting Clarity
 
-All maximum count versions use the constructs of the language to express the algorithm in a nice way. They require familiarity with the concepts at hand, but they are an expressiveness win.
+All maximum count versions use the constructs of the language to express the algorithm straightforwardly. They require familiarity with the concepts, but they are an expressiveness win.
 
 ~~~{.j caption="J"}
 MaximumCount =. 0&(<./.>.) (+//)
@@ -208,7 +208,7 @@ MaximumCount =. 0&(<./.>.) (+//)
 
 The Scala solution is actually where complaints can come. In almost all cases, if you are inheriting code like that – code that reads a host and a port for a weather service and then gets the forecast for your city - if you inherit code like that, and it's not in the context of research chaining effects - then someone is showboating. It's a simple problem expressed in a complex way. Maybe to show off or maybe for self-entertainment. Sometimes, people make things complex to keep themselves interested.
 
-It can be hard to impute reasons behind a solution without all the context.
+It can be hard to discearn the reasoning behind a solution without all the context.
 
 ## Pure Show Boating Is Rare
 
@@ -230,11 +230,11 @@ func main() {
 }
 ~~~
 
-I think pure showboating is rare and rarely totally intentional. If you know all the intricate features of a language, then, of course, when you create a solution for a problem, you might reach for those features. And it might not be apparent that this will make newcomers struggle; it s just the obvious way to structure the solution. It's just the curse of knowledge.
+I think pure showboating is rare and rarely totally intentional. If you know all the intricate features of a language, then, you might reach for those features when you create a solution. And it might not be apparent that this will make newcomers struggle; it s just the obvious way to structure the solution. It's just the curse of knowledge.
 
-And add to that the fact that most people using an expressive language are enjoying the power they wield. And if you learn about a new feature, library or, technique, or whatever, you might want to use it. And maybe sometimes you use it when it's not strictly needed. And you wake up one day, and no one outside your group understands your code.
+And add to that that most people using an expressive language enjoy the power they wield. And if you learn about a new feature, library, technique, or whatever, you might want to use it. And maybe sometimes you use it when it's not strictly needed. And you wake up one day, and no one outside your group understands your code.
 
-So use some constraint. Everybody goes through a maximalist phase where they end up using some feature more than they should and pushing a concept to its limits. But maybe do that in a side project and not the thing someone else is going to inherit.
+So use some constraint. Everybody goes through a maximalist phase where they use some feature more than they should, pushing a concept to its limits. But maybe do that in a side project and not the thing someone else will inherit.
 
 ~~~{.csharp caption="RayTracer in Single Statement"}
 ...
@@ -249,7 +249,7 @@ from y in Enumerable.Range(0, screenHeight)
 
 <figcaption>This in [LINQ Ray Tracer](https://github.com/lukehoban/LINQ-raytracer) is cool, but nobody wants to inherit it.</figcaption>
 
-If you're in a group, and you've developed a house style for solving problems, that might be great. But if a new person joins who is bright and eager, and you struggle to get them up to speed, that could be a good chance to think about why that is the case.
+If you're in a group, and you've developed a house style for solving problems, that might be great. But if a new person who is bright and eager joins and you struggle to get them up to speed, that could be a reasonable signal to reflect on why that is the case.
 
 ## Give It A Chance
 
@@ -259,10 +259,10 @@ If you're in a group, and you've developed a house style for solving problems, t
 
 The other side of this is tricky as well. If you encounter code or even a whole programming language where the code seems too clever by half, I think you should hold your opinion for a bit.
 
-Until you know the idioms in use and the way various features work and interact, it's hard to tell how to judge a given solution. Maybe that foreign-looking solution is actually very well encapsulated in the expressiveness of the language in a way that is just unfamiliar. Maybe a solution with just ifs and loops would be so verbose as to be difficult to hold in your head all at once.
+It's easier to tell how to judge a given solution once you know the idioms in use and the way various features work and interact. That foreign-looking solution may be very well encapsulated in the expressiveness of the language in a way that is just unfamiliar. Maybe, a solution with just ifs and loops would be so lengthy that it'd be difficult to hold in your head all at once.
 
-Maybe not, though. Some people are just looking for challenges and will create them where none exists. But... if you don't know the idioms and patterns of the language, it might be too early to make that call.
+Maybe not, though. Some people look for challenges and create them where none exists. But... if you don't know the idioms and patterns of the language, it might be too early to make that call.
 
-Programming language features can make code clearer. They can improve readability. Each feature is also a new tool people can use to write horrible code in. Is that worse than people writing horrible code with other simpler constructs? It might be, but it's hard to judge a solution if you don't know the language.
+Programming language features can make code clearer. They can improve readability. But each feature is also a new tool for writing horrible code. Is that worse than people writing horrible code with other simpler constructs? It might be, but it's hard to judge a solution if you don't know the language.
 
 If you're going to spend your career doing this, it makes sense to keep learning. To use a language that allows experts to cleanly solve problems. But yeah, just don't leave piles of esoteric code around for others to inherit.
