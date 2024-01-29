@@ -208,7 +208,7 @@ MaximumCount =. 0&(<./.>.) (+//)
 
 The Scala solution is actually where complaints can come. In almost all cases, if you are inheriting code like that – code that reads a host and a port for a weather service and then gets the forecast for your city - if you inherit code like that, and it's not in the context of research chaining effects - then someone is showboating. It's a simple problem expressed in a complex way. Maybe to show off or maybe for self-entertainment. Sometimes, people make things complex to keep themselves interested.
 
-It can be hard to discearn the reasoning behind a solution without all the context.
+It can be hard to discern the reasoning behind a solution without all the context.
 
 ## Pure Show Boating Is Rare
 
@@ -232,6 +232,7 @@ func main() {
 
 I think pure showboating is rare and rarely totally intentional. If you know all the intricate features of a language, then, you might reach for those features when you create a solution. And it might not be apparent that this will make newcomers struggle; it s just the obvious way to structure the solution. It's just the curse of knowledge.
 
+<!-- vale HouseStyle.Repetition = NO -->
 And add to that that most people using an expressive language enjoy the power they wield. And if you learn about a new feature, library, technique, or whatever, you might want to use it. And maybe sometimes you use it when it's not strictly needed. And you wake up one day, and no one outside your group understands your code.
 
 So use some constraint. Everybody goes through a maximalist phase where they use some feature more than they should, pushing a concept to its limits. But maybe do that in a side project and not the thing someone else will inherit.
