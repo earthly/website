@@ -6,31 +6,10 @@
       Developers and engineering teams love Earthly
     </p>
 
-<!--
     <div class="flex gap-6 lg:gap-10 mt-4">
       {% for item in site.data.customer-stories-highlights %}
         <p id="highlight-category-{{ forloop.index }}" class="highlight-category {% if forloop.index == 1 %}active{% endif %}" onclick="">{{ item.category }}</p>
       {% endfor %}
-    </div>
--->
-
-    <div id="highlights" class="w-full flex mt-4 overflow-hidden rounded-2xl">
-      <a id="highlight" href="/blog/konfig/" class="w-full basis-full cursor-pointer flex-1 shrink-0">
-        <div class="h-full bg-[#E8F7FE] flex flex flex-col-reverse lg:flex-row gap-6 p-6 rounded-2xl">
-          <div class="w-full lg:w-5/12 h-full bg-white flex flex-col justify-center px-8 py-10 rounded-2xl text-xl">
-            <p class="font-medium text-[#475569]">How Earthly Solved Our CI Problem</p>
-            <p class="mt-4 text-lg tracking-tight">
-              In this guest post, the Konfig team discusses how they solved
-              their complex Continuous Integration challenges with Earthly,
-              sharing insights valuable for any software development team.
-            </p>
-          </div>
-
-          <div class="h-full flex-1">
-            <img class="h-full object-cover rounded-2xl" src="https://earthly.dev/blog/assets/images/konfig/img3.png" alt="{{ item.title }}" />
-          </div>
-        </div>
-      </a>
     </div>
 
     <div id="highlights" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
