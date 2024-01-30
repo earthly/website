@@ -9,7 +9,7 @@ sidebar:
 ---
 *Following from [Rust, Ruby, and the Art of Implicit Returns](/single-expression-functions)*
 
-The Java I learned in university was Java 1.X, and the concepts were simple. "In Java, everything is an object," I was told. I mean, you had classes and abstract classes and interfaces, but really, objects were what we were supposed to focus on.
+The Java I learned in university was Java 1.X, and the concepts were simple. "In Java, everything is an object," I was told.
 
 So you'd do something like this a lot:
 
@@ -20,7 +20,7 @@ interface Greeter {
 
 public class HelloWorld {
     public static void main(String[] args) {
-        Greeter greeter = new Greeter() {
+        Greeter greeter = new Greeter() { // <- Anonymous Inner Class
             @Override
             public void greet() {
                 System.out.println("Hello, world!");
@@ -57,9 +57,9 @@ And my greeter could be something like:
 Greeter greeter = () -> System.out.println("Hello, world!");
 ~~~
 
-This is so much nicer—less boilerplate to write and fewer places for bugs to hide. I feel the same way about if expressions.
+This is so much nicer—less boilerplate to write and fewer places for bugs to hide. I feel the same way about [if expressions](/single-expression-functions).
 
-~~~{.scala caption="If"}
+~~~{.scala caption="If with assignment in branches"}
 if( x > 7){
   y = 5
 } elseif (x > 5) {
@@ -81,7 +81,7 @@ y = if( x > 7){
 
 There are some redundancies in the first, and because of that, it's possible to have errors. You learn to skim over the boilerplate parts of code, but those parts can have bugs, hence the error in the first version. The slightly shorter expression-based code has less room for error.
 
-I'm not a C++ programmer, but C++'s `constexpr` is another great example. Doing things at compile time previously involved templates, but now you can use `constexpr`:
+I'm not a C++ programmer, but C++'s `constexpr` is another great example of improved expressiveness and readability. Doing things at compile time previously involved templates, but now you can use `constexpr`:
 
 ~~~{.cpp caption="constexpr in c++"}
 constexpr double circleArea(double radius) {
@@ -91,7 +91,7 @@ constexpr double circleArea(double radius) {
 constexpr double area = circleArea(5.0); 
 ~~~
 
-But if syntactical sugar and more language features are a net win for experienced users, why did Java succeed so much when it was pretty simple? Why is Go succeeding? Why was there skepticism when Swift came out? Why do I know many people with an aversion to C++ or Scala?
+But if syntactical sugar and more language features are a net win for experienced users, why did Java succeed so much when it was pretty simple? Why is Go succeeding? Why was there skepticism when Swift came out? Why so much aversion to C++?
 
 There are lots of factors. One is a steep learning curve, but another is the showboaters.
 
@@ -111,9 +111,9 @@ However, complexity can compound.
 
 ## Compounding Complexity
 
-I may be able to show you each language feature of a language in isolation and how it makes things better. But this is different from how they get used in practice. In practice, experts use all the language features together. And to an outsider, this can be pretty confusing.
+I can show you each language feature of a language in isolation and how it makes things better. But real world code will likely be more complex. In practice, experts use many the language features together all at once. And to an outsider, this can be pretty confusing.
 
-In an expressive enough language and with a group of strong developers, you can end up with something like the 'Focused' in 'A Deepness In The Sky':
+In an expressive enough language and with a group of strong developers, you can end up with something like *The Focused* in [A Deepness In The Sky](https://en.wikipedia.org/wiki/A_Deepness_in_the_Sky):
 
 > Reynolt cut the audio. "They went on like this for many days. Most of it is a private jargon, the sort of things a close-bound Focused pair often invents."
 >
@@ -121,7 +121,7 @@ In an expressive enough language and with a group of strong developers, you can 
 >
 > "No. At least not in the usual way."
 
-The book is excellent, and without saying too much, in it, groups of experts obsessed with a problem can spin off into an internal jargon no outsider can make sense of. In the worst case, they may come up with powerful answers to important questions, but the whole thing is incomprehensible to the outsider.
+The book is excellent, and without saying too much, in it groups of experts obsessed with a problem can spin off into an internal jargon no outsider can make sense of. In the worst case, they may come up with powerful answers to important questions, but the whole thing is incomprehensible to the outsider.
 
 And this is sort of what happens when a developer most familiar with Java 8 inherits a Scala program that does a relatively simple task and opens it up to find it written in some functional effect system.
 
@@ -145,13 +145,13 @@ def program: Effect[Unit] = for {
 } yield ()
 ~~~
 
-( from Pawel Szulc excellent talk: <https://www.youtube.com/watch?v=y_QHSDOVJM8> )
+<figcaption>Call a Weather API( from [Pawel Szulc excellent talk](https://www.youtube.com/watch?v=y_QHSDOVJM8) ) </figcaption>
 
 This example is a little over the top, but the reaction is a real thing that happens when someone first encounters code from a language using complex syntax, advanced concepts, and concise code all at once.
 
-This isn't just an FP thing, either. Let's compare this go code:
+This isn't just an FP thing, either. Here's some Go code for [leet code 2529](https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/description/) :
 
-~~~{.go caption="Count Max"}
+~~~{.go caption="Code Report: Count Max"}
 func maximumCount(nums []int) int {
     var pos, neg int = 0, 0
     for _, e := range nums {
@@ -170,11 +170,11 @@ func maximumCount(nums []int) int {
 }
 ~~~
 
-<https://www.youtube.com/watch?v=U6I-Kwj-AvY>
+<figcaption>Max of Negatives and Positives in Go ( from [Code Report](https://www.youtube.com/watch?v=U6I-Kwj-AvY) ) </figcaption>
 
-With a C++ solution:
+Code Report's C++ solution requires knowledge of `count_if` and how C++ does lambdas:
 
-~~~{.cpp caption="Count Max C++"}
+~~~{.cpp caption="Code Report: Count Max C++"}
 int maximumCount(vector<int>& nums) {
     return std::max(
         std::ranges::count_if(nums, [](auto e) { return e > 0; }),
@@ -184,9 +184,9 @@ int maximumCount(vector<int>& nums) {
 
 ~~~
 
-Or a Rust solution
+And the Rust solution requires knowledge of iterators, filters, and more.
 
-~~~{.cpp caption="Count Max Rust"}
+~~~{.cpp caption="Code Report: Count Max Rust"}
 pub fn maximum_count(nums: Vec<i32>) -> i32 {
     let pos = nums.clone().into_iter().filter(|e| *e > 0).count() as i32;
     let neg = nums.into_iter().filter(|e| *e < 0).count() as i32;
@@ -194,7 +194,7 @@ pub fn maximum_count(nums: Vec<i32>) -> i32 {
 }
 ~~~
 
-This Scala, C++, and Rust code may all cause a particular reaction in the unfamiliar. But the examples are quite different. One is showboating, and one is not.
+This Scala, C++, and Rust code may all cause a particular reaction in the unfamiliar: 'why all the concepts used, when the solution could be so simple'. But the examples are quite different. The Scala one is showboating, and others are not.
 
 ## Crafting Clarity
 
@@ -206,13 +206,13 @@ MaximumCount =. 0&(<./.>.) (+//)
 
 <figcaption>This J solution uses dyadic operators yet is clear and direct to those who know J (or so I've been told)</figcaption>
 
-The Scala solution is actually where complaints can come. In almost all cases, if you are inheriting code like that – code that reads a host and a port for a weather service and then gets the forecast for your city - if you inherit code like that, and it's not in the context of research chaining effects - then someone is showboating. It's a simple problem expressed in a complex way. Maybe to show off or maybe for self-entertainment. Sometimes, people make things complex to keep themselves interested.
+The Scala solution is actually where legit complaints can come. In most cases, if you are inheriting code like that – code that reads a host and a port for a weather service and then gets the forecast for your city - if you inherit code like that, and it's not in the context of research on chaining effects - then someone is showboating. It's a simple problem expressed in a complex way. Maybe to show off or maybe for self-entertainment. Sometimes, people make things complex to keep themselves interested.
 
 It can be hard to discern the reasoning behind a solution without all the context.
 
 ## Pure Show Boating Is Rare
 
-~~~{.go caption="Showboating goroutines"}
+~~~{.go caption="'Look I just learned goroutines' code"}
 func main() {
     numbers := []int{1, 2, 3}
 
@@ -230,7 +230,7 @@ func main() {
 }
 ~~~
 
-I think pure showboating is rare and rarely totally intentional. If you know all the intricate features of a language, then, you might reach for those features when you create a solution. And it might not be apparent that this will make newcomers struggle; it s just the obvious way to structure the solution. It's just the curse of knowledge.
+I think pure showboating is rare and rarely totally intentional. If you know all the intricate features of a language, then, you might reach for those features when you create a solution. And it might not be apparent that this will make newcomers struggle; it's just the obvious way to structure the solution. It's the curse of knowledge.
 
 <!-- vale HouseStyle.Repetition = NO -->
 And add to that that most people using an expressive language enjoy the power they wield. And if you learn about a new feature, library, technique, or whatever, you might want to use it. And maybe sometimes you use it when it's not strictly needed. And you wake up one day, and no one outside your group understands your code.
@@ -260,7 +260,7 @@ If you're in a group, and you've developed a house style for solving problems, t
 
 The other side of this is tricky as well. If you encounter code or even a whole programming language where the code seems too clever by half, I think you should hold your opinion for a bit.
 
-It's easier to tell how to judge a given solution once you know the idioms in use and the way various features work and interact. That foreign-looking solution may be very well encapsulated in the expressiveness of the language in a way that is just unfamiliar. Maybe, a solution with just ifs and loops would be so lengthy that it'd be difficult to hold in your head all at once.
+It's easier to judge a given solution once you know the idioms in use and the way various features work and interact. That foreign-looking solution may be very well encapsulated in the expressiveness of the language in a way that is just unfamiliar to you right now. Maybe, a solution with just ifs and loops would be so lengthy that it'd be difficult to hold in your head all at once.
 
 Maybe not, though. Some people look for challenges and create them where none exists. But... if you don't know the idioms and patterns of the language, it might be too early to make that call.
 
