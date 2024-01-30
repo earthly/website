@@ -1,47 +1,9 @@
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/chroot
+- name: Konfig
+  title: How Earthly Solved Our CI Problem
+  image: assets/img/case-studies/konfig-small.png
+  link: /blog/konfig/
 
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/make-tutorial
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/make-tutorial
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/chroot
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/make-tutorial
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/chroot
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/chroot
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/make-tutorial
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/make-tutorial
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/chroot
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/opensource-unsplash.jpeg
-  link: /blog/make-tutorial
-
-- title: Lorem ipsum dolor sit amet
-  image: assets/img/twitter-card-large.png
-  link: /blog/chroot
+- name: NOCD
+  title: How NOCD Reduced Build Times by 9x with Earthly
+  image: assets/img/case-studies/nocd-small.png
+  link: /blog/case-study-nocd/

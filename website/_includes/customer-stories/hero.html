@@ -6,13 +6,11 @@
       Developers and engineering teams love Earthly
     </p>
 
-<!--
     <div class="flex gap-6 lg:gap-10 mt-4">
       {% for item in site.data.customer-stories-highlights %}
         <p id="highlight-category-{{ forloop.index }}" class="highlight-category {% if forloop.index == 1 %}active{% endif %}" onclick="">{{ item.category }}</p>
       {% endfor %}
     </div>
--->
 
     <div id="highlights" class="w-full flex mt-4 overflow-hidden rounded-2xl scroll-smooth">
       {% for item in site.data.customer-stories-highlights %}

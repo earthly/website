@@ -1,14 +1,14 @@
-- category: NOCD
-  title: NOCD
-  description: Learn how NOCD, a leading telehealth provider, reduced their CI build times by 9x using Earthly and Earthly Cloud.
-  image: assets/img/case-studies/hero-nocd.jpg
-  link: /blog/case-study-nocd/
+- category: Konfig
+  title: How Earthly Solved Our CI Problem
+  description: In this guest post, the Konfig team discusses how they solved their complex Continuous Integration challenges with Earthly, sharing insights valuable for any software development team.
+  image: assets/img/case-studies/konfig.png
+  link: /blog/konfig/
 
-# - category: Ipsum
-#   title: Lorem ipsum dolor sit amet
-#   description: Lorem ipsum dolor sit amet consectetur. Habitant turpis viverra vestibulum pellentesque tincidunt. Gravida aliquam amet nisl sit augue augue massa a. Arcu in lectus integer semper nunc porttitor. Vel est mattis a vitae.
-#   image: assets/img/twitter-card-large.png
-#   link: /blog/make-tutorial
+- category: NOCD
+  title: How NOCD Reduced Build Times by 9x with Earthly
+  description: Learn how NOCD, a leading telehealth provider, reduced their CI build times by 9x using Earthly and Earthly Cloud.
+  image: assets/img/case-studies/nocd.png
+  link: /blog/case-study-nocd/
 
 # - category: Dolor
 #   title: Lorem ipsum dolor sit amet
