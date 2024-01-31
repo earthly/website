@@ -46,10 +46,10 @@ clean:
 ## Satellite Build
 publish:
   FROM node:18-alpine3.15
-
-  BUILD --pass-args ./blog/+lint
-
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
+
+  # BUILD --pass-args ./blog/+lint
+
 
   # Anything but "PROD" deploys to staging site
   ARG DESTINATION="STAGING"
@@ -68,21 +68,21 @@ publish:
     COPY (./website/+build/_site --pass-args --FLAGS="--future" --DATE="$DATE") ./website
   END
   # ## Content needs to be combined into /build for netlify to pick up
-  RUN mkdir -p ./build/blog
-  RUN cp -rf ./blog/* ./build/blog
-  RUN cp -rf ./website/* ./build
-  COPY ./netlify.toml ./build/netlify.toml
+  # RUN mkdir -p ./build/blog
+  # RUN cp -rf ./blog/* ./build/blog
+  # RUN cp -rf ./website/* ./build
+  # COPY ./netlify.toml ./build/netlify.toml
 
-  IF [ "$DESTINATION" = "PROD" ]
-    RUN --no-cache echo "PROD_DEPLOY"
-    RUN --no-cache \
-        --secret NETLIFY_SITE_ID \
-        --secret NETLIFY_AUTH_TOKEN \
-        cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
-  ELSE
-    RUN --no-cache echo "Preview Throw Away Deploy"
-    RUN --no-cache \
-        --secret NETLIFY_STAGING_SITE_ID \
-        --secret NETLIFY_STAGING_AUTH_TOKEN \
-        cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
-  END
+  # IF [ "$DESTINATION" = "PROD" ]
+  #   RUN --no-cache echo "PROD_DEPLOY"
+  #   RUN --no-cache \
+  #       --secret NETLIFY_SITE_ID \
+  #       --secret NETLIFY_AUTH_TOKEN \
+  #       cd build && netlify deploy --site "$NETLIFY_SITE_ID" --auth "$NETLIFY_AUTH_TOKEN" --dir=. --prod
+  # ELSE
+  #   RUN --no-cache echo "Preview Throw Away Deploy"
+  #   RUN --no-cache \
+  #       --secret NETLIFY_STAGING_SITE_ID \
+  #       --secret NETLIFY_STAGING_AUTH_TOKEN \
+  #       cd build && netlify deploy --site "$NETLIFY_STAGING_SITE_ID" --auth "$NETLIFY_STAGING_AUTH_TOKEN" --dir=.
+  # END
