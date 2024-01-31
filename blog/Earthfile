@@ -8,34 +8,53 @@ ARG --global CACHE_IMAGE="YES"
 ## And used as a docker image. This is because it's expensive to build
 ## There is a GHA manual action that will rebuild this image
 base-image:
-  FROM ruby:2.7.8
+  FROM ruby:2.7.8-slim
   ARG TARGETARCH
   WORKDIR /site
-  RUN apt-get update
-  RUN apt-get install gcc cmake imagemagick gawk moreutils dateutils -y
-  # RUN gem update --system
-  # RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
-  RUN apt-get install python3-matplotlib libvips-dev python3-pip npm pandoc -y
-  RUN pip3 install pandocfilters python-frontmatter
-  RUN npm install -g markdownlint-cli@0.32.0
-  RUN npm install -g tailwindcss
-  RUN apt-get install ripgrep bc lsof -y
+
+  RUN apt-get update && apt-get install -y \
+    gcc \
+    cmake \
+    imagemagick \
+    gawk \
+    moreutils \
+    dateutils \
+    python3-matplotlib \
+    libvips-dev \
+    python3-pip \
+    npm \
+    pandoc \
+    ripgrep \
+    bc \
+    lsof \
+    && rm -rf /var/lib/apt/lists/*
+
+  RUN pip3 install pandocfilters python-frontmatter \
+    && rm -rf /root/.cache/pip \
+    && npm install -g markdownlint-cli@0.32.0 \
+    && npm install -g tailwindcss \
+    && npm cache clean --force
 
   IF [ "$TARGETARCH" = "arm64" ]
     RUN echo "arm64 - vale cannot be used."
   ELSE IF [ "$TARGETARCH" = "amd64" ]
-    RUN curl -sfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
-    RUN tar -xvf vale.tar.gz
-    RUN mv vale /usr/bin/vale
+    RUN curl -sfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz && \
+      tar -xvf vale.tar.gz && \
+      mv vale /usr/bin/vale && \
+      rm vale.tar.gz; \
   ELSE
     RUN echo "Unsupported target architecture $TARGETARCH"; false
   END
 
   ## install jekyll
-  COPY Gemfile .
-  COPY Gemfile.lock .
-  RUN gem install bundler -v 2.4.22
-  RUN bundle install --retry 5 --jobs 20
+  COPY Gemfile Gemfile.lock ./
+  RUN gem install bundler -v 2.4.22 && \
+    bundle config set --local no-cache 'true' && \
+    bundle config set --local no-document 'true' && \
+    bundle install --retry 5 --jobs 20 && \
+    rm -rf /usr/local/bundle/cache/*.gem && \
+    find /usr/local/bundle/gems/ -name "*.c" -delete && \
+    find /usr/local/bundle/gems/ -name "*.o" -delete
 
   SAVE IMAGE --push agbell/blog-base-image:latest
 

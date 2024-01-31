@@ -7,28 +7,30 @@ ARG --global CACHE_IMAGE="YES"
 ## This base image is pushed as agbell/blog-base-image:latest
 ## And used as a docker image. This is because it's expensive to build
 base-image:
-  FROM ruby:2.7
+  FROM ruby:2.7.8-slim
   ARG TARGETARCH
   WORKDIR /site
-  RUN apt-get update
-  # RUN apt-get install gcc cmake imagemagick -y
-  # RUN gem install bundler -v "~>1.0" && gem install bundler jekyll
 
   IF [ "$TARGETARCH" = "arm64" ]
     RUN echo "arm64 - vale cannot be used."
   ELSE IF [ "$TARGETARCH" = "amd64" ]
-    RUN curl -sfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz
-    RUN tar -xvf vale.tar.gz
-    RUN mv vale /usr/bin/vale
+    RUN curl -sfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz && \
+      tar -xvf vale.tar.gz && \
+      mv vale /usr/bin/vale && \
+      rm vale.tar.gz; \
   ELSE
     RUN echo "Unsupported target architecture $TARGETARCH"; false
   END
 
   ## install jekyll
-  COPY Gemfile .
-  COPY Gemfile.lock .
-  RUN gem install bundler -v 2.4.22
-  RUN bundle install --retry 5 --jobs 20
+  COPY Gemfile Gemfile.lock ./
+  RUN gem install bundler -v 2.4.22 && \
+    bundle config set --local no-cache 'true' && \
+    bundle config set --local no-document 'true' && \
+    bundle install --retry 5 --jobs 20 && \
+    rm -rf /usr/local/bundle/cache/*.gem && \
+    find /usr/local/bundle/gems/ -name "*.c" -delete && \
+    find /usr/local/bundle/gems/ -name "*.o" -delete
 
   SAVE IMAGE --push agbell/website-base-image:latest
 
