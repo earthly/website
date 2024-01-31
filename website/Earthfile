@@ -14,6 +14,8 @@ base-image:
   RUN apt-get update && apt-get install -y \
     curl \
     build-essential \
+    libssl-dev \
+    ruby-dev \
     && rm -rf /var/lib/apt/lists/*
 
   IF [ "$TARGETARCH" = "arm64" ]
