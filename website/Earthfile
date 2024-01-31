@@ -11,6 +11,10 @@ base-image:
   ARG TARGETARCH
   WORKDIR /site
 
+  RUN apt-get update && apt-get install -y \
+    curl \
+    && rm -rf /var/lib/apt/lists/*
+
   IF [ "$TARGETARCH" = "arm64" ]
     RUN echo "arm64 - vale cannot be used."
   ELSE IF [ "$TARGETARCH" = "amd64" ]
