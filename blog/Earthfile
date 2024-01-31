@@ -42,7 +42,7 @@ base-image:
     RUN curl -sfL https://github.com/errata-ai/vale/releases/download/v2.17.0/vale_2.17.0_Linux_64-bit.tar.gz -o vale.tar.gz && \
       tar -xvf vale.tar.gz && \
       mv vale /usr/bin/vale && \
-      rm vale.tar.gz; \
+      rm vale.tar.gz
   ELSE
     RUN echo "Unsupported target architecture $TARGETARCH"; false
   END
