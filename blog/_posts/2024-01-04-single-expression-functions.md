@@ -4,7 +4,8 @@ categories:
   - Articles
 toc: true
 author: Adam
-
+sidebar:
+  nav: "thoughts"
 internal-links:
  - expressions
  - if-expressions

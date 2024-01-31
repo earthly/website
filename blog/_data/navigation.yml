@@ -119,6 +119,10 @@ thoughts:
         url: /programming-language-improvements/
       - title: "The Future is Rusty"
         url: /future-is-rusty/
+      - title: "The Art of Implicit Returns"
+        url: /single-expression-functions/
+      - title: "Readability"
+        url: /readability/
 activity-tracker:
   - title: "Activity Tracker Series"
     children:

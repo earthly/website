@@ -5,3 +5,6 @@ enums
 trybuild
 Serde
 tt
+constexpr
+const
+println
