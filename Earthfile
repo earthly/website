@@ -1,4 +1,4 @@
-VERSION 0.7 
+VERSION 0.8 
 FROM alpine
 
 # Anything but "YES" uses pre built images 
