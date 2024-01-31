@@ -57,12 +57,12 @@ And my greeter could be something like:
 Greeter greeter = () -> System.out.println("Hello, world!");
 ~~~
 
-This is so much nicer—less boilerplate to write and fewer places for bugs to hide. I feel the same way about [if expressions](/single-expression-functions).
+This is so much nicer—less boilerplate to write and fewer places for bugs to hide. I feel the same way about [if expressions](/blog/single-expression-functions).
 
 ~~~{.scala caption="If with assignment in branches"}
-if( x > 7){
+if(x > 7) {
   y = 5
-} elseif (x > 5) {
+} else if(x > 5) {
   y = 4
 } else {
   y' = 3
@@ -70,9 +70,9 @@ if( x > 7){
 ~~~
 
 ~~~{.scala caption="If expression"}
-y = if( x > 7){
+y = if(x > 7) {
   5
-} elseif (x > 5) {
+} else if (x > 5) {
   4 
 } else {
   3
@@ -81,7 +81,7 @@ y = if( x > 7){
 
 There are some redundancies in the first, and because of that, it's possible to have errors. You learn to skim over the boilerplate parts of code, but those parts can have bugs, hence the error in the first version. The slightly shorter expression-based code has less room for error.
 
-I'm not a C++ programmer, but C++'s `constexpr` is another great example of improved expressiveness and readability. Doing things at compile time previously involved templates, but now you can use `constexpr`:
+I'm not a C++ programmer, but C++'s `constexpr` is another great example of improved expressiveness and readability. Doing things at compile time previously involved macros or templates, but now you can use `constexpr`:
 
 ~~~{.cpp caption="constexpr in c++"}
 constexpr double circleArea(double radius) {
@@ -149,7 +149,7 @@ def program: Effect[Unit] = for {
 
 This example is a little over the top, but the reaction is a real thing that happens when someone first encounters code from a language using complex syntax, advanced concepts, and concise code all at once.
 
-This isn't just an FP thing, either. Here's some Go code for [leet code 2529](https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/description/) :
+This isn't just an Functional Programming thing, either. Here's some simple to understand Go code for [leet code 2529](https://leetcode.com/problems/maximum-count-of-positive-integer-and-negative-integer/description/) :
 
 ~~~{.go caption="Code Report: Count Max"}
 func maximumCount(nums []int) int {
@@ -194,7 +194,7 @@ pub fn maximum_count(nums: Vec<i32>) -> i32 {
 }
 ~~~
 
-This Scala, C++, and Rust code may all cause a particular reaction in the unfamiliar: 'why all the concepts used, when the solution could be so simple'. But the examples are quite different. The Scala one is showboating, and others are not.
+This Scala, C++, and Rust code may all cause a particular reaction in the unfamiliar: 'why all the concepts used, when the solution could be so simple'. But the examples are quite different. The Scala one is showboating, and others are not[^1].
 
 ## Crafting Clarity
 
@@ -267,3 +267,5 @@ Maybe not, though. Some people look for challenges and create them where none ex
 Programming language features can make code clearer. They can improve readability. But each feature is also a new tool for writing horrible code. Is that worse than people writing horrible code with other simpler constructs? It might be, but it's hard to judge a solution if you don't know the language.
 
 If you're going to spend your career doing this, it makes sense to keep learning. To use a language that allows experts to cleanly solve problems. But yeah, just don't leave piles of esoteric code around for others to inherit.
+
+[^1]: This example is just for fun. Pawel improves upon it in his talk. I love Scala, but trying to write Haskell in Scala, even when its a bad fit, is endemic. I've been guilty of that myself.
