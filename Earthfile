@@ -61,8 +61,8 @@ publish:
   HOST api.netlify.com 3.130.174.239
 
   IF [ "$DESTINATION" = "PROD" ]
-    COPY (./blog/+build/_site --pass-args --DATE="$DATE") ./blog
-    COPY (./website/+build/_site --pass-args) ./website
+    COPY --pass-args (./blog/+build/_site --DATE="$DATE") ./blog
+    COPY --pass-args (./website/+build/_site) ./website
   ELSE
     COPY (./blog/+build/_site --pass-args --FLAGS="--future" --DATE="$DATE")  ./blog
     COPY (./website/+build/_site --pass-args --FLAGS="--future" --DATE="$DATE") ./website
