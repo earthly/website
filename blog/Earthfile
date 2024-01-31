@@ -13,6 +13,7 @@ base-image:
   WORKDIR /site
 
   RUN apt-get update && apt-get install -y \
+    curl \
     gcc \
     cmake \
     imagemagick \
