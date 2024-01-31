@@ -2,10 +2,7 @@ VERSION --use-cache-command 0.8
 FROM alpine
 
 # Anything but "YES" uses +base-image
-ARG CACHE_IMAGE="YES"
-# Flags passed to Jekyll
-ARG --global FLAGS=""
-ARG --global DATE=""
+ARG --global CACHE_IMAGE="YES"
 
 ## This base image is pushed as agbell/blog-base-image:latest
 ## And used as a docker image. This is because it's expensive to build
@@ -94,6 +91,11 @@ lint:
 build:
   FROM +deps
   CACHE --persist _site
+  ARG FLAGS
+  # Date is only used to bust the cache and get around this issue
+  # https://github.com/earthly/earthly/issues/2086
+  ARG DATE=$(date +"%D")
+  RUN echo "$DATE"
   RUN JEKYLL_ENV=production bundle exec jekyll build $FLAGS
   SAVE ARTIFACT _site AS LOCAL build/site/blog/
 

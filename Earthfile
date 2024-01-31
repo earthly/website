@@ -1,18 +1,21 @@
 VERSION 0.7 
 FROM alpine
 
+# Anything but "YES" uses pre built images 
+ARG --global CACHE_IMAGE="YES"
+
 ## Dev Build
 dev-build:
-  BUILD ./blog+lint
-  BUILD ./website+build --FLAGS="--future"
-  BUILD ./blog+build --FLAGS="--future"
+  BUILD ./blog+lint --pass-args
+  BUILD ./website+build --pass-args --FLAGS="--future"
+  BUILD ./blog+build --pass-args --FLAGS="--future"
 
 # Prod Build
 
 build:
-  BUILD ./blog+lint
-  BUILD ./website+build
-  BUILD ./blog+build
+  BUILD --pass-args ./blog+lint
+  BUILD --pass-args ./website+build
+  BUILD --pass-args ./blog+build
 
 combine:
   LOCALLY
@@ -22,8 +25,8 @@ combine:
   RUN cp -rf ./website/build/* ./build
 
 build-base-images:
-  BUILD ./blog+base-image-all
-  BUILD ./website+base-image-all
+  BUILD --pass-args ./blog+base-image-all
+  BUILD --pass-args ./website+base-image-all
 
 ## Files needed by blog and website that are in root dir need to be exported here
 ## And reimported in blog and website earthfiles
@@ -36,15 +39,15 @@ export:
 
 clean:
   LOCALLY
-  BUILD ./blog+clean
-  BUILD ./website+clean
+  BUILD --pass-args ./blog+clean
+  BUILD --pass-args ./website+clean
   RUN rm -rf build
 
 ## Satellite Build
 publish:
   FROM node:18-alpine3.15
 
-  BUILD ./blog/+lint
+  BUILD --pass-args ./blog/+lint
 
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
 
@@ -52,17 +55,17 @@ publish:
   ARG DESTINATION="STAGING"
   # Date is only used to bust the cache and get around this issue
   # https://github.com/earthly/earthly/issues/2086
-  ARG DATE
+  ARG DATE=$(date +"%D")
 
   # Work around for netlify DNS issue
   HOST api.netlify.com 3.130.174.239
 
   IF [ "$DESTINATION" = "PROD" ]
-    COPY (./blog/+build/_site --DATE="$DATE") ./blog
-    COPY ./website/+build/_site ./website
+    COPY (./blog/+build/_site --pass-args --DATE="$DATE") ./blog
+    COPY (./website/+build/_site --pass-args) ./website
   ELSE
-    COPY (./blog/+build/_site --FLAGS="--future" --DATE="$DATE")  ./blog
-    COPY (./website/+build/_site --FLAGS="--future" --DATE="$DATE") ./website
+    COPY (./blog/+build/_site --pass-args --FLAGS="--future" --DATE="$DATE")  ./blog
+    COPY (./website/+build/_site --pass-args --FLAGS="--future" --DATE="$DATE") ./website
   END
   # ## Content needs to be combined into /build for netlify to pick up
   RUN mkdir -p ./build/blog
