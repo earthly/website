@@ -7,7 +7,7 @@ author: Adam
 sidebar:
   nav: "thoughts"
 ---
-*Following from [Rust, Ruby, and the Art of Implicit Returns](/single-expression-functions)*
+*Following from [Rust, Ruby, and the Art of Implicit Returns](/blog/single-expression-functions)*
 
 The Java I learned in university was Java 1.X, and the concepts were simple. "In Java, everything is an object," I was told.
 
