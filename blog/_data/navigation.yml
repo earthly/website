@@ -121,6 +121,8 @@ thoughts:
         url: /future-is-rusty/
       - title: "The Art of Implicit Returns"
         url: /single-expression-functions/
+      - title: "Showboaters, Maxmialists and You"
+        url: /showboaters/
 activity-tracker:
   - title: "Activity Tracker Series"
     children:
