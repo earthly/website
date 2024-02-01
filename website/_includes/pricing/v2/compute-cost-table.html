@@ -23,6 +23,11 @@
     <div class="font-semibold text-xl pl-1 flex text-gray-600 ">Specs </div>
     <div class="font-semibold text-xl pl-0.5 flex text-gray-600">Price per minute</div>
   </div>
+  <div class="hidden lg:grid grid-cols-3">
+    <div class="font-light text-base pl-2 flex text-gray-600"></div>
+    <div class="font-light text-base pl-1 flex text-gray-600 "></div>
+    <div class="font-light text-base pl-0.5 flex text-gray-600">Included minutes ratio</div>
+  </div>
 
   <div class="rounded-lg mt-4 px-4  pt-2 pb-4 border">
     <div class="grid grid-cols-3 border-b hover:bg-[#ebf9ff]">
@@ -33,8 +38,8 @@
       <div class="pb-4 lg:pb-0 pl-4 lg:pl-0 lg:grid grid-cols-2 w-full col-span-2">
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">2 vCPUs | 2 GB RAM<br />16 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
-          <div>$0.0011 / $0.0012 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div>$0.0011 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             1X
             <span class="cursor-default tracking-tight">6,000 min included = 6,000 min on xsmall</span>
           </div>
@@ -51,7 +56,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">2 vCPUs | 4 GB RAM<br />32 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.0021 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             2X
             <span class="cursor-default tracking-tight">6,000 min included = 3,000 min on small</span>
           </div>
@@ -68,7 +73,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">2 vCPUs | 8 GB RAM<br />65 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.0042 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             4X
             <span class="cursor-default tracking-tight">6,000 min included = 1,500 min on medium</span>
           </div>
@@ -85,7 +90,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">4 vCPUs | 16 GB RAM<br />130 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.0084 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             8X
             <span class="cursor-default tracking-tight">6,000 min included = 750 min on large</span>
           </div>
@@ -102,7 +107,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">8 vCPUs | 32 GB RAM<br />260 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.0168 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             16X
             <span class="cursor-default tracking-tight">6,000 min included = 375 min on xlarge</span>
           </div>
@@ -119,7 +124,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">16 vCPUs | 64 GB RAM<br />500 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.0376 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             36X
             <span class="cursor-default tracking-tight">6,000 min included = 166.66 min on 2xlarge</span>
           </div>
@@ -136,7 +141,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">32 vCPUs | 128 GB RAM<br />1,000 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.0751 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             71X
             <span class="cursor-default tracking-tight">6,000 min included = 84.5 min on 3xlarge</span>
           </div>
@@ -153,7 +158,7 @@
         <div class="py-1 pt-4 lg:py-4 text-sm lg:text-base">64 vCPUs | 256 GB RAM<br />2,000 GB cache disk</div>
         <div class="lg:pl-2 py-2 lg:py-4">
           <div>$0.1502 <span class="lg:hidden text-sm text-gray-500">per min.</span></div>
-          <div class="w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
+          <div class="text-sm w-fit h-fit border-b border-black border-dashed cursor-pointer lg:mr-4 xl:mr-14 included-minutes-tooltip justify-self-center relative">
             143X
             <span class="cursor-default tracking-tight">6,000 min included = 41.95 min on 4xlarge</span>
           </div>
