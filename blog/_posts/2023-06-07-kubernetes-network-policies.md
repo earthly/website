@@ -487,6 +487,6 @@ In a nutshell, using network policies can beef up your Kubernetes workload secur
 
 For some extra knowledge boost, have a look at other Kubernetes features like [Security Context](https://earthly.dev/blog/k8s-cluster-security/) and [Mutual TLS over Kubernetes Nginx Ingress Controller](https://earthly.dev/blog/mutual-tls-kubernetes-nginx-ingress-controller/).
 
-And if you're looking to further optimize your Kubernetes builds, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a spin. It's a tool that can help streamline your build process and make it more efficient.
+And if you're looking to further optimize your Kubernetes builds, you might want to give [Earthly](https://cloud.earthly.dev/login) a spin. It's a tool that can help streamline your build process and make it more efficient.
 
 {% include_html cta/bottom-cta.html %}

@@ -431,7 +431,7 @@ To sum up, using Restic, you have set-up a back-up and recovery system that is a
 
 In this guide, you've learned how to use Restic to back up your data, thereby safeguarding it from various risks like natural disasters, cyber attacks, human error, or hardware failures. From setting up an S3 bucket and installing Restic, to initializing a repository, backing up and restoring data, and even automating backups with a cron job, you're now equipped with the skills to effectively protect your data.
 
-Now that you've got backups handled, why not consider boosting your build automation game? If you're interested in further optimizing your tech stack, give [Earthly]((https://cloud.earthly.dev/login)) a try!
+Now that you've got backups handled, why not consider boosting your build automation game? If you're interested in further optimizing your tech stack, give [Earthly](https://cloud.earthly.dev/login) a try!
 
 Time to start backing up and building more efficiently!
 

@@ -352,7 +352,7 @@ In this tutorial, you've learned how to use `uniq` to count distinct values in a
 
 For further exploration, refer to the additional resources linked in this guide, and [**Text Processing Commands** page](https://tldp.org/LDP/abs/html/textproc.html) from [The Linux Documentation Project](https://tldp.org).
 
-And after you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly]((https://cloud.earthly.dev/login)) a try? It's a fantastic tool for build tool that works great at the command line.
+And after you've mastered `uniq` and are ready for more Linux tools, why not give [Earthly](https://cloud.earthly.dev/login) a try? It's a fantastic tool for build tool that works great at the command line.
 
 Keep experimenting and overcoming challenges that come your way!
 

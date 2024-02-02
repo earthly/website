@@ -441,6 +441,6 @@ It's important to be careful when setting up services in Kubernetes because they
 
 Services in Kubernetes provide a steady network endpoint for a specific set of pods, simplifying inter-application communication. This article gave insights into creating and using such services, focusing on the most common types; ClusterIP, Headless, NodePort, and Load Balancer Services. Understanding and correctly configuring these services is crucial in Kubernetes, ensuring effective cluster communication.
 
-If you're looking to further simplify your build processes, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try. It's efficient and super easy to use, and could be the next step in optimizing your Kubernetes workflow.
+If you're looking to further simplify your build processes, you might want to give [Earthly](https://cloud.earthly.dev/login) a try. It's efficient and super easy to use, and could be the next step in optimizing your Kubernetes workflow.
 
 {% include_html cta/bottom-cta.html %}

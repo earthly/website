@@ -551,6 +551,6 @@ In this guide, we've covered how to establish a private Docker registry server o
 
 With the knowledge you've gained today, you're now prepared to implement security best practices for Docker containers and images in an enterprise setting.
 
-If you've enjoyed setting up your own Docker registry and are interested in further boosting your container build processes, take a peek at [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can help optimize your builds with its unique features like reproducible, portable, and parallel builds.
+If you've enjoyed setting up your own Docker registry and are interested in further boosting your container build processes, take a peek at [Earthly](https://cloud.earthly.dev/login). It's a tool that can help optimize your builds with its unique features like reproducible, portable, and parallel builds.
 
 {% include_html cta/bottom-cta.html %}

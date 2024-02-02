@@ -403,6 +403,6 @@ In this tutorial, we explored data analysis using Python libraries like Pandas a
 * Pre-processing and cleaning data is a crucial step before performing any analysis.
 * Visualizations using Matplotlib can help to interpret data more effectively.
 
-As you continue to explore Python and its powerful libraries, you might also be interested in automating your build processes. If so, give [Earthly]((https://cloud.earthly.dev/login)) a try. It can help streamline your development workflow, especially if you're working with complex projects.
+As you continue to explore Python and its powerful libraries, you might also be interested in automating your build processes. If so, give [Earthly](https://cloud.earthly.dev/login) a try. It can help streamline your development workflow, especially if you're working with complex projects.
 
 {% include_html cta/bottom-cta.html %}

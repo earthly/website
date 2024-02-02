@@ -296,6 +296,6 @@ Here's [an article by Tarun Kundhiya](https://medium.com/geekculture/concurrency
 
 Go provides tools like `Mutex` and `Cond` from [the `sync` package](https://pkg.go.dev/sync) to aid in writing concurrent programs. While concurrent programming can introduce complexity and challenges, with correct implementation, it can boost speed and performance. Be mindful of its pros and cons as you continue your programming journey.
 
-If our discussion about concurrency in Go has piqued your interest, you might want to explore [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can increase the parallelism of your CI/CD build.
+If our discussion about concurrency in Go has piqued your interest, you might want to explore [Earthly](https://cloud.earthly.dev/login). It's a tool that can increase the parallelism of your CI/CD build.
 
 {% include_html cta/bottom-cta.html %}

@@ -412,7 +412,7 @@ This should return a list of all the classes packed into the `.jar`. The list is
 
 ## Conclusion
 
-We've walked through the basics of building Java projects with Bazel in this tutorial. Now you should have a rough idea of how Bazel can improve your workflows and big project builds. If you enjoyed learning about Bazel, then you'll love exploring [Earthly]((https://cloud.earthly.dev/login)) - another nifty build automation tool for your tech stack. Check it out!
+We've walked through the basics of building Java projects with Bazel in this tutorial. Now you should have a rough idea of how Bazel can improve your workflows and big project builds. If you enjoyed learning about Bazel, then you'll love exploring [Earthly](https://cloud.earthly.dev/login) - another nifty build automation tool for your tech stack. Check it out!
 
 Happy coding!
 

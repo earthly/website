@@ -404,6 +404,6 @@ Best practices to tackle these issues include securing the CI/CD pipeline and th
 
 Using security tools and technologies like static code analysis, DAST, and IAST can also enhance CI/CD security. Factors such as integration with the pipeline, user-friendliness, and scalability should be considered when choosing these tools.
 
-In essence, prioritizing CI/CD security and using the right practices and tools can mitigate risks and enhance software quality. And if you're looking for a build automation tool that aligns well with your secure CI/CD practices, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a look!
+In essence, prioritizing CI/CD security and using the right practices and tools can mitigate risks and enhance software quality. And if you're looking for a build automation tool that aligns well with your secure CI/CD practices, you might want to give [Earthly](https://cloud.earthly.dev/login) a look!
 
 {% include_html cta/bottom-cta.html %}

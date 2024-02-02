@@ -309,6 +309,6 @@ These notes are to be taken into consideration when you try the mutual TLS imple
 
 Mutual TLS offers comprehensive security for client-server communication, ensuring both parties are verified. We've explored the distinctions between TLS and mTLS, and illustrated how to secure Kubernetes Nginx Ingress Controller endpoints.
 
-Once you've secured your Kubernetes environment, you might want to streamline your build process. Consider exploring [Earthly]((https://cloud.earthly.dev/login)), your next favorite build automation tool, to make this process more efficient and reliable.
+Once you've secured your Kubernetes environment, you might want to streamline your build process. Consider exploring [Earthly](https://cloud.earthly.dev/login), your next favorite build automation tool, to make this process more efficient and reliable.
 
 {% include_html cta/bottom-cta.html %}
