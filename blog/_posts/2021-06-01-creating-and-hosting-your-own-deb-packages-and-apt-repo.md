@@ -822,7 +822,7 @@ curl http://127.0.0.1:8000/pgp-key.private
 ```
 
 Oh no! we just leaked our private key. Now's the time to regenerate it but using a real name and email address other than `example@example.com`.
-Maybe you can store it in earthly's [secret store](https://docs.earthly.dev/docs/guides/cloud-secrets) instead?
+Maybe you can store it in earthly's [secret store](https://docs.earthly.dev/earthly-cloud/cloud-secrets) instead?
 
 ## Appendix A: A Complete Example using Earthly
 

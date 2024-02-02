@@ -96,7 +96,7 @@ curl -s https://packagecloud.io/install/repositories/github/git-lfs/script.deb.s
 ![Install git lfs package]({{site.images}}{{page.slug}}/dlkVWC7.png)
 </div>
 
-This command downloads and executes a script from [Packagecloud](packagecloud.io) that adds the GitHub Git LFS repository to your list of software sources and installs the package for Debian-based distributions. The script aims to add the GitHub Git LFS repository to the list of software sources on Debian-based distributions and install the corresponding package.
+This command downloads and executes a script from [Packagecloud](https://packagecloud.io) that adds the GitHub Git LFS repository to your list of software sources and installs the package for Debian-based distributions. The script aims to add the GitHub Git LFS repository to the list of software sources on Debian-based distributions and install the corresponding package.
 
 Now that the packagecloud repository has been added, you can use the [`apt`](https://manpages.ubuntu.com/manpages/xenial/man8/apt.8.html) package manager to install Git LFS using the following command:
 

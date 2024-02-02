@@ -297,7 +297,7 @@ development.
 It's also possible to utilize caching in a CI pipeline. On many platforms such as
 [Github Actions](https://github.com/features/actions), each build is run on a fresh instance of the build environment,
 so Earthly loses its cache history from previous runs.
-[Shared caching](https://docs.earthly.dev/docs/guides/shared-cache), however, can be used to improve this.
+[Shared caching](https://docs.earthly.dev/docs/caching/caching-via-registry), however, can be used to improve this.
 
 Note that shared cache does require upload and download steps to sync the cache during each CI run, so it does have a
 cost. It can yield a nice performance boost though for compute-heavy steps, such as long-running integration tests

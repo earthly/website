@@ -18,6 +18,6 @@ Release Notes:
 
 Documentation:
 
-[`--ssh` documentation](https://docs.earthly.dev/earthfile#ssh)
+[`--ssh` documentation](https://docs.earthly.dev/earthfile)
 
 [Release Page](https://github.com/earthly/earthly/releases/tag/v0.3.6)

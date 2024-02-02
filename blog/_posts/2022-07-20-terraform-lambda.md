@@ -715,7 +715,7 @@ resource "aws_apigatewayv2_route" "earthly-tools-com" {
 }
 ~~~
 
-After importing all those and applying them, I have all the infrastructure behind [text-mode](earthly-tools.com) in terraform. Now its time to test things.
+After importing all those and applying them, I have all the infrastructure behind [text-mode](https://earthly-tools.com) in terraform. Now its time to test things.
 
 ## Testing by Destroying
 

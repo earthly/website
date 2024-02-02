@@ -37,7 +37,7 @@ The code examples in this tutorial are in the `pattern-matching.py` file; you ca
 ## Prerequisites
 
 - Proficiency in Python
-- [Python 3.10]((https://www.python.org/downloads/release/python-3106/) ) or the most recent stable release of Python 3.11
+- [Python 3.10](https://www.python.org/downloads/release/python-3106/)  or the most recent stable release of Python 3.11
 
 This tutorial uses the Python [Requests](https://requests.readthedocs.io/en/latest/) library to retrieve fake [blog](/blog/top-5-scala-blogs) post data from the *JSONPlaceholder* API. Therefore, a working knowledge of the library will be helpful but not required.
 
