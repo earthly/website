@@ -111,7 +111,7 @@ However, complexity can compound.
 
 ## Compounding Complexity
 
-I can show you each language feature of a language in isolation and how it makes things better. But real world code will likely be more complex. In practice, experts use many the language features together all at once. And to an outsider, this can be pretty confusing.
+I can show you each language feature of a language in isolation and how it makes things better. But real world code will likely be more complex. In practice, experts use many of the language features together all at once. And to an outsider, this can be pretty confusing.
 
 In an expressive enough language and with a group of strong developers, you can end up with something like *The Focused* in [A Deepness In The Sky](https://en.wikipedia.org/wiki/A_Deepness_in_the_Sky):
 
