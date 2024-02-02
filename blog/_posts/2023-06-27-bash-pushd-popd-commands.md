@@ -308,7 +308,7 @@ $ dirs --help
 
 `pushd` and `popd` can be real game-changers for working in Bash or any other compatible shell. Understand the stack concept and you'll zip through your directory trees like a breeze.
 
-But why stop there? If you've just mastered directory navigation, you can level up even more with by checking out [Earthly]((https://cloud.earthly.dev/login)) for efficient build automation.
+But why stop there? If you've just mastered directory navigation, you can level up even more with by checking out [Earthly](https://cloud.earthly.dev/login) for efficient build automation.
 
 For more on Bash, do check out our [Bash series](https://earthly.dev/blog/series/bash/). Catch you there!
 

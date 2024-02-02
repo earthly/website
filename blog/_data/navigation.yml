@@ -88,6 +88,8 @@ bash:
         url: /bash-variables/
       - title: "Bash Conditionals"
         url: /bash-conditionals/
+      - title: "Loops In Bash"
+        url: /loops-in-bash/
   - title: Command Line Tools
     children:
       - title: "Understanding AWK" 

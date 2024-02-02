@@ -666,6 +666,6 @@ CDKTF offers a cool way to build Infrastructure as Code (IaC) using your favorit
 
 To dig deeper into CDKTF, check out these HashiCorp articles about [integrating existing Terraform modules with CDKTF](https://developer.hashicorp.com/terraform/cdktf/concepts/modules) and [constructs building blocks](https://developer.hashicorp.com/terraform/cdktf/concepts/constructs).
 
-And if you're looking to streamline your build automation process further, you might want to give [Earthly]((https://cloud.earthly.dev/login)) a try! It's a powerful tool that can complement your use of CDKTF by providing a consistent and efficient build environment.
+And if you're looking to streamline your build automation process further, you might want to give [Earthly](https://cloud.earthly.dev/login) a try! It's a powerful tool that can complement your use of CDKTF by providing a consistent and efficient build environment.
 
 {% include_html cta/bottom-cta.html %}

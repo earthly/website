@@ -274,6 +274,6 @@ Learn more about PyScript and Pyodide from these resources.
 
 In this tutorial, we've explored PyScript, a tool that allows running Python code in HTML with functionalities like external packages, Python REPLs, and visualization of Python-generated images in a browser. PyScript, an alpha stage tool, makes it easier to use Python scripts in HTML and its scientific stack on the client side, though it's not yet production-ready.
 
-As you continue to build your PyScript apps, consider boosting your build efficiency with [Earthly]((https://cloud.earthly.dev/login)), your new favorite tool for reproducible builds. Earthly can be a game-changer in ensuring consistent and reliable results in your development process.
+As you continue to build your PyScript apps, consider boosting your build efficiency with [Earthly](https://cloud.earthly.dev/login), your new favorite tool for reproducible builds. Earthly can be a game-changer in ensuring consistent and reliable results in your development process.
 
 {% include_html cta/bottom-cta.html %}

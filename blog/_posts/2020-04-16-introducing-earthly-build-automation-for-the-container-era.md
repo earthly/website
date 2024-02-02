@@ -26,7 +26,7 @@ Although these systems are probably some of the most advanced build automation t
 
 ![Earthly Logo]({{site.images}}{{page.slug}}/logo.png)\
 
-With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era]((https://cloud.earthly.dev/login)).
+With the purpose of bringing these modern capabilities to people out in the real world, today we are announcing the release of [Earthly: a build automation tool for the container era](https://cloud.earthly.dev/login).
 
 **Earthly is not meant to replace your existing open-source tooling, but rather to leverage and augment it**. It does not replace your Gradle, your Maven, your npm, your webpack — you don't need to rewrite your build. Instead, it leverages these popular technologies and builds on top of them, acting more like the glue.
 

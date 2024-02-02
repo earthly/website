@@ -475,6 +475,6 @@ Throughout the article we have covered how to create ABCs and the application of
 
 In this piece, we've covered the ins and outs of abstract base classes (ABCs) - what they are, how they differ from regular classes, and their relation to interfaces in object-oriented programming. We walked you through creating and using ABCs while sharing some practical examples. We also shed light on how ABCs in Python shape your code, making it more reusable, modular, consistent, and organized.
 
-Just as ABCs simplify and streamline your Python code, [Earthly]((https://cloud.earthly.dev/login)) can simplify your build process. If you've enjoyed exploring Python's ABCs, you'll love how Earthly can make your build process more efficient and manageable. Give it a try!
+Just as ABCs simplify and streamline your Python code, [Earthly](https://cloud.earthly.dev/login) can simplify your build process. If you've enjoyed exploring Python's ABCs, you'll love how Earthly can make your build process more efficient and manageable. Give it a try!
 
 {% include_html cta/bottom-cta.html %}

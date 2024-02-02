@@ -333,6 +333,6 @@ Because the root user has unrestricted access to the system, it's highly recomme
 
 In this quick guide, you've got the hang of using `ls`, `chown`, `chgrp`, and `chmod` to manage Linux file permissions and ownership. Sure, it can be tricky, but there are loads of resources to help you out, like official docs, online tutorials, and forums. Some cool places to start could be [Linux Documentation Project](https://tldp.org), [LinuxQuestions.org](https://www.linuxquestions.org), or the [Ubuntu Community Help Wiki](https://help.ubuntu.com/community/CommunityHelpWiki).
 
-Now that you've mastered Linux permissions, why not level up your build automation game with [Earthly]((https://cloud.earthly.dev/login))? It's a great tool to streamline your development process.
+Now that you've mastered Linux permissions, why not level up your build automation game with [Earthly](https://cloud.earthly.dev/login)? It's a great tool to streamline your development process.
 
 {% include_html cta/bottom-cta.html %}

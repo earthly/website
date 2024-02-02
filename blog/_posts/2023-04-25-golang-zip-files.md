@@ -468,6 +468,6 @@ srcFile.Close()
 
 In this guide, we've explored the basics of zip files handling in Go. We dabbled with the native `archive/zip` package to build and extract zip files, add files to a zip, or pull content from them using `compress/gzip`. Now it's your turn - go ahead and apply these concepts in your next project!
 
-And if you're looking to boost your build processes, check out [Earthly]((https://cloud.earthly.dev/login)). It could be your next step to smarter, more efficient builds.
+And if you're looking to boost your build processes, check out [Earthly](https://cloud.earthly.dev/login). It could be your next step to smarter, more efficient builds.
 
 {% include_html cta/bottom-cta.html %}

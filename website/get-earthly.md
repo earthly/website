@@ -232,7 +232,7 @@ This command executes the target <span class="font-semibold">hello</span> from t
 To learn how to use Earthly, try:
 </div>
 
-- <a href="https://docs.earthly.dev/guides/basics" onclick="learnGettingStartedClick()">The getting started guide</a>
+- <a href="https://docs.earthly.dev/basics" onclick="learnGettingStartedClick()">The getting started guide</a>
 - <a href="https://www.youtube.com/watch?v=B7Q7S2lpshw" onclick="learnIntroVideoClick()">An introductory video</a>
 - <a href="https://docs.earthly.dev/" onclick="learnDocsClick()">The full documentation</a>
 

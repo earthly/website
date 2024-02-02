@@ -39,7 +39,7 @@ I set up a virtual MFA device in AWS and before adding it to google authenticato
 
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2220.png --alt {{ MFA In Amazon }} %}
 
-I stored it in LastPass but it could have been stored on paper in a safe, or in [Earthly Secrets](https://docs.earthly.dev/docs/guides/cloud-secrets). This Virtual MFA secret key needs to be treated securely because anyone with it can generate the one-time-passwords that I'm using for multi-factor authentication.
+I stored it in LastPass but it could have been stored on paper in a safe, or in [Earthly Secrets](https://docs.earthly.dev/earthly-cloud/cloud-secrets). This Virtual MFA secret key needs to be treated securely because anyone with it can generate the one-time-passwords that I'm using for multi-factor authentication.
 
 Now if I break another YubiKey, or brick my phone, I can always generate codes using the secret key, or easily re-add it to my new phone. But also, now a new option is open for me: I can programmatically generate the OTP tokens.
 

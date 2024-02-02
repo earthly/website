@@ -191,7 +191,7 @@ docker run -d -p 3000:3000 --name=grafana grafana-custom
 
 ## Conclusion
 
-So, we've learned that [Grafana](https://grafana.com) is a cool open-source tool for analyzing and monitoring data, making debugging and optimization simpler. We've dug into how to use it with Docker containers. And if you're liking Docker for Grafana, you might love [Earthly]((https://cloud.earthly.dev/login)) for even smoother build processes. It's definitely worth checking out!
+So, we've learned that [Grafana](https://grafana.com) is a cool open-source tool for analyzing and monitoring data, making debugging and optimization simpler. We've dug into how to use it with Docker containers. And if you're liking Docker for Grafana, you might love [Earthly](https://cloud.earthly.dev/login) for even smoother build processes. It's definitely worth checking out!
 
 Hope this all sinks in!
 

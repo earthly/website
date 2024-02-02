@@ -393,7 +393,7 @@ wget: Cannot read /etc/wgetrc (Permission denied).
 Failed to Fopen file /home/cloud_user/.wget-hsts
 ERROR: could not open HSTS store at '/home/cloud_user/.wget-hsts'. HSTS will be disabled.
 --2023-05-05 19:37:29--  https://github.com/sharkdp/bat/releases/download/v0.23.0/bat_0.23.0_amd64.deb
-Resolving github.com (github.com)... failed: Temporary failure in name resolution.
+Resolving github.com (https://github.com)... failed: Temporary failure in name resolution.
 wget: unable to resolve host address 'github.com'
 ~~~
 

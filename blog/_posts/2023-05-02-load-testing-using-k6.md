@@ -524,7 +524,7 @@ By having a visualization dashboard for load testing, you can monitor your load 
 
 Your app isn't just about functionality; it needs to perform well to keep your users happy. We've shown you how to load test your backend service with k6 to ensure it can handle the heat. This is your launchpad into the world of load testing.
 
-But what about streamlining your build process? If you're eager to optimize this aspect of your development, give [Earthly]((https://cloud.earthly.dev/login)) a spin. It might be just what you need to make your builds more efficient and reliable.
+But what about streamlining your build process? If you're eager to optimize this aspect of your development, give [Earthly](https://cloud.earthly.dev/login) a spin. It might be just what you need to make your builds more efficient and reliable.
 
 Want more on load testing? Dig into k6 docs for info on browser testing, chaos testing, and more.
 

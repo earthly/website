@@ -270,6 +270,6 @@ Follow the same steps to select dashboards for Kubernetes resources you want to 
 
 ## Conclusion
 
-Monitoring your Kubernetes cluster is a smart move and using a Prometheus and Grafana dashboard can make this task much easier. It helps you visualize usage, leading to simpler and more efficient cluster monitoring. If you're looking to further streamline your processes, particularly in the area of build automation, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). Its containerized approach can significantly speed up your build processes.
+Monitoring your Kubernetes cluster is a smart move and using a Prometheus and Grafana dashboard can make this task much easier. It helps you visualize usage, leading to simpler and more efficient cluster monitoring. If you're looking to further streamline your processes, particularly in the area of build automation, you might want to check out [Earthly](https://cloud.earthly.dev/login). Its containerized approach can significantly speed up your build processes.
 
 {% include_html cta/bottom-cta.html %}

@@ -96,7 +96,7 @@ Here's what an Earthfile would look like for installing Google protobufs inside 
 
 This will then produce two go files under the `kvapi` directory: `api.pb.go` and `api\_grpc.pb.go` which contains the auto generated protobuf and grpc code respectively.
 
-At this point, assuming that earth is already [installed](https://docs.earthly.dev/installation), give it a try for yourself with code from our [example repository](https://github.com/earthly/example-grpc-key-value-store):
+At this point, assuming that earth is already [installed](https://docs.earthly.dev/install), give it a try for yourself with code from our [example repository](https://github.com/earthly/example-grpc-key-value-store):
 
 ~~~{.bash caption=">_"}
     git clone https://github.com/earthly/example-grpc-key-value-store.git

@@ -26,7 +26,7 @@ Earthly Technologies’ new funding follows a $2.1 million round in October 2020
 
 Get started with Earthly CI at [https://earthly.dev/signup/earthly-ci](https://earthly.dev/signup/earthly-ci).
 
-For more information, read the Earthly CI [launch blog](https://earthly.dev/blog/launching-earthly-ci/), check out its [docs](https://docs.earthly.dev/earthly-cloud/earthly-ci), and visit [earthly.dev](https://earthly.dev/).
+For more information, read the Earthly CI [launch blog](https://earthly.dev/blog/launching-earthly-ci/), check out its [docs](https://docs.earthly.dev/earthly-cloud/overview), and visit [earthly.dev](https://earthly.dev/).
 
 {: .news-about-block}
 **About Earthly Technologies**
