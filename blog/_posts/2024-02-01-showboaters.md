@@ -1,5 +1,5 @@
 ---
-title: "Showboaters, Maxmialists and You"
+title: "Showboaters, Maximalists and You"
 categories:
   - Articles
 toc: true
