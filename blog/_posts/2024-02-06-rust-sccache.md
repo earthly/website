@@ -6,7 +6,10 @@ toc: true
 author: Ryan Peden
 
 internal-links:
- - just an example
+ - optimizing rust build speed with sccache
+ - optimizing rust build
+ - build speed with sccache
+ - using sccache for optimizing rust build speed
 ---
 
 Rust is a powerful and expressive programming language that offers many benefits, including memory safety, performance, and concurrency. However, Rust is also known for being slow to compile, especially for large and complex projects. This can frustrate developers who want to iterate quickly and test their code.
@@ -131,8 +134,4 @@ While sccache can help you significantly reduce the build time and improve the d
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
