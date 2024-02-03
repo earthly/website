@@ -42,7 +42,7 @@ Now that you have a basic understanding of the Rust build process and the role o
 
 The first thing you need to do is install sccache on your machine. You can download [prebuilt binaries](https://github.com/mozilla/sccache/releases) from the GitHub release page or use [Cargo](https://doc.rust-lang.org/cargo/commands/cargo-install.html), the Rust package manager, to install it from [crates.io](https://crates.io/):
 
-~~~
+~~~{.bash caption=">_"}
 cargo install sccache
 ~~~
 
@@ -62,7 +62,7 @@ After installing and configuring sccache, the next step is to integrate it with 
 
 To use sccache with Cargo, you need to set the `RUSTC_WRAPPER` environment variable to point to the sccache executable. This tells Cargo to use sccache as a wrapper for the Rust compiler. You can do this by running the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 export RUSTC_WRAPPER=sccache
 ~~~
 
@@ -70,7 +70,7 @@ Alternatively, you can use a tool like [`direnv`](https://direnv.net/) to automa
 
 Once you set the `RUSTC_WRAPPER` environment variable, you can use Cargo commands as usual, and sccache will automatically cache the compilation output. For example, run the following command to build your project:
 
-~~~
+~~~{.bash caption=">_"}
 cargo build
 ~~~
 
