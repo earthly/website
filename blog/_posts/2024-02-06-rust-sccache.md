@@ -126,6 +126,8 @@ In this tutorial, you learned how to use sccache to optimize Rust build speed. Y
 
 While sccache can help you significantly reduce the build time and improve the developer experience of Rust projects, it has some limitations. For instance, sccache is easy to get started with but can be difficult to administer and scale up, especially when you want to share cached build artifacts or integrate them into CI builds. Thankfully, [Earthly](https://earthly.dev/) is easy to set up and maintain, even in complex caching scenarios. [Try it out](https://cloud.earthly.dev/login) for free today.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -134,4 +136,3 @@ While sccache can help you significantly reduce the build time and improve the d
 - [ ] Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
