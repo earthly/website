@@ -609,3 +609,6 @@ retrigger
 
 Konfig
 docformatter
+
+lexes
+memcached

@@ -38,41 +38,41 @@ sccache can also distribute the cache across multiple machines, which can improv
 
 Now that you have a basic understanding of the Rust build process and the role of caching, it's time to learn how to use sccache to optimize Rust build speed.
 
-### Installing and Configuring sccache
+### Installing and Configuring `sccache`
 
 The first thing you need to do is install sccache on your machine. You can download [prebuilt binaries](https://github.com/mozilla/sccache/releases) from the GitHub release page or use [Cargo](https://doc.rust-lang.org/cargo/commands/cargo-install.html), the Rust package manager, to install it from [crates.io](https://crates.io/):
 
-```bash
+~~~
 cargo install sccache
-```
+~~~
 
 The best configuration for sccache depends on your use case and preferences. For example, you can choose to store cached builds locally or in the cloud, and you can change the maximum size of the cache. Every choice has trade-offs; cloud cache storage makes it easy to share cached build artifacts with other developers, but it's slower than builds cached locally. Similarly, using a large cache reduces the chance you'll rebuild packages unnecessarily but also uses more disk space.
 
 Since the optimal configuration depends on your situation, it's difficult to give prescriptive advice on how you should configure sccache. However, some general recommendations are:
 
-* If multiple machines need to share the cache, use a distributed cache backend, such as Amazon S3 or GCS. This can improve the cache hit rate and reduce network latency.
-* Use a local cache directory that has enough disk space and fast read/write speeds. This can improve the cache performance and avoid cache evictions.
-* Use a reasonable cache size that balances the trade-off between cache efficiency and disk usage. A larger cache size can store more artifacts and increase the cache hit rate, but it can also consume more disk space and increase the cache maintenance cost.
+- If multiple machines need to share the cache, use a distributed cache backend, such as Amazon S3 or GCS. This can improve the cache hit rate and reduce network latency.
+- Use a local cache directory that has enough disk space and fast read/write speeds. This can improve the cache performance and avoid cache evictions.
+- Use a reasonable cache size that balances the trade-off between cache efficiency and disk usage. A larger cache size can store more artifacts and increase the cache hit rate, but it can also consume more disk space and increase the cache maintenance cost.
 
 You can use the `sccache --show-config` command to display the current configuration of sccache.
 
-### Integrating sccache with Cargo
+### Integrating `sccache` With Cargo
 
 After installing and configuring sccache, the next step is to integrate it with Cargo. Cargo is the tool that manages dependencies and builds, tests, and runs Rust projects.
 
 To use sccache with Cargo, you need to set the `RUSTC_WRAPPER` environment variable to point to the sccache executable. This tells Cargo to use sccache as a wrapper for the Rust compiler. You can do this by running the following command in your terminal:
 
-```bash
+~~~
 export RUSTC_WRAPPER=sccache
-```
+~~~
 
 Alternatively, you can use a tool like [`direnv`](https://direnv.net/) to automatically set the environment variable for your project directory.
 
 Once you set the `RUSTC_WRAPPER` environment variable, you can use Cargo commands as usual, and sccache will automatically cache the compilation output. For example, run the following command to build your project:
 
-```bash
+~~~
 cargo build
-```
+~~~
 
 The first time you run this command, sccache will invoke the Rust compiler and store the output in the cache. The next time you run the command, sccache will check the cache and return the cached output if it exists. This can significantly reduce the build time, especially for large and complex projects.
 
@@ -132,7 +132,6 @@ While sccache can help you significantly reduce the build time and improve the d
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
 - [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
