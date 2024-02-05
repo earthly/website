@@ -15,14 +15,171 @@ f x y -> Acceptable in shell scripting, but a bit odd.
 
 I assume this joke was written by Lisp programmers upset that they lose so many programmers just because s-expressions can look odd to the uninitiated. But there is some truth to this. Readability does have a lot to do with familiarity and if you are familiar with syntax that looks a certain way, then anything else can look foriegn.
 
-But can we talk about readability outside of familiarity? I think we can. Let's define readability like this:
+But can we talk about readability outside of familiarity? I think we can. [Last time] I mentioned that expert readability and begginer approachablity can sometimes be conflict and today I wanted to unpack that.
+
+Let's define readability like this:
 
 | Category                      | Description                                                                                                                                 |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Newcomers Readability         | How quickly you can get up to speed reading a programming language. Related to how familiar it is to what you know and also how many things it has. |
-| Experienced Readability       | How easy it is for someone very experienced in the language to understand a piece of code by glancing at it.                                |
+| Newcomers Readability         | How quickly you can get up to speed reading a programming language. Related to how familiar you are with the syntax and concepts used. |
+| Experienced Readability       | How quickly someone experienced in the language can understand a piece of code.                                |
 
-So, with these definitions you can't dismiss `(f x y)` style as less readable just because you aren't familiar with it. Building familiarity with syntax is super unpleasant at first, but it builds quickly.
+So, with these definitions you can't dismiss `(f x y)` style as less readable just because you aren't familiar with it. What matters is how readable it is for experience LISPer. 
+
+Somethings help both beginner and expert readbality but other things trade one off against the other. 
+
+Let's start with the first.
+
+## Structure
+
+This may sound obvious but comptures dont 'really need structure, like function calls and modules and objects and so on. They just need on instruction after another to run. 
+
+In 2004ish, at my first software developer job I got introduced to a large DBASE program that had no structure at all below the file level. Each file was just start executing at the top and well that's about it. 100s of files that looked like this.
+
+```
+CLEAR
+DO WHILE .T.
+    @ 0,0 CLEAR TO 0,79
+    @ 0,0 SAY "Main Menu"
+    @ 1,0 SAY "1. View Records"
+    @ 2,0 SAY "2. Add Record"
+    @ 3,0 SAY "3. Exit"
+    @ 5,0 SAY "Select an option: "
+    ACCEPT "> " TO nChoice
+    CLEAR
+
+    IF nChoice = 1
+        DO viewrec.prg
+    ELSE IF nChoice = 2
+        DO addrec.prg
+    ELSE IF nChoice = 3
+        EXIT
+    ELSE
+        @ 8,0 SAY "Invalid option, please try again."
+        WAIT
+    ENDIF
+ENDDO
+
+```
+
+Because that experience its pretty clear to me that being able to break things down into functions or procedures or whatever is super valuable. If some init fucntion is 150 lines long and does three distinct things, encapsulating those three things into seperate functions that init calls is a big win. I think this is uncontroversial though like any good idea it can be taken three steps to far.  
+
+There are other types of structure though. 
+
+### ASCII Art and You
+
+If structure helps scanning and improves readability for all then code comments and whitespace another obvious way we can highlight structure. Here are two version of some code:
+
+~~~
+x = 6 // picked by random dice role
+stop-word = "salad" // see pre-training data 
+exponents = 10**6 // max solution space
+~~~
+
+~~~
+x = 6                   // picked by random dice role
+stop-word = "salad"     // see pre-training data 
+exponents = 10**6       // max solution space
+~~~
+
+For me, those lined up comments make a list of declarations more readable. They show that we are in some sort of setup section, and that the lines are related to each other.
+
+Another obvious but somtimes missed way to provide structure is just simple line breaks. 
+
+```
+package main
+
+import (
+    "fmt"
+    "slices"
+)
+
+func main() {
+
+    strs := []string{"c", "a", "b"}
+    slices.Sort(strs)
+    fmt.Println("Strings:", strs)
+
+    ints := []int{7, 2, 4}
+    slices.Sort(ints)
+    fmt.Println("Ints:   ", ints)
+}
+```
+
+The blank line, much like a paragraph break in writing helps group related things and break up unrelated.
+
+Jimmy Koppel makes a [pretty good argument](https://www.pathsensitive.com/2023/12/should-you-split-that-file.html) that structure should be taken further. We should using code comments and whitespace to provide structure in large files and that this aids readability by reducing cognitive load.
+
+You see this often in CSS:
+
+```
+/*******************************
+             Types
+*******************************/
+
+/*-------------------
+       Animated
+--------------------*/
+
+
+/* Horizontal */
+.ui.animated.button .visible.content,
+.ui.animated.button .hidden.content {
+  transition: right @animationDuration @animationEasing 0s;
+}
+...
+
+/* Vertical */
+.ui.vertical.animated.button .visible.content,
+.ui.vertical.animated.button .hidden.content {
+  transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
+}
+...
+
+/*-------------------
+       Inverted
+--------------------*/
+
+.ui.inverted.button {
+  box-shadow: 0px 0px 0px @invertedBorderSize @white inset !important;
+  background: transparent none;
+  color: @white;
+  text-shadow: none !important;
+}
+
+```
+
+All of that, reminds me of the regions that were common with C# code and I did find that they aided readability in large files.
+
+```
+#region MyRegion
+
+your code here
+
+#EndRegion
+```
+Todo: insert picture
+
+All of this, of course, can be over used and abused. ( Your 4000 line C# class file is probably easier to understand with regions but maybe it shouldn't be 4000 lines. ) But still, well used, adding structure to code with whitespace and comments only helps readabilty when things start to get hairy. 
+
+
+## Less To Go Wrong
+
+Another way to improve readbility is to strictly just have less that can go wrong. A for each can't have a off by one error, so if I replace a for i loop with a for each, I no longer have to worry about my indexes being off.
+
+Even if somewhere that for each has an implementation that may use indexes, I can just assume it works correctly and move my thinking to a higher level. You can only hold so many things in working memory at a time, so off loading some of this helps.
+
+...
+
+Something about reduce vs for each
+
+or max vs manaul max
+
+
+
+
+-----
+Up To here
 
 Ok, so what affects experienced readability? It's the time to read a piece of code, understand what it does, and spot any problems.
 
