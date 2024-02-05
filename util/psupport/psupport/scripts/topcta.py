@@ -107,7 +107,7 @@ def add_top_cta_if_conditions(filename : str, dryrun : bool) -> None:
 
 def add_new_cta(filename : str, frontmatter : str, rest_of_file : str) -> None:
     replace = get_new_cta_with_cache(filename,rest_of_file).strip()
-    new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip()
+    new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip() + "\n"
     with open(filename, 'w') as file:
         file.write(new_content)
     print(f"Wrote:\t{filename}")
