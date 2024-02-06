@@ -6,7 +6,10 @@ toc: true
 author: Rajkumar Venkatasamy
 
 internal-links:
- - just an example
+ - building monorepo
+ - monorepo with gradle
+ - build monorepo with help of gradle
+ - how to build a monorepo with gradle
 ---
 
 [Gradle](https://gradle.org/) is a powerful and flexible build tool used for code compilation, testing, and deployment. It's widely used in Java and Android ecosystems but [supports many other languages](https://docs.gradle.org/current/userguide/userguide.html#supported_languages_and_frameworks) as well, including Kotlin, C/C++, and JavaScript.
@@ -399,5 +402,4 @@ The tutorial's source code is available in [this GitHub repository](https://gith
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
 * [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
