@@ -1,5 +1,5 @@
 ---
-title: "Experienced Readability"
+title: "The Two Types of Readable Code"
 categories:
   - Articles
 toc: true
@@ -169,112 +169,6 @@ Another way to improve readbility is to strictly just have less that can go wron
 
 Even if somewhere that for each has an implementation that may use indexes, I can just assume it works correctly and move my thinking to a higher level. You can only hold so many things in working memory at a time, so off loading some of this helps.
 
-...
-
-Something about reduce vs for each
-
-or max vs manaul max
-
-
-
-
------
-Up To here
-
-Ok, so what affects experienced readability? It's the time to read a piece of code, understand what it does, and spot any problems.
-
-I think these two have pretty similar experienced readability:
-
-```
-def max1(x : int, y : int) = if (x > y) x else y
-
-def max2(x : int, y : int){
-  if (x > y) {
-    return x;
-    } else {
-    return y;
-    }
-}
-```
-
-These are written in two different styles and `max1` has a lot fewer characters then `max2` but if you are experienced with the style both are equally readable. You read an if statement as single block. The long version, from the perspective of the short version has a lot more boiler plate, brackets and returns, but you get used to reading those pretty quickly and you end up reading it as a whole.
-
-Maybe boilerplate and formatting even helps readability? The layout of version two may make it easier to scan. Some may even say that semicolons on the end of each statement are part of the pattern that let them quickly skim code, separating statements from control flow. The semi-colons might be strictly speaking redundant but it could help some in the way. Redundancy in spoken language aids understanding.
-
-## ASCII Art and You
-
-In structure helps scanning and improves experienced readability then code comments and whitespace are really where we can highlight structure. Here is two version of some code:
-
-~~~
-x = 6 // picked by random dice role
-stop-word = "salad" // see pre-training data 
-exponents = 10**6 // max solution space
-~~~
-
-~~~
-x = 6                   // picked by random dice role
-stop-word = "salad"     // see pre-training data 
-exponents = 10**6       // max solution space
-~~~
-
-Version two has more characters. They are whitespace characters, but still strictly more characters. For me, those lined up comments make a list of declarations more readable. They show that we are in some sort of setup section, and the lines are more related.
-
-Jimmy Koppel makes a [pretty good argument](https://www.pathsensitive.com/2023/12/should-you-split-that-file.html) that comments providing structure should be taken further. We should using code comments to provide structure in large files and that this aids readability by reducing cognitive load.
-
-You see this often in CSS:
-
-```
-/*******************************
-             Types
-*******************************/
-
-/*-------------------
-       Animated
---------------------*/
-
-
-/* Horizontal */
-.ui.animated.button .visible.content,
-.ui.animated.button .hidden.content {
-  transition: right @animationDuration @animationEasing 0s;
-}
-...
-
-/* Vertical */
-.ui.vertical.animated.button .visible.content,
-.ui.vertical.animated.button .hidden.content {
-  transition: top @animationDuration @animationEasing, transform @animationDuration @animationEasing;
-}
-...
-
-/*-------------------
-       Inverted
---------------------*/
-
-.ui.inverted.button {
-  box-shadow: 0px 0px 0px @invertedBorderSize @white inset !important;
-  background: transparent none;
-  color: @white;
-  text-shadow: none !important;
-}
-
-```
-All of that, reminds me of the regions the were common with C# code and I did find that they aided readability.
-
-```
-#region MyRegion
-
-your code here
-
-#EndRegion
-```
-Todo: insert picture
-
-Ok, so using comments and whitespace can help with expert readability. But also conciseness also helps with expert readability but at the cost of approachability.
-
-
-Here is some code from my previous article:
-
 ~~~{.go caption="Code Report: Count Max"}
 func maximumCount(nums []int) int {
     var pos, neg int = 0, 0
@@ -285,180 +179,75 @@ func maximumCount(nums []int) int {
             neg++
         }
     }
-
-    if pos < neg { //Bug 
-        return pos
-    } else {
-        return neg
-    }
++    return max(pos,neg)
+-    if pos > neg {
+-        return pos
+-    } else {
+-        return neg-    }
 }
 ~~~
+<figcaption>Having a `max` to call is handy. It communicates intent for the reader, improving readability in a small way.[^1]</figcaption>
 
-What this does is fairly evident. It counts positive and negative numbers in a list and then returns the count of whichever is larger. I'm pretty sure even those who aren't familar with go can understand this code. But readability is not just about getting the gist of code, its also about easy it is to spot errors reading code. And there are a couple of places in this code where off by one errors can hide. 
-
-Compare with this Scala code:
-
-```
-def maximumCount(nums : Array[Int]) : Int = 
-  max(nums.count(_ < 0), nums.count(_ > 0))
-```
-
-Or this C# version:
+The neat thing about max, is that using it doesn't hurt begineer readability. Everyone knows what it means to get the maximum of two numbers. But if we keep building up helpful standard libraries and langauge features, we quickly start adding to the number of things a beginner has to learn.
 
 ```
-def maximumCount(int[] nums) {
-  return Math.Max(
-    nums.Count(x => x < 0),
-    nums.Count(x => x > 0)
-  );
-} 
-```
+let numbers = [1, 2, 3, 4]
 
-There is just fewer places for bugs to hide in those versions. You not going to accidentally flip the sign and get min instead of max. (A bug in the go verision). And that drastically improves expert readablity. 
-
-The slightly shorter expression based could has less room for error.
-
-
-
-## Cognitive Load
-
-Ok, so adding concepts to a language can make it harder to learn. It becomes less accessible to people not familiar with those concepts. It has more cognitive load for new users. But hopefully, the new concepts introduces more concise and expressive ways to do things, and this means the cognitive load for an experienced user is decreased. They have in their long term memory how if expressions work, and can read an if expression faster than if statements.
-
-An important question is when you add a feature to an language how much complexity does it bring? Is the language's core philosophy and design consistent with the addition of this feature?
-
-## Idea - Start Here
-
-Todo: up to here
-Does it make sense within the language or is the language just a hodge-podge of features.
-
-Here is some Java. The Java I learned in university was Java 1.something and the concepts behind Java were simple. "In Java, everything is a object". I mean, you had classes and abstract classes and interfaces but really objects were what we were supposed to focus on. So you'd :
-
-~~~
-@FunctionalInterface
-interface Greeter {
-    void greet();
+//Original 
+var sum1 = 0
+for number in numbers {
+    sum1 += number
 }
 
-public class HelloWorld {
-    public static void main(String[] args) {
-        Greeter greeter = new Greeter() {
-            @Override
-            public void greet() {
-                System.out.println("Hello, world!");
-            }
-        };
-        greeter.greet(); // Outputs: Hello, world!
-    }
-}
-~~~
+//Improved
+let sum2 = numbers.reduce(0, +)
 
-public class LambdaHelloWorld {
-    public static void main(String[] args) {
-        Greeter greeter = () -> System.out.println("Hello, world!");
-        greeter.greet(); // Outputs: Hello, world!
+```
+
+Reduce is super handy and this is where readability of an expert can really grow I think. If you're going to spend years working in a programming langauge, learning the idioms is a small cost to pay to improve day to day readability, because you are using higher level concepts.
+
+filter and map also benefit expert readablity.
+
+
+```
+const numbers = [1, 2, 3, 4, 5, 6];
+let evensSquares1 = [];
+for (let i = 0; i < numbers.length; i++) {
+    if (numbers[i] % 2 === 0) {
+        evensSquares1.push(numbers[i] * numbers[i]);
     }
 }
 
-~~~
+const evensSquares2 = numbers.filter(number => number % 2 === 0)
+                             .map(number => number * number);
+```
 
+Flatmap is super useful:
+```
+val sentences = List("Hello world", "Functional programming in Scala")
 
-## Missteps - Perl 6
+val splitSentences = sentences.map(_.split(" "))
+val words1 = splitSentences.flatten()
 
-# Improvements constexp vs tempates
+val words2 = sentences.flatMap(_.split(" "))
+```
 
-~~~
+While simplifications like using `reduce` or `filter` and `map` chains indeed elevate the level of abstraction and reduce error-prone boilerplate, they also encapsulate complexity that might not be immediately apparent to beginners. Each of these higher-order functions embodies a concept that, while straightforward for an experienced developer, adds to the list of things a newcomer must learn and understand before they can fully appreciate the readability improvements these abstractions offer.
 
-template<int radius>
-struct CircleArea {
-    static const double value;
-};
+I guess what I'm saying is higher order functions are valuable for the expert but a barrier for the newcomers. And its not just higher-order functions. They are one class of a concept, you can learn, that can let you write code at a very slightly higher level. You can elide over some of the details.
 
-template<int radius>
-const double CircleArea<radius>::value = radius *radius* 3.14159;
+Other concepts do the same thing, like pattern matching, like Sum types, like Gererics, like polymorphic traits.
 
-int main() {
-    const double area = CircleArea<5>::value; // Circle area for radius 5
-    // ... use 'area' as needed ...
-}
+All these things, if they are used to more consisely express the concept at hand ( and not for showboating) can improve expert readability at the cost of beginner readability.
 
-~~~
+<<heres a table>>
 
-to: 
-~~~
+So which do you choose, when that trade off comes? 
 
-constexpr double square(double x) {
-    return x * x;
-}
+Earlier I showed refactoring some go code to call `max`. But actually go doesn't have a way to get the max of some ints in the standard libraray. So I'd have to implement the max function myself, which takes away some of the benefit and I assume Rob Pike would rather I just use the if x > y else logic that I started with. That's because, in my view, go chooses beginner readablity over expert readablity. If you've not programminged in go yet, well there are very few concepts you aren't already familar with. And that is a legit choice to choose beginner readablity and simplicity. Clearly go has been wildly successful at gain adoption in the 'cloud native', network services world.
 
-constexpr double PI = 3.14159;
-constexpr double circleArea(double radius) {
-    return PI * square(radius); // Computed at compile time if radius is constant
-}
+Rust, makes the opposite choice. And not because of the borrow checker vs Go GC, but because of the trait system, the sum types, the structural pattern matching, the const generics, the procedural macros and so on. Also a totally legit choice to choose to be a more complex expert tool.
 
-constexpr double radius = 5.0;
-constexpr double area = circleArea(radius);
+Myself, I think expert readablity is more important. In the future I hope we are building up more higher level concepts that allow us to write better code.
 
-~~~
-
-More Ideas:
-Generics in Go
-i++?
-operator overloading?
-val in c#, type inference in general
-
-Misfeatures:
-
-Python stuff:
-
-https://chat.openai.com/c/4bb48ac2-3fc0-4e99-9710-c64220736baf
-
-## Warts
-Scala tuples
-Go slices?
-kotlin implict returns
-other?
-
-## The Hoang FActor
-
-You can combine a bunch of stuff into a format that seems readable to those familar but some will refuse or maybe just not be able to climb the path to understanding that code.
-
-Some people will just not make this jump, into prod code that combines a bunch of things.
-
-
-Then, past this path, you have complex code uses a bunch of things together.
-
-This can be for two reasons:
-Expressivness Win
-- The problem is complex, and the expressivness of the langauge is letting us susscintly explain the problem. So it takes a bit to get up to speed with what we are doing but once you do, you'll see how we are doing things falls out of the problem at hand.
-
-
-Cleverness Masterbation / Larping as PL Researcher
-- The problem at hand is normal and could be solved in 1000 lines of python, but with my cleverness and adding constraints (hey, lets solve the whole class of problems this one belongs to, and this solution is just a specific instance) to the problem I can solve it in a fun way using the langauge.
-
-Thoughts on Cleverness:
-
-So when people complain about the readablity of something and they aren't talking about action at a distance problems like come_from or monkey patching, too much global state then probably they are talking about verbosity or code that is too clever by half. The thing is, verbosity can be spotted without familiaryt, perhaps even better then with it. Because with time, you learn to ignore the boilerplate. But when the complaint is about overly clever code then everything is very murky. Maybe what you are looking at is an idea that is very well encapsulated in the expressiveness of the languauge. A solution with just ifs and elses would be so verbose as to be difficult to hold in your head, while using chunkier building blocks the idea is clear.  
-
-But perhaps the complex code is the opposite. Maybe its a simple problem, expressed in a complex way, to entertain, to keep things interesting. Maybe shakespear if he made a cookbook would write them as sonnets. And sonnet fans would love it, but for the rest of us, we'd just be confused. A dram of milk and a peck of salt, a grain of isinglass might sound great, but struggling to get the recipe make.
-
-
-## But its complex
-Here why its confusing. If you know all the intricate features of a langauge, then of course given a solution you might reach for solving it using those things. And it might not be apparent that that makes new-comers struggle, it s jsut the obvisou way to structure the solution. It's the curse of knowledge. And so certainly some are just having new tools in the langauge nad want to use them, there is a crazy Scala version of this, there must have been crazy template version of this and every lanague that gets rich enough has people and groups that go through a maxmialist phase but this doesn't mean the things being used to build this maximilist vision are wrong. Just some constraint and empath is need. And from the other side, maybe don't just give up and say smething is werid because it has more expressivity or whatever then you are used to. The thing you think is werid is often not, its just foreigh. If you're going to spend your career doing this, it makes sense to keep learning. To use lanaguge that allow experts to cleanly solve problems. 
-
-## Conclusion: I don't know
-Ok, so what about the other side of features. Does something that move boilerplate make readablity worse when abused? 
-
-Like here is some crazy list comprehensions...
-
-And here is strange things you can do with if expressions.
-
-But now here is also some crazy ifs
-
-And some crazy while non-sense...
-
-
-So, yeah, new syntax can make things denser and people can write horrible code in it. Is that worse then people writing horible code in other simpler constructus? I don't know.. 
-
-Maybe more syntaxtic constructs means the very worse code can be worse indeed. One thing that I think is more revelant is when there are so many ways to do things that you can be experiecned in a langauge, but not in the style being used in something. It muddies the water that languages that support the most styles also seem to hav the most constructs. Scala here.
-
-The problem in that case, is you become experienced enough to read a style of C++ or Scala but then another style yoy are still a beginniner. Frameworks make this worse, operatator overloading, which can be very handy, makes this worse.  
+Expert readabiity matters. There is a always a need for simple languages but we should be optimizing for experienced users being able to understand code quickly because it precicley communicates it's intent and to do that we need to be able to have building blocks larger than ifs and for loops.
