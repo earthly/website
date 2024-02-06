@@ -51,13 +51,13 @@ The first step to building a monorepo with Gradle is to create a monorepo projec
 
 Execute the following command in the terminal from the project directory to initialize a basic Gradle project:
 
-~~~
+~~~{.bash caption=">_"}
 gradle init
 ~~~
 
 An interactive terminal will appear. Select the following:
 
-~~~
+~~~{.bash caption=">_"}
 Starting a Gradle Daemon (subsequent builds will be faster)
 
 Select type of project to generate:
@@ -74,11 +74,14 @@ Enter selection (default: Kotlin) [1..2] 2
 
 Project name (default: building-a-monorepo-with-gradle):
 
-Generate build using new APIs and behavior (some features may change in the next minor release)? (default: no) [yes, no]
+Generate build using new APIs and behavior \
+(some features may change in the next minor release)? \
+(default: no) [yes, no]
 
 
 > Task :init
-To learn more about Gradle by exploring our Samples at https://docs.gradle.org/8.5/samples
+To learn more about Gradle by exploring our Samples \ 
+at https://docs.gradle.org/8.5/samples
 
 BUILD SUCCESSFUL in 2m 33s
 2 actionable tasks: 2 executed
@@ -86,7 +89,7 @@ BUILD SUCCESSFUL in 2m 33s
 
 If successful, you should see the following files in the root project directory:
 
-~~~
+~~~{ caption=""}
 .gitattributes
 .gitignore
 .gradle
@@ -101,25 +104,25 @@ settings.gradle
 
 To create subprojects, navigate to the project root directory and create directories for each of the subprojects using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 mkdir subproject-1 subproject-2 subproject-3
 ~~~
 
 Then, edit the `settings.gradle` file and paste the following at the end of the file:
 
-~~~
+~~~{.bash caption=">_"}
 include 'subproject-1', 'subproject-2', 'subproject-3'
 ~~~
 
 This statement ensures that the newly created subproject directories are considered part of the monorepo project. To verify this, execute the following command in the terminal:
 
-~~~
+~~~{.bash caption=">_"}
 gradle -q projects
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{.bash caption=">_"}
 ------------------------------------------------------------
 Root project 'monorepo-gradle'
 ------------------------------------------------------------
@@ -138,7 +141,7 @@ Now that the directories for the subprojects are created and included as part of
 
 Start by creating a `build.gradle` file in the `subproject-1` directory. Then, edit that file to include the following syntax:
 
-~~~
+~~~{ caption="build.gradle"}
 dependencies {
 
 }
@@ -148,7 +151,7 @@ Subproject-1 serves as a library and does not depend on other subprojects, so yo
 
 Next, create the directory structure for developing the source code using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cd subproject-1
 mkdir src\main\java\subproject\
 ~~~
@@ -157,7 +160,7 @@ mkdir src\main\java\subproject\
 
 Create a Java file named `Library.java` in the newly created `subproject` directory and paste the following code into it:
 
-~~~
+~~~{.java caption="Library.java"}
 package subproject;
 
 public class Library {
@@ -173,7 +176,7 @@ This code defines a class named `Library` and prints the message `Hello from Lib
 
 For subproject-2, create a `build.gradle` file in the `subproject-2` directory, then edit that file to include the following syntax:
 
-~~~
+~~~{ caption="build.gradle"}
 dependencies {
     implementation project(":subproject-1")
 }
@@ -183,14 +186,14 @@ As previously stated, subproject-1 serves as a library, and subproject-2 depends
 
 Next, create the directory structure for developing the source code using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cd subproject-2
 mkdir src\main\java\subproject\
 ~~~
 
 Create a Java file named `Service.java` in the newly created `subproject` directory and paste the following code into it:
 
-~~~
+~~~{.java caption="Service.java"}
 package subproject;
 
 
@@ -207,7 +210,7 @@ This code defines a class named `Service` and has a function called `serve`. Thi
 
 For subproject-3, create a `build.gradle` file in the `subproject-3` directory, then edit that file to include the following syntax:
 
-~~~
+~~~{ caption="build.gradle"}
 mainClassName = 'subproject.App'
 
 dependencies {
@@ -227,14 +230,14 @@ The `runApp` task is used to execute the Java application within Gradle. It spec
 
 Create the directory structure for developing the source code using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cd subproject-3
 mkdir src\main\java\subproject\
 ~~~
 
 Create a Java file named `App.java` in the newly created `subproject` directory and paste the following code into it:
 
-~~~
+~~~{.java caption="App.java"}
 package subproject;
 
 public class App {
@@ -263,7 +266,7 @@ Now that all of the subprojects are ready, it's time to build them using Gradle.
 
 To prepare the `build.gradle` file in the `building-a-monorepo-with-gradle` directory, add the following content:
 
-~~~
+~~~{ caption="build.gradle"}
 def javaProjects = [
         project(":subproject-1"),
         project(":subproject-2"),
@@ -292,7 +295,7 @@ This code defines the configuration applicable for each subproject and enables e
 
 Then, trigger the build process of the entire monorepo project using the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cd building-a-monorepo-with-gradle
 gradle build
 ~~~
@@ -301,7 +304,7 @@ All subprojects are built with the execution of a single command, which exemplif
 
 The output of the `build` command should look like this:
 
-~~~
+~~~{.bash caption="Output"}
 > Configure project :                   
 subproject-1                            
 subproject-2                            
@@ -319,7 +322,7 @@ You should also see a `build` directory holding the output of the `gradle build`
 
 If you rerun the same `gradle build` command, your output will look like this:
 
-~~~
+~~~{.bash caption="Output"}
 > Configure project :
 subproject-1
 subproject-2
@@ -335,14 +338,14 @@ Notice the last statement in the output: `15 actionable tasks: 15 up-to-date`. B
 
 Now that the build is ready, run the app with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cd building-a-monorepo-with-gradle
 gradle :subproject-3:runApp
 ~~~
 
 This command calls the custom task `runApp` that you defined previously in subproject-3, which is the app containing the main class. Your output should look like this:
 
-~~~
+~~~{.bash caption="Output"}
 > Configure project :
 subproject-1
 subproject-2
@@ -356,7 +359,7 @@ Notice that the message from subproject-1 is getting printed via the calls passe
 
 Go ahead and change the greeting message in subproject-1's `Library.java` class from `Hello from Library!` to `Hello from Subproject-1!` as follows:
 
-~~~
+~~~{.java caption="Library.java"}
 package subproject;
 
 public class Library {
@@ -368,14 +371,14 @@ public class Library {
 
 Then, execute the following command to build the projects:
 
-~~~
+~~~{.bash caption=">_"}
 cd building-a-monorepo-with-gradle
 gradle build
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{.bash caption="Output"}
 > Configure project :
 subproject-1
 subproject-2
@@ -400,9 +403,3 @@ Adopting content-based addressing and utilizing auto-skip functionality for mono
 The tutorial's source code is available in [this GitHub repository](https://github.com/rajkumarvenkatasamy/building-a-monorepo-with-gradle).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-
-
