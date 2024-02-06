@@ -9,9 +9,11 @@ sidebar:
 ---
 There is a joke about readability that goes something like this:
 
+```
 f(x,y) -> Clear and straightforward - the hallmark of practical programming.
 f x y -> Acceptable in shell scripting, but a bit odd.
 (f x y) -> Impossibly enigmatic. Approach with caution!
+```
 
 I assume this joke was written by Lisp programmers upset that they lose so many programmers just because s-expressions can look odd to the uninitiated. But there is some truth to this. Readability does have a lot to do with familiarity and if you are familiar with syntax that looks a certain way, then anything else can look foriegn.
 
@@ -240,9 +242,13 @@ Other concepts do the same thing, like pattern matching, like Sum types, like Ge
 
 All these things, if they are used to more consisely express the concept at hand ( and not for showboating) can improve expert readability at the cost of beginner readability.
 
-<<heres a table>>
+| Readability Enhancers    | Definition                                                                                     | Effects on Beginners                         | Effects on Experts                           |
+|--------------------------|------------------------------------------------------------------------------------------------|---------------------------------------------|---------------------------------------------|
+| Structural Enhancements  | Use of functions, whitespace, comments and even comment headings to visually structure code.                        | Makes code more navigable and understandable; helps in grouping related logic. | Aids in quick navigation and understanding of code structure; reduces cognitive load. |
+| Simplification Techniques| Utilizing constructs that reduce error likelihood and leveraging built-in functions for common tasks. | Simplifies understanding of code by reducing complexity; minimizes common errors. May harm readability depending on specific familiarity. | Streamlines code, making it easier to read and maintain; promotes use of concise, expressive constructs. |
+| Advanced Language Features | Employing higher-order functions, pattern matching, and other expressive language features.   | Increases complexity and learning curve due to more concepts to grasp. | Enhances expressiveness and conciseness; allows for more sophisticated abstractions and clearer intent. |
 
-So which do you choose, when that trade off comes? 
+So which column do you care the most about? What trade off to choose?
 
 Earlier I showed refactoring some go code to call `max`. But actually go doesn't have a way to get the max of some ints in the standard libraray. So I'd have to implement the max function myself, which takes away some of the benefit and I assume Rob Pike would rather I just use the if x > y else logic that I started with. That's because, in my view, go chooses beginner readablity over expert readablity. If you've not programminged in go yet, well there are very few concepts you aren't already familar with. And that is a legit choice to choose beginner readablity and simplicity. Clearly go has been wildly successful at gain adoption in the 'cloud native', network services world.
 
@@ -250,4 +256,6 @@ Rust, makes the opposite choice. And not because of the borrow checker vs Go GC,
 
 Myself, I think expert readablity is more important. In the future I hope we are building up more higher level concepts that allow us to write better code.
 
-Expert readabiity matters. There is a always a need for simple languages but we should be optimizing for experienced users being able to understand code quickly because it precicley communicates it's intent and to do that we need to be able to have building blocks larger than ifs and for loops.
+It's crucial, however, to acknowledge the balance that must be struck. Complex features can make the initial learning curve steeper for beginners. Higher-order functions, pattern matching, and other sophisticated constructs are additional layers to learn, which can be daunting for those new to programming or a particular language.
+
+But expert readabiity matters. There will always be a need for simple languages but we should be optimizing for experienced users being able to understand code quickly because it precicley communicates it's intent and to do that we need to be able to have building blocks larger than ifs and for loops.
