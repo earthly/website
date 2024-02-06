@@ -27,7 +27,7 @@ Before you begin this tutorial, make sure you have the following prerequisites:
 
 In this scenario, you'll be working with an imaginary e-commerce company called "ZZZ," whose backend engineering team is tasked with designing and delivering a backend project with a Gradle-based monorepo setup. You'll create and manage three subprojects within a single monorepo setup using Gradle. Among the three subprojects, subproject-2 depends on subproject-1, and subproject-3 depends on subproject-2:
 
-![Monorepo project directory structure, courtesy of Rajkumar Venkatasamy](https://i.imgur.com/NZ8p0vP.png)
+![Monorepo project directory structure, courtesy of Rajkumar Venkatasamy]({{site.images}}{{page.slug}}/NZ8p0vP.png)
 
 In the diagram above:
 
@@ -248,7 +248,7 @@ This code defines a class named `App` and has a function called `getGreeting`. T
 
 The final structure of your subprojects should look like this:
 
-![Subprojects structure](https://i.imgur.com/Lyocymo.png)
+![Subprojects structure]({{site.images}}{{page.slug}}/Lyocymo.png)
 
 ### Build the Monorepo Project Using Gradle
 
@@ -306,7 +306,7 @@ BUILD SUCCESSFUL in 1s
 
 You should also see a `build` directory holding the output of the `gradle build` command in each of these subprojects:
 
-![Subprojects structure after the build](https://i.imgur.com/RCoWcln.png)
+![Subprojects structure after the build]({{site.images}}{{page.slug}}/RCoWcln.png)
 
 If you rerun the same `gradle build` command, your output will look like this:
 
@@ -399,6 +399,5 @@ The tutorial's source code is available in [this GitHub repository](https://gith
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
 * [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
