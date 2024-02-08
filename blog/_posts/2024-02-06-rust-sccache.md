@@ -6,10 +6,7 @@ toc: true
 author: Ryan Peden
 
 internal-links:
- - optimizing rust build speed with sccache
- - optimizing rust build
- - build speed with sccache
- - using sccache for optimizing rust build speed
+ - sccache
 excerpt: |
     This tutorial explains how to use sccache, a tool that can speed up Rust compilation by caching the output of compilation and reusing it for subsequent builds. It covers installing and configuring sccache, integrating it with Cargo, measuring and optimizing build performance, and using caching in continuous integration (CI) environments.
 ---
@@ -112,24 +109,40 @@ Beyond these tools, there are other things you can do to optimize Rust build per
 
 In addition to caching local builds, caching can also be useful in CI environments where you need to build and test your code frequently and reliably. Caching in CI environments can reduce the build time and resource consumption, which can improve the productivity and quality of your code.
 
-However, caching in CI environments can also be challenging, as CI environments are often ephemeral and distributed, meaning the cache needs to be stored and accessed across multiple machines and sessions.
+However, caching in CI environments with `sccache` can also be challenging, as CI environments are often ephemeral and distributed, meaning the cache needs to be stored and accessed across multiple machines and sessions.
 
-One way to use caching in CI environments is to use sccache with a distributed cache backend, such as Amazon S3 or GCS. This tactic lets you share the cache across multiple CI machines and sessions and leverage the scalability and availability of cloud storage services. However, it can also introduce some limitations and challenges, such as:
+One way to use sccache in CI environments is to use a distributed cache backend, such as Amazon S3 or GCS. This tactic lets you share the cache across multiple CI machines and sessions and leverage the scalability and availability of cloud storage services. However, it can also introduce some limitations and challenges, such as:
 
 - **Network latency:** Using a distributed cache backend can incur network latency, affecting the cache performance and reliability. That means you should choose a cache backend close to your CI environment with a fast and stable network connection.
 - **Cache invalidation:** A distributed cache backend can also introduce cache invalidation issues that affect cache correctness and consistency. Cache invalidation is the process of removing outdated or invalid cache entries from the cache. Various factors (such as code changes, compiler updates, and configuration changes) can trigger cache invalidation. sccache supports both cache invalidation and expiration policies, and you can use the `sccache --clear` command to clear the cache manually when necessary.
 - **Cache security:** Using a distributed cache backend can also introduce cache security issues if the cache is not protected from unauthorized access and modification. You should use a cache backend that supports cache encryption and authentication and use the `sccache --show-stats` command to monitor the cache usage and activity.
 
-Another way to use caching in CI environments is to use tools that improve upon sccache's limitations, such as [Earthly](https://earthly.dev/). Earthly lets you define and run your builds using declarative syntax. It can automatically cache the output of each build step and reuse it for future builds. Earthly can also invalidate the cache when the input files or commands change. It integrates with various CI platforms, including [GitHub Actions](https://github.com/features/actions), [GitLab CI](https://docs.gitlab.com/ee/ci/), and [Jenkins](https://www.jenkins.io/).
+## Limitations
 
-Earthly uses a local cache by default, sidestepping any potential network latency and security issues that can affect the distributed cache backends. Additionally, Earthly can use a remote cache, which can allow you to share the cache across multiple machines and sessions.
+While sccache significantly accelerates Rust compilation by caching output artifacts, it's important to recognize its limitations, especially in CI environments. One notable challenge is network overhead. When using sccache with distributed cache backends, such as Amazon S3 or Google Cloud Storage, CI builds can experience latency due to the time required to upload and download cache artifacts. This network overhead can diminish the time savings provided by caching, especially for incremental builds that generate many small, often unique artifacts.
 
-Adopting content-based addressing, Earthly identifies cache entries by their content, not by their location or name. Moreover, Earthly uses a build graph to represent the build process as a graph of steps and dependencies. This can improve the build performance and reliability, allowing Earthly to parallelize and skip the build steps based on the cache availability and input changes.
+Another limitation is that while sccache works well for caching complete compilations, incremental compilation in Rust generates many small, often unique artifacts that change with almost every compilation. This characteristic can limit the effectiveness of sccache for caching these artifacts because the cache hit rate may be lower than for complete compilations. In other words, the nature of incremental compilation—where small parts of the code are compiled separately—may not align well with sccache's approach, which is more beneficial for caching results of more substantial and less frequently changing compilation units.
+
+### A New Approach: `lib/rust`
+
+Recognizing the limitations of sccache, Earthly has developed an alternative solution [`lib/rust`](https://github.com/earthly/lib/tree/main/rust). This approach, particularly useful in CI environments, leverages Rust's incremental compilation feature, offering a more efficient caching mechanism.
+
+[`lib/rust`](https://github.com/earthly/lib/tree/main/rust) optimizes CI build times by utilizing incremental compilation and more efficient caching strategies. It significantly reduces Rust build times, making it an invaluable tool for Rust developers.
+
+| Feature               | sccache                                       | [`lib/rust`](https://github.com/earthly/lib/tree/main/rust)       |
+|-----------------------|-----------------------------------------------|------------------------------------------------------------------|
+| CI Build Time         | Reduced, but impacted by network overhead     | Significantly reduced, with minimal network overhead             |
+| Incremental Compilation| Not well supported                           | Fully supported, optimizing incremental builds                   |
+| Setup Complexity      | Moderate                                      | Simplified, with straightforward integration into CI pipelines   |
+| Network Overhead      | Can be significant, especially with distributed caches | Minimized by using local caches and persistent build runners  |
 
 ## Conclusion
 
 In this tutorial, you learned how to use sccache to optimize Rust build speed. You learned about the Rust build process and how to configure sccache for different scenarios.
 
-While sccache can help you significantly reduce the build time and improve the developer experience of Rust projects, it has some limitations. For instance, sccache is easy to get started with but can be difficult to administer and scale up, especially when you want to share cached build artifacts or integrate them into CI builds. Thankfully, [Earthly](https://earthly.dev/) is easy to set up and maintain, even in complex caching scenarios. [Try it out](https://cloud.earthly.dev/login) for free today.
+While sccache has been a valuable tool for Rust developers, the advent of `lib/rust` offers new possibilities for optimizing CI build times. We recommend exploring `lib/rust` for your projects and welcome any feedback from those who have experience with either tool. The Rust community thrives on collaboration, and your insights can help others make informed decisions about these tools.
+
+For more information on getting started with `lib/rust`, check-out [Incremental Rust builds in CI
+](https://earthly.dev/blog/incremental-rust-builds/) and our [Earthly for Rust Resources](https://earthly.dev/rust).
 
 {% include_html cta/bottom-cta.html %}
