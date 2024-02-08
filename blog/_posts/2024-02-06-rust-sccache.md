@@ -138,7 +138,6 @@ Recognizing the limitations of sccache, Earthly has developed an alternative sol
 | Setup Complexity      | Moderate                                      | Simplified, with straightforward integration into CI pipelines   |
 | Network Overhead      | Can be significant, especially with distributed caches | Minimized by using local caches and persistent build runners  |
 
-
 ## Conclusion
 
 In this tutorial, you learned how to use sccache to optimize Rust build speed. You learned about the Rust build process and how to configure sccache for different scenarios.
