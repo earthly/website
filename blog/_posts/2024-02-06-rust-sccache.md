@@ -119,8 +119,6 @@ One way to use sccache in CI environments is to use a distributed cache backend,
 
 ## Limitations
 
-While sccache accelerates compilation significantly, it has limitations. Besides CI introducing network lag, while sccache works well for caching complete compilations, incremental compilation in Rust generates many small, often unique artifacts that change with almost every compilation. This characteristic can limit the effectiveness of sccache for caching these artifacts because the cache hit rate may be lower than for complete compilations. In other words, the nature of incremental compilation—where small parts of the code are compiled separately—may not align well with sccache's approach, which is more beneficial for caching results of more substantial and less frequently changing compilation units.
-
 While sccache significantly accelerates Rust compilation by caching output artifacts, it's important to recognize its limitations, especially in CI environments. One notable challenge is network overhead. When using sccache with distributed cache backends, such as Amazon S3 or Google Cloud Storage, CI builds can experience latency due to the time required to upload and download cache artifacts. This network overhead can diminish the time savings provided by caching, especially for incremental builds that generate many small, often unique artifacts.
 
 Another limitation is that while sccache works well for caching complete compilations, incremental compilation in Rust generates many small, often unique artifacts that change with almost every compilation. This characteristic can limit the effectiveness of sccache for caching these artifacts because the cache hit rate may be lower than for complete compilations. In other words, the nature of incremental compilation—where small parts of the code are compiled separately—may not align well with sccache's approach, which is more beneficial for caching results of more substantial and less frequently changing compilation units.
@@ -137,7 +135,6 @@ Recognizing the limitations of sccache, Earthly has developed an alternative sol
 | Incremental Compilation| Not well supported                           | Fully supported, optimizing incremental builds                   |
 | Setup Complexity      | Moderate                                      | Simplified, with straightforward integration into CI pipelines   |
 | Network Overhead      | Can be significant, especially with distributed caches | Minimized by using local caches and persistent build runners  |
-
 
 ## Conclusion
 
