@@ -17,7 +17,9 @@ f x y -> Acceptable in shell scripting, but a bit odd.
 
 I assume this joke was written by Lisp programmers upset that they lose so many programmers just because s-expressions can look odd to the uninitiated. But there is some truth to this. Readability does have a lot to do with familiarity and if you are familiar with syntax that looks a certain way, then anything else can look foriegn.
 
-But can we talk about readability outside of familiarity? I think we can. [Last time] I mentioned that expert readability and begginer approachablity can sometimes be conflict and today I wanted to unpack that.
+But can we talk about readability outside of familiarity? I think we can. [Last time](/blog/showboaters) I mentioned that expert readability and begginer approachablity can sometimes be conflict and today I wanted to unpack that.
+
+Readability of programming languages can vary, influenced by factors such as syntax complexity, standard library design, and the presence of advanced programming constructs. **These factors all effect beginners and language experts differently and that's what I want to share. There are two types of Readability.**
 
 Let's define readability like this:
 
@@ -34,7 +36,7 @@ Let's start with the first.
 
 ## Structure
 
-This may sound obvious but comptures dont 'really need structure, like function calls and modules and objects and so on. They just need on instruction after another to run. 
+This may sound obvious but comptures don't really need structure, like function calls and modules and objects and so on. They just need on instruction after another to run. 
 
 In 2004ish, at my first software developer job I got introduced to a large DBASE program that had no structure at all below the file level. Each file was just start executing at the top and well that's about it. 100s of files that looked like this.
 
