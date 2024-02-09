@@ -6,7 +6,11 @@ toc: true
 author: Adam
 sidebar:
   nav: "thoughts"
+excerpt: |
+    There are two types of readability in coding: Newcomer Readability, which is how quickly someone can understand a programming language they are unfamiliar with, and Experienced Readability, which is how quickly someone experienced in a language can understand code. These two types of readability can sometimes clash, as certain structural enhancements and simplification techniques that improve expert readability may make it more difficult for beginners to understand the code.
 ---
+**The article focuses on enhancing the readability of programming code. Earthly provides a straightforward approach to defining build steps, which enhances the clarity of build scripts. [Check it out](https://cloud.earthly.dev/login).**
+
 Ever looked at some code and thought, "Wow, that's an ugly mess!"? Or maybe you picked up a new programming language and felt right at home? It's funny how our gut feelings about code often come down to what we're used to.
 
 There's this joke I heard once:
