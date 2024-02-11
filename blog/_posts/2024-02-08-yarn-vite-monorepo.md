@@ -6,7 +6,10 @@ toc: true
 author: Aniket Bhattacharyea
 
 internal-links:
- - just an example
+ - building a monorepo with yarn and vite
+ - build a monorepo
+ - how to build a monorepo with yarn and vite
+ - yarn and vite for building a monorepo
 ---
 
 In a real-world project, you'll often have many independent components that depend on each other. Organizing these components while keeping in mind the ease of development and deployment is a daunting task. Thankfully, with [monorepos](https://earthly.dev/blog/monorepo-tools/), all the related subprojects are contained within one single repository. This makes it easy for teams to collaborate and update the dependencies with new changes without the fear of breaking projects that rely on them.
@@ -494,6 +497,3 @@ When you outgrow yarn workspaces and vite, or need to incorporate backend langua
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
