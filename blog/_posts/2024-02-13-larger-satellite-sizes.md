@@ -19,6 +19,8 @@ At Earthly, we're constantly trying to make builds more consistent, faster, and 
 
 ### A Closer Look at the New Satellite Instance Sizes
 
+![close]({{site.images}}{{page.slug}}/close.png)\
+
 - **2xlarge:**  16 vCPUs, 64 GB of RAM, and a 500GB cache disk. x86 & arm64 available.
 - **3xlarge:**  32 vCPUs, 128 GB of RAM, and a 1TB cache disk. x86 & arm64 available.
 - **4xlarge:** 64 vCPUs, 256 GB of RAM, and a 2TB cache disk. x86 & arm64 available.
@@ -26,6 +28,8 @@ At Earthly, we're constantly trying to make builds more consistent, faster, and 
 _[Visit our Pricing page](https://earthly.dev/pricing#compute-pricing) for more details about the Satellites instance sizes we offer._
 
 ## From Feedback to Features
+
+![f2f]({{site.images}}{{page.slug}}/f2f.png)\
 
 Our new Satellites instance sizes are an upgrade, but they're also a sign of our commitment to our users. Our previous instance sizes – x-small through x-large – were insufficient for some Satellites customers. We heard that feedback and expanded our offerings to help ensure that Earthly Satellites remains the go-to choice for every build.
 
