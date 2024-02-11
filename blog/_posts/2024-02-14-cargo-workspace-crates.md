@@ -6,7 +6,11 @@ toc: true
 author: Kumar Harsh
 
 internal-links:
- - just an example
+ - monorepos with cargo workspace and crates
+ - monorepos with cargo
+ - cargo workspace and crates
+ - monorepos with crates
+ - building monorepos with cargo workspace and crates
 ---
 
 Building software can feel like assembling a complex puzzle, with scattered pieces, intricate dependencies, and evolving needs that can quickly lead to chaos. [Monorepos](https://earthly.dev/monorepos) offer a solution to this problem by consolidating all project code—from core libraries to individual applications—in one centralized location. This approach provides various benefits, including improved code sharing, simplified build processes, and enhanced visibility across the entire codebase.
@@ -137,8 +141,5 @@ However, optimizing build performance is equally important. You can significantl
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-* [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
+
+
