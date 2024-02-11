@@ -132,6 +132,8 @@ Monorepos with [Cargo workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-w
 
 However, optimizing build performance is equally important. You can significantly enhance your Cargo and Rust build speed by implementing incremental builds. This powerful technique allows for faster iterations and quicker feedback loops during development, contributing to a more streamlined workflow. Make sure to check out Earthly's take on [optimizing Rust build performance with incremental builds](https://earthly.dev/blog/incremental-rust-builds) if you're looking to learn more.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
@@ -140,4 +142,3 @@ However, optimizing build performance is equally important. You can significantl
 * [ ] Would any images look better `wide` or without the `figcaption`?
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
