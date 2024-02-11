@@ -492,8 +492,3 @@ In this article, you learned how to build a monorepo with [Yarn workspaces](http
 When you outgrow yarn workspaces and vite, or need to incorporate backend languages like Go, Rust, Python or even Ruby and Java, take a look at Earthly. It's a great build tool for monorepos and will help speed your development and build time.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
