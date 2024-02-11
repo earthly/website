@@ -33,7 +33,7 @@ In addition to improving code organization and modularity, Cargo workspaces stre
 
 Cargo is easy to use. Once you [install Cargo](https://doc.rust-lang.org/cargo/getting-started/installation.html), all you need to do is add a `[workspace]` table to a project's `Cargo.toml` file. Then, you define its members like this:
 
-~~~
+~~~{.toml caption="Cargo.toml"}
 [workspace]
 
 members = [
@@ -66,19 +66,20 @@ Crates also play a vital role in enforcing Rust's ownership and borrowing system
 
 Creating and publishing crates with Cargo is easy. You can create new crates using the following commands:
 
-~~~
+~~~{.bash caption=">_"}
 cargo new crate_name           # for crates with a binary target
 cargo new crate_name --lib     # for crates with a library target
 ~~~
 
 This code creates a new crate with the following file structure:
 
-~~~
+~~~{ caption=""}
 |
 └── crate_name
     ├── Cargo.toml
     └── src
-        └── main.rs   # or lib.rs if you used the --lib flag when creating the crate
+        └── main.rs   
+        # or lib.rs if you used the --lib flag when creating the crate
 ~~~
 
 Then, you can edit the `main.rs` file to build the crate as you'd like. When done, don't forget to create documentation for the crate using the `cargo doc` command.
@@ -87,13 +88,13 @@ Once you're ready to publish, you need to create an account on [crates.io](https
 
 Once you've created your account, log in to your crates.io account in your Cargo CLI by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 cargo login
 ~~~
 
 You'll receive an output like this, asking you to paste an API token found on `https://crates.io/me`:
 
-~~~
+~~~{ caption="Output"}
 please paste the API Token found on https://crates.io/me below
 ~~~
 
@@ -137,9 +138,3 @@ Monorepos with [Cargo workspaces](https://doc.rust-lang.org/book/ch14-03-cargo-w
 However, optimizing build performance is equally important. You can significantly enhance your Cargo and Rust build speed by implementing incremental builds. This powerful technique allows for faster iterations and quicker feedback loops during development, contributing to a more streamlined workflow. Make sure to check out Earthly's take on [optimizing Rust build performance with incremental builds](https://earthly.dev/blog/incremental-rust-builds) if you're looking to learn more.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-
-
