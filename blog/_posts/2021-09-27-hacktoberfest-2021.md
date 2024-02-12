@@ -11,7 +11,7 @@ excerpt: |
 last_modified_at: 2023-07-14
 topcta: false
 ---
-We're excited to announce that Earthly is participating in Hacktoberfest this October [again](/blog/2020-09-30-hacktoberfest-2020).
+We're excited to announce that Earthly is participating in Hacktoberfest this October [again](/blog/hacktoberfest-2020).
 
 Last year we saw lots of great contributions from the community and sent out a bunch of Earthly stickers to participants.
 

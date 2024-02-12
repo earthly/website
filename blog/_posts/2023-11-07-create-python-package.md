@@ -231,7 +231,7 @@ The name of the generated wheel (`mergefast-0.1.3-py3-none-any.whl`) file tells 
 
 - **py3:** This indicates that the package is compatible with Python 3. The package is expected to work with any Python 3 version. If it were py2.py3, that would mean it's compatible with both Python 2 and Python 3.
 
-- **none:** The package does not contain any compiled extensions or is not ABI-specific. ( In [part three](/python-c-extension), you'll see this vary lead to some complications).
+- **none:** The package does not contain any compiled extensions or is not ABI-specific. ( In [part three](/blog/python-c-extension), you'll see this vary lead to some complications).
 
 - **any:** This denotes the platform. "Any" means the package is platform-independent. ( This will come up in why we build a [Python C extension](/blog/python-c-extension) as well. )
 <!-- vale HouseStyle.ListStart = YES -->

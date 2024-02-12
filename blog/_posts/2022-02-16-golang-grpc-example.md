@@ -489,7 +489,7 @@ service Activity_Log {
 }
 ~~~
 
-And you aren't strictly limited to those two options. I like grpcurl because it works like, well curl, but many other options exist. For example, Postman supports gRPC, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
+And you aren't strictly limited to those two options. I like grpcurl because it works like, well curl, but many other options exist. For example, Postman supports gRPC, as does [BloomRPC](https://github.com/bloomrpc/bloomrpc), [Insomnia](https://insomnia.rest/) and [many](https://github.com/gogo/letmegrpc) [command-line](https://github.com/fullstorydev/grpcui) [tools](https://github.com/gusaul/grpcox).
 
 </div>
 
