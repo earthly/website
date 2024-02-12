@@ -198,7 +198,7 @@ double-image() { # Double size of image. Using imagemagick
 }
 
 jpg-large-images() { # Convert png to jpg for large images
-   find ./blog/assets/ -type f  -size +3200k -print0 | xargs -0 -I {} sips -s format jpeg {}
+   find ./blog/assets/ -type f  -size +2000k -print0 | xargs -0 -I {} sips -s format jpeg {}
 }
 
 compress-large-images() { # Find large images and compress them
