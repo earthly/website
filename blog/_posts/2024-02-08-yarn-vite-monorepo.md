@@ -10,7 +10,10 @@ internal-links:
  - build a monorepo
  - how to build a monorepo with yarn and vite
  - yarn and vite for building a monorepo
+excerpt: |
+    This article explains how to build a monorepo using Yarn workspaces and Vite, allowing for easy collaboration and dependency management in JavaScript projects. It covers the setup process, creating apps with React and Vue, and enabling parallel execution of build scripts.
 ---
+**The article provides a guide on setting up a monorepo with Yarn and Vite. If you're working in a monorepo, you might be interested in Earthly. Earthly significantly speeds up build times for complex projects. [Check it out](https://cloud.earthly.dev/login).**
 
 In a real-world project, you'll often have many independent components that depend on each other. Organizing these components while keeping in mind the ease of development and deployment is a daunting task. Thankfully, with [monorepos](https://earthly.dev/blog/monorepo-tools/), all the related subprojects are contained within one single repository. This makes it easy for teams to collaborate and update the dependencies with new changes without the fear of breaking projects that rely on them.
 
