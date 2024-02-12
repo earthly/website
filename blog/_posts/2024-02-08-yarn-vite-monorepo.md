@@ -492,6 +492,6 @@ In this article, you learned how to build a monorepo with [Yarn workspaces](http
 
 [Vite](https://vitejs.dev/) is a powerful and efficient frontend build tool that makes developing JavaScript and TypeScript apps fast and easy. With Vite, you get access to a super fast development server with HMR and the freedom to use any framework of your choice.
 
-When you outgrow yarn workspaces and vite, or need to incorporate backend languages like Go, Rust, Python or even Ruby and Java, take a look at Earthly. It's a great build tool for monorepos and will help speed your development and build time.
+When you outgrow yarn workspaces and vite, or need to incorporate backend languages like Go, Rust, Python or even Ruby and Java, take a look at Earthly. It's a great build tool for monorepos and will help speed your development and build time. [Check it out](https://cloud.earthly.dev/login)
 
 {% include_html cta/bottom-cta.html %}
