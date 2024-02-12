@@ -204,14 +204,14 @@ jpg-large-images() { # Convert png to jpg for large images
 }
 
 compress-large-images() { # Find large images and compress them
-  find  ./blog/assets/images -type f -size +3200k | while IFS= read -r file; do
+  find  ./blog/assets/images -type f -size +1900k | while IFS= read -r file; do
     if file --mime-type "$file" | grep -q 'image/png'; then
       echo "Compressing PNG file: $file"
       tmp_file="$(mktemp)"
       pngquant --verbose --skip-if-larger --speed 1 --force --quality=85-100 -o "$tmp_file" "$file" && mv "$tmp_file" "$file"
-    elif file --mime-type "$file" | grep -q 'image/jpeg'; then
-      echo "Compressing JPEG file: $file"
-      jpegoptim --max=95 --overwrite "$file"
+    # elif file --mime-type "$file" | grep -q 'image/jpeg'; then
+    #   echo "Compressing JPEG file: $file"
+    #   jpegoptim --max=95 --overwrite "$file"
     fi
   done
 }
