@@ -89,6 +89,7 @@ layout: default
           const tier3Pricing = [...document.querySelectorAll("#tier-3-pricing > div")]
           const tier2 = document.getElementById("tier-2")
           const tier5 = document.getElementById("tier-5")
+          const tier5Subtitle = document.getElementById("tier-5-subtitle")
           const pricingTiers = document.getElementById("pricing-tiers")
           const minutesPerMonth = document.querySelectorAll(".minutes-per-month")
           const pricePerMonth = document.querySelectorAll(".price-per-month")
@@ -101,7 +102,8 @@ layout: default
             pricingTiers.classList.remove("lg:grid-cols-4")
             pricingTiers.classList.add("lg:grid-cols-3")
             minutesPerMonth.forEach((x, i) => {
-              pricePerMonth[i].style.height = "108px"
+              pricePerMonth[i].classList.remove("h-48", "xl:h-44")
+              pricePerMonth[i].classList.add("h-[108px]", "xl:h-24")
               x.classList.add("hidden")
             })
             tier3Pricing.slice(-2).forEach(x => x.classList.remove("hidden"))
@@ -112,7 +114,8 @@ layout: default
             pricingTiers.classList.remove("lg:grid-cols-3")
             pricingTiers.classList.add("lg:grid-cols-4")
             minutesPerMonth.forEach((x, i) => {
-              pricePerMonth[i].style = ""
+              pricePerMonth[i].classList.add("h-48", "xl:h-44")
+              pricePerMonth[i].classList.remove("h-[108px]", "xl:h-24")
               x.classList.remove("hidden")
             })
             tier3Pricing.slice(-2).forEach(x => x.classList.add("hidden"))
@@ -123,12 +126,14 @@ layout: default
             pricingTiers.classList.add("hidden")
             tier5.classList.remove("mt-8")
             tier5.classList.add("mt-4")
+            tier5Subtitle.innerHTML = "Single-tenant SaaS, fully managed by Earthly in your AWS account"
             toggleSwitch.classList.add("hidden")
           } else {
             pricingCalculator.style = ""
             pricingTiers.classList.remove("hidden")
             tier5.classList.add("mt-8")
             tier5.classList.remove("mt-4")
+            tier5Subtitle.innerHTML = "Everything in <b>Team</b> plus:"
             toggleSwitch.classList.remove("hidden")
           }
         }
