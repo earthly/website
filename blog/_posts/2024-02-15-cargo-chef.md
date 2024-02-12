@@ -10,7 +10,10 @@ internal-links:
  - builds faster with cargo-chef
  - cargo-chef making docker builds faster
  - fast builds with cargo-chef
+excerpt: |
+    This article discusses how to make Docker builds faster for Rust applications using the cargo-chef tool. It explains the factors that contribute to slow Docker builds and demonstrates how cargo-chef's caching capabilities can improve build performance.
 ---
+**The article focuses on enhancing Rust Docker build efficiency. Earthly streamlines Docker builds for Rust, reducing compilation times. Learn more about Earthly's capabilities for Rust Docker builds at [Earthly](https://cloud.earthly.dev/login).**
 
 [Docker](https://www.docker.com/) is an open source platform that allows you to package applications and all their dependencies in isolated containers. This means you can easily deploy and run these containers consistently across different environments, making building, testing, and deploying applications effortless.
 
