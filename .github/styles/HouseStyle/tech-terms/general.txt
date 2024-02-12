@@ -612,3 +612,6 @@ docformatter
 
 lexes
 memcached
+
+subproject
+classpath
