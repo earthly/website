@@ -11,7 +11,10 @@ internal-links:
  - cargo workspace and crates
  - monorepos with crates
  - building monorepos with cargo workspace and crates
+excerpt: |
+    Monorepos with Cargo Workspace and Crates is a tutorial that explains how to use Cargo workspaces and crates in Rust development to organize code, manage dependencies, and improve collaboration. It provides step-by-step instructions on setting up a Cargo workspace, creating and publishing crates, and best practices for managing monorepos.
 ---
+**The article provides insights on managing Rust monorepos using Cargo workspaces. Earthly simplifies the build process for Rust monorepo projects. [Check it out](https://cloud.earthly.dev/login).**
 
 Building software can feel like assembling a complex puzzle, with scattered pieces, intricate dependencies, and evolving needs that can quickly lead to chaos. [Monorepos](https://earthly.dev/monorepos) offer a solution to this problem by consolidating all project code—from core libraries to individual applications—in one centralized location. This approach provides various benefits, including improved code sharing, simplified build processes, and enhanced visibility across the entire codebase.
 
