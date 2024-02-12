@@ -401,7 +401,7 @@ In this tutorial, you learned how to create and manage a monorepo using Gradle w
 
 As your mono-repo expands, build times can grow, and at that point, it can make sense to look at solutions for keeping mono-repo build times under control.
 
-Adopting content-based addressing and utilizing auto-skip functionality for mono-repos, Earthly is a great solution for Java monorepos. Earthly uses a build graph to represent the build process as a graph of steps and dependencies. This can improve the build performance and reliability, allowing Earthly to parallelize and skip the build steps based on the cache availability and input changes.  [Try it out](https://cloud.earthly.dev/login) for free today.
+Also, if you're wrestling with Java monorepos, Earthly could be your new best friend. Imagine this: a tool that knows exactly what needs to be built and what doesn't. Earthly simplifies Java monorepos with content addressing and an auto-skip feature. It uses a build graph to show the build steps and their dependencies, enhancing performance and reliability by running steps in parallel and skipping unnecessary ones. [Try it out](https://cloud.earthly.dev/login) for free today.
 
 The tutorial's source code is available in [this GitHub repository](https://github.com/rajkumarvenkatasamy/building-a-monorepo-with-gradle).
 
