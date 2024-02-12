@@ -185,10 +185,10 @@ p > a:visited {
 }
 
 .toggle-switch {
-  width: 234px;
-  height: 54px;
-  align-items: center;
-  display: flex;
+  width: 48px;
+  height: 24px;
+  display: inline-block;
+  margin: 0 12px;
   position: relative;
   -webkit-tap-highlight-color: transparent;
 }
@@ -197,18 +197,8 @@ p > a:visited {
   display: none;
 }
 
-.toggle-switch .label {
-  width: 117px;
-  cursor: pointer;
-  font-size: 18px;
-  font-weight: 500;
-  padding: 0 20px;
-  position: absolute;
-  text-align: center;
-}
-
 .toggle-switch .slider {
-  background-color: #EAF8FF;
+  background-color: #cdd1d7;
   border-radius: 25px;
   cursor: pointer;
   position: absolute;
@@ -221,30 +211,26 @@ p > a:visited {
 }
 
 .toggle-switch .slider:before {
-  width: 117px;
-  height: 54px;
-  background-color: #006A4F;
+  width: 20px;
+  height: 20px;
+  background-color: white;
   border-radius: 25px;
   position: absolute;
   content: "";
-  left: 0;
-  bottom: 0;
+  left: 2px;
+  bottom: 2px;
   transition: .4s;
   -webkit-transition: .4s;
 }
 
-.toggle-switch input:not(:checked) ~ .label:nth-of-type(2) {
-  color: white;
-}
-
-.toggle-switch input:checked ~ .label:nth-of-type(3) {
-  color: white;
+.toggle-switch input:checked + .slider {
+  background-color: #006A4F;
 }
 
 .toggle-switch input:checked + .slider:before {
-  transform: translateX(117px);
-  -ms-transform: translateX(117px);
-  -webkit-transform: translateX(117px);
+  transform: translateX(24px);
+  -ms-transform: translateX(24px);
+  -webkit-transform: translateX(24px);
 }
 
 .agreement-list {

@@ -3,3 +3,5 @@
 - 14 day cache retention
 - Static originating IP address
 - Community support
+- TLS key rotation
+- Secret provider integrations (e.g. Hashicorp Vault) - coming soon
