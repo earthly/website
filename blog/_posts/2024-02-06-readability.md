@@ -28,7 +28,7 @@ Let's define readability like this:
 <div class="notice--warning notice--big">
 | Category                      | Description                                                                                                                                 |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
-| Newcomers Readability         | How quickly you can get up to speed reading a programming language. Related to how familiar you are with the syntax and concepts used. |
+| Newcomers Readability         | How quickly you can get up to speed reading a new programming language. Related to how familiar you are with the syntax and concepts used, despite having never seen that language before. |
 | Experienced Readability       | How quickly someone experienced in the language can understand a piece of code.                                |
 </div>
 
