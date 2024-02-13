@@ -194,7 +194,7 @@ func maximumCount(nums []int) int {
 }
 ~~~
 
-<figcaption>Having a `max` to call is handy. It communicates intent for the reader, improving readability in a small way.[^1]</figcaption>
+<figcaption>Having a `max` to call is handy. It communicates intent for the reader, improving readability in a small way.</figcaption>
 
 Using functions like `max` feels straightforward, right? Everyone knows what it means to get the maximum of two numbers. But if we keep building up helpful standard libraries and language features, we quickly leave behind common knowledge and start adding to the number of things a beginner has to learn.
 
