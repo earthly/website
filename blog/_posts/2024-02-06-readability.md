@@ -32,7 +32,7 @@ Let's define readability like this:
 | Experienced Readability       | How quickly someone experienced in the language can understand a piece of code.                                |
 </div>
 
-So, with these definitions, you can't dismiss the `(f x y)` style as less readable just because you aren't familiar with it. What matters is how readable it is for experience LISPer.
+So, with these definitions, you can't dismiss the `(f x y)` style as less readable just because you aren't familiar with it. What matters is how readable it is for experienced LISPer.
 
 Some things help both beginner and expert readability, but other things trade one off against the other.
 
