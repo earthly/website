@@ -106,8 +106,8 @@ def add_top_cta_if_conditions(filename : str, dryrun : bool) -> None:
                 print(f"Not Adding CTA:\t {filename}")
 
 def add_new_cta(filename : str, frontmatter : str, rest_of_file : str) -> None:
-    replace = get_new_cta_with_cache(filename,rest_of_file)
-    new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file
+    replace = get_new_cta_with_cache(filename,rest_of_file).strip()
+    new_content = frontmatter + '\n' + replace + '\n\n' + rest_of_file.strip() + "\n"
     with open(filename, 'w') as file:
         file.write(new_content)
     print(f"Wrote:\t{filename}")
@@ -197,9 +197,9 @@ def build_cta(content : str) -> str:
         with user():
             lm += dedent(f"""
                 Post:
-                ---
+                <post>
                 {content}
-                ---
+                </post>
                 Can you summarize this blog post in a three word sentence of the form 'This article is about ....'? Do not put the summary in quotes.
                 Examples:
                 - This article is about gmail API changes.
@@ -328,16 +328,14 @@ def make_shorter(input: str) -> str:
     lm2 = gpt4
     with assistant():
         for i in range(1,7):
-            r = lm + gen('options', temperature=0.1, max_tokens=500)
+            r = lm + gen('options', temperature=0.1)
             lm2 += dedent(f"""
-                          ---
-                          Option {i}:
-                          {r["options"]}
+                          Option {i}: {r["options"]}
+
                         """)
 
     with user():
         lm2 += dedent(f"""
-            ---
             Can you please comment on the pros and cons of each of these replacements and which should be rejected?
 
             Rejection Criteria:
@@ -372,18 +370,17 @@ def make_shorter(input: str) -> str:
 
             If options all rejected, choose the default:
 
-            ---
             Default: {input}
-            ---""")
+            """)
 
     with assistant():
-        lm2 += gen('thinking', temperature=0, max_tokens=2000)
+        lm2 += gen('thinking')
 
     with user():
-        lm2 += "Please return the text of the best option, based on the above thinking."
+        lm2 += "Please return the text of the best option, based on the above thinking. Return just verbatim text of the option."
 
     with assistant():
-        lm2 += gen('answer', temperature=0, max_tokens=500)
+        lm2 += gen('answer')
 
     log(str(lm2))
     return lm2["answer"].strip()

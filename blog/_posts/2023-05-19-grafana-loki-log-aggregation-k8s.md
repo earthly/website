@@ -327,6 +327,6 @@ To sum up, you set up the Grafana Loki stacks to your Kubernetes cluster, you al
 
 Grafana Loki is a robust log aggregation system that collects, stores, and queries log data in a cost-effective manner. Its distributed architecture and potent query language make it an ideal tool for businesses of all sizes aiming to optimize operations, enhance security, and make data-driven decisions.
 
-While you're optimizing your operations, you might also want to boost your build processes. If so, give [Earthly]((https://cloud.earthly.dev/login)) a try! It's a valuable addition to any toolkit, just like Grafana Loki.
+While you're optimizing your operations, you might also want to boost your build processes. If so, give [Earthly](https://cloud.earthly.dev/login) a try! It's a valuable addition to any toolkit, just like Grafana Loki.
 
 {% include_html cta/bottom-cta.html %}

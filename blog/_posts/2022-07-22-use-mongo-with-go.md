@@ -441,6 +441,6 @@ Here are some additional resources to help you delve deeper:
 
 Using MongoDB with Go will prove beneficial across various fields including backend development, data science, machine learning, and DevOps. Remember, your MQL skills are crucial in conducting more complex operations with Go. So, keep exploring and happy coding!
 
-And as you continue your learning journey, consider taking your efficiency up a notch with [Earthly]((https://cloud.earthly.dev/login)), your new tool for optimized builds.
+And as you continue your learning journey, consider taking your efficiency up a notch with [Earthly](https://cloud.earthly.dev/login), your new tool for optimized builds.
 
 {% include_html cta/bottom-cta.html %}

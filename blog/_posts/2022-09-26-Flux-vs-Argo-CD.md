@@ -324,7 +324,7 @@ Flux doesn't offer its own user management like Argo CD does. Instead, platform 
 
 While Argo CD offers only two major CRDs, Application, and AppProject, Flux has separate CRDs for each concept such as Kustomization (kustomize-controller), HelmRelease, HelmChart (helm-controller), HelmRepository, GitRepository (source-controller), Alert, Event (notification-controller), etc. This allows for a cleaner design, which precipitates in details such as:
 
-- Using Flux, notification configuration is [placed in CRDs](https://fluxcd.io/docs/components/notification/), whereas for Argo CD, it is [placed in ConfigMaps]((https://argocd-notifications.readthedocs.io/en/stable/triggers/)) in the Argo CD deployment's namespace. Access to that namespace is often restricted to the platform administrator.
+- Using Flux, notification configuration is [placed in CRDs](https://fluxcd.io/docs/components/notification/), whereas for Argo CD, it is [placed in ConfigMaps](https://argocd-notifications.readthedocs.io/en/stable/triggers/) in the Argo CD deployment's namespace. Access to that namespace is often restricted to the platform administrator.
 - Using Flux, private repository credentials stored in a Secret should be referenced in [Flux's GitRepository](https://fluxcd.io/docs/components/source/gitrepositories/#secret-reference), whereas for Argo CD, they should be [placed in Secrets](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#repository-credentials) in the Argo CD deployment's namespace. Reusing the same credential for multiple repos requires a rather [strange technique](https://argo-cd.readthedocs.io/en/stable/user-guide/private-repositories/#credential-templates). Not only Flux's method is much more conventional and flexible, access to Argo CD's namespace is often restricted to the platform administrator.
 - Analogously to repository credentials, cluster credentials (in a multi-cluster scenario) are set up [directly in the CRDs](https://fluxcd.io/docs/components/kustomize/kustomization/#remote-clusters--cluster-api) in Flux, whereas for Argo CD, its a [Secret in its own namespace](https://argo-cd.readthedocs.io/en/stable/operator-manual/declarative-setup/#clusters)
 
@@ -355,7 +355,7 @@ can use conventional tooling (such as kustomize overlays) to [generate GitOps ma
 
 In this article, we explored GitOps frameworks, focusing mainly on core capabilities, leaving out features like multi-tenancy, RBAC, notifications, image automation, etc. We found that Argo CD and Flux are comparably efficient, with each having its pros and cons. After careful deliberation, at Turbine.ai we chose Flux due to its superior support for OTS Helm charts and operational simplicity.
 
-Also as you prioritize your organization's specific needs when choosing between these platforms, you might also want to consider supercharging your build automation. If that's the case, give [Earthly]((https://cloud.earthly.dev/login)) a try!
+Also as you prioritize your organization's specific needs when choosing between these platforms, you might also want to consider supercharging your build automation. If that's the case, give [Earthly](https://cloud.earthly.dev/login) a try!
 
 It could be a valuable addition to your GitOps practices.
 

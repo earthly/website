@@ -499,7 +499,7 @@ I hit a number of errors building this. If you hit them, here are the solutions.
 
 Next up, I'm building a command-line client for this service to make it more user-friendly. I've got other features brewing in my mind, but I'll save that for later. Tossed around a few other improvements like using `gojsonschema` for better JSON validation and `net/http/httptest` for testing.
 
-Speaking of Golang projects, you might want to check out [Earthly]((https://cloud.earthly.dev/login)) for efficient, reproducible builds. It could be a valuable tool to streamline your development process.
+Speaking of Golang projects, you might want to check out [Earthly](https://cloud.earthly.dev/login) for efficient, reproducible builds. It could be a valuable tool to streamline your development process.
 
 If you want to be notified about the next installment, sign up for the newsletter:
 

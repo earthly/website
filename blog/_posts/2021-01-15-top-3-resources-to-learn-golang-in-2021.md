@@ -145,4 +145,4 @@ Here are some great resources for further learning:
 - [The Go Programming Language](https://www.goodreads.com/book/show/25080953-the-go-programming-language)
 - [Head First Go](https://www.goodreads.com/book/show/36800891-head-first-go)
 
-Take advantage of them to deepen your understanding of Go. And if you're diving into Go, you might want to check out [Earthly]((https://cloud.earthly.dev/login)) for efficient and consistent build automation. It could be a valuable tool in your Go development toolbox.
+Take advantage of them to deepen your understanding of Go. And if you're diving into Go, you might want to check out [Earthly](https://cloud.earthly.dev/login) for efficient and consistent build automation. It could be a valuable tool in your Go development toolbox.

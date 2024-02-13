@@ -142,7 +142,7 @@ That's a great practice. But another testing method available to us it is using 
 </div>
 Before publishing your package directly to PyPI, it's a good idea to test the entire packaging and distribution process on TestPyPI first.
 
-[TestPyPI](test.pypi.org) is a separate instance of the Python Package Index (PyPI) designed specifically for testing and experimentation. It allows us to practice the process of packaging and publishing our code without affecting the main PyPI repository.
+[TestPyPI](https://test.pypi.org) is a separate instance of the Python Package Index (PyPI) designed specifically for testing and experimentation. It allows us to practice the process of packaging and publishing our code without affecting the main PyPI repository.
 
 It's basically a staging release location we can use to test things out.
 

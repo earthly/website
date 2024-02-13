@@ -422,7 +422,7 @@ More recently, CMake added the `FetchContent` module, which is a better way to f
 
 ## Conclusion
 
-You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly]((https://cloud.earthly.dev/login)). It's a tool that takes build automation a step further.
+You now know the differences between CMake and Make, and why CMake, with its ongoing development, dependency management, and suitability for multiple platforms, is a great pick. If you're enjoying the efficiency of CMake, you might want to take a look at [Earthly](https://cloud.earthly.dev/login). It's a tool that takes build automation a step further.
 
 Keep coding!
 

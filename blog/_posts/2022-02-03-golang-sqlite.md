@@ -624,7 +624,7 @@ Now my activity service has a persistence layer, and I learned quite a bit about
 
 ## What's Next
 
-Next, I'm planning to explore gRPC and protocol buffers, along with considering richer records and reporting options. Also if you're building with Golang, consider giving [Earthly]((https://cloud.earthly.dev/login)) a whirl for consistent and efficient builds.
+Next, I'm planning to explore gRPC and protocol buffers, along with considering richer records and reporting options. Also if you're building with Golang, consider giving [Earthly](https://cloud.earthly.dev/login) a whirl for consistent and efficient builds.
 
 And if you want to be notified about the next installment, sign up for the newsletter:
 

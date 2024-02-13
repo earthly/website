@@ -231,9 +231,9 @@ The name of the generated wheel (`mergefast-0.1.3-py3-none-any.whl`) file tells 
 
 - **py3:** This indicates that the package is compatible with Python 3. The package is expected to work with any Python 3 version. If it were py2.py3, that would mean it's compatible with both Python 2 and Python 3.
 
-- **none:** The package does not contain any compiled extensions or is not ABI-specific. ( In [part three](/python-c-extension), you'll see this vary lead to some complications).
+- **none:** The package does not contain any compiled extensions or is not ABI-specific. ( In [part three](/blog/python-c-extension), you'll see this vary lead to some complications).
 
-- **any:** This denotes the platform. "Any" means the package is platform-independent. ( This will come up in why we build a [Python C extension](/python-c-extension) as well. )
+- **any:** This denotes the platform. "Any" means the package is platform-independent. ( This will come up in why we build a [Python C extension](/blog/python-c-extension) as well. )
 <!-- vale HouseStyle.ListStart = YES -->
 Because this wheel works with any platform and any version of Python 3, our source tar is not necessarily needed by PyPi - our compiled wheel should work everywhere.
 
@@ -301,7 +301,7 @@ test-dist-tar-install:
     RUN python test.py
 ~~~
 
-In `test-dist-tar-install` I start from a python base image, copy from my [build step]((https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile)), and then install the tar file we build and test it. (Full Earthfile on [GitHub](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).)
+In `test-dist-tar-install` I start from a python base image, copy from my [build step](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile), and then install the tar file we build and test it. (Full Earthfile on [GitHub](https://github.com/earthly/mergefast/blob/main/mergefast/Earthfile).)
 
 Then I can test the package installation at any time by running `earthly +test-dist-tar-install` and seeing the test pass:
 

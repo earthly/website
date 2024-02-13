@@ -658,7 +658,7 @@ Wait a few minutes and Check the Slack channel you created, you should have rece
 
 This guide walked you through creating a custom monitoring stack using Prometheus, Grafana, and Alertmanager, setting up alerting rules, as well as starting the stack using Docker Compose. You also learned to access and use Prometheus and Grafana web UIs and to import Grafana dashboards.
 
-Looking for a boost in your build process? Give [Earthly]((https://cloud.earthly.dev/login)) a go. It could be a perfect ally to your monitoring setup, enhancing your build automation and making your development process more efficient.
+Looking for a boost in your build process? Give [Earthly](https://cloud.earthly.dev/login) a go. It could be a perfect ally to your monitoring setup, enhancing your build automation and making your development process more efficient.
 
 To further expand your skills, explore concepts like log aggregation, distributed tracing, and machine learning-based anomaly detection. Consider tools like [Loki](https://earthly.dev/blog/grafana-loki-log-aggregation-k8s/), [Fluentd](https://www.fluentd.org/), and [Jaeger](https://www.jaegertracing.io/) for log and tracing analysis. Remember, monitoring needs continuous attention and tweaking for optimum performance.
 

@@ -339,6 +339,6 @@ Wait while Portainer pulls your images and creates your containers. The containe
 
 [Portainer](https://www.portainer.io) is a super handy web interface for managing Docker containers and other environments. You can use it on your local machine or even for keeping an eye on your production apps. It's also great for tracking containers and images in your CI/CD pipelines and build systems, keeping your Docker host clutter-free.
 
-While you're optimizing your Docker environment, you might also want to take a peek at [Earthly]((https://cloud.earthly.dev/login)). It's a tool designed for efficient and consistent automation of your Docker builds. Give both of these powerful tools a try!
+While you're optimizing your Docker environment, you might also want to take a peek at [Earthly](https://cloud.earthly.dev/login). It's a tool designed for efficient and consistent automation of your Docker builds. Give both of these powerful tools a try!
 
 {% include_html cta/bottom-cta.html %}

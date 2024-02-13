@@ -32,7 +32,7 @@ A *[monorepo](/blog/monorepo-vs-polyrepo)* is perhaps what you would expect from
 
 Google is one of the most notable adopters of the monorepo pattern, and [companies](https://bazel.build/users.html#whos-using-bazel) like Dropbox, LinkedIn, and Uber use monorepos to manage their large codebases. This is because large-scale projects having little or no dependency on each other can be developed, tested, and built without bisecting them into smaller projects.
 
-If you're from a JavaScript or [npm](https://www.npmjs.com/) background, you can think of a monorepo as a project having a single `package.json` file for managing all your project dependencies. It also allows you to easily share code between multiple environments using isolated modules as published packages. You can configure a single bundler for performing unit tests, integration tests, and other configurations without worrying about language and ecosystem-specific configurations.
+In a monorepo, you gain centralized control over all modules and dependencies. As complexity increases, think of it akin to having a single `package.json` file (if you're familiar with JavaScript or [npm](https://www.npmjs.com)), but with significantly more capabilities. Debugging issues specific to monorepos also presents unique challenges, though the underlying principles may feel familiar. Additionally, they allow for the configuration of a single bundler to handle unit tests, integration tests, and other setups, eliminating the need to deal with many specific configurations.
 
 ## The Efficiency of Building a Monorepo with Bazel
 

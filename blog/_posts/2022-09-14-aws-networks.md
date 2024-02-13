@@ -321,7 +321,7 @@ That's it, no more setup is needed. Now you can paste the same IP address into y
 
 This tutorial has provided basic insights into setting up a secure AWS network. Remember, the default VPCs that AWS provides in each region are completely usable and free. You can use them without fully understanding them, but it's always better to know how things work.
 
-Once you've got your AWS network up and running, you might want to consider making your builds smoother with [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can significantly enhance your build automation process. So, do check it out!
+Once you've got your AWS network up and running, you might want to consider making your builds smoother with [Earthly](https://cloud.earthly.dev/login). It's a tool that can significantly enhance your build automation process. So, do check it out!
 
 There's plenty more to learn in this area, so keep exploring.
 

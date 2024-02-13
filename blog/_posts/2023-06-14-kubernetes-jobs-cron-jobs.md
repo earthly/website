@@ -485,6 +485,6 @@ In this tutorial, you've learnt how to manage and monitor Jobs and CronJobs in K
 
 Equipped with these skills and tools, you can now schedule tasks in your Kubernetes cluster more efficiently.
 
-As you continue to work with Kubernetes, you might find yourself looking for ways to improve your container build process. If that's the case, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can significantly enhance your build process, making it more efficient and reliable.
+As you continue to work with Kubernetes, you might find yourself looking for ways to improve your container build process. If that's the case, you might want to check out [Earthly](https://cloud.earthly.dev/login). It's a tool that can significantly enhance your build process, making it more efficient and reliable.
 
 {% include_html cta/bottom-cta.html %}

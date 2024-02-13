@@ -609,3 +609,9 @@ retrigger
 
 Konfig
 docformatter
+
+lexes
+memcached
+
+subproject
+classpath

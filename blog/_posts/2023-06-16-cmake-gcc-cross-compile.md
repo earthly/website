@@ -283,6 +283,6 @@ This tutorial showed you the basics of cross-compiling a C++ program for ARM64 d
 
 Want to delve deeper into cross-compiling? Check out the official [CMake](https://cmake.org/documentation/) and [GCC](https://gcc.gnu.org/onlinedocs/) docs, or explore [platform-specific resources](https://github.com/topics/cross-compilation?o=desc&s=stars) and [forums](https://stackoverflow.com/questions/tagged/cross-compiling?sort=MostVotes&edited=true). Happy cross-compiling!
 
-And if you are looking for ways to further simplify your cross compile build process, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It's a tool that can make cross complication simpler.
+And if you are looking for ways to further simplify your cross compile build process, you might want to check out [Earthly](https://cloud.earthly.dev/login). It's a tool that can make cross complication simpler.
 
 {% include_html cta/makefile-cta.html %}

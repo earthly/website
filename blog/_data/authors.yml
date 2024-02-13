@@ -565,3 +565,7 @@ Furqan Butt:
     name    : "Furqan Butt"
     bio     : "Furqan is a software developer with more than three years of experience in the computer software industry. He's completed the AWS Certified Solutions Architect and Certified Cloud Practitioner certifications, writes on Medium for publications including Towards Data Science, and is part of the AWS Community Builders Program for data and analytics. His core expertise is in data engineering, big data, cloud technologies, and backend development."
     avatar  : "/assets/images/authors/furqan-butt.jpg"
+Ryan Peden:
+    name    : "Ryan Peden"
+    bio     : "Ryan has been a software developer for over a decade and a writer for five years. He is passionate about clean code, functional programming, and, most of all, finding ways to keep software development fun."
+    avatar  : "/assets/images/authors/ryan-peden.jpg"

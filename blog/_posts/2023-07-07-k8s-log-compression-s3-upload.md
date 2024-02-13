@@ -471,6 +471,6 @@ Once you head over to the S3 page on the AWS management console, you should see 
 
 CronJobs in Kubernetes provide valuable automation for periodic tasks like log management. This tutorial walked you through creating, building, and deploying a script for log retrieval and compression. You've now learned how to effectively schedule tasks using Kubernetes [CronJobs](/blog/kubernetes-jobs-cron-jobs/). Go ahead and implement this knowledge in your projects for a scalable solution.
 
-If you've enjoyed automating with Kubernetes, you might also love optimizing your builds. For that, check out [Earthly]((https://cloud.earthly.dev/login)), a tool that can further enhance your development workflow.
+If you've enjoyed automating with Kubernetes, you might also love optimizing your builds. For that, check out [Earthly](https://cloud.earthly.dev/login), a tool that can further enhance your development workflow.
 
 {% include_html cta/bottom-cta.html %}

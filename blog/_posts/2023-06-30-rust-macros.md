@@ -665,7 +665,7 @@ Here, assume that `my_macro.rs` invokes some macro in an invalid way. The `trybu
 
 Macros are a high-powered feature in Rust for code manipulation and complexity reduction. In this tutorial, you learned about declarative and procedural macros, their syntax, real-life examples, and efficiency tips.
 
-If you're using Rust macros like a pro and looking for ways to further streamline your development process, you should check out [Earthly]((https://cloud.earthly.dev/login)). It offers slicker, reproducible builds, making it a valuable tool in your Rust development toolbox.
+If you're using Rust macros like a pro and looking for ways to further streamline your development process, you should check out [Earthly](https://cloud.earthly.dev/login). It offers slicker, reproducible builds, making it a valuable tool in your Rust development toolbox.
 
 Find all code from this tutorial on [GitHub](https://github.com/heraldofsolace/rust-macros-demo). For further study, visit the [Rust docs](https://doc.rust-lang.org/book/ch19-06-macros.html), [*The Little Book of Rust Macros*](https://danielkeep.github.io/tlborm/book/README.html), and [more practical examples on GitHub](https://github.com/thepacketgeek/rust-macros-demo).
 

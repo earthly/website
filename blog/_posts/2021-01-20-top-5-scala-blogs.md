@@ -73,4 +73,4 @@ But, my favorite post by Li is [How an Optimizing Compiler Works](https://www.li
 
 ## Conclusion
 
-Hope you find this roundup of my go-to Scala blogs helpful. If you're using Scala and looking to streamline your builds, you might want to check out [Earthly]((https://cloud.earthly.dev/login)). It could be a valuable addition to your toolkit. For more regular Scala updates, bookmark [The Scala Times](http://scalatimes.com/) - it's where I unearth most of these gems. Happy coding!
+Hope you find this roundup of my go-to Scala blogs helpful. If you're using Scala and looking to streamline your builds, you might want to check out [Earthly](https://cloud.earthly.dev/login). It could be a valuable addition to your toolkit. For more regular Scala updates, bookmark [The Scala Times](http://scalatimes.com/) - it's where I unearth most of these gems. Happy coding!

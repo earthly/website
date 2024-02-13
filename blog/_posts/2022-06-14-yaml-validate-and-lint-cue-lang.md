@@ -516,7 +516,7 @@ I do look forward to the day when types and constraints spread throughout the co
 
 That is a hopefully breezy introduction to the basics of Cuelang. There is much more to learn, but if you remember that it's a configuration format that uses types and constraints and packages to improve on YAML, then you've got the gist of it. After that, you just have to draw the rest of the damn owl.
 
-To that end, [cuetorials.com](cuetorials.com) and [bitfieldconsulting](https://bitfieldconsulting.com/golang/cuelang-exciting) have the best online tutorials I was able to find.
+To that end, [cuetorials.com](https://cuetorials.com) and [bitfieldconsulting](https://bitfieldconsulting.com/golang/cuelang-exciting) have the best online tutorials I was able to find.
 
 (Just remember not to use configuration when a [programming language](/blog/intercal-yaml-and-other-horrible-programming-languages/) is what you need.)
 
