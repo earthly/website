@@ -21,7 +21,7 @@ I bet Lisp programmers, who are used to seeing code that looks a bit different, 
 
 But is readability more than just familiarity? [Last time](/blog/showboaters), I mentioned that expert readability and beginner approachability can sometimes clash, and today, I wanted to explore this.
 
-Many believe that readability is a universal standard, easily recognized, and equally applicable to all. But that's not the case. Readability varies greatly and is influenced by syntax, library design, and programming concepts. More importantly, it affects beginners and experts differently. **In other words, there are two types of readability—Newcomer Readability and Experienced Readability- and they can clash.**
+Many believe that readability is a universal standard, easily recognized, and equally applicable to all. But that's not the case. Readability varies greatly and is influenced by syntax, library design, and programming concepts. More importantly, it affects beginners and experts differently. **In other words, there are two types of readability—Newcomer Readability and Experienced Readability- and they can conflict.**
 
 Let's define readability like this:
 
@@ -32,11 +32,11 @@ Let's define readability like this:
 | Experienced Readability       | How quickly someone experienced in the language can understand a piece of code.                                |
 </div>
 
-So, with these definitions, you can't dismiss the `(f x y)` style as less readable just because you aren't familiar with it. What matters is how readable it is for experienced LISPer.
+So, with these definitions, you can't dismiss the `(f x y)` style as less readable just because you aren't familiar with it. What matters is how readable it is for an experienced LISPer.
 
-Some things help both beginner and expert readability, but other things trade one off against the other.
+Some things help both beginner and expert alike, but other things trade one off against the other.
 
-Let's start with the first.
+Let's start with the first group.
 
 ## Structure
 
@@ -166,15 +166,15 @@ your code here
 #EndRegion
 ~~~
 
-Todo: insert picture
+![C# Regions]({{site.images}}{{page.slug}}/4350.png)\
 
-All of this, of course, can be overused and abused. ( Your 4000-line C# class file is probably easier to understand with regions, but maybe it shouldn't be 4000 lines. ) But still adding structure to code with whitespace and comments helps readability when things get hairy.
+All of this, of course, can be overused and abused. ( Your 4000-line C# class file is probably easier to understand with regions, but maybe it shouldn't be 4000 lines. ) But still, adding structure to code with whitespace and comments helps readability when things get hairy.
 
 ## Less To Go Wrong
 
-Another way to improve readability is to strictly just have less that can go wrong. A for each can't have an off-by-one error, so if I replace a for I loop with a for each, I no longer worry about my indexes being off.
+Another way to improve readability is to strictly just have less that can go wrong. A `for each` can't have an off-by-one error, so if I replace a `for (int i = 0; ...` loop with a `for each`, I no longer worry about my indexes being off.
 
-Even if somewhere that each has an implementation that may use indexes, I can just assume it works correctly and move my thinking to a higher level. You can only hold so many things in working memory at a time, so reducing some of this helps.
+Even if somewhere that for each has an implementation that may use indexes, I can just assume it works correctly and move my thinking to a higher level. You can only hold so many things in working memory at a time, so cut what you can.
 
 ~~~{.diff caption="Code Report: Count Max"}
 func maximumCount(nums []int) int {
@@ -203,23 +203,25 @@ Here is reduce:
 ~~~{.scala caption="Adding numbers two ways"}
 let numbers = [1, 2, 3, 4]
 
-//Original 
+// Original 
 var sum1 = 0
 for number in numbers {
     sum1 += number
 }
 
-//Improved
+// Improved
 let sum2 = numbers.reduce(0, +)
 
 ~~~
 
-Things like reduce are where readability of an expert can really grow. If you're going to spend years working in a programming language, learning the conventions is a small cost to pay to improve day-to-day readability because you are using higher-level concepts.
+Things like reduce are where the readability of an expert can really grow. If you're going to spend years working in a programming language, learning the conventions is a small cost to pay to improve day-to-day readability.
 
 `filter` and `map` also benefit expert readability.
 
 ~~~{.js caption="map and filter improvements"}
 const numbers = [1, 2, 3, 4, 5, 6];
+
+// Original 
 let evensSquares1 = [];
 for (let i = 0; i < numbers.length; i++) {
     if (numbers[i] % 2 === 0) {
@@ -227,50 +229,82 @@ for (let i = 0; i < numbers.length; i++) {
     }
 }
 
+// Improved
 const evensSquares2 = numbers.filter(number => number % 2 === 0)
                              .map(number => number * number);
 ~~~
 
 `flatMap` is super helpful:
 
-~~~{.js caption="World's shortest Monad tutorial"}
-Val sentences = List(
-    "Normally you can't compose", 
-    "M[Y] and X⇒M[Y]", 
-    "to get M[Y]")
+~~~{.scala caption="World's shortest Monad tutorial"}
+// Assume you have some X⇒M[Y] function to call 
+def intToStringOption(x: Int): Option[String] = {
+    if (x % 2 == 0) Some(x.toString) else None
+}
 
-val splitSentences = sentences.map(_.split(" "))
-val words1 = splitSentences.flatten()
+// But you have a M[X] not a X
+val x = Some(2)
 
-val words2 = sentences.flatMap(_.split(" ")) //But now you can
+// Original
+// So you have some busy work to get your M[Y]
+val r1 = if (x.isDefined) {
+  intToStringOption(x.get)
+} else {
+  None
+}
+
+// Improved
+// Unless it's a monad
+val r2 = x.flatMap(intToStringOption)
 ~~~
 
 While simplifications like using `reduce` or `filter` and `map` chains elevate the abstraction level and reduce error-prone boilerplate, they also encapsulate complexity that might not be immediately apparent to beginners. Each of these higher-order functions embodies a concept that, while straightforward for an experienced developer, adds to the list of things a newcomer must learn and understand before fully appreciating the readability improvements these concepts offer.
 
 I guess I'm saying that higher-order functions are valuable for the expert but a barrier for the newcomers. And it's not just higher-order functions. They are one class of a concept you can learn that can let you write code at a slightly higher level. You can overlook some of the details.
 
+~~~{.rs caption="Traits are handy"}
+trait Positive {
+    fn is_positive(&self) -> bool;
+}
+
+impl Positive for i32 {
+    fn is_positive(&self) -> bool {
+        *self > 0
+    }
+}
+
+fn main() {
+    let num = 10_i32;
+    println!("Is {} positive? {}", num, num.is_positive());
+}
+
+~~~
+
 Other concepts do the same thing, like pattern matching, Sum types, Generics, and polymorphic traits.
 
-If used to more concisely express the concept at hand ( and not for showing off), all these things can improve expert readability at the cost of beginner readability.
+If used to more concisely express the concept at hand ( and not for [showing off](/blog/showboaters/)), all these things can improve expert readability at the cost of beginner readability.
 
+<!-- vale HouseStyle.Spacing = NO -->
 <div class="notice--warning notice--big">
 | Readability Enhancers    | Definition                                                                                     | Effects on Beginners                         | Effects on Experts                           |
 |--------------------------|------------------------------------------------------------------------------------------------|---------------------------------------------|---------------------------------------------|
-| Structural Enhancements  | Use of functions, whitespace, comments, and even comment headings to visually structure code.                        | Makes code easier to navigate and understand; helps group related logic. | Aids in quick navigation and understanding of code structure; reduces mental effort. |
+| Structural Enhancements  | Use of functions, whitespace, comments, and even comment headings to visually structure code.| Makes code easier to navigate and understand; helps group related logic. | Aids in quick navigation and understanding of code structure; reduces mental effort. |
 | Simplification Techniques| Utilizing constructs that reduce error likelihood and leveraging built-in functions for common tasks. | Simplifies understanding of code by reducing complexity; minimizes common errors. It may harm readability depending on specific familiarity. | Streamlines code, making it easier to read and maintain; promotes using concise, expressive constructs. |
-| Advanced Language Features | Employing higher-order functions, pattern matching, and other expressive language features.   | Increases complexity and learning curve due to more concepts to grasp. | Enhances expressiveness and conciseness; allows for more complex concepts and clearer intent. |
+| Advanced Language Features | Employing higher-order functions, pattern matching, and other expressive language features. | Increases complexity and learning curve due to more concepts to grasp. | Enhances expressiveness and conciseness; allows for more complex concepts and clearer intent. |
 </div>
+</div>
+<!-- vale HouseStyle.Spacing = YES -->
 
 ## Which To Choose?
 
 So, which column do you care the most about? What trade-off to choose?
 
-Earlier I showed refactoring some go code to call `max`. But Go doesn't have a way to get the maximum of some ints in the standard library. So I'd have to implement the `max` function myself, which takes away some of the benefits, and I assume Rob Pike would rather I just use the `if x > y ... else ...` logic that I started with. That's because, in my view, go chooses beginner readability over expert readability. If you've not programmed in Go yet, there are very few concepts you aren't already familiar with. And that is a legit choice to choose beginner readability and simplicity. Clearly, go has been wildly successful at gaining adoption in the 'cloud native' network services world.
+Earlier I showed refactoring some go code to call `max`. But Go doesn't have a way to get the maximum of some ints in the standard library. So I'd have to implement the `max` function myself, which takes away some of the benefits, and I assume Rob Pike would rather I just use the `if x > y ... else ...` logic that I started with. That's because – in my view – go chooses beginner readability over expert readability. If you've not programmed in Go yet, there are very few concepts in it that you aren't already familiar with. And that is a legit choice. Go choose beginner readability and simplicity. Clearly, Go has been wildly successful at gaining adoption in the 'cloud native' network services world, and I'm sure that choice is part of the reason.
 
-Rust makes the opposite choice. And not because of the borrow checker vs Go GC, but because of the trait system, the sum types, the structural pattern matching, the const generics, the procedural macros, and so on. Also, a totally legit choice to choose to be a more complex expert tool.
+Rust makes the opposite choice. And not because of the borrow checker vs Go's GC, but because of the trait system, the sum types, the structural pattern matching, the const generics, the procedural macros, and so on. This is also a totally legit choice. Rust choose to be a more complex, for-knowledgeable-experts type of tool.
 
-Myself, I think expert readability is more important. In the future, I hope we are using higher-level concepts. I hope that will allow us to write better code.
+Myself, I think expert readability is more important than beginner friendliness. In the future, I hope we are using higher-level concepts. And I hope that will allow us to write better code.
 
-It's crucial, however, to acknowledge the balance that must be struck. Complex features can make the initial learning curve steeper for beginners. Higher-order functions, pattern matching, and other complex constructs are additional layers to learn, which can be intimidating for those new to programming or a particular language.
+It's crucial, however, to acknowledge the balance that must be struck. Complex features can make the initial learning curve steeper for beginners. Higher-order functions, pattern matching, and other complex constructs are additional layers to learn, which can be intimidating for those new to programming or to a particular language.
 
 But expert readability matters. Simple languages will always be needed, but we should also optimize for experienced users. We need languages where experts can understand code quickly because it precisely communicates its intent, and to do that, we need to have building blocks larger than ifs and for loops.
