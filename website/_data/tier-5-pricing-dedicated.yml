@@ -1,12 +1,17 @@
 - points:
   - Fully managed, single-tenant satellite fleet
   - Unlimited users
+  - Satellite auto-sleep
 - points:
   - XS to 4XL satellites
+  - Custom satellite specs
   - Unlimited log retention
 - points:
-  - Dedicated IP address
+  - Automatically managed TLS certificates
   - Single sign-on
-- points:
+  - AWS Marketplace billing
   - 24/7 support
+- points:
   - Secrets integrations – e.g. Vault (coming soon)
+  - Integrated GitHub Actions runner (coming soon)
+  - Export build analytics (coming soon)
