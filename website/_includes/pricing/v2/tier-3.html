@@ -33,10 +33,25 @@
     </div>
   </a>
 
-  <div id="tier-3-pricing" class="flex flex-1 flex-col px-2">
+  <div id="tier-3-pricing-cloud" class="flex flex-1 flex-col px-2">
     <div class="mb-4 text-gray-500">Everything in <b>Starter</b> plus:</div>
 
-    {% for item in site.data.tier-3-pricing %}
+    {% for item in site.data.tier-3-pricing-cloud %}
+      <div class="flex pb-2">
+        <img
+          style="height: 24px"
+          src="./../../assets/svg/done-check.svg"
+          alt="Checked bullet"
+        />
+        <div class="px-2 tracking-tight">{{ item }}</div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="tier-3-pricing-self-hosted" class="flex flex-1 flex-col hidden px-2">
+    <div class="mb-4 text-gray-500">Everything in <b>Starter</b> plus:</div>
+
+    {% for item in site.data.tier-3-pricing-self-hosted %}
       <div class="flex pb-2">
         <img
           style="height: 24px"

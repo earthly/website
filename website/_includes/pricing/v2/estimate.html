@@ -11,32 +11,55 @@
     <input type="range" min="1" max="51" value="1" class="pricing-slider" id="pricing-slider">
   </div>
 
-  <div class="p-4 pb-6 text-gray-900">
-    <div class="flex items-center justify-between">
-      <div id="plan-name" class="font-bold text-[#2d7e5d] text-2xl tracking-tight">Free Plan</div>
-      <div id="plan-description" class="text-[#9CA3AF] text-lg tracking-tight">For hobby projects</div>
+  <div>
+    <div id="cloud-estimate" class="p-4 pb-6 text-gray-900">
+      <div class="flex items-center justify-between">
+        <div class="font-bold text-[#2d7e5d] text-xl lg:text-2xl tracking-tight plan-name">Free Plan</div>
+        <div class="text-[#9CA3AF] lg:text-lg tracking-tight plan-description">For hobby projects</div>
+      </div>
+
+      <div class="flex justify-between cost-estimate">
+        <div>
+          <div class="flex font-semibold mt-5 text-xl lg:text-2xl">
+            <span class="font-normal text-gray-600 text-sm">$</span>
+            <span class="tracking-tight plan-price">0</span>
+          </div>
+          <div class="text-gray-500">per month</div>
+        </div>
+
+        <div>
+          <div id="plan-minutes" class="font-semibold mt-5 text-xl lg:text-2xl tracking-tight">6,000</div>
+          <div class="text-gray-500">minutes/month</div>
+        </div>
+      </div>
+
+      <a href="/contact-us" class="hidden mt-5 contact-us-button">
+        <div class="w-60 bg-green-700 hover:bg-green-800 inline-block py-3 rounded-lg text-center text-white lg:text-xl">
+          Contact Us
+        </div>
+      </a>
     </div>
 
-    <div id="cost-estimate" class="flex justify-between">
+    <div id="self-hosted-estimate" class="h-full flex hidden items-center justify-between p-4 pb-6 text-gray-900">
       <div>
-        <div class="flex font-semibold mt-5 text-2xl">
+        <div class="font-bold text-[#2d7e5d] text-xl lg:text-2xl tracking-tight plan-name">Free Plan</div>
+        <div class="mt-0.5 text-[#9CA3AF] lg:text-lg tracking-tight plan-description">For hobby projects</div>
+      </div>
+
+      <div class="cost-estimate">
+        <div class="flex font-semibold text-xl lg:text-2xl">
           <span class="font-normal text-gray-600 text-sm">$</span>
-          <span id="plan-price" class="tracking-tight">0</span>
+          <span class="tracking-tight plan-price">0</span>
         </div>
         <div class="text-gray-500">per month</div>
       </div>
 
-      <div>
-        <div id="plan-minutes" class="font-semibold mt-5 text-2xl tracking-tight">6,000</div>
-        <div class="text-gray-500">minutes/month</div>
-      </div>
+      <a href="/contact-us" class="hidden contact-us-button">
+        <div class="bg-green-700 hover:bg-green-800 inline-block px-6 py-2.5 rounded-lg text-center text-white lg:text-xl">
+          Contact Us
+        </div>
+      </a>
     </div>
-
-    <a id="contact-us-button" href="/contact-us" class="hidden mt-5">
-      <div class="w-60 bg-green-700 hover:bg-green-800 inline-block py-3 rounded-lg text-center text-white text-xl">
-        Contact Us
-      </div>
-    </a>
   </div>
 </div>
 
@@ -60,44 +83,45 @@
         numUsers.style.right = 'unset'
       }
 
-      var planName = document.getElementById("plan-name")
-      var planDescription = document.getElementById("plan-description")
-      var costEstimate = document.getElementById("cost-estimate")
-      var planPrice = document.getElementById("plan-price")
+      var planName = document.querySelectorAll(".plan-name")
+      var planDescription = document.querySelectorAll(".plan-description")
+      var costEstimate = document.querySelectorAll(".cost-estimate")
+      var planPrice = document.querySelectorAll(".plan-price")
       var planMinutes = document.getElementById("plan-minutes")
-      var contactUsButton = document.getElementById("contact-us-button")
+      var contactUsButton = document.querySelectorAll(".contact-us-button")
 
       if (value == 1) {
-        planName.innerText = "Free Plan"
-        planDescription.innerText = "For hobby projects"
-        planPrice.innerText = 0
+        planName.forEach(x => x.innerText = "Free Plan")
+        planDescription.forEach(x => x.innerText = "For hobby projects")
+        planPrice.forEach(x => x.innerText = 0)
         planMinutes.innerText = (6000).toLocaleString()
       } else if (value <= 5) {
-        planName.innerText = "Starter Plan"
-        planDescription.innerText = "For small projects"
-        planPrice.innerText = ((checkbox.checked ? 9.17 : 11) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+        planName.forEach(x => x.innerText = "Starter Plan")
+        planDescription.forEach(x => x.innerText = "For small projects")
+        planPrice.forEach(x => x.innerText = ((checkbox.checked ? 9.17 : 11) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }))
         planMinutes.innerText = (10000 + 2000 * value).toLocaleString()
       } else if (value <= 15) {
-        planName.innerText = "Pro Plan"
-        planDescription.innerText = "For small teams"
-        planPrice.innerText = ((checkbox.checked ? 29.17 : 35) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+        planName.forEach(x => x.innerText = "Pro Plan")
+        planDescription.forEach(x => x.innerText = "For small teams")
+        planPrice.forEach(x => x.innerText = ((checkbox.checked ? 29.17 : 35) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }))
         planMinutes.innerText = (20000 + 3000 * value).toLocaleString()
       } else if (value <= 50) {
-        planName.innerText = "Team Plan"
-        planDescription.innerText = "For large teams"
-        planPrice.innerText = ((checkbox.checked ? 49.17 : 59) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+        planName.forEach(x => x.innerText = "Team Plan")
+        planDescription.forEach(x => x.innerText = "For large teams")
+        planPrice.forEach(x => x.innerText = ((checkbox.checked ? 49.17 : 59) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 }))
         planMinutes.innerText = (50000 + 4000 * value).toLocaleString()
       } else {
-        planName.innerText = "Enterprise Plan"
-        planDescription.innerText = "For enterprises"
+        planName.forEach(x => x.innerText = "Enterprise Plan")
+        planDescription.forEach(x => x.innerText = "For enterprises")
       }
 
       if (value > 50) {
-        costEstimate.style.display = 'none'
-        contactUsButton.style.display = 'flex'
+        costEstimate.forEach(x => x.style.display = 'none')
+        contactUsButton.forEach(x => x.style.display = 'flex')
       } else {
-        costEstimate.style.display = 'flex'
-        contactUsButton.style.display = 'none'
+        costEstimate[0].style.display = 'flex'
+        costEstimate[1].style.display = 'block'
+        contactUsButton.forEach(x => x.style.display = 'none')
       }
 
       var tier1 = document.getElementById("tier-1")

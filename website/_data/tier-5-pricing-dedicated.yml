@@ -7,6 +7,7 @@
 - points:
   - Dedicated IP address
   - Single sign-on
-- points:
   - 24/7 support
+- points:
+  - Self-hosted satellites (coming soon)
   - Secrets integrations – e.g. Vault (coming soon)

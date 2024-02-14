@@ -14,7 +14,7 @@ layout: default
     <div class="flex gap-6 lg:gap-10 justify-center mt-4">
       <p id="highlight-category-1" class="highlight-category active" onclick="">Cloud</p>
       <p id="highlight-category-2" class="highlight-category" onclick="">Self-Hosted</p>
-      <p id="highlight-category-3" class="highlight-category" onclick="">Dedicated</p>
+      <p id="highlight-category-3" class="highlight-category" onclick="">BYOC</p>
     </div>
 
     {% include /pricing/v2/estimate.html %}
@@ -25,6 +25,7 @@ layout: default
       {% include /pricing/v2/tier-3.html %}
       {% include /pricing/v2/tier-4.html %}
     </div>
+    <div id="tier-5-subheading" class="font-medium hidden mb-8 text-gray-900 text-center text-lg">Bring Your Own Cloud</div>
     {% include /pricing/v2/tier-5.html %}
 
     <div class="flex justify-end mt-6">
@@ -84,21 +85,36 @@ layout: default
           document.getElementById(`highlight-category-${currentHighlight}`).classList.add('active')
 
           const pricingCalculator = document.getElementById("pricing-calculator")
-          const priceEstimate = document.querySelector("#cost-estimate > div:last-of-type")
-          const tier1Users = document.querySelector("#tier-1-pricing > div:first-of-type > div")
-          const tier3Pricing = [...document.querySelectorAll("#tier-3-pricing > div")]
+          const priceEstimate = document.querySelector(".cost-estimate > div:last-of-type")
+          const tier1PricingCloud = document.getElementById("tier-1-pricing-cloud")
+          const tier1PricingSelfHosted = document.getElementById("tier-1-pricing-self-hosted")
           const tier2 = document.getElementById("tier-2")
+          const tier3PricingCloud = document.getElementById("tier-3-pricing-cloud")
+          const tier3PricingSelfHosted = document.getElementById("tier-3-pricing-self-hosted")
+          const tier4PricingCloud = document.getElementById("tier-4-pricing-cloud")
+          const tier4PricingSelfHosted = document.getElementById("tier-4-pricing-self-hosted")
           const tier5 = document.getElementById("tier-5")
+          const tier5Subheading = document.getElementById("tier-5-subheading")
+          const tier5Description = document.getElementById("tier-5-description")
           const tier5Subtitle = document.getElementById("tier-5-subtitle")
+          const tier5Pricing = document.getElementById("tier-5-pricing")
+          const tier5PricingDedicated = document.getElementById("tier-5-pricing-dedicated")
           const pricingTiers = document.getElementById("pricing-tiers")
           const minutesPerMonth = document.querySelectorAll(".minutes-per-month")
           const pricePerMonth = document.querySelectorAll(".price-per-month")
           const toggleSwitch = document.getElementsByClassName("toggle-switch")[0].parentElement
+          const cloudEstimate = document.getElementById("cloud-estimate")
+          const selfHostedEstimate = document.getElementById("self-hosted-estimate")
 
           if (id == 2) {
             priceEstimate.classList.add("hidden")
-            tier1Users.innerText = "Up to 5 users"
+            tier1PricingCloud.classList.add("hidden")
+            tier1PricingSelfHosted.classList.remove("hidden")
             tier2.classList.add("hidden")
+            tier3PricingCloud.classList.add("hidden")
+            tier3PricingSelfHosted.classList.remove("hidden")
+            tier4PricingCloud.classList.add("hidden")
+            tier4PricingSelfHosted.classList.remove("hidden")
             pricingTiers.classList.remove("lg:grid-cols-4")
             pricingTiers.classList.add("lg:grid-cols-3")
             minutesPerMonth.forEach((x, i) => {
@@ -106,11 +122,17 @@ layout: default
               pricePerMonth[i].classList.add("h-[108px]", "xl:h-24")
               x.classList.add("hidden")
             })
-            tier3Pricing.slice(-2).forEach(x => x.classList.remove("hidden"))
+            cloudEstimate.classList.add("hidden")
+            selfHostedEstimate.classList.remove("hidden")
           } else {
             priceEstimate.classList.remove("hidden")
-            tier1Users.innerText = "Up to 3 users"
+            tier1PricingCloud.classList.remove("hidden")
+            tier1PricingSelfHosted.classList.add("hidden")
             tier2.classList.remove("hidden")
+            tier3PricingCloud.classList.remove("hidden")
+            tier3PricingSelfHosted.classList.add("hidden")
+            tier4PricingCloud.classList.remove("hidden")
+            tier4PricingSelfHosted.classList.add("hidden")
             pricingTiers.classList.remove("lg:grid-cols-3")
             pricingTiers.classList.add("lg:grid-cols-4")
             minutesPerMonth.forEach((x, i) => {
@@ -118,7 +140,8 @@ layout: default
               pricePerMonth[i].classList.remove("h-[108px]", "xl:h-24")
               x.classList.remove("hidden")
             })
-            tier3Pricing.slice(-2).forEach(x => x.classList.add("hidden"))
+            cloudEstimate.classList.remove("hidden")
+            selfHostedEstimate.classList.add("hidden")
           }
 
           if (id == 3) {
@@ -126,14 +149,22 @@ layout: default
             pricingTiers.classList.add("hidden")
             tier5.classList.remove("mt-8")
             tier5.classList.add("mt-4")
-            tier5Subtitle.innerHTML = "Single-tenant SaaS, fully managed by Earthly in your AWS account"
+            tier5Subheading.classList.remove("hidden")
+            tier5Description.innerText = "Single-tenant SaaS, fully managed by Earthly in your AWS account."
+            tier5Subtitle.classList.add("hidden")
+            tier5Pricing.classList.add("hidden", "lg:hidden")
+            tier5PricingDedicated.classList.remove("hidden", "lg:hidden")
             toggleSwitch.classList.add("hidden")
           } else {
             pricingCalculator.style = ""
             pricingTiers.classList.remove("hidden")
             tier5.classList.add("mt-8")
             tier5.classList.remove("mt-4")
-            tier5Subtitle.innerHTML = "Everything in <b>Team</b> plus:"
+            tier5Subheading.classList.add("hidden")
+            tier5Description.innerText = "Contact us if you are interested in our Enterprise plan."
+            tier5Subtitle.classList.remove("hidden")
+            tier5Pricing.classList.remove("hidden", "lg:hidden")
+            tier5PricingDedicated.classList.add("hidden", "lg:hidden")
             toggleSwitch.classList.remove("hidden")
           }
         }
