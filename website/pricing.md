@@ -25,7 +25,7 @@ layout: default
       {% include /pricing/v2/tier-3.html %}
       {% include /pricing/v2/tier-4.html %}
     </div>
-    <div id="tier-5-subheading" class="font-medium hidden mb-8 text-gray-900 text-center text-lg">Bring Your Own Cloud</div>
+    <div id="tier-5-subheading" class="text-2xl lg:text-3xl font-semibold text-slate-500 text-center pt-1 pb-1 hidden">Bring Your Own Cloud</div>
     {% include /pricing/v2/tier-5.html %}
 
     <div class="flex justify-end mt-6">
@@ -115,6 +115,7 @@ layout: default
             tier3PricingSelfHosted.classList.remove("hidden")
             tier4PricingCloud.classList.add("hidden")
             tier4PricingSelfHosted.classList.remove("hidden")
+            tier5.classList.add("hidden")
             pricingTiers.classList.remove("lg:grid-cols-4")
             pricingTiers.classList.add("lg:grid-cols-3")
             minutesPerMonth.forEach((x, i) => {
@@ -133,6 +134,7 @@ layout: default
             tier3PricingSelfHosted.classList.add("hidden")
             tier4PricingCloud.classList.remove("hidden")
             tier4PricingSelfHosted.classList.add("hidden")
+            tier5.classList.remove("hidden")
             pricingTiers.classList.remove("lg:grid-cols-3")
             pricingTiers.classList.add("lg:grid-cols-4")
             minutesPerMonth.forEach((x, i) => {
