@@ -448,7 +448,7 @@ Here, `$RANDOM` is used to generate a random number. The `$count` variable store
 
 Loops are one of the most fundamental concepts in Bash, or any programming language for that matter. From iterating over items to manipulating files, any fairly advanced script is certain to employ loops. In fact, the Bash shell itself is a big [`while` loop](https://github.com/bminor/bash/blob/master/eval.c#L71).
 
-This article gave you an overview of loops in Bash, using `while`, `until`, and `for` loops. If you want to learn more about loops, you can consult the [Bash manual](https://www.gnu.org/software/bash/manual/bash.html) or if you want to learn more about Bash, you can check out the [next article in this series](link).
+This article gave you an overview of loops in Bash, using `while`, `until`, and `for` loops. If you want to learn more about loops, you can consult the [Bash manual](https://www.gnu.org/software/bash/manual/bash.html) or if you want to learn more about Bash, you can check out the [next article in this series](https://earthly.dev/blog/series/bash/).
 
 If you love building things in Bash, you're sure to love [Earthly](https://cloud.earthly.dev/login). Supercharge your build system with the clean and approachable syntax, and repeatable builds, of Earthly.
 

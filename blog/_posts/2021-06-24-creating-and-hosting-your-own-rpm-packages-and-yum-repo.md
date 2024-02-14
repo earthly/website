@@ -17,7 +17,7 @@ last_modified_at: 2023-07-19
 
 <div class="narrow-code">
 
-This tutorial is a follow up to [creating and hosting your own deb and apt repo](/blog/creating-and-hosting-your-own-deb-and-apt-repo), but
+This tutorial is a follow up to [creating and hosting your own deb and apt repo](/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/), but
 is written for creating rpm packages for redhat-based Linux distributions such as Fedora, CentOS, and Rocky Linux.
 
 ## Prerequisites
@@ -40,7 +40,7 @@ to create a temporary CentOS environment to follow along with.
 
 ## Step 0: Creating a Simple Hello World Program
 
-We will be using the same basic hello world program that was used in the [previous tutorial](/blog/creating-and-hosting-your-own-deb-and-apt-repo).
+We will be using the same basic hello world program that was used in the [previous tutorial](/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo/).
 In this tutorial, we will assume you have a binary located under `~/example/hello-world-program/hello-world`.
 
 To quickly create a hello world binary using C, run:
@@ -185,7 +185,7 @@ Hello World!
 Next we're going to create a yum repository which can be uploaded to a server to make it easier to share your package with other users.
 
 Our first step will be to import a pgp key which we will be using to sign our rpm packages and repo, to allow our users to verify the packages have not been tampered.
-Creating pgp keys was covered in our [previous tutorial](/blog/creating-and-hosting-your-own-deb-and-apt-repo); in particular, we will assume you have public and private keys stored
+Creating pgp keys was covered in our [previous tutorial](/blog/creating-and-hosting-your-own-deb-packages-and-apt-repo); in particular, we will assume you have public and private keys stored
 under `~/example/pgp-key.public` and `~/example/pgp-key.private` respectively.
 
 First let's import our private key, so we have access to it for signing the repo:
