@@ -1,5 +1,5 @@
 ---
-title: "The Two Types of Readable Code"
+title: "From Go to Rust: The Two Types of Readable Code"
 categories:
   - Articles
 toc: true
@@ -24,13 +24,14 @@ But is readability more than just familiarity? [Last time](/blog/showboaters), I
 Many believe that readability is a universal standard, easily recognized, and equally applicable to all. But that's not the case. Readability varies greatly and is influenced by syntax, library design, and programming concepts. More importantly, it affects beginners and experts differently. **In other words, there are two types of readability—Newcomer Readability and Experienced Readability- and they can conflict.**
 
 Let's define readability like this:
-
+<!-- vale HouseStyle.Spacing = NO -->
 <div class="notice--warning notice--big">
 | Category                      | Description                                                                                                                                 |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Newcomers Readability         | How quickly you can get up to speed reading a new programming language. Related to how familiar you are with the syntax and concepts used, despite having never seen that language before. |
 | Experienced Readability       | How quickly someone experienced in the language can understand a piece of code.                                |
 </div>
+<!-- vale HouseStyle.Spacing = YES -->
 
 So, with these definitions, you can't dismiss the `(f x y)` style as less readable just because you aren't familiar with it. What matters is how readable it is for an experienced LISPer.
 
@@ -291,7 +292,6 @@ If used to more concisely express the concept at hand ( and not for [showing off
 | Structural Enhancements  | Use of functions, whitespace, comments, and even comment headings to visually structure code.| Makes code easier to navigate and understand; helps group related logic. | Aids in quick navigation and understanding of code structure; reduces mental effort. |
 | Simplification Techniques| Utilizing constructs that reduce error likelihood and leveraging built-in functions for common tasks. | Simplifies understanding of code by reducing complexity; minimizes common errors. It may harm readability depending on specific familiarity. | Streamlines code, making it easier to read and maintain; promotes using concise, expressive constructs. |
 | Advanced Language Features | Employing higher-order functions, pattern matching, and other expressive language features. | Increases complexity and learning curve due to more concepts to grasp. | Enhances expressiveness and conciseness; allows for more complex concepts and clearer intent. |
-</div>
 </div>
 <!-- vale HouseStyle.Spacing = YES -->
 
