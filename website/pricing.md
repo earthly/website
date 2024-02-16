@@ -34,7 +34,8 @@ layout: default
       {% include /pricing/v2/tier-3.html %}
       {% include /pricing/v2/tier-4.html %}
     </div>
-    <div id="tier-5-subheading" class="font-medium hidden mb-8 text-gray-900 text-center text-lg">Bring Your Own Cloud</div>
+    <div id="tier-5-subheading" class="text-2xl lg:text-3xl font-semibold text-center pt-1 pb-1 hidden">Bring Your Own Cloud</div>
+    <div id="tier-5-subheading-2" class="text-xl lg:text-2xl text-slate-500 text-center pt-1 pb-3 hidden">Single-tenant SaaS, fully managed by Earthly in your AWS account</div>
     {% include /pricing/v2/tier-5.html %}
 
     {% include /pricing/v2/compute-cost-table.html %}
@@ -95,7 +96,7 @@ layout: default
           const tier4PricingSelfHosted = document.getElementById("tier-4-pricing-self-hosted")
           const tier5 = document.getElementById("tier-5")
           const tier5Subheading = document.getElementById("tier-5-subheading")
-          const tier5Description = document.getElementById("tier-5-description")
+          const tier5Subheading2 = document.getElementById("tier-5-subheading-2")
           const tier5Subtitle = document.getElementById("tier-5-subtitle")
           const tier5Pricing = document.getElementById("tier-5-pricing")
           const tier5PricingDedicated = document.getElementById("tier-5-pricing-dedicated")
@@ -122,6 +123,7 @@ layout: default
             tier3PricingSelfHosted.classList.remove("hidden")
             tier4PricingCloud.classList.add("hidden")
             tier4PricingSelfHosted.classList.remove("hidden")
+            tier5.classList.add("hidden")
             pricingTiers.classList.remove("lg:grid-cols-4")
             pricingTiers.classList.add("lg:grid-cols-3")
             minutesPerMonth.forEach((x, i) => {
@@ -140,6 +142,7 @@ layout: default
             tier3PricingSelfHosted.classList.add("hidden")
             tier4PricingCloud.classList.remove("hidden")
             tier4PricingSelfHosted.classList.add("hidden")
+            tier5.classList.remove("hidden")
             pricingTiers.classList.remove("lg:grid-cols-3")
             pricingTiers.classList.add("lg:grid-cols-4")
             minutesPerMonth.forEach((x, i) => {
@@ -157,7 +160,7 @@ layout: default
             tier5.classList.remove("mt-8")
             tier5.classList.add("mt-4")
             tier5Subheading.classList.remove("hidden")
-            tier5Description.innerText = "Single-tenant SaaS, fully managed by Earthly in your AWS account."
+            tier5Subheading2.classList.remove("hidden")
             tier5Subtitle.classList.add("hidden")
             tier5Pricing.classList.add("hidden", "lg:hidden")
             tier5PricingDedicated.classList.remove("hidden", "lg:hidden")
@@ -168,7 +171,7 @@ layout: default
             tier5.classList.add("mt-8")
             tier5.classList.remove("mt-4")
             tier5Subheading.classList.add("hidden")
-            tier5Description.innerText = "Contact us if you are interested in our Enterprise plan."
+            tier5Subheading2.classList.add("hidden")
             tier5Subtitle.classList.remove("hidden")
             tier5Pricing.classList.remove("hidden", "lg:hidden")
             tier5PricingDedicated.classList.add("hidden", "lg:hidden")

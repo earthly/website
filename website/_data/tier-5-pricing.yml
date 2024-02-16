@@ -8,6 +8,7 @@
   - point: Dedicated IP address
   - point: Single sign-on
 - points:
+  - point: AWS Marketplace billing
   - point: 24/7 support
   - point: Secrets integrations – e.g. Vault
     comingSoon: true
