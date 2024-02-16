@@ -17,6 +17,15 @@ layout: default
       <p id="highlight-category-3" class="highlight-category" onclick="">BYOC</p>
     </div>
 
+    <div class="flex justify-center lg:justify-start mt-4">
+      <span class="font-bold text-gray-900">Monthly</span>
+      <label class="toggle-switch">
+        <input id="pricing-toggle-switch" type="checkbox" checked>
+        <span class="slider"></span>
+      </label>
+      <span class="font-bold text-gray-900">Annual</span>
+    </div>
+
     {% include /pricing/v2/estimate.html %}
 
     <div id="pricing-tiers" class="grid grid-cols-1 gap-4 lg:gap-2 lg:grid-cols-4 mt-6 relative z-10">
@@ -27,15 +36,6 @@ layout: default
     </div>
     <div id="tier-5-subheading" class="font-medium hidden mb-8 text-gray-900 text-center text-lg">Bring Your Own Cloud</div>
     {% include /pricing/v2/tier-5.html %}
-
-    <div class="flex justify-end mt-6">
-      <span class="font-bold text-gray-900">Monthly</span>
-      <label class="toggle-switch">
-        <input id="pricing-toggle-switch" type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-      <span class="font-bold text-gray-900">Annual</span>
-    </div>
 
     {% include /pricing/v2/compute-cost-table.html %}
     {% include /pricing/v2/pricing-faq.html %}
@@ -105,6 +105,13 @@ layout: default
           const toggleSwitch = document.getElementsByClassName("toggle-switch")[0].parentElement
           const cloudEstimate = document.getElementById("cloud-estimate")
           const selfHostedEstimate = document.getElementById("self-hosted-estimate")
+          const computePricingContainer = document.getElementById("compute-pricing-container")
+
+          if (id == 1) {
+            computePricingContainer.classList.remove("hidden")
+          } else {
+            computePricingContainer.classList.add("hidden")
+          }
 
           if (id == 2) {
             priceEstimate.classList.add("hidden")

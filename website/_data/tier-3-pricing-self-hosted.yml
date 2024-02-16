@@ -1,4 +1,5 @@
-- Up to 15 users
-- TLS key rotation
-- Secrets integrations – e.g. Vault (coming soon)
-- Community support
+- point: Up to 15 users
+- point: TLS key rotation
+- point: Secrets integrations – e.g. Vault
+  comingSoon: true
+- point: Community support

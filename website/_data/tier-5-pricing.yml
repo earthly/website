@@ -1,12 +1,13 @@
 - points:
-  - Fully managed, single-tenant satellite fleet
-  - Unlimited users
+  - point: Fully managed, single-tenant satellite fleet
+  - point: Unlimited users
 - points:
-  - XS to 4XL satellites
-  - Unlimited log retention
+  - point: XS to 4XL satellites
+  - point: Unlimited log retention
 - points:
-  - Dedicated IP address
-  - Single sign-on
+  - point: Dedicated IP address
+  - point: Single sign-on
 - points:
-  - 24/7 support
-  - Secrets integrations – e.g. Vault (coming soon)
+  - point: 24/7 support
+  - point: Secrets integrations – e.g. Vault
+    comingSoon: true
