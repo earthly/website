@@ -49,7 +49,7 @@ layout: default
 
     var checkbox = document.getElementById("pricing-toggle-switch")
     var sliderInput = document.getElementById("pricing-slider")
-    var planPrice = document.getElementById("plan-price")
+    var planPrice = document.querySelectorAll(".plan-price")
 
     checkbox.addEventListener("change", function () {
       if (checkbox.checked) {
@@ -63,13 +63,13 @@ layout: default
       }
 
       if (sliderInput.value == 1) {
-        planPrice.innerText = (0).toLocaleString()
+        planPrice.forEach(x => x.innerText = (0).toLocaleString())
       } else if (sliderInput.value <= 5) {
-        planPrice.innerText = Number(((checkbox.checked ? 9.17 : 11)* sliderInput.value).toFixed(2)).toLocaleString()
+        planPrice.forEach(x => x.innerText = Number(((checkbox.checked ? 9.17 : 11)* sliderInput.value).toFixed(2)).toLocaleString())
       } else if (sliderInput.value <= 15) {
-        planPrice.innerText = Number(((checkbox.checked ? 29.17 : 35)* sliderInput.value).toFixed(2)).toLocaleString()
+        planPrice.forEach(x => x.innerText = Number(((checkbox.checked ? 29.17 : 35)* sliderInput.value).toFixed(2)).toLocaleString())
       } else {
-        planPrice.innerText = Number(((checkbox.checked ? 49.17 : 59)* sliderInput.value).toFixed(2)).toLocaleString()
+        planPrice.forEach(x => x.innerText = Number(((checkbox.checked ? 49.17 : 59)* sliderInput.value).toFixed(2)).toLocaleString())
       }
     })
 
