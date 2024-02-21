@@ -393,8 +393,9 @@ main.wave-main.homepage {
   background-color: #ccc;
   border-radius: 20px;
   display: inline-block;
-  font-size: 12px;
+  font-size: 10px;
   font-weight: 700;
   letter-spacing: -0.03em;
-  padding: 4px 8px;
+  padding: 0 4px;
+  transform: translateY(-2px);
 }

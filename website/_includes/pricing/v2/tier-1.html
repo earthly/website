@@ -30,11 +30,11 @@
           src="./../../assets/svg/done-check.svg"
           alt="Checked bullet"
         />
-        <div class="flex flex-wrap gap-1 px-2 tracking-tight">
-          <span>{{ item.point }}</span>
+        <div class="px-2 tracking-tight">
           {% if (item.comingSoon) %}
             <span class="coming-soon">Coming soon</span>
           {% endif %}
+          <span>{{ item.point }}</span>
         </div>
       </div>
     {% endfor %}
@@ -48,11 +48,11 @@
           src="./../../assets/svg/done-check.svg"
           alt="Checked bullet"
         />
-        <div class="flex flex-wrap gap-1 px-2 tracking-tight">
-          <span>{{ item.point }}</span>
+        <div class="px-2 tracking-tight">
           {% if (item.comingSoon) %}
             <span class="coming-soon">Coming soon</span>
           {% endif %}
+          <span>{{ item.point }}</span>
         </div>
       </div>
     {% endfor %}
