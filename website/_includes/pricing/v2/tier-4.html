@@ -4,7 +4,7 @@
     For large teams
   </div>
 
-  <div class="h-48 xl:h-44 bg-gray-50 border flex flex-col items-center justify-center mt-1 p-3 lg:p-1 xl:p-3 pt-4 lg:pt-4 rounded-lg text-2xl text-gray-600 dark:text-gray-400">
+  <div class="h-48 xl:h-44 bg-gray-50 border flex flex-col items-center justify-center mt-1 p-3 lg:p-1 xl:p-3 pt-4 lg:pt-4 rounded-lg text-2xl text-gray-600 dark:text-gray-400 price-per-month">
     <div class="flex flex-1 flex-col text-3xl">
       <div class="flex font-semibold justify-center text-5xl text-black">
         <span class="font-normal text-gray-600 text-lg">$</span>
@@ -18,7 +18,7 @@
       </div>
     </div>
 
-    <div class="w-full h-16 bg-white border border-gray-300 flex items-center justify-center mt-2 rounded-lg text-sm">
+    <div class="w-full h-16 bg-white border border-gray-300 flex items-center justify-center mt-2 rounded-lg text-sm minutes-per-month">
       <div>
         <span class="font-semibold text-base text-black">50,000</span>&nbsp;minutes/month
         <br />
@@ -33,17 +33,42 @@
     </div>
   </a>
 
-  <div class="flex flex-1 flex-col px-2">
+  <div id="tier-4-pricing-cloud" class="flex flex-1 flex-col px-2">
     <div class="mb-4 text-gray-500">Everything in <b>Pro</b> plus:</div>
 
-    {% for item in site.data.tier-4-pricing %}
+    {% for item in site.data.tier-4-pricing-cloud %}
       <div class="flex pb-2">
         <img
           style="height: 24px"
           src="./../../assets/svg/done-check.svg"
           alt="Checked bullet"
         />
-        <div class="px-2 tracking-tight">{{ item }}</div>
+        <div class="px-2 tracking-tight">
+          {% if (item.comingSoon) %}
+            <span class="coming-soon">Coming soon</span>
+          {% endif %}
+          <span>{{ item.point }}</span>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+  <div id="tier-4-pricing-self-hosted" class="flex flex-1 flex-col hidden px-2">
+    <div class="mb-4 text-gray-500">Everything in <b>Pro</b> plus:</div>
+
+    {% for item in site.data.tier-4-pricing-self-hosted %}
+      <div class="flex pb-2">
+        <img
+          style="height: 24px"
+          src="./../../assets/svg/done-check.svg"
+          alt="Checked bullet"
+        />
+        <div class="px-2 tracking-tight">
+          {% if (item.comingSoon) %}
+            <span class="coming-soon">Coming soon</span>
+          {% endif %}
+          <span>{{ item.point }}</span>
+        </div>
       </div>
     {% endfor %}
   </div>

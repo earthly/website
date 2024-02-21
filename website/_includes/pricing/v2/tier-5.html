@@ -1,8 +1,8 @@
-<div class="bg-white border-2 border-gray-300 px-8 py-5 rounded-lg shadow text-gray-900">
+<div id="tier-5" class="bg-white border-2 border-gray-300 mt-8 px-8 py-5 rounded-lg shadow text-gray-900">
   <div class="md:flex items-center">
     <div>
       <div class="font-semibold mb-1 text-3xl">Enterprise</div>
-      <div class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
+      <div id="tier-5-description" class="font-light text-gray-500 sm:text-lg dark:text-gray-400">
         Contact us if you are interested in our Enterprise plan.
       </div>
     </div>
@@ -14,8 +14,8 @@
     </a>
   </div>
 
-  <div class="mt-2 mb-4 text-gray-500">Everything in <b>Team</b> plus:</div>
-  <div class="grid lg:flex grid-cols-1 justify-between mt-6">
+  <div id="tier-5-subtitle" class="mt-2 mb-4 text-gray-500">Everything in <b>Team</b> plus:</div>
+  <div id="tier-5-pricing" class="grid lg:flex grid-cols-1 justify-between mt-6">
     {% for item in site.data.tier-5-pricing %}
       <div>
         {% for point in item.points %}
@@ -25,7 +25,33 @@
               src="./../../assets/svg/done-check.svg"
               alt="Checked bullet"
             />
-            <div class="px-2 tracking-tight">{{ point }}</div>
+            <div class="px-2 tracking-tight">
+              {% if (point.comingSoon) %}
+                <span class="coming-soon">Coming soon</span>
+              {% endif %}
+              <span>{{ point.point }}</span>
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    {% endfor %}
+  </div>
+  <div id="tier-5-pricing-dedicated" class="grid lg:flex grid-cols-1 hidden lg:hidden justify-between mt-6">
+    {% for item in site.data.tier-5-pricing-dedicated %}
+      <div>
+        {% for point in item.points %}
+          <div class="flex pb-2">
+            <img
+              style="height: 24px"
+              src="./../../assets/svg/done-check.svg"
+              alt="Checked bullet"
+            />
+            <div class="px-2 tracking-tight">
+              {% if (point.comingSoon) %}
+                <span class="coming-soon">Coming soon</span>
+              {% endif %}
+              <span>{{ point.point }}</span>
+            </div>
           </div>
         {% endfor %}
       </div>

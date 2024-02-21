@@ -43,7 +43,12 @@
           src="./../../assets/svg/done-check.svg"
           alt="Checked bullet"
         />
-        <div class="px-2 tracking-tight">{{ item }}</div>
+        <div class="px-2 tracking-tight">
+          {% if (item.comingSoon) %}
+            <span class="coming-soon">Coming soon</span>
+          {% endif %}
+          <span>{{ item.point }}</span>
+        </div>
       </div>
     {% endfor %}
   </div>

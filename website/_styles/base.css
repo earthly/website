@@ -388,3 +388,14 @@ main.wave-main.homepage {
     width: calc((100% - 40px) / 3);
   }
 }
+
+.coming-soon {
+  background-color: #ccc;
+  border-radius: 20px;
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: -0.03em;
+  padding: 0 4px;
+  transform: translateY(-2px);
+}
