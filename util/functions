@@ -105,8 +105,6 @@ list(){
     ./util/list.awk "$INIT_LOCATION"
 }
 
-revert-file()
-
 ## External
 
 post() { # active blog post
