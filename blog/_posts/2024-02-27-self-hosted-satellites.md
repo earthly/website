@@ -12,6 +12,7 @@ internal-links:
 excerpt: |
     Announcing Self-Hosted Earthly Satellites. Remote build runners that bring the power of Earthly's consistent, fast builds to your own infrastructure.
 ---
+**The article focuses on the benefits of self-hosting applications. Earthly streamlines Docker build processes. [Check it out](https://cloud.earthly.dev/login).**
 
 I remember the first application that I self-hosted, [BugTracker.NET](https://ifdefined.com/bugtrackernet.html). It's ancient now, but this was in 2009. I had just landed my second job out of undergrad. I went from being an incredibly underpaid computer programmer focusing on one of Microsoft's now-legacy ERP systems, Dynamics AX, and development on top of Microsoft SQL Server to being a system administrator for that same ERP system for a new company at more than double the pay.
 
