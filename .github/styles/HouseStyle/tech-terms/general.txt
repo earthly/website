@@ -616,4 +616,9 @@ memcached
 subproject
 classpath
 
+helpdesk
+Bitwarden
+Nextcloud
+Plex
+homelab
 unoptimized
