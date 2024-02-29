@@ -363,7 +363,3 @@ Mastering Linux namespaces and cgroups is essential for optimizing Docker perfor
 As the landscape of containerization continues to evolve, a solid grasp of Linux namespaces and cgroups empowers users to harness the full potential of Docker and deliver high-performance, scalable applications. In this article, you learned how namespaces and cgroups are used by Docker, and how you can utilize namespaces for container isolation and cgroups for limiting and monitoring resource usage.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
