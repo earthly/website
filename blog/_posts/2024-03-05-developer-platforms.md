@@ -211,6 +211,8 @@ Both Qovery and Appvia Wayfinder prioritize governance and security. However, Qo
 
 Which developer platform is the best? The answer revolves around what the specific needs of your organization are.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -220,4 +222,3 @@ Which developer platform is the best? The answer revolves around what the specif
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
