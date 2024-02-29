@@ -225,7 +225,3 @@ Both Qovery and Appvia Wayfinder prioritize governance and security. However, Qo
 Which developer platform is the best? The answer revolves around what the specific needs of your organization are.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
