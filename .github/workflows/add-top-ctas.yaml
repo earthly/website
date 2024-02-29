@@ -40,13 +40,13 @@ jobs:
         git fetch --unshallow origin main
         MD_FILE=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' | head -n 1)
         echo "First markdown file changed: $MD_FILE"
-        if [[ -n "$MD_FILE" ]]; then
+        if [ -z "$MD_FILE" ]; then
+          echo "No markdown file changed"
+          echo "CONDITION_MET=false" >> $GITHUB_ENV
+        else
           echo "First markdown file changed: $MD_FILE"
           echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
           echo "CONDITION_MET=true" >> $GITHUB_ENV
-        else
-          echo "No markdown file changed"
-          echo "CONDITION_MET=false" >> $GITHUB_ENV
         fi
     - name: Set up GitHub CLI
       if: env.CONDITION_MET == 'true'
@@ -62,17 +62,20 @@ jobs:
         python-version: '3.11'  # This will get the latest version of Python 3
 
     - name: Create a new branch
+      if: env.CONDITION_MET == 'true'
       run: |
         git config user.name 'GitHub Actions Bot'
         git config user.email 'actions@github.com'
         branch_name="automated-changes-$(date +'%d%m%Y')"  # create a branch name based on the current day/month/year
         git checkout -b $branch_name
     - name: Dependencies
+      if: env.CONDITION_MET == 'true'
       run: |
         set -x
         curl -sSL https://install.python-poetry.org | python3 -
         poetry install --no-root
     - name: Run Code
+      if: env.CONDITION_MET == 'true'
       run: |
         set -x
         poetry run python util/psupport/psupport/scripts/excerpt.py --file $MD_FILE
