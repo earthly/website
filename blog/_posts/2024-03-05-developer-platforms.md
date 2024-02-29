@@ -15,7 +15,9 @@ In this roundup, you'll learn about five popular platforms—Backstage, Qovery, 
 
 ## Backstage
 
-![Backstage.io website](https://i.imgur.com/rqrfMhX.png)
+<div class="wide">
+![Backstage.io website]({{site.images}}{{page.slug}}/rqrfMhX.png)
+</div>
 
 [Backstage](https://backstage.io/), originally built by [Spotify](https://open.spotify.com/), is an open source Kubernetes-based developer platform that's scalable, flexible, and easy to use.
 
@@ -53,7 +55,9 @@ However, for organizations seeking commercial support, Backstage might not be th
 
 ## Clutch
 
-![Clutch website](https://i.imgur.com/3qB3q1n.png)
+<div class="wide">
+![Clutch website]({{site.images}}{{page.slug}}/3qB3q1n.png)
+</div>
 
 [Clutch](https://clutch.sh/), born from [Lyft's engineering challenges](https://clutch.sh/docs/about/lyft-case-study/), is a resilient open source platform for infrastructure tooling. Its customizable workflow engine uniquely supports diverse operational tasks, setting it apart with flexibility in managing infrastructure.
 
@@ -87,7 +91,9 @@ Clutch, like Backstage, is a free, open source platform with a vibrant [communit
 
 ## Qovery
 
-![Qovery website](https://i.imgur.com/GDdHCzL.png)
+<div class="wide">
+![Qovery website]({{site.images}}{{page.slug}}/GDdHCzL.png)
+</div>
 
 [Qovery](https://www.qovery.com/) is a powerful platform designed to help developers and platform engineers accelerate deployment and streamline cloud infrastructure management. Originating as a solution to common DevOps challenges, it distinguishes itself with its strong governance and security capabilities, seamless integration with major cloud providers, and cost optimization for Amazon Web Services (AWS) and Kubernetes environments.
 
@@ -125,7 +131,9 @@ In addition to the [official documentation](https://hub.qovery.com/), Qovery pro
 
 ## OpsLevel
 
-![OpsLevel website](https://i.imgur.com/3eMTK6W.png)
+<div class="wide">
+![OpsLevel website]({{site.images}}{{page.slug}}/3eMTK6W.png)
+</div>
 
 [OpsLevel](https://www.opslevel.com/) is a modern internal development platform that facilitates developer-centric operations and streamlines the complexity of modern software delivery by placing a huge focus on service ownership, maturity, and standardization.
 
@@ -165,7 +173,9 @@ One-on-one support is complemented by a variety of resources, including [detaile
 
 ## Appvia Wayfinder
 
-![Appvia website](https://i.imgur.com/a7BSBOC.png)
+<div class="wide">
+![Appvia website]({{site.images}}{{page.slug}}/a7BSBOC.png)
+</div>
 
 [Appvia Wayfinder](https://www.appvia.io/) is an IDP that originally addressed the [UK Home Office's complex tech challenges](https://www.appvia.io/customer-stories/home-office). It provides self-service cloud infrastructure for developers and platform teams with robust security, valuable cost management features, and a developer-centric approach.
 
@@ -216,9 +226,6 @@ Which developer platform is the best? The answer revolves around what the specif
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
