@@ -6,7 +6,11 @@ toc: true
 author: Avi Singh
 
 internal-links:
- - just an example
+ - how to use linux namespaces
+ - how to use cgroups
+ - linux namespaces to control docker performance
+ - cgroups to control docker performance
+ - how to use linux namespaces and cgroups
 ---
 
 [Docker](https://www.docker.com/) is a popular containerization solution for packaging, distributing, and running applications in lightweight environments. However, with growing container density and workload variety comes increased pressure to control container performance. Thankfully, Linux offers powerful tools, including [namespaces](https://kubernetes.io/docs/concepts/overview/working-with-objects/namespaces/) and [control groups](https://kubernetes.io/docs/concepts/architecture/cgroups/) (cgroups), that enable fine-grained resource allocation and guarantee the optimal performance of each container.
@@ -60,20 +64,20 @@ To better understand this concept, let's use the user namespace to isolate the c
 
 In this scenario, you'll learn about some of the advantages of namespaces in Docker. Run the following command to create a file in the host machine and make it readable to only the root user:
 
-~~~
+~~~{.bash caption=">_"}
 echo "This is a super sensitive file" | sudo tee /secret
 sudo chmod 600 /secret
 ~~~
 
 Let's pretend that the file `/secret` is a very sensitive file that should never be accessed by anyone other than the root. But, what happens when you mount the host filesystem in a Docker container? Let's find out. Run the following command to start a busybox container and mount the host filesystem to it:
 
-~~~
+~~~{.bash caption=">_"}
 sudo docker run -it --rm -v /:/host busybox /bin/sh
 ~~~
 
 Then, try to access the sensitive file:
 
-~~~
+~~~{.bash caption=">_"}
 $ cat /host/secret
 This is a super sensitive file
 ~~~
@@ -84,19 +88,19 @@ To prevent this, you need to make use of namespaces.
 
 First, make sure that your Linux kernel supports user namespaces. To do so, [find the configuration file for your kernel](https://www.baeldung.com/linux/kernel-config) and use grep to search for `CONFIG_USER_NS`. The following command is an example of the Ubuntu kernel:
 
-~~~
+~~~{.bash caption=">_"}
 grep -E '^CONFIG_USER_NS=' /boot/config-$(uname -r)
 ~~~
 
 The following output confirms that your kernel supports user namespaces:
 
-~~~
+~~~{ caption="Output"}
 CONFIG_USER_NS=y
 ~~~
 
 Next, open or create the Docker daemon configuration file (usually located at `/etc/docker/daemon.json`) and add the following configuration that sets up user namespaces with default remapping:
 
-~~~
+~~~{.json caption="daemon.json"}
 {
   "userns-remap": "default"
 }
@@ -104,19 +108,19 @@ Next, open or create the Docker daemon configuration file (usually located at `/
 
 Restart the Docker daemon to apply the changes:
 
-~~~
+~~~{.bash caption=">_"}
 sudo systemctl restart docker
 ~~~
 
 Run the container again:
 
-~~~
+~~~{.bash caption=">_"}
 sudo docker run -it --rm -v /:/host busybox /bin/sh
 ~~~
 
 Try to read the file:
 
-~~~
+~~~{.bash caption=">_"}
 $ cat /host/secret
 ~~~
 
@@ -124,13 +128,13 @@ This time, you'll be faced with a `Permission denied` error.
 
 To better understand what is happening behind the scenes, execute the following command in interactive mode to run a Docker container:
 
-~~~
+~~~{.bash caption=">_"}
 docker run -it nginx sleep 300
 ~~~
 
 Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
 latest: Pulling from library/nginx
 af107e978371: Pull complete 
 336ba1f05c3e: Pull complete 
@@ -145,7 +149,7 @@ Status: Downloaded newer image for nginx:latest
 
 After running the container, check to see if the container is up and running:
 
-~~~
+~~~{.bash caption=">_"}
 docker ps
 ~~~
 
@@ -153,7 +157,7 @@ In this scenario, you're running an Nginx container and executing the sleep comm
 
 Run the following command to list all currently running processes and filter the results to only show lines containing the word "sleep":
 
-~~~
+~~~{.bash caption=">_"}
 ps -aux | grep sleep
 ~~~
 
@@ -161,7 +165,8 @@ The `ps` command is used to provide information about processes.
 
 Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
+
 osboxes     7216  0.0  0.4 1329172 24576 pts/0   Sl+  13:39   0:00 docker run -it nginx sleep 300
 231072      7279  0.0  0.0   2484  1280 pts/0    Ss+  13:39   0:00 sleep 300
 osboxes     7329  0.0  0.0  17732  2560 pts/1    S+   13:40   0:00 grep --color=auto sleep
@@ -169,13 +174,13 @@ osboxes     7329  0.0  0.0  17732  2560 pts/1    S+   13:40   0:00 grep --color=
 
 Observe that one `sleep 300` process shows up in the list of processes. It is owned by the user with the UID 231072 (this UID may be different for you). Where is this user coming from? Use the following command to look at the file `/etc/subuid`:
 
-~~~
+~~~{.bash caption=">_"}
 cat /etc/subuid
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{ caption="Output"}
 osboxes:100000:65536
 ansible:165536:65536
 dockremap:231072:65536
@@ -185,13 +190,13 @@ What this tells us is that Docker creates a default user named `dockremap` with 
 
 Next, use the `docker info` command to verify that user namespace support is enabled correctly:
 
-~~~
+~~~{.bash caption=">_"}
 sudo docker info
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{ caption="Output"}
 Client:
  Context:    default
  Debug Mode: false
@@ -263,7 +268,7 @@ Let's take a look at what cgroups are set up when you run a container. But, befo
 
 Run the `nginx` container and note the container ID from the output:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run -d nginx
 ~~~
 
@@ -276,19 +281,19 @@ To find the cgroups for this container, you'll need to look into the following l
 
 Here, you can find out different metrics for the container. For example, you can read the max CPU allocated to this container by reading the `cpu.max` file in this directory:
 
-~~~
+~~~{.bash caption=">_"}
 max 100000
 ~~~
 
 This implies that this container is allowed to consume the maximum available CPU on the host. Let's limit it to half of one CPU. First, kill the container and recreate it with the `--cpus` option:
 
-~~~
+~~~{.bash caption=">_"}
 docker run --cpus 0.5 -d nginx
 ~~~
 
 The `cpu.max` file should show the following:
 
-~~~
+~~~{ caption="Output"}
 50000 100000
 ~~~
 
@@ -296,7 +301,7 @@ This shows that the container is only allowed 0.5 CPUs. You can adjust the `--cp
 
 If you want to run a Docker container with memory limits using cgroups, you can use the `--memory` option with the `docker run` command. The following example uses the [official Nginx image](https://hub.docker.com/_/nginx) from Docker Hub:
 
-~~~
+~~~{.bash caption=">_"}
 docker run -d --name new-container --memory=256M ubuntu sleep infinity
 ~~~
 
@@ -304,20 +309,22 @@ In this command, `-d` makes the container run in the background, and `--name new
 
 Now, run `docker ps`. You should see that a container named "new-container" is up and running:
 
-~~~
+~~~{ caption="Output"}
+
 CONTAINER ID   IMAGE     COMMAND            CREATED          STATUS          PORTS     NAMES
 d67613c74bd6   ubuntu    "sleep infinity"   26 seconds ago   Up 25 seconds             new-container
 ~~~
 
 To verify that the memory limits are applied, run the following `docker stats` command:
 
-~~~
+~~~{.bash caption=">_"}
 docker stats d67613c74bd6
 ~~~
 
 Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
+
 CONTAINER ID   NAME            CPU %     MEM USAGE / LIMIT   MEM %     NET I/O       BLOCK I/O   PIDS
 d67613c74bd6   new-container   0.00%     388KiB / 256MiB     0.15%     3.42kB / 0B   0B / 0B     1
 ~~~
@@ -326,13 +333,14 @@ You can see the memory limit for this container is now set to 256 MiB.
 
 To get real-time statistics for the running container, including CPU and memory usage, run the following command:
 
-~~~
-docker stats new-container --no-stream --format "{{ json . }}" | python3 -m json.tool
+~~~{.bash caption=">_"}
+docker stats new-container --no-stream --format "  {% raw %}{{ json . }}{% endraw %}" \
+| python3 -m json.tool
 ~~~
 
 Your output will look like this:
 
-~~~
+~~~{ caption="Output"}
 {
     "BlockIO": "0B / 0B",
     "CPUPerc": "0.00%",
@@ -359,8 +367,3 @@ As the landscape of containerization continues to evolve, a solid grasp of Linux
 ## Outside Article Checklist
 
 * [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-* [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
