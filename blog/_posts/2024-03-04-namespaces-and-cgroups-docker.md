@@ -26,13 +26,13 @@ The following are a few different types of namespaces:
 * [Inter-process communication (IPC) namespace](https://en.wikipedia.org/wiki/Linux_namespaces#Inter-process_Communication_(ipc))
 * [User namespace](https://en.wikipedia.org/wiki/Linux_namespaces#User_ID_(user))
 * [Time namespace](https://en.wikipedia.org/wiki/Linux_namespaces#Time_Namespace)
-* [cgroup namespace](https://en.wikipedia.org/wiki/Linux_namespaces#Control_group_(cgroup)_Namespace)
+* [`cgroup` namespace](https://en.wikipedia.org/wiki/Linux_namespaces#Control_group_(cgroup)_Namespace)
 
 Namespaces in Linux provide a way to isolate and virtualize system resources, thus enhancing security by preventing processes in one namespace from directly interacting with processes in another namespace.
 
 Namespaces increase security by providing a level of isolation that prevents unintended interactions between processes. This isolation is particularly valuable in containerization and virtualization scenarios, where multiple applications or services share the same host system but must be kept separate for security reasons.
 
-## Understanding cgroups
+## Understanding `cgroups`
 
 cgroups are a Linux kernel feature that enable the management and partitioning of system resources by controlling the resources for a collection of processes. Administrators can use cgroups to allocate resources, set limits, and prioritize processes. Docker utilizes cgroups to control and limit the resources available to containers.
 
@@ -56,7 +56,7 @@ This is where a user namespace can help. By default, Docker runs containers with
 
 To better understand this concept, let's use the user namespace to isolate the containers for security purposes.
 
-## How to Use namespaces with Docker
+## How to Use `namespaces` With Docker
 
 In this scenario, you'll learn about some of the advantages of namespaces in Docker. Run the following command to create a file in the host machine and make it readable to only the root user:
 
@@ -362,6 +362,5 @@ As the landscape of containerization continues to evolve, a solid grasp of Linux
 * [ ] Optional: Find ways to break up content with quotes or images
 * [ ] Verify look of article locally
 * [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Run mark down linter (`lint`)
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
