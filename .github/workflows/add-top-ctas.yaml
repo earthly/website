@@ -40,8 +40,16 @@ jobs:
         git fetch --unshallow origin main
         MD_FILE=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' | head -n 1)
         echo "First markdown file changed: $MD_FILE"
-        echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
+        if [[ -n "$MD_FILE" ]]; then
+          echo "First markdown file changed: $MD_FILE"
+          echo "MD_FILE=$MD_FILE" >> $GITHUB_ENV
+          echo "CONDITION_MET=true" >> $GITHUB_ENV
+        else
+          echo "No markdown file changed"
+          echo "CONDITION_MET=false" >> $GITHUB_ENV
+        fi
     - name: Set up GitHub CLI
+      if: env.CONDITION_MET == 'true'
       run: |
         curl -sSL https://github.com/cli/cli/releases/download/v2.0.0/gh_2.0.0_linux_amd64.tar.gz -o ghcli.tar.gz
         tar xzf ghcli.tar.gz
