@@ -171,6 +171,10 @@ lint() { # Run Linter
     )
 }
 
+slide-markdown() { # Convert to Slide Markdown
+    cat "$(post)" | poetry run python ./util/slides_markdown.py | sponge "$(post)"
+}
+
 ,vale(){ # Run Vale
   vale --output line --minAlertLevel error ./blog/_posts/*.md
 }
