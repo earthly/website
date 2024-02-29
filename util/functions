@@ -172,7 +172,8 @@ lint() { # Run Linter
 }
 
 slide-markdown() { # Convert to Slide Markdown
-    cat "$(post)" | poetry run python ./util/slides_markdown.py | sponge "$(post)"
+    # cat "$(post)" | poetry run python ./util/slides_markdown.py | sponge "$(post)"
+    cat "$(post)" | poetry run python ./util/slides_markdown.py > output.md
 }
 
 ,vale(){ # Run Vale
