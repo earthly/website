@@ -10,7 +10,10 @@ internal-links:
  - top developer platforms
  - top developer platforms to work
  - comparing popular developer platforms
+excerpt: |
+    This article compares five popular developer platforms—Backstage, Qovery, Clutch, OpsLevel, and Appvia—by analyzing their core features, integration capabilities, user experience, scalability, and support and documentation. It concludes that the best developer platform depends on the specific needs of the organization, but Qovery stands out for its flexibility and developer experience.
 ---
+**The article compares leading developer platforms, highlighting Earthly's unique approach to containerized builds. Earthly provides modular builds similar to Backstage but simplifies the process by eliminating the need for plugin management. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 A developer platform is a framework or set of tools that simplifies and supports the process of building, testing, and deploying software applications, ultimately streamlining development pipelines. These platforms promote both teamwork and the standardization of service deployment, help speed up release cycles, and save costs by fostering a self-service model. All in all, these platforms serve as the backbone of a productive development ecosystem by melding tools into a unified workflow. With all these benefits, it's obvious why so many organizations are on the hunt for the right developer platform for their use case, but choosing the right one requires careful consideration of various factors.
 
