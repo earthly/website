@@ -90,7 +90,7 @@
       var planMinutes = document.getElementById("plan-minutes")
       var contactUsButton = document.querySelectorAll(".contact-us-button")
 
-      if (value == 1) {
+      if (value == 1 || (value <= 5 && document.querySelector('[id^="highlight-category"].active').id == "highlight-category-2")) {
         planName.forEach(x => x.innerText = "Free Plan")
         planDescription.forEach(x => x.innerText = "For hobby projects")
         planPrice.forEach(x => x.innerText = 0)
