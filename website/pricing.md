@@ -133,7 +133,7 @@ layout: default
       numUsers.style.right = "unset"
     }
 
-    if (value == 1) {
+    if (value == 1 || (value <= 5 && currentTab == "self-hosted")) {
       planName.innerText = "Free Plan"
       planDescription.innerText = "For hobby projects"
       planPrice.innerText = 0
