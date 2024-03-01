@@ -138,6 +138,8 @@ In this article, you learned how developer platforms can address the challenges 
 
 Whether you choose to build or buy a solution, launching an IDP requires an upfront investment to integrate it with your processes and train your developers. You'll also need to budget for the platform's ongoing maintenance to support the changing requirements of your DevOps teams. However, the long-term efficiency improvements enabled by successful adoption can easily offset these costs, making an IDP one of the most valuable assets for high-performing software organizations.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -146,4 +148,3 @@ Whether you choose to build or buy a solution, launching an IDP requires an upfr
 - [ ] Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
