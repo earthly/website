@@ -9,7 +9,10 @@ internal-links:
  - building developer portals with backstage
  - building developer portals
  - using backstage with developer portals
+excerpt: |
+    Backstage is an open source project that helps companies create developer portals to manage and consolidate all their services, configurations, and secrets in one place. It comes with features like a Software Catalog, TechDocs, and Templates, and allows for customization and integration with third-party services.
 ---
+**This article provides a step-by-step process for setting up Backstage. Earthly guarantees reproducible builds. A great tool to pair with Backstage. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Medium to large companies typically use several different components and services for operations, including apps developed in-house, third-party services such as Google Cloud Provider (GCP) or Amazon Web Services (AWS), and third-party APIs. Managing all these services can become a complex task, which is why [Backstage](https://backstage.io/docs/overview/what-is-backstage), an open source project, helps companies create developer portals that consolidate all their services, configurations, and secrets into one place. With Backstage, the portal that you create gives you a place to document each of your services and provides an overview of the services in use, their locations, and interdependencies.
 
