@@ -6,7 +6,9 @@ toc: true
 author: Aniket Bhattacharyea
 
 internal-links:
- - just an example
+ - building developer portals with backstage
+ - building developer portals
+ - using backstage with developer portals
 ---
 
 Medium to large companies typically use several different components and services for operations, including apps developed in-house, third-party services such as Google Cloud Provider (GCP) or Amazon Web Services (AWS), and third-party APIs. Managing all these services can become a complex task, which is why [Backstage](https://backstage.io/docs/overview/what-is-backstage), an open source project, helps companies create developer portals that consolidate all their services, configurations, and secrets into one place. With Backstage, the portal that you create gives you a place to document each of your services and provides an overview of the services in use, their locations, and interdependencies.
@@ -416,6 +418,3 @@ Developer portals are a must for any company that uses a lot of services and com
 
 * [ ] Add in Author page
 * [ ] Create header image in Canva
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
