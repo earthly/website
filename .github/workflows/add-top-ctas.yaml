@@ -38,8 +38,8 @@ jobs:
     - name: Find and set first Markdown file changed
       run: |
         git fetch --unshallow origin main
-        MD_FILE=$(git diff --name-only origin/${{ github.base_ref }}...HEAD | grep '\.md$' | head -n 1)
-        echo "First markdown file changed: $MD_FILE"
+        MD_FILE=$(git diff --name-only 828401b...5f6e5b5 | grep '\.md$' | head -n 1)
+        echo "First markdown file changed: ($MD_FILE)"
         if [ -z "$MD_FILE" ]; then
           echo "No markdown file changed"
           echo "CONDITION_MET=false" >> $GITHUB_ENV
