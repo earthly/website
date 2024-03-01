@@ -54,7 +54,7 @@ You'll also need to install and set up [PostgreSQL](https://www.postgresql.org) 
 
 To begin, you need to create a Backstage instance by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 npx @backstage/create-app@latest
 ~~~
 
@@ -62,7 +62,7 @@ When you're prompted, enter the name of the directory where you want to set up t
 
 Once the setup is complete, your output will look like this:
 
-~~~
+~~~{ caption="Output"}
 // Some output omitted
 
  Moving to final location:
@@ -87,7 +87,7 @@ Navigate to the `backstage` directory and install the dependencies by running `n
 
 Then, start the Backstage server with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 yarn dev
 ~~~
 
@@ -101,13 +101,13 @@ Before you proceed with the rest of the article, you'll need to configure Backst
 
 To configure PostgreSQL, install the `pg` library by running the following command:
 
-~~~
+~~~{.bash caption=">_"}
 yarn add -cwd packages/backend pg
 ~~~
 
 Open the `app-config.yaml` file where the configuration for Backstage is stored. You'll find a `database` key that looks like this:
 
-~~~
+~~~{.yaml caption="app-config.yaml"}
 database:
     client: better-sqlite3
     connection: ':memory:'
@@ -117,7 +117,7 @@ By default, this sets Backstage up to use an in-memory database. You could edit 
 
 It's better to use `app-config.local.yaml` for sensitive configurations. This file is not checked into version control, and any configuration in this file overrides the same from `app-config.yaml`. So, open `app-config.local.yaml` and add the following:
 
-~~~
+~~~{.yaml caption="app-config.local.yaml"}
 # Backstage override configuration for your local development environment
 backend:
   database:
@@ -133,7 +133,7 @@ Replace `USER` with the PostgreSQL user and `PASSWORD` with the password.
 
 Restart the Backstage server and look for a line like this:
 
-~~~
+~~~{.bash caption=">_"}
 Performing database migration
 ~~~
 
@@ -157,7 +157,7 @@ On the next page, you'll be shown a client ID that you'll need to copy. Click th
 
 Open the `app-config.local.yaml` file and paste the following YAML code into it:
 
-~~~
+~~~{.yaml caption="app-config.local.yaml"}
 auth:
   # See https://backstage.io/docs/auth/ to learn about auth providers
   environment: development
@@ -172,14 +172,14 @@ Replace `YOUR_CLIENT_ID` and `YOUR_CLIENT_SECRET` with the client ID and client 
 
 Open `packages/app/src/App.tsx` and add the following imports:
 
-~~~
+~~~{.tsx caption="App.tsx"}
 import { githubAuthApiRef } from '@backstage/core-plugin-api';
 import { SignInPage } from '@backstage/core-components';
 ~~~
 
 Search for `const app = createApp({`, and below `apis`, add the following:
 
-~~~
+~~~{.tsx caption="App.tsx"}
 components: {
   SignInPage: props => (
     <SignInPage
@@ -222,7 +222,7 @@ To register components in Backstage, each component must have a [`catalog-info.y
 
 To start, create a file named `catalog-info.yaml` in the root of the Node.js app with the following code:
 
-~~~
+~~~{.yaml caption="catalog-info.yaml"}
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -275,7 +275,7 @@ APIs are at the center of modern software development. Almost every piece of sof
 
 Open the `catalog-info.yaml` file and add the following in the `spec` key:
 
-~~~
+~~~{.yaml caption="catolog-info.yaml"}
 providesApis:
   - blog-api
 ~~~
@@ -284,7 +284,7 @@ This tells Backstage that the `Blog-App` component provides an API named `blog-a
 
 Now, let's define the API. Add the code below at the end of the `catalog-info.yaml` file. As before, replace the GitHub-related parts with information specific to your repo:
 
-~~~
+~~~{.yaml caption="catolog-info.yaml"}
 ---
 apiVersion: backstage.io/v1alpha1
 kind: API
@@ -303,7 +303,7 @@ Notice that `kind` is set to `API` because this is an API entity, and the `defin
 
 The full `catalog-info.yaml` file looks like this:
 
-~~~
+~~~{.yaml caption="catolog-info.yaml"}
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -365,7 +365,7 @@ In this section, you'll focus on the Python client, which depends on the `Blog-A
 
 Add a `catalog-info.yaml` file in the repo for the Python client:
 
-~~~
+~~~{.yaml caption="catolog-info.yaml"}
 apiVersion: backstage.io/v1alpha1
 kind: Component
 metadata:
@@ -413,8 +413,3 @@ Developer portals are a must for any company that uses a lot of services and com
 [Backstage](https://backstage.io/) helps you build a powerful developer portal with features like a Software Catalog, TechDocs, and Templates. In this article, you learned all about these features as well as how to set up a Backstage instance and register components in the Software Catalog. You also learned how to add APIs and dependencies among components.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Add in Author page
-* [ ] Create header image in Canva
