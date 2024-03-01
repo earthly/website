@@ -569,3 +569,7 @@ Ryan Peden:
     name    : "Ryan Peden"
     bio     : "Ryan has been a software developer for over a decade and a writer for five years. He is passionate about clean code, functional programming, and, most of all, finding ways to keep software development fun."
     avatar  : "/assets/images/authors/ryan-peden.jpg"
+Avi Singh:
+    name    : "Avi Singh"
+    bio     : "Avi Singh is a Cloud, DevOps, Cybersecurity, and Big Data Expert with nine years of Industry experience. He has expertise in cloud AWS, Azure, and GCP, as well as DevOps tools and cybersecurity techniques, including ethical hacking and defense against various cyber threats. He also has significant experience in Big Data technologies such as Hadoop and Apache Kafka. Avi creates tutorials and articles focusing on trending technologies."
+    avatar  : "/assets/images/authors/person.jpg"
