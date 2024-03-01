@@ -6,7 +6,9 @@ toc: true
 author: James Walker
 
 internal-links:
- - just an example
+ - why you need a developer platform
+ - developer platform
+ - needing a developer platform
 ---
 
 Developer platforms centralize the internal tools and processes that developers use to build and deliver software. These platforms improve DevOps outcomes by providing automated mechanisms for developers to achieve their tasks.
@@ -146,5 +148,4 @@ Whether you choose to build or buy a solution, launching an IDP requires an upfr
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
 - [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
