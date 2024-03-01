@@ -9,7 +9,10 @@ internal-links:
  - why you need a developer platform
  - developer platform
  - needing a developer platform
+excerpt: |
+    Developer platforms centralize internal tools and processes for software development, improving DevOps outcomes by automating tasks and reducing friction. They offer benefits such as accelerated software development, improved developer productivity, enhanced collaboration and communication, and reduced costs and risks.
 ---
+**The article discusses the significant influence of internal developer platforms on build automation. Earthly streamlines and speeds up this process. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Developer platforms centralize the internal tools and processes that developers use to build and deliver software. These platforms improve DevOps outcomes by providing automated mechanisms for developers to achieve their tasks.
 
