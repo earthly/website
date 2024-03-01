@@ -12,173 +12,177 @@ layout: default
     <div id="cloud-pricing" class="text-[40px] font-semibold mt-2 text-center">Earthly Cloud Pricing</div>
 
     <div class="flex gap-6 lg:gap-10 justify-center mt-4">
-      <p id="highlight-category-1" class="highlight-category active" onclick="">Cloud</p>
-      <p id="highlight-category-2" class="highlight-category" onclick="">Self-Hosted</p>
-      <p id="highlight-category-3" class="highlight-category" onclick="">BYOC</p>
+      <p id="pricing-tab-1" class="highlight-category active">Cloud</p>
+      <p id="pricing-tab-2" class="highlight-category">Self-Hosted</p>
+      <p id="pricing-tab-3" class="highlight-category">BYOC</p>
     </div>
 
-    <div class="flex justify-center lg:justify-start mt-4">
-      <span class="font-bold text-gray-900">Monthly</span>
-      <label class="toggle-switch">
-        <input id="pricing-toggle-switch" type="checkbox" checked>
-        <span class="slider"></span>
-      </label>
-      <span class="font-bold text-gray-900">Annual</span>
-    </div>
+    {% include /pricing/v2/cloud.html %}
+    {% include /pricing/v2/self-hosted.html %}
+    {% include /pricing/v2/byoc.html %}
 
-    {% include /pricing/v2/estimate.html %}
-
-    <div id="pricing-tiers" class="grid grid-cols-1 gap-4 lg:gap-2 lg:grid-cols-4 mt-6 relative z-10">
-      {% include /pricing/v2/tier-1.html %}
-      {% include /pricing/v2/tier-2.html %}
-      {% include /pricing/v2/tier-3.html %}
-      {% include /pricing/v2/tier-4.html %}
-    </div>
-    <div id="tier-5-subheading" class="text-2xl lg:text-3xl font-semibold text-center pt-1 pb-1 hidden">Bring Your Own Cloud</div>
-    <div id="tier-5-subheading-2" class="text-xl lg:text-2xl text-slate-500 text-center pt-1 pb-3 hidden">Single-tenant SaaS, fully managed by Earthly in your AWS account</div>
-    {% include /pricing/v2/tier-5.html %}
-
-    {% include /pricing/v2/compute-cost-table.html %}
     {% include /pricing/v2/pricing-faq.html %}
   </div>
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    [...document.querySelectorAll("#tier-3-pricing > div")].slice(-2).forEach(x => x.classList.add("hidden"))
+  const cloud = document.getElementById("cloud")
+  const selfHosted = document.getElementById("self-hosted")
+  const byoc = document.getElementById("byoc")
 
-    var checkbox = document.getElementById("pricing-toggle-switch")
-    var sliderInput = document.getElementById("pricing-slider")
-    var planPrice = document.querySelectorAll(".plan-price")
+  let currentTabIndex = 1
+  let currentTab = "cloud"
+  let isAnnual = true
+  let sliderValue = 1
 
-    checkbox.addEventListener("change", function () {
-      if (checkbox.checked) {
-        document.getElementById("tier-2-pricing").innerText = 9.17
-        document.getElementById("tier-3-pricing").innerText = 29.17
-        document.getElementById("tier-4-pricing").innerText = 49.17
-      } else {
-        document.getElementById("tier-2-pricing").innerText = 11
-        document.getElementById("tier-3-pricing").innerText = 35
-        document.getElementById("tier-4-pricing").innerText = 59
-      }
+  // Tab change listener
+  const tabs = document.querySelectorAll('[id^="pricing-tab"]')
+  tabs.forEach(tab => {
+    tab.addEventListener("click", e => {
+      const id = +e.target.id.replace("pricing-tab-", "")
 
-      if (sliderInput.value == 1) {
-        planPrice.forEach(x => x.innerText = (0).toLocaleString())
-      } else if (sliderInput.value <= 5) {
-        planPrice.forEach(x => x.innerText = Number(((checkbox.checked ? 9.17 : 11)* sliderInput.value).toFixed(2)).toLocaleString())
-      } else if (sliderInput.value <= 15) {
-        planPrice.forEach(x => x.innerText = Number(((checkbox.checked ? 29.17 : 35)* sliderInput.value).toFixed(2)).toLocaleString())
-      } else {
-        planPrice.forEach(x => x.innerText = Number(((checkbox.checked ? 49.17 : 59)* sliderInput.value).toFixed(2)).toLocaleString())
-      }
-    })
+      if (id !== currentTabIndex) {
+        document.getElementById(`pricing-tab-${currentTabIndex}`).classList.remove("active")
+        currentTabIndex = id
+        currentTab = id == 1 ? "cloud" : id == 2 ? "self-hosted" : "byoc"
+        document.getElementById(`pricing-tab-${currentTabIndex}`).classList.add("active")
 
-    let currentHighlight = 1;
-  
-    const tabs = document.querySelectorAll('[id^="highlight-category"]');
-    tabs.forEach(tab => {
-      tab.addEventListener("click", e => {
-        const id = +e.target.id.replace("highlight-category-", "")
-
-        if (id !== currentHighlight) {
-          document.getElementById(`highlight-category-${currentHighlight}`).classList.remove('active')
-          currentHighlight = id
-          document.getElementById(`highlight-category-${currentHighlight}`).classList.add('active')
-
-          const pricingCalculator = document.getElementById("pricing-calculator")
-          const priceEstimate = document.querySelector(".cost-estimate > div:last-of-type")
-          const tier1PricingCloud = document.getElementById("tier-1-pricing-cloud")
-          const tier1PricingSelfHosted = document.getElementById("tier-1-pricing-self-hosted")
-          const tier2 = document.getElementById("tier-2")
-          const tier3PricingCloud = document.getElementById("tier-3-pricing-cloud")
-          const tier3PricingSelfHosted = document.getElementById("tier-3-pricing-self-hosted")
-          const tier4PricingCloud = document.getElementById("tier-4-pricing-cloud")
-          const tier4PricingSelfHosted = document.getElementById("tier-4-pricing-self-hosted")
-          const tier5 = document.getElementById("tier-5")
-          const tier5Subheading = document.getElementById("tier-5-subheading")
-          const tier5Subheading2 = document.getElementById("tier-5-subheading-2")
-          const tier5Subtitle = document.getElementById("tier-5-subtitle")
-          const tier5Pricing = document.getElementById("tier-5-pricing")
-          const tier5PricingDedicated = document.getElementById("tier-5-pricing-dedicated")
-          const pricingTiers = document.getElementById("pricing-tiers")
-          const minutesPerMonth = document.querySelectorAll(".minutes-per-month")
-          const pricePerMonth = document.querySelectorAll(".price-per-month")
-          const toggleSwitch = document.getElementsByClassName("toggle-switch")[0].parentElement
-          const cloudEstimate = document.getElementById("cloud-estimate")
-          const selfHostedEstimate = document.getElementById("self-hosted-estimate")
-          const computePricingContainer = document.getElementById("compute-pricing-container")
-
-          if (id == 1) {
-            computePricingContainer.classList.remove("hidden")
-          } else {
-            computePricingContainer.classList.add("hidden")
-          }
-
-          if (id == 2) {
-            priceEstimate.classList.add("hidden")
-            tier1PricingCloud.classList.add("hidden")
-            tier1PricingSelfHosted.classList.remove("hidden")
-            tier2.classList.add("hidden")
-            tier3PricingCloud.classList.add("hidden")
-            tier3PricingSelfHosted.classList.remove("hidden")
-            tier4PricingCloud.classList.add("hidden")
-            tier4PricingSelfHosted.classList.remove("hidden")
-            tier5.classList.add("hidden")
-            pricingTiers.classList.remove("lg:grid-cols-4")
-            pricingTiers.classList.add("lg:grid-cols-3")
-            minutesPerMonth.forEach((x, i) => {
-              pricePerMonth[i].classList.remove("h-48", "xl:h-44")
-              pricePerMonth[i].classList.add("h-[108px]", "xl:h-24")
-              x.classList.add("hidden")
-            })
-            cloudEstimate.classList.add("hidden")
-            selfHostedEstimate.classList.remove("hidden")
-          } else {
-            priceEstimate.classList.remove("hidden")
-            tier1PricingCloud.classList.remove("hidden")
-            tier1PricingSelfHosted.classList.add("hidden")
-            tier2.classList.remove("hidden")
-            tier3PricingCloud.classList.remove("hidden")
-            tier3PricingSelfHosted.classList.add("hidden")
-            tier4PricingCloud.classList.remove("hidden")
-            tier4PricingSelfHosted.classList.add("hidden")
-            tier5.classList.remove("hidden")
-            pricingTiers.classList.remove("lg:grid-cols-3")
-            pricingTiers.classList.add("lg:grid-cols-4")
-            minutesPerMonth.forEach((x, i) => {
-              pricePerMonth[i].classList.add("h-48", "xl:h-44")
-              pricePerMonth[i].classList.remove("h-[108px]", "xl:h-24")
-              x.classList.remove("hidden")
-            })
-            cloudEstimate.classList.remove("hidden")
-            selfHostedEstimate.classList.add("hidden")
-          }
-
-          if (id == 3) {
-            pricingCalculator.style = "display: none"
-            pricingTiers.classList.add("hidden")
-            tier5.classList.remove("mt-8")
-            tier5.classList.add("mt-4")
-            tier5Subheading.classList.remove("hidden")
-            tier5Subheading2.classList.remove("hidden")
-            tier5Subtitle.classList.add("hidden")
-            tier5Pricing.classList.add("hidden", "lg:hidden")
-            tier5PricingDedicated.classList.remove("hidden", "lg:hidden")
-            toggleSwitch.classList.add("hidden")
-          } else {
-            pricingCalculator.style = ""
-            pricingTiers.classList.remove("hidden")
-            tier5.classList.add("mt-8")
-            tier5.classList.remove("mt-4")
-            tier5Subheading.classList.add("hidden")
-            tier5Subheading2.classList.add("hidden")
-            tier5Subtitle.classList.remove("hidden")
-            tier5Pricing.classList.remove("hidden", "lg:hidden")
-            tier5PricingDedicated.classList.add("hidden", "lg:hidden")
-            toggleSwitch.classList.remove("hidden")
-          }
+        // Show the active tab content and hide others
+        if (id == 1) {
+          cloud.classList.remove("hidden")
+          selfHosted.classList.add("hidden")
+          byoc.classList.add("hidden")
+        } else if (id == 2) {
+          cloud.classList.add("hidden")
+          selfHosted.classList.remove("hidden")
+          byoc.classList.add("hidden")
+        } else if (id == 3) {
+          cloud.classList.add("hidden")
+          selfHosted.classList.add("hidden")
+          byoc.classList.remove("hidden")
         }
-      })
+
+        // Set current toggle value on tab change
+        const pricingToggleSwitch = document.querySelector(`#${currentTab} #pricing-toggle-switch`)
+        if (pricingToggleSwitch) {
+          pricingToggleSwitch.checked = isAnnual
+          handleCheckboxChange(pricingToggleSwitch)
+        }
+
+        // Set current slider value on tab change
+        const pricingSlider = document.querySelector(`#${currentTab} #pricing-slider`)
+        if (pricingSlider) {
+          pricingSlider.value = sliderValue
+          handleSliderChange(pricingSlider)
+        }
+      }
     })
+  })
+
+  // Annual/Monthly toggle listener
+  function handleCheckboxChange(checkbox) {
+    const sliderInput = document.querySelector(`#${currentTab} #pricing-slider`)
+    const planPrice = document.querySelector(`#${currentTab} #plan-price`)
+    const tier2Pricing = document.querySelector(`#${currentTab} #tier-2-pricing`)
+    const tier3Pricing = document.querySelector(`#${currentTab} #tier-3-pricing`)
+    const tier4Pricing = document.querySelector(`#${currentTab} #tier-4-pricing`)
+
+    if (tier2Pricing) tier2Pricing.innerText = checkbox.checked ? 9.17 : 11
+    tier3Pricing.innerText = checkbox.checked ? 29.17 : 35
+    tier4Pricing.innerText = checkbox.checked ? 49.17 : 59
+
+    if (sliderInput.value == 1) {
+      planPrice.innerText = (0).toLocaleString()
+    } else if (sliderInput.value <= 5) {
+      planPrice.innerText = Number(((checkbox.checked ? 9.17 : 11)* sliderInput.value).toFixed(2)).toLocaleString()
+    } else if (sliderInput.value <= 15) {
+      planPrice.innerText = Number(((checkbox.checked ? 29.17 : 35)* sliderInput.value).toFixed(2)).toLocaleString()
+    } else {
+      planPrice.innerText = Number(((checkbox.checked ? 49.17 : 59)* sliderInput.value).toFixed(2)).toLocaleString()
+    }
+
+    isAnnual = checkbox.checked
+  }
+
+  // Slider value change listener
+  function handleSliderChange(slider) {
+    const { min, max, value } = slider
+    slider.style.backgroundSize = (value - min) * 100 / (max - min) + "% 100%"
+
+    const checkbox = document.querySelector(`#${currentTab} #pricing-toggle-switch`)
+    const numUsers = document.querySelector(`#${currentTab} #num-users`)
+    const planName = document.querySelector(`#${currentTab} #plan-name`)
+    const planDescription = document.querySelector(`#${currentTab} #plan-description`)
+    const costEstimate = document.querySelector(`#${currentTab} #cost-estimate`)
+    const planPrice = document.querySelector(`#${currentTab} #plan-price`)
+    const planMinutes = document.querySelector(`#${currentTab} #plan-minutes`)
+    const contactUsButton = document.querySelector(`#${currentTab} #contact-us-button`)
+    const tier1 = document.querySelector(`#${currentTab} #tier-1`)
+    const tier2 = document.querySelector(`#${currentTab} #tier-2`)
+    const tier3 = document.querySelector(`#${currentTab} #tier-3`)
+    const tier4 = document.querySelector(`#${currentTab} #tier-4`)
+
+    numUsers.innerText = (value > 50 ? "50+" : value) + " user" + (value > 1 ? "s" : "")
+
+    const width = numUsers.getBoundingClientRect().width / 2
+    if (value > 45) {
+      numUsers.style.left = "unset"
+      numUsers.style.right = `calc((13px * (50 - ${value}) - 12px)`
+    } else {
+      numUsers.style.left = `calc(${value * 2}% - ${width}px - ${value * .5}px)`
+      numUsers.style.right = "unset"
+    }
+
+    if (value == 1 || (value <= 5 && currentTab == "self-hosted")) {
+      planName.innerText = "Free Plan"
+      planDescription.innerText = "For hobby projects"
+      planPrice.innerText = 0
+      if (planMinutes) planMinutes.innerText = (6000).toLocaleString()
+    } else if (value <= 5) {
+      planName.innerText = "Starter Plan"
+      planDescription.innerText = "For small projects"
+      planPrice.innerText = ((checkbox.checked ? 9.17 : 11) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+      if (planMinutes) planMinutes.innerText = (10000 + 2000 * value).toLocaleString()
+    } else if (value <= 15) {
+      planName.innerText = "Pro Plan"
+      planDescription.innerText = "For small teams"
+      planPrice.innerText = ((checkbox.checked ? 29.17 : 35) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+      if (planMinutes) planMinutes.innerText = (20000 + 3000 * value).toLocaleString()
+    } else if (value <= 50) {
+      planName.innerText = "Team Plan"
+      planDescription.innerText = "For large teams"
+      planPrice.innerText = ((checkbox.checked ? 49.17 : 59) * value).toLocaleString(undefined, { maximumFractionDigits: 2, minimumFractionDigits: 2 })
+      if (planMinutes) planMinutes.innerText = (50000 + 4000 * value).toLocaleString()
+    } else {
+      planName.innerText = "Enterprise Plan"
+      planDescription.innerText = "For enterprises"
+    }
+
+    costEstimate.style.display = value > 50 ? "none" : "flex"
+    contactUsButton.style.display = value > 50 ? "flex" : "none"
+
+    tier1.style.opacity = value <= 5 ? 1 : 0.5
+    tier1.style.pointerEvents = value <= 5 ? "unset" : "none"
+
+    if (tier2) {
+      tier2.style.opacity = value <= 5 ? 1 : 0.5
+      tier2.style.pointerEvents = value <= 5 ? "unset" : "none"
+    }
+
+    tier3.style.opacity = value <= 15 ? 1 : 0.5
+    tier3.style.pointerEvents = value <= 15 ? "unset" : "none"
+
+    tier4.style.opacity = value <= 50 ? 1 : 0.5
+    tier4.style.pointerEvents = value <= 50 ? "unset" : "none"
+
+    sliderValue = value
+  }
+
+  document.querySelectorAll("#pricing-toggle-switch").forEach(checkbox => {
+    checkbox.addEventListener("change", () => handleCheckboxChange(checkbox))
+  })
+
+  document.querySelectorAll("#pricing-slider").forEach(slider => {
+    slider.addEventListener("input", () => handleSliderChange(slider))
   })
 </script>

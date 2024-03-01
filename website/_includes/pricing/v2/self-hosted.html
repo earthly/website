@@ -1,0 +1,41 @@
+<div id="self-hosted" class="hidden">
+  <div class="flex justify-center lg:justify-start mt-4">
+    <span class="font-bold text-gray-900">Monthly</span>
+    <label class="toggle-switch">
+      <input id="pricing-toggle-switch" type="checkbox" checked>
+      <span class="slider"></span>
+    </label>
+    <span class="font-bold text-gray-900">Annual</span>
+  </div>
+
+  <div class="border-2 border-gray-300 bg-white flex flex-col lg:grid gap-2 grid-cols-3 mt-6 rounded-lg shadow">
+    {% include /pricing/v2/pricing-slider.html %}
+  
+    <div class="h-full flex items-center justify-between p-4 pb-6 text-gray-900">
+      <div>
+        <div id="plan-name" class="font-bold text-[#2d7e5d] text-xl lg:text-2xl tracking-tight">Free Plan</div>
+        <div id="plan-description" class="mt-0.5 text-[#9CA3AF] lg:text-lg tracking-tight">For hobby projects</div>
+      </div>
+  
+      <div id="cost-estimate" class="flex flex-col">
+        <div class="flex font-semibold text-xl lg:text-2xl">
+          <span class="font-normal text-gray-600 text-sm">$</span>
+          <span id="plan-price" class="tracking-tight">0</span>
+        </div>
+        <div class="text-gray-500">per month</div>
+      </div>
+  
+      <a id="contact-us-button" href="/contact-us" class="hidden">
+        <div class="bg-green-700 hover:bg-green-800 inline-block px-6 py-2.5 rounded-lg text-center text-white lg:text-xl">
+          Contact Us
+        </div>
+      </a>
+    </div>
+  </div>  
+
+  <div class="grid grid-cols-1 gap-4 lg:gap-2 lg:grid-cols-3 mt-6 relative z-10">
+    {% include /pricing/v2/tier-1.html tab="self-hosted" %}
+    {% include /pricing/v2/tier-3.html tab="self-hosted" %}
+    {% include /pricing/v2/tier-4.html tab="self-hosted" %}
+  </div>
+</div>
