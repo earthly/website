@@ -410,6 +410,8 @@ Developer portals are a must for any company that uses a lot of services and com
 
 [Backstage](https://backstage.io/) helps you build a powerful developer portal with features like a Software Catalog, TechDocs, and Templates. In this article, you learned all about these features as well as how to set up a Backstage instance and register components in the Software Catalog. You also learned how to add APIs and dependencies among components.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 * [ ] Add in Author page
@@ -417,4 +419,3 @@ Developer portals are a must for any company that uses a lot of services and com
 
 * [ ] Add keywords for internal links to front-matter
 * [ ] Run `link-opp` and find 1-5 places to incorporate links
-* [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
