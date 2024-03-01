@@ -17,6 +17,8 @@ More teams and organizations are launching their own internal developer platform
 
 ## Addressing the Challenges of Modern DevOps
 
+![Challenges]({{site.images}}{{page.slug}}/challenges.png)\
+
 DevOps enhances software delivery by tightening feedback loops, encouraging cross-discipline communication, and automating key processes around testing, quality, and deployment. However, DevOps doesn't solve every challenge, nor does it tell you how to implement its concepts. Teams often struggle to understand where to start automating their work, or they run into difficulties when apps, team members, environments, and tools change because it's hard to enforce which technologies devs are using.
 
 Developer platforms are a holistic solution for achieving DevOps ideals. Consolidating your toolchain around a shared internal platform makes it easier to integrate different processes and standardize them across developers. An IDP gives devs automated access to the resources they need, such as the ability to create a new test environment on demand or request access to inspect what's running in production.
@@ -28,6 +30,8 @@ You can do DevOps without an IDP, but it'll probably be much less efficient. IDP
 Developer platforms provide many benefits that collectively enable DevOps teams to quickly deliver impactful work while experiencing fewer problems. This section covers some of the ways in which adopting an IDP will improve your team's engineering output.
 
 ### Accelerated Software Development
+
+![Accelerated]({{site.images}}{{page.slug}}/accelerated.png)\
 
 Developer platforms can have a transformational effect on software development velocity. They shorten the software development lifecycle (SDLC), tighten feedback loops, and remove work from developers by automating previously time-consuming processes that depend on multiple tools.
 
@@ -118,6 +122,8 @@ While the benefits of buying a prebuilt IDP are tempting, you also need to consi
 - **Can be challenging to integrate with existing services and systems:** Because prebuilt platforms are controlled by their vendors, it can be difficult to integrate them with unsupported external services. This can prevent you from accurately modeling your workflows and lead to multiple siloed systems being used.
 
 ### Building vs. Buying: How to Choose
+
+![Choose]({{site.images}}{{page.slug}}/choose.png)\
 
 The decision to build or buy should be based on the organizational context in which your IDP will be received. Building your own platform guarantees you can implement your exact workflow requirements and specific customization needs, but you need to be prepared for the complexity involved. If platform adoption is urgent, then selecting a prebuilt solution is a pragmatic way to reduce integration time and obtain immediate DevOps improvements.
 
