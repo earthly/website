@@ -2,16 +2,19 @@ Earthly:
     name    : "Earthly"
     bio     : ""
     avatar  : "/assets/images/authors/person.jpg"
+    twitter : "@EarthlyTech"
 Corey:
     name    : "Corey Larson"
     bio     : "Eats, runs, and codes. Dad."
     avatar  : "/assets/images/authors/coreylarson.jpg"
     home    : "/authors/corey/"
+    twitter : "@dchw"
 Vlad:
     name    : "Vlad A. Ionescu"
     bio     : " Founder of Earthly. Founder of ShiftLeft. Ex Google. Ex VMware. Co-author RabbitMQ Erlang Client."
     avatar  : "/assets/images/authors/vladaionescu.jpg"
     home    : "/authors/vlad/"
+    twitter : "@VladAIonescu"
 Alex:
     name    : "Alex Couture-Beil"
     bio     : "Alex enjoys writing code, growing vegetables, and the great outdoors."
@@ -22,6 +25,7 @@ Brandon:
     bio     : "Brandon is an Engineer at Earthly who loves coding, tech startups, and camping trips with his family."
     avatar  : "/assets/images/authors/brandonschurman.jpg"
     home    : "/authors/brandon/"
+    twitter : "@BrSchurman"
 Josh:
     name    : "Josh Alletto"
     bio     : |
@@ -43,6 +47,8 @@ Gavin:
                 </br><a href="mailto:gavin+blog@earthly.dev">✉Email Gavin✉</a>
     avatar  : "/assets/images/authors/gavin-johnson.jpg"
     home    : "/authors/gavin/"
+    twitter : "@gavinjtech"
+
 Adam:
     name    : "Adam Gordon Bell"
     bio     : |
@@ -51,6 +57,7 @@ Adam:
                 </br><a href="mailto:adam+website@earthly.dev">✉Email Adam✉</a>
     avatar  : "/assets/images/authors/adamgordonbell.png"
     home    : "/authors/adam/"
+    twitter : "@adamgordonbell"
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
@@ -166,10 +173,6 @@ Bukola Omosefunmi:
     name    : "Bukola Omosefunmi"
     bio     : "Bukola is a Software Engineer passionate about building scalable and maintainable applications, an avid reader and one who loves solving problems."
     avatar  : "/assets/images/authors/bukola-omosefunmi.jpg"
-James Walker:
-    name    : "James Walker"
-    bio     : "James Walker is the founder of Heron Web, a UK-based digital agency providing bespoke software development services to SMEs.He has experience managing complete end-to-end web development workflows with DevOps, CI/CD, Docker, and Kubernetes."
-    avatar  : "/assets/images/authors/james-walker.jpg"
 Shingai Zivuku:
     name    : "Shingai Zivuku"
     bio     : "Shingai is a DevOps Security Engineer who lives in Nairobi. He’s passionate about learning new things. In his free time, he’s probably trying something new, reading, or catching up with the latest breaking news."
@@ -271,14 +274,11 @@ Bala Priya C:
     bio     : "Bala is a technical writer who enjoys creating long-form content. Her areas of interest include math and programming. She shares her learning with the developer community by authoring tutorials, how-to guides, and more."
     avatar  : "/assets/images/authors/bala-priya.jpg"
     home    : "/authors/bala/"
+    twitter : "@balawc27"
 Hrittik Roy:
     name    : "Hrittik Roy"
     bio     : "Hrittik is a writer and a software engineer who specializes in cloud native ecosystems. He has worked on many large-scale projects and has experience in both the technical and the business aspects of cloud computing. He is a frequent speaker at conferences and has written numerous articles on software development and distributed systems. In his free time, he likes to go for long walks."
     avatar  : "/assets/images/authors/hrittik.jpg"
-Anurag Kumar:
-    name    : "Anurag Kumar"
-    bio     : "Anurag is an engineering student who loves contributing to open source projects. He is primarily interested in cloud native ecosystem."
-    avatar  : "/assets/images/authors/anurag.png"
 Talha Khalid:
     name    : "Talha Khalid"
     bio     : "Talha Khalid, full stack developer turned writer. If he isn’t spending time with his cat, Petrov you can almost always find him in some random coffee shop."
@@ -545,9 +545,7 @@ Carlos Inocencio:
     avatar  : "/assets/images/authors/carlos-inocencio.jpg"
 Ignacio del Valle Alles:
     name    : "Ignacio del Valle Alles"
-    bio     : "Nacho is an experienced software engineer with passion for bringing value to fellow developers. 
-Besides an Earthly advocate and key member of our core team, he is also founder and CTO of BatchX, a platform that helps research teams to run their bioinformatics analyses at scale, and algorithm creators to monetize their tools.
-You can find him at [Github](https://github.com/idelvall) and as @Nacho in our [Slack community](https://earthly.dev/slack)"
+    bio     : "Nacho is an experienced software engineer with passion for bringing value to fellow developers. Besides an Earthly advocate and key member of our core team, he is also founder and CTO of BatchX, a platform that helps research teams to run their bioinformatics analyses at scale, and algorithm creators to monetize their tools. You can find him at [Github](https://github.com/idelvall) and as @Nacho in our [Slack community](https://earthly.dev/slack)"
     avatar  : "/assets/images/authors/nacho.jpg"
 Samuel Umoren:
     name    : "Samuel Umoren"
