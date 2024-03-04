@@ -23,6 +23,12 @@
 
   {% if page.layout == "single" and page.sidebar.nav == "makefile" %}
   document.addEventListener("DOMContentLoaded", function () {
+
+    const isDesktop = window.innerWidth > 1024;
+    if (!isDesktop) {
+      return;
+    }
+
     // Get all elements with 'cta-treatment' and 'cta-control' classes
     const ctaTreatmentElements = document.querySelectorAll('.cta-treatment');
     const ctaControlElements = document.querySelectorAll('.cta-control');
