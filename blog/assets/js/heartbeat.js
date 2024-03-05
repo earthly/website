@@ -1,6 +1,6 @@
 //Heartbeat for session tracking
 function heartbeat() {
-      console.log('heartbeat');
+      // console.log('heartbeat');
       analytics.track('blog-heartbeat', {
         category: 'heartbeat',
         label: 'blog-heartbeat'
