@@ -6,6 +6,7 @@ author: Nicolas Bohorquez
 author2: Adam
 internal-links:
  - vscode
+toc: true
 sidebar:
   nav: "makefile"
 topic: make

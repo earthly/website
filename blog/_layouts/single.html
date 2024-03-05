@@ -51,9 +51,80 @@ layout: default
               <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
             {% endif %}
           </div>
-
+          <div class="group mt-4 hidden cta-treatment">
+            <header>
+              <h4 class="font-semibold text-md mb-2">Table of contents</h4>
+            </header>
+            <div class="">
+              <div class="relative z-50">
+                {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="" skip_no_ids=true %}
+              </div>
+            </div>
+          </div>
+          <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4 hidden cta-treatment">
+            <header>
+              <h4 class="font-semibold text-md mb-2">About Earthly</h4>
+            </header>
+            <div class="">
+              <p class="prose">
+                Earthly makes builds super simple. <a href="">Learn More</a>
+            </p>
+            </div>
+          </div>
+          <div class="group mt-4 hidden cta-treatment">
+            <header>
+              <h4 class="font-semibold text-md mb-2">You may also enjoy</h4>
+            </header>
+            <div class="">
+              <ul>
+                <li class="mb-1 series-item">
+                    <a href="/blog/autoconf/" class="text-sm text-gray-600 hover:underline">
+                        Using Autotools
+                    </a>
+                </li>
+            
+                <li class="mb-1 series-item">
+                    <a href="/blog/make-flags" class="text-sm text-gray-600 hover:underline">
+                        Understanding Makefile Flags
+                    </a>
+                </li>
+            
+                <li class="mb-1 series-item">
+                    <a href="/blog/repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams" class="text-sm text-gray-600 hover:underline">
+                        Taming Large Makefiles
+                    </a>
+                </li>
+            
+                <li class="mb-1 series-item">
+                    <a href="/blog/docker-and-makefiles" class="text-sm text-gray-600 hover:underline">
+                        Docker and Makefiles
+                    </a>
+                </li>
+            
+                <li class="mb-1 series-item">
+                    <a href="/blog/makefiles-on-windows" class="text-sm text-gray-600 hover:underline">
+                        Makefiles on Windows
+                    </a>
+                </li>
+            
+                <li class="mb-1 series-item">
+                    <a href="/blog/using-makefile-wildcards" class="text-sm text-gray-600 hover:underline">
+                        Makefile Wildcards
+                    </a>
+                </li>
+            
+                <li class="mb-1 series-item">
+                    <a href="/blog/makefile-variables" class="text-sm text-gray-600 hover:underline">
+                        Makefile Variables
+                    </a>
+                </li>
+            
+        </ul>
+            </div>
+          </div>
+          
           {% if page.toc %}
-            <div class="group mt-4">
+            <div class="group mt-4 cta-control">
               <header>
                 <h4 class="font-semibold text-md mb-2">Table of contents</h4>
               </header>
@@ -99,12 +170,13 @@ layout: default
                 </div>
               {% endif %}
             {% endif %}
+            
           </div>
 
           <div class="lg:hidden mb-4">
             {% if page.toc %}
               <div class="border border-gray-400 flex items-center justify-between my-2 px-4 py-2 rounded-md" onclick="toggleToc()">
-                <p>Table of contents</p>
+                <p>Table of Contents</p>
                 {% svg assets/svg/chevron.svg id="toc-dropdown-icon" width="16px" height="16px" class="transition-transform" %}
               </div>
               <div id="toc-dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-2 py-4 hidden">
