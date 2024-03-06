@@ -13,7 +13,8 @@ jobs:
     if: >
       (github.event.pull_request.head.repo.owner.login == 'earthly' ||
        github.event.pull_request.head.repo.owner.login == 'Earthly-Staging') &&
-      !contains(github.event.pull_request.title, '[AUTO-PR]')
+      !contains(github.event.pull_request.title, '[AUTO-PR]') &&
+      github.event.pull_request.base.repo.full_name == 'Earthly-Staging/website'
     steps:
     - name: Check Required Secrets
       run: |
