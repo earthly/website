@@ -13,8 +13,7 @@ jobs:
     if: >
       (github.event.pull_request.head.repo.owner.login == 'earthly' ||
        github.event.pull_request.head.repo.owner.login == 'Earthly-Staging') &&
-      !contains(github.event.pull_request.title, '[AUTO-PR]') &&
-      github.event.pull_request.base.repo.full_name == 'Earthly-Staging/website'
+      !contains(github.event.pull_request.title, '[AUTO-PR]')
     steps:
     - name: Check Required Secrets
       run: |
@@ -101,6 +100,6 @@ jobs:
         modified_title="[AUTO-PR] $original_title - CTA change"
         echo "Modified title: '$modified_title'"
 
-        gh pr create -R Earthly-Staging/website --base ${{ github.event.pull_request.head.ref }} --title "$modified_title" --body "This PR includes changes for CTA." >> $GITHUB_STEP_SUMMARY
+        gh pr create -R {{ github.event.pull_request.head.repo.full_name }} --base ${{ github.event.pull_request.head.ref }} --title "$modified_title" --body "This PR includes changes for CTA." >> $GITHUB_STEP_SUMMARY
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
