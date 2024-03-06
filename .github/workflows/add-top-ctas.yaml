@@ -100,6 +100,6 @@ jobs:
         modified_title="[AUTO-PR] $original_title - CTA change"
         echo "Modified title: '$modified_title'"
 
-        gh pr create -R {{ github.event.pull_request.head.repo.full_name }} --base ${{ github.event.pull_request.head.ref }} --title "$modified_title" --body "This PR includes changes for CTA." >> $GITHUB_STEP_SUMMARY
+        gh pr create -R "${{ github.event.pull_request.head.repo.full_name }}" --base "${{ github.event.pull_request.head.ref }}" --title "$modified_title" --body "This PR includes changes for CTA." >> $GITHUB_STEP_SUMMARY
       env:
         GH_CLI_TOKEN: ${{ secrets.GH_PAT }}
