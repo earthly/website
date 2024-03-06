@@ -3,6 +3,8 @@ name: Create Top CTAs PR
 on:
   pull_request_target:
     types: [opened, reopened]
+    paths:
+      - 'blog/_posts/*.md'
   workflow_dispatch:
 
 jobs:
