@@ -361,3 +361,7 @@ check_python_code() { # type check python code
     poetry run mypy --disallow-untyped-defs --ignore-missing-imports --exclude 'blog/_plugins/' --exclude 'util/suggest-links.py' --exclude 'util/cluster.py' .
     poetry run vulture ./util/psupport
 }
+
+test(){
+    poetry run pytest
+}
