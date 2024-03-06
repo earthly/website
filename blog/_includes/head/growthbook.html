@@ -21,8 +21,11 @@
     }
   });
 
+  // Layout:{{ page.layout}}
+  // Nav:{{ page.sidebar.nav }}
   {% if page.layout == "single" and page.sidebar.nav == "makefile" %}
   document.addEventListener("DOMContentLoaded", function () {
+    // Running The Test
     const isDesktop = window.innerWidth > 1024;
     if (!isDesktop) {
       return;
