@@ -6,7 +6,10 @@ toc: true
 author: Christoph Berger
 
 internal-links:
- - just an example
+ - use docker namespaces
+ - isolate containers by using docker namespaces
+ - isolating containers with docker namespaces
+ - isolating containers
 ---
 
 Containers are the Gutenberg press of the IT world: an innovation that profoundly improves the way applications get deployed and managed during runtime.
@@ -54,13 +57,13 @@ Running a process in a separate namespace is easy to achieve. The `unshare` comm
 
 For example, the following command runs a shell in a separate UTS namespace:
 
-~~~
+~~~{.bash caption=">_"}
 sudo unshare --uts bash
 ~~~
 
 If you want to test this, the following Bash commands read the host name and spawn a shell with a separate UTS namespace, rename the host inside the shell, and read the host name inside and outside the shell:
 
-~~~
+~~~{.bash caption=">_"}
 alice@earthly $ hostname
 earthly
 alice@earthly $ sudo unshare --uts bash
@@ -138,7 +141,7 @@ To examine this behavior, you can run a container and inspect the output of `ps`
 
 The following command creates a new container based on an Alpine Linux image and runs the `sh` shell interactively:
 
-~~~
+~~~{.bash caption=">_"}
 docker run --rm -it alpine sh -C
 ~~~
 
@@ -150,7 +153,7 @@ You should now see Alpine's `sh` prompt.
 
 Type `ps` to see the PID of the shell:
 
-~~~
+~~~{.bash caption=">_"}
 / # ps
 PID   USER     TIME  COMMAND
     1 root      0:00 sh -C
@@ -162,7 +165,7 @@ You can see that `sh` has PID 1. Child processes get assigned subsequent PIDs. (
 
 Now open a new shell on the host and find the `sh` process using `ps` and `grep`:
 
-~~~
+~~~{.bash caption=">_"}
 $ ps ax | grep "sh -C"
    3150 pts/1    Sl+    0:00 docker run --rm -it alpine sh -C
    3186 pts/0    Ss+    0:00 sh -C
@@ -216,13 +219,13 @@ Docker's `run` command has a `--pid` flag that assigns a container to the PID na
 
 To test this, open two shells. In one shell, type the following to start a container named `waldorf`:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --rm -it --name waldorf alpine sh
 ~~~
 
 In the other shell, start a second container named `statler` with the `--pid` flag:
 
-~~~
+~~~{.bash caption=">_"}
 $ docker run --rm -it --name statler --pid=container:waldorf alpine sh
 ~~~
 
@@ -232,7 +235,7 @@ Now run `ps` in both shells. You'll see two `sh` processes in each output instea
 
 Shell one looks like this:
 
-~~~
+~~~{.bash caption=">_"}
 / # ps
 PID   USER     TIME  COMMAND
     1 root      0:00 sh
@@ -242,7 +245,7 @@ PID   USER     TIME  COMMAND
 
 And shell two looks like this:
 
-~~~
+~~~{.bash caption=">_"}
 / # ps
 PID   USER     TIME  COMMAND
     1 root      0:00 sh
@@ -260,7 +263,7 @@ Containers that run in the same Kubernetes pod can share PIDs as well. It takes 
 
 As an example, the configuration file below starts two containers running a `sleep 1000` command (you're not using interactive shells here):
 
-~~~
+~~~{.yaml caption=""}
 apiVersion: v1
 kind: Pod
 metadata:
@@ -280,7 +283,7 @@ spec:
 
 Note the following line:
 
-~~~
+~~~{.yaml caption=">_"}
 shareProcessNamespace: true
 ~~~
 
@@ -288,13 +291,13 @@ This line shares the PID namespace between the containers running in this pod.
 
 Start the pod by calling the following:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl apply -f shared-pid-pod.yaml
 ~~~
 
 Then, check the status of the pod until the status is `Running`:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl get pods
 NAME             READY   STATUS    RESTARTS   AGE
 shared-pid-pod   2/2     Running   0          9s
@@ -302,7 +305,7 @@ shared-pid-pod   2/2     Running   0          9s
 
 Now start an interactive shell in one of the containers and run `ps` to see the running processes:
 
-~~~
+~~~{.bash caption=">_"}
 $ kubectl exec -it shared-pid-pod -c waldorf -- sh
 / # ps
 PID   USER     TIME  COMMAND
@@ -339,8 +342,4 @@ By leveraging namespaces, Docker provides a robust platform for deploying divers
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
