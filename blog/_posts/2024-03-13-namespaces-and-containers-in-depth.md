@@ -11,7 +11,10 @@ internal-links:
  - isolating containers with docker namespaces
  - isolating containers
  - using docker namespaces
+excerpt: |
+    Docker uses Linux namespaces to isolate containers and provide them with well-defined, replicable, and isolated environments. Namespaces divide system resources into distinct compartments, such as process IDs, network interfaces, and file mounts, to prevent conflicts and improve security.
 ---
+**The article examines how Docker utilizes Linux namespaces for container isolation. Earthly simplifies the container build process for Docker users. [Check it out](https://cloud.earthly.dev/login).**
 
 Containers are the Gutenberg press of the IT world: an innovation that profoundly improves the way applications get deployed and managed during runtime.
 
