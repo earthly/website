@@ -29,12 +29,3 @@ From a non-functional standpoint, SOC 2 Type 2 compliance helps assure our users
 _To request a copy of our SOC 2 Type 2 report, contact [security@earthly.dev](mailto:security@earthly.dev) ._
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-* [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
