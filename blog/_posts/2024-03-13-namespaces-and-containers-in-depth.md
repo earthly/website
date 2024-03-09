@@ -334,6 +334,8 @@ Linux namespaces are at the core of container isolation in Docker. Namespaces co
 
 By leveraging namespaces, Docker provides a robust platform for deploying diverse applications on a shared system with a high degree of control and separation.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -342,4 +344,3 @@ By leveraging namespaces, Docker provides a robust platform for deploying divers
 - [ ] Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
