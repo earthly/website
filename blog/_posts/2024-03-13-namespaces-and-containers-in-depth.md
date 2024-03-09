@@ -10,6 +10,7 @@ internal-links:
  - isolate containers by using docker namespaces
  - isolating containers with docker namespaces
  - isolating containers
+ - using docker namespaces
 ---
 
 Containers are the Gutenberg press of the IT world: an innovation that profoundly improves the way applications get deployed and managed during runtime.
