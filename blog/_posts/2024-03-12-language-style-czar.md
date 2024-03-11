@@ -4,12 +4,16 @@ categories:
   - Articles
 toc: true
 author: Adam
+excerpt: |
+    The author discusses the challenges of maintaining coding style consistency in large codebases and suggests the need for a "Style Czar" in programming language communities who can define and evolve a standard style guide for the language. This would help reduce style divergence and create a common target for writing great code.
 ---
+**This article tackles the challenge of code style standardization. Earthly ensures build consistency by standardizing your CI process. [Check it out](https://cloud.earthly.dev/login).**
+
 Here is a non-realistic scenario: You are choosing the programming language for what will eventually become something large. Picture a collection of services in a mono repo, with over 100 people working on it. To keep this extra unrealistic, let's say you're ignoring the usual constraints, like whether you can afford GC, or whether the problem fits well with a specific tech stack or whatever. it's a thought experiment. Humor me.
 
 Based on my previous post, you'd correctly assume that I would want an expressive language aimed at experts. And I do. But there's a big problem when things scale up in a flexible language. Too many coding styles, too many ways to program. You end up needing style-guides to nail down the right way to do things.
 
-Which subset of C++ or Kotlin are you using? Are you using project.toml or requirements.txt? Your language now has gradual typing with Type Annotations. Do you want to adopt those or not? Are you going to use multi-threading, Tokio, or Async-std for concurrency? 
+Which subset of C++ or Kotlin are you using? Are you using project.toml or requirements.txt? Your language now has gradual typing with Type Annotations. Do you want to adopt those or not? Are you going to use multi-threading, Tokio, or Async-std for concurrency?
 
 The more expressive the language, the harder this is. This is where Go shines. It's not just about Gofmt, but also its standard library and the consistent way of doing things. In Kotlin, you're left wondering: exceptions or Result for errors? But with Go, you know the drill. Look for `err`. Sure, it's wordy, but it's predictable.
 
@@ -17,9 +21,10 @@ Expressive languages are great, but they can be messy. You can have a language t
 
 ## The Scala Problem
 
-To highlight the problem, take Scala. A language I absolutely love, by the way. But it's got this one big issue. There's no idiomatic Scala. It's way to flexible. 
+To highlight the problem, take Scala. A language I absolutely love, by the way. But it's got this one big issue. There's no idiomatic Scala. It's way to flexible.
 
 I can write a single file, calculator class and start with a Java style:
+
 ```
     // Returns, braces and semi-colons
     def getResult(): Double = {
@@ -35,7 +40,9 @@ I can write a single file, calculator class and start with a Java style:
       return this;
     }
 ```
+
 Same class, same file, I can switch to a pseudo-Python style:
+
 ```
     // significant whitespace, no returns, no semi-colons
     def add(number: Double): Calculator = 
@@ -72,7 +79,7 @@ So, how do you evolve a language without splitting it apart? This gets trickier 
 
 ## Style Guides Are Not Enough
 
-Style Guides, especially if they can be machine-enforced, can help a lot at the level of a large code base. I think it's great when languages can experiment with things. Maybe we don't know if it totally makes sense to use types in Python everywhere yet or how much you should use generics in Go or whatever. 
+Style Guides, especially if they can be machine-enforced, can help a lot at the level of a large code base. I think it's great when languages can experiment with things. Maybe we don't know if it totally makes sense to use types in Python everywhere yet or how much you should use generics in Go or whatever.
 
 But for a specific project, we can set rules. Say, 'this Python needs types' or 'Use generics in Go when you can.' We set standards for testing libraries and build tools. And we attempt to enforce these rules with tooling where we can. But I think we can do even better at a language community level.
 
@@ -85,20 +92,23 @@ When Scala 2.0 launched in 2006, internal DSLs were all the rage, and with Ruby 
 But how would you know that if you're not in the right circles? Big ORM frameworks still use that style in their guides. The tricks for writing modern idiomatic Scala are trapped in the minds of the community leaders. That's not great.
 
 We need a Style Czar. Someone in the language community who can say that this is idiomatic Scala 2.1
+
 ```
 def unwrapOptionWithGetAndIf(maybeNumber: Option[Int]): Int = {
   if (maybeNumber.isDefined) Math.abs(maybeNumber.get)
   else 7
 }
 ```
+
 But in Scala 3.1, this is preferred:
+
 ```
 def unwrapOptionWithTransformGetOrElse(maybeNumber: Option[Int]): Int = {
   maybeNumber.map(Math.abs).getOrElse(7)
 }
 ```
 
-What I'm suggesting is that every release of a language should come with a styleguide. No one has to follow it; companies and projects may diverge, and the standard might be highly contested; but it should exist and be written down somewhere. 
+What I'm suggesting is that every release of a language should come with a styleguide. No one has to follow it; companies and projects may diverge, and the standard might be highly contested; but it should exist and be written down somewhere.
 
 ## Idiomatic Python
 
@@ -111,12 +121,12 @@ Python folks love their Pythonic code, the zen of Python, and PEP 8. And that is
 
 This standard will keep changing, right? It will evolve as the langauge does. Maybe type annotations, when they first roll out in Python, are considered experimental. But once everyone is comfortable with them and thinks they are a good idea, Python should take a stance and say type annotations are required in pythonic code. Or say that they are not. But please have an opinion. As the language grows and the community starts to diverge in various ways, the scope of the style document should expand as well.
 
-Here's an example:  Python has to pick a lane with package managers and virtual environments. I think poetry and `project.toml` should be the way forward, and others have a `requirements.txt-for-life` tattoos. But any solution would be better than what we have now. 
+Here's an example:  Python has to pick a lane with package managers and virtual environments. I think poetry and `project.toml` should be the way forward, and others have a `requirements.txt-for-life` tattoos. But any solution would be better than what we have now.
 
 We need someone in charge to step up. "Okay, everyone, we're standardizing on Hatch for Python packaging. If you've got issues with Hatch, speak up. We'll look into them. But just so you know, we're aiming to make Hatch the go-to for Python 3.16."
 
 This goes for testing frameworks, standard libraries, and even how we handle concurrency. Language communities love to experiment and explore. But after the exploring, we need to come together. And that's where the language creators step in. They're the ones who can really make it happen.
- 
+
 ## Expressiveness
 
 Ok, so how does this tie to being expressive? Well, if your language is on the 'expert readability' train, you probably have a bunch of features and aren't afraid to add new ones. The problem is you slowly end up in a world where each codebase is written in its own subset of the language. So, deprecate things. Sure, keep old stuff for compatibility, but let's nudge everyone towards a common standard.
@@ -131,7 +141,6 @@ In other words, you can end up in a world where all idiomatic Java 20 code is as
  {% picture {{site.pimages}}{{page.slug}}/5270.png --picture --img width="300px" --alt {{ The Butter Battle Book
  }} %}
 </div>
-
 
 ## End The Butter Battles
 
