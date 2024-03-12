@@ -23,7 +23,7 @@ Docker Build Cloud is a groundbreaking service aimed at speeding up Docker build
 Build Cloud works similarly to local [BuildKit instances](https://docs.docker.com/build/architecture/#buildx), but with a key distinction in how it executes: when you initiate a build with Build Cloud, the build data is securely transmitted to a remote [builder](https://docs.docker.com/build/builders/) using end-to-end encryption. After the remote builder finishes the build tasks, it sends the output back to your chosen destination, be it your local Docker image store or an online image registry.
 
 <div class="wide">
-![Docker Build Cloud profile, courtesy of Damaso Sanoja](https://i.imgur.com/1DJqqY1.png)
+![Docker Build Cloud profile, courtesy of Damaso Sanoja]({{site.images}}{{page.slug}}/1DJqqY1.png)
 </div>
 
 This approach focuses on utilizing on-demand cloud resources. When a build job is received, Docker Build Cloud dynamically allocates cloud-based BuildKit instances to handle the build tasks.
@@ -45,7 +45,7 @@ To start using Docker Build Cloud, you need to link a payment method to your [Do
 If you visit [https://build.docker.com/](https://build.docker.com/), you'll see a screen asking which profile you want to use for Build Cloud:
 
 <div class="wide">
-![Choosing a profile](https://i.imgur.com/YVd5CWV.png)
+![Choosing a profile]({{site.images}}{{page.slug}}/YVd5CWV.png)
 </div>
 
 After selecting a profile, you'll be shown the available plans. For this guide, the free **Starter** plan is sufficient, but you should choose the plan that best fits your needs.
@@ -53,19 +53,19 @@ After selecting a profile, you'll be shown the available plans. For this guide, 
 After choosing a plan, you'll see a pop-up notification telling you that you need to add a valid credit card for account verification:
 
 <div class="wide">
-![Adding a valid credit card to your Docker account](https://i.imgur.com/hKGdjqR.png)
+![Adding a valid credit card to your Docker account]({{site.images}}{{page.slug}}/hKGdjqR.png)
 </div>
 
 Once you add your card, you'll be directed to the Docker Build Cloud dashboard:
 
 <div class="wide">
-![Docker Build Cloud dashboard](https://i.imgur.com/Ryzkgd6.png)
+![Docker Build Cloud dashboard]({{site.images}}{{page.slug}}/Ryzkgd6.png)
 </div>
 
 From the main dashboard, you can check the remaining build minutes in your plan, upgrade your Docker Build Cloud plan, and create cloud builders. To create a builder, simply click the **Create a Cloud Builder** button. A pop-up window will appear, asking you to give the builder a name:
 
 <div class="wide">
-![Creating a new cloud builder](https://i.imgur.com/15NB7Xt.png)
+![Creating a new cloud builder]({{site.images}}{{page.slug}}/15NB7Xt.png)
 </div>
 
 Name your builder (here, it's named `mastodon`) and click **Create**.
@@ -73,13 +73,13 @@ Name your builder (here, it's named `mastodon`) and click **Create**.
 After creation, you'll be directed to the **Cloud Builders** screen, where you can view all your available builders:
 
 <div class="wide">
-![Cloud Builders list](https://i.imgur.com/CVUhKL8.png)
+![Cloud Builders list]({{site.images}}{{page.slug}}/CVUhKL8.png)
 </div>
 
 Select the builder you just created, and instructions for installing a cloud [build driver](https://docs.docker.com/build/drivers/) on your local machine and integrating it with CI/CD processes will appear:
 
 <div class="wide">
-![Docker Build Cloud setup instructions](https://i.imgur.com/H6VRqTX.png)
+![Docker Build Cloud setup instructions]({{site.images}}{{page.slug}}/H6VRqTX.png)
 </div>
 
 Begin by executing the first two steps. Follow the on-screen commands, which are already populated with your Docker organization and builder name for ease of use. After completing these steps, you can use Docker Build Cloud from your CLI.
@@ -89,13 +89,13 @@ Alternatively, because Docker Desktop includes Build Cloud as a preinstalled fea
 Then, since you've created a cloud builder, you can find it under the **Available builders** section. You'll see instructions for connecting the builder via the CLI, but you can skip this step since you've already completed it. Simply click the **Connect to builder** button to start using Build Cloud through Docker Desktop:
 
 <div class="wide">
-![Accessing Build Cloud via the Builders tab in Docker Desktop](https://i.imgur.com/VJNRxL9.png)
+![Accessing Build Cloud via the Builders tab in Docker Desktop]({{site.images}}{{page.slug}}/VJNRxL9.png)
 </div>
 
 Once connected, you can use the menu to use the builder, stop it, or disconnect from it:
 
 <div class="wide">
-![Builder menu options](https://imgur.com/3bH6tap.png)
+![Builder menu options]({{site.images}}{{page.slug}}/3bH6tap.png)
 </div>
 
 The final step in the setup process is to integrate Build Cloud with your existing CI/CD pipelines and tools. Choosing your builder on [https://build.docker.com/](https://build.docker.com/) only provides detailed instructions for [GitHub Actions](https://github.com/features/actions) and [CircleCI](https://circleci.com/), but [additional integration guidance is available](https://docs.docker.com/build/cloud/ci/) for [GitLab](https://about.gitlab.com/), [Buildkite](https://buildkite.com/), and [Jenkins](https://www.jenkins.io/).
@@ -161,7 +161,7 @@ Keep in mind that if you do so, each time you build an image, your build will be
 #### Comparing Your Results
 
 <div class="wide">
-![Docker Build Cloud vs. local build](https://i.imgur.com/nGmeBWS.png)
+![Docker Build Cloud vs. local build]({{site.images}}{{page.slug}}/nGmeBWS.png)
 </div>
 
 This screenshot shows your results, in which the container image took 5.3 seconds to build using the default (local) BuildKit instance and 1.6 seconds using Docker Build Cloud. In other words, the image was built 3.3 times faster.
