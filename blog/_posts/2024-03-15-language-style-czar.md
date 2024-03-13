@@ -1,5 +1,5 @@
 ---
-title: "Show us the way, Style Czar!"
+title: "The Montreal Problem: Why Programming Languages Need a Style Czar"
 categories:
   - Articles
 toc: true
@@ -62,7 +62,7 @@ val calc = new Calculator add -5 subtract -3 multiply -2
 
 Hopefully, nobody's stuck with code like this. You pick your dialect of Scala and you stick to it. But as code grows, it's like Montreal. Every part of the city is different. On a long enough timescale, every quirk possible in your programming language will show up in your code.
 
-Eventually, someone copies and pastes code in a different style. Maybe they like it better. Or in a new service, they do things their way. Or a junior mimics a library's style from the docs. And style divergence starts.
+Eventually, someone copies and pastes code in a different style. Maybe they like it better. Or in a new service, they do things their way. Or a junior mimics a library's style from the docs. And style divergence starts[^1].
 
 ( Every Scala thread on hn has a comment from someone who inherited a Scala codebase that they are struggling to make sense of, in part because its in a foreign style. )
 
@@ -94,7 +94,7 @@ But how would you know that if you're not in the right circles? Big ORM framewor
 We need a Style Czar. Someone in the language community who can say that this is idiomatic Scala 2.1
 
 ~~~{.scala}
-def unwrapOptionWithGetAndIf(maybeNumber: Option[Int]): Int = {
+def ABSOrSeven(maybeNumber: Option[Int]): Int = {
   if (maybeNumber.isDefined) Math.abs(maybeNumber.get)
   else 7
 }
@@ -103,7 +103,7 @@ def unwrapOptionWithGetAndIf(maybeNumber: Option[Int]): Int = {
 But in Scala 3.1, this is preferred:
 
 ~~~{.scala}
-def unwrapOptionWithTransformGetOrElse(maybeNumber: Option[Int]): Int = {
+def ABSOrSeven(maybeNumber: Option[Int]): Int = {
   maybeNumber.map(Math.abs).getOrElse(7)
 }
 ~~~
@@ -135,7 +135,7 @@ The fact you are evolving the language implies you have an opinion about what gr
 
 This way, there's always a target of what great code looks like. Even if that target moves, every sane code base is just at a specific point along that journey to the latest and grandest code style.
 
-In other words, you can end up in a world where all idiomatic Java 20 code is as readable as Go, but to get there, you have to take a stance on when it's appropriate to use the streams API and when not. I mean, maybe you never quite get there: one man's clear stream processing one-liner is another man's spaghetti code, but I really think we could do better at converging on what we want the language to look like.
+In other words, you can end up in a world where all idiomatic Java 20 code is as uniform as Go, but to get there, you have to take a stance on when it's appropriate to use the streams API and when not. I mean, maybe you never quite get there: one person's clear stream processing one-liner is another man's spaghetti code, but I really think we could do better at converging on what we want the language to look like.
 
 <div class="align-right">
  {% picture {{site.pimages}}{{page.slug}}/5270.png --picture --img width="300px" --alt {{ The Butter Battle Book }} %}
@@ -148,3 +148,6 @@ This brings up a bunch of questions. How much of this can be tool-enforced? When
 If something is a community norm, write it down. If the community is fighting over whether to eat toast butter side up or butter side down, flip a coin, make a call, and move on. The community will be better for it.
 
 Show us the way, Style Czar!
+
+[^1]:
+   This is just an easy to show example. If I were the style Czar, then yes `Don't use explicit returns or semicolons` would be a rule. But so would `Don't pattern match if you can use fold or map` and `Don't use fold if you can use getOrElse` and `Don't do manual recursion` and `Don't use actors unless you have a really good reason` and  `Don't write custom operators. Just don't. Really.` and so on and on. Lot's of features are only valuable in specific circumstances.
