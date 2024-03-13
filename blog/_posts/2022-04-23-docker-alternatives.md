@@ -27,7 +27,6 @@ Docker isn't perfect, though. It has some security issues, such as needing root 
 | **Container Runtime** | The software or platform that runs and manages containers based on container images. It handles the lifecycle of containers, including creation, execution, and termination. |
 </div>
 
-
 Thankfully Docker isn't your only option for building image or for running containers. As cloud tools evolve and more companies switch to containerization, more players are entering the market. Some of these are wholly different products, while others are offshoots from Docker. Understanding the pros and cons of these alternative tools can help you choose one that works for your team.
 
 This article will examine some of the more popular alternatives to Docker, both as a runtime and for creating OCI Compatible images. We will even examine some non-container tools, and compare them in terms of their scalability, documentation quality, cost, and other factors.
@@ -139,7 +138,7 @@ Docker is generally considered the disruptor of VMware's territory, but virtual 
 
 VMware uses a virtual machine to isolate your deployments from the host system. It doesn't use containerization, like Docker, but it can solve similar problems and is worth considering as an alternative.
 
-However, it's also possible to use them in tandem. Virtual machines are more independent than containers but take longer to deploy. 
+However, it's also possible to use them in tandem. Virtual machines are more independent than containers but take longer to deploy.
 
 VMware's products are targeted at enterprise users. There's extensive documentation that experienced administrators will appreciate, but newcomers to virtualization may find a high barrier to entry.
 
