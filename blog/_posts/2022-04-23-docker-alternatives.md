@@ -27,7 +27,7 @@ Docker isn't perfect, though. It has some security issues, such as needing root 
 | **Container Runtime** | The software or platform that runs and manages containers based on container images. It handles the lifecycle of containers, including creation, execution, and termination. |
 </div>
 
-Thankfully Docker isn't your only option for building image or for running containers. As cloud tools evolve and more companies switch to containerization, more players are entering the market. Some of these are wholly different products, while others are offshoots from Docker. Understanding the pros and cons of these alternative tools can help you choose one that works for your team.
+Thankfully Docker isn't your only option for building images or for running containers. As cloud tools evolve and more companies switch to containerization, more players are entering the market. Some of these are wholly different products, while others are offshoots from Docker. Understanding the pros and cons of these alternative tools can help you choose one that works for your team.
 
 This article will examine some of the more popular alternatives to Docker, both as a runtime and for creating OCI Compatible images. We will even examine some non-container tools, and compare them in terms of their scalability, documentation quality, cost, and other factors.
 
