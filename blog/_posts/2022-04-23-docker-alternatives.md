@@ -29,7 +29,7 @@ Docker isn't perfect, though. It has some security issues, such as needing root 
 
 Thankfully Docker isn't your only option for building images or for running containers. As cloud tools evolve and more companies switch to containerization, more players are entering the market. Some of these are wholly different products, while others are offshoots from Docker. Understanding the pros and cons of these alternative tools can help you choose one that works for your team.
 
-This article will examine some of the more popular alternatives to Docker, both as a runtime and for creating OCI Compatible images. We will even examine some non-container tools, and compare them in terms of their scalability, documentation quality, cost, and other factors.
+This article will examine some of the more popular alternatives to Docker, both as a runtime and for creating OCI compatible images. We will even examine some non-container tools, and compare them in terms of their scalability, documentation quality, cost, and other factors.
 
 <div class="notice--warning notice--big">
 ## What's an OCI Image?
