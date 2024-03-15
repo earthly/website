@@ -571,3 +571,7 @@ Avi Singh:
     name    : "Avi Singh"
     bio     : "Avi Singh is a Cloud, DevOps, Cybersecurity, and Big Data Expert with nine years of Industry experience. He has expertise in cloud AWS, Azure, and GCP, as well as DevOps tools and cybersecurity techniques, including ethical hacking and defense against various cyber threats. He also has significant experience in Big Data technologies such as Hadoop and Apache Kafka. Avi creates tutorials and articles focusing on trending technologies."
     avatar  : "/assets/images/authors/person.jpg"
+Rahul Rai:
+    name    : "Rahul Rai"
+    bio     : "Rahul Rai is a technology enthusiast and a Software Engineer at heart. He is a Microsoft Azure MVP with over 15 years of hands-on experience in cloud and web technologies. With so much leadership experience behind him and currently holding a Group Product Manager Role at LogicMonitor, he has successfully established and led engineering teams and designed enterprise applications to help solve businesses’ organizational challenges. Outside of his day job, Rahul ensures he’s still contributing to the cloud ecosystem by authoring books, offering free workshops, and frequently posting on his blog: https://thecloudblog.net to share his insights and help break down complex topics for other current and aspiring professionals."
+    avatar  : "/assets/images/authors/person.jpg"
