@@ -17,8 +17,6 @@ excerpt: |
 
 ## Initial Challenge: Implementing Self-Sign-Up
 
-![Challenge]({{site.images}}{{page.slug}}/challenges.png)\
-
 We've been working to make Earthly easier for new users. I recently tackled the self-sign-up feature. We wanted to make signing up simple, to draw in more developers and grow our community.
 
 The Streamlined Onboarding for Earthly gets us closer to our goal: making CI/CD simple so developers can focus on their work. But was it working? I needed to find out, but getting to the bottom of that involved mastering Segment and Snowflake, learning what DBT was, and 20 other things I've probably forgotten by now.
