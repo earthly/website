@@ -125,6 +125,8 @@ thoughts:
         url: /single-expression-functions/
       - title: "Showboaters, Maxmialists and You"
         url: /showboaters/
+      - title: "The Two Types of Readable Code"
+        url: /readability/
 activity-tracker:
   - title: "Activity Tracker Series"
     children:
