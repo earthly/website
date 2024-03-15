@@ -1,5 +1,5 @@
 ---
-title: "The Montreal Problem: Why Programming Languages Need a Style Czar"
+title: "The Montréal Effect: Why Programming Languages Need a Style Czar"
 categories:
   - Articles
 toc: true
