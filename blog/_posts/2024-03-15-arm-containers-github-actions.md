@@ -222,7 +222,7 @@ Once the workflow is complete, you can view the Docker image in the GitHub Conta
 
 <div class="wide">
 ![Viewing a generated package]({{site.images}}{{page.slug}}/M06co4U.png)
-</div>)
+</div>
 
 Click the package to view the details of the Docker image, including the tags, platforms, and the command you can use to pull the image:
 
