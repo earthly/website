@@ -26,7 +26,7 @@
   link: https://www.jeffbullas.com/podcasts/exploring-ai-business-models-166/
   createdAt: 2023-06-01 00:00:00
 
-- title: Vlad Ionescu
+- title: Interview with Vlad Ionescu
   source: Coffee and Open Source
   category: Podcast
   thumbnail: https://img.youtube.com/vi/0T9DF75lFmg/maxresdefault.jpg
@@ -105,12 +105,12 @@
   link: https://stackoverflow.blog/2020/12/11/podcast-294-cleaning-up-build-systems-and-gathering-computer-history/
   createdAt: 2020-12-10 00:00:00
 
-- title: Vlad A. Ionescu - Earthly
+- title: Interview with Vlad A. Ionescu
   source: DevtoolsFM
   category: Podcast
   thumbnail: https://www.devtools.fm/_next/image?url=%2Flogo.png&w=1920&q=75
   link: https://www.devtools.fm/episode/71
-  createdAt: 2023-10-23 00:00:00
+  createdAt: 2023-10-22 00:00:00
 
 - title: "Fast, consistent builds with an instantly familiar syntax - like Dockerfile and Makefile had a baby"
   subtitle: Earthly is like a combination of Docker and Make, running build scripts in Docker containers for consistent results in any environment - local, remote, and CI.
@@ -118,4 +118,4 @@
   category: Media Coverage
   thumbnail: https://star-history.com/blog/assets/earthly/earthly-logo.webp
   link: https://star-history.com/blog/earthly
-  createdAt: 2023-02-23 15:00:00
+  createdAt: 2023-11-30 00:00:00
