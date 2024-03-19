@@ -16,15 +16,17 @@ last_modified_at: 2023-07-14
 
 ![Available containers in Docker]({{site.images}}{{page.slug}}/m8bhqRM.png)
 
-Docker isn't perfect, though. It has some security issues, such as needing root to run and needing to embed secrets in build files and as a commerical product it can have costs.
+Docker isn't perfect, though. It has some security issues, such as needing root to run and needing to embed secrets in build files and as a commercial product it can have costs.
 
 <div class="notice--warning notice--big">
+
 | Term                | Description                                                                                      |
 |---------------------|--------------------------------------------------------------------------------------------------|
 | **Container Image** | A static file that includes everything needed to run a piece of software, such as code, runtime, libraries, and environment variables. It serves as a blueprint from which containers are created. |
-| **Container**       | A runtime instance of a container image, running in isolation from other containers and the host system. It provides a consistent environment for the application, regardless of where it is deployed. |
-| **Image Builder**   | A tool or command used to create container images from a specification, typically a Dockerfile. It compiles the application code, dependencies, and settings into a container image. |
+| **Container** | A runtime instance of a container image, running in isolation from other containers and the host system. It provides a consistent environment for the application, regardless of where it is deployed. |
+| **Image Builder** | A tool or command used to create container images from a specification, typically a Dockerfile. It compiles the application code, dependencies, and settings into a container image. |
 | **Container Runtime** | The software or platform that runs and manages containers based on container images. It handles the lifecycle of containers, including creation, execution, and termination. |
+
 </div>
 
 Thankfully Docker isn't your only option for building images or for running containers. As cloud tools evolve and more companies switch to containerization, more players are entering the market. Some of these are wholly different products, while others are offshoots from Docker. Understanding the pros and cons of these alternative tools can help you choose one that works for your team.
@@ -55,7 +57,7 @@ It's free, open-source, and runs on Linux.
 
 [LXD](/blog/lxc-vs-docker) is a container and virtual machine management tool. It builds off [LXC](https://linuxcontainers.org/lxc/introduction/) and, confusingly, also has its own CLI tool, lxc. Both LXC and LXD can replace Docker for some use cases.
 
-LXC gives you a virtual machine–like environment but doesn't include a full kernel. Properly speaking it's shared kernel virtualization, like containizers, but with a slightly different philosophy.
+LXC gives you a virtual machine–like environment but doesn't include a full kernel. Properly speaking it's shared kernel virtualization, like containers, but with a slightly different philosophy.
 
 It has a clear tutorial and web demo, and [its documentation](https://linuxcontainers.org/lxd/docs/master/index) is well written.
 
@@ -111,7 +113,7 @@ RunC is free and open-source, for Linux only.
 
 ## OpenVZ
 
-[OpenVZ](https://openvz.org/) allows you to run multiple containers as Vms on a single machine.
+[OpenVZ](https://openvz.org/) allows you to run multiple containers as VMs on a single machine.
 
 It's fast and efficient since it doesn't have its own [hypervisor](https://www.vmware.com/topics/glossary/content/hypervisor). Containers need to run the same architecture and kernel version, though, so it isn't as flexible as some solutions.
 
@@ -124,6 +126,7 @@ It's free, open-source, and Linux only.
 ## Other Approaches
 
 <div class="notice--warning notice--big">
+
 | Technology      | Description                                     |
 |-----------------|-------------------------------------------------|
 | **Containerization** | Involves shared kernel virtualization, where containers share the host's kernel but operate in isolated user spaces. It's efficient and lightweight, ideal for running multiple instances of applications on the same hardware. |
