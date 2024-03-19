@@ -17,6 +17,7 @@ last_modified_at: 2023-07-14
 **The article examines monorepo build tools, highlighting Pants for Python. Earthly supports multiple languages, potentially simplifying your build process. [Check it out](https://cloud.earthly.dev/login).**
 
 <!-- markdownlint-disable-file MD001 -->
+<!-- markdownlint-disable MD045 -->
 <!-- vale HouseStyle.OxfordComma = NO -->
 
 In the software development world, there is a growing trend of using monorepos to manage codebases. A monorepo is a single repository that contains the code of many interrelated but distinct projects. While monorepos have their benefits, they also come with their own set of challenges. And guess what? The challenges are primarily around tooling. In this article, I'll compare some of the most popular monorepo build tools on the market and see how they stack up against each other.

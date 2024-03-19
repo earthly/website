@@ -27,7 +27,7 @@ There are many solutions out there that embody IaC, but this article will focus 
 
 ## Comparing Pulumi and Terraform
 
-<img src="{{site.images}}{{page.slug}}/comparing.jpg">
+<img src="{{site.images}}{{page.slug}}/comparing.jpg" alt="A vs B">
 
 [Terraform](/blog/kubernetes-terraform) is one of the most well-established IaC tools today. It's a [declarative](https://dev.to/ruizb/declarative-vs-imperative-4a7l) tool, which means you define what you want the final state of your infrastructure to look like, and Terraform will handle how to achieve that state. Terraform is often considered the default IaC tool of choice, especially among larger companies and organizations that have the resources to support the learning curve of [HashiCorp Configuration Language (HCL)](https://www.terraform.io/language), a Domain Specific Language (DSL) unique to Terraform.
 
@@ -37,7 +37,7 @@ Terraform and Pulumi are open source tools that are very widely used in the indu
 
 ## Functionality
 
-<img src="{{site.images}}{{page.slug}}/functionality.png" width="80%" height="60%">
+<img src="{{site.images}}{{page.slug}}/functionality.png" width="80%" height="60%" alt="Gears">
 
 Both tools have the same base functionality: enabling you to easily define and deploy your infrastructure as code. However, because Terraform uses HCL, it naturally comes with more guidelines and restrictions. In contrast, Pulumi allows you to leverage existing concepts in languages, such as loops, classes, and data structures. It's also easier for developers to create built-in testing suites and use other extensions and libraries in their Pulumi programs. While Terraform has no built-in testing functionality, the Terraform CLI contains better tools for troubleshooting a corrupt state.
 
@@ -45,7 +45,7 @@ The open source nature of these tools gives the developer community the opportun
 
 ## Learning Curve
 
-<img src="{{site.images}}{{page.slug}}/learningcurve.png" width="100%" height="60%">
+<img src="{{site.images}}{{page.slug}}/learningcurve.png" width="100%" height="60%" alt="Learning Curve">
 
 If you're looking to quickly learn and use one of these tools, you'll probably find that Pulumi is easier to pick up. This is because Pulumi allows you to use your preferred programming language to define your infrastructure stacks—there's no need to learn a specific DSL. If you already know Python, Java, Node.js, Go, or .NET Core, you can get started with Pulumi right away. If you're familiar with Python, you can easily create an AWS DynamoDB table using Pulumi with the following code:
 
@@ -102,7 +102,7 @@ Infrastructure stacks can get big and complex. As such, it's always best practic
 
 ## Community Support
 
-<img src="{{site.images}}{{page.slug}}/community.jpg" width="100%" height="60%">
+<img src="{{site.images}}{{page.slug}}/community.jpg" width="100%" height="60%" alt="raised hands with hearts">
 
 Both [Terraform](/blog/kubernetes-terraform) and Pulumi are updated frequently and have great support from their respective developer communities. However, Terraform is a more mature tool, and it has a significantly larger community. You'll likely have an easier time finding help for issues that you come across for Terraform compared to Pulumi. One data point that stands out at the time of this writing is the number of Stack Overflow questions tagged with [`terraform`](https://stackoverflow.com/questions/tagged/terraform) (12,983) versus [`pulumi`](https://stackoverflow.com/questions/tagged/pulumi) (317).  
 
