@@ -26,10 +26,12 @@ Many believe that readability is a universal standard, easily recognized, and eq
 Let's define readability like this:
 <!-- vale HouseStyle.Spacing = NO -->
 <div class="notice--warning notice--big">
+
 | Category                      | Description                                                                                                                                 |
 |-------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------|
 | Newcomers Readability         | How quickly you can get up to speed reading a new programming language. Related to how familiar you are with the syntax and concepts used, despite having never seen that language before. |
 | Experienced Readability       | How quickly someone experienced in the language can understand a piece of code.                                |
+
 </div>
 <!-- vale HouseStyle.Spacing = YES -->
 
@@ -287,11 +289,13 @@ If used to more concisely express the concept at hand ( and not for [showing off
 
 <!-- vale HouseStyle.Spacing = NO -->
 <div class="notice--warning notice--big">
+
 | Readability Enhancers    | Definition                                                                                     | Effects on Beginners                         | Effects on Experts                           |
 |--------------------------|------------------------------------------------------------------------------------------------|---------------------------------------------|---------------------------------------------|
 | Structural Enhancements  | Use of functions, whitespace, comments, and even comment headings to visually structure code.| Makes code easier to navigate and understand; helps group related logic. | Aids in quick navigation and understanding of code structure; reduces mental effort. |
 | Simplification Techniques| Utilizing constructs that reduce error likelihood and leveraging built-in functions for common tasks. | Simplifies understanding of code by reducing complexity; minimizes common errors. It may harm readability depending on specific familiarity. | Streamlines code, making it easier to read and maintain; promotes using concise, expressive constructs. |
 | Advanced Language Features | Employing higher-order functions, pattern matching, and other expressive language features. | Increases complexity and learning curve due to more concepts to grasp. | Enhances expressiveness and conciseness; allows for more complex concepts and clearer intent. |
+
 </div>
 <!-- vale HouseStyle.Spacing = YES -->
 
