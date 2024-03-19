@@ -30,7 +30,7 @@ Three types of people might care about developer experience. Their jobs are diff
 ### Alice - Product-Based Developer Experience
 
 <div class="align-left">
-  <img src="{{site.images}}{{page.slug}}/0590.png" width="200" height="200" />
+  <img src="{{site.images}}{{page.slug}}/0590.png" width="200" height="200" alt="Alice - Product Manager" />
   <figcaption>Alice - Product Manager</figcaption>
 </div>
 
@@ -45,7 +45,7 @@ Alice took a page from Stripe's book, modeling Request Express's new features af
 ### Bob - Internal Platform Developer Experience
 
 <div class="align-right">
-  <img src="{{site.images}}{{page.slug}}/0970.png" width="200" height="200" />
+  <img src="{{site.images}}{{page.slug}}/0970.png" width="200" height="200" alt="Bob - Internal Tools Lead"/>
   <figcaption>Bob - Internal Tools Lead</figcaption>
 </div>
 
@@ -62,7 +62,7 @@ For Bob, DX is about being selective. He doesn't have the resources of a develop
 ### Carlos - Organizational Developer Experience
 
 <div class="align-left">
-  <img src="{{site.images}}{{page.slug}}/1020.png" width="200" height="200" />
+  <img src="{{site.images}}{{page.slug}}/1020.png" width="200" height="200" alt="Carlos - Director of Engineering"/>
   <figcaption>Carlos - Director of Engineering</figcaption>
 </div>
 

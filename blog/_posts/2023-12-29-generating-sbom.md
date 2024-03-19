@@ -322,7 +322,7 @@ To recap, here's a quick comparison table for all the tools you've learned about
 | | **Syft** | **Tern** | **Kubernetes bom** | **SPDX** | **CycloneDX** |
 |-| ---- | ---- | ---- | ---- | ---- |
 **Automatic/programmatic generation** | Yes, as a Go library | Yes, with Python extensions | No official support | Yes, using custom modules | Yes, as a Node.js library
-**Container capabilities** | Yes | Yes (including Dockerfile scans) | Yes | Yes | No | Yes
+**Container capabilities** | Yes | Yes (including Dockerfile scans) | Yes | Yes | No
 **Supported components** | OS packages and programming language dependencies | OS packages and programming language dependencies | OS packages and programming language dependencies | Programming language dependencies only | OS packages, programming language dependencies, cache contents, API schemas, container and CI/CD configuration files
 **Ease of deployment** | Easy; binary download or Docker image | Intermediate; requires Python or manual build of a Docker image | Intermediate; requires Go | Easy; binary download | Easy; use npm or Docker
 **Integrations** | Seamlessly works with other Anchore tools and supports programmatic use with Go | Programmatic use with Python | No native integrations | No native integrations | Integrates with other CycloneDX CLIs and supports programmatic use via Node.js library

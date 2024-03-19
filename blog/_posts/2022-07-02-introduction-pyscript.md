@@ -43,7 +43,7 @@ To follow this tutorial, you'll need to meet these requirements.
 
 ## What Is PyScript
 
-<img src="{{site.images}}{{page.slug}}/what.jpg" width="80%" height="60%">
+<img src="{{site.images}}{{page.slug}}/what.jpg" width="80%" height="60%" alt="Thought Bubble">
 
 PyScript is a Python-based front-end web framework for building powerful browser applications in Python using an HTML interface.
 

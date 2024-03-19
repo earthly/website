@@ -63,7 +63,7 @@ The #1 Scala blog in this list is Li Haoyi's Blog. &nbsp;Li is a staff engineer 
 
 The depth of detail that goes into each post by Li is outstanding! &nbsp;When Li writes about a topic, even the language creator slides into the comment section to provide his commentary.
 
-<figure class="kg-card kg-image-card"><img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FCorecursive%2FOeXcNOsSzI.png?alt=media&amp;token=065207e0-5221-4066-9fbc-7853dee1c742" class="kg-image" alt></figure>
+<figure class="kg-card kg-image-card"><img src="https://firebasestorage.googleapis.com/v0/b/firescript-577a2.appspot.com/o/imgs%2Fapp%2FCorecursive%2FOeXcNOsSzI.png?alt=media&amp;token=065207e0-5221-4066-9fbc-7853dee1c742" class="kg-image" alt="Martin Odersky Comment"></figure>
 
 His most talked-about post was [The Death of Hype](https://www.lihaoyi.com/post/TheDeathofHypeWhatsNextforScala.html), which has this great quote:
 

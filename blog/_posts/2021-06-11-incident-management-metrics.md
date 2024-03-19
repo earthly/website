@@ -104,7 +104,7 @@ The never-happens-again part is hard to achieve but vital. If you are responding
 | Addressed            | day 1    |
 | Root Cause Analysis  | day 2    |
 | Root Cause Addressed | day 11   |
-| **Resolve Time**       | **10 days**  ||
+| **Resolve Time**       | **10 days**  |
 
 Mean Time To Resolve =
 

@@ -16,7 +16,7 @@ excerpt: |
 last_modified_at: 2023-10-06
 ---
 <div class="align-right">
-![]({{site.images}}{{page.slug}}/tFNsGfD.jpg)
+![The Professor]({{site.images}}{{page.slug}}/tFNsGfD.jpg)\
 <figcaption>The Professor</figcaption>
 </div>
 
