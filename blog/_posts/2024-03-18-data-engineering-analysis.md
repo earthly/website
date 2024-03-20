@@ -3,7 +3,7 @@ title: "My Adventure in Data Engineering"
 categories:
   - Tutorials
 toc: true
-author: Adam
+author: Ido
 
 internal-links:
  - data engineering
