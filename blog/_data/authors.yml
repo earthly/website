@@ -58,6 +58,12 @@ Adam:
     avatar  : "/assets/images/authors/adamgordonbell.png"
     home    : "/authors/adam/"
     twitter : "@adamgordonbell"
+Ido:
+    name    : "Ido David"
+    bio     : |
+                Ido loves to code, automate and make things more effecient. When he isn't coding he's doing something else.
+    avatar  : "/assets/images/authors/ido-david.jpg"
+    home    : "/authors/ido/"
 Vivek Sonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
