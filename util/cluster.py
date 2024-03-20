@@ -19,7 +19,6 @@ def save_cache(cache: dict) -> None:
     with open(CACHE_FILE, 'wb') as f:
         pickle.dump(cache, f)
 
-
 # 1. Load the Markdown Files
 def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
     all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
