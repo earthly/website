@@ -51,7 +51,8 @@ layout: default
               <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
             {% endif %}
           </div>
-          <div class="group mt-4 hidden cta-treatment">
+          {% if page.toc %}
+          <div class="group mt-4">
             <header>
               <h4 class="font-semibold text-md mb-2">Table of contents</h4>
             </header>
@@ -61,7 +62,7 @@ layout: default
               </div>
             </div>
           </div>
-          <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4 hidden cta-treatment">
+          <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4">
             <header>
               <h4 class="font-semibold text-md mb-2">About Earthly</h4>
             </header>
@@ -71,7 +72,7 @@ layout: default
             </p>
             </div>
           </div>
-          <div class="group mt-4 hidden cta-treatment">
+          <div class="group mt-4">
             <header>
               <h4 class="font-semibold text-md mb-2">You may also enjoy</h4>
             </header>
@@ -122,19 +123,6 @@ layout: default
         </ul>
             </div>
           </div>
-          
-          {% if page.toc %}
-            <div class="group mt-4 cta-control">
-              <header>
-                <h4 class="font-semibold text-md mb-2">Table of contents</h4>
-              </header>
-              <div class="border-gray-300 relative border bg-white rounded-md shadow-md mt-2 hidden group-hover:block">
-                <div class="arrow border-l border-t border-gray-300 absolute z-10"></div>
-                <div class="relative z-50 pb-1 pt-1">
-                  {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
-                </div>
-              </div>
-            </div>
           {% endif %}
         </div>
       </div>
@@ -143,7 +131,13 @@ layout: default
         {% if page.sidebar %}
           {% if page.sidebar.nav %}
             <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block">
-              {% include nav_list nav=page.sidebar.nav %}
+              <!-- Non-Mobile-->
+              <div id="series-content">
+                <div class="group">
+                  {% include series_sidebar nav=page.sidebar.nav %}
+                  {% include suggestions_sidebar nav=page.sidebar.nav %}
+                </div>
+              </div>
             </div>
           {% endif %}
         {% endif %}
@@ -166,7 +160,12 @@ layout: default
                   {% svg assets/svg/chevron.svg id="dropdown-icon" width="16px" height="16px" class="transition-transform" %}
                 </div>
                 <div id="dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-4 pb-2 hidden">
-                  {% include nav_list nav=page.sidebar.nav %}
+                  <!-- Mobile-->
+                  <div id="series-content">
+                    <div class="group">
+                  {% include series_sidebar nav=page.sidebar.nav %}
+                  </div>
+                  </div>
                 </div>
               {% endif %}
             {% endif %}
