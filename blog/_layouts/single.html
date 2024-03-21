@@ -62,86 +62,23 @@ layout: default
               </div>
             </div>
           </div>
-          <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4">
-            <header>
-              <h4 class="font-semibold text-md mb-2">About Earthly</h4>
-            </header>
-            <div class="">
-              <p class="prose">
-                Earthly makes builds super simple. <a href="">Learn More</a>
-            </p>
-            </div>
-          </div>
-          <div class="group mt-4">
-            <header>
-              <h4 class="font-semibold text-md mb-2">You may also enjoy</h4>
-            </header>
-            <div class="">
-              <ul>
-                <li class="mb-1 series-item">
-                    <a href="/blog/autoconf/" class="text-sm text-gray-600 hover:underline">
-                        Using Autotools
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/make-flags" class="text-sm text-gray-600 hover:underline">
-                        Understanding Makefile Flags
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams" class="text-sm text-gray-600 hover:underline">
-                        Taming Large Makefiles
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/docker-and-makefiles" class="text-sm text-gray-600 hover:underline">
-                        Docker and Makefiles
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/makefiles-on-windows" class="text-sm text-gray-600 hover:underline">
-                        Makefiles on Windows
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/using-makefile-wildcards" class="text-sm text-gray-600 hover:underline">
-                        Makefile Wildcards
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/makefile-variables" class="text-sm text-gray-600 hover:underline">
-                        Makefile Variables
-                    </a>
-                </li>
-            
-        </ul>
-            </div>
-          </div>
+          {% include suggestions_sidebar %}
           {% endif %}
         </div>
       </div>
 
       <section class="page__content w-full p-2 pt-8 md:p-10 flex flex-1 flex-col items-center relative" itemprop="text">
-        {% if page.sidebar %}
-          {% if page.sidebar.nav %}
             <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block">
               <!-- Non-Mobile-->
               <div id="series-content">
                 <div class="group">
-                  {% include series_sidebar nav=page.sidebar.nav %}
-                  {% include suggestions_sidebar nav=page.sidebar.nav %}
+                  {% if page.sidebar.nav %}
+                    {% include series_sidebar nav=page.sidebar.nav %}
+                  {% endif %}
+                  {% include suggestions_sidebar invert=true %}
                 </div>
               </div>
             </div>
-          {% endif %}
-        {% endif %}
-
         <div class="blog-article-wrap">
           <header class="blog-article-header">
             {% if page.title %}
@@ -163,7 +100,7 @@ layout: default
                   <!-- Mobile-->
                   <div id="series-content">
                     <div class="group">
-                  {% include series_sidebar nav=page.sidebar.nav %}
+                  {% include series_sidebar %}
                   </div>
                   </div>
                 </div>
