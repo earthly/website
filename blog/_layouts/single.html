@@ -175,16 +175,26 @@ layout: default
       Putting related ones first.
     -->
   {% endcomment %}
-  {% if jekyll.environment == "production" %}
     {% if page.id and page.related and site.related_posts.size > 0 %}
       <div class="page__related mt-8 ml-8 mr-8">
         <div class="page__related-title heading mb-2 text-2xl text-gray-400">
           {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
         </div>
         <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-          {% assign related = site.posts | where: "funnel",3 | sample: 10 %}
-          {% assign topics = site.posts | where: "topic", page.topic | where: "funnel", 2 | sample: 10 %}
-          {% assign everything = topics | concat: related  | slice: 0, 8 %}
+          {% if site.data.indexes.funnel["3"] %}
+          {% assign related = site.data.indexes.funnel["3"] | sample: 10 %}
+          {% else %}
+            {% assign related = "" | split: "" %}  # Initializes 'related' as an empty array
+          {% endif %}
+        
+          {% if site.data.indexes.topics[page.topic] %}
+            {% assign topics = site.data.indexes.topics[page.topic] | sample: 10 %}
+          {% else %}
+            {% assign topics = "" | split: "" %}  # Initializes 'topics' as an empty array
+          {% endif %}
+        
+        {% assign everything = topics | concat: related | slice: 0, 8 %}
+        
           {% for post in everything %}
             {% if page.id != post.id %}
               {% include archive-single.html type="grid" lazy="true" %}
@@ -193,7 +203,6 @@ layout: default
         </div>
       </div>
     {% endif %}
-  {% endif %}
 </div>
 
 <script>

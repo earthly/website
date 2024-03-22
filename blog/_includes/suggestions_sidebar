@@ -33,7 +33,7 @@
 <div class="">
   <ul>
     {% for related_slug in related_slugs %}
-      {% assign related_article = site.posts | where: "slug", related_slug | first %}
+      {% assign related_article = site.data.indexes.slug[related_slug] %}
       {% if related_article %}
         <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ related_article.url | relative_url }}">‣  {{ related_article.title | truncate: 30, "..." }}</a></li>
       {% endif %}

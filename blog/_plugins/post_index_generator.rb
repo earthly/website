@@ -3,6 +3,8 @@ module Jekyll
       priority :highest
   
       def generate(site)
+        start_time = Time.now  # Capture start time
+  
         # Initialize empty hashes for each index
         slug_index = {}
         author_index = {}
@@ -30,7 +32,7 @@ module Jekyll
         
           # Index by funnel
           funnel = post.data['funnel']
-          (topic_index[funnel] ||= []) << post
+          (funnel_index[funnel] ||= []) << post
         end
   
         # Store the indexes in site.data for access in templates
@@ -41,6 +43,11 @@ module Jekyll
           'topic' => topic_index,
           'funnel' => funnel_index,
         }
+  
+        end_time = Time.now  # Capture end time
+        duration = end_time - start_time  # Calculate duration
+  
+        Jekyll.logger.info "PostIndexGenerator:", "Indexes built in #{duration} seconds"
       end
     end
   end

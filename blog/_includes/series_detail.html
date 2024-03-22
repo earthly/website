@@ -6,8 +6,7 @@
       <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
         {% for nav in navigation.children %}
           {% assign post_slug = nav.url | replace: "/", "" %}
-          {% assign series_post = site.posts | where: "slug", post_slug %}
-
+          {% assign series_post = site.data.indexes.slug[post_slug] %}
           {% for post in series_post %}
             {% include archive-single.html type="grid" %}
           {% endfor %}

@@ -17,9 +17,9 @@ itemprop="headline">
 
 {{ content }}
 
-{% assign filtered_written_posts = site.posts | where: 'author', page.short_name %}
+{% assign filtered_written_posts = site.data.indexes.author[page.short_name] %}
 {% assign filtered_featured_posts = filtered_written_posts | where: 'author', page.short_name | where:'featured', true %}
-{% assign filtered_edited_posts = site.posts | where: 'editor', page.short_name %}
+{% assign filtered_edited_posts = site.data.indexes.editor[page.short_name] %}
 
 {% if filtered_featured_posts.size != 0 %}
 <div class="text-2xl mt-4 mb-2">Featured</div>

@@ -23,7 +23,7 @@ indepth_posts:
 
 <div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
   <div class="col-span-1 md:col-span-6 ">
-    {% assign hero_post = site.posts | where:"slug", layout.hero_post %}
+    {% assign hero_post = site.data.indexes.slug[layout.hero_post] %}
     {% for post in hero_post %}
     {% include hero-story.html type=entries_layout %}
     {% endfor %}
@@ -55,7 +55,7 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for slug in layout.featured_posts_1 %}
-    {% assign post = site.posts | where:"slug", slug | first %}
+    {% assign post = site.data.indexes.slug[slug] %}
     {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>
@@ -105,7 +105,7 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for slug in layout.featured_posts_2 %}
-  {% assign post = site.posts | where:"slug", slug | first %}
+  {% assign post = site.data.indexes.slug[slug] %}
   {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>
@@ -115,7 +115,7 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for slug in layout.indepth_posts %}
-    {% assign post = site.posts | where:"slug", slug | first %}
+    {% assign post = site.data.indexes.slug[slug] %}
     {% include archive-single.html type=entries_layout %}
   {% endfor %}
 </div>
