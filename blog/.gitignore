@@ -4,3 +4,4 @@ _site
 .jekyll-cache
 .history
 node_modules
+build_stats.txt

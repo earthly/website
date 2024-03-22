@@ -1,3 +1,7 @@
+{# ################### #}
+{# Inverted Learn More #}
+{# ################### #}
+
 {% if include.invert == true %}
 <div class="group mt-4 bg-blue-50 p-4 pr-4 pl-4">
     <header>
@@ -10,27 +14,39 @@
     </div>
 </div> 
 {% endif %}
+
+{# ######################## #}
+{# Related articles sidebar #}
+{# ######################## #}
+
+{% assign related_slugs = site.data.related_articles[page.slug] %}
+{% if related_slugs %}
 {% if include.invert == true %}
 <div class="group mt-4 group mt-4 p-4 pr-4 pl-4">
 {% else %}
 <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4">
 {% endif %}
-    <header>
-        <h4 class="font-semibold text-md mb-2">You may also enjoy
-        </h4>
-      </header>
-      <div class="">
-        <ul>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/make-tutorial/">‣ Makefile Examples</a></li>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/make-flags/">‣ Understanding Makefile Flags</a></li>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/autoconf/">‣ Using Autotools</a></li>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/make-tutorial/">‣ Makefile Examples</a></li>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/make-tutorial/">‣ Makefile Examples</a></li>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/make-flags/">‣ Understanding Makefile Flags</a></li>
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="https://earthly.dev/blog/autoconf/">‣ Using Autotools</a></li>
-        </ul>
-        </div>
-    </div> 
+<header>
+  <h4 class="font-semibold text-md mb-2">You may also enjoy
+  </h4>
+</header>
+<div class="">
+  <ul>
+    {% for related_slug in related_slugs %}
+      {% assign related_article = site.posts | where: "slug", related_slug | first %}
+      {% if related_article %}
+        <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ related_article.url | relative_url }}">‣  {{ related_article.title | truncate: 30, "..." }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+</div> 
+{% endif %}
+
+{# ######################## #}
+{# Non-Inverted Learn More #}
+{# ######################## #}
+
 {% unless include.invert == true %}
 <div class="group mt-4">
     <header>

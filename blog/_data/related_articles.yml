@@ -1,10 +1,8 @@
-"g++-makefile":
-  - title: "Understanding GCC and Make"
-    url: "/tutorials/understanding-gcc-make"
-  - title: "Advanced Makefile Techniques"
-    url: "/tutorials/advanced-makefile-techniques"
-"some-other-article":
-  - title: "Related Article 1"
-    url: "/path/to/related-article-1"
-  - title: "Related Article 2"
-    url: "/path/to/related-article-2"
+g++-makefile:
+  - make-tutorial
+  - python-makefile
+  - golang-makefile
+  - vscode-make
+  - cmake-gcc-cross-compile
+  - using-cmake
+  - cmake-vs-make-diff
