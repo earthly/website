@@ -180,8 +180,8 @@ layout: default
         </div>
         <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
           {% assign related = site.data.indexes.related[page.slug] | slice: 0, 4 %}
-          {% if related.first == "" %}
-            {% assign related = related | slice: 1, related.size %}
+          {% if related == "" %}
+            {% assign related = "" | split: "," %}
           {% endif %}
           {% assign funnel = site.data.indexes.funnel[3] | sample: 8 %}
           {% assign everything = related | concat: funnel | slice: 0, 8 %}

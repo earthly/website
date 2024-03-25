@@ -3,9 +3,6 @@ title: "Welcoming Wes McKinney as an advisor to Earthly"
 
 categories:
   - News
-header:
-  overlay_image: /assets/images/wes-mckinney/tim-mossholder-8FBTtjCZ9oM-unsplash.jpg
-  caption: "Photo by <a href=\"https://unsplash.com/@timmossholder?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Tim Mossholder</a> on <a href=\"https://unsplash.com/s/photos/welcome?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText\">Unsplash</a>"
 tags:
   - advisor
   - data-engineering
