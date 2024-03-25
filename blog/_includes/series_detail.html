@@ -8,7 +8,7 @@
           {% assign post_slug = nav.url | replace: "/", "" %}
           {% assign series_post = site.data.indexes.slug[post_slug] %}
           {% for post in series_post %}
-            {% include archive-single.html type="grid" %}
+            {% include_cached archive-single.html post=post type="grid" %}
           {% endfor %}
         {% endfor %}
       </div>

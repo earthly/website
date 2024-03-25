@@ -187,7 +187,7 @@ layout: default
           {% assign everything = related | concat: funnel | slice: 0, 8 %}
           {% for post in everything %}
             {% if page.id != post.id %}
-              {% include archive-single.html type="grid" lazy="true" %}
+              {% include_cached archive-single.html post=post type="grid" lazy="true" %}
             {% endif %}
           {% endfor %}
         </div>
