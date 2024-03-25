@@ -168,34 +168,23 @@ layout: default
   </article>
 
   {% comment %}
-    <!-- only show related on a post page when `related: true` -->
-    <!-- only show related on a post in prod, to speed rendering -->
-    <!-- 
-      Get related topics where funnel step is 2 and funnel=3 and combine them and grab first 8
-      Putting related ones first.
-    -->
+    Get 4 related posts. 
+    Cut off the first one if it's empty 
+    Get 8 funnel posts.
+    Take top 8 for next posts to read
   {% endcomment %}
     {% if page.id and page.related and site.related_posts.size > 0 %}
-      <h1>Here</h1>
       <div class="page__related mt-8 ml-8 mr-8">
         <div class="page__related-title heading mb-2 text-2xl text-gray-400">
           {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
         </div>
         <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-          {% if site.data.indexes.funnel["3"] %}
-          {% assign related = site.data.indexes.funnel["3"] | sample: 10 %}
-          {% else %}
-            {% assign related = "" | split: "" %}  
+          {% assign related = site.data.indexes.related[page.slug] | slice: 0, 4 %}
+          {% if related.first == "" %}
+            {% assign related = related | slice: 1, related.size %}
           {% endif %}
-        
-          {% if site.data.indexes.topics[page.topic] %}
-            {% assign topics = site.data.indexes.topics[page.topic] | sample: 10 %}
-          {% else %}
-            {% assign topics = "" | split: "" %}  
-          {% endif %}
-        
-        {% assign everything = topics | concat: related | slice: 0, 8 %}
-        
+          {% assign funnel = site.data.indexes.funnel[3] | sample: 8 %}
+          {% assign everything = related | concat: funnel | slice: 0, 8 %}
           {% for post in everything %}
             {% if page.id != post.id %}
               {% include archive-single.html type="grid" lazy="true" %}

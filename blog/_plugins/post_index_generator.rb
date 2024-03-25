@@ -11,6 +11,7 @@ module Jekyll
         editor_index = {}
         topic_index = {}
         funnel_index = {}
+        related_index = {}
   
         # Iterate over each post to populate the indexes
         site.posts.docs.each do |post|
@@ -32,8 +33,19 @@ module Jekyll
         
           # Index by funnel
           funnel = post.data['funnel']
-          (funnel_index[funnel] ||= []) << post
+          if funnel > 0
+            (funnel_index[funnel] ||= []) << post
+          end
         end
+
+        # Build the related_index
+        if site.data['related_articles']
+            site.data['related_articles'].each do |slug, related_slugs|
+              related_posts = related_slugs.map { |related_slug| slug_index[related_slug] }.compact
+              related_index[slug] = related_posts
+            end
+          end
+
   
         # Store the indexes in site.data for access in templates
         site.data['indexes'] = {
@@ -42,6 +54,7 @@ module Jekyll
           'editor' => editor_index,
           'topic' => topic_index,
           'funnel' => funnel_index,
+          'related' => related_index
         }
   
         end_time = Time.now  # Capture end time

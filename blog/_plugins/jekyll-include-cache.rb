@@ -87,9 +87,9 @@ Jekyll::Hooks.register :site, :after_init do |site|
     if site.config["jekyll_include_cache"] && site.config["jekyll_include_cache"]["enabled"]
       Jekyll.logger.warn "JekyllIncludeCache:", "Caching is enabled."
       Liquid::Template.register_tag("include_cached", JekyllIncludeCache::Tag)
-      Jekyll::Hooks.register :site, :pre_render do |_site|
-        JekyllIncludeCache.reset
-      end
+    #   Jekyll::Hooks.register :site, :pre_render do |_site|
+    #     JekyllIncludeCache.reset
+    #   end
     else
       Jekyll.logger.warn "JekyllIncludeCache:", "Caching is disabled."
       Liquid::Template.register_tag("include_cached", Jekyll::Tags::IncludeTag)

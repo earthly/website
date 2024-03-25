@@ -27,28 +27,27 @@ Input:
 ###############################
 {% endcomment %}
 
-{% assign related_slugs = site.data.related_articles[include.slug] %}
-{% if related_slugs %}
-{% if include.invert == true %}
-<div class="group mt-4 group mt-4 p-4 pr-4 pl-4">
-{% else %}
-<div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4">
-{% endif %}
-<header>
-  <h4 class="font-semibold text-md mb-2">You may also enjoy
-  </h4>
-</header>
-<div class="">
-  <ul>
-    {% for related_slug in related_slugs %}
-      {% assign related_article = site.data.indexes.slug[related_slug] %}
-      {% if related_article %}
-        <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ related_article.url | relative_url }}">‣  {{ related_article.title | truncate: 30, "..." }}</a></li>
-      {% endif %}
-    {% endfor %}
-  </ul>
-</div>
-</div> 
+{% assign related = site.data.indexes.related[page.slug]] %}
+{% if related %}
+  {% if include.invert == true %}
+    <div class="group mt-4 group mt-4 p-4 pr-4 pl-4">
+  {% else %}
+    <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4">
+  {% endif %}
+  <header>
+    <h4 class="font-semibold text-md mb-2">You may also enjoy
+    </h4>
+  </header>
+  <div class="">
+    <ul>
+      {% for relate in related %}
+        {% if relate %}
+          <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}">‣  {{ relate.title | truncate: 30, "..." }}</a></li>
+        {% endif %}
+      {% endfor %}
+    </ul>
+  </div>
+  </div> 
 {% endif %}
 
 {% comment %}
