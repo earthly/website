@@ -125,7 +125,12 @@ layout: default
 
           <div class="mt-4 prose">
             {% if page.author_profile or layout.author_profile and page.type != "authors" %}
-              {% include author-profile.html %}
+            {% include_cached author-profile.html 
+              author1=page.author 
+              author2=page.author2 
+              author3=page.author3 
+              editor=page.editor 
+            %}
             {% endif %}
             <footer class="page__meta">
               {% if site.data.ui-text[site.locale].meta_label %}

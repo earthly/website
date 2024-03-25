@@ -49,7 +49,7 @@
     </h2>
 
     {% include archive__meta.html type=include.type %}
-    {% if post.excerpt %}<p class="archive__item-excerpt pr-2 pt-1 pl-2 max-w-[600px]" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 260 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt pr-2 pt-1 pl-2 max-w-[600px]" itemprop="description">{{ post.excerpt | truncate: 260 }}</p>{% endif %}
   </div>
   </article>
 </div>

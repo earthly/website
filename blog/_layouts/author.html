@@ -2,7 +2,12 @@
 layout: page
 ---
 {% assign author_data = site.data.authors[page.short_name] %}
-{% include author-profile.html %}
+{% include_cached author-profile.html 
+  author1=page.author 
+  author2=page.author2 
+  author3=page.author3 
+  editor=page.editor 
+%}
 
 {% if author.avatar %}
 <div class="author__avatar_bio justify-center flex">
