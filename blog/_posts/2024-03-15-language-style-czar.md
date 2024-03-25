@@ -8,7 +8,6 @@ sidebar:
   nav: "thoughts"
 ---
 Here is a non-realistic scenario: You are choosing the programming language for what will eventually become something large. Picture a collection of services in a mono repo, with over 100 people working on it. To keep this extra unrealistic, let's say you're ignoring the usual constraints, like whether you can afford GC, or whether the problem fits well with a specific tech stack or whatever. it's a thought experiment. Humor me.
-
 Based on my [previous post](/blog/readability), you'd correctly assume that I would want an expressive language aimed at experts. And I do. But there's a big problem when things scale up in a flexible language. Too many coding styles, too many ways to program. You end up needing style-guides to nail down the right way to do things.
 
 Which subset of C++ or Kotlin are you using? Are you using `project.toml` or `requirements.txt`? Your language now has gradual typing with Type Annotations. Do you want to adopt those or not? Are you going to use multi-threading, Tokio, or Async-std for concurrency?

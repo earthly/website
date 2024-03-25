@@ -34,12 +34,30 @@ module JekyllIncludeCache
       end
   
       def key(path, params)
-        path_hash   = path.hash
-        params_hash = quick_hash(params)
-        self.class.digest_cache[path_hash] ||= {}
-        self.class.digest_cache[path_hash][params_hash] ||= digest(path_hash, params_hash)
+        params ||= {}
+        # Check if a post object is included in the params
+        if params[:post]
+          post = params[:post]
+          post_identifier = "#{post.slug}_#{post.last_modified_at.to_i}"
+          # Create a unique identifier for the post to include in the cache key
+          unique_post_part = stable_hash(post_identifier: post_identifier)
+        else
+          unique_post_part = ""
+        end
+        
+        # Generate a hash for the remaining parameters, excluding the :post key manually
+        remaining_params = params.reject { |k, _| k == :post }
+        params_hash = stable_hash(remaining_params)
+        
+        # Combine path, post identifier (if any), and params hash into a final cache key
+        "#{path}_#{unique_post_part}_#{params_hash}"
       end
-  
+      
+      
+      def stable_hash(params)
+        Digest::MD5.hexdigest(params.to_s)
+      end
+      
       def quick_hash(params)
         return params.hash unless params
   
@@ -77,7 +95,7 @@ module JekyllIncludeCache
     end
 
     def reset
-       Jekyll.logger.warn "JekyllIncludeCache:", "Caching is cleared." 
+       Jekyll.logger.info "JekyllIncludeCache:", "Caching is cleared." 
       JekyllIncludeCache.cache.clear
     end
   end
@@ -87,11 +105,12 @@ Jekyll::Hooks.register :site, :after_init do |site|
     if site.config["jekyll_include_cache"] && site.config["jekyll_include_cache"]["enabled"]
       Jekyll.logger.warn "JekyllIncludeCache:", "Caching is enabled."
       Liquid::Template.register_tag("include_cached", JekyllIncludeCache::Tag)
+    # Here we can clear the cache, but it should not be needed
     #   Jekyll::Hooks.register :site, :pre_render do |_site|
     #     JekyllIncludeCache.reset
     #   end
     else
-      Jekyll.logger.warn "JekyllIncludeCache:", "Caching is disabled."
+      Jekyll.logger.info "JekyllIncludeCache:", "Caching is disabled."
       Liquid::Template.register_tag("include_cached", Jekyll::Tags::IncludeTag)
     end
 end
