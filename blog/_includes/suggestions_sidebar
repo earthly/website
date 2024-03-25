@@ -1,6 +1,12 @@
-{# ################### #}
-{# Inverted Learn More #}
-{# ################### #}
+{% comment %}
+Input: 
+  - slug
+  - invert: true
+
+###############################
+# Inverted Learn More
+###############################
+{% endcomment %}
 
 {% if include.invert == true %}
 <div class="group mt-4 bg-blue-50 p-4 pr-4 pl-4">
@@ -15,11 +21,13 @@
 </div> 
 {% endif %}
 
-{# ######################## #}
-{# Related articles sidebar #}
-{# ######################## #}
+{% comment %}
+###############################
+# Related Articles
+###############################
+{% endcomment %}
 
-{% assign related_slugs = site.data.related_articles[page.slug] %}
+{% assign related_slugs = site.data.related_articles[include.slug] %}
 {% if related_slugs %}
 {% if include.invert == true %}
 <div class="group mt-4 group mt-4 p-4 pr-4 pl-4">
@@ -43,9 +51,11 @@
 </div> 
 {% endif %}
 
-{# ######################## #}
-{# Non-Inverted Learn More #}
-{# ######################## #}
+{% comment %}
+######################## 
+Non-Inverted Learn More
+########################
+{% endcomment %}
 
 {% unless include.invert == true %}
 <div class="group mt-4">

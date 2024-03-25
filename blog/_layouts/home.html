@@ -23,10 +23,8 @@ indepth_posts:
 
 <div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
   <div class="col-span-1 md:col-span-6 ">
-    {% assign hero_post = site.data.indexes.slug[layout.hero_post] %}
-    {% for post in hero_post %}
+    {% assign post = site.data.indexes.slug[layout.hero_post] %}
     {% include hero-story.html type=entries_layout %}
-    {% endfor %}
   </div>
 
   <div class="col-span-1 md:col-span-3 rounded-lg  bg-blue-50">

@@ -63,7 +63,7 @@ layout: default
             </div>
           </div>
           {% endif %}
-          {% include suggestions_sidebar %}
+          {% include suggestions_sidebar slug=page.slug %}
         </div>
       </div>
 
@@ -75,7 +75,7 @@ layout: default
                   {% if page.sidebar.nav %}
                     {% include series_sidebar nav=page.sidebar.nav %}
                   {% endif %}
-                  {% include suggestions_sidebar invert=true %}
+                  {% include suggestions_sidebar slug=page.slug invert=true %}
                 </div>
               </div>
             </div>
@@ -184,13 +184,13 @@ layout: default
           {% if site.data.indexes.funnel["3"] %}
           {% assign related = site.data.indexes.funnel["3"] | sample: 10 %}
           {% else %}
-            {% assign related = "" | split: "" %}  # Initializes 'related' as an empty array
+            {% assign related = "" | split: "" %}  
           {% endif %}
         
           {% if site.data.indexes.topics[page.topic] %}
             {% assign topics = site.data.indexes.topics[page.topic] | sample: 10 %}
           {% else %}
-            {% assign topics = "" | split: "" %}  # Initializes 'topics' as an empty array
+            {% assign topics = "" | split: "" %}  
           {% endif %}
         
         {% assign everything = topics | concat: related | slice: 0, 8 %}
