@@ -9,9 +9,9 @@ Input:
         You May Also Enjoy
       </div>
       <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-        {% for post in site.data.indexes.related[include.slug] %}
+        {% for post in site.data.indexes.related2[include.slug] %}
           {% if include.slug != post.slug %}
-            {% include archive-single.html post=post type="grid" %}
+            {% include_cached archive-single.html post=post type="grid" %}
           {% endif %}
         {% endfor %}
       </div>

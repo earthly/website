@@ -27,8 +27,7 @@ Input:
 ###############################
 {% endcomment %}
 
-{% assign related = site.data.indexes.related[page.slug]] %}
-{% if related %}
+{% if site.data.indexes.related1[page.slug] %}
   {% if include.invert == true %}
     <div class="group mt-4 group mt-4 p-4 pr-4 pl-4">
   {% else %}
@@ -40,7 +39,7 @@ Input:
   </header>
   <div class="">
     <ul>
-      {% for relate in related %}
+      {% for relate in site.data.indexes.related1[page.slug] %}
         {% if relate %}
           <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}">‣  {{ relate.title | truncate: 30, "..." }}</a></li>
         {% endif %}

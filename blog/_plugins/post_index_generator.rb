@@ -11,7 +11,8 @@ module Jekyll
         editor_index = {}
         topic_index = {}
         funnel_index = {}
-        related_index = {}
+        related_index_1 = {}
+        related_index_2 = {}
   
         # Iterate over each post to populate the indexes
         site.posts.docs.each do |post|
@@ -53,6 +54,8 @@ module Jekyll
             related_posts = []
           end
           
+          related_index_1[slug] = related_posts.dup
+
           if related_posts.length < 8
             # Calculate how many posts are needed to pad the related list to 8 items
             padding_needed = 8 - related_posts.length
@@ -61,7 +64,7 @@ module Jekyll
           end
         
           # Assign the padded or filled list of related posts to the related_index for the slug
-          related_index[slug] = related_posts.uniq
+          related_index_2[slug] = related_posts.uniq
         end
 
   
@@ -72,13 +75,14 @@ module Jekyll
           'editor' => editor_index,
           'topic' => topic_index,
           'funnel' => funnel_index,
-          'related' => related_index
+          'related1' => related_index_1,
+          'related2' => related_index_2,
         }
   
         end_time = Time.now  # Capture end time
         duration = end_time - start_time  # Calculate duration
   
-        Jekyll.logger.warn "PostIndexGenerator:", "Indexes built in #{duration} seconds"
+        Jekyll.logger.info "PostIndexGenerator:", "Indexes built in #{duration} seconds"
       end
     end
   end

@@ -34,6 +34,13 @@ module JekyllIncludeCache
       end
   
       def key(path, params)
+        path_hash   = path.hash
+        params_hash = quick_hash(params)
+        self.class.digest_cache[path_hash] ||= {}
+        self.class.digest_cache[path_hash][params_hash] ||= digest(path_hash, params_hash)
+      end
+
+      def key_rich(path, params)
         params ||= {}
         # Check if a post object is included in the params
         if params[:post]
@@ -106,9 +113,9 @@ Jekyll::Hooks.register :site, :after_init do |site|
       Jekyll.logger.warn "JekyllIncludeCache:", "Caching is enabled."
       Liquid::Template.register_tag("include_cached", JekyllIncludeCache::Tag)
     # Here we can clear the cache, but it should not be needed
-    #   Jekyll::Hooks.register :site, :pre_render do |_site|
-    #     JekyllIncludeCache.reset
-    #   end
+      Jekyll::Hooks.register :site, :pre_render do |_site|
+       JekyllIncludeCache.reset
+      end
     else
       Jekyll.logger.info "JekyllIncludeCache:", "Caching is disabled."
       Liquid::Template.register_tag("include_cached", Jekyll::Tags::IncludeTag)

@@ -23,7 +23,7 @@
       </div>
       {% if author.bio %}
       <div class="author__bio text-sm px-4" itemprop="description">
-        {{ author.bio | markdownify }}
+        {{ author.bio  }}
       </div>
       {% endif %}
     </div>
@@ -103,7 +103,7 @@
   >
     <div class="flex flex-col">
       <div class="text-sm px-4 pt-3">
-        <em>Writers at [Your Site Name] work closely with our talented editors to help them create high quality content. This article was edited by:</em>
+        <em>Writers at Earthly work closely with our talented editors to help them create high quality content. This article was edited by:</em>
       </div>
       <div class="flex items-center">
         {% if editor.avatar %}
