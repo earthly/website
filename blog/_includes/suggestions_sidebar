@@ -27,7 +27,7 @@ Input:
 ###############################
 {% endcomment %}
 
-{% if site.data.indexes.related1[page.slug] %}
+{% if site.data.indexes.related1[page.slug].size > 0 %}
   {% if include.invert == true %}
     <div class="group mt-4 group mt-4 p-4 pr-4 pl-4">
   {% else %}

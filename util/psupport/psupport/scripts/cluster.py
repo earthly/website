@@ -8,7 +8,7 @@ from sklearn.cluster import KMeans
 
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
-CACHE_FILE = "./util/cluster_embeddings_cache.pkl"
+CACHE_FILE = "./blog/_data/embeddings_cache.pkl"
 
 def load_cache() -> dict:
     if os.path.exists(CACHE_FILE):

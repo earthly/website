@@ -1,8 +1,6 @@
-g++-makefile:
-  - make-tutorial
-  - python-makefile
-  - golang-makefile
-  - vscode-make
-  - cmake-gcc-cross-compile
-  - using-cmake
-  - cmake-vs-make-diff
+introducing-earthly-build-automation-for-the-container-era:
+  - the-world-deserves-better-builds
+  - launching-earthly-CI
+  - earthly-cloud-free-tier-launch
+  - earthly-github-actions
+  - earthly-v0-6
