@@ -1,9 +1,12 @@
 import os
-import openai
-from sklearn.cluster import KMeans
-from typing import List, Tuple
 import pickle
+from typing import List, Tuple
+
 import numpy as np
+from openai import APIError, OpenAI
+from sklearn.cluster import KMeans
+
+client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
 CACHE_FILE = "./util/cluster_embeddings_cache.pkl"
 
@@ -22,7 +25,7 @@ def save_cache(cache: dict) -> None:
 # 1. Load the Markdown Files
 def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
     all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-    # all_files = all_files[:100]
+    all_files = all_files[:100]
     markdown_texts = []
 
     for file in all_files:
@@ -32,7 +35,7 @@ def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
 
     return all_files, markdown_texts
 
-def get_embedding(text: str, filename : str, model="text-embedding-ada-002") -> List[float]:
+def get_embedding(text: str, filename : str, model : str ="text-embedding-3-small" ) -> List[float]:
     if filename in cache:
         return cache[filename]
 
@@ -40,10 +43,10 @@ def get_embedding(text: str, filename : str, model="text-embedding-ada-002") -> 
     while True:
         try:
             # text = text.replace("\n", " ")
-            embedding = openai.Embedding.create(input = [text], model=model)['data'][0]['embedding']
+            embedding = client.embeddings.create(input = text, model=model).data[0].embedding
             cache[filename] = embedding
             return embedding
-        except openai.error.InvalidRequestError as e:
+        except APIError as e:
             if "maximum context length" in str(e):
                 print(f"{filename}: dropping lines")
                 lines = text.split("\n")
@@ -55,9 +58,8 @@ def get_embedding(text: str, filename : str, model="text-embedding-ada-002") -> 
                     return [0.0] * 1536
             else:
                 raise e
-                
+
 def generate_embeddings(markdown_texts: List[str],  filenames: List[str]) -> List[List[float]]:
-    openai.api_key = os.environ.get('OPENAI_API_KEY')
     embeddings = [get_embedding(text, filename) for text, filename in zip(markdown_texts, filenames)]
     return embeddings
 
@@ -96,10 +98,10 @@ def main() -> None:
         embeddings = handle_nan_in_embeddings(embeddings)
         labels = cluster_embeddings(embeddings, n_clusters)
 
-        clusters = [[] for _ in range(n_clusters)]
+        clusters : List[List] = [[] for _ in range(n_clusters)]
         for idx, label in enumerate(labels):
             clusters[label].append(all_files[idx])
-        
+
         display_clusters(clusters)
 
     except Exception as e:
