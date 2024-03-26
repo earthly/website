@@ -19,11 +19,7 @@
   {% assign teaser = site.teaser %}
 {% endif %}
 
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
+{% assign title = post.title %}
 
 <div class="hero-story">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">

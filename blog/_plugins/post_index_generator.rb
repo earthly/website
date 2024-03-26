@@ -39,12 +39,30 @@ module Jekyll
         end
 
         # Build the related_index
-        if site.data['related_articles']
-            site.data['related_articles'].each do |slug, related_slugs|
-              related_posts = related_slugs.map { |related_slug| slug_index[related_slug] }.compact
-              related_index[slug] = related_posts
-            end
+        funnel_3_sample = funnel_index[3] ? funnel_index[3].shuffle : []
+
+        site.posts.docs.each do |post|
+          slug = post.data['slug'] || post.slug
+          related_slugs = site.data['related_articles'][slug]
+          
+          if related_slugs
+            # If there are explicitly related articles listed
+            related_posts = related_slugs.map { |related_slug| slug_index[related_slug] }.compact
+          else
+            # Initialize as empty if there are no explicitly related articles
+            related_posts = []
           end
+          
+          if related_posts.length < 8
+            # Calculate how many posts are needed to pad the related list to 8 items
+            padding_needed = 8 - related_posts.length
+            padding_posts = funnel_3_sample.sample(padding_needed) if !funnel_3_sample.empty?
+            related_posts.concat(padding_posts) if padding_posts
+          end
+        
+          # Assign the padded or filled list of related posts to the related_index for the slug
+          related_index[slug] = related_posts.uniq
+        end
 
   
         # Store the indexes in site.data for access in templates
@@ -60,7 +78,7 @@ module Jekyll
         end_time = Time.now  # Capture end time
         duration = end_time - start_time  # Calculate duration
   
-        Jekyll.logger.debug "PostIndexGenerator:", "Indexes built in #{duration} seconds"
+        Jekyll.logger.warn "PostIndexGenerator:", "Indexes built in #{duration} seconds"
       end
     end
   end

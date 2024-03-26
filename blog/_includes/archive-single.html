@@ -20,11 +20,7 @@
   {% assign teaser = site.teaser %}
 {% endif %}
 
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
+{% assign title = post.title %}
 
 <div class="{{ include.type | default: 'grid' }}__item mb-6 rounded-lg border border-slate-300 pb-5">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">

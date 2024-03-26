@@ -25,10 +25,10 @@ layout: default
 <div id="main" role="main">
   <article class="page bg-white" itemscope itemtype="https://schema.org/CreativeWork">
     {% if page.title %}
-      <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}" />
+      <meta itemprop="headline" content="{{ page.title | escape_once }}" />
     {% endif %}
     {% if page.excerpt %}
-      <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once | truncate: 160 }}" />
+      <meta itemprop="description" content="{{ page.excerpt | escape_once | truncate: 160 }}" />
     {% endif %}
     {% if page.date %}
       <meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}" />
@@ -73,7 +73,7 @@ layout: default
               <div id="series-content">
                 <div class="group">
                   {% if page.sidebar.nav %}
-                    {% include series_sidebar nav=page.sidebar.nav %}
+                    {% include series_sidebar title=page.sidebar.title nav=page.sidebar.nav %}
                   {% endif %}
                   {% include suggestions_sidebar slug=page.slug invert=true %}
                 </div>
@@ -83,7 +83,7 @@ layout: default
           <header class="blog-article-header">
             {% if page.title %}
               <h1 id="page-title" class="page__title text-4xl font-extrabold leading-none tracking-tight text-gray-900" itemprop="headline">
-                {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+                {{ page.title }}
               </h1>
             {% endif %}
             {% include page__meta.html %}
@@ -100,7 +100,7 @@ layout: default
                   <!-- Mobile-->
                   <div id="series-content">
                     <div class="group">
-                  {% include series_sidebar %}
+                  {% include series_sidebar title=page.sidebar.title nav=page.sidebar.nav %}
                   </div>
                   </div>
                 </div>
@@ -143,7 +143,7 @@ layout: default
             </footer>
 
             {% if page.share %}
-              {% include social-share.html %}
+              {% include_cached social-share.html %}
             {% endif %}
 
             {% if page.funnel != 3 %}
@@ -172,58 +172,7 @@ layout: default
     </div>
   </article>
 
-  {% comment %}
-    Get 4 related posts. 
-    Cut off the first one if it's empty 
-    Get 8 funnel posts.
-    Take top 8 for next posts to read
-  {% endcomment %}
-    {% if page.id and page.related and site.related_posts.size > 0 %}
-      <div class="page__related mt-8 ml-8 mr-8">
-        <div class="page__related-title heading mb-2 text-2xl text-gray-400">
-          {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
-        </div>
-        <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-          {% assign related = site.data.indexes.related[page.slug] | slice: 0, 4 %}
-          {% if related == "" %}
-            {% assign related = "" | split: "," %}
-          {% endif %}
-          {% assign funnel = site.data.indexes.funnel[3] | sample: 8 %}
-          {% assign everything = related | concat: funnel | slice: 0, 8 %}
-          {% for post in everything %}
-            {% if page.id != post.id %}
-              {% include_cached archive-single.html post=post type="grid" lazy="true" %}
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
+    {% if page.id  %}
+      {% include_cached suggestions_footer slug=page.slug %} 
     {% endif %}
 </div>
-
-<script>
-  var dropdownList = document.getElementById('dropdown-list')
-  var dropdownIcon = document.getElementById('dropdown-icon')
-
-  function toggleSeriesContent() {
-    if (dropdownList.classList.contains('hidden')) {
-      dropdownList.classList.remove('hidden')
-      dropdownIcon.style.transform = 'rotate(180deg)'
-    } else {
-      dropdownList.classList.add('hidden')
-      dropdownIcon.style.transform = 'rotate(0deg)'
-    }
-  }
-
-  var tocDropdownList = document.getElementById('toc-dropdown-list')
-  var tocDropdownIcon = document.getElementById('toc-dropdown-icon')
-
-  function toggleToc() {
-    if (tocDropdownList.classList.contains('hidden')) {
-      tocDropdownList.classList.remove('hidden')
-      tocDropdownIcon.style.transform = 'rotate(180deg)'
-    } else {
-      tocDropdownList.classList.add('hidden')
-      tocDropdownIcon.style.transform = 'rotate(0deg)'
-    }
-  }
-</script>

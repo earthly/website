@@ -165,7 +165,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      toc: false
+      toc: true
       fbio: true
       read_time: true
       comments: false

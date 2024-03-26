@@ -1,9 +1,9 @@
-{% assign image_description = page.header.image_description | default: page.title | markdownify | strip_html | strip_newlines | escape_once %}
+{% assign image_description = page.header.image_description | default: page.title | escape_once %}
 
 <div class="page__hero">
   {% picture header /assets/images/{{ page.slug }}/header.jpg --picture class="page__hero-image" --alt {{ image_description }} %}
 
 {% if page.header.caption %}
-  <span class="page__hero-caption">{{ page.header.caption | markdownify | remove: "<p>" | remove: "</p>" }}</span>
+  <span class="page__hero-caption">{{ page.header.caption }}</span>
 {% endif %}
 </div>

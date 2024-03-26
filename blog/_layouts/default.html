@@ -6,33 +6,8 @@
 
 <head>
   {% include head.html %}
+  {% include scripts_head.html %}
 
-  <script>
-    function doOnDocumentLoaded() {
-      // Get the button
-      let mybutton = document.getElementById('scroll-button');
-      if (!mybutton) return;
-      console.log(mybutton);
-      // When the user scrolls down 20px from the top of the document, show the button
-      window.onscroll = function () {
-        scrollFunction();
-      };
-
-      function scrollFunction() {
-        if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
-          mybutton.style.display = 'block';
-        } else {
-          mybutton.style.display = 'none';
-        }
-      }
-    }
-
-    if (document.readyState === 'loading') {
-      document.addEventListener('DOMContentLoaded', doOnDocumentLoaded);
-    } else {
-      doOnDocumentLoaded();
-    }
-  </script>
 </head>
 
 <body
