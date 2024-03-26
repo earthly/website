@@ -52,10 +52,6 @@ naver_site_verification  :
 # Social Sharing
 twitter:
   username               :  &twitter "EarthlyTech"
-facebook:
-  username               :
-  app_id                 :
-  publisher              :
 og_image                 : /assets/images/logo-header.png  # default twitter preview for articles with no twitter image
 social:
   type                   : Organization # Person or Organization (defaults to Person)
