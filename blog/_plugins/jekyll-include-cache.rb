@@ -113,11 +113,11 @@ Jekyll::Hooks.register :site, :after_init do |site|
       Jekyll.logger.warn "JekyllIncludeCache:", "Caching is enabled."
       Liquid::Template.register_tag("include_cached", JekyllIncludeCache::Tag)
     # Here we can clear the cache, but it should not be needed
-      Jekyll::Hooks.register :site, :pre_render do |_site|
-       JekyllIncludeCache.reset
-      end
+      # Jekyll::Hooks.register :site, :pre_render do |_site|
+      #  JekyllIncludeCache.reset
+      # end
     else
-      Jekyll.logger.info "JekyllIncludeCache:", "Caching is disabled."
+      Jekyll.logger.debug "JekyllIncludeCache:", "Caching is disabled."
       Liquid::Template.register_tag("include_cached", Jekyll::Tags::IncludeTag)
     end
 end

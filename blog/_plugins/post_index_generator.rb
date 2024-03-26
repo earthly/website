@@ -82,7 +82,7 @@ module Jekyll
         end_time = Time.now  # Capture end time
         duration = end_time - start_time  # Calculate duration
   
-        Jekyll.logger.info "PostIndexGenerator:", "Indexes built in #{duration} seconds"
+        Jekyll.logger.debug "PostIndexGenerator:", "Indexes built in #{duration} seconds"
       end
     end
   end
