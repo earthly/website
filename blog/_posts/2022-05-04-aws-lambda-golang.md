@@ -2,8 +2,8 @@
 title: "AWS Lambda Golang With S3"
 categories:
   - Tutorials
-toc: true
 author: Adam
+toc: false
 sidebar:
   nav: "lambdas"
 internal-links:

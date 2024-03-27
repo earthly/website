@@ -18,9 +18,7 @@ last_modified_at: 2023-10-06
 ---
 **This article discusses the risks associated with using Bash eval. Advanced Bash users can use Earthly to simplify complex build tasks. [Check it out](https://cloud.earthly.dev/login).**
 
-<div class="wide">
 ![Terminal window]({{site.images}}{{page.slug}}/EbrSrlX.png)
-</div>
 
 For developers diving into the world of Linux-based systems, understanding the command-line interface (CLI) and mastering Bash scripting is an essential skill set. While graphical user interfaces (GUIs) provide a familiar environment, the command line reigns supreme in terms of automation, system management, and streamlined development workflows.
 

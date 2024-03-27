@@ -25,9 +25,7 @@ Asynchronous programming allows multiple operations to run concurrently, signifi
 
 In this tutorial, you will build a data streaming project using Kafka and Asyncio, leveraging the Reddit API to fetch real-time job submissions. You will cover setting up a Kafka cluster, configuring the Reddit API, creating a Kafka producer, processing the data asynchronously, and sending the data to a Kafka topic for downstream processing by a consumer.
 
-<div class="wide">
 ![project-architecture](https://user-images.githubusercontent.com/84702057/264901040-deb53c64-a2c6-4c60-9463-a5156d818308.png)
-</div>
 
 ## Prerequisites
 

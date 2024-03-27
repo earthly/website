@@ -2,7 +2,7 @@
 title: "Navigating Directories Like a Pro with Bash pushd and popd"
 categories:
   - Tutorials
-toc: true
+toc: false
 author: Christoph Berger
 editor: Bala Priya C
 

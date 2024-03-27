@@ -2,7 +2,7 @@
 title: "How to Set Up a Reverse Proxy in Kubernetes"
 categories:
   - Tutorials
-toc: true
+toc: false
 author: Somtochukwu Uchegbu
 editor: Mustapha Ahmad Ayodeji
 
