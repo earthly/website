@@ -15,12 +15,12 @@ Input:
   <!-- First Block for items 1-3 -->
   <div class="group mt-4 bg-blue-50 p-4">
     <header>
-      <h4 class="font-semibold text-md mb-2">Recommended for You</h4>
+      <h4 class="font-semibold text-md mb-2">Related</h4>
     </header>
     <div>
       <ul>
         {% for relate in site.data.indexes.related1[page.slug] %}
-          {% if forloop.index <= 3 and relate %}
+          {% if forloop.index <= 5 and relate %}
             <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}">‣  {{ relate.title | truncate: 30, "..." }}</a></li>
           {% endif %}
         {% endfor %}
@@ -37,21 +37,4 @@ Input:
     </p>
     </div>
   </div> 
-  <!-- Second Block for items 4-8 -->
-  {% if site.data.indexes.related1[page.slug].size > 3 %}
-  <div class="group mt-4 bg-blue-50 p-4">
-    <header>
-      <h4 class="font-semibold text-md mb-2">Spotlight on Related Content</h4>
-    </header>
-    <div>
-      <ul>
-        {% for relate in site.data.indexes.related1[page.slug] %}
-          {% if forloop.index > 3 and forloop.index <= 8 and relate %}
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}">‣  {{ relate.title | truncate: 30, "..." }}</a></li>
-          {% endif %}
-        {% endfor %}
-      </ul>
-    </div>
-  </div>
-  {% endif %}
 {% endif %}
