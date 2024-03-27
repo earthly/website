@@ -16,11 +16,7 @@ last_modified_at: 2023-07-19
 ---
 **The PyScript framework enables Python execution in web browsers. Earthly ensures your PyScript builds are reproducible. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-<div class="wide">
-
 <img src="{{site.images}}{{page.slug}}/image 1.png" alt="Pyscript header image">
-
-</div>
 
 ### Introduction
 
@@ -68,7 +64,7 @@ In this tutorial, you will be learning how to use PyScript via [the website](htt
 
 Create a HTML file and fill the code as you normally would, to display text in your browser.
 
-~~~{.bash caption=">_"}
+~~~{.html caption=""}
 <!doctype html>
 <html lang="en">
 <head>
@@ -88,14 +84,14 @@ Create a HTML file and fill the code as you normally would, to display text in y
 
 Since you are using PyScript from the pyscript website, all you have to do is include these lines in your HTML before the closing head tag.
 
-~~~{.bash caption=">_"}
+~~~{.html caption=""}
 <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css"/>
 <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
 ~~~
 
 You can now use the CSS and Javascript files from the PyScript repository in your page.
 
-~~~{.bash caption=">_"}
+~~~{.html caption=""}
 <!doctype html>
 <html lang="en">
 <head>
@@ -125,7 +121,7 @@ Write Python code in the `<py-script>` tags and view the code in your browser fo
 
 As you use PyScript, you might want to pass variables from your python program to your regular HTML code. PyScript provides a `write` method providing functionality for passing strings.
 
-~~~{.bash caption=">_"}
+~~~{.html caption=""}
 <h3>Testing <label id='name'></label></h3>
 
 <py-script>
@@ -146,7 +142,7 @@ One of the main features of PyScript is that you can use Python files, modules, 
 
 For modules and libraries in the Python standard library, you can import and use them in the `<py-script>` tags.
 
-~~~{.bash caption=">_"}
+~~~{.py caption=""}
 <py-script>
     import string
     name = "Human"
@@ -158,7 +154,7 @@ PyScript also supports a wide range of modules and libraries that are not part o
 
 You can use third-party packages by specifying them in the `<py-env>` tag and listing the names as shown below.
 
-~~~{.bash caption=">_"}
+~~~{.py caption=""}
 <py-env>
         - requests
         - beautifulsoup4
@@ -178,7 +174,7 @@ Ensure that you do not use the `<py-env>` tag in the body of your HTML; use abov
 
 If you have a Python file or module in that you want to use in your HTML, you can import it by specifying the path as thus.
 
-~~~{.bash caption=">_"}
+~~~{.yaml caption=""}
 <py-env>
 - paths:
     - /main.py
@@ -193,7 +189,7 @@ PyScript reads
 
 PyScript also provides [functionality for running Python code REPL in browsers](https://pyscript.net/examples/repl.html). To run a Python REPL on your browser, you use the `<py-repl`> tag.
 
-~~~{.bash caption=">_"}
+~~~{.html caption=""}
 <py-repl id="my-repl" auto-generate=true> </py-repl>
 ~~~
 
@@ -207,7 +203,7 @@ The most powerful use of PyScript comes is the ease of image and data visualizat
 
 Let's see how a Matplotlib plot in PyScript can be used to visualize data and images in the browser easily.
 
-~~~{.bash caption=">_"}
+~~~{.bash caption=""}
 <py-env>
       - numpy
       - matplotlib

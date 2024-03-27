@@ -63,7 +63,7 @@ layout: default
             </div>
           </div>
           {% endif %}
-          {% include suggestions_sidebar slug=page.slug %}
+          {% include suggestions_sidebar_left slug=page.slug %}
         </div>
       </div>
 
@@ -75,7 +75,7 @@ layout: default
                   {% if page.sidebar.nav %}
                     {% include series_sidebar title=page.sidebar.title nav=page.sidebar.nav %}
                   {% endif %}
-                  {% include suggestions_sidebar slug=page.slug invert=true %}
+                  {% include suggestions_sidebar_right slug=page.slug nav=page.sidebar.nav %}
                 </div>
               </div>
             </div>

@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Felix Kinaro
 editor: Muhammad Badawy
-
+toc: false
 internal-links:
  - introduction to syslog
  - what is syslog

@@ -3,7 +3,7 @@ Input:
   - slug
 
 {% endcomment %}
-
+    {% if site.data.indexes.related2[include.slug].size > 0 %}
     <div class="page__related mt-8 ml-8 mr-8">
       <div class="page__related-title heading mb-2 text-2xl text-gray-400">
         You May Also Enjoy
@@ -16,3 +16,4 @@ Input:
         {% endfor %}
       </div>
     </div>
+    {% endif %}

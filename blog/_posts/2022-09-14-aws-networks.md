@@ -4,7 +4,7 @@ categories:
   - Tutorials
 toc: true
 author: Josh
-
+toc: false
 internal-links:
  - AWS
  - subnets

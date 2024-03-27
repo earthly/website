@@ -25,9 +25,7 @@ In this article, we take a look at ten more advanced commands including bisect, 
 
 [Git remote](https://git-scm.com/docs/git-remote) can be used to list, add, remove, and update remote repositories. Git remote allows you to create shortcuts to remote repositories. These shortcuts are called "remote names". You can use remote names to refer to remote repositories in other Git commands. Think of it as a bookmark to other directories instead of links. The diagram below further explains the git remote.
 
-<div class="wide">
 ![git remote command]({{site.images}}{{page.slug}}/n97KMiO.jpg)
-</div>
 
 The diagram above shows two remote connections from `my repo` into the `main` repo and another developer's repo. The remote names for these connections are `main` and `Atello`.
 Instead of referencing the full URLs of these remote repositories in other Git commands, you can use the remote names `origin` and `Atello`.
@@ -38,9 +36,7 @@ To see the remote names of you current repository, use this command:
 git remote
 ~~~
 
-<div class="wide">
 ![Showing remotes names associated with the repository]({{site.images}}{{page.slug}}/x0ODzpJ.png)
-</div>
 
 The output shows the remote names associated with season-of_docs repository which are `oyedeletemitope` and `origin` are remote names associated with this repository.
 

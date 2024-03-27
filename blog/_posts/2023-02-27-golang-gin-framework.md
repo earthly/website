@@ -21,10 +21,7 @@ Go is increasing in popularity for many reasons, from speed to ease of use and s
 
 The Gin framework is one of the popular web packages in the Go ecosystem for building web applications. Gin provides most of the functionalities you'll need in a web framework featuring a [martini-like](https://github.com/go-martini/martini) API with high performance and easy error management.
 
-<div class="wide">
-
 ![Untitled]({{site.images}}{{page.slug}}/Untitled.png)\
-</div>
 
 Gin is extendable, and the package provides built-in rendering support for HTML, [JSON](/blog/convert-to-from-json), and XML rendering with documentation support, among many other features.
 

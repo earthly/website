@@ -12,10 +12,8 @@ last_modified_at: 2023-07-19
 
 VS Code is very extensible and you can customize it in a thousand ways using many extensions.
 
-<div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1110.png --alt {{ Tons of Extensions }} %}
 <figcaption>Tons of Extensions</figcaption>
-</div>
 
 You can also customize keybindings and even the CSS used to [render VS Code itself](https://itnext.io/easy-enhancements-for-vs-codes-terminal-6dda2c22ee5c).
 
@@ -27,8 +25,10 @@ First, create a new git repository. I'm creating mine in `/Users/adam/sandbox/vs
 
 Next, locate your settings.json file by opening it in VS Code (Ctrl-Shift-P or Command-Shift-P) and then use `copy path` to get its disk location. Repeat this same process for keybindings.json. (If you can't find it, its in the same folder.)
 
+<div class="wide">
 {% picture {{site.pimages}}{{page.slug}}/1440.png --alt {{ VS Code copy path }} %}
 <figcaption>VS Code copy path</figcaption>
+</div>
 
 ## Copy Over
 

@@ -16,9 +16,7 @@ last_modified_at: 2023-07-19
 ---
 **This article provides a clear understanding of Kubernetes security contexts. Earthly strengthens CI pipelines with advanced caching. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-<div class="wide">
 ![K8s Security Context]({{site.images}}{{page.slug}}/FB9gnth.png)\
-</div>
 
 When it comes to security in Kubernetes, it is vital to secure the individual resources of the cluster. Pods and containers are considered the core resources running in the [cluster](/blog/kube-bench) and are the fundamental building block of Kubernetes workloads. Applying security to the pod and container layer can have a huge impact on the overall security of your cluster.
 

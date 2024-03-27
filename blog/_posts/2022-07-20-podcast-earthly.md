@@ -3,6 +3,7 @@ title: "DevX Podcast Interview"
 categories:
   - News
 topcta: false
+toc: false
 author: Earthly
 excerpt: |
     In this episode of the DevX podcast, VladAIonescu shares his insights on fixing the CI/CD experience. Join the conversation to discover practical tips for improving your development process and enhancing your workflow.

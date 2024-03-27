@@ -25,9 +25,7 @@ There are other shells as well, and these shells were developed after the bash s
 2. `fish`
 3. `nushell`
 
-<div class="wide">
 ![Image Credits: Behind 'Hello World' on Linux notes]({{site.images}}{{page.slug}}/lgozFIn.png)
-</div>
 
 ## Why Learn a New Shell?
 
