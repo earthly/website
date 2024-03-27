@@ -25,9 +25,7 @@ This article will delve into the challenges and risks associated with CI/CD secu
 
 ## CI/CD Security Challenges
 
-<div class="wide">
 ![CI/CD Security Challenges]({{site.images}}{{page.slug}}//HOd4O2s.png)\
-</div>
 
 Security is essential in software development, especially in the context of CI/CD. Frequent releases increase the risk of security vulnerabilities, and hackers are always looking for new ways to exploit them. Security threats constantly evolve, so organizations need to integrate security measures throughout the CI/CD pipeline.
 

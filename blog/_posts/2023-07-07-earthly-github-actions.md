@@ -2,7 +2,7 @@
 title: "Better Together - Earthly + Github Actions"
 categories:
   - Articles
-toc: true
+toc: false
 author: Evan Pease
 topic: earthly
 funnel: 3

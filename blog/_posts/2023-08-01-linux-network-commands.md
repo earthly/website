@@ -35,9 +35,7 @@ Although the [Open Systems Interconnection (OSI)](https://www.cloudflare.com/lea
 
 Imagine you want to message a friend who lives far away. To make sure your message reaches them correctly, the internet defines a set of rules and steps your message must follow. The rules here refer to the TCP/IP protocol.
 
-<div class="wide">
 ![TCP/IP protocol stack vs the OSI reference model]({{site.images}}{{page.slug}}/n6vOgde.png)
-</div>
 
 The TCP/IP protocol stack consists of four layers, each serving a specific purpose in the transmission of data across a network. Let's clarify each layer in the stack:
 

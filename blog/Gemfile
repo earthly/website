@@ -17,7 +17,6 @@ platforms :mingw, :x64_mingw, :mswin, :jruby do
 end
 
 # required by theme:
-gem 'jekyll-include-cache'
 gem "liquid-c"
 
 gem "jekyll-inline-svg"

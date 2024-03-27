@@ -1,12 +1,8 @@
-import argparse
-import os
 from textwrap import dedent
-from typing import Callable, List, Optional, Tuple
+from typing import Callable, List, Tuple
 
-import guidance
-from guidance.models import Model
 from guidance import assistant, gen, system, user
-
+from guidance.models import Model
 
 # Patterns
 
@@ -21,9 +17,9 @@ def run_n_times(run : Callable[[], Model], n : int, answer_key : str) -> List[st
 
 ## Run and then judge
 def run_n_and_judge(model: Model, run : Callable[[], Model], n : int, answer_key : str, criteria : str) -> Tuple[str,str]:
-    list = run_n_times(run, n, answer_key) 
+    list = run_n_times(run, n, answer_key)
     with system():
-        llm = model + dedent("""
+        llm = model + dedent(f"""
          Can you please comment on the pros and cons of each of these options based on these criteria?
          ---
          Criteria:
@@ -39,7 +35,7 @@ def run_n_and_judge(model: Model, run : Callable[[], Model], n : int, answer_key
                         """)
     with assistant():
         llm += gen('thinking', temperature=0, max_tokens=2000)
-    
+
     with user():
         llm += "Please return the text of the best option, based on the above thinking. Return just the text, not its option number."
 

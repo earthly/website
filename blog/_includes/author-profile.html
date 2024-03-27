@@ -1,15 +1,14 @@
-{% assign author = page.author[0] | default: page.author | default: site.author %} 
-{% assign author = site.data.authors[author] | default: author %} 
-{% if page.fbio %}
-{% if author %}
+{%- comment -%}Check for first author and display their profile if present{%- endcomment -%}
+{% if include.author1 %}
+  {% assign author = site.data.authors[include.author1] %}
   <div
     itemscope
     itemtype="https://schema.org/Person"
-    class="flex border rounded-md items-center"
+    class="flex border rounded-md items-center my-2"
   >
     {% if author.avatar %}
     <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
-        {% picture author {{author.avatar }} --picture class="image-author" --alt {{ author.name }} % %} 
+      {% picture author {{author.avatar }} --picture class="image-author" --alt {{ author.name }} % %}
     </div>
     {% endif %}
     <div class="author__content">
@@ -24,120 +23,111 @@
       </div>
       {% if author.bio %}
       <div class="author__bio text-sm px-4" itemprop="description">
-        {{ author.bio | markdownify }}
+        {{ author.bio  }}
       </div>
       {% endif %}
     </div>
   </div>
+{% endif %}
 
-  {% if page.author2 %}
-  {% assign author2 = page.author2 %} 
-  {% assign author2 = site.data.authors[author2]%} 
-  
-  <div
-    itemscope
-    itemtype="https://schema.org/Person"
-    class="flex border rounded-md items-center mt-2"
-  >
-    {% if author2.avatar %}
-    <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
-        {% picture author {{author2.avatar }} --picture class="image-author" --alt {{ author2.name }} % %} 
-    </div>
-    {% endif %}
-    <div class="author__content">
-      <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
-        {% if author2.home %}
-        <a href="{{ author2.home | relative_url }}">
-          {{ author2.name }}
-        </a>
-        {% else %}
-        {{ author2.name }}
-        {% endif %}
-      </div>
-      {% if author2.bio %}
-      <div class="author__bio text-sm px-4" itemprop="description">
-        {{ author2.bio | markdownify }}
-      </div>
-      {% endif %}
-    </div>
-  </div>
-  {% endif %}
-
-  {% if page.author3 %}
-  {% assign author3 = page.author3 %} 
-  {% assign author3 = site.data.authors[author3]%} 
-  
-  <div
-    itemscope
-    itemtype="https://schema.org/Person"
-    class="flex border rounded-md items-center mt-2"
-  >
-    {% if author3.avatar %}
-    <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
-        {% picture author {{author3.avatar }} --picture class="image-author" --alt {{ author3.name }} % %} 
-    </div>
-    {% endif %}
-    <div class="author__content">
-      <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
-        {% if author3.home %}
-        <a href="{{ author2.home | relative_url }}">
-          {{ author3.name }}
-        </a>
-        {% else %}
-        {{ author3.name }}
-        {% endif %}
-      </div>
-      {% if author3.bio %}
-      <div class="author__bio text-sm px-4" itemprop="description">
-        {{ author3.bio | markdownify }}
-      </div>
-      {% endif %}
-    </div>
-  </div>
-  {% endif %}
-
-  {% if page.editor %}
-  {% assign editor = page.editor %} 
-  {% assign editor = site.data.authors[editor]%} 
-  
-
+{%- comment -%}Repeat blocks for author2 and author3 with similar structure{%- endcomment -%}
+{% if include.author2 %}
+  {% assign author = site.data.authors[include.author2] %}
   <div
   itemscope
   itemtype="https://schema.org/Person"
-  class="border rounded-md mt-2"
+  class="flex border rounded-md items-center my-2"
 >
-  <div class="flex flex-col">
-    <div class="text-sm px-4 pt-3">
-      <em>Writers at Earthly work closely with our talented editors to help them create high quality tutorials. This article was edited by: </em>
-    </div>
-
-    <div class="flex items-center">
-      {{ site.editor }}
-      {% if editor.avatar %}
-      <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
-        {% picture author {{editor.avatar }} --picture class="image-author" --alt {{ editor.name }} %}
-      </div>
+  {% if author.avatar %}
+  <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
+    {% picture author {{author.avatar }} --picture class="image-author" --alt {{ author.name }} % %}
+  </div>
+  {% endif %}
+  <div class="author__content">
+    <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
+      {% if author.home %}
+      <a href="{{ author.home | relative_url }}">
+        {{ author.name }}
+      </a>
+      {% else %}
+      {{ author.name }}
       {% endif %}
-      <div class="author__content">
-        <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
-          {% if editor.home %}
-          <a href="{{ editor.home | relative_url }}">
-            {{ editor.name }}
-          </a>
-          {% else %}
-          {{ editor.name }}
-          {% endif %}
-        </div>
-        {% if editor.bio %}
-        <div class="author__bio text-sm px-4" itemprop="description">
-          {{ editor.bio | markdownify }}
-        </div>
-        {% endif %}
-      </div>
     </div>
+    {% if author.bio %}
+    <div class="author__bio text-sm px-4" itemprop="description">
+      {{ author.bio | markdownify }}
+    </div>
+    {% endif %}
   </div>
 </div>
 {% endif %}
 
+{% if include.author3 %}
+  {% assign author = site.data.authors[include.author3] %}
+  <div
+  itemscope
+  itemtype="https://schema.org/Person"
+  class="flex border rounded-md items-center my-2"
+>
+  {% if author.avatar %}
+  <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
+    {% picture author {{author.avatar }} --picture class="image-author" --alt {{ author.name }} % %}
+  </div>
+  {% endif %}
+  <div class="author__content">
+    <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
+      {% if author.home %}
+      <a href="{{ author.home | relative_url }}">
+        {{ author.name }}
+      </a>
+      {% else %}
+      {{ author.name }}
+      {% endif %}
+    </div>
+    {% if author.bio %}
+    <div class="author__bio text-sm px-4" itemprop="description">
+      {{ author.bio | markdownify }}
+    </div>
+    {% endif %}
+  </div>
+</div>
 {% endif %}
+
+{%- comment -%}Check for editor and display their profile if present{%- endcomment -%}
+{% if include.editor %}
+  {% assign editor = site.data.authors[include.editor] %}
+  <div
+    itemscope
+    itemtype="https://schema.org/Person"
+    class="border rounded-md mt-2"
+  >
+    <div class="flex flex-col">
+      <div class="text-sm px-4 pt-3">
+        <em>Writers at Earthly work closely with our talented editors to help them create high quality content. This article was edited by:</em>
+      </div>
+      <div class="flex items-center">
+        {% if editor.avatar %}
+        <div class="author__avatar ml-2 min-w-[100px] max-w-[100px] flex">
+          {% picture author {{editor.avatar }} --picture class="image-author" --alt {{ editor.name }} % %}
+        </div>
+        {% endif %}
+        <div class="author__content">
+          <div class="author__name heading pl-4 text-xl font-bold mt-4" itemprop="name">
+            {% if editor.home %}
+            <a href="{{ editor.home | relative_url }}">
+              {{ editor.name }}
+            </a>
+            {% else %}
+            {{ editor.name }}
+            {% endif %}
+          </div>
+          {% if editor.bio %}
+          <div class="author__bio text-sm px-4" itemprop="description">
+            {{ editor.bio | markdownify }}
+          </div>
+          {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
 {% endif %}

@@ -14,12 +14,10 @@ Python has a vibrant open source ecosystem and that has been one of the keys to 
 
 In this 3-part series, we'll cover packaging a simple Python script using setuptools and twine, then an alternative method using poetry, then we will extend what we learn to a C module, and finally we will publish it to PyPI.
 
-<div class="wide">
+In this first article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index) using setuptools and twine. **Learning these skills will help you level up your ability to produce professional, sharable Python software.**
+
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5510.png --alt {{ Our Goal Today is to get this package onto PyPi }} %}
 <figcaption>Our Goal Today is to get this package onto PyPi</figcaption>
-</div>
-
-In this first article, I'll show you how to package your Python code into distributions, and then publish those packages on PyPI (the Python Package Index) using setuptools and twine. **Learning these skills will help you level up your ability to produce professional, sharable Python software.**
 
 ## Merge Lists Code
 

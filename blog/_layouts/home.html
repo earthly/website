@@ -23,10 +23,8 @@ indepth_posts:
 
 <div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
   <div class="col-span-1 md:col-span-6 ">
-    {% assign hero_post = site.posts | where:"slug", layout.hero_post %}
-    {% for post in hero_post %}
+    {% assign post = site.data.indexes.slug[layout.hero_post] %}
     {% include hero-story.html type=entries_layout %}
-    {% endfor %}
   </div>
 
   <div class="col-span-1 md:col-span-3 rounded-lg  bg-blue-50">
@@ -55,8 +53,8 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for slug in layout.featured_posts_1 %}
-    {% assign post = site.posts | where:"slug", slug | first %}
-    {% include archive-single.html type=entries_layout %}
+    {% assign post = site.data.indexes.slug[slug] %}
+    {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
 
@@ -83,7 +81,7 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for post in site.categories.Articles limit:6 %}
-  {% include archive-single.html type=entries_layout %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
 <a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
@@ -94,7 +92,7 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for post in site.categories.Tutorials limit:6 %}
-  {% include archive-single.html type=entries_layout %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
 <a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More tutorials...</a>
@@ -105,8 +103,8 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for slug in layout.featured_posts_2 %}
-  {% assign post = site.posts | where:"slug", slug | first %}
-  {% include archive-single.html type=entries_layout %}
+  {% assign post = site.data.indexes.slug[slug] %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
 
@@ -115,7 +113,7 @@ indepth_posts:
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for slug in layout.indepth_posts %}
-    {% assign post = site.posts | where:"slug", slug | first %}
-    {% include archive-single.html type=entries_layout %}
+    {% assign post = site.data.indexes.slug[slug] %}
+    {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>

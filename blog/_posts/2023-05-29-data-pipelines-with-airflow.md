@@ -2,7 +2,7 @@
 title: "Automating Data Pipelines and Workflows Using Apache Airflow"
 categories:
   - Tutorials
-toc: true
+toc: false
 author: Ansam Yousry
 editor: Bala Priya C
 

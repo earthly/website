@@ -30,9 +30,7 @@ However, it can be hard to trust fancy tools like `ngrok` until you experience h
 
 To understand why `ngrok` is so cool, you'll need to first understand how you would normally get traffic from the broader internet into your local machine. A typical flow would be something like this:
 
-<div class="wide">
 ![Diagram showing the flow of traffic from a users web browser, through the internet, a home router, and finally the users computer. It points out that the user controls the DNS lookup, router, and their machine.]({{site.images}}{{page.slug}}/without_ngrok.png)\
-</div>
 
 This flow is normal for most of the machines on the internet today, but it has its downsides for local development. For instance, most home and non-commerical internet connections do not have a [Static IP](https://whatismyipaddress.com/dynamic-static) - which means you need to double-check your IP address before sending it out, or (more often) install and configure additional software to keep your DNS records up to date.
 

@@ -4,6 +4,7 @@ featured: true
 author: Vlad
 categories:
   - News
+toc: false
 internal-links:
    - build automation
 topic: earthly

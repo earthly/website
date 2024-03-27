@@ -28,10 +28,8 @@ Python, for instance, was a successor to ABC, a language designed explicitly for
 
 Why is that? Well, language design is about trade-offs. If a shallow learning curve is the number one goal then things like expressiveness, rigor, performance, and maintainability can suffer.
 
-<div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/0350.png --alt {{ Values have trade-offs }} %}
 <figcaption>Values have trade-offs. Approachability benefits adoption but could harm Reliability.</figcaption>
-</div>
 
 Languages that take a different approach, Rust, Kotlin, Ocaml, or whatever, get a lot of newcomers struggling to learn their language. It can be intimidating and demotivating how slow things go. And that is just going through the beginner parts of learning. The trickier part is the intermediate stage, where you want to build things on your own.
 

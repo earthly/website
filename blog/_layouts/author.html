@@ -2,7 +2,12 @@
 layout: page
 ---
 {% assign author_data = site.data.authors[page.short_name] %}
-{% include author-profile.html %}
+{% include_cached author-profile.html 
+  author1=page.author 
+  author2=page.author2 
+  author3=page.author3 
+  editor=page.editor 
+%}
 
 {% if author.avatar %}
 <div class="author__avatar_bio justify-center flex">
@@ -17,9 +22,9 @@ itemprop="headline">
 
 {{ content }}
 
-{% assign filtered_written_posts = site.posts | where: 'author', page.short_name %}
+{% assign filtered_written_posts = site.data.indexes.author[page.short_name] %}
 {% assign filtered_featured_posts = filtered_written_posts | where: 'author', page.short_name | where:'featured', true %}
-{% assign filtered_edited_posts = site.posts | where: 'editor', page.short_name %}
+{% assign filtered_edited_posts = site.data.indexes.editor[page.short_name] %}
 
 {% if filtered_featured_posts.size != 0 %}
 <div class="text-2xl mt-4 mb-2">Featured</div>

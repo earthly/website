@@ -5,6 +5,7 @@ from typing import Optional
 
 import guidance
 from guidance import assistant, gen, system, user
+
 from psupport.core import prompts
 
 gpt4 : guidance.models.Model = guidance.models.OpenAI("gpt-4-1106-preview")
@@ -122,7 +123,7 @@ def merge_tie_in(summary: str, conclusion: str, tie_in: str) -> str:
         with assistant():
             lm += example['result']
     with system():
-        lm += dedent(f"""
+        lm += dedent("""
             Can you add the tie in to the conclusion in a way that makes sense and blends in? Rewrite it if needed.
             """)
     with user():

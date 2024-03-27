@@ -26,10 +26,8 @@ However, I can do things close to GRPC on lambda and some of them might be usefu
 
 One thing its easy to do is setup a web proxy that runs on lambda and gets requests via API GATEWAY and forwards them on.
 
-<div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/9010.png --alt {{ Two of the possible ways a Lambda can proxy to GRPC }} %}
 <figcaption>Two of the possible ways a Lambda can proxy to GRPC</figcaption>
-</div>
 
 This would enable making REST requests that ultimately are backed by a GRPC service that your AWS Lambda calls. That GRPC service would be running somewhere else and your lambda code would be proxying requests to it.
 

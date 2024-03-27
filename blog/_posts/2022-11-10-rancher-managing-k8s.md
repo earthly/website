@@ -5,7 +5,7 @@ categories:
 toc: true
 author: Damaso Sanoja
 editor: Bala Priya C
-
+toc: false
 internal-links:
  - Rancher
  - Deployment

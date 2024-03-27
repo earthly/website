@@ -12,6 +12,7 @@ python-dotenv = "^1.0.0"
 guidance = "^0.1.10"
 portalocker = "^2.8.2"
 pyyaml = "^6.0.1"
+scikit-learn = "^1.4.1.post1"
 
 [build-system]
 requires = ["poetry-core"]

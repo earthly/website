@@ -19,11 +19,7 @@
   {% assign teaser = site.teaser %}
 {% endif %}
 
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
+{% assign title = post.title %}
 
 <div class="hero-story">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
@@ -49,7 +45,7 @@
     </h2>
 
     {% include archive__meta.html type=include.type %}
-    {% if post.excerpt %}<p class="archive__item-excerpt pr-2 pt-1 pl-2 max-w-[600px]" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 260 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt pr-2 pt-1 pl-2 max-w-[600px]" itemprop="description">{{ post.excerpt | truncate: 260 }}</p>{% endif %}
   </div>
   </article>
 </div>

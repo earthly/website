@@ -4,7 +4,6 @@ categories:
   - News
 toc: true
 author: Gavin
-topcta: false
 internal-links:
  - just an example
 excerpt: |

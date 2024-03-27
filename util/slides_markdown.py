@@ -1,12 +1,13 @@
 import re
 import sys
+from typing import Any
 
-def convert_markdown(text):
+def convert_markdown(text : str) -> str:
     # First pass: Handle blocks with language and captions
     complex_pattern = re.compile(
         r'~~~\{\.(\w+)(?:\s+caption="([^"]*)")?\}\n(.*?)~~~', re.DOTALL)
     
-    def complex_replacer(match):
+    def complex_replacer(match : Any) -> str:
         language = match.group(1)
         caption = match.group(2) or "Unnamed"
         code = match.group(3).strip()
@@ -18,7 +19,7 @@ def convert_markdown(text):
     intermediary_pattern = re.compile(
         r'~~~\{(.*?)\}\n(.*?)~~~', re.DOTALL)
     
-    def intermediary_replacer(match):
+    def intermediary_replacer(match : Any) -> str:
         language = match.group(1)
         code = match.group(2).strip()
         return f"## Unnamed\n```{language}\n{code}\n```"
@@ -29,7 +30,7 @@ def convert_markdown(text):
     simple_pattern = re.compile(
         r'~~~\n(.*?)~~~', re.DOTALL)
     
-    def simple_replacer(match):
+    def simple_replacer(match : Any) -> str:
         code = match.group(1).strip()
         return "## Unnamed\n```\n" + code + "\n```"
 
@@ -37,12 +38,12 @@ def convert_markdown(text):
 
     return text
 
-def add_page_break_before_headings(text):
+def add_page_break_before_headings(text : str) -> str:
     # Regex to match headings that start with # or ##
     heading_pattern = re.compile(r'^(#{1,2}\s+.+)$', re.MULTILINE)
     
     # Function to add a markdown page break before the matched heading
-    def page_break_replacer(match):
+    def page_break_replacer(match : Any) -> str:
         return f"---\n{match.group(0)}"
 
     # Replace all occurrences of headings with themselves preceded by a page break

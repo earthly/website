@@ -17,9 +17,7 @@ last_modified_at: 2023-10-06
 ---
 **This article offers tips on staying updated on the latest GitHub Actions changes. Earthly maintains the reproducibility of your builds amidst GitHub Actions' ongoing evolution and command deprecations. [Learn how](https://cloud.earthly.dev/login).**
 
-<div class="wide">
 ![Disabled and Deprecated Workflow Commands Errors and Warnings]({{site.images}}{{page.slug}}/KyJZvzC.png)
-</div>
 
 Have you encountered failed GitHub Actions (GA) workflow runs accompanied by the error messages above? Or perhaps you've come across those unsettling warnings displayed in the screenshot? If so, you are probably wondering what these errors meant, how can you resolve them, the purpose of the environment files suggested in the warnings, and why are these actions even being deprecated.
 

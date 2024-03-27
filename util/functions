@@ -311,7 +311,7 @@ start-blog(){ # Start up blog on localhost:4002/blog.
         then
             bundle exec jekyll serve "$@"  -H 0.0.0.0 -P 4002
         else
-           bundle exec jekyll serve --future --incremental -H 0.0.0.0 -P 4002
+           bundle exec jekyll serve --future --profile --incremental -H 0.0.0.0 -P 4002
         fi 
     )
 }
@@ -319,7 +319,7 @@ start-blog(){ # Start up blog on localhost:4002/blog.
 start-blog-verbose(){ # Start up  blog will all debug info printing.
      (
         cd blog || exit
-        bundle exec jekyll serve --future --verbose --incremental --profile --trace  -H 0.0.0.0 -P 4002 | ts
+        bundle exec jekyll serve --future --incremental --profile --trace --verbose -H 0.0.0.0 -P 4002 | ts
     )
 }
 
@@ -358,6 +358,6 @@ cta_top() { # Change CTA Top
 
 check_python_code() { # type check python code 
     poetry run ruff . --fix
-    poetry run mypy --disallow-untyped-defs --ignore-missing-imports --exclude 'blog/_plugins/' --exclude 'util/suggest-links.py' --exclude 'util/cluster.py' .
+    poetry run mypy --disallow-untyped-defs --ignore-missing-imports --exclude 'blog/_plugins/' --exclude 'util/suggest-links.py' .
     poetry run vulture ./util/psupport
 }

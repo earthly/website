@@ -4,6 +4,7 @@ categories:
   - Articles
 author: Adam
 featured: true
+toc: false
 sidebar:
   nav: "thoughts"
 internal-links:

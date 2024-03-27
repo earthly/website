@@ -1,0 +1,51 @@
+<script>
+  function doOnDocumentLoaded() {
+    // Get the button
+    let mybutton = document.getElementById('scroll-button');
+    if (!mybutton) return;
+    console.log(mybutton);
+    // When the user scrolls down 20px from the top of the document, show the button
+    window.onscroll = function () {
+      scrollFunction();
+    };
+
+    function scrollFunction() {
+      if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
+        mybutton.style.display = 'block';
+      } else {
+        mybutton.style.display = 'none';
+      }
+    }
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', doOnDocumentLoaded);
+  } else {
+    doOnDocumentLoaded();
+  }
+
+
+  function toggleSeriesContent() {
+    var dropdownList = document.getElementById('dropdown-list')
+    var dropdownIcon = document.getElementById('dropdown-icon')
+    if (dropdownList.classList.contains('hidden')) {
+      dropdownList.classList.remove('hidden')
+      dropdownIcon.style.transform = 'rotate(180deg)'
+    } else {
+      dropdownList.classList.add('hidden')
+      dropdownIcon.style.transform = 'rotate(0deg)'
+    }
+  }
+
+  function toggleToc() {
+    var tocDropdownList = document.getElementById('toc-dropdown-list')
+    var tocDropdownIcon = document.getElementById('toc-dropdown-icon')
+    if (tocDropdownList.classList.contains('hidden')) {
+      tocDropdownList.classList.remove('hidden')
+      tocDropdownIcon.style.transform = 'rotate(180deg)'
+    } else {
+      tocDropdownList.classList.add('hidden')
+      tocDropdownIcon.style.transform = 'rotate(0deg)'
+    }
+  }
+</script>

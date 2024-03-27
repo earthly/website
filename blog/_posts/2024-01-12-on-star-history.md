@@ -2,7 +2,7 @@
 title: "Earthly Featured On star-history.com"
 categories:
   - News
-toc: true
+toc: false
 author: Gavin Johnson
 
 internal-links:

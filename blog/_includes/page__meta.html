@@ -13,7 +13,7 @@
 
     {% if document.read_time %}
       {% assign words_per_minute = document.words_per_minute | default: site.words_per_minute | default: 200 %}
-      {% assign words = document.content | strip_html | number_of_words %}
+      {% assign words = document.content.size | divided_by: 6 %}
 
       <span class="page__meta-readtime text-gray-500">
         <i class="far {% if include.type == 'grid' and document.read_time and document.show_date %}fa-fw {% endif %}fa-clock" aria-hidden="true"></i>

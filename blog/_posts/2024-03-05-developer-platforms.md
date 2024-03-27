@@ -2,7 +2,7 @@
 title: "Popular Developer Platforms Compared"
 categories:
   - Tutorials
-toc: true
+toc: false
 author: Damaso Sanoja
 
 internal-links:

@@ -52,10 +52,6 @@ naver_site_verification  :
 # Social Sharing
 twitter:
   username               :  &twitter "EarthlyTech"
-facebook:
-  username               :
-  app_id                 :
-  publisher              :
 og_image                 : /assets/images/logo-header.png  # default twitter preview for articles with no twitter image
 social:
   type                   : Organization # Person or Organization (defaults to Person)
@@ -148,7 +144,6 @@ plugins:
   - jekyll-sitemap
   - jekyll-feed
   - jekyll-inline-svg
-  - jekyll-include-cache
   - jekyll_picture_tag
 
 # HTML Compression
@@ -170,7 +165,7 @@ defaults:
     values:
       layout: single
       author_profile: true
-      toc: false
+      toc: true
       fbio: true
       read_time: true
       comments: false
@@ -200,6 +195,11 @@ defaults:
 picture:
   fast_build: true
   ignore_missing_images: true
+
+# If you are making changes to templates, you probably want this off
+# If working on a post, you want this on
+jekyll_include_cache:
+  enabled: true
 
 # Site banner
 banner: <b>Introducing Earthly Cloud.</b> Consistent, repeatable builds. Advanced caching for speed. Works with any CI. Get 6,000 build min/mth free! <a href="https://earthly.dev/blog/earthly-cloud-free-tier-launch/" onclick="bannerLinkClick()">Learn more</a>.

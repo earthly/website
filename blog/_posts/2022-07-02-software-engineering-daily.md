@@ -2,6 +2,7 @@
 title: "Earthly on Software Engineering Daily"
 categories:
   - News
+toc: false
 topcta: false
 author: Earthly
 excerpt: |
