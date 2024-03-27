@@ -71,32 +71,47 @@ def get_embedding(text: str, filename: str, model: str = "text-embedding-3-small
             else:
                 raise e
 
-def find_related_posts(folder_path: str) -> Dict[str, List[str]]:
+def find_related_posts(folder_path: str, max_related: int = 15, min_similarity: float = 0.3) -> Dict[str, List[str]]:
     all_files, markdown_texts = load_markdown_files(folder_path)
     embeddings = [get_embedding(text, filename) for text, filename in zip(markdown_texts, all_files)]
     embeddings = handle_nan_in_embeddings(embeddings)
     embeddings_matrix = np.array(embeddings)
-
     similarity_matrix = cosine_similarity(embeddings_matrix)
     np.fill_diagonal(similarity_matrix, 0)  # Fill diagonal with 0s to ignore self-similarity
 
     related_posts = {}
     for idx, filename in enumerate(all_files):
-        slug = extract_slug(filename)  # Use slug instead of full filename
-        related_indices = np.argsort(similarity_matrix[idx])[::-1][:5] 
-        related_slugs = [extract_slug(all_files[i]) for i in related_indices]
-        related_posts[filename] = related_slugs
-        print(f"{slug}:")
-        for related_file in related_slugs:
-            print(f"  - {related_file}")
-        print("\n")
+        slug = extract_slug(filename)
+        similarity_scores = similarity_matrix[idx]
+        related_indices = np.argsort(similarity_scores)[::-1]
+        related_slugs = []
+        for related_idx in related_indices:
+            if related_idx == idx:
+                continue  # Skip self-similarity
+            related_slug = extract_slug(all_files[related_idx])
+            related_similarity = similarity_scores[related_idx]
+            if related_similarity >= min_similarity:
+                related_slugs.append(related_slug)
+            if len(related_slugs) >= max_related:
+                break
+
+        related_posts[slug] = related_slugs
+
+    sorted_related_posts = sorted(related_posts.items(), key=lambda x: len(x[1]))
+
+    for slug, related_slugs in sorted_related_posts:
+        if related_slugs:
+            print(f"{slug}:")
+            for related_slug in related_slugs:
+                print(f" - {related_slug}")
+            print("\n")
 
     return related_posts
 
 def main() -> None:
     try:
         folder_path = "./blog/_posts"
-        related_posts = find_related_posts(folder_path)
+        related_posts = find_related_posts(folder_path, max_related=15, min_similarity=0.60)
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:

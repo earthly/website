@@ -311,7 +311,7 @@ start-blog(){ # Start up blog on localhost:4002/blog.
         then
             bundle exec jekyll serve "$@"  -H 0.0.0.0 -P 4002
         else
-           bundle exec jekyll serve --future --incremental -H 0.0.0.0 -P 4002
+           bundle exec jekyll serve --future --profile --incremental -H 0.0.0.0 -P 4002
         fi 
     )
 }
