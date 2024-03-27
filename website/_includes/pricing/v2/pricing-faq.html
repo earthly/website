@@ -5,15 +5,26 @@
 
   {% for item in site.data.pricing-faqs %}
     <div class="border-b border-gray-300 mt-5 pb-2.5 pricing-faq">
-      <div class="cursor-pointer flex items-center" onclick="toggleFAQ(this)">
+      <div class="cursor-pointer flex items-center group" onclick="toggleFAQ(this)">
         <div class="relative">
-          <img src="../../../assets/svg/minus.svg" alt="Minus Icon" />
+          <img style="width: 20px" src="../../../assets/svg/minus.svg" alt="Minus Icon" />
           <img
+            style="width: 20px"
             src="../../../assets/svg/minus.svg"
             alt="Minus Icon"
           />
         </div>
-        <div class="flex-1 font-medium text-2xl ml-2">{{ item.question }}</div>
+        <div class="flex-1 lg:flex-none font-medium text-2xl ml-2">
+          <span data-id="{{ item.question | slugify }}">{{ item.question }}</span>
+        </div>
+        <a href="/pricing#{{ item.question | slugify }}" style="margin-left: 10px">
+          <img
+            class="hidden group-hover:block"
+            style="width: 20px"
+            src="../../../assets/svg/link-black.svg"
+            alt="Link Icon"
+          />
+        </a>
       </div>
 
       <div class="answer leading-8 text-gray-500 text-lg ml-7 mt-3">
@@ -24,6 +35,18 @@
 </div>
 
 <script>
+  document.addEventListener("DOMContentLoaded", function () {
+    scrollToFAQ(window.location.hash.substring(1))
+  })
+
+  function scrollToFAQ(id) {
+    let element = document.querySelector(`[data-id="${id}"]`)
+    if (element) {
+      toggleFAQ(element.parentElement.parentElement)
+      window.scrollTo({ top: element.getBoundingClientRect().top - 200 })
+    }
+  }
+
   function toggleFAQ(elem) {
     if (elem.parentElement.classList.contains('open')) {
       elem.parentElement.classList.remove('open')
