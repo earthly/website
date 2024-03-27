@@ -16,9 +16,7 @@ last_modified_at: 2023-07-19
 ---
 **The PyScript framework enables Python execution in web browsers. Earthly ensures your PyScript builds are reproducible. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
-
 <img src="{{site.images}}{{page.slug}}/image 1.png" alt="Pyscript header image">
-
 
 ### Introduction
 
