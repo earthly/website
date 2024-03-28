@@ -1,4 +1,4 @@
-name: Create Bottom CTA PR
+name: Manual - Create Bottom CTA PR
 
 on:
   # pull_request_target:

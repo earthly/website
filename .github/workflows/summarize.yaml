@@ -1,4 +1,4 @@
-name: Add CTAs and summaries to articles
+name: Manual - Add CTAs and summaries to articles
 
 on:
   workflow_dispatch:
