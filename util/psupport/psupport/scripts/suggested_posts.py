@@ -1,6 +1,7 @@
 import os
 import pickle
 from typing import List, Dict, Tuple
+import datetime
 
 import numpy as np
 from openai import APIError, OpenAI
@@ -42,15 +43,31 @@ def handle_nan_in_embeddings(embeddings: List[List[float]]) -> List[List[float]]
     return cleaned_embeddings
 
 def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
+    today = datetime.date.today()
     all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
-    all_files = sorted(all_files)
+    filtered_files = []
+    
+    for file in all_files:
+        # Extract the date part from the filename
+        date_part = file.split('-', 3)[:3]
+        try:
+            # Convert the date part to a datetime.date object
+            file_date = datetime.date(int(date_part[0]), int(date_part[1]), int(date_part[2]))
+            # If the file date is today or in the past, add it to the list
+            if file_date <= today:
+                filtered_files.append(file)
+        except ValueError:
+            # If the date extraction or conversion fails, skip the file
+            continue
+    
+    filtered_files = sorted(filtered_files)
     markdown_texts = []
 
-    for file in all_files:
+    for file in filtered_files:
         with open(os.path.join(folder_path, file), 'r', encoding='utf-8') as f:
             markdown_texts.append(f.read())
 
-    return all_files, markdown_texts
+    return filtered_files, markdown_texts
 
 def get_embedding(text: str, filename: str, model: str = "text-embedding-3-small") -> List[float]:
     if filename in cache:

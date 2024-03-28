@@ -495,7 +495,6 @@ top-5-scala-blogs:
 
 
 monorepo-vs-polyrepo:
- - understanding-monorepos
  - setup-typescript-monorepo
  - monorepo-with-bazel
  - monorepo-tools
@@ -505,6 +504,7 @@ monorepo-vs-polyrepo:
  - build-monorepo-with-turporepo
  - javascript-monorepo-with-lerna
  - npm-workspaces-monorepo
+ - pants-python-monorepo
 
 
 every-open-core-company-should-be-a-source-available-company:
@@ -722,10 +722,10 @@ monorepo-with-bazel:
  - bazel-build
  - build-nodejs-app-with-bazel
  - setup-typescript-monorepo
- - understanding-monorepos
  - push-docker-image-bazel
  - bazel-with-rust
  - build-java-projects-with-bazel
+ - monorepo-vs-polyrepo
 
 
 dos-gaming-in-docker:
@@ -1736,10 +1736,10 @@ golang-monorepo:
  - monorepo-with-bazel
  - nx-monorepos-guide
  - build-golang-bazel-gazelle
- - understanding-monorepos
  - monorepo-tools
  - javascript-monorepo-with-lerna
  - build-monorepo-with-turporepo
+ - docker-and-makefiles
 
 
 golang-grpc-gateway:
@@ -3071,7 +3071,6 @@ cmake-vs-make-diff:
 monorepo-tools:
  - building-js-monorepo
  - monorepo-with-bazel
- - understanding-monorepos
  - pants-python-monorepo
  - nx-monorepos-guide
  - pants-build
@@ -3079,6 +3078,7 @@ monorepo-tools:
  - build-monorepo-with-turporepo
  - repeatable-builds-every-time
  - bazel-build
+ - setup-typescript-monorepo
 
 
 app-routing-in-k8-cluster:
@@ -3255,12 +3255,12 @@ setup-typescript-monorepo:
  - javascript-monorepo-with-lerna
  - build-monorepo-with-turporepo
  - nx-monorepos-guide
- - understanding-monorepos
  - monorepo-with-bazel
  - monorepo-vs-polyrepo
  - building-js-monorepo
  - golang-monorepo
  - monorepo-tools
+ - using-bazel-with-typescript
 
 
 build-and-deploy-PyApp-with-bazel:
@@ -3306,13 +3306,13 @@ building-js-monorepo:
  - monorepo-with-bazel
  - monorepo-tools
  - javascript-monorepo-with-lerna
- - understanding-monorepos
  - setup-typescript-monorepo
  - build-monorepo-with-turporepo
  - using-bazel-with-typescript
  - monorepo-vs-polyrepo
  - bazel-build
  - nx-monorepos-guide
+ - npm-workspaces-monorepo
 
 
 openshift-vs-kubernetes:
@@ -3570,9 +3570,9 @@ javascript-monorepo-with-lerna:
  - nx-monorepos-guide
  - build-monorepo-with-turporepo
  - earthly-github-actions
- - understanding-monorepos
  - monorepo-vs-polyrepo
  - golang-monorepo
+ - monorepo-tools
 
 
 python-earthly:
@@ -3604,7 +3604,6 @@ soc-type-one:
 write-for-us-anniversary:
  - write-for-us
  - welcome-josh
- - checklist
  - earthly-github-actions
  - earthly-cloud-free-tier-launch
  - programming-language-improvements
@@ -3612,6 +3611,7 @@ write-for-us-anniversary:
  - shutting-down-earthly-ci
  - hacktoberfest-2021
  - coffee-and-opensource
+ - circle-ci-with-django
 
 
 netlify-cloud-functions:
@@ -4941,7 +4941,6 @@ what-is-syslog:
 
 
 nx-monorepos-guide:
- - understanding-monorepos
  - build-monorepo-with-turporepo
  - npm-workspaces-monorepo
  - setup-typescript-monorepo
@@ -4951,6 +4950,7 @@ nx-monorepos-guide:
  - monorepo-vs-polyrepo
  - building-js-monorepo
  - golang-monorepo
+ - pants-python-monorepo
 
 
 shutting-down-earthly-ci:
@@ -5032,7 +5032,6 @@ terraform-depends-on-argument:
 
 
 build-monorepo-with-turporepo:
- - understanding-monorepos
  - nx-monorepos-guide
  - setup-typescript-monorepo
  - npm-workspaces-monorepo
@@ -5042,6 +5041,7 @@ build-monorepo-with-turporepo:
  - building-js-monorepo
  - pants-python-monorepo
  - monorepo-vs-polyrepo
+ - using-bazel-with-typescript
 
 
 devops-glossary:
@@ -5087,13 +5087,13 @@ npm-workspaces-monorepo:
  - setup-typescript-monorepo
  - nx-monorepos-guide
  - build-monorepo-with-turporepo
- - understanding-monorepos
  - javascript-monorepo-with-lerna
  - monorepo-with-bazel
  - npm-vs-npx-vs-pnmp
  - go-workspaces
  - npm-vs-yarn
  - building-js-monorepo
+ - monorepo-vs-polyrepo
 
 
 advanced-git-commands-2:
@@ -5234,9 +5234,9 @@ npm-vs-npx-vs-pnmp:
  - building-js-monorepo
  - monorepo-tools
  - javascript-monorepo-with-lerna
- - understanding-monorepos
  - build-monorepo-with-turporepo
  - what-is-nix
+ - monorepo-with-bazel
 
 
 npm-vs-yarn:
@@ -5247,9 +5247,9 @@ npm-vs-yarn:
  - docker-vagrant
  - setup-typescript-monorepo
  - dockercompose-vs-k8s
- - understanding-monorepos
  - software-dependency-management
  - monorepo-vs-polyrepo
+ - javascript-monorepo-with-lerna
 
 
 linux-security-modules:
@@ -5375,11 +5375,11 @@ pants-python-monorepo:
  - monorepo-with-bazel
  - build-monorepo-with-turporepo
  - nx-monorepos-guide
- - understanding-monorepos
  - setup-typescript-monorepo
  - javascript-monorepo-with-lerna
  - bazel-and-automated-tests
  - build-and-deploy-PyApp-with-bazel
+ - building-js-monorepo
 
 
 devtool-fm:
@@ -5718,31 +5718,5 @@ arm-containers-github-actions:
  - buildkit-secrets
  - docker-init-rust
  - containerd-docker
-
-
-checklist:
- - write-for-us
- - write-for-us-anniversary
- - terraform-init-plan-apply
- - markdown-lint
- - automate-tasks-shell-scripts
- - github-actions-and-docker
- - github-action-artifacts
- - understanding-bash
- - github-actions-reusable-workflows
- - repeatable-builds-every-time
-
-
-understanding-monorepos:
- - build-monorepo-with-turporepo
- - nx-monorepos-guide
- - setup-typescript-monorepo
- - monorepo-with-bazel
- - monorepo-vs-polyrepo
- - monorepo-tools
- - npm-workspaces-monorepo
- - building-js-monorepo
- - javascript-monorepo-with-lerna
- - pants-python-monorepo
 
 
