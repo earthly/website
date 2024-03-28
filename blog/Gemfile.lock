@@ -31,8 +31,6 @@ GEM
       terminal-table (~> 1.8)
     jekyll-feed (0.16.0)
       jekyll (>= 3.7, < 5.0)
-    jekyll-include-cache (0.2.1)
-      jekyll (>= 3.7, < 5.0)
     jekyll-inline-svg (1.1.4)
       jekyll (>= 3.3, < 5.0)
       svg_optimizer (~> 0.2.5)
@@ -106,7 +104,6 @@ PLATFORMS
 DEPENDENCIES
   jekyll (~> 4.1.1)
   jekyll-feed
-  jekyll-include-cache
   jekyll-inline-svg
   jekyll-seo-tag
   jekyll-sitemap

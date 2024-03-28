@@ -1,0 +1,48 @@
+{% comment %}
+Input: 
+  - slug
+  - invert: true
+
+{% endcomment %}
+{% comment %}
+###############################
+# Related Articles
+###############################
+{% endcomment %}
+{% unless page.sidebar.nav %}
+{% if site.data.indexes.related1[page.slug].size > 0 %}
+    <div class="group mt-4 group mt-4 p-4 pr-4 pl-4 bg-blue-50">
+  <header>
+    <h4 class="font-semibold text-md mb-2">Related</h4>
+  </header>
+  <div class="">
+    <ul>
+      {% for relate in site.data.indexes.related1[page.slug] %}
+      {% if forloop.index > 5 and relate %}
+        <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}">‣  {{ relate.title | truncate: 30, "..." }}</a></li>
+      {% endif %}
+    {% endfor %}
+    </ul>
+  </div>
+  </div> 
+{% endif %}
+{% endunless page.sidebar.nav %}
+
+{% comment %}
+######################## 
+Non-Inverted Learn More
+########################
+{% endcomment %}
+
+{% unless include.invert == true %}
+<div onclick="window.location.href='https://earthly.dev/';" class="group mt-4  p-4 pr-4 pl-4 cursor-pointer hover:bg-blue-100">
+    <header>
+      <h4 class="font-semibold text-md mb-2">Learn More About Earthly</h4>
+    </header>
+    <div class="">
+      <p class="prose">
+        Earthly makes builds super simple. <a href="">Learn More</a>
+    </p>
+    </div>
+</div> 
+{% endunless %}

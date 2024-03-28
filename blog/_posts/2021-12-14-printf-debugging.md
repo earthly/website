@@ -19,9 +19,7 @@ last_modified_at: 2023-07-19
 
 The Visual Studio debugger is fantastic. When I was a C# developer, I used it all the time.
 
-<div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/4450.png --alt {{ Visual Studio Debug Session }} %}
-</div>
 
 A typical pattern was putting a breakpoint on a failing assert in a unit test and then just poking around. I would look at all values in the current scope and see if anything looked wrong. Then I could drag the execution point around in the unit test and step into and out of the code under test.  
 

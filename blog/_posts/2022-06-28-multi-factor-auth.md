@@ -16,9 +16,7 @@ last_modified_at: 2023-07-14
 
 This is what I was told. I already had a YubiKey, but I wasn't using it for my AWS credentials and this was not smart. So many AWS accounts get compromised without MFA:
 
-<div class="wide">
 {% picture {{site.pimages}}{{page.slug}}/2090.png --alt {{ MFA troubles on reddit AWS }} %}
-</div>
 
 Previously, I'd had a slightly bad time with YubiKeys: My computer fell and crushed my key. MFA is great until you lose an F. But [Alex](/blog/authors/alex/) gave me a great solution to this problem – securely store the MFA secret key.
 
@@ -37,7 +35,9 @@ So here is what I did.
 
 I set up a virtual MFA device in AWS and before adding it to google authenticator on my phone, using the QR code, I grabbed the secret key and stored it somewhere secure.  
 
+<div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/2220.png --alt {{ MFA In Amazon }} %}
+</div>
 
 I stored it in LastPass but it could have been stored on paper in a safe, or in [Earthly Secrets](https://docs.earthly.dev/earthly-cloud/cloud-secrets). This Virtual MFA secret key needs to be treated securely because anyone with it can generate the one-time-passwords that I'm using for multi-factor authentication.
 

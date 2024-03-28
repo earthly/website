@@ -4,6 +4,7 @@ featured: true
 author: Vlad
 categories:
   - News
+toc: false
 excerpt: |
     Discover how Hacktoberfest has brought developers together to contribute to the open-source project Earthly, resulting in exciting improvements such as syntax highlighting for Sublime Text and Vim, support for edge cases, and more. Find out how Earthly managed contributions and why they are looking forward to more in this engaging post.
 last_modified_at: 2023-07-14

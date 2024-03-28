@@ -25,10 +25,10 @@ layout: default
 <div id="main" role="main">
   <article class="page bg-white" itemscope itemtype="https://schema.org/CreativeWork">
     {% if page.title %}
-      <meta itemprop="headline" content="{{ page.title | markdownify | strip_html | strip_newlines | escape_once }}" />
+      <meta itemprop="headline" content="{{ page.title | escape_once }}" />
     {% endif %}
     {% if page.excerpt %}
-      <meta itemprop="description" content="{{ page.excerpt | markdownify | strip_html | strip_newlines | escape_once | truncate: 160 }}" />
+      <meta itemprop="description" content="{{ page.excerpt | escape_once | truncate: 160 }}" />
     {% endif %}
     {% if page.date %}
       <meta itemprop="datePublished" content="{{ page.date | date_to_xmlschema }}" />
@@ -51,7 +51,8 @@ layout: default
               <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
             {% endif %}
           </div>
-          <div class="group mt-4 hidden cta-treatment">
+          {% if page.toc %}
+          <div class="group mt-4">
             <header>
               <h4 class="font-semibold text-md mb-2">Table of contents</h4>
             </header>
@@ -61,98 +62,28 @@ layout: default
               </div>
             </div>
           </div>
-          <div class="group mt-4 group mt-4 bg-blue-50 p-4 pr-4 pl-4 hidden cta-treatment">
-            <header>
-              <h4 class="font-semibold text-md mb-2">About Earthly</h4>
-            </header>
-            <div class="">
-              <p class="prose">
-                Earthly makes builds super simple. <a href="">Learn More</a>
-            </p>
-            </div>
-          </div>
-          <div class="group mt-4 hidden cta-treatment">
-            <header>
-              <h4 class="font-semibold text-md mb-2">You may also enjoy</h4>
-            </header>
-            <div class="">
-              <ul>
-                <li class="mb-1 series-item">
-                    <a href="/blog/autoconf/" class="text-sm text-gray-600 hover:underline">
-                        Using Autotools
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/make-flags" class="text-sm text-gray-600 hover:underline">
-                        Understanding Makefile Flags
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/repeatable-builds-every-time/#tips-for-taming-makefiles-in-large-teams" class="text-sm text-gray-600 hover:underline">
-                        Taming Large Makefiles
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/docker-and-makefiles" class="text-sm text-gray-600 hover:underline">
-                        Docker and Makefiles
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/makefiles-on-windows" class="text-sm text-gray-600 hover:underline">
-                        Makefiles on Windows
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/using-makefile-wildcards" class="text-sm text-gray-600 hover:underline">
-                        Makefile Wildcards
-                    </a>
-                </li>
-            
-                <li class="mb-1 series-item">
-                    <a href="/blog/makefile-variables" class="text-sm text-gray-600 hover:underline">
-                        Makefile Variables
-                    </a>
-                </li>
-            
-        </ul>
-            </div>
-          </div>
-          
-          {% if page.toc %}
-            <div class="group mt-4 cta-control">
-              <header>
-                <h4 class="font-semibold text-md mb-2">Table of contents</h4>
-              </header>
-              <div class="border-gray-300 relative border bg-white rounded-md shadow-md mt-2 hidden group-hover:block">
-                <div class="arrow border-l border-t border-gray-300 absolute z-10"></div>
-                <div class="relative z-50 pb-1 pt-1">
-                  {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="toc__menu" skip_no_ids=true %}
-                </div>
-              </div>
-            </div>
           {% endif %}
+          {% include suggestions_sidebar_left slug=page.slug %}
         </div>
       </div>
 
       <section class="page__content w-full p-2 pt-8 md:p-10 flex flex-1 flex-col items-center relative" itemprop="text">
-        {% if page.sidebar %}
-          {% if page.sidebar.nav %}
             <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block">
-              {% include nav_list nav=page.sidebar.nav %}
+              <!-- Non-Mobile-->
+              <div id="series-content">
+                <div class="group">
+                  {% if page.sidebar.nav %}
+                    {% include series_sidebar title=page.sidebar.title nav=page.sidebar.nav %}
+                  {% endif %}
+                  {% include suggestions_sidebar_right slug=page.slug nav=page.sidebar.nav %}
+                </div>
+              </div>
             </div>
-          {% endif %}
-        {% endif %}
-
         <div class="blog-article-wrap">
           <header class="blog-article-header">
             {% if page.title %}
               <h1 id="page-title" class="page__title text-4xl font-extrabold leading-none tracking-tight text-gray-900" itemprop="headline">
-                {{ page.title | markdownify | remove: "<p>" | remove: "</p>" }}
+                {{ page.title }}
               </h1>
             {% endif %}
             {% include page__meta.html %}
@@ -166,7 +97,12 @@ layout: default
                   {% svg assets/svg/chevron.svg id="dropdown-icon" width="16px" height="16px" class="transition-transform" %}
                 </div>
                 <div id="dropdown-list" class="border border-gray-300 bg-white text-md rounded-md shadow-md px-4 pb-2 hidden">
-                  {% include nav_list nav=page.sidebar.nav %}
+                  <!-- Mobile-->
+                  <div id="series-content">
+                    <div class="group">
+                  {% include series_sidebar title=page.sidebar.title nav=page.sidebar.nav %}
+                  </div>
+                  </div>
                 </div>
               {% endif %}
             {% endif %}
@@ -189,7 +125,12 @@ layout: default
 
           <div class="mt-4 prose">
             {% if page.author_profile or layout.author_profile and page.type != "authors" %}
-              {% include author-profile.html %}
+            {% include_cached author-profile.html 
+              author1=page.author 
+              author2=page.author2 
+              author3=page.author3 
+              editor=page.editor 
+            %}
             {% endif %}
             <footer class="page__meta">
               {% if site.data.ui-text[site.locale].meta_label %}
@@ -202,7 +143,7 @@ layout: default
             </footer>
 
             {% if page.share %}
-              {% include social-share.html %}
+              {% include_cached social-share.html %}
             {% endif %}
 
             {% if page.funnel != 3 %}
@@ -231,59 +172,7 @@ layout: default
     </div>
   </article>
 
-  {% comment %}
-    <!-- only show related on a post page when `related: true` -->
-    <!-- only show related on a post in prod, to speed rendering -->
-    <!-- 
-      Get related topics where funnel step is 2 and funnel=3 and combine them and grab first 8
-      Putting related ones first.
-    -->
-  {% endcomment %}
-  {% if jekyll.environment == "production" %}
-    {% if page.id and page.related and site.related_posts.size > 0 %}
-      <div class="page__related mt-8 ml-8 mr-8">
-        <div class="page__related-title heading mb-2 text-2xl text-gray-400">
-          {{ site.data.ui-text[site.locale].related_label | default: "You May Also Enjoy" }}
-        </div>
-        <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-          {% assign related = site.posts | where: "funnel",3 | sample: 10 %}
-          {% assign topics = site.posts | where: "topic", page.topic | where: "funnel", 2 | sample: 10 %}
-          {% assign everything = topics | concat: related  | slice: 0, 8 %}
-          {% for post in everything %}
-            {% if page.id != post.id %}
-              {% include archive-single.html type="grid" lazy="true" %}
-            {% endif %}
-          {% endfor %}
-        </div>
-      </div>
+    {% if page.id  %}
+      {% include_cached suggestions_footer slug=page.slug %} 
     {% endif %}
-  {% endif %}
 </div>
-
-<script>
-  var dropdownList = document.getElementById('dropdown-list')
-  var dropdownIcon = document.getElementById('dropdown-icon')
-
-  function toggleSeriesContent() {
-    if (dropdownList.classList.contains('hidden')) {
-      dropdownList.classList.remove('hidden')
-      dropdownIcon.style.transform = 'rotate(180deg)'
-    } else {
-      dropdownList.classList.add('hidden')
-      dropdownIcon.style.transform = 'rotate(0deg)'
-    }
-  }
-
-  var tocDropdownList = document.getElementById('toc-dropdown-list')
-  var tocDropdownIcon = document.getElementById('toc-dropdown-icon')
-
-  function toggleToc() {
-    if (tocDropdownList.classList.contains('hidden')) {
-      tocDropdownList.classList.remove('hidden')
-      tocDropdownIcon.style.transform = 'rotate(180deg)'
-    } else {
-      tocDropdownList.classList.add('hidden')
-      tocDropdownIcon.style.transform = 'rotate(0deg)'
-    }
-  }
-</script>

@@ -1,6 +1,7 @@
 {% comment %}
     Default teaser image to teaser.jpg
 {% endcomment %}
+{% assign post = include.post %}
 {% assign teaser1 = "assets/images/" | append: post.slug | append: "/teaser.jpg" %}
 {% capture teaser_default %}{% file_exists {{ teaser1 }} %}{% endcapture %}
 
@@ -19,11 +20,7 @@
   {% assign teaser = site.teaser %}
 {% endif %}
 
-{% if post.id %}
-  {% assign title = post.title | markdownify | remove: "<p>" | remove: "</p>" %}
-{% else %}
-  {% assign title = post.title %}
-{% endif %}
+{% assign title = post.title %}
 
 <div class="{{ include.type | default: 'grid' }}__item mb-6 rounded-lg border border-slate-300 pb-5">
   <article class="archive__item" itemscope itemtype="https://schema.org/CreativeWork">
@@ -54,7 +51,7 @@
     {% endif %}
 
     {% include archive__meta.html type=include.type %}
-    {% if post.excerpt %}<p class="archive__item-excerpt pl-2 pt-1 pr-2" itemprop="description">{{ post.excerpt | markdownify | strip_html | truncate: 160 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt pl-2 pt-1 pr-2" itemprop="description">{{ post.excerpt | truncate: 160 }}</p>{% endif %}
   </div>
   </article>
 </div>

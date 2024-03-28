@@ -2,7 +2,7 @@
 title: "Saving an Hour a Day with Docker Build Cloud"
 categories:
   - Tutorials
-toc: true
+toc: false
 author: Damaso Sanoja
 
 internal-links:
