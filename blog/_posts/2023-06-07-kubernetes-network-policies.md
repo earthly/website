@@ -16,6 +16,7 @@ excerpt: |
     Learn how to secure your Kubernetes cluster with network policies, which allow you to control and secure communication between pods and services. Discover the benefits of using network policies, such as improved security, compliance, resource optimization, and troubleshooting capabilities. Apply network policies in a demo to control traffic between namespaces and ensure the safety and integrity of your cluster.
 last_modified_at: 2023-07-19
 ---
+<!-- markdownlint-disable MD036 -->
 **This article discusses the role of Kubernetes network policies in managing and securing network traffic within Kubernetes clusters. It briefly explains how these policies enable selective traffic flow to enhance cluster security.​**
 
 Kubernetes Network Policy is a set of rules that define how network traffic flows within a Kubernetes cluster. It is used to control and secure communication between pods and services in a Kubernetes cluster.
