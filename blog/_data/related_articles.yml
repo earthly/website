@@ -89,6 +89,7 @@ self-hosted-satellites:
  - larger-satellite-sizes
  - earthly-v0-8
  - konfig
+ - auto-skip
  - on-star-history
  - docker-build-cloud
 
@@ -133,27 +134,27 @@ developer-portals-backstage:
  - docker-init-nodejs
 
 
+auto-skip:
+ - earthly-v0-8
+ - self-hosted-satellites
+ - docker-build-cloud
+ - konfig
+ - cargo-chef
+ - incremental-rust-builds
+ - rust-sccache
+ - build-buildkit-cache
+
+
 earthly-v0-8:
  - konfig
  - self-hosted-satellites
+ - auto-skip
  - incremental-rust-builds
  - larger-satellite-sizes
  - on-star-history
  - python-monorepo
  - docker-init-in-go
  - cargo-chef
-
-
-rust-sccache:
- - incremental-rust-builds
- - cargo-chef
- - cargo-workspace-crates
- - rust-monorepo
- - docker-init-rust
- - build-buildkit-cache
- - docker-build-cloud
- - future-is-rusty
- - konfig
 
 
 cargo-workspace-crates:
@@ -5456,7 +5457,7 @@ incremental-rust-builds:
  - docker-build-cloud
  - build-buildkit-cache
  - earthly-v0-8
- - future-is-rusty
+ - auto-skip
 
 
 nerdctl:
@@ -5641,6 +5642,19 @@ python-monorepo:
  - docker-build-cloud
 
 
+rust-sccache:
+ - incremental-rust-builds
+ - cargo-chef
+ - cargo-workspace-crates
+ - rust-monorepo
+ - docker-init-rust
+ - build-buildkit-cache
+ - docker-build-cloud
+ - auto-skip
+ - future-is-rusty
+ - konfig
+
+
 cargo-chef:
  - incremental-rust-builds
  - docker-init-rust
@@ -5730,3 +5744,5 @@ understanding-monorepos:
  - building-js-monorepo
  - javascript-monorepo-with-lerna
  - pants-python-monorepo
+
+
