@@ -3,14 +3,12 @@
 
 {% assign title_separator = site.title_separator | default: '-' | replace: '|', '&#124;' %}
 
-{%- if page.html-title -%}
+{%- if page.html-title and page.html-title != "" -%}
   {%- assign seo_title = page.html-title | append: " " | append: title_separator | append: " " | append: site.title -%}
-{%- else if page.title -%}
+{%- elsif page.title and page.title != "" -%}
   {%- assign seo_title = page.title | append: " " | append: title_separator | append: " " | append: site.title -%}
-{%- endif -%}
-
-{%- if seo_title -%}
-  {%- assign seo_title = seo_title | escape_once -%}
+{%- else -%}
+  {%- assign seo_title = site.title -%}
 {%- endif -%}
 
 {% if page.canonical_url %}
