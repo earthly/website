@@ -42,7 +42,7 @@ Now, if you look at these three numbers as a point in three-dimensional space, y
 
 In our footwear, construction materials, and pets website, we should find that this view of ours has three pretty clear clusters of related data, but there might be some outlier groups for the pet rock people of the world. This projection of the data is a text embedding.
 
-The problem with all this is coming up with all the dimensions and the giant membership list for every word that's important to you. In the real world, we will have a lot more words than this, and we will need a lot more categories to disambiguate them. For instance, many words would score [0,0,0] like `sadness` or `purple` and `philosophy` even though they have nothing to do with each other. We will get to that soon enough, but assuming we have these values, how do we figure out what's related to what?
+The problem with all this is coming up with all the dimensions and the giant membership list for every word that's important to you. In the real world, we will have a lot more words than this, and we will need a lot more categories to disambiguate them. For instance, many words would score `[0,0,0]` like `sadness` or `purple` and `philosophy` even though they have nothing to do with each other. We will get to that soon enough, but assuming we have these values, how do we figure out what's related to what?
 
 ## What Is Cosine Similarity
 
