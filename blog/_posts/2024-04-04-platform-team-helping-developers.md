@@ -10,7 +10,10 @@ internal-links:
  - platform team helping your developers
  - platform team useful for developers
  - developers being helped by platform team
+excerpt: |
+    Platform teams support development teams by building internal tools and platforms that automate processes and provide self-service access to infrastructure resources, improving productivity, application quality, and time to market. Collaboration between platform teams and development teams is crucial, and following best practices such as documenting processes and optimizing for performance and scalability can maximize the success of a platform team.
 ---
+**The article highlights the crucial role of platform teams in enhancing developer efficiency. Earthly significantly increases developer productivity by ensuring consistent and reproducible builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Platform teams support the work of development teams by building internal tools and platforms that automate processes, unify operations, and enable self-service developer access to infrastructure resources.
 
