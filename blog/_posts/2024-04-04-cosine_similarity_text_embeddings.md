@@ -1,5 +1,5 @@
 ---
-title: "Put Your Best Title Here"
+title: "Consine Similarity and Text Embeddings"
 categories:
   - Tutorials
 toc: true
@@ -64,43 +64,107 @@ You'll notice that the angle between these points is quite large. But if we comp
 <figcaption>Small Angle Between Dog and Cat</figcaption>
 </div>
 
-So the angle is a great measurement to use for simularity and thankfully it's fairly easy to calcualate. 
+So the angle is a great measurement to use for simularity and thankfully it's fairly easy to calcualate. This is high school math, but we are just going to be adding some more dimemsions.
 
-Cosine similarity is a metric used to measure how similar two entities (in your case, blog posts represented by their text embeddings) are irrespective of their size. Mathematically, it measures the cosine of the angle between two vectors projected in a multi-dimensional space. The closer the cosine value is to 1, the smaller the angle and the greater the similarity between the two vectors.
 
-In the context of your 3-dimensional example with `items`, you can think of each item as a point in a 3D space. The dimensions of this space are defined by your categories: `isPet`, `isConstruction`, and `isMaterial`. Each item (e.g., "dog", "cat", "brick") is represented by a vector in this space, pointing from the origin (0, 0, 0) to its coordinates (for example, "dog" would point to (1.0, 0.0, 0.0)).
-
-### Why Cosine Similarity?
-
-Imagine shining a flashlight from the origin towards each item's vector. The shadows of vectors that fall closer together will look more alike than those that are far apart if you look down from above. Cosine similarity essentially measures how similar these shadows are, ignoring how far from the origin (how "long") the vectors are. This makes it perfect for comparing the "direction" of the vectors (which represents the similarity in terms of categories) rather than their magnitude (which could be influenced by other factors like the length of a blog post).
-
-### Explaining with the 3D Example
-
-To bring this to life with your 3D example, let's calculate the cosine similarity between two items, say "dog" and "cat":
-
-- "dog" is represented by the vector [1.0, 0.0, 0.0].
-- "cat" is represented by the vector [1.0, 0.0, 0.0].
-
-The cosine similarity formula is:
-
-\[ \text{Cosine Similarity} = \frac{A \cdot B}{\|A\| \|B\|} \]
-
-where:
-- \(A \cdot B\) is the dot product of vectors A and B,
-- \(\|A\|\) and \(\|B\|\) are the magnitudes (lengths) of the vectors.
-
-For "dog" and "cat", both the dot product and the magnitudes would result in:
-
-\[ \text{Cosine Similarity} = \frac{(1.0 \times 1.0) + (0.0 \times 0.0) + (0.0 \times 0.0)}{\sqrt{(1.0^2 + 0.0^2 + 0.0^2)} \times \sqrt{(1.0^2 + 0.0^2 + 0.0^2)}} = \frac{1}{1} = 1 \]
-
-A cosine similarity of 1 means the vectors are identical in terms of direction, indicating maximum similarity—in this case, both "dog" and "cat" are fully within the "isPet" category, and not at all in the others, making them very similar within the context of your categories.
-
-### Python Example
-
-Let's see how you could implement a simple cosine similarity function in Python to compare any two items from your `items` dictionary:
-
-```python
+```
 import numpy as np
+
+def calculate_angle_degrees(vector_a, vector_b):
+    dot_product = np.dot(vector_a, vector_b)
+    magnitude_a = np.linalg.norm(vector_a)
+    magnitude_b = np.linalg.norm(vector_b)
+    cosine_of_angle = dot_product / (magnitude_a * magnitude_b)
+    angle_in_degrees = np.degrees(np.arccos(cosine_of_angle))
+    return angle_in_degrees
+
+# Example vectors for 'brick' and 'shoe'
+vector_brick = np.array([0.1, 1.0, 0.1])
+vector_shoe = np.array([0.1, 0.1, 1.0])
+
+calculate_angle_degrees(vector_brick, vector_shoe)
+```
+ ( How we calculate that angle isn't that important, if you just want to gloss over it. )
+
+ This gives `78.118` degress for the angle between brick and show. The maximum possible angle with this formula is 90 degrees, completely perpendicular to each other. And the min value is 0 degrees, the two angles are exactly the same.
+
+
+ To get a similarity score, we just need to invert these values to get them between 0 and 1. 0 degress should be our exact match value 1 and 90 degrees should be 0. That projection is the consine of the angle. 
+
+
+ ```
+ import numpy as np
+
+def cosine_similarity(vector_a, vector_b):
+    dot_product = np.dot(vector_a, vector_b)
+    magnitude_a = np.linalg.norm(vector_a)
+    magnitude_b = np.linalg.norm(vector_b)
+    return dot_p
+
+cosine_similarity(vector_brick, vector_shoe)
+
+ ```
+
+The similarity between `brick` and `shoe` is 0.20. Not very high, corresponding to an angle of ~70 degress of difference. That is the consine simularity.
+
+For our silly little example, we now have all the components we need. We can take all our words, for every possible combination of them calculate the cosine similarity and return the N values as our related items for each.
+
+Now lets talk about doing this in the real world.
+
+# Word2Vec
+
+In the real world, things don't cleanly seperate into 3 dimentions and we can't possibly manually come of the dimensions for every english word. Thankfully in 2013,  Tomáš Mikolov at Google came up with a techinque to calculate vectors for words based on a corpus of training data. 
+
+How it works isn't important for our purposes, besides that in the vector values generated with word2vect, similar words are near each other and disimlar words are far away. Because of this grouping, we can use the same techniques as above, cosine simularity to calculate relatedness. 
+
+We can test this out by grabbing word2vect dataset :
+```
+python -m spacy download en_core_web_lg
+```
+And then using spacy to test it out:
+```
+import spacy
+
+# Load a large English model with word vectors included
+nlp = spacy.load('en_core_web_lg')
+
+# Access the vector for a specific word
+dog_vector = nlp('dog').vector
+
+print(dog_vector)
+```
+
+In word2vec, the dimensions are discoved via training and are opaque to us. It's not clear what any specific dimension means looking at the raw vectors, just that they group related items together. To make this all work, the dimementions size in `en_core_web_lg` is 300 instead of our previous 3. That makes it much harder to visualize.
+
+```
+print(dog_vector)
+[ 1.2330e+00  4.2963e+00 -7.9738e+00 -1.0121e+01  1.8207e+00  1.4098e+00
+ -4.5180e+00 -5.2261e+00 -2.9157e-01  9.5234e-01  6.9880e+00  5.0637e+00
+ -5.5726e-03  3.3395e+00  6.4596e+00 -6.3742e+00  3.9045e-02 -3.9855e+00
+  1.2085e+00 -1.3186e+00 -4.8886e+00  3.7066e+00 -2.8281e+00 -3.5447e+00
+  7.6888e-01  1.5016e+00 -4.3632e+00  8.6480e+00 -5.9286e+00 -1.3055e+00
+  8.3870e-01  9.0137e-01 -1.7843e+00 -1.0148e+00  2.7300e+00 -6.9039e+00
+  8.0413e-01  7.4880e+00  6.1078e+00 -4.2130e+00 -1.5384e-01 -5.4995e+00
+  1.0896e+01  3.9278e+00 -1.3601e-01  7.7732e-02  3.2218e+00 -5.8777e+00
+  6.1359e-01 -2.4287e+00  6.2820e+00  1.3461e+01  4.3236e+00  2.4266e+00
+ -2.6512e+00  1.1577e+00  5.0848e+00 -1.7058e+00  3.3824e+00  3.2850e+00
+ ...
+```
+
+Using this data set we can skip the whole creating our own vectors:
+```
+
+import spacy
+import numpy as np
+
+# Load a large English model with word vectors included
+nlp = spacy.load('en_core_web_lg')
+
+# Access the vector for a specific word
+dog_vector = nlp('dog').vector
+bulldog_vector = nlp('bulldog').vector
+shoe_vector = nlp('shoe').vector
+brick_vector = nlp('brick').vector
 
 def cosine_similarity(vector_a, vector_b):
     dot_product = np.dot(vector_a, vector_b)
@@ -108,15 +172,71 @@ def cosine_similarity(vector_a, vector_b):
     magnitude_b = np.linalg.norm(vector_b)
     return dot_product / (magnitude_a * magnitude_b)
 
-# Example vectors from your items dictionary
-vector_dog = np.array([1.0, 0.0, 0.0])
-vector_cat = np.array([1.0, 0.0, 0.0])
+similarity_dog_bulldog = cosine_similarity(dog_vector, bulldog_vector)
+similarity_shoe_brick = cosine_similarity(shoe_vector, brick_vector)
+```
+```
+Dog, Bulldog similarity: 0.6215080618858337
+show, brick similarity: 0.301258385181427
+```
+And we see that Dog is over twice as related to BullDog as shoe is to Brick. Seems vaguely right. Surpriingly to me, 'dog' is closer to 'cat' than to 'bulldog' but this will work for our purposes.
 
-# Calculating the cosine similarity between 'dog' and 'cat'
-similarity = cosine_similarity(vector_dog, vector_cat)
-print(f"The cosine similarity between 'dog' and 'cat' is: {similarity}")
+## Text Embeddings
+
+So now we can do related words but in the real world it would be great to extend this to whole sentences, or titles or even full documents. The simple way to do this might be find the vector of each word in the document and then combine these vectors.
+
+This literally is a techique that can be used but it hits some problems. Primlarly the issue is that writing is complex. The meaning of a sentence is not a combination of the meaning of the various words. "I like dogs" and "I hate dogs" mean the opposite but by combining the weights of indivisual vectors these will end up very close to each other, since all but 1 word is exactly that same. Meanwhile a sentence like "You love dogs" will end up further away, becasuse of the difference between "You and "I"
+
+Thankfully, we now have better approaches. A text embedding is vector, similar to a word2vec vector, but produced based on a whole piece of text ( a word a sentence, a document ) that produces vectors based on a richer semantic understanding of the text. 
+
+
 ```
 
-This approach, scaled up from your simplified 3D model to the high-dimensional space used by text embeddings, lets you automatically determine related blog posts based on the similarity of their content, operationalized through the cosine similarity of their embedding vectors.
+import os
+from openai import APIError, OpenAI
+from sklearn.metrics.pairwise import cosine_similarity
 
-## How similar is similar enough?
+# Set your OpenAI API key here
+client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
+
+def get_text_embedding(text):
+    embedding = client.embeddings.create(input=text, model="text-embedding-3-large"
+
+).data[0].embedding
+    return embedding
+
+def calculate_cosine_similarity(vector1, vector2):
+    return cosine_similarity([vector1], [vector2])[0][0]
+
+sentences = {
+    'like': "I like dogs.",
+    'love': "You love dogs.",
+    'dont_like': "I hate dogs."
+}
+
+embeddings = {label: get_text_embedding(text) for label, text in sentences.items()}
+
+similarity_like_love = calculate_cosine_similarity(embeddings['like'], embeddings['love'])
+similarity_like_dont_like = calculate_cosine_similarity(embeddings['like'], embeddings['dont_like'])
+
+closest_sentence_label = 'love' if similarity_like_love > similarity_like_dont_like else 'dont_like'
+closest_sentence_similarity = similarity_like_love if similarity_like_love > similarity_like_dont_like else similarity_like_dont_like
+
+print(f"The closest to '{sentences['like']}' is '{sentences[closest_sentence_label]}'")
+print(f"Similarity: {closest_sentence_similarity}")
+
+```
+```
+The closest to 'I like dogs.' is 'You love dogs.'
+Similarity: 0.7072032971889817
+```
+
+In a text embedding, the context of the surrounding words enriches the semantic meaning so that "I like dogs" is more closely related to "You love dogs" then "I hate dogs".
+
+How this is all done is outside the scope of this article but with the OpenAI embedding api it's done using Generative Pre-trained Transformers.
+
+## Putting it all together
+
+With all of this information together. I can now calculate related items for this very blog. You can see them rigt now in the side bar and the code is [in github]. You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine simularity to find what posts are closest to it. 
+
+The great thing about this technique is as text embedding techinology continues to improve, it gets easier and easier to find related items.

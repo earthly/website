@@ -1,11 +1,11 @@
-# import os
+import os
 # import pickle
 # from typing import List, Dict, Tuple
 # import datetime
 
 # import numpy as np
 # from openai import APIError, OpenAI
-# from sklearn.metrics.pairwise import cosine_similarity
+from sklearn.metrics.pairwise import cosine_similarity
 
 # client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
@@ -137,63 +137,122 @@
 # if __name__ == "__main__":
 #     main()
 
-import numpy as np
-from openai import OpenAI
-from sklearn.metrics.pairwise import cosine_similarity
-import os
+# import numpy as np
+# from openai import OpenAI
+# from sklearn.metrics.pairwise import cosine_similarity
+# import os
 
+# client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
+
+# def get_embedding(text: str, model: str = "text-embedding-3-small") -> np.ndarray:
+#     embedding = client.embeddings.create(input=text, model=model).data[0].embedding
+#     return np.array(embedding)
+
+# def find_related_texts(texts: dict[str, str], model: str = "text-embedding-3-small", top_related: int = 3) -> dict:
+#     titles = list(texts.keys())
+#     contents = [texts[title] for title in titles]
+#     embeddings = [get_embedding(content, model) for content in contents]
+#     print(embeddings[0])
+#     embeddings_matrix = np.array(embeddings)
+#     similarity_matrix = cosine_similarity(embeddings_matrix)
+#     np.fill_diagonal(similarity_matrix, -1)  # Fill diagonal to ignore self-similarity
+    
+#     related_texts = {}
+#     for idx, title in enumerate(titles):
+#         similarity_scores = similarity_matrix[idx]
+#         related_indices = np.argsort(similarity_scores)[::-1][:top_related]
+#         related_scores = similarity_scores[related_indices]
+#         related_titles_scores = [(titles[i], score) for i, score in zip(related_indices, related_scores)]
+#         related_texts[title] = related_titles_scores
+
+#     return related_texts
+
+# def main(texts: dict[str, str]) -> None:
+#     try:
+#         related_texts = find_related_texts(texts)
+#         for title, related_items in related_texts.items():
+#             print(f'"{title}" is related to:')
+#             for related_title, score in related_items:
+#                 print(f" - \"{related_title}\" with a similarity score of {score:.4f}")
+#     except Exception as e:
+#         print(f"An error occurred: {e}")
+
+# # texts = {
+# #     "dog":"dog",
+# #     "dog2":"dog",
+# #     "dog3":"bulldog",
+# #     "cat": "cat",
+# #     "brick":"brick",
+# #     "shoe":"shoe"
+# # }
+# # Example usage:
+# texts = {
+#    "k8s1":"Kubernetes Network Policy is a set of rules that define how network traffic flows within a Kubernetes cluster. It is used to control and secure communication between pods and services in a Kubernetes cluster.", 
+#    "k8s2":" Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.",
+#     "bazel":"One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, Bazel supports multiple languages and platforms, including Rust, and can be extended to support new languages.", 
+#     "sleep":"Timing is key to many applications, but making things happen at the right time can be challenging. For instance, sometimes you need to introduce a delay to a script to make sure actions are taken precisely when you want them to. The good news is that the `sleep` command lets you do that. With it, you can pause your Linux scripts, ensuring everything happens when it should.",
+#     "cat1":"cat",
+#     "number":"7",
+#     "cat2":"cat",
+# }
+
+# main(texts)
+
+
+# import spacy
+# import numpy as np
+
+# # Load a large English model with word vectors included
+# nlp = spacy.load('en_core_web_lg')
+
+# # Access the vector for a specific word
+# dog_vector = nlp('dog').vector
+# bulldog_vector = nlp('cat').vector
+# shoe_vector = nlp('shoe').vector
+# brick_vector = nlp('brick').vector
+
+# def cosine_similarity(vector_a, vector_b):
+#     dot_product = np.dot(vector_a, vector_b)
+#     magnitude_a = np.linalg.norm(vector_a)
+#     magnitude_b = np.linalg.norm(vector_b)
+#     return dot_product / (magnitude_a * magnitude_b)
+
+# similarity_dog_bulldog = cosine_similarity(dog_vector, bulldog_vector)
+# similarity_shoe_brick = cosine_similarity(shoe_vector, brick_vector)
+
+
+# print(f"Dog, Bulldog similarity: {similarity_dog_bulldog}")
+# print(f"show, brick similarity: {similarity_shoe_brick}")
+
+import os
+from openai import APIError, OpenAI
+from sklearn.metrics.pairwise import cosine_similarity
+
+# Set your OpenAI API key here
 client = OpenAI(api_key=os.environ.get('OPENAI_API_KEY'))
 
-def get_embedding(text: str, model: str = "text-embedding-3-small") -> np.ndarray:
-    embedding = client.embeddings.create(input=text, model=model).data[0].embedding
-    return np.array(embedding)
+def get_text_embedding(text):
+    embedding = client.embeddings.create(input=text, model="text-embedding-3-large"
 
-def find_related_texts(texts: dict[str, str], model: str = "text-embedding-3-small", top_related: int = 3) -> dict:
-    titles = list(texts.keys())
-    contents = [texts[title] for title in titles]
-    embeddings = [get_embedding(content, model) for content in contents]
-    print(embeddings[0])
-    embeddings_matrix = np.array(embeddings)
-    similarity_matrix = cosine_similarity(embeddings_matrix)
-    np.fill_diagonal(similarity_matrix, -1)  # Fill diagonal to ignore self-similarity
-    
-    related_texts = {}
-    for idx, title in enumerate(titles):
-        similarity_scores = similarity_matrix[idx]
-        related_indices = np.argsort(similarity_scores)[::-1][:top_related]
-        related_scores = similarity_scores[related_indices]
-        related_titles_scores = [(titles[i], score) for i, score in zip(related_indices, related_scores)]
-        related_texts[title] = related_titles_scores
+).data[0].embedding
+    return embedding
 
-    return related_texts
+def calculate_cosine_similarity(vector1, vector2):
+    return cosine_similarity([vector1], [vector2])[0][0]
 
-def main(texts: dict[str, str]) -> None:
-    try:
-        related_texts = find_related_texts(texts)
-        for title, related_items in related_texts.items():
-            print(f'"{title}" is related to:')
-            for related_title, score in related_items:
-                print(f" - \"{related_title}\" with a similarity score of {score:.4f}")
-    except Exception as e:
-        print(f"An error occurred: {e}")
-
-# texts = {
-#     "dog":"dog",
-#     "dog2":"dog",
-#     "dog3":"bulldog",
-#     "cat": "cat",
-#     "brick":"brick",
-#     "shoe":"shoe"
-# }
-# Example usage:
-texts = {
-   "k8s1":"Kubernetes Network Policy is a set of rules that define how network traffic flows within a Kubernetes cluster. It is used to control and secure communication between pods and services in a Kubernetes cluster.", 
-   "k8s2":" Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.",
-    "bazel":"One of the key features of Bazel is its ability to speed up builds and tests. Bazel's caching and dependency analysis features facilitate fast, incremental builds. This makes it possible to quickly iterate on code changes, which can be especially useful for large teams working on a codebase. Additionally, Bazel supports multiple languages and platforms, including Rust, and can be extended to support new languages.", 
-    "sleep":"Timing is key to many applications, but making things happen at the right time can be challenging. For instance, sometimes you need to introduce a delay to a script to make sure actions are taken precisely when you want them to. The good news is that the `sleep` command lets you do that. With it, you can pause your Linux scripts, ensuring everything happens when it should.",
-    "cat1":"cat",
-    "number":"7",
-    "cat2":"cat",
+sentences = {
+    'like': "I like dogs.",
+    'love': "You love dogs.",
+    'dont_like': "I hate dogs."
 }
 
-main(texts)
+embeddings = {label: get_text_embedding(text) for label, text in sentences.items()}
+
+similarity_like_love = calculate_cosine_similarity(embeddings['like'], embeddings['love'])
+similarity_like_dont_like = calculate_cosine_similarity(embeddings['like'], embeddings['dont_like'])
+
+closest_sentence_label = 'love' if similarity_like_love > similarity_like_dont_like else 'dont_like'
+closest_sentence_similarity = similarity_like_love if similarity_like_love > similarity_like_dont_like else similarity_like_dont_like
+
+print(f"The closest to '{sentences['like']}' is '{sentences[closest_sentence_label]}'")
+print(f"Similarity: {closest_sentence_similarity}")
