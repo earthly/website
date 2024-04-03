@@ -112,6 +112,8 @@ This guide explained how platform teams help your developers improve software de
 
 Establishing a platform team requires investment, but this pays off in increased dev velocity and satisfaction. Developers can concentrate on their primary roles, freed from the intricacies of provisioning and maintaining infrastructure and other resources. Platform teams aren't necessarily suitable for all organizations—smaller groups are less likely to benefit—but they're an effective way to maintain efficiency as you scale to more apps and developers.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -120,4 +122,3 @@ Establishing a platform team requires investment, but this pays off in increased
 - [ ] Would any images look better `wide` or without the `figcaption`?
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
