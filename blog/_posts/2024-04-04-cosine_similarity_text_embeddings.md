@@ -1,5 +1,5 @@
 ---
-title: "Consine Similarity and Text Embeddings In Python with OpenAI"
+title: "Cosine Similarity and Text Embeddings In Python with OpenAI"
 categories:
   - Tutorials
 toc: true
