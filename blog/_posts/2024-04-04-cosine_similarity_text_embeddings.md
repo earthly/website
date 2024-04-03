@@ -99,7 +99,7 @@ cosine_similarity(vector_brick, vector_shoe)
 
 ~~~
 
-The similarity between `brick` and `shoe` is 0.20. Not very high, corresponding to an angle of ~70 degrees of difference. That is the cosine similarity.
+The similarity between `brick` and `shoe` is `0.20`. Not very high, corresponding to an angle of ~70 degrees of difference. That is the cosine similarity.
 
 For our silly little example, we now have all the necessary components. We can take all our words, calculate the cosine similarity for every possible combination of them, and return the N values as our related items for each.
 
