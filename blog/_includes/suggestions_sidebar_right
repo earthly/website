@@ -35,7 +35,7 @@ Non-Inverted Learn More
 {% endcomment %}
 
 {% unless include.invert == true %}
-<div onclick="window.location.href='https://earthly.dev/';" class="group mt-4  p-4 pr-4 pl-4 cursor-pointer hover:bg-blue-100">
+<div onclick="window.location.href='https://earthly.dev/';" class="group mt-4  p-4 pr-4 pl-4 cursor-pointer bg-slate-50 hover:bg-blue-100">
     <header>
       <h4 class="font-semibold text-md mb-2">Learn More About Earthly</h4>
     </header>
