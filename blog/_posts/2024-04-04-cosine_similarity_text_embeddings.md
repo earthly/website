@@ -1,24 +1,21 @@
 ---
-title: "Consine Similarity and Text Embeddings"
+title: "Consine Similarity and Text Embeddings In Python with OpenAI"
 categories:
   - Tutorials
 toc: true
 author: Adam
-
-internal-links:
- - just an example
 ---
 
-Ok, so I wanted to add related items to the side bar on the Earthly Blog. We are approaching 500 blog posts, so building this related list for each blog post manually wasn't going to work.
+Okay, so I wanted to add related items to the sidebar on the Earthly Blog. Since we are approaching 500 blog posts, building this related list for each post manually wasn't going to work.
 
-Thanksfully, with the available ML libraries and with the availabilty of the OpenAI embbeddigns API, I can using text embeddings and cosine similarity to find related blog posts in a couple lines of python. 
+Thankfully, with the available ML libraries and the OpenAI embedding API, I can use text embeddings and cosine similarity to find related blog posts in a couple of lines of Python. 
 
 
 ## What is a text embedding
 
-Imagine a simpler problem. You want to figure out how similar a given word is to another word. In this case, I have a blog page for dog, and I want to show the related post cat, and bulldog, but not ones for the inanimate objects 'shoe' and 'brick'.
+Imagine a simpler problem. You want to figure out how similar a given word is to another word. In this case, I have a blog page for `dog`, and I want to show the related post `cat`, and `bulldog`, but not ones for the inanimate objects `shoe` and `brick`.
 
-One way to solve this problem is to create a table of words, their membership in various classes. A dog and cat are both pets. A brick is a building material and a shoe is footwear. So if we have a list of bits, marking `isPet`,`isConstruction`,`isMaterial` then we can store are words like this:
+One way to solve this problem is to create a table of words and their membership in various classes. A dog and a cat are both pets. A brick is a building material, and a shoe is footwear. So if we have a list of bits, marking `isPet`,`isConstruction`,`isMaterial`, then we can store words like this:
 
 ```
 items = {
@@ -30,7 +27,7 @@ items = {
 }
 ```
 
-Pedants might say, well, someone could have a pet brick couldn't they? And maybe you could use a shoe as construction material? And yes, that is true, categoies are not all or nothing, lets make them floats from 1 to 0. The closer to 1 the more relevant the word is to the category.
+Pedants might say, well, someone could have a pet brick, couldn't they? And maybe you could use a shoe as construction material? And yes, that is true. Categories are not all or nothing. Let's make them float from 1 to 0. The closer to 1, the more relevant the word is to the category.
 
 ```
 items = {
@@ -42,29 +39,29 @@ items = {
 }
 ```
 
-Now, if you look at these three numbers as a point in 3-dimensional space, you can see what we've done is found a way to map a word into a 3-dimensional space such that items near each other are related on the dimensions we care about.
+Now, if you look at these three numbers as a point in three-dimensional space, you can see that we've found a way to map a word into three-dimensional space such that items near each other are related to the dimensions we care about.
 
 In our footwear, construction materials and pets website, we should find that this view of our has three pretty clear clusters of related data, but thre might be some out outlier groups for the pet rock people of the world. This projection of the data is a text embedding.
 
-Obviously the problem will all this is coming up with what all the dimensions are and with the giant membership list for everything word that's important to you. In the real world we will have a lot more words than this, and we will need a lot more categories, to disambiguate them. For instance, lots of words would score [0,0,0] like `sadness` or `purple` `philosophy` even though they have nothing to do with each other. We will get to that soon enough, but assuming we have these values, how do we figure out what's related to what?
+The problem with all this is coming up with all the dimensions and the giant membership list for every word that's important to you. In the real world, we will have a lot more words than this, and we will need a lot more categories to disambiguate them. For instance, many words would score [0,0,0] like `sadness` or `purple` and `philosophy` even though they have nothing to do with each other. We will get to that soon enough, but assuming we have these values, how do we figure out what's related to what?
 
-## What is cosine simularity
+## What is cosine similarity
 
-Ok, time to get a little mathy. If we take our points in three dimensional space, and treat them as a vector from [0,0,0] to their value, we get a bunch of arrows in three dimensional space. Here is dog and brick.
+Ok, it's time to get a little mathy. If we take our points in three-dimensional space and treat them as a vector from [0,0,0] to their value, we get a bunch of arrows in three-dimensional space. Here is `dog` and `brick`.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5500.png --alt {{ Large Angle Between Dog and Brick }} %}
 <figcaption>Large Angle Between Dog and Brick</figcaption>
 </div>
 
-You'll notice that the angle between these points is quite large. But if we compare related terms that's not the case.
+You'll notice that the angle between these points is quite large. But if we compare related terms, that's not the case.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5920.png --alt {{ Small Angle Between Dog and Cat }} %}
 <figcaption>Small Angle Between Dog and Cat</figcaption>
 </div>
 
-So the angle is a great measurement to use for simularity and thankfully it's fairly easy to calcualate. This is high school math, but we are just going to be adding some more dimemsions.
+So, the angle is a great measurement to use for similarity, and thankfully, it's fairly easy to calculate. This is high school math, but we are just going to be adding some more dimensions.
 
 
 ```
@@ -84,12 +81,12 @@ vector_shoe = np.array([0.1, 0.1, 1.0])
 
 calculate_angle_degrees(vector_brick, vector_shoe)
 ```
- ( How we calculate that angle isn't that important, if you just want to gloss over it. )
+ ( How we calculate that angle isn't essential if you want to gloss over it. )
 
- This gives `78.118` degress for the angle between brick and show. The maximum possible angle with this formula is 90 degrees, completely perpendicular to each other. And the min value is 0 degrees, the two angles are exactly the same.
+ This gives `78.118` degrees for the angle between `brick` and `shoe`. The maximum possible angle with this formula is 90 degrees, completely perpendicular to each other. And the min value is 0 degrees, the two angles are exactly the same.
 
 
- To get a similarity score, we just need to invert these values to get them between 0 and 1. 0 degress should be our exact match value 1 and 90 degrees should be 0. That projection is the consine of the angle. 
+ To get a similarity score, we just need to invert these values to get them between 0 and 1. 0 degrees should be our exact match value 1, and 90 degrees should be 0. That projection is the cosine of the angle. 
 
 
  ```
@@ -105,17 +102,17 @@ cosine_similarity(vector_brick, vector_shoe)
 
  ```
 
-The similarity between `brick` and `shoe` is 0.20. Not very high, corresponding to an angle of ~70 degress of difference. That is the consine simularity.
+The similarity between `brick` and `shoe` is 0.20. Not very high, corresponding to an angle of ~70 degress of difference. That is the cosine similarity.
 
-For our silly little example, we now have all the components we need. We can take all our words, for every possible combination of them calculate the cosine similarity and return the N values as our related items for each.
+For our silly little example, we now have all the necessary components. We can take all our words, calculate the cosine similarity for every possible combination of them, and return the N values as our related items for each.
 
-Now lets talk about doing this in the real world.
+Now, let's talk about doing this in the real world.
 
 # Word2Vec
 
-In the real world, things don't cleanly seperate into 3 dimentions and we can't possibly manually come of the dimensions for every english word. Thankfully in 2013,  Tomáš Mikolov at Google came up with a techinque to calculate vectors for words based on a corpus of training data. 
+In the real world, things don't cleanly separate into 3 dimensions, and we can't possibly manually calculate the dimensions for every English word. Thankfully, in 2013, Tomáš Mikolov at Google came up with a technique to calculate vectors for words based on a corpus of training data. 
 
-How it works isn't important for our purposes, besides that in the vector values generated with word2vect, similar words are near each other and disimlar words are far away. Because of this grouping, we can use the same techniques as above, cosine simularity to calculate relatedness. 
+How it works isn't important for our purposes. Besides, in the vector values generated with word2vect, similar words are near each other, and dissimilar words are far away. Because of this grouping, we can use the same techniques as above, cosine similarity, to calculate relatedness. 
 
 We can test this out by grabbing word2vect dataset :
 ```
@@ -134,7 +131,7 @@ dog_vector = nlp('dog').vector
 print(dog_vector)
 ```
 
-In word2vec, the dimensions are discoved via training and are opaque to us. It's not clear what any specific dimension means looking at the raw vectors, just that they group related items together. To make this all work, the dimementions size in `en_core_web_lg` is 300 instead of our previous 3. That makes it much harder to visualize.
+In word2vec, the dimensions are discovered via training and are opaque to us. It's not clear what any specific dimension means when looking at the raw vectors; they just group related items together. To make this all work, the dimensions of `en_core_web_lg` are 300 instead of our previous 3. That makes it much harder to visualize.
 
 ```
 print(dog_vector)
@@ -151,7 +148,7 @@ print(dog_vector)
  ...
 ```
 
-Using this data set we can skip the whole creating our own vectors:
+Using this dataset, we can skip the whole creating our own vectors:
 ```
 
 import spacy
@@ -177,17 +174,17 @@ similarity_shoe_brick = cosine_similarity(shoe_vector, brick_vector)
 ```
 ```
 Dog, Bulldog similarity: 0.6215080618858337
-show, brick similarity: 0.301258385181427
+shoe, brick similarity: 0.301258385181427
 ```
-And we see that Dog is over twice as related to BullDog as shoe is to Brick. Seems vaguely right. Surpriingly to me, 'dog' is closer to 'cat' than to 'bulldog' but this will work for our purposes.
+We see that `dog` is over twice as related to `bulldog` as `shoe` is to `brick`. This seems vaguely right to me. Surprisingly, though, 'dog' is closer to 'cat' than to 'bulldog,' but this will work for our purposes.
 
 ## Text Embeddings
 
 So now we can do related words but in the real world it would be great to extend this to whole sentences, or titles or even full documents. The simple way to do this might be find the vector of each word in the document and then combine these vectors.
 
-This literally is a techique that can be used but it hits some problems. Primlarly the issue is that writing is complex. The meaning of a sentence is not a combination of the meaning of the various words. "I like dogs" and "I hate dogs" mean the opposite but by combining the weights of indivisual vectors these will end up very close to each other, since all but 1 word is exactly that same. Meanwhile a sentence like "You love dogs" will end up further away, becasuse of the difference between "You and "I"
+We can use this, but there are some issues. The primary problem is that writing is complex. The meaning of a sentence is not a combination of the meaning of the various words. "I like dogs" and "I hate dogs" mean the opposite, but combining the weights of individual vectors will end up very close to each other since all but 1 word is precisely the same. Meanwhile, a sentence like "You love dogs" will end up further away because of the difference between "You and "I"
 
-Thankfully, we now have better approaches. A text embedding is vector, similar to a word2vec vector, but produced based on a whole piece of text ( a word a sentence, a document ) that produces vectors based on a richer semantic understanding of the text. 
+Thankfully, we now have better approaches. A text embedding is a vector, similar to a word2vec vector, but produced based on a whole piece of text ( a word, a sentence, a document ) that produces vectors based on a richer semantic understanding of the text. 
 
 
 ```
@@ -231,12 +228,12 @@ The closest to 'I like dogs.' is 'You love dogs.'
 Similarity: 0.7072032971889817
 ```
 
-In a text embedding, the context of the surrounding words enriches the semantic meaning so that "I like dogs" is more closely related to "You love dogs" then "I hate dogs".
+In a text embedding, the context of the surrounding words enriches the semantic meaning so that "I like dogs" is more closely related to "You love dogs" than "I hate dogs".
 
-How this is all done is outside the scope of this article but with the OpenAI embedding api it's done using Generative Pre-trained Transformers.
+How this is all done is outside the scope of this article, but with the OpenAI embedding API, it's done using Generative Pre-trained Transformers.
 
 ## Putting it all together
 
-With all of this information together. I can now calculate related items for this very blog. You can see them rigt now in the side bar and the code is [in github]. You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine simularity to find what posts are closest to it. 
+With all of this information, I can calculate related items for this blog. You can see them right now in the sidebar, and the code is [in github]. You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine similarity to find the posts closest to it. 
 
-The great thing about this technique is as text embedding techinology continues to improve, it gets easier and easier to find related items.
+The great thing about this technique is that as text embedding technology continues to improve, it becomes easier and easier to find related items.
