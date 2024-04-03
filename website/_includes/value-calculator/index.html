@@ -146,12 +146,12 @@
 
     // Escape non-number chars & add restriction to input fields
     var newValue = input.value.replace(/[^\d.]/, "")
-    if (!["", "."].includes(newValue) && (newValue <= 0 || isNaN(newValue))) return input.value = inputValues[id.replace("-input", "")]
+    if (!["", "."].includes(newValue) && (newValue < 0 || isNaN(newValue))) return input.value = inputValues[id.replace("-input", "")]
     input.value = newValue
 
-    // Updaye slider accordingly
+    // Update slider accordingly
     const slider = document.getElementById(id.replace("-input", ""))
-    slider.value = ["", "."].includes(newValue) ? min : newValue.endsWith(".") ? (newValue + "0") : newValue
+    slider.value = ["", "."].includes(newValue) ? 0 : newValue.endsWith(".") ? (newValue + "0") : newValue
     slider.style.backgroundSize = ((slider.value - slider.min) * 100) / (slider.max - slider.min) + "% 100%"
 
     inputValues[id.replace("-input", "")] = newValue

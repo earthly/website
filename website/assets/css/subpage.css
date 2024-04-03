@@ -375,7 +375,26 @@ p > a:visited {
   visibility: visible;
 }
 
+.included-minutes-tooltip.left-align span {
+  top: calc(100% + 10px);
+  left: 0;
+  padding: 6px 12px;
+  transform: translate(0);
+  white-space: pre-line;
+}
+
 @media screen and (min-width: 640px) {
+  .included-minutes-tooltip.left-align {
+    position: relative;
+  }
+
+  .included-minutes-tooltip.left-align span {
+    top: calc(100% + 20px);
+    left: 10px;
+    padding: 3px 12px;
+    transform: translateX(-50%);
+  }
+
   .pricing-faq.open .answer {
     max-height: 520px;
   }
