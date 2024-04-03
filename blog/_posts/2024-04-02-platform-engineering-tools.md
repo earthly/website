@@ -6,7 +6,10 @@ toc: true
 author: Alexandre Couëdelo
 
 internal-links:
- - just an example
+ - top platform engineering tools
+ - platform engineering tools
+ - mostly used platform engineering tools
+ - best platform engineering tools
 ---
 
 Platform engineering focuses on improving overall developer productivity through standardized tooling, automation, and best practices. It involves creating and managing a shared infrastructure and internal development platform (IDP) that software teams can use to develop, deploy, and operate their applications.
@@ -181,13 +184,3 @@ Platform engineering plays a crucial role in standardizing tooling, automation, 
 Picking the right tools can make all the difference when it comes to fostering a streamlined and efficient development lifecycle, enhancing collaboration, and ensuring the scalability and reliability of applications in the long run. While not every tool may be necessary for every organization, being aware of the different tools available and their roles in the industry is crucial.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
