@@ -6,7 +6,10 @@ toc: true
 author: James Walker
 
 internal-links:
- - just an example
+ - how a platform team helps your developers
+ - platform team helping your developers
+ - platform team useful for developers
+ - developers being helped by platform team
 ---
 
 Platform teams support the work of development teams by building internal tools and platforms that automate processes, unify operations, and enable self-service developer access to infrastructure resources.
@@ -118,7 +121,4 @@ Establishing a platform team requires investment, but this pays off in increased
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
