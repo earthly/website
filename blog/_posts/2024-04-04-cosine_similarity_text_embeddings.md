@@ -179,7 +179,7 @@ Dog, Bulldog similarity: 0.6215080618858337
 shoe, brick similarity: 0.301258385181427
 ~~~
 
-We see that `dog` is over twice as related to `bulldog` as `shoe` is to `brick`. This seems vaguely right to me. Surprisingly, though, 'dog' is closer to 'cat' than to 'bulldog,' but this will work for our purposes.
+We see that `dog` is over twice as related to `bulldog` as `shoe` is to `brick`. This seems vaguely right to me. Surprisingly, though, `dog` is closer to `cat` than to `bulldog`, but this will work for our purposes.
 
 ## Text Embeddings
 
