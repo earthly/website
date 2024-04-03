@@ -37,7 +37,7 @@ To establish your own IDP, you should first map out your current processes to id
 
 If this seems complicated, don't worry—several prebuilt [platforms and open source frameworks](https://earthly.dev/blog/developer-platforms/) can help you get your IDP off the ground. Spotify [Backstage](https://backstage.io), [Port](https://www.getport.io), and [Qovery](https://www.qovery.com) are some of the most popular options for rapidly deploying service catalogs and providing infrastructure access to developers.
 
-### Automating DevOps Tasks with IDPs
+### Automating DevOps Tasks With IDPs
 
 IDPs support developer workflows by automating key developer tasks. This isn't just about builds and deployments; IDPs can also automate peripheral functions such as environment provisioning, security scans, regression testing, and even new code generation using AI-driven large language models.
 
@@ -85,13 +85,13 @@ Platform engineering is the practice of creating automated internal tools and pr
 
 Building an IDP requires a significant investment, but it can be one of the most impactful steps you can take to boost developer satisfaction and reduce time to market for your products. An IDP lets you solve key DevOps pain points by achieving fast and reliable builds, consistent deployments, and simplified developer access to infrastructure and cloud environments. This frees up more time for devs to write new code that contributes value to your organization.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+* [ ] Verify look of article locally
+* [ ] Would any images look better `wide` or without the `figcaption`?
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links
