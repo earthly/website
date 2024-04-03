@@ -237,6 +237,6 @@ How this is all done is outside the scope of this article, but with the OpenAI e
 
 ## Putting It All Together
 
-With all of this information, I can calculate related items for this blog. You can see them right now in the sidebar, and the code is [in github](https://github.com/earthly/website/blob/main/util/psupport/psupport/scripts/suggested_posts.py). You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine similarity to find the posts closest to it.
+With all of this information, I can calculate related items for this blog. You can see in the sidebar, if you click around on the blog. Some articles have more related than others, for reasons that hopefully now are clear. The code is [in github](https://github.com/earthly/website/blob/main/util/psupport/psupport/scripts/suggested_posts.py). You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine similarity to find the posts closest to it.
 
 The great thing about this technique is that as text embedding technology continues to improve, it becomes easier and easier to find related items.
