@@ -22,6 +22,8 @@ In this article, you'll learn about seven of the most popular tools that platfor
 
 ## Backstage
 
+![Backstage]({{site.images}}{{page.slug}}/backstage.png)\
+
 Originally developed by Spotify as an IDP, [Backstage](https://backstage.io/) has evolved into an open source platform for building developer portals. Since its acceptance to the Cloud Native Computing Foundation (CNCF) in 2020, it's become increasingly popular. [Many companies](https://github.com/backstage/backstage/blob/master/ADOPTERS.md)—including Expedia, Netflix, and VMware—have built their developer platform on top of Backstage and created various plugins to extend its functionalities.
 
 At its core, Backstage is a software catalog, or a repository listing applications, services, and tools that are developed and used in an organization. The catalog also captures relations between various applications to provide insights and documentation to developers. Additionally, various plugins extend the possibility of gathering and displaying information; for instance, you can integrate Backstage with your CI/CD so that each entity in the catalog gets details about build and deployment status.
@@ -45,6 +47,8 @@ Additionally, because Backstage is centered around its software catalog, it take
 Backstage is a great tool for platform engineering and software development. Software catalogs like Backstage shine when you have a large number of applications (100+) distributed across multiple teams (10+). If your company isn't that big yet, Backstage may have too much configuration and maintenance overhead for your use case.
 
 ## Terraform
+
+![Terraform]({{site.images}}{{page.slug}}/terraform.png)\
 
 Created by HashiCorp in 2014, [Terraform](https://www.terraform.io/) is an open source infrastructure as code (IaC) tool. It simplifies the process of provisioning cloud infrastructure through the use of a high-level configuration language called HashiCorp Configuration Language (HCL).
 
@@ -73,6 +77,8 @@ Terraform is a good option for small and large projects. Its universal interface
 
 ## Kubernetes
 
+![Kubernetes]({{site.images}}{{page.slug}}/kubernetes.png)\
+
 [Kubernetes](https://kubernetes.io/) is an open source container orchestration system for automating software deployment, scaling, and management. It was originally designed by Google in 2014 and donated as the inaugural project to CNCF in 2015.
 
 Currently, Kubernetes is the de facto container orchestration platform, most likely due to its configuration system, which allows for declarative management (using YAML) of its components. Once the configuration is applied to a Kubernetes cluster, the control plane continuously tries to achieve the desired state, reflecting the configuration you provided.
@@ -96,6 +102,8 @@ Kubernetes is a mature container orchestration platform, but it's not for everyo
 If you're a small company, the heavy lifting and responsibility of setting up and maintaining Kubernetes clusters could slow you down. Cloud providers provide plenty of low-barrier entry solutions, from serverless (such as AWS Lambda and GCP Cloud Functions) to fully managed container orchestration platforms (such as AWS Fargate and GCP Cloud Run).
 
 ## Prometheus
+
+![Prometheus]({{site.images}}{{page.slug}}/prometheus.png)\
 
 [Prometheus](https://prometheus.io/) is an open source systems monitoring and alerting toolkit originally built at SoundCloud in 2012 and later donated to the CNCF in 2016. Prometheus played a significant role in shaping the cloud-native landscape. Its data model for metrics was so popular that it became an independent standard called [OpenMetrics](https://openmetrics.io/).
 
@@ -121,6 +129,8 @@ Prometheus has a slight learning curve, but challenges only arise on the operati
 
 ## Logstash
 
+![Logstash]({{site.images}}{{page.slug}}/logstash.png)\
+
 [Logstash](https://www.elastic.co/logstash) is an open source data processing pipeline specially designed to handle logs and events from your applications. It was created by [Jordan Sissel](https://www.elastic.co/blog/welcome-jordan-logstash) in 2009 and later became a part of the [Elastic Stack](https://www.elastic.co/elastic-stack/).
 
 Logstash can ingest data from multiple sources simultaneously, transform it, and then send it to a "stash" like Elasticsearch or even a database. It's primarily used in application log processing and analysis, but its flexible pipeline design allows it to process a vast array of data types, including metrics and events. This provides a unified tooling approach for data ingestion and transformation.
@@ -143,6 +153,8 @@ However, Logstash has a steep learning curve, and you need to be familiar with b
 
 ## Jaeger
 
+![Jaeger]({{site.images}}{{page.slug}}/jaeger.png)\
+
 [Jaeger](https://www.jaegertracing.io/) is an open source distributed tracing system built by Uber in 2015 and inspired by Google's [Dapper](https://research.google/pubs/dapper-a-large-scale-distributed-systems-tracing-infrastructure/). Uber donated the project to the CNCF in 2017.
 
 Jaeger provides client libraries for a wide range of programming languages, including Go, Java, and Python. These libraries are used to instrument your application, allowing you to record spans when a service processes a request, such as an HTTP request or database call. As the request moves from one service to another, context about the trace is passed along with the request via unique identifiers (like span ID and trace ID). Details like the operation name, duration, and metadata are collected, and the client libraries send this data to Jaeger (the collector). Once the trace data is stored, it can be queried and visualized through the Jaeger UI.
@@ -160,6 +172,8 @@ Keep in mind that Jaeger can generate a significant amount of tracing data, whic
 Jaeger is a simple tool that provides the bare minimum to visualize traces. It's easy to integrate into your application and provides a great starting point for trace monitoring. However, its UI is a bit outdated.
 
 ## SigNoz
+
+![SigNoz]({{site.images}}{{page.slug}}/signoz.png)\
 
 [SigNoz](https://signoz.io/) is an open source application performance monitoring (APM) and observability platform that was created in 2021 to solve observability fragmentation issues. To properly monitor your system, you typically need a wide range of tools or solutions.
 
