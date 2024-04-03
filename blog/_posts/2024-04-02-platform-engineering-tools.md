@@ -13,7 +13,7 @@ Platform engineering focuses on improving overall developer productivity through
 
 However, you can't expect developers to be experts in all the technologies involved in the software development process. A platform helps abstract or aggregate various tools under a unified set of interfaces.
 
-![Platform engineering and tooling, courtesy of Alexandre Couëdelo](https://i.imgur.com/j3837Ob.png)
+![Platform engineering and tooling, courtesy of Alexandre Couëdelo]({{site.images}}{{page.slug}}/j3837Ob.png)
 
 In this article, you'll learn about seven of the most popular tools that platform engineers use and the benefits that they provide.
 
@@ -186,7 +186,7 @@ Picking the right tools can make all the difference when it comes to fostering a
 - [ ] Optional: Find ways to break up content with quotes or images
 - [ ] Verify look of article locally
 - [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
