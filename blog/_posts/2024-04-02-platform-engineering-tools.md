@@ -180,6 +180,8 @@ Platform engineering plays a crucial role in standardizing tooling, automation, 
 
 Picking the right tools can make all the difference when it comes to fostering a streamlined and efficient development lifecycle, enhancing collaboration, and ensuring the scalability and reliability of applications in the long run. While not every tool may be necessary for every organization, being aware of the different tools available and their roles in the industry is crucial.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -189,4 +191,3 @@ Picking the right tools can make all the difference when it comes to fostering a
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
