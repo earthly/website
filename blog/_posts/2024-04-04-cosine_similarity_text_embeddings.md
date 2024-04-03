@@ -16,7 +16,7 @@ Imagine a simpler problem. You want to figure out how similar a given word is to
 
 One way to solve this problem is to create a table of words and their membership in various classes. A dog and a cat are both pets. A brick is a building material, and a shoe is footwear. So if we have a list of bits, marking `isPet`,`isConstruction`,`isMaterial`, then we can store words like this:
 
-~~~
+~~~{.python caption=""}
 items = {
   "dog":[1,0,0],
    "cat":[1,0,0],
@@ -28,7 +28,7 @@ items = {
 
 Pedants might say, well, someone could have a pet brick, couldn't they? And maybe you could use a shoe as construction material? And yes, that is true. Categories are not all or nothing. Let's make them float from 1 to 0. The closer to 1, the more relevant the word is to the category.
 
-~~~
+~~~{.python caption=""}
 items = {
   "dog":[1.0,0.0,0.0],
    "cat":[1.0,0.0,0.0],
@@ -62,7 +62,7 @@ You'll notice that the angle between these points is quite large. But if we comp
 
 So, the angle is a great measurement to use for similarity, and thankfully, it's fairly easy to calculate. This is high school math, but we are just going to be adding some more dimensions.
 
-~~~
+~~~{.python caption=""}
 import numpy as np
 
 def calculate_angle_degrees(vector_a, vector_b):
@@ -86,7 +86,7 @@ calculate_angle_degrees(vector_brick, vector_shoe)
 
  To get a similarity score, we just need to invert these values to get them between 0 and 1. 0 degrees should be our exact match value 1, and 90 degrees should be 0. That projection is the cosine of the angle.
 
-~~~
+~~~{.python caption=""}
  import numpy as np
 
 def cosine_similarity(vector_a, vector_b):
@@ -119,7 +119,7 @@ python -m spacy download en_core_web_lg
 
 And then using spacy to test it out:
 
-~~~
+~~~{.python caption=""}
 import spacy
 
 # Load a large English model with word vectors included
@@ -133,7 +133,7 @@ print(dog_vector)
 
 In word2vec, the dimensions are discovered via training and are opaque to us. It's not clear what any specific dimension means when looking at the raw vectors; they just group related items together. To make this all work, the dimensions of `en_core_web_lg` are 300 instead of our previous 3. That makes it much harder to visualize.
 
-~~~
+~~~{.python caption=""}
 print(dog_vector)
 [ 1.2330e+00  4.2963e+00 -7.9738e+00 -1.0121e+01  1.8207e+00  1.4098e+00
  -4.5180e+00 -5.2261e+00 -2.9157e-01  9.5234e-01  6.9880e+00  5.0637e+00
@@ -150,7 +150,7 @@ print(dog_vector)
 
 Using this dataset, we can skip the whole creating our own vectors:
 
-~~~
+~~~{.python caption=""}
 
 import spacy
 import numpy as np
@@ -189,7 +189,7 @@ We can use this, but there are some issues. The primary problem is that writing 
 
 Thankfully, we now have better approaches. A text embedding is a vector, similar to a word2vec vector, but produced based on a whole piece of text ( a word, a sentence, a document ) that produces vectors based on a richer semantic understanding of the text.
 
-~~~
+~~~{.python caption=""}
 
 import os
 from openai import APIError, OpenAI
@@ -237,6 +237,6 @@ How this is all done is outside the scope of this article, but with the OpenAI e
 
 ## Putting It All Together
 
-With all of this information, I can calculate related items for this blog. You can see them right now in the sidebar, and the code is [in github]. You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine similarity to find the posts closest to it.
+With all of this information, I can calculate related items for this blog. You can see them right now in the sidebar, and the code is [in github](https://github.com/earthly/website/blob/main/util/psupport/psupport/scripts/suggested_posts.py). You should be able to understand it. It gets the text embedding vector for each blog post and then uses cosine similarity to find the posts closest to it.
 
 The great thing about this technique is that as text embedding technology continues to improve, it becomes easier and easier to find related items.
