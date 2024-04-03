@@ -8,7 +8,7 @@ author: Adam
 
 Okay, so I wanted to add related items to the sidebar on the Earthly Blog. Since we are approaching 500 blog posts, building this related list for each post manually wasn't going to work.
 
-Thankfully, with the available ML libraries and the OpenAI embedding API, I can use text embeddings and cosine similarity to find related blog posts in a couple of lines of Python.
+Thankfully, with the available ML libraries and the OpenAI embedding API, I can use text embeddings and cosine similarity to find related blog posts in a couple of lines of Python. What are those? Well let me show you how this all works. It's not that complicated and by the end you'll be able to understand how text embedding can be used to find related documents.
 
 ## What Is A Text Embedding
 
