@@ -4,7 +4,10 @@ categories:
   - Tutorials
 toc: true
 author: Adam
+excerpt: |
+    This tutorial explains how to use text embeddings and cosine similarity in Python with OpenAI to find related blog posts. It covers the concept of text embeddings, cosine similarity, and how to calculate similarity scores using word vectors and text embeddings.
 ---
+**This article examines the use of text embeddings in various applications. Earthly's caching features significantly reduce build times. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Okay, so I wanted to add related items to the sidebar on the Earthly Blog. Since we are approaching 500 blog posts, building this related list for each post manually wasn't going to work.
 
