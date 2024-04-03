@@ -185,7 +185,7 @@ We see that `dog` is over twice as related to `bulldog` as `shoe` is to `brick`.
 
 So now we can do related words but in the real world it would be great to extend this to whole sentences, or titles or even full documents. The simple way to do this might be find the vector of each word in the document and then combine these vectors.
 
-We can use this, but there are some issues. The primary problem is that writing is complex. The meaning of a sentence is not a combination of the meaning of the various words. "I like dogs" and "I hate dogs" mean the opposite, but combining the weights of individual vectors will end up very close to each other since all but 1 word is precisely the same. Meanwhile, a sentence like "You love dogs" will end up further away because of the difference between "You and "I"
+We can use this, but there are some issues. The primary problem is that writing is complex. The meaning of a sentence is not a combination of the meaning of the various words. "I like dogs" and "I hate dogs" mean the opposite, but combining the weights of individual vectors will end up very close to each other since all but 1 word is precisely the same. Meanwhile, a sentence like "You love dogs" will end up further away because of the difference between "You" and "I"
 
 Thankfully, we now have better approaches. A text embedding is a vector, similar to a word2vec vector, but produced based on a whole piece of text ( a word, a sentence, a document ) that produces vectors based on a richer semantic understanding of the text.
 
