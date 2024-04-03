@@ -46,7 +46,7 @@ The problem with all this is coming up with all the dimensions and the giant mem
 
 ## What Is Cosine Similarity
 
-Ok, it's time to get a little mathy. If we take our points in three-dimensional space and treat them as a vector from [0,0,0] to their value, we get a bunch of arrows in three-dimensional space. Here is `dog` and `brick`.
+Ok, it's time to get a little mathy. If we take our points in three-dimensional space and treat them as a vector from `[0,0,0]` to their value, we get a bunch of arrows in three-dimensional space. Here is `dog` and `brick`.
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/5500.png --alt {{ Large Angle Between Dog and Brick }} %}
