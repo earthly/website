@@ -18,7 +18,7 @@ Microservices architecture has introduced new challenges for managing code and v
 
 A monorepo for Java typically is made up of directories for microservices, libraries, and documentation:
 
-~~~
+~~~{ caption=""}
 my-monorepo/
 ├─ microservices/
 │ ├─ MicroService1/
@@ -53,7 +53,7 @@ To help enforce structure across your projects, you can create a Maven archetype
 
 The first thing you'll need to do is create a new Maven archetype project:
 
-~~~
+~~~{.bash caption=">_"}
 mvn archetype:generate -B \
   -DarchetypeArtifactId=maven-archetype-archetype \
   -DarchetypeGroupId=org.apache.maven.archetypes \
@@ -65,11 +65,13 @@ This command creates an archetype at the `maven-archetype-microservice-monorepo`
 
 Edit the provided `pom.xml` file by adding the `packaging` tags, adding or editing the `build` tags, and removing the properties. When finished, your file should look like this:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.earthly</groupId>
     <artifactId>maven-archetype-microservice-monorepo</artifactId>
@@ -95,7 +97,7 @@ Next, it's time to edit the archetype descriptor. This file resides in the `src/
 
 The archetype descriptor lets you define the directory structure of your monorepo:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <archetype-descriptor xmlns="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="https://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0 http://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
       name="monorepo">
@@ -118,9 +120,11 @@ This tells Maven to create directories named `docs`, `libs`, and `microservices`
 
 Now, you can delete the `src` folder along with its subdirectories in the `archetype-resources` folder, as it's unnecessary. Then, edit the prototype POM (`pom.xml` in the `archetype-resources` folder):
 
-~~~
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+~~~{.xml caption="pom.xml"}
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/maven-v4_0_0.xsd">
 
     <modelVersion>4.0.0</modelVersion>
     <groupId>${groupId}</groupId>
@@ -140,7 +144,7 @@ Once you've established the basic structure of the monorepo, you can refine it f
 
 For instance, if you decide that all your monorepos should contain a `README.md` file, you'll need to create a template for it and then use the `includes` tags in your archetype descriptor file:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <includes>
     <include>README.md</include>
 </includes>
@@ -150,7 +154,7 @@ You can learn more about Maven's archetype descriptor/metadata files and their c
 
 You can also organize and list your monorepo's folders as modules in the prototype `pom.xml` file. This technique allows you to enforce hierarchy in your monorepo:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <modules>
     <module>microservices</module>
     <module>libs</module>
@@ -159,7 +163,7 @@ You can also organize and list your monorepo's folders as modules in the prototy
 
 As with most modular Maven-based projects, each module (folder) must have its own `pom.xml` file defining the structure, properties, and build instructions. You can also add build plugins to the monorepo, such as the [Flatten plugin](https://www.mojohaus.org/flatten-maven-plugin/):
 
-~~~
+~~~{.xml caption="pom.xml"}
 <build>
     <plugins>
         <plugin>
@@ -204,7 +208,7 @@ Finally, install the archetype using `mvn install`:
 
 At this point, you can use the archetype to scaffold your monorepo. To do so, you'll need to take note of the `groupId`, `artifactId`, and `version` of the archetype. You can find these in the `pom.xml` file of the newly created archetype. In this example, the `groupId` is `org.earthly`, `artifactId` is `maven-archetype-microservice-monorepo`, and `version` is `1.0`:
 
-~~~
+~~~{.bash caption=">_"}
 mvn archetype:generate \
   -DgroupId=org.example \
   -DartifactId=Microservices \
@@ -220,11 +224,13 @@ Once the monorepo structure has been generated, you'll need to refine and tweak 
 
 Each of the modules (`libs` and `microservices`) has `pom.xml` files that contain information about the modules. The `pom.xml` file for the `libs` module looks like this:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -246,9 +252,12 @@ Each of the modules (`libs` and `microservices`) has `pom.xml` files that contai
 
 It declares the `groupId` and `artifactId` of the `libs` module and the two individual child modules (`Lib1` and `Lib2`). The child modules also have their own `pom.xml` files. For example, this is what the `pom.xml` file looks like for `Lib1`:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
     <artifactId>Lib1</artifactId>
@@ -266,11 +275,13 @@ This is a typical `pom.xml` file that creates a JAR file from the library code.
 
 A similar configuration is present in `microservices/pom.xml`, which also declares the two child modules:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <?xml version="1.0" encoding="UTF-8"?>
 
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 
+         http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
@@ -292,7 +303,7 @@ A similar configuration is present in `microservices/pom.xml`, which also declar
 
 Each individual microservice has a `pom.xml` file that builds a typical executable JAR. However, it's important to note that the microservices depend on the libraries. For example, take a look at this section in `MicroService1/pom.xml`:
 
-~~~
+~~~{.xml caption="pom.xml"}
 <dependencies>
     <dependency>
         <groupId>org.example</groupId>
@@ -307,7 +318,8 @@ The library is imported into the microservice code using `import org.example.lib
 
 You can compile the monorepo by running `mvn package` and then run the microservices using `java`, like this:
 
-~~~
+~~~{.bash caption=">_"}
+
 $ java -jar microservices/MicroService2/target/MicroService2-1.0-SNAPSHOT-jar-with-dependencies.jar
 Greeting from MicroService2 using Lib2
 ~~~
@@ -324,7 +336,7 @@ Earthly follows an [implementation structure](https://docs.earthly.dev/docs/guid
 
 For instance, the `Earthfile` for `MicroService1` will look something like this:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.8
 
 build:
@@ -350,7 +362,7 @@ This Earthfile has two sections: the `build` section builds the specific project
 
 You can run Earthly from the `microservices/MicroService1` directory:
 
-~~~
+~~~{.bash caption=">_"}
 earthly +docker
 ~~~
 
@@ -364,7 +376,7 @@ If you run this command again without making any code changes, you'll notice tha
 
 You can also compile your libraries into a self-contained artifact that can be referenced by your microservices:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.8
 
 build:
@@ -377,7 +389,7 @@ build:
 
 You can connect all these individual Earthfiles in the parent `Earthfile` at the root of the project:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 VERSION 0.8
 
 build:
@@ -402,10 +414,3 @@ In addition to acting as a monorepo platform, [Earthly](https://earthly.dev) can
 Earthly helps you achieve faster compile and build times, streamlined module and package management, and more efficient containerization. Visit [Earthly.dev](https://earthly.dev) to learn more.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
-
