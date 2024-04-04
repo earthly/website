@@ -13,6 +13,7 @@ module Jekyll
         funnel_index = {}
         related_index_1 = {}
         related_index_2 = {}
+        shorten_name = {}
   
         # Iterate over each post to populate the indexes
         site.posts.docs.each do |post|
@@ -31,6 +32,11 @@ module Jekyll
           # Index by topic
           topic = post.data['topic']
           (topic_index[topic] ||= []) << post
+
+          short_title = site.data['short_titles'][slug]
+          if short_title
+            shorten_name[slug] = short_title
+          end
         
           # Index by funnel
           funnel = post.data['funnel']
@@ -77,6 +83,7 @@ module Jekyll
           'funnel' => funnel_index,
           'related1' => related_index_1,
           'related2' => related_index_2,
+          'shorten_name' => shorten_name,
         }
   
         end_time = Time.now  # Capture end time

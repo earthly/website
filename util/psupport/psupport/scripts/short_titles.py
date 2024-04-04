@@ -77,7 +77,8 @@ def load_markdown_titles(folder_path: str) -> dict:
 
 def print_titles_as_yaml(titles: dict) -> None:
     for slug, short_title in titles.items():
-        print(f"{slug}: '{short_title}'")
+        escaped_short_title = short_title.replace("'", "''")
+        print(f"{slug}: '{escaped_short_title}'")
 
 def main() -> None:
     try:
