@@ -128,7 +128,7 @@ def find_related_posts(folder_path: str, max_related: int = 15, min_similarity: 
 def main() -> None:
     try:
         folder_path = "./blog/_posts"
-        related_posts = find_related_posts(folder_path, max_related=10, min_similarity=0.60)
+        related_posts = find_related_posts(folder_path, max_related=10, min_similarity=0.52)
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
