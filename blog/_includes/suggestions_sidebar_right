@@ -1,7 +1,6 @@
 {% comment %}
 Input: 
   - slug
-  - invert: true
 
 {% endcomment %}
 {% comment %}
@@ -10,7 +9,7 @@ Input:
 ###############################
 {% endcomment %}
 {% unless page.sidebar.nav %}
-{% if site.data.indexes.related1[page.slug].size > 0 %}
+{% if site.data.indexes.related1[page.slug].size > 5 %}
     <div class="group mt-4 group mt-4 p-4 pr-4 pl-4 bg-blue-50">
   <header>
     <h4 class="font-semibold text-md mb-2">Related</h4>
