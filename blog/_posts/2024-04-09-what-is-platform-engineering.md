@@ -22,6 +22,8 @@ In this article, you'll take a look at platform engineering through a DevOps len
 
 ## Platform Engineering in Action
 
+![Engineering]({{site.images}}{{page.slug}}/engineering.png)\
+
 Platform engineering produces [internal developer platforms](https://earthly.dev/blog/why-developer-platform) (IDPs) that act as one-stop shops for developers to achieve their tasks. Developers interact with an IDP using CLIs, APIs, IDE integrations, and other interfaces that the platform team provides. An IDP can be thought of as a centralized toolbox of components that simplify day-to-day developer tasks.
 
 Not only does an IDP make development quicker and easier, but it also facilitates more consistency and control for team leaders. Platform use shouldn't be optional; you need to make sure that all developers rely on the platform. This provides assurance that changes have been built, tested, and deployed using approved processes. This improves your security posture and helps prevent compliance lapses from occurring.
