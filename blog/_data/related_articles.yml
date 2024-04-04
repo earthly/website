@@ -1,38 +1,8 @@
 cosine_similarity_text_embeddings:
  - python-c-extension
-
-
-merge-queues:
- - gradle-monorepo
- - python-c-extension
-
-
-developer-platforms:
- - why-developer-platform
- - developer-portals-backstage
- - generating-sbom
-
-
-showboaters:
- - readability
- - single-expression-functions
- - language-style-czar
+ - create-python-package
  - future-is-rusty
-
-
-readability:
- - showboaters
- - single-expression-functions
- - future-is-rusty
- - language-style-czar
-
-
-single-expression-functions:
- - showboaters
- - readability
- - future-is-rusty
- - language-style-czar
- - incremental-rust-builds
+ - poetry-publish
 
 
 soc-type-two:
@@ -41,24 +11,8 @@ soc-type-two:
  - konfig
  - on-star-history
  - larger-satellite-sizes
-
-
-larger-satellite-sizes:
- - self-hosted-satellites
- - earthly-v0-8
- - on-star-history
+ - docker-sbom
  - auto-skip
- - konfig
- - soc-type-two
-
-
-why-developer-platform:
- - developer-platforms
- - developer-portals-backstage
- - docker-build-cloud
- - generating-sbom
- - data-engineering-analysis
- - docker-buildx
 
 
 language-style-czar:
@@ -68,15 +22,41 @@ language-style-czar:
  - future-is-rusty
  - python-c-extension
  - poetry-publish
+ - create-python-package
 
 
-data-engineering-analysis:
- - konfig
- - developer-portals-backstage
- - why-developer-platform
+readability:
+ - showboaters
+ - single-expression-functions
  - future-is-rusty
+ - language-style-czar
+ - cargo-workspace-crates
+ - incremental-rust-builds
+ - rust-sccache
+ - rust-monorepo
+
+
+developer-platforms:
+ - why-developer-platform
+ - developer-portals-backstage
+ - generating-sbom
+ - nerdctl
+ - data-engineering-analysis
  - docker-build-cloud
+ - docker-scout
+ - docker-buildx
+
+
+larger-satellite-sizes:
  - self-hosted-satellites
+ - earthly-v0-8
+ - on-star-history
+ - auto-skip
+ - konfig
+ - soc-type-two
+ - incremental-rust-builds
+ - docker-build-cloud
+ - docker-buildx
 
 
 introducing-earthly-build-automation-for-the-container-era:
@@ -5396,6 +5376,19 @@ python-c-extension:
  - rust-monorepo
 
 
+merge-queues:
+ - gradle-monorepo
+ - python-c-extension
+ - create-python-package
+ - docker-scout
+ - developer-portals-backstage
+ - why-developer-platform
+ - yarn-vite-monorepo
+ - poetry-publish
+ - build-buildkit-cache
+ - cargo-workspace-crates
+
+
 incremental-rust-builds:
  - cargo-chef
  - rust-sccache
@@ -5526,6 +5519,19 @@ generating-sbom:
  - rust-monorepo
 
 
+single-expression-functions:
+ - showboaters
+ - readability
+ - future-is-rusty
+ - language-style-czar
+ - incremental-rust-builds
+ - python-c-extension
+ - rust-sccache
+ - cargo-workspace-crates
+ - poetry-publish
+ - rust-monorepo
+
+
 docker-init-in-python:
  - docker-init-in-go
  - docker-init-nodejs
@@ -5643,6 +5649,19 @@ python-monorepo:
  - docker-build-cloud
 
 
+showboaters:
+ - readability
+ - single-expression-functions
+ - language-style-czar
+ - future-is-rusty
+ - python-c-extension
+ - incremental-rust-builds
+ - gradle-monorepo
+ - cargo-workspace-crates
+ - poetry-publish
+ - create-python-package
+
+
 rust-sccache:
  - incremental-rust-builds
  - cargo-chef
@@ -5747,6 +5766,19 @@ developer-portals-backstage:
  - docker-build-cloud
 
 
+why-developer-platform:
+ - developer-platforms
+ - developer-portals-backstage
+ - docker-build-cloud
+ - generating-sbom
+ - data-engineering-analysis
+ - docker-buildx
+ - docker-init-nodejs
+ - build-buildkit-cache
+ - nerdctl
+ - docker-sbom
+
+
 namespaces-and-containers-in-depth:
  - namespaces-and-cgroups-docker
  - nerdctl
@@ -5786,6 +5818,19 @@ arm-containers-github-actions:
  - containerd-docker
 
 
+data-engineering-analysis:
+ - konfig
+ - developer-portals-backstage
+ - why-developer-platform
+ - future-is-rusty
+ - docker-build-cloud
+ - self-hosted-satellites
+ - docker-init-in-go
+ - incremental-rust-builds
+ - earthly-v0-8
+ - python-c-extension
+
+
 auto-skip:
  - earthly-v0-8
  - self-hosted-satellites
@@ -5797,3 +5842,5 @@ auto-skip:
  - build-buildkit-cache
  - docker-init-in-go
  - docker-buildx
+
+
