@@ -398,6 +398,8 @@ In addition to acting as a monorepo platform, [Earthly](https://earthly.dev) can
 
 Earthly helps you achieve faster compile and build times, streamlined module and package management, and more efficient containerization. Visit [Earthly.dev](https://earthly.dev) to learn more.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -406,4 +408,3 @@ Earthly helps you achieve faster compile and build times, streamlined module and
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
