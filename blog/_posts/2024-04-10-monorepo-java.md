@@ -6,7 +6,10 @@ toc: true
 author: Mdu Sibisi
 
 internal-links:
- - just an example
+ - how to build a monorepo with java
+ - using java to build monorepo
+ - java to build monorepo
+ - building monorepo
 ---
 
 Microservices architecture has introduced new challenges for managing code and versions. Monorepos, despite being simpler than polyrepos, still require careful implementation, especially for Java projects. That's why, in this guide, you'll learn how to put together a monorepo in Java.
@@ -405,6 +408,4 @@ Earthly helps you achieve faster compile and build times, streamlined module and
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
 
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
