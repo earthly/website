@@ -6,7 +6,10 @@ toc: true
 author: James Walker
 
 internal-links:
- - just an example
+ - what is platform engineering
+ - what does platform engineering do
+ - use of platform engineering
+ - is platform engineering usefull
 ---
 
 Platform engineering is a discipline that improves developer productivity by providing automated tools and processes that accelerate the software delivery lifecycle (SDLC). It's an evolution of DevOps that focuses on centralization, consistency, and self-service developer access.
@@ -86,12 +89,3 @@ Platform engineering is the practice of creating automated internal tools and pr
 Building an IDP requires a significant investment, but it can be one of the most impactful steps you can take to boost developer satisfaction and reduce time to market for your products. An IDP lets you solve key DevOps pain points by achieving fast and reliable builds, consistent deployments, and simplified developer access to infrastructure and cloud environments. This frees up more time for devs to write new code that contributes value to your organization.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-* [ ] Verify look of article locally
-* [ ] Would any images look better `wide` or without the `figcaption`?
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
