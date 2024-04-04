@@ -50,6 +50,7 @@ jobs:
         run: |
           set -x
           poetry run python ./util/psupport/psupport/scripts/suggested_posts.py > blog/_data/related_articles.yml
+          poetry run python ./util/psupport/psupport/scripts/short_titles.py  > blog/_data/short_titles.yml
         env:
           OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }} 
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }} 
