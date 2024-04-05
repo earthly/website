@@ -70,3 +70,6 @@ capfirst
 Popen
 Ilorin
 showboaters
+
+Thanos
+Sissel
