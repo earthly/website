@@ -14,7 +14,7 @@ Thankfully, with the available ML libraries and the OpenAI embedding API, I can 
 
 Imagine a simpler problem. You want to figure out how similar a given word is to another word. In this case, I have a blog page for `dog`, and I want to show the related post `cat`, and `bulldog`, but not ones for the inanimate objects `shoe` and `brick`.
 
-One way to solve this problem is to create a table of words and their membership in various classes. A dog and a cat are both pets. A brick is a building material, and a shoe is footwear. So if we have a list of bits, marking `isPet`,`isConstruction`,`isMaterial`, then we can store words like this:
+One way to solve this problem is to create a table of words and their membership in various classes. A dog and a cat are both pets. A brick is a building material, and a shoe is footwear. So if we have a list of bits, marking `isPet`,`isConstructionMaterial`, `isFootwear` then we can store words like this:
 
 ~~~{.python caption=""}
 items = {
