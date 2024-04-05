@@ -581,3 +581,7 @@ Rahul Rai:
     name    : "Rahul Rai"
     bio     : "Rahul Rai is a technology enthusiast and a Software Engineer at heart. He is a Microsoft Azure MVP with over 15 years of hands-on experience in cloud and web technologies. With so much leadership experience behind him and currently holding a Group Product Manager Role at LogicMonitor, he has successfully established and led engineering teams and designed enterprise applications to help solve businesses’ organizational challenges. Outside of his day job, Rahul ensures he’s still contributing to the cloud ecosystem by authoring books, offering free workshops, and frequently posting on his blog: https://thecloudblog.net to share his insights and help break down complex topics for other current and aspiring professionals."
     avatar  : "/assets/images/authors/person.jpg"
+Alexandre Couëdelo:
+    name    : "Alexandre Couëdelo"
+    bio     : "Alexandre is a complex systems engineering and management specialist. He has been embracing the DevOps culture since he started his career by contributing to the digital transformation of a leading financial institution in Canada. His passions are the DevOps revolution and industrial engineering, and he loves being able to get the best of both worlds."
+    avatar  : "/assets/images/authors/alexandre-couedelo.jpg"

@@ -21,13 +21,14 @@ Input:
       <ul>
         {% for relate in site.data.indexes.related1[page.slug] %}
           {% if forloop.index <= 5 and relate %}
-            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}">‣  {{ relate.title | truncate: 30, "..." }}</a></li>
+          {% assign title = site.data.indexes.shorten_name[relate.slug] %}
+            <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}" title="{{ relate.title }}">‣  {{ title | truncate: 30, "..." }}</a></li>
           {% endif %}
         {% endfor %}
       </ul>
     </div>
   </div> 
-  <div onclick="window.location.href='https://earthly.dev/';" class="group mt-4 p-4 pr-4 pl-4 cursor-pointer hover:bg-blue-100">
+  <div onclick="window.location.href='https://earthly.dev/';" class="group mt-4 p-4 pr-4 pl-4 cursor-pointer bg-slate-50 hover:bg-blue-100">
     <header>
       <h4 class="font-semibold text-md mb-2">Learn More About Earthly</h4>
     </header>
