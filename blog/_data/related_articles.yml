@@ -5361,10 +5361,10 @@ merge-queues:
  - create-python-package
  - docker-scout
  - developer-portals-backstage
+ - platform-teams
  - platform-engineering-tools
  - why-developer-platform
  - yarn-vite-monorepo
- - poetry-publish
 
 
 incremental-rust-builds:
@@ -5760,6 +5760,7 @@ namespaces-and-cgroups-docker:
 developer-platforms:
  - why-developer-platform
  - platform-engineering-tools
+ - platform-teams
  - developer-portals-backstage
  - generating-sbom
  - understanding-monorepos
@@ -5767,23 +5768,23 @@ developer-platforms:
  - data-engineering-analysis
  - docker-build-cloud
  - docker-scout
- - docker-buildx
 
 
 developer-portals-backstage:
  - why-developer-platform
  - platform-engineering-tools
  - yarn-vite-monorepo
+ - platform-teams
  - developer-platforms
  - generating-sbom
  - understanding-monorepos
  - docker-scout
  - data-engineering-analysis
  - docker-init-nodejs
- - gradle-monorepo
 
 
 why-developer-platform:
+ - platform-teams
  - developer-platforms
  - platform-engineering-tools
  - developer-portals-backstage
@@ -5793,7 +5794,6 @@ why-developer-platform:
  - data-engineering-analysis
  - docker-buildx
  - docker-init-nodejs
- - build-buildkit-cache
 
 
 namespaces-and-containers-in-depth:
@@ -5841,11 +5841,11 @@ data-engineering-analysis:
  - developer-portals-backstage
  - why-developer-platform
  - future-is-rusty
+ - platform-teams
  - docker-build-cloud
  - self-hosted-satellites
  - docker-init-in-go
  - understanding-monorepos
- - incremental-rust-builds
 
 
 auto-skip:
@@ -5862,6 +5862,7 @@ auto-skip:
 
 
 platform-engineering-tools:
+ - platform-teams
  - why-developer-platform
  - developer-platforms
  - developer-portals-backstage
@@ -5871,6 +5872,18 @@ platform-engineering-tools:
  - docker-sbom
  - docker-scout
  - docker-build-cloud
+
+
+platform-teams:
+ - why-developer-platform
+ - platform-engineering-tools
+ - developer-platforms
+ - developer-portals-backstage
+ - understanding-monorepos
+ - data-engineering-analysis
+ - docker-build-cloud
+ - generating-sbom
+ - merge-queues
  - yarn-vite-monorepo
 
 
