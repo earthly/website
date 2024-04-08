@@ -14,6 +14,8 @@ excerpt: |
 ---
 **This article delves into the specific aspects of expression-based programming. Earthly's compatibility expression based and statement based programming languages. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
+<iframe width="560" height="315" src="https://www.youtube.com/embed/dDk8Q1bgdNo?si=eaJdNzlsB0ZZ93uO" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+
 If you are familiar with C-style programming languages, and ever touch Rust, Ruby, Kotlin, Scala, or even Julia there are some syntax and concepts that could initially appear confusing, unfamiliar, or unnecessary. I'm talking about implicit returns, if-expressions, match-expressions, and single-expression functions.
 
 These expression-based concepts can significantly enhance code readability, clarity, and conciseness. If they aren't in your language today, they might be at some point.
