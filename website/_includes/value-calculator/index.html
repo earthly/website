@@ -93,7 +93,7 @@
   // All input values are stored here
   var inputValues = {}
 
-  function calculateValues() {
+  function vcCalculateValues() {
     // Sanitize values (Empty string & decimal point to 0)
     Object.keys(inputValues).forEach(function (key, index) {
       let newValue = inputValues[key]
@@ -141,7 +141,7 @@
   }
 
   // Handle manual text input in the fields
-  function handleInputChange(input) {
+  function vcHandleInputChange(input) {
     const { id, min, max, value } = input
 
     // Escape non-number chars & add restriction to input fields
@@ -155,10 +155,10 @@
     slider.style.backgroundSize = ((slider.value - slider.min) * 100) / (slider.max - slider.min) + "% 100%"
 
     inputValues[id.replace("-input", "")] = newValue
-    calculateValues()
+    vcCalculateValues()
   }
 
-  function handleSliderChange(slider) {
+  function vcHandleSliderChange(slider) {
     const { min, max, value } = slider
     slider.style.backgroundSize = ((value - min) * 100) / (max - min) + "% 100%"
 
@@ -166,7 +166,7 @@
     document.getElementById(slider.id + "-input").value = value
 
     inputValues[slider.id] = slider.value
-    calculateValues()
+    vcCalculateValues()
   }
 
   function toggleAdvancedInputs() {
@@ -180,7 +180,7 @@
 
   document.addEventListener("DOMContentLoaded", function () {
     document.querySelectorAll(".value-calculator .slider").forEach((slider) => {
-      handleSliderChange(slider)
+      vcHandleSliderChange(slider)
     })
   })
 </script>

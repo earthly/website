@@ -29,12 +29,12 @@
         max="{{ item.max }}"
         step="{{ item.step }}"
         value="{{ item.value }}"
-        oninput="handleSliderChange(this)"
+        oninput="vcHandleSliderChange(this)"
       />
 
       <div class="flex items-center gap-1">
         {% if item.prefixUnit %}
-        <span>{{ item.prefixUnit }}</span>
+          <span>{{ item.prefixUnit }}</span>
         {% endif %}
         <input
           id="{{ item.id }}-input"
@@ -42,7 +42,7 @@
           max="{{ item.max }}"
           maxlength="{{ item.maxlength }}"
           value="{{ item.value }}"
-          oninput="handleInputChange(this)"
+          oninput="vcHandleInputChange(this)"
         />
         <span>{{ item.unit }}</span>
       </div>
