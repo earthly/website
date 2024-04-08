@@ -1,5 +1,10 @@
 <div id="compute-pricing-container">
-  <div id="compute-pricing" class="text-3xl font-semibold mt-10 mb-4">Compute Pricing</div>
+  <div id="compute-pricing" class="cursor-pointer flex items-center justify-between text-3xl font-semibold mt-10" onclick="toggleComputePricing(this)">
+    <span>Compute Pricing</span>
+    <img class="advanced-chevron mr-2" src="assets/svg/chevron.svg" alt="Chevron icon" />
+  </div>
+
+  <div>
   <div class="leading-9 mb-5 text-gray-600 text-lg">We include a generous number of minutes with every 
     plan that we offer.<br>However, if you exceed the included minutes, overages will be charged 
     according to <b>our low-cost, zero-margin</b> pricing below.</div>
@@ -168,4 +173,17 @@
       </div>
     </div>
   </div>
+  </div>
 </div>
+
+<script>
+  function toggleComputePricing(element) {
+    if (element.nextElementSibling.classList.contains("open")) {
+      element.classList.remove("open")
+      element.nextElementSibling.classList.remove("open")
+    } else {
+      element.classList.add("open")
+      element.nextElementSibling.classList.add("open")
+    }
+  }
+</script>

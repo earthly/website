@@ -270,15 +270,15 @@ p > a:visited {
   padding: 8px;
 }
 
-.pricing-faq img:first-child {
+.pricing-faq div > img:first-child {
   transition: all .5s ease-in-out;
 }
 
-.pricing-faq.open img:first-child {
+.pricing-faq.open div > img:first-child {
   transform: rotate(180deg);
 }
 
-.pricing-faq img:nth-child(2) {
+.pricing-faq div > img:nth-child(2) {
   position: absolute;
   top: 0;
   left: 0;
@@ -286,7 +286,7 @@ p > a:visited {
   transform: rotate(90deg);
 }
 
-.pricing-faq.open img:nth-child(2) {
+.pricing-faq.open div > img:nth-child(2) {
   transform: rotate(180deg);
 }
 
@@ -481,4 +481,32 @@ p > a:visited {
   .value-calculator .slider {
     width: 272px;
   }
+}
+
+#compute-pricing-container > div:last-of-type {
+  max-height: 0;
+  overflow-y: hidden;
+  transition: all .25s ease-in-out;
+}
+
+#compute-pricing-container > div.open:last-of-type {
+  margin-top: 16px;
+  max-height: 2000px;
+}
+
+@media screen and (min-width: 1024px) {
+  #compute-pricing-container > div.open:last-of-type {
+    max-height: 1000px;
+  }
+}
+
+#compute-pricing-container #compute-pricing img {
+  width: 20px;
+  height: 20px;
+  padding: 2px;
+  transition: all .25s ease-in-out;
+}
+
+#compute-pricing-container #compute-pricing.open img {
+  transform: rotate(180deg);
 }

@@ -12,6 +12,7 @@
 
 - id: avg-build-time
   title: Avg Build Time
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   min: 1
   max: 60
   maxlength: 4
@@ -21,6 +22,7 @@
 
 - id: build-frequency
   title: Frequency of builds
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   min: 1
   max: 30
   maxlength: 4
@@ -29,6 +31,7 @@
 
 - id: developer-salary
   title: Developer salary per year
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   link: https://money.usnews.com/careers/best-jobs/software-developer/salary
   linkLabel: (Source)
   min: 50000
@@ -43,6 +46,7 @@
 
 - id: discount-factor
   title: Time savings discount factor
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   min: 1
   max: 100
   value: 50
@@ -51,6 +55,7 @@
 
 - id: ci-price
   title: CI compute unit price
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   min: 0
   max: 0.07
   step: 0.001
@@ -62,6 +67,7 @@
 
 - id: speedup-factor
   title: Earthly build speedup factor
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   min: 1
   max: 5
   step: 0.5
@@ -72,6 +78,7 @@
 
 - id: parallel-tasks
   title: No. of parallel tasks
+  info: 6,000 min included = 6,000 min on xsmall 6,000 min included = 6,000 min on xsmall
   min: 1
   max: 10
   maxlength: 4
