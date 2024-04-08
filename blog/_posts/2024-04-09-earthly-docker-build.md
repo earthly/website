@@ -31,17 +31,18 @@ Announcing `earthly docker-build`, a feature of Earthly that lets you run builds
 
 There are two primary benefits that `earthly docker-build` provides:
 
-1. **You can use both Earthfiles and Dockerfiles in CI.** This provides flexibility for your builds. It allows you to start using Earthly early while gradually migrating big projects, using Earthly with your existing Dockerfiles, and over time, converting them to Earthfiles. You can migrate incrementally, tackling migration of easier parts of your build early and more complex parts later, when you're more familiar with Earthly.
+1. **You can use both Earthfiles and Dockerfiles in CI.** This provides flexibility for your builds. It allows you to start using Earthly early while gradually migrating big projects, using your existing Dockerfiles, and over time, converting them to Earthfiles. You can migrate incrementally, tackling migration of easier parts of your build early and more complex parts later, when you're more familiar with Earthly.
 2. **You can use Earthly Satellites as a persistent remote BuildKit cache.** CI runners are almost always ephemeral. If you're using `docker build` in CI, either your BuildKit cache, one of the most beneficial features of BuildKit, will get blown away at the end of every build, or you'll have to manually configure caching in your CI, which generally requires downloading the cache at the beginning of the build and uploading it at the end of the build, which is slow. Using `earthly docker-build` With Earthly Satellites gives you a persistent BuildKit cache that will speed up every build with no cache upload and download required.
 
 ## How To Use `earthly docker-build`
 
 If you're familiar with Earthly and `docker build`, `earthly docker-build` is very easy to use. If you want to build a Dockerfile of that name in the build context of the current directory, you run `earthly docker-build .`. There are also several options to provide the functionality you're used to with `docker build`.
-**`--dockerfile <dockerfile-path>`** to specify an alternative Dockerfile.
-**`--tag <image-tag>`** to specify the name and tag to use for an image (multiple `--tag` options are supported for multiple tags).
-**`--target <target-name>`** to specify a target in a multi-target Dockerfile.
-**`--platform <platform1[,platform2,...]>`** to specify the platforms to build the image for.
-**`--push`** to push container images to remote docker registries. With Docker, this requires a separate push command after you build and tag your image.
+
+* **`--dockerfile <dockerfile-path>`** to specify an alternative Dockerfile.
+* **`--tag <image-tag>`** to specify the name and tag to use for an image (multiple `--tag` options are supported for multiple tags).
+* **`--target <target-name>`** to specify a target in a multi-target Dockerfile.
+* **`--platform <platform1[,platform2,...]>`** to specify the platforms to build the image for.
+* **`--push`** to push container images to remote docker registries. With Docker, this requires a separate push command after you build and tag your image.
 
 If you want to use `earthly docker-build` on an [Earthly Satellite](https://docs.earthly.dev/earthly-cloud/satellites), that's easy too. You just specify the satellite name with `--sat <satellite-name>` directly after the `docker-build` part of the command. For example:  `earthly docker-build --sat my-satellite --tag my-image:latest .`.
 
