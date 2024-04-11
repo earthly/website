@@ -206,7 +206,7 @@ kubeval --openshift -v 1.5.1   service-ingress.yml
 
 ## How To Ignore Missing Schemas
 
-The `--ignore-missing-schemas` flag should be used when validating resources using [Custom Resource Definitions(CRDs)](Custom Resources | Kubernetes). Currently, Kubeval relies on schemas generated from the Kubernetes API. This means it's not possible to validate resources using CRDs. Kubeval currently supports schemas created by the Kubernetes API only.
+The `--ignore-missing-schemas` flag should be used when validating resources using Custom Resource Definitions(CRDs). Currently, Kubeval relies on schemas generated from the Kubernetes API. This means it's not possible to validate resources using CRDs. Kubeval currently supports schemas created by the Kubernetes API only.
 
 ~~~{.bash caption=">_"}
 kubeval --ignore-missing-schemas service-ingress.yml
