@@ -192,4 +192,5 @@ The VS Code docker extension enhances your productivity by streamlining terminal
 
 And if you're enjoying this streamlined Docker workflow in VS Code, you'll likely appreciate [Earthly](https://cloud.earthly.dev/login) for efficient and consistent container-based builds. Why not dive in and explore its capabilities?
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/docker-fundamentals-cta.html %}
+<!-- {% include_html cta/bottom-cta.html %} -->

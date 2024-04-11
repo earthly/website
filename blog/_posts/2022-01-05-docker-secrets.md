@@ -218,4 +218,5 @@ To further expand on the possibilities of your Docker containers, try [Earthly](
 
 For more information, check the [Earthly Documentation](https://docs.earthly.dev/).
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/docker-fundamentals-cta.html %}
+<!-- {% include_html cta/bottom-cta.html %} -->

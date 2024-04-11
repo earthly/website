@@ -214,4 +214,5 @@ In this tutorial, you learned how to create a new workflow, edit an existing wor
 
 And if you're looking to continue building out your GHA workflows, consider using [Earthly](https://cloud.earthly.dev/login). Earthly runs everywhere, including GitHub Actions and can improve the reliability of your CI/CD pipelines. It works great with [GitHub Actions](/earthly-github-actions) and docker.
 
-{% include_html cta/gha-cta1.html %}
+{% include_html cta/docker-fundamentals-cta.html %}
+<!-- {% include_html cta/gha-cta1.html %} -->
