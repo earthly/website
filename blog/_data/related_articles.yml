@@ -5,16 +5,6 @@ cosine_similarity_text_embeddings:
  - poetry-publish
 
 
-soc-type-two:
- - earthly-v0-8
- - self-hosted-satellites
- - konfig
- - on-star-history
- - larger-satellite-sizes
- - docker-sbom
- - auto-skip
-
-
 language-style-czar:
  - showboaters
  - single-expression-functions
@@ -25,16 +15,15 @@ language-style-czar:
  - create-python-package
 
 
-larger-satellite-sizes:
- - self-hosted-satellites
+soc-type-two:
  - earthly-v0-8
- - on-star-history
- - auto-skip
+ - self-hosted-satellites
  - konfig
- - soc-type-two
- - incremental-rust-builds
- - docker-build-cloud
- - docker-buildx
+ - on-star-history
+ - earthly-docker-build
+ - larger-satellite-sizes
+ - docker-sbom
+ - auto-skip
 
 
 introducing-earthly-build-automation-for-the-container-era:
@@ -3061,9 +3050,9 @@ docker-init-rust:
  - docker-init-quickly
  - rust-monorepo
  - docker-build-cloud
+ - earthly-docker-build
  - konfig
  - docker-buildx
- - incremental-rust-builds
 
 
 ninjabuild-for-faster-build:
@@ -5338,7 +5327,7 @@ poetry-publish:
  - yarn-vite-monorepo
  - language-style-czar
  - future-is-rusty
- - gradle-monorepo
+ - monorepo-java
 
 
 python-c-extension:
@@ -5374,10 +5363,10 @@ incremental-rust-builds:
  - rust-monorepo
  - cargo-workspace-crates
  - docker-init-rust
+ - earthly-docker-build
  - docker-build-cloud
  - build-buildkit-cache
  - earthly-v0-8
- - understanding-monorepos
 
 
 nerdctl:
@@ -5416,7 +5405,7 @@ docker-sbom:
  - docker-init-in-python
  - docker-init-rust
  - buildkit-secrets
- - konfig
+ - earthly-docker-build
 
 
 containerd-docker:
@@ -5453,9 +5442,9 @@ docker-init-in-go:
  - docker-build-cloud
  - docker-buildx
  - konfig
+ - earthly-docker-build
  - cargo-chef
  - docker-sbom
- - containerd-docker
 
 
 docker-init-quickly:
@@ -5477,11 +5466,11 @@ docker-buildx:
  - docker-init-in-python
  - build-buildkit-cache
  - docker-init-nodejs
+ - earthly-docker-build
  - arm-containers-github-actions
  - buildkit-secrets
  - containerd-docker
  - docker-init-rust
- - docker-sbom
 
 
 generating-sbom:
@@ -5498,6 +5487,7 @@ generating-sbom:
 
 
 understanding-monorepos:
+ - monorepo-java
  - python-monorepo
  - rust-monorepo
  - gradle-monorepo
@@ -5507,7 +5497,6 @@ understanding-monorepos:
  - incremental-rust-builds
  - cargo-chef
  - rust-sccache
- - docker-build-cloud
 
 
 single-expression-functions:
@@ -5565,6 +5554,7 @@ buildkit-secrets:
 rust-monorepo:
  - cargo-workspace-crates
  - python-monorepo
+ - monorepo-java
  - understanding-monorepos
  - gradle-monorepo
  - docker-init-rust
@@ -5572,10 +5562,10 @@ rust-monorepo:
  - incremental-rust-builds
  - yarn-vite-monorepo
  - konfig
- - rust-sccache
 
 
 on-star-history:
+ - earthly-docker-build
  - konfig
  - earthly-v0-8
  - self-hosted-satellites
@@ -5584,11 +5574,11 @@ on-star-history:
  - larger-satellite-sizes
  - docker-init-in-go
  - auto-skip
- - docker-buildx
- - incremental-rust-builds
+ - monorepo-java
 
 
 konfig:
+ - earthly-docker-build
  - docker-init-in-go
  - docker-build-cloud
  - cargo-chef
@@ -5596,9 +5586,8 @@ konfig:
  - on-star-history
  - docker-init-rust
  - docker-init-in-python
+ - monorepo-java
  - python-monorepo
- - earthly-v0-8
- - rust-monorepo
 
 
 build-buildkit-cache:
@@ -5615,19 +5604,20 @@ build-buildkit-cache:
 
 
 earthly-v0-8:
+ - earthly-docker-build
  - konfig
  - self-hosted-satellites
  - auto-skip
  - incremental-rust-builds
  - larger-satellite-sizes
  - on-star-history
+ - monorepo-java
  - python-monorepo
  - docker-init-in-go
- - cargo-chef
- - docker-build-cloud
 
 
 python-monorepo:
+ - monorepo-java
  - rust-monorepo
  - understanding-monorepos
  - gradle-monorepo
@@ -5637,7 +5627,6 @@ python-monorepo:
  - yarn-vite-monorepo
  - docker-init-in-go
  - docker-init-rust
- - cargo-chef
 
 
 showboaters:
@@ -5670,16 +5659,17 @@ yarn-vite-monorepo:
  - understanding-monorepos
  - gradle-monorepo
  - rust-monorepo
+ - monorepo-java
  - cargo-workspace-crates
  - python-monorepo
  - developer-portals-backstage
  - docker-init-nodejs
  - incremental-rust-builds
  - docker-init-in-go
- - docker-init-rust
 
 
 gradle-monorepo:
+ - monorepo-java
  - understanding-monorepos
  - python-monorepo
  - rust-monorepo
@@ -5689,20 +5679,32 @@ gradle-monorepo:
  - docker-init-in-go
  - developer-portals-backstage
  - docker-init-in-python
- - docker-init-rust
+
+
+larger-satellite-sizes:
+ - self-hosted-satellites
+ - earthly-docker-build
+ - earthly-v0-8
+ - on-star-history
+ - auto-skip
+ - konfig
+ - soc-type-two
+ - incremental-rust-builds
+ - docker-build-cloud
+ - docker-buildx
 
 
 cargo-workspace-crates:
  - rust-monorepo
  - understanding-monorepos
  - python-monorepo
+ - monorepo-java
  - gradle-monorepo
  - cargo-chef
  - incremental-rust-builds
  - rust-sccache
  - yarn-vite-monorepo
  - docker-init-rust
- - konfig
 
 
 readability:
@@ -5723,15 +5725,16 @@ cargo-chef:
  - docker-init-rust
  - docker-build-cloud
  - rust-sccache
+ - earthly-docker-build
  - konfig
  - rust-monorepo
  - cargo-workspace-crates
  - docker-init-in-go
  - build-buildkit-cache
- - docker-buildx
 
 
 self-hosted-satellites:
+ - earthly-docker-build
  - larger-satellite-sizes
  - earthly-v0-8
  - konfig
@@ -5741,7 +5744,6 @@ self-hosted-satellites:
  - incremental-rust-builds
  - soc-type-two
  - docker-init-in-go
- - cargo-chef
 
 
 namespaces-and-cgroups-docker:
@@ -5759,6 +5761,7 @@ namespaces-and-cgroups-docker:
 
 developer-platforms:
  - why-developer-platform
+ - what-is-platform-engineering
  - platform-engineering-tools
  - platform-teams
  - developer-portals-backstage
@@ -5767,10 +5770,10 @@ developer-platforms:
  - nerdctl
  - data-engineering-analysis
  - docker-build-cloud
- - docker-scout
 
 
 developer-portals-backstage:
+ - what-is-platform-engineering
  - why-developer-platform
  - platform-engineering-tools
  - yarn-vite-monorepo
@@ -5780,10 +5783,10 @@ developer-portals-backstage:
  - understanding-monorepos
  - docker-scout
  - data-engineering-analysis
- - docker-init-nodejs
 
 
 why-developer-platform:
+ - what-is-platform-engineering
  - platform-teams
  - developer-platforms
  - platform-engineering-tools
@@ -5793,7 +5796,6 @@ why-developer-platform:
  - understanding-monorepos
  - data-engineering-analysis
  - docker-buildx
- - docker-init-nodejs
 
 
 namespaces-and-containers-in-depth:
@@ -5811,6 +5813,7 @@ namespaces-and-containers-in-depth:
 
 docker-build-cloud:
  - docker-buildx
+ - earthly-docker-build
  - docker-init-in-go
  - cargo-chef
  - build-buildkit-cache
@@ -5819,7 +5822,6 @@ docker-build-cloud:
  - docker-init-rust
  - konfig
  - docker-sbom
- - containerd-docker
 
 
 arm-containers-github-actions:
@@ -5839,16 +5841,17 @@ data-engineering-analysis:
  - platform-engineering-tools
  - konfig
  - developer-portals-backstage
+ - what-is-platform-engineering
  - why-developer-platform
  - future-is-rusty
  - platform-teams
  - docker-build-cloud
  - self-hosted-satellites
  - docker-init-in-go
- - understanding-monorepos
 
 
 auto-skip:
+ - earthly-docker-build
  - earthly-v0-8
  - self-hosted-satellites
  - docker-build-cloud
@@ -5858,11 +5861,11 @@ auto-skip:
  - rust-sccache
  - understanding-monorepos
  - build-buildkit-cache
- - docker-init-in-go
 
 
 platform-engineering-tools:
  - platform-teams
+ - what-is-platform-engineering
  - why-developer-platform
  - developer-platforms
  - developer-portals-backstage
@@ -5871,10 +5874,10 @@ platform-engineering-tools:
  - data-engineering-analysis
  - docker-sbom
  - docker-scout
- - docker-build-cloud
 
 
 platform-teams:
+ - what-is-platform-engineering
  - why-developer-platform
  - platform-engineering-tools
  - developer-platforms
@@ -5884,6 +5887,44 @@ platform-teams:
  - docker-build-cloud
  - generating-sbom
  - merge-queues
+
+
+earthly-docker-build:
+ - docker-build-cloud
+ - konfig
+ - self-hosted-satellites
+ - auto-skip
+ - on-star-history
+ - earthly-v0-8
+ - cargo-chef
+ - docker-init-in-go
+ - docker-buildx
+ - docker-init-rust
+
+
+what-is-platform-engineering:
+ - why-developer-platform
+ - platform-teams
+ - platform-engineering-tools
+ - developer-platforms
+ - developer-portals-backstage
+ - docker-build-cloud
+ - understanding-monorepos
+ - docker-buildx
+ - data-engineering-analysis
+ - generating-sbom
+
+
+monorepo-java:
+ - python-monorepo
+ - rust-monorepo
+ - gradle-monorepo
+ - understanding-monorepos
+ - cargo-workspace-crates
+ - konfig
  - yarn-vite-monorepo
+ - earthly-docker-build
+ - docker-init-in-go
+ - docker-init-rust
 
 
