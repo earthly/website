@@ -170,4 +170,5 @@ The builder pattern has evolved over time in its implementation, with multistage
 
 Though not foolproof, multistage builds have made it much easier to create optimized images that you can be more pleased and confident to have running in your production environment.
 
-{% include_html cta/bottom-cta.html %}
+{% include_html cta/docker-fundamentals-cta.html %}
+<!-- {% include_html cta/bottom-cta.html %} -->
