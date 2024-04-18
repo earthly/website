@@ -309,7 +309,6 @@ For me, I had to add this under `Run`-> `Add Configuration`:
 {
     "version": "0.2.0",
     "configurations": [
-        {
  {
             "name": "Debug Earthly",
             "type": "go",
