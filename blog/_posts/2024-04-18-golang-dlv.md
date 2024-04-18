@@ -289,7 +289,7 @@ dlv connect localhost:40000
 
 You could even run delve from right within Earthly:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 interactive-debug:
     FROM golang:1.18
     RUN go install github.com/go-delve/delve/cmd/dlv@latest
@@ -305,7 +305,7 @@ Delve is what powers the debugger you see in various go IDEs. If you want to deb
 
 For me, I had to add this under `Run`-> `Add Configuration`:
 
-~~~
+~~~{.yaml caption="launch.js"}
 {
     "version": "0.2.0",
     "configurations": [
@@ -331,7 +331,7 @@ For me, I had to add this under `Run`-> `Add Configuration`:
 
 This is the equivalent of `dlv debug`. To Debug an executable in VS Code, build with debug symbols `-gcflags="all=-N -l"` and then use `mode=exec`, which corresponds to `dlv exec`:
 
-~~~
+~~~{.yaml caption="launch.js"}
         {
             "name": "Debug Earthly Binary",
             "type": "go",
