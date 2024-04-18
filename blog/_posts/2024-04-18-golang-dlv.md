@@ -269,7 +269,7 @@ build-debug:
 
 containerize-debug:
     FROM golang:1.18
-    # Install Delve in the containerization stage as well, in case it's needed
+    # Install Delve 
     RUN go install github.com/go-delve/delve/cmd/dlv@latest
     # Copy the built app from the previous stage
     COPY +build-debug/myapp /myapp/myapp
@@ -287,6 +287,82 @@ docker run -d -p 40000:40000 myapp-debug
 dlv connect localhost:40000
 ~~~
 
-Check out [github](https://github.com/go-delve/delve) for more information on `dlv`, including trace points and checkpoints which are valuable tools that deserve their own write up.
+You could even run delve from right within Earthly:
+
+~~~
+interactive-debug:
+    FROM golang:1.18
+    RUN go install github.com/go-delve/delve/cmd/dlv@latest
+    COPY +build-debug/myapp /myapp/myapp
+
+    # Did you know earthly also allows you to run commands that require a tty?
+    RUN --interactive dlv exec /myapp/myapp
+~~~
+
+## VS Code and GoLand
+
+Delve is what powers the debugger you see in various go IDEs. If you want to debug go code in VS Code, then the official go extension will probably just work once you configure a launch.js.
+
+For me, I had to add this under `Run`-> `Add Configuration`:
+
+~~~
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+ {
+            "name": "Debug Earthly",
+            "type": "go",
+            "request": "launch",
+            "mode": "debug",
+            "program": "./cmd/earthly/main.go",
+            "args": [
+                "./examples/c+deps"
+            ],
+            "env": {
+                "FORCE_COLOR": "1"
+            },
+            "cwd": "${workspaceFolder}"
+        }
+
+    ]
+}
+~~~
+
+This is the equivalent of `dlv debug`. To Debug an executable in VS Code, build with debug symbols `-gcflags="all=-N -l"` and then use `mode=exec`, which corresponds to `dlv exec`:
+
+~~~
+        {
+            "name": "Debug Earthly Binary",
+            "type": "go",
+            "request": "launch",
+            "mode": "exec",
+            "env": {
+                "FORCE_COLOR": "1"
+            },
+            "program": "./build/darwin/amd64/earthly",
+            "args": [
+                "./examples/c+deps"
+            ],
+            "cwd": "${workspaceFolder}"
+        },
+~~~
+
+You can make similar changes to `mode` to run tests with `dlv test` and presumably to connect to remote or headless debug sessions.
+
+### GoLand and IntelliJ
+
+Delve works out of the box with GoLand, and with the IntelliJ Go Plugin. It works just like IntelliJ users would expect a debugger to work.
+
+To setup remote debugging a bit more configuration is required but the folks at JetBrains kindly provide a GUI with instructions embedded in it.
+
+<div class="wide">
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/7180.png --alt {{ GoLand Remote Go Debugging }} %}
+<figcaption>GoLand Remote Go Debugging ( find this under Run&Debug Configurations -> Add Configuration -> Go Remote)</figcaption>
+</div>
+
+## That's a Wrap
+
+Ok, that's a wrap. `dlv` can integrate with neovim, vim, neovim, Sublime and probably a number of other editors as well, but setting those up is left as an exercise for the reader. Check out [github](https://github.com/go-delve/delve) for more information on `dlv`, including trace points and checkpoints which are valuable tools that deserve their own write up.
 
 {% include_html cta/bottom-cta.html %}
