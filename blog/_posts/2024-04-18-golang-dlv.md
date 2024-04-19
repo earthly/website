@@ -7,7 +7,11 @@ author: Adam
 
 internal-links:
  - just an example
+excerpt: |
+    Delve is a CLI-based debugger for Go that allows you to set breakpoints, inspect goroutines, and manipulate variables in real-time. It supports remote debugging and seamlessly integrates with major IDEs like Visual Studio Code.
 ---
+**This article explores the use of Delve for effective Go debugging. Earthly streamlines and enhances Go build processes. [Check it out](https://cloud.earthly.dev/login).**
+
 Delve (`dlv`) is a CLI-based debugger for Go, tailored to the language's concurrency model and runtime. It allows you to set breakpoints, inspect goroutines, and evaluate and manipulate variables in real-time. Delve supports remote debugging and seamlessly integrates with major IDEs, including Visual Studio Code. Let me walk you through using it, but first, some background.
 
 ## Background
