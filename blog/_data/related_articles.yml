@@ -5431,7 +5431,7 @@ future-is-rusty:
  - python-c-extension
  - cargo-chef
  - data-engineering-analysis
- - cargo-workspace-crates
+ - golang-dlv
 
 
 docker-init-in-go:
@@ -5508,8 +5508,8 @@ single-expression-functions:
  - python-c-extension
  - rust-sccache
  - cargo-workspace-crates
+ - golang-dlv
  - poetry-publish
- - rust-monorepo
 
 
 docker-init-in-python:
@@ -5636,10 +5636,10 @@ showboaters:
  - future-is-rusty
  - python-c-extension
  - incremental-rust-builds
+ - golang-dlv
  - gradle-monorepo
  - cargo-workspace-crates
  - understanding-monorepos
- - poetry-publish
 
 
 rust-sccache:
@@ -5717,7 +5717,7 @@ readability:
  - rust-sccache
  - rust-monorepo
  - understanding-monorepos
- - platform-engineering-tools
+ - golang-dlv
 
 
 cargo-chef:
@@ -5926,5 +5926,18 @@ monorepo-java:
  - earthly-docker-build
  - docker-init-in-go
  - docker-init-rust
+
+
+golang-dlv:
+ - docker-init-in-go
+ - docker-init-in-python
+ - docker-buildx
+ - yarn-vite-monorepo
+ - future-is-rusty
+ - incremental-rust-builds
+ - konfig
+ - docker-init-quickly
+ - docker-init-rust
+ - docker-scout
 
 
