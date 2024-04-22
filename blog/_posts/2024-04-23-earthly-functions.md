@@ -58,7 +58,6 @@ FROM gradle:8.7.0-jdk21
 deps:
     COPY settings.gradle.kts build.gradle.kts ./
     COPY src src
-
     # Sets $EARTHLY_GRADLE_USER_HOME_CACHE and $EARTHLY_GRADLE_PROJECT_CACHE
     DO gradle+GRADLE_GET_MOUNT_CACHE
 
