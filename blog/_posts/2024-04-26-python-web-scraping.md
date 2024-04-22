@@ -11,7 +11,10 @@ internal-links:
  - web scraping with beautiful soup
  - beautiful soup & selenium for web scraping
  - web scraping
+excerpt: |
+    This tutorial explains how to scrape website content using Beautiful Soup and Selenium in Python, allowing you to gather data for fine-tuning large language models (LLMs) and improving their accuracy. Beautiful Soup is used for extracting data from static pages, while Selenium is used for scraping dynamic content rendered with JavaScript.
 ---
+**This article serves as a tutorial on web scraping techniques. Earthly ensures reproducible builds for your data scraping tools, essential for AI model training. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
 Now that you can fine-tune large language models (LLMs), they're more adaptable and can be tailored for specific tasks. However, fine-tuning LLMs requires a large amount of data in order to train the model to generate customized and domain-specific responses.
 
