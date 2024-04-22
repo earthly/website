@@ -64,7 +64,7 @@ Ido:
                 Ido loves to code, automate and make things more effecient. When he isn't coding he's doing something else.
     avatar  : "/assets/images/authors/ido-david.jpg"
     home    : "/authors/ido/"
-Vivek Sonar:
+SSonar:
     name    : "Vivek Sonar"
     bio     : "Vivek Sonar is a full-stack engineer who loves to solve complex infrastructure problems and work with public cloud platforms like AWS and GCP."
     avatar  : "/assets/images/authors/viveksonar.png"
@@ -585,3 +585,7 @@ Alexandre Couëdelo:
     name    : "Alexandre Couëdelo"
     bio     : "Alexandre is a complex systems engineering and management specialist. He has been embracing the DevOps culture since he started his career by contributing to the digital transformation of a leading financial institution in Canada. His passions are the DevOps revolution and industrial engineering, and he loves being able to get the best of both worlds."
     avatar  : "/assets/images/authors/alexandre-couedelo.jpg"
+Vivek Singh:
+    name    : "Vivek Singh"
+    bio     : "Vivek Singh is a Python/Django developer always ready to learn and teach new things to fellow developers."
+    avatar  : "/assets/images/authors/vivek-singh.png"
