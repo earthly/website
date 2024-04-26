@@ -589,3 +589,7 @@ Vivek Singh:
     name    : "Vivek Singh"
     bio     : "Vivek Singh is a Python/Django developer always ready to learn and teach new things to fellow developers."
     avatar  : "/assets/images/authors/vivek-singh.png"
+Jura Gorohovsky:
+    name    : "Jura Gorohovsky"
+    bio     : "Jura is an experienced product manager and marketer, technical writer, and amateur software developer. After a decade at JetBrains in various capacities, he believes he knows a thing or two about developer tools."
+    avatar  : "/assets/images/authors/jura-gorohovsky.jpg"
