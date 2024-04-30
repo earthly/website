@@ -593,3 +593,7 @@ Jura Gorohovsky:
     name    : "Jura Gorohovsky"
     bio     : "Jura is an experienced product manager and marketer, technical writer, and amateur software developer. After a decade at JetBrains in various capacities, he believes he knows a thing or two about developer tools."
     avatar  : "/assets/images/authors/jura-gorohovsky.jpg"
+Alen Kalac:
+    name    : "Alen Kalac"
+    bio     : "Alen is a data scientist working in finance. He's a freelance data scientist, too, and writes about data science and machine learning."
+    avatar  : "/assets/images/authors/person.jpg"
