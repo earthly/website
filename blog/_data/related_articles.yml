@@ -2,6 +2,8 @@ cosine_similarity_text_embeddings:
  - python-c-extension
  - create-python-package
  - future-is-rusty
+ - python-libraries
+ - python-web-scraping
  - poetry-publish
 
 
@@ -15,11 +17,23 @@ language-style-czar:
  - create-python-package
 
 
+python-frameworks:
+ - python-libraries
+ - platform-engineering-tools
+ - developer-platforms
+ - docker-init-quickly
+ - why-developer-platform
+ - python-c-extension
+ - create-python-package
+ - python-monorepo
+
+
 soc-type-two:
  - earthly-v0-8
  - self-hosted-satellites
  - konfig
  - on-star-history
+ - earthly-functions
  - earthly-docker-build
  - larger-satellite-sizes
  - docker-sbom
@@ -5313,8 +5327,8 @@ create-python-package:
  - yarn-vite-monorepo
  - rust-monorepo
  - future-is-rusty
+ - earthly-functions
  - understanding-monorepos
- - docker-init-in-python
 
 
 poetry-publish:
@@ -5336,11 +5350,11 @@ python-c-extension:
  - incremental-rust-builds
  - python-monorepo
  - future-is-rusty
+ - python-libraries
  - language-style-czar
  - docker-init-in-python
  - yarn-vite-monorepo
  - arm-containers-github-actions
- - rust-monorepo
 
 
 merge-queues:
@@ -5365,8 +5379,8 @@ incremental-rust-builds:
  - docker-init-rust
  - earthly-docker-build
  - docker-build-cloud
+ - earthly-functions
  - build-buildkit-cache
- - earthly-v0-8
 
 
 nerdctl:
@@ -5567,6 +5581,7 @@ rust-monorepo:
 on-star-history:
  - earthly-docker-build
  - konfig
+ - earthly-functions
  - earthly-v0-8
  - self-hosted-satellites
  - cargo-chef
@@ -5574,7 +5589,6 @@ on-star-history:
  - larger-satellite-sizes
  - docker-init-in-go
  - auto-skip
- - monorepo-java
 
 
 konfig:
@@ -5583,11 +5597,11 @@ konfig:
  - docker-build-cloud
  - cargo-chef
  - incremental-rust-builds
+ - earthly-functions
  - on-star-history
  - docker-init-rust
  - docker-init-in-python
  - monorepo-java
- - python-monorepo
 
 
 build-buildkit-cache:
@@ -5605,6 +5619,7 @@ build-buildkit-cache:
 
 earthly-v0-8:
  - earthly-docker-build
+ - earthly-functions
  - konfig
  - self-hosted-satellites
  - auto-skip
@@ -5613,7 +5628,6 @@ earthly-v0-8:
  - on-star-history
  - monorepo-java
  - python-monorepo
- - docker-init-in-go
 
 
 python-monorepo:
@@ -5675,23 +5689,23 @@ gradle-monorepo:
  - rust-monorepo
  - cargo-workspace-crates
  - yarn-vite-monorepo
+ - earthly-functions
  - konfig
  - docker-init-in-go
  - developer-portals-backstage
- - docker-init-in-python
 
 
 larger-satellite-sizes:
  - self-hosted-satellites
  - earthly-docker-build
  - earthly-v0-8
+ - earthly-functions
  - on-star-history
  - auto-skip
  - konfig
  - soc-type-two
  - incremental-rust-builds
  - docker-build-cloud
- - docker-buildx
 
 
 cargo-workspace-crates:
@@ -5737,13 +5751,13 @@ self-hosted-satellites:
  - earthly-docker-build
  - larger-satellite-sizes
  - earthly-v0-8
+ - earthly-functions
  - konfig
  - auto-skip
  - on-star-history
  - docker-build-cloud
  - incremental-rust-builds
  - soc-type-two
- - docker-init-in-go
 
 
 namespaces-and-cgroups-docker:
@@ -5766,10 +5780,10 @@ developer-platforms:
  - platform-teams
  - developer-portals-backstage
  - generating-sbom
+ - python-frameworks
  - understanding-monorepos
  - nerdctl
  - data-engineering-analysis
- - docker-build-cloud
 
 
 developer-portals-backstage:
@@ -5846,12 +5860,13 @@ data-engineering-analysis:
  - future-is-rusty
  - platform-teams
  - docker-build-cloud
+ - python-libraries
  - self-hosted-satellites
- - docker-init-in-go
 
 
 auto-skip:
  - earthly-docker-build
+ - earthly-functions
  - earthly-v0-8
  - self-hosted-satellites
  - docker-build-cloud
@@ -5860,7 +5875,6 @@ auto-skip:
  - incremental-rust-builds
  - rust-sccache
  - understanding-monorepos
- - build-buildkit-cache
 
 
 platform-engineering-tools:
@@ -5872,8 +5886,8 @@ platform-engineering-tools:
  - generating-sbom
  - understanding-monorepos
  - data-engineering-analysis
+ - python-libraries
  - docker-sbom
- - docker-scout
 
 
 platform-teams:
@@ -5891,6 +5905,7 @@ platform-teams:
 
 earthly-docker-build:
  - docker-build-cloud
+ - earthly-functions
  - konfig
  - self-hosted-satellites
  - auto-skip
@@ -5899,7 +5914,6 @@ earthly-docker-build:
  - cargo-chef
  - docker-init-in-go
  - docker-buildx
- - docker-init-rust
 
 
 what-is-platform-engineering:
@@ -5925,7 +5939,7 @@ monorepo-java:
  - yarn-vite-monorepo
  - earthly-docker-build
  - docker-init-in-go
- - docker-init-rust
+ - earthly-functions
 
 
 golang-dlv:
@@ -5937,7 +5951,46 @@ golang-dlv:
  - incremental-rust-builds
  - konfig
  - docker-init-quickly
+ - earthly-functions
  - docker-init-rust
+
+
+earthly-functions:
+ - earthly-docker-build
+ - earthly-v0-8
+ - konfig
+ - on-star-history
+ - auto-skip
+ - incremental-rust-builds
+ - monorepo-java
+ - self-hosted-satellites
+ - python-monorepo
+ - docker-build-cloud
+
+
+python-web-scraping:
+ - python-libraries
+ - developer-portals-backstage
  - docker-scout
+ - data-engineering-analysis
+ - python-c-extension
+ - create-python-package
+ - docker-init-in-python
+ - python-monorepo
+ - arm-containers-github-actions
+ - cosine_similarity_text_embeddings
+
+
+python-libraries:
+ - python-frameworks
+ - python-web-scraping
+ - platform-engineering-tools
+ - python-c-extension
+ - data-engineering-analysis
+ - future-is-rusty
+ - create-python-package
+ - cosine_similarity_text_embeddings
+ - generating-sbom
+ - developer-portals-backstage
 
 
