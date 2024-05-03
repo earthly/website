@@ -42,7 +42,7 @@ Beautiful Soup is a Python library used to extract text from HTML and XML data. 
 
 In contrast, Selenium is a browser automation tool that interacts with a website programmatically. It retrieves information by replicating user interactions like keyboard input and mouse clicks. It helps users gather data rendered by client-side JavaScript or data behind paywalls.
 
-## Implementing Web Scraping with Python
+## Implementing Web Scraping With Python
 
 So, let's create a web scraping solution from scratch with both Selenium and Beautiful Soup. All the code is available in [this GitHub repository](https://github.com/vivekthedev/python-web-scraping-tutorial).
 
@@ -81,7 +81,7 @@ To view the classes or IDs of individual books, you need to click the arrow icon
 
 You can access an element's details simply by hovering over it.
 
-We will  scrape the URL, title, and price of each book. Here, you can see that each book is encapsulated within an `<li>` tag:
+We will scrape the URL, title, and price of each book. Here, you can see that each book is encapsulated within an `<li>` tag:
 
 ~~~{.html caption=""}
 <li class="col-xs-6 col-sm-4 col-md-3 col-lg-3">
@@ -209,7 +209,7 @@ If you're looking to scrape dynamic content or content rendered with JavaScript,
 
 Let's scrape the [freeCodeCamp YouTube channel](https://www.youtube.com/@freecodecamp/videos). This involves scraping the top hundred recently uploaded videos, capturing each video's URL, title, duration, upload info, and views. Scraping YouTube videos is a complex process because the content is dynamically loaded as users scroll down to view more videos. Selenium handles this dynamic behavior by replicating user scroll interactions. As before, you must analyze the website to pinpoint all the elements that you want to scrape.
 
-#### Analyzing the freeCodeCamp YouTube Channel
+#### Analyzing the FreeCodeCamp YouTube Channel
 
 When you access developer tools for the freeCodeCamp YouTube channel, you'll notice the structure of the HTML is much more complicated than for the Books to Scrape website. As before, utilize the hover-to-inspect feature to pinpoint the tags responsible for rendering each web element:
 

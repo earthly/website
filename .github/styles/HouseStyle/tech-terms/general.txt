@@ -652,3 +652,10 @@ minimalistic
 upscaling
 Microframeworks
 microframework
+
+Scrapy
+Colab
+statsmodels
+Keras
+seaborn
+Bokeh
