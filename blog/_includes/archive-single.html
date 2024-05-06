@@ -51,7 +51,7 @@
     {% endif %}
 
     {% include archive__meta.html type=include.type %}
-    {% if post.excerpt %}<p class="archive__item-excerpt pl-2 pt-1 pr-2" itemprop="description">{{ post.excerpt | truncate: 160 }}</p>{% endif %}
+    {% if post.excerpt %}<p class="archive__item-excerpt pl-2 pt-1 pr-2" itemprop="description">{{ post.excerpt | strip_html | truncate: 160 }}</p>{% endif %}
   </div>
   </article>
 </div>
