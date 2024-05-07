@@ -240,7 +240,7 @@ import (
  "log"
  "sync"
 
- api "github.com/adamgordonbell/cloudservices/activity-log"
+ api "github.com/earthly/cloud-services-example/activity-log"
 +  _ "github.com/mattn/go-sqlite3"
 )
 ~~~

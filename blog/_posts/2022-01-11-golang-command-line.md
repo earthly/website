@@ -40,7 +40,7 @@ The existing backend doesn't support `list` yet, so we will skip that one for no
 First, I create a new folder for my client:
 
 ~~~{.bash caption=">_"}
-$ go mod init github.com/adamgordonbell/cloudservices/activityclient
+$ go mod init github.com/earthly/cloud-services-example/activityclient
 ~~~
 
 ## Command Line Flags
@@ -334,7 +334,7 @@ package client
 import (
  ...
 
- api "github.com/adamgordonbell/cloudservices/activity-log"
+ api "github.com/earthly/cloud-services-example/activity-log"
 )
 
 ~~~
@@ -526,7 +526,7 @@ test:
 Then I'll start-up the docker container for the service (using its GitHub path) and run `test.sh`:
 
 ~~~{.dockerfile captionb="Earthfile"}
-    WITH DOCKER --load agbell/cloudservices/activityserver=github.com/adamgordonbell/cloudservices/ActivityLog+docker
+    WITH DOCKER --load agbell/cloudservices/activityserver=github.com/earthly/cloud-services-example/ActivityLog+docker
         RUN  docker run -d -p 8080:8080 agbell/cloudservices/activityserver && \
                 ./test.sh
     END
@@ -565,7 +565,7 @@ func (c *Activities) Insert(activity api.Activity) int {
 
 My initial attempts to import the JSON service types into the CLI client were a failure. Problems encountered included:
 
-* **Problem:** module `module github.com/adamgordonbell/cloudservices/activitylog` was in a folder called `ActivityLog`. This caused inconsistency caused problems when importing.
+* **Problem:** module `module github.com/earthly/cloud-services-example/activitylog` was in a folder called `ActivityLog`. This caused inconsistency caused problems when importing.
 
   **Solution** I renamed all packages to be kebab-cased. `ActivityLog` is now `activity-log`. Problem solved!
 * **Problem:** Backend using uint64 and frontend using int leading to `cannot use id (type int) as type uint64 in field value` everywhere.
@@ -575,13 +575,13 @@ My initial attempts to import the JSON service types into the CLI client were a 
   **Solution** use `replace` in `go.mod` to use local version of `activity-log` in `activity-client`.
 
 ~~~
-module github.com/adamgordonbell/cloudservices/activity-client
+module github.com/earthly/cloud-services-example/activity-client
 
 go 1.17
 
-require github.com/adamgordonbell/cloudservices/activity-log v0.0.0
+require github.com/earthly/cloud-services-example/activity-log v0.0.0
 
-replace github.com/adamgordonbell/cloudservices/activity-log => ../activity-log
+replace github.com/earthly/cloud-services-example/activity-log => ../activity-log
 ~~~
 
 </div>
