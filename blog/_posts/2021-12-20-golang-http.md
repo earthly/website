@@ -12,7 +12,7 @@ internal-links:
  - golang http
 excerpt: |
     Learn how to build a JSON HTTP server using Golang in this tutorial. Discover the basics of creating a Golang web service, handling HTTP requests, and working with JSON data.
-last_modified_at: 2023-09-19
+last_modified_at: 2024-04-07
 ---
 **This article explains Golang JSON services. Earthly simplifies the build and test processes for Go web services. [Learn more](https://cloud.earthly.dev/login).**
 
@@ -238,7 +238,7 @@ And retrieve is super simple as well:
 
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Retrieve(id uint64) (Activity, error) {
- if id-1 >= uint64(len(c.activities)) {
+ if id > uint64(len(c.activities)) {
   return Activity{}, ErrIDNotFound
  }
  return c.activities[id-1], nil
