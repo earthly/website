@@ -190,7 +190,7 @@ test:
 
 <figcaption>Test my containerized service</figcaption>
 
-What I've built up so far is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v1-http-server/WebServer), but it doesn't do much. For my activity tracker to be useful, it will need to understand and store activities.
+What I've built up so far is on [GitHub](https://github.com/earthly/cloud-services-example/tree/v1-http-server/WebServer), but it doesn't do much. For my activity tracker to be useful, it will need to understand and store activities.
 
 So let's move on to my activity data structures.
 
@@ -228,7 +228,7 @@ Doing that, I can write an insert function like this:
 
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Insert(activity Activity) uint64 {
- activity.ID = uint64(len(c.activities))
+ activity.ID = uint64(len(c.activities)) + 1
  c.activities = append(c.activities, activity)
  return activity.ID
 }
@@ -238,10 +238,10 @@ And retrieve is super simple as well:
 
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) Retrieve(id uint64) (Activity, error) {
- if id >= uint64(len(c.activities)) {
+ if id-1 >= uint64(len(c.activities)) {
   return Activity{}, ErrIDNotFound
  }
- return c.activities[id], nil
+ return c.activities[id-1], nil
 }
 ~~~
 
@@ -360,7 +360,7 @@ We now have half our API working!
 ~~~{.bash caption=">_"}
 > curl -X POST localhost:8080 -d \
 '{"activity": {"description": "christmas eve class",
- time:"2021-12-24T12:42:31Z"}}'
+ "time":"2021-12-24T12:42:31Z"}}'
 ~~~
 
 ~~~{.merge-code}
@@ -428,7 +428,7 @@ curl -X POST localhost:8080 -d \
 class","id":15}
 ~~~
 
-the whole thing, including some edge cases I left out is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v1-http-server/ActivityLog).
+the whole thing, including some edge cases I left out is on [GitHub](https://github.com/earthly/cloud-services-example/tree/v1-http-server/ActivityLog).
 
 If fact, I can now update my shell script `test.sh` to exercise these endpoints.
 
@@ -467,12 +467,12 @@ And now, since I wrote that `Earthfile` that starts up the service and runs `tes
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/1010.png --alt {{ GitHub Actions }} %}
-<figcaption>Passing End to End tests on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v1-http-server/ActivityLog)</figcaption>
+<figcaption>Passing End to End tests on [GitHub](https://github.com/earthly/cloud-services-example/tree/v1-http-server/ActivityLog)</figcaption>
 </div>
 
 ## That's a Wrap
 
-There we go. I have a working service that I've put up on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v1-http-server/ActivityLog) with an active CI process. It doesn't persist its data, it doesn't allow me to access my activity log in any other way than by id, and it doesn't have a UI, but I'm starting to get a feel for how web services are built in Golang, which was the point.
+There we go. I have a working service that I've put up on [GitHub](https://github.com/earthly/cloud-services-example/tree/v1-http-server/ActivityLog) with an active CI process. It doesn't persist its data, it doesn't allow me to access my activity log in any other way than by id, and it doesn't have a UI, but I'm starting to get a feel for how web services are built in Golang, which was the point.
 
 As an activity tracker, what I have so far is pretty weak. But as a learning lesson, I've found it valuable.
 
@@ -484,7 +484,7 @@ Now I just have to start being active! Maybe building a command line client for 
 
 ### Linting
 
-In the first version of this example I used `Id` everywhere instead of `ID`, which is incorrect capitalization (per `go lint` and [Alex](/blog/authors/Alex/)). To prevent further style issues like this as I continue building this application I'm linting my code going forward using [`golangci-lint`](https://golangci-lint.run/) which with the [right configuration](https://github.com/adamgordonbell/cloudservices/blob/v1-http-server/ActivityLog/.golangci.yml) calls several go linters, including `go lint`.
+In the first version of this example I used `Id` everywhere instead of `ID`, which is incorrect capitalization (per `go lint` and [Alex](/blog/authors/Alex/)). To prevent further style issues like this as I continue building this application I'm linting my code going forward using [`golangci-lint`](https://golangci-lint.run/) which with the [right configuration](https://github.com/earthly/cloud-services-example/blob/v1-http-server/ActivityLog/.golangci.yml) calls several go linters, including `go lint`.
 
 ### Errors
 

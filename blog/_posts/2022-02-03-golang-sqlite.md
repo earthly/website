@@ -285,7 +285,7 @@ func NewActivities() (*Activities, error) {
 }
 ~~~
 
-<figcaption>Initialize the [database](https://github.com/adamgordonbell/cloudservices/blob/v3-sqlite/activity-log/internal/server/activity.go)</figcaption>
+<figcaption>Initialize the [database](https://github.com/earthly/cloud-services-example/blob/v3-sqlite/activity-log/internal/server/activity.go)</figcaption>
 
 ## Golang Insert Into Database
 
@@ -620,7 +620,7 @@ Here it is in GitHub Actions:
 <figcaption></figcaption>
 </div>
 
-Now my activity service has a persistence layer, and I learned quite a bit about how `database/sql`, `sqlite3`, `sqlite-utils` and `github.com/mattn/go-sqlite3` work. Thank you for coming along on the journey with me. I didn't show all the code changes here, but you can find the [diff](https://github.com/adamgordonbell/cloudservices/commit/9398c7251af9ef3d61a3ac32a5535cb7e71985fb) and the [full code](https://github.com/adamgordonbell/cloudservices/tree/v3-sqlite) on GitHub.
+Now my activity service has a persistence layer, and I learned quite a bit about how `database/sql`, `sqlite3`, `sqlite-utils` and `github.com/mattn/go-sqlite3` work. Thank you for coming along on the journey with me. I didn't show all the code changes here, but you can find the [diff](https://github.com/earthly/cloud-services-example/commit/9398c7251af9ef3d61a3ac32a5535cb7e71985fb) and the [full code](https://github.com/earthly/cloud-services-example/tree/v3-sqlite) on GitHub.
 
 ## What's Next
 

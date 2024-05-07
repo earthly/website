@@ -108,7 +108,7 @@ func main() {
 }
 ~~~
 
-It proxies the requests and responses, converts them to the proper format, and communicates with the Lambda runtime. I'm going port the [Text-mode service](/blog/text-mode/) to use this framework, and if you want to skip ahead, the [code is on GitHub](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2).
+It proxies the requests and responses, converts them to the proper format, and communicates with the Lambda runtime. I'm going port the [Text-mode service](/blog/text-mode/) to use this framework, and if you want to skip ahead, the [code is on GitHub](https://github.com/earthly/cloud-services-example/tree/aws-lambda-2).
 
 > Lambda is Greek for CGI script [^3]
 
@@ -315,7 +315,7 @@ $ curl localhost:8080/default/text-mode
 
 That is because I'm still running the lambda runtime locally, which expects JSON events. You can use this locally, as seen in [this article](/blog/aws-lambda-docker/), but it's a bit cumbersome.
 
-To correct this, I need to modify the image (`public.ecr.aws/lambda/go:latest`) that I'm running. So, I create a second image with an updated entrypoint, in my [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/aws-lambda-2/lambda-api/Earthfile):
+To correct this, I need to modify the image (`public.ecr.aws/lambda/go:latest`) that I'm running. So, I create a second image with an updated entrypoint, in my [Earthfile](https://github.com/earthly/cloud-services-example/blob/aws-lambda-2/lambda-api/Earthfile):
 
 ~~~{.docker caption="Earthfile"}
 local-image:
@@ -380,7 +380,7 @@ Earthly.dev Presents:
  |_|  |_|  \___/   \__,_|  \___|
 ~~~
 
-The complete source code is [on GitHub](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-2/lambda-api) , and the code for previous versions. This solution should work for any HTTP service in go, whether written using gorrilaMux, the standard lib, or whatever HTTP framework you prefer.
+The complete source code is [on GitHub](https://github.com/earthly/cloud-services-example/tree/aws-lambda-2/lambda-api) , and the code for previous versions. This solution should work for any HTTP service in go, whether written using gorrilaMux, the standard lib, or whatever HTTP framework you prefer.
 
 I think this can be a powerful model for deploying stateless HTTP services without getting too intertwined and locked into AWS-specific features. It's just a container and a proxy lib. Everything else works just like you are used to.
 
