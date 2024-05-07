@@ -489,7 +489,7 @@ Then I just need to `json.Unmarshall` my activity document:
  return document.Activity, nil
 ~~~
 
-And with that, I have a [working](https://github.com/adamgordonbell/cloudservices/tree/v2-cli/activity-client), though basic, client. So I'm going to add some light testing and then call it a day.
+And with that, I have a [working](https://github.com/earthly/cloud-services-example/tree/v2-cli/activity-client), though basic, client. So I'm going to add some light testing and then call it a day.
 
 ## Testing the Happy Path
 
@@ -512,7 +512,7 @@ Assuming the backend service is up, and the client is built, this will test that
 
 ## Continuous Integration
 
-I can quickly hook this happy path up to CI by extending my previous [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/v2-cli/Earthfile).
+I can quickly hook this happy path up to CI by extending my previous [Earthfile](https://github.com/earthly/cloud-services-example/blob/v2-cli/Earthfile).
 
 I'll create a test target for my activity client (`ac-test`), and copy in client binary and the test script:
 
@@ -588,7 +588,7 @@ replace github.com/adamgordonbell/cloudservices/activity-log => ../activity-log
 
 ### What's Next
 
-So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly, and the amount of code I had to write was [pretty minimal](https://github.com/adamgordonbell/cloudservices/tree/v2-cli/activity-client).
+So now I've learned the basics of building a command-line tool that calls a JSON web-service in GoLang. It went pretty smoothly, and the amount of code I had to write was [pretty minimal](https://github.com/earthly/cloud-services-example/tree/v2-cli/activity-client).
 
 There are two things I want to add to the activity tracker next. First, since all that calls to backend service are in this client, I want to move to GRPC. Second, I need some persistence - right now, the service holds everything in memory. I can't have a power outage erasing all of my hard work.
 

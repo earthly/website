@@ -34,7 +34,7 @@ Ok, lets start. The first thing I need to do is get the gRPC gateway plugin:
 go get github.com/grpc-ecosystem/grpc-gateway/v2/protoc-gen-grpc-gateway
 ~~~
 
-Then I update my [protoc invocation](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/activity-log/Earthfile#L29) to use this plugin:
+Then I update my [protoc invocation](https://github.com/earthly/cloud-services-example/blob/v5-grpc-gateway/activity-log/Earthfile#L29) to use this plugin:
 
 ~~~{.diff caption=">_"}
     protoc api/v1/*.proto \
@@ -206,7 +206,7 @@ Which I can view in a more human readable form using the online [swagger editor]
 <figcaption>Creating a Swagger Doc for a gRPC service proxy</figcaption>
 </div>
 
-You can find the code for the above gRPC proxy on [GitHub](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/grpc-proxy/main.go), and If you have the proto files for a gRPC then all you need to do is generate the proxy and swagger files with `protoc` and adapt the one file service to your needs.
+You can find the code for the above gRPC proxy on [GitHub](https://github.com/earthly/cloud-services-example/blob/v5-grpc-gateway/grpc-proxy/main.go), and If you have the proto files for a gRPC then all you need to do is generate the proxy and swagger files with `protoc` and adapt the one file service to your needs.
 
 Let's move on to the next gRPC gateway example.
 
@@ -258,7 +258,7 @@ The big change is calling `RegisterActivity_LogHandlerServer` instead of `Regist
 
 ### SideNote: SQLite
 
-My [toy example](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway) is using SQLite, which probably isn't a great fit for this solution because it involves multiple services writing to the database. With a network-based database, however, this could work quite well.
+My [toy example](https://github.com/earthly/cloud-services-example/tree/v5-grpc-gateway) is using SQLite, which probably isn't a great fit for this solution because it involves multiple services writing to the database. With a network-based database, however, this could work quite well.
 </div>
 
 And practically, the reason I'm showing this solution is a half step toward the final solution: responding to HTTP rest requests and gRPC requests in a single service. So lets go there next.
@@ -460,7 +460,7 @@ $ cfssl gencert -ca ca.pem -ca-key=ca-key.pem -config ca-config.json \
                -profile=server server-csr.json | cfssljson -bare server 
 ~~~
 
-With all that generation in place, and wrapped up in a nice [Earthfile target](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/activity-log/Earthfile#L44), my side quest is over, and I can head back to my activity-log service.
+With all that generation in place, and wrapped up in a nice [Earthfile target](https://github.com/earthly/cloud-services-example/blob/v5-grpc-gateway/activity-log/Earthfile#L44), my side quest is over, and I can head back to my activity-log service.
 
 ### TLS Time
 
@@ -613,7 +613,7 @@ func main() {
 
 ## Conclusion
 
-There we have it. Rest to gRPC in three ways, with all the complicated bits documented in a runnable [Earthfile](https://github.com/adamgordonbell/cloudservices/blob/v5-grpc-gateway/Earthfile). All the code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway). And with the certs in place, this gRPC + REST service is not even that big of a lift from a standard gRPC end-point. In fact, this approach is in use in [`etcd`](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [Istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469).
+There we have it. Rest to gRPC in three ways, with all the complicated bits documented in a runnable [Earthfile](https://github.com/earthly/cloud-services-example/blob/v5-grpc-gateway/Earthfile). All the code is on [GitHub](https://github.com/earthly/cloud-services-example/tree/v5-grpc-gateway). And with the certs in place, this gRPC + REST service is not even that big of a lift from a standard gRPC end-point. In fact, this approach is in use in [`etcd`](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [Istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469).
 
 And if you enjoyed the build process for your gRPC gateway, consider diving deeper with [Earthly](https://cloud.earthly.dev/login) to further simplify your build process.
 

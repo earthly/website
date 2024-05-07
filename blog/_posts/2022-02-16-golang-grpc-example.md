@@ -28,7 +28,7 @@ last_modified_at: 2023-09-19
 <!-- markdownlint-disable MD036 -->
 Welcome back. I'm an experienced developer, learning Golang by building an activity tracker. Last time I added SQLite persistence. Today, I'm going to be porting everything to gRPC.
 
-If you're curious about gRPC – how it works, when to use it, what example code might look like – well, you are in luck because I'm going to be building a grpc client, a grpc server, and the protobuf files for my activity tracker. The full code is on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/v4-grpc).
+If you're curious about gRPC – how it works, when to use it, what example code might look like – well, you are in luck because I'm going to be building a grpc client, a grpc server, and the protobuf files for my activity tracker. The full code is on [GitHub](https://github.com/earthly/cloud-services-example/tree/v4-grpc).
 
 ## Why gRPC
 
@@ -278,7 +278,7 @@ func (c *Activities) Insert(activity *api.Activity) (int, error) {
  }
 ~~~
 
-And that is the only persistence layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. Again, you can see the full thing on [github](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-log/internal/server/activity.go).
+And that is the only persistence layer change we need to make to switch from our hand-rolled struct to the `protoc` generated one. Again, you can see the full thing on [github](https://github.com/earthly/cloud-services-example/blob/v4-grpc/activity-log/internal/server/activity.go).
 
 ### GRPC Service
 
@@ -516,7 +516,7 @@ func (s *grpcServer) Insert(ctx context.Context, activity *api.Activity) (*api.I
 }
 ~~~
 
-I can repeat this for [`List` and `Retrieve`](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-log/internal/server/server.go), and I have a working solution. (Though the error handling has room for improvement. I'll get back to that later on in the article).
+I can repeat this for [`List` and `Retrieve`](https://github.com/earthly/cloud-services-example/blob/v4-grpc/activity-log/internal/server/server.go), and I have a working solution. (Though the error handling has room for improvement. I'll get back to that later on in the article).
 
 ### Testing A gRPC Server
 
@@ -755,7 +755,7 @@ func (c *Activities) Retrieve(ctx context.Context, id int) (*api.Activity, error
 }
 ~~~
 
-And with that implementation [in place](https://github.com/adamgordonbell/cloudservices/blob/v4-grpc/activity-client/internal/client/activity.go), the client works. Here is the Earthly build:
+And with that implementation [in place](https://github.com/earthly/cloud-services-example/blob/v4-grpc/activity-client/internal/client/activity.go), the client works. Here is the Earthly build:
 
 <div class="wide">
 {% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/3060.png --alt {{ gRPC Client Example Working }} %}

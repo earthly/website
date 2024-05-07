@@ -24,7 +24,7 @@ So before I roll this service out and start actively using it, I will take my ex
 
 ## Background
 
-The current [activity tracking code](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway) and [final version](https://github.com/adamgordonbell/cloudservices/tree/v6-buf) are on GitHub but the main thing you need to know for this walk-though is that my gRPC service is defined like this:
+The current [activity tracking code](https://github.com/earthly/cloud-services-example/tree/v5-grpc-gateway) and [final version](https://github.com/earthly/cloud-services-example/tree/v6-buf) are on GitHub but the main thing you need to know for this walk-though is that my gRPC service is defined like this:
 
 ~~~{.protobuf caption="activity-log/api/v1/activity.proto"}
 service ActivityLogService {
