@@ -22,7 +22,7 @@ Welcome back. I'm an experienced developer, learning Golang by building an activ
 
 **If you're curious about the basics of storing persistent data into a SQL database using Golang, this tutorial will be helpful for you.** I'm going to be using `sqlite3`, but I'll add lots of headings, so you can skip ahead if `sqlite` is not your thing.
 
-My plan is to add SQLite persistence to [the backend service](https://github.com/adamgordonbell/cloudservices) so that my workouts aren't lost if the service goes down. And once I have that, I'll add the `--list` command to my command line client and add an end point for it. it's the type of feature that is simple to do with a SQL backend.
+My plan is to add SQLite persistence to [the backend service](https://github.com/earthly/cloud-services-example) so that my workouts aren't lost if the service goes down. And once I have that, I'll add the `--list` command to my command line client and add an end point for it. it's the type of feature that is simple to do with a SQL backend.
 
 ## Install SQLite
 

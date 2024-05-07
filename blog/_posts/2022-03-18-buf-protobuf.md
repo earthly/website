@@ -101,7 +101,7 @@ As my activity service evolves – as I add new features and roll out new versio
 
 ~~~{.bash caption=">_"}
 
-> buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=main,subdir=activity-log" 
+> buf breaking --against "https://github.com/earthly/cloud-services-example.git#branch=main,subdir=activity-log" 
 ~~~
 
 <figcaption>Using `buf breaking` to compare against main branch</figcaption>
@@ -197,7 +197,7 @@ proto:
 -           --proto_path=.
 +    COPY buf.* .
 +    RUN buf lint
-+    RUN buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=buf,subdir=activity-log" 
++    RUN buf breaking --against "https://github.com/earthly/cloud-services-example.git#branch=buf,subdir=activity-log" 
 +    RUN buf generate 
     SAVE ARTIFACT ./api AS LOCAL ./api 
 ~~~
