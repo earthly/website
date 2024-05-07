@@ -13,7 +13,7 @@ topic: cli
 funnel: 2
 excerpt: |
     Learn how to build a command-line JSON client in Golang to interact with a REST service for storing workout activities. The article covers topics such as parsing command-line flags, making HTTP requests, handling errors, and testing the client.
-last_modified_at: 2023-09-19
+last_modified_at: 2024-04-07
 ---
 **This article is about Golang activity tracking. Earthly can streamline your build process. [Check it out](https://cloud.earthly.dev/login).**
 
