@@ -247,8 +247,8 @@ If you recall from when I was adding the `sqlite` feature, Activities handles al
 
 ~~~{.diff caption="internal/server/activity.go "}
 import 
-- api "github.com/adamgordonbell/cloudservices/activity-log"
-+ api "github.com/adamgordonbell/cloudservices/activity-log/api/v1"
+- api "github.com/earthly/cloud-services-example/activity-log"
++ api "github.com/earthly/cloud-services-example/activity-log/api/v1"
 + "google.golang.org/protobuf/types/known/timestamppb"
 ~~~
 
@@ -339,7 +339,7 @@ $ go run cmd/server/main.go
 ~~~
 
 ~~~{.bash .merge-code}
-# github.com/adamgordonbell/cloudservices/activity-log/internal/server
+# github.com/earthly/cloud-services-example/activity-log/internal/server
 internal/server/server.go:30:39: cannot use &srv (type *grpcServer) as type api_v1.Activity_LogServer in argument to api_v1.RegisterActivity_LogServer:
         *grpcServer does not implement api_v1.Activity_LogServer (missing api_v1.mustEmbedUnimplementedActivity_LogServer method)
 ~~~
