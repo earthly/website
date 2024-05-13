@@ -10,7 +10,7 @@ internal-links:
  - buf
 excerpt: |
     Learn how to avoid common pitfalls when working with Protobuf using Buf, a suite of tools that simplifies dealing with protocol buffers. Discover how to use Buf's linting, breaking change detection, and code generation features to improve your development process.
-last_modified_at: 2023-07-19
+last_modified_at: 2024-04-13
 ---
 **This article explores the `buf` tool. Earthly can enhance your `buf` toolchain by ensuring reproducible builds for your gRPC services. [Check it out](https://cloud.earthly.dev/login).**
 
