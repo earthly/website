@@ -10,7 +10,7 @@ internal-links:
  - buf
 excerpt: |
     Learn how to avoid common pitfalls when working with Protobuf using Buf, a suite of tools that simplifies dealing with protocol buffers. Discover how to use Buf's linting, breaking change detection, and code generation features to improve your development process.
-last_modified_at: 2023-07-19
+last_modified_at: 2024-04-13
 ---
 **This article explores the `buf` tool. Earthly can enhance your `buf` toolchain by ensuring reproducible builds for your gRPC services. [Check it out](https://cloud.earthly.dev/login).**
 
@@ -24,7 +24,7 @@ So before I roll this service out and start actively using it, I will take my ex
 
 ## Background
 
-The current [activity tracking code](https://github.com/adamgordonbell/cloudservices/tree/v5-grpc-gateway) and [final version](https://github.com/adamgordonbell/cloudservices/tree/v6-buf) are on GitHub but the main thing you need to know for this walk-though is that my gRPC service is defined like this:
+The current [activity tracking code](https://github.com/earthly/cloud-services-example/tree/v5-grpc-gateway) and [final version](https://github.com/earthly/cloud-services-example/tree/v6-buf) are on GitHub but the main thing you need to know for this walk-though is that my gRPC service is defined like this:
 
 ~~~{.protobuf caption="activity-log/api/v1/activity.proto"}
 service ActivityLogService {
@@ -101,7 +101,7 @@ As my activity service evolves – as I add new features and roll out new versio
 
 ~~~{.bash caption=">_"}
 
-> buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=main,subdir=activity-log" 
+> buf breaking --against "https://github.com/earthly/cloud-services-example.git#branch=main,subdir=activity-log" 
 ~~~
 
 <figcaption>Using `buf breaking` to compare against main branch</figcaption>
@@ -197,7 +197,7 @@ proto:
 -           --proto_path=.
 +    COPY buf.* .
 +    RUN buf lint
-+    RUN buf breaking --against "https://github.com/adamgordonbell/cloudservices.git#branch=buf,subdir=activity-log" 
++    RUN buf breaking --against "https://github.com/earthly/cloud-services-example.git#branch=buf,subdir=activity-log" 
 +    RUN buf generate 
     SAVE ARTIFACT ./api AS LOCAL ./api 
 ~~~

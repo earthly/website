@@ -197,6 +197,6 @@ Earthly.dev Presents:
  |_|  |_|  \___/   \__,_|  \___|
 ~~~
 
-The code is on [GitHub](https://github.com/adamgordonbell/cloudservices/commit/e213af302cf6372aca4c099419bc6d2a0896ae7a)
+The code is on [GitHub](https://github.com/earthly/cloud-services-example/commit/e213af302cf6372aca4c099419bc6d2a0896ae7a)
 
 {% include_html cta/bottom-cta.html %}

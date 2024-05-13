@@ -855,6 +855,6 @@ Initially, I found working with Terraform to be a challenge. But I now have the 
 
 The Terraform code written here for sure could be improved. I could be extracting my code into separate modules and separating out variables and using workspaces and lifecycles to create a better factored infrastructure as code solution. But doing it from first principles and keeping things simple has been instructive and hopefully reading this conversion build log is valuable for you.
 
-You can find the full all the source on [GitHub](https://github.com/adamgordonbell/cloudservices/tree/terraform-import).
+You can find the full all the source on [GitHub](https://github.com/earthly/cloud-services-example/tree/terraform-import).
 
 {% include_html cta/bottom-cta.html %}

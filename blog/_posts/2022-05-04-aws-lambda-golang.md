@@ -481,7 +481,7 @@ It's surprising to me how much faster the Golang version is. Lynx and the readab
 
 ## Conclusion
 
-So there you go, containerized serverless Golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, ran it in an AWS Lambda, and then also used S3 get and puts for caching. And the whole up to a REST end point. You can [test it out](https://earthly-tools.com/text-mode) or use it for your own purposes and the complete source code is on [github](https://github.com/adamgordonbell/cloudservices/tree/aws-lambda-1).
+So there you go, containerized serverless Golang. We built a program in Go that has some OS level dependencies (lynx), we've wrapped it up into a container, ran it in an AWS Lambda, and then also used S3 get and puts for caching. And the whole up to a REST end point. You can [test it out](https://earthly-tools.com/text-mode) or use it for your own purposes and the complete source code is on [github](https://github.com/earthly/cloud-services-example/tree/aws-lambda-1).
 
 And if you liked how I put together this project, take a look at [Earthly](https://cloud.earthly.dev/login).
 

@@ -22,7 +22,7 @@ Welcome back. I'm an experienced developer, learning Golang by building an activ
 
 **If you're curious about the basics of storing persistent data into a SQL database using Golang, this tutorial will be helpful for you.** I'm going to be using `sqlite3`, but I'll add lots of headings, so you can skip ahead if `sqlite` is not your thing.
 
-My plan is to add SQLite persistence to [the backend service](https://github.com/adamgordonbell/cloudservices) so that my workouts aren't lost if the service goes down. And once I have that, I'll add the `--list` command to my command line client and add an end point for it. it's the type of feature that is simple to do with a SQL backend.
+My plan is to add SQLite persistence to [the backend service](https://github.com/earthly/cloud-services-example) so that my workouts aren't lost if the service goes down. And once I have that, I'll add the `--list` command to my command line client and add an end point for it. it's the type of feature that is simple to do with a SQL backend.
 
 ## Install SQLite
 
@@ -195,8 +195,6 @@ go get github.com/mattn/go-sqlite3
 
 Finally, let's jump into the Golang code.
 
-{% include_html cta/bottom-cta.html %}
-
 ## Golang SQL Repository
 
 Previously `server.Activities` contained a slice of `api.Activity`. Now I'm going to update it to contain a pointer to a `sql.DB`. This will be my database handle. It will be how I store and retrieve the activity records. Here is a diff:
@@ -240,7 +238,7 @@ import (
  "log"
  "sync"
 
- api "github.com/adamgordonbell/cloudservices/activity-log"
+ api "github.com/earthly/cloud-services-example/activity-log"
 +  _ "github.com/mattn/go-sqlite3"
 )
 ~~~
@@ -285,7 +283,7 @@ func NewActivities() (*Activities, error) {
 }
 ~~~
 
-<figcaption>Initialize the [database](https://github.com/adamgordonbell/cloudservices/blob/v3-sqlite/activity-log/internal/server/activity.go)</figcaption>
+<figcaption>Initialize the [database](https://github.com/earthly/cloud-services-example/blob/v3-sqlite/activity-log/internal/server/activity.go)</figcaption>
 
 ## Golang Insert Into Database
 
@@ -365,8 +363,10 @@ Thankfully, I can use [`sql.QueryRow`](https://github.com/golang/go/blob/2580d0e
 My usage looks like this:
 
 ~~~{.go captionb="internal/server/activity.go"}
- row := c.db.QueryRow("SELECT id, time, description FROM activities WHERE id=?", id)
-
+row := c.db.QueryRow(`
+    SELECT id, time, description 
+    FROM activities 
+    WHERE id=?`, id)
 ~~~
 
 To convert the database values into my struct `api.Activity` I used `row.Scan` ( or `row.Scan` for multiple rows). It copies columns from the row into the value pointed at by each of its arguments.
@@ -378,12 +378,16 @@ func (c *Activities) Retrieve(id int) (api.Activity, error) {
  log.Printf("Getting %d", id)
 
  // Query DB row based on ID
- row := c.db.QueryRow("SELECT id, time, description FROM activities WHERE id=?", id)
+row := c.db.QueryRow(`
+    SELECT id, time, description 
+    FROM activities 
+    WHERE id=?`, id)
 
  // Parse row into Activity struct
  activity := api.Activity{}
  var err error
- if err = row.Scan(&activity.ID, &activity.Time, &activity.Description); err == sql.ErrNoRows {
+ if err = row.Scan(&activity.ID, &activity.Time, &activity.Description); 
+    err == sql.ErrNoRows {
   log.Printf("Id not found")
   return api.Activity{}, ErrIDNotFound
  }
@@ -470,7 +474,8 @@ Now I can add my `-list` endpoint. It follows a similar pattern as Retrieve (`-g
 
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) List(offset int) ([]api.Activity, error) {
- rows, err := c.db.Query("SELECT * FROM activities WHERE ID > ? ORDER BY id DESC LIMIT 100", offset)
+ rows, err := c.db.Query(
+  "SELECT * FROM activities WHERE ID > ? ORDER BY id DESC LIMIT 100", offset)
  if err != nil {
   return nil, err
  }
@@ -620,7 +625,7 @@ Here it is in GitHub Actions:
 <figcaption></figcaption>
 </div>
 
-Now my activity service has a persistence layer, and I learned quite a bit about how `database/sql`, `sqlite3`, `sqlite-utils` and `github.com/mattn/go-sqlite3` work. Thank you for coming along on the journey with me. I didn't show all the code changes here, but you can find the [diff](https://github.com/adamgordonbell/cloudservices/commit/9398c7251af9ef3d61a3ac32a5535cb7e71985fb) and the [full code](https://github.com/adamgordonbell/cloudservices/tree/v3-sqlite) on GitHub.
+Now my activity service has a persistence layer, and I learned quite a bit about how `database/sql`, `sqlite3`, `sqlite-utils` and `github.com/mattn/go-sqlite3` work. Thank you for coming along on the journey with me. I didn't show all the code changes here, but you can find the [diff](https://github.com/earthly/cloud-services-example/commit/9398c7251af9ef3d61a3ac32a5535cb7e71985fb) and the [full code](https://github.com/earthly/cloud-services-example/tree/v3-sqlite) on GitHub.
 
 ## What's Next
 
