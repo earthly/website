@@ -12,7 +12,7 @@ internal-links:
 topic: go
 excerpt: |
     In this article, the author explores different ways to create a gRPC gateway that accepts HTTP requests and proxies them to a gRPC service. They cover building a proxy using grpc-gateway, creating a REST service based on the same proto file as the gRPC service, and combining REST and gRPC requests in a single service. The author also discusses TLS, certificate generation, and HTTP/2 in the context of these implementations.
-last_modified_at: 2023-07-19
+last_modified_at: 2024-04-13
 ---
 **Exploring gRPC gateway methods? Earthly simplifies your build process for gRPC services. [Check it out](https://cloud.earthly.dev/login/).**
 
@@ -501,7 +501,22 @@ $ grpcurl -insecure localhost:8080 api.v1.Activity_Log/List
 }
 ~~~
 
-And for curl, I can use `-k`:
+I can also specify the cert like this:
+
+~~~{.bash caption=">_"}
+$ grpcurl -cacert=./certs/ca.pem localhost:8080 api.v1.Activity_Log/List
+{
+  "activities": [
+    {
+      "id": 2,
+      "time": "1970-01-01T00:00:00Z",
+      "description": "christmas eve bike class"
+    }
+  ]
+}
+~~~
+
+See the [updated test.sh](https://github.com/earthly/cloud-services-example/blob/v5-grpc-gateway/activity-log/test.sh) for more details, and for curl, I can use `-k`:
 
 ~~~{.bash caption=">_"}
 curl -k -X POST -s https://localhost:8080/api.v1.Activity_Log/List -d \
@@ -610,6 +625,10 @@ func main() {
 ~~~
 
 </div>
+
+### Using `grpcurl` with TLS
+
+
 
 ## Conclusion
 
