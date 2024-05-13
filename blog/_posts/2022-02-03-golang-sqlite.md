@@ -195,8 +195,6 @@ go get github.com/mattn/go-sqlite3
 
 Finally, let's jump into the Golang code.
 
-{% include_html cta/bottom-cta.html %}
-
 ## Golang SQL Repository
 
 Previously `server.Activities` contained a slice of `api.Activity`. Now I'm going to update it to contain a pointer to a `sql.DB`. This will be my database handle. It will be how I store and retrieve the activity records. Here is a diff:
@@ -365,8 +363,10 @@ Thankfully, I can use [`sql.QueryRow`](https://github.com/golang/go/blob/2580d0e
 My usage looks like this:
 
 ~~~{.go captionb="internal/server/activity.go"}
- row := c.db.QueryRow("SELECT id, time, description FROM activities WHERE id=?", id)
-
+row := c.db.QueryRow(`
+    SELECT id, time, description 
+    FROM activities 
+    WHERE id=?`, id)
 ~~~
 
 To convert the database values into my struct `api.Activity` I used `row.Scan` ( or `row.Scan` for multiple rows). It copies columns from the row into the value pointed at by each of its arguments.
@@ -378,12 +378,16 @@ func (c *Activities) Retrieve(id int) (api.Activity, error) {
  log.Printf("Getting %d", id)
 
  // Query DB row based on ID
- row := c.db.QueryRow("SELECT id, time, description FROM activities WHERE id=?", id)
+row := c.db.QueryRow(`
+    SELECT id, time, description 
+    FROM activities 
+    WHERE id=?`, id)
 
  // Parse row into Activity struct
  activity := api.Activity{}
  var err error
- if err = row.Scan(&activity.ID, &activity.Time, &activity.Description); err == sql.ErrNoRows {
+ if err = row.Scan(&activity.ID, &activity.Time, &activity.Description); 
+    err == sql.ErrNoRows {
   log.Printf("Id not found")
   return api.Activity{}, ErrIDNotFound
  }
@@ -470,7 +474,8 @@ Now I can add my `-list` endpoint. It follows a similar pattern as Retrieve (`-g
 
 ~~~{.go captionb="internal/server/activity.go"}
 func (c *Activities) List(offset int) ([]api.Activity, error) {
- rows, err := c.db.Query("SELECT * FROM activities WHERE ID > ? ORDER BY id DESC LIMIT 100", offset)
+ rows, err := c.db.Query(
+  "SELECT * FROM activities WHERE ID > ? ORDER BY id DESC LIMIT 100", offset)
  if err != nil {
   return nil, err
  }

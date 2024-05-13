@@ -138,7 +138,7 @@ activity-tracker:
         url: /golang-sqlite/
       - title: "Part 4: gRPC"
         url: /golang-grpc-example/
-      - title: "Part 4: gRPC Gateway"
+      - title: "Part 5: gRPC Gateway"
         url: /golang-grpc-gateway/
       - title: "Side Quest: Protobuf's"
         url: /buf-protobuf/
