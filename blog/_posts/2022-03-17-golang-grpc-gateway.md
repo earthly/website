@@ -626,9 +626,7 @@ func main() {
 
 </div>
 
-### Using `grpcurl` with TLS
-
-
+### Using `grpcurl` With TLS
 
 ## Conclusion
 
