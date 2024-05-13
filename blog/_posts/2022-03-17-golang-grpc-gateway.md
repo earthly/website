@@ -628,8 +628,6 @@ func main() {
 
 ### Using `grpcurl` with TLS
 
-
-
 ## Conclusion
 
 There we have it. Rest to gRPC in three ways, with all the complicated bits documented in a runnable [Earthfile](https://github.com/earthly/cloud-services-example/blob/v5-grpc-gateway/Earthfile). All the code is on [GitHub](https://github.com/earthly/cloud-services-example/tree/v5-grpc-gateway). And with the certs in place, this gRPC + REST service is not even that big of a lift from a standard gRPC end-point. In fact, this approach is in use in [`etcd`](https://github.com/etcd-io/etcd/blob/main/server/embed/serve.go) and [Istio](https://github.com/istio/istio/blob/f46f821fb13b7fc24b5d29193e2ad7c5c0a46877/pilot/pkg/bootstrap/server.go#L469).
