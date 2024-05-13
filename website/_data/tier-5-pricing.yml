@@ -2,7 +2,7 @@
   - point: Fully managed, single-tenant satellite fleet
   - point: Unlimited users
 - points:
-  - point: XS to 4XL satellites
+  - point: XS to 3XL satellites
   - point: Unlimited log retention
 - points:
   - point: Dedicated IP address
