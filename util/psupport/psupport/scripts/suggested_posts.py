@@ -1,7 +1,9 @@
 import datetime
 import os
 import pickle
+import argparse
 from typing import Dict, List, Tuple
+import yaml
 
 import numpy as np
 from openai import APIError, OpenAI
@@ -24,18 +26,17 @@ def save_cache(cache: dict) -> None:
         pickle.dump(cache, f)
 
 def extract_slug(filename: str) -> str:
-    # Assuming filenames are in the format "YYYY-MM-DD-title.md"
     parts = filename.split('-')
-    if len(parts) > 3:  # Expected to have date at the start
-        slug = '-'.join(parts[3:])  # Skip date parts
-        slug = slug.rsplit('.', 1)[0]  # Remove file extension
+    if len(parts) > 3:
+        slug = '-'.join(parts[3:])
+        slug = slug.rsplit('.', 1)[0]
         return slug
-    return filename  # Return original filename if it doesn't match the expected format
+    return filename
 
 def handle_nan_in_embeddings(embeddings: List[List[float]]) -> List[List[float]]:
     cleaned_embeddings = []
     for embedding in embeddings:
-        if np.isnan(np.sum(embedding)):  # Check if there are any NaN values in the embedding
+        if np.isnan(np.sum(embedding)):
             cleaned_embedding = [0 if np.isnan(val) else val for val in embedding]
             cleaned_embeddings.append(cleaned_embedding)
         else:
@@ -46,16 +47,12 @@ def load_markdown_files_in_path(folder_path: str, files: List[str]) -> List[Tupl
     today = datetime.date.today()
     filtered_files = []
     for file in files:
-        # Extract the date part from the filename
         date_part = file.split('-', 3)[:3]
         try:
-            # Convert the date part to a datetime.date object
             file_date = datetime.date(int(date_part[0]), int(date_part[1]), int(date_part[2]))
-            # If the file date is today or in the past, add it to the list
             if file_date <= today:
                 filtered_files.append(file)
         except ValueError:
-            # If the date extraction or conversion fails, skip the file
             continue
 
     filtered_files = sorted(filtered_files)
@@ -71,6 +68,16 @@ def load_markdown_files(folder_path: str) -> List[Tuple[str, str]]:
     all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
     return load_markdown_files_in_path(folder_path, all_files)
 
+def load_popular_markdown_files(folder_path: str, popular_slugs: List[str]) -> List[Tuple[str, str]]:
+    all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    matching_files = [f for f in all_files if any(slug in f for slug in popular_slugs)]
+    return load_markdown_files_in_path(folder_path, matching_files)
+
+def load_popular_slugs(file_path: str) -> List[str]:
+    with open(file_path, 'r') as file:
+        data = yaml.safe_load(file)
+    return data.get('slugs', [])
+
 def get_embedding(text: str, filename: str, model: str = "text-embedding-3-small") -> List[float]:
     if filename in cache:
         return cache[filename]
@@ -84,7 +91,7 @@ def get_embedding(text: str, filename: str, model: str = "text-embedding-3-small
             if "maximum context length" in str(e):
                 lines = text.split("\n")
                 if len(lines) > 10:
-                    text = "\n".join(lines[:-10])  # Drop last 10 lines
+                    text = "\n".join(lines[:-10])
                 else:
                     return [0.0] * 1536
             else:
@@ -134,10 +141,23 @@ def print_related_posts(related: Dict[str, List[str]]) -> None:
             print("\n")
 
 def main() -> None:
+    parser = argparse.ArgumentParser(description="Process markdown files to find related posts.")
+    parser.add_argument('--popular', action='store_true', help='Process only popular posts')
+    args = parser.parse_args()
+
     try:
         folder_path = "./blog/_posts"
+        popular_slugs = load_popular_slugs("./blog/_data/popular.yml")
         markdown_files = load_markdown_files(folder_path)
-        related_posts = find_related_posts(markdown_files, markdown_files, max_related=10, min_similarity=0.50)
+        
+        if args.popular:
+            popular_files = load_popular_markdown_files(folder_path, popular_slugs)
+            related_posts = find_related_posts(markdown_files, popular_files, max_related=3, min_similarity=0.50)
+        else:
+            popular_files = load_popular_markdown_files(folder_path, popular_slugs)
+            non_popular_files = [file for file in markdown_files if file[0] not in [f[0] for f in popular_files]]
+            related_posts = find_related_posts(markdown_files, non_popular_files, max_related=10, min_similarity=0.50)
+        
         print_related_posts(related_posts)
     except Exception as e:
         print(f"An error occurred: {e}")

@@ -3,13 +3,13 @@ Input:
   - slug
 
 {% endcomment %}
-    {% if site.data.indexes.related2[include.slug].size > 0 %}
+    {% if site.data.indexes.related_footer[include.slug].size > 0 %}
     <div class="page__related mt-8 ml-8 mr-8">
       <div class="page__related-title heading mb-2 text-2xl text-gray-400">
         You May Also Enjoy
       </div>
       <div class="grid__wrapper grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
-        {% for post in site.data.indexes.related2[include.slug] %}
+        {% for post in site.data.indexes.related_footer[include.slug] %}
           {% if include.slug != post.slug %}
             {% include_cached archive-single.html post=post type="grid" %}
           {% endif %}
