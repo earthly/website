@@ -6,9 +6,6 @@ title: Popular Posts
 <div id="main" role="main" class="p-6 md:p-10">
   <div class="home-archive">
     <div class="mb-6 text-3xl md:text-4xl font-bold">{{ page.title }}</div>
-    <h3 class="mb-4 text-2xl text-gray-400">
-      <span class="lowercase">{{ page.title }}</span>
-    </h3>
     <div class="entries-grid grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
       {% for post in site.data.indexes.popular_posts %}
         {% include_cached archive-single.html post=post type="grid" heading="heading" %}
