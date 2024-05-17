@@ -1,7 +1,7 @@
 ---
 title: "gRPC Gateway"
 categories:
-  - Popular
+  - Tutorials
 toc: true
 author: Adam
 sidebar:
