@@ -15,6 +15,7 @@ module Jekyll
         popular_sidebar = {}
         related_footer = {}
         shorten_name = {}
+        popular_posts = []
   
         # Iterate over each post to populate the indexes
         site.posts.docs.each do |post|
@@ -88,6 +89,9 @@ module Jekyll
           popular_sidebar[slug] = popular_posts.dup
           fall_back_popular = popular_posts
         end
+
+        popular_slugs = site.data['popular']['slugs']
+        popular_posts = popular_slugs.map { |slug| slug_index[slug] }.compact
   
         # Store the indexes in site.data for access in templates
         site.data['indexes'] = {
@@ -100,6 +104,7 @@ module Jekyll
           'popular_sidebar' => popular_sidebar,
           'related_footer' => related_footer,
           'shorten_name' => shorten_name,
+          'popular_posts' => popular_posts,
         }
   
         end_time = Time.now  # Capture end time
