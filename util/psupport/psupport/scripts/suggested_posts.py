@@ -1,7 +1,7 @@
+import datetime
 import os
 import pickle
-from typing import List, Dict, Tuple
-import datetime
+from typing import Dict, List, Tuple
 
 import numpy as np
 from openai import APIError, OpenAI
@@ -42,12 +42,10 @@ def handle_nan_in_embeddings(embeddings: List[List[float]]) -> List[List[float]]
             cleaned_embeddings.append(embedding)
     return cleaned_embeddings
 
-def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
+def load_markdown_files_in_path(folder_path: str, files: List[str]) -> List[Tuple[str, str]]:
     today = datetime.date.today()
-    all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
     filtered_files = []
-    
-    for file in all_files:
+    for file in files:
         # Extract the date part from the filename
         date_part = file.split('-', 3)[:3]
         try:
@@ -59,7 +57,7 @@ def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
         except ValueError:
             # If the date extraction or conversion fails, skip the file
             continue
-    
+
     filtered_files = sorted(filtered_files)
     markdown_texts = []
 
@@ -67,7 +65,11 @@ def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
         with open(os.path.join(folder_path, file), 'r', encoding='utf-8') as f:
             markdown_texts.append(f.read())
 
-    return filtered_files, markdown_texts
+    return list(zip(filtered_files, markdown_texts))
+
+def load_markdown_files(folder_path: str) -> List[Tuple[str, str]]:
+    all_files = [f for f in os.listdir(folder_path) if os.path.isfile(os.path.join(folder_path, f))]
+    return load_markdown_files_in_path(folder_path, all_files)
 
 def get_embedding(text: str, filename: str, model: str = "text-embedding-3-small") -> List[float]:
     if filename in cache:
@@ -88,33 +90,41 @@ def get_embedding(text: str, filename: str, model: str = "text-embedding-3-small
             else:
                 raise e
 
-def find_related_posts(folder_path: str, max_related: int = 15, min_similarity: float = 0.3) -> Dict[str, List[str]]:
-    all_files, markdown_texts = load_markdown_files(folder_path)
-    embeddings = [get_embedding(text, filename) for text, filename in zip(markdown_texts, all_files)]
-    embeddings = handle_nan_in_embeddings(embeddings)
-    embeddings_matrix = np.array(embeddings)
-    similarity_matrix = cosine_similarity(embeddings_matrix)
-    np.fill_diagonal(similarity_matrix, 0)  # Fill diagonal with 0s to ignore self-similarity
+def find_related_posts(input_files: List[Tuple[str, str]], related_files: List[Tuple[str, str]], max_related: int = 15, min_similarity: float = 0.3) -> Dict[str, List[str]]:
+    input_embeddings = [get_embedding(text, filename) for filename, text in input_files]
+    related_embeddings = [get_embedding(text, filename) for filename, text in related_files]
 
-    related_posts = {}
-    for idx, filename in enumerate(all_files):
-        slug = extract_slug(filename)
+    input_embeddings = handle_nan_in_embeddings(input_embeddings)
+    related_embeddings = handle_nan_in_embeddings(related_embeddings)
+
+    input_embeddings_matrix = np.array(input_embeddings)
+    related_embeddings_matrix = np.array(related_embeddings)
+
+    similarity_matrix = cosine_similarity(input_embeddings_matrix, related_embeddings_matrix)
+
+    related_posts: Dict[str, List[str]] = {}
+
+    for idx, (input_filename, _) in enumerate(input_files):
+        input_slug = extract_slug(input_filename)
         similarity_scores = similarity_matrix[idx]
         related_indices = np.argsort(similarity_scores)[::-1]
         related_slugs = []
         for related_idx in related_indices:
-            if related_idx == idx:
-                continue  # Skip self-similarity
-            related_slug = extract_slug(all_files[related_idx])
+            related_slug = extract_slug(related_files[related_idx][0])
+            if input_slug == related_slug:
+                continue
             related_similarity = similarity_scores[related_idx]
             if related_similarity >= min_similarity:
                 related_slugs.append(related_slug)
             if len(related_slugs) >= max_related:
                 break
 
-        related_posts[slug] = related_slugs
+        related_posts[input_slug] = related_slugs
 
-    sorted_related_posts = sorted(related_posts.items(), key=lambda x: len(x[1]))
+    return related_posts
+
+def print_related_posts(related: Dict[str, List[str]]) -> None:
+    sorted_related_posts = sorted(related.items(), key=lambda x: len(x[1]))
 
     for slug, related_slugs in sorted_related_posts:
         if related_slugs:
@@ -123,12 +133,12 @@ def find_related_posts(folder_path: str, max_related: int = 15, min_similarity: 
                 print(f" - {related_slug}")
             print("\n")
 
-    return related_posts
-
 def main() -> None:
     try:
         folder_path = "./blog/_posts"
-        related_posts = find_related_posts(folder_path, max_related=10, min_similarity=0.50)
+        markdown_files = load_markdown_files(folder_path)
+        related_posts = find_related_posts(markdown_files, markdown_files, max_related=10, min_similarity=0.50)
+        print_related_posts(related_posts)
     except Exception as e:
         print(f"An error occurred: {e}")
     finally:
