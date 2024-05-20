@@ -7,7 +7,10 @@ author: Gourav Singh Bais
 
 internal-links:
  - just an example
+excerpt: |
+    Hatch is a Python project manager that allows you to manage multiple virtual environments for a single Python application, making it easier to handle varying dependency requirements and different sets of dependencies for development, testing, and documentation. However, Hatch has limitations when it comes to managing system-level dependencies and is not suitable for developing Python extension modules.
 ---
+**The article focuses on how Earthly can enhance CI builds for Hatch users. Earthly provides a robust solution for Hatch project management. [Check it out](https://cloud.earthly.dev/login).**
 
 [Hatch](https://github.com/pypa/hatch) is a modern, extensible Python project manager that's known for its ability to seamlessly manage multiple environments for a single Python application.
 
