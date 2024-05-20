@@ -125,3 +125,9 @@ mergeslow
 util
 setuptools
 TensorFlow
+
+conda
+Nox
+pyenv
+pipx
+envs

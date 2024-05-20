@@ -89,7 +89,9 @@ If you go back to your `pyproject.toml` file, you'll notice that a few environme
 
 You can also run `hatch env show` to see a full list of environments:
 
-![Hatch show envs](https://i.imgur.com/34UxFxK.png)
+<div class="wide">
+![Hatch show envs]({{site.images}}{{page.slug}}/34UxFxK.png)
+</div>
 
 Each of these environments is populated with some dependencies (*eg* `pytest` and `mypy`). You can also define project-specific dependencies if desired or run different Python scripts in different environments by specifying them in the `scripts` section of the environment. When no environment is chosen explicitly, Hatch uses the `default` environment.
 
@@ -252,7 +254,9 @@ To remove an environment, run the `hatch env remove <ENV NAME>` command. You can
 
 For example, if you want to remove the `test` environment, run `hatch env remove test`:
 
-![Hatch remove environment](https://i.imgur.com/PuMr6tP.png)
+<div class="wide">
+![Hatch remove environment]({{site.images}}{{page.slug}}/PuMr6tP.png)
+</div>
 
 All the code for this tutorial is available in [this GitHub repo](https://github.com/gouravsinghbais/How-to-Create-a-Python-Virtual-Environment-with-Hatch).
 
@@ -320,9 +324,5 @@ While Hatch offers features such as project management, dependency management, a
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
