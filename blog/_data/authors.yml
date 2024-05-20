@@ -597,3 +597,7 @@ Alen Kalac:
     name    : "Alen Kalac"
     bio     : "Alen is a data scientist working in finance. He's a freelance data scientist, too, and writes about data science and machine learning."
     avatar  : "/assets/images/authors/person.jpg"
+Gourav Singh Bais:
+    name    : "Gourav Singh Bais"
+    bio     : "Gourav is an applied machine learning engineer at ValueMomentum Inc. He has worked in this field for several years with various clients, including Fortune 500 companies. He's skilled in developing machine learning and deep learning pipelines, retraining systems, and transforming data science prototypes to production-grade solutions."
+    avatar  : "/assets/images/authors/gourav-singh-bais.jpg"
