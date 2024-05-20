@@ -31,7 +31,8 @@ Now that you know how Hatch can help you, you can learn how to create different 
 
 Installing Hatch in Python is easy; simply run `pip install hatch`. Your output will look something like this:
 
-~~~
+~~~{ caption="Output"}
+
 gouravbais08@Gouravs-Air ~ % pip install hatch
 Collecting hatch
 Obtaining dependency information for hatch from https://files.pythonhosted.org /packages/05/38/ba8f90264d19ed39851f37a22f2a4be8e9644a1203f114b16647f954bb02/hat
@@ -61,7 +62,7 @@ To create a new project, all you have to do is run the `hatch new <project name>
 
 For this tutorial, let's create a simple Python application named `hatch-demo` that uses a [Flask API](https://flask.palletsprojects.com/en/3.0.x/). To do so, run `hatch new "Hatch Demo"`. The folder structure that's created will look like this:
 
-~~~
+~~~{ caption=""}
 gouravbais08@Gouravs-Air Hatch_Project % hatch new "Hatch Demo"
 hatch-demo
 |---- src
@@ -101,7 +102,7 @@ Now that you're familiar with the `pyproject.toml` file, go ahead and create a s
 
 Add the following code to the `app.py` file:
 
-~~~
+~~~{.python caption="app.py"}
 from flask import Flask
 
 app = Flask(__name__)
@@ -118,7 +119,7 @@ This code imports the Flask dependency and creates an endpoint named `hello` tha
 
 To test the app, add the following lines of code to the `test_app.py` file:
 
-~~~
+~~~{.python caption="test_app.py"}
 import unittest
 
 class TestStringMethods(unittest.TestCase):
@@ -137,7 +138,7 @@ Now that the setup is complete, it's time to explore the environments in Hatch.
 
 Apart from the default environment, you can also create different environments with Hatch. To do so, run the following command in your terminal:
 
-~~~
+~~~{.bash caption=">_"}
 hatch env create
 ~~~
 
@@ -147,7 +148,7 @@ For this Flask app, you'll use the default environment to run the Flask applicat
 
 Make the following changes to the `default` environment:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 [tool.hatch.envs.default]
 dependencies = [
   "coverage[toml]>=6.5",
@@ -161,7 +162,7 @@ As you can see, Flask is mentioned in the dependencies, and the script that you 
 
 To create the `test` environment, add the following lines of code to the `pyproject.toml` file:
 
-~~~
+~~~{.toml caption="pyproject.toml"}
 [tool.hatch.envs.test]
 dependencies = [
   "pytest",
@@ -188,7 +189,7 @@ Here, a new `test` environment is created with Python testing dependencies, and 
 
 If you want to provide a list of supported Python versions for an environment, you can use the `matrix` section in the environment configuration. For example, to use two distinct Python versions in the `test` environment, you can include the following lines in your `pyproject.toml` file:
 
-~~~
+~~~{.toml caption="pyproject.toml"}
 [[tool.hatch.envs.test.matrix]]
 python = ["3.10", "3.11"]
 ~~~
@@ -201,13 +202,14 @@ To run a Python script using Hatch, you can use the `hatch run` command, which s
 
 To start your Flask app in the default environment, run the following:
 
-~~~
+~~~{.bash caption=">_"}
 hatch run app
 ~~~
 
 Your output should look like this:
 
-~~~
+~~~{ caption="Output"}
+
 * Serving Flask app 'app'
 * Debug mode: off
 WARNING: This is a development server. Do not use it in a production deployment.
@@ -221,13 +223,14 @@ If you want to run a script from another environment, you need to specify the en
 
 For example, you can run the test script in the `test` environment like this:
 
-~~~
+~~~{.bash caption=">_"}
 hatch run test:test
 ~~~
 
 Your output should look something like this:
 
-~~~
+~~~{ caption="Output"}
+
 platform darwin -- Python 3.11.5, pytest-8.1.1, pluggy-1.4.0
 rootdir: /Users/gouravbais08/Projects_and_Learning/Personal_Projects/Hatch_Proje
 ct/hatch-demo configfile: pyproject.toml
@@ -235,12 +238,12 @@ plugins: cov-5.0.0
 collected 1 item
 tests/test_app.py •
 [100%]
-============================ 1 Passed in 0.01s ==================================
+=========== 1 Passed in 0.01s ===================
 ~~~
 
 Another way to specify an environment is with the `-e`/`--env` flag. For instance, you can run the same test script using the `-e` flag like this:
 
-~~~
+~~~{.bash caption=">_"}
 hatch -e test run test
 ~~~
 
@@ -276,7 +279,7 @@ An effective approach to simplifying dependency management is to leverage [Earth
 
 For instance, the following is a sample `Earthfile` for a Flask API:
 
-~~~
+~~~{.dockerfile caption="Earthfile"}
 # Use a specific Python version
 FROM python:3.8
 WORKDIR /code
@@ -321,9 +324,3 @@ In this article, you learned how to create, manage, and delete virtual environme
 While Hatch offers features such as project management, dependency management, and environment management, it can't handle system-level dependencies, which significantly impacts code reproducibility. While manually creating and managing environments can mitigate this issue, it's cumbersome and challenging to maintain consistency across different systems. Thankfully, [Earthly](https://cloud.earthly.dev/login) can help streamline your development processes and resolve system-level dependencies with the help of a single Earthfile. This file can manage your Python dependencies and system-level dependencies all in one place while providing a step-by-step execution flow like Docker.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-
