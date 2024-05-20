@@ -15,7 +15,9 @@ internal-links:
 ---
 
 One piece of consistent feedback we get from Earthly users is that the caching benefits are real. Users love that Earthly starts caching parts of their build automatically. You don't have to do anything to get it to work, and that will always be the case.
+
 But you don't have to stop there. Optimizing the structure of your Earthfile can often improve baseline caching and increase speed even more. To do this effectively, it's essential to understand how caching works in Earthly.
+
 Most commands in an Earthfile create a cache layer as part of execution. Each target in an Earthfile is similar to a cake with multiple layers, each new command is a new layer on the top of the cake that is cached for reuse.
 
 When a target is executed a subsequent time, Earthly will attempt to reuse as much of the cached "cake" as possible. Starting from the bottom of the "cake", each cached layer will be reused unless the command's input has changed – input being ARG values, files being COPY'd, or the command itself. Earthly will work its way up the cached layers of the "cake" until it runs into a command with input that has changed – a cache bust. At that point, it will execute that command and every command for the layers in the "cake" above it.
