@@ -1,7 +1,5 @@
 ---
 title: "Python Data Classes vs Named Tuples: Differences You Should Know"
-categories:
-  - Tutorials
 toc: true
 author: Bala Priya C
 
@@ -10,6 +8,8 @@ internal-links:
 excerpt: |
     In this article, we explore the differences between Python data classes and named tuples. We discuss their features, such as immutability, default values, type hints, comparison, memory efficiency, and maintainability. Whether you're a beginner or an experienced Python developer, understanding these differences can help you make informed decisions when choosing between data classes and named tuples for your projects.
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article explains Python data structures. Earthly enhances Python builds by combining the simplicity of docker with greater flexibility. [Check it out](https://cloud.earthly.dev/login).**
 

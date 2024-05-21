@@ -1,7 +1,5 @@
 ---
 title: "Poetry Build and Publish"
-categories:
-  - Tutorials
 toc: true
 author: Adam
 sidebar:
@@ -9,6 +7,8 @@ sidebar:
 topcta: false
 excerpt: |
     This tutorial explains how to use the Poetry dependency manager and build system to package and publish Python projects. It covers the process of building distributions, testing the package locally, and publishing to TestPyPI and PyPI.
+categories:
+  - Python
 ---
 [Last time](/blog/create-python-package), I walked through packaging a simple Python module using setuptools and setup.py to generate distributions and publish them to PyPI.
 

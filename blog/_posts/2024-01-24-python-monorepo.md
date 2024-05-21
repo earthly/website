@@ -1,7 +1,5 @@
 ---
 title: "Building a Monorepo with Python"
-categories:
-  - Tutorials
 toc: true
 author: Furqan Butt
 
@@ -13,6 +11,8 @@ internal-links:
  - using python to build a monorepo
 excerpt: |
     This article explains the benefits of using a monorepo setup in software development and provides a tutorial on how to build a monorepo with Python using build tools like Pants and Earthly. It covers topics such as project structure, setting up build files, running tests, fixing linting and formatting issues, and containerizing the project.
+categories:
+  - Python
 ---
 **This article explains how to set up a monorepo in Python. Earthly efficiently orchestrates complex builds in monorepos. [Check it out](https://cloud.earthly.dev/login).**
 

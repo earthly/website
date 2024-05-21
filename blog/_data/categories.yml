@@ -20,7 +20,7 @@ categories:
   - slug: miscellaneous
     name: Miscellaneous
 
-python-development:
+Python:
   - python-frameworks
   - python-monorepo
   - oauth-2-in-non-web-clients

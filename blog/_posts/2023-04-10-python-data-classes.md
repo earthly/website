@@ -1,7 +1,5 @@
 ---
 title: "What Are Python Data Classes?"
-categories:
-  - Tutorials
 toc: true
 author: Bala Priya C
 
@@ -11,6 +9,8 @@ internal-links:
 excerpt: |
     In this tutorial, you'll learn about Python data classes and how they provide a convenient way to define and manage data-oriented classes. You'll explore the basics of data classes, their differences from regular classes, and how they support type hints, default values, immutability, and more. If you're interested in simplifying your data-oriented classes and improving your Python code, this tutorial is for you!
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article explores Python data classes. Earthly streamlines the build process for Python developers, whether they are using data classes or not. [Learn more](https://cloud.earthly.dev/login).**
 

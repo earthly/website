@@ -1,8 +1,6 @@
 ---
 title: "Python Concatenate Lists"
 description: "There are several ways to join lists in Python. In almost all situations using list1 + list2 is the way you want to concatenate lists." 
-categories:
-  - Tutorials
 toc: true
 author: Adam
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to concatenate lists in Python using different methods, such as the `+` operator and the `extend()` function. Discover the best practices for combining lists and optimize performance in various scenarios.
 last_modified_at: 2023-07-14
+categories:
+  - Python
 ---
 **In this article, you'll discover how to merge lists in Python. If you're a Python developer, Earthly provides a containerized solution to simplify your build processes. [Learn More](https://cloud.earthly.dev/login).**
 

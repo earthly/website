@@ -1,7 +1,5 @@
 ---
 title: "How Classes and Objects Work in Python"
-categories:
-  - Tutorials
 toc: true
 author: Bala Priya C
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to work with classes and objects in Python in this tutorial. Discover how to define attributes and methods, use class variables and methods, and create objects from tuples.
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article explains the basics of Python OOP fundamentals. Earthly streamlines your continuous integration workflow for Python OOP projects. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
