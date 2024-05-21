@@ -1,5 +1,5 @@
 ---
-title: "How to Create a Python Virtual Environment with PyInstaller"
+title: "How to use PyInstaller"
 categories:
   - Tutorials
 toc: true
