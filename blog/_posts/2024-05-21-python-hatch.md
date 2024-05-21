@@ -7,8 +7,9 @@ author: Gourav Singh Bais
 
 internal-links:
  - just an example
+excerpt: |
+    Hatch is a Python project manager that allows you to manage multiple virtual environments for a single Python application, making it easier to handle varying dependency requirements and different sets of dependencies for development, testing, and documentation. However, Hatch has limitations when it comes to managing system-level dependencies and is not suitable for developing Python extension modules.
 ---
-
 [Hatch](https://github.com/pypa/hatch) is a modern, extensible Python project manager that's known for its ability to seamlessly manage multiple environments for a single Python application.
 
 For example, if you're developing an application that runs on different Python versions (such as [3.10](https://www.python.org/downloads/release/python-3100/) and [3.11](https://www.python.org/downloads/release/python-3110/)), you'd need to create separate virtual environments using tools like [venv](https://docs.python.org/3/library/venv.html) or [conda](https://conda.io/projects/conda/en/latest/user-guide/getting-started.html) to accommodate varying dependency requirements. Similarly, for production-grade apps, you need to maintain different environments for development, testing, and documentation, necessitating different sets of dependencies. As your application scales, manually managing these environments becomes cumbersome. Thankfully, Hatch can help handle these environments automatically so that you're free to focus on coding.
