@@ -291,6 +291,7 @@ If you're interested in trying an alternative method, consider using [Earthly](h
 
 You can read more about Earthly's solution to the environment problem on the [Earthly blog](https://earthly.dev/blog/python-earthly/).
 
+{% include_html cta/bottom-cta.html %}
 
 ## Outside Article Checklist
 
@@ -301,4 +302,3 @@ You can read more about Earthly's solution to the environment problem on the [Ea
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
