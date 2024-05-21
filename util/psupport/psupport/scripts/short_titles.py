@@ -1,10 +1,9 @@
 import os
 import pickle
-import yaml
-from openai import APIError, OpenAI
 from textwrap import dedent
 
 import guidance
+import yaml
 from guidance import assistant, gen, system, user
 
 gpt35turbo = guidance.models.OpenAI("gpt-3.5-turbo-16k")
@@ -34,7 +33,7 @@ def extract_slug(filename: str) -> str:
 def generate_minimal_title(original_title: str) -> str:
     if original_title in cache:
         return cache[original_title]
-    
+
     lm = gpt35turbo
     with system():
         lm += dedent("""
@@ -42,13 +41,13 @@ def generate_minimal_title(original_title: str) -> str:
                 Return a two to four word title for an article with the following title. Return just the two to four word answer.
                 """)
     with user():
-         lm += dedent(f"Cosine Similarity and Text Embeddings In Python with OpenAI")
+         lm += dedent("Cosine Similarity and Text Embeddings In Python with OpenAI")
     with assistant():
-         lm += dedent(f"Cosine Similarity In Python") 
+         lm += dedent("Cosine Similarity In Python")
     with user():
-         lm += dedent(f"Getting Started with containerd in Docker")
+         lm += dedent("Getting Started with containerd in Docker")
     with assistant():
-         lm += dedent(f"containerd in Docker") 
+         lm += dedent("containerd in Docker")
     with user():
         lm += dedent(original_title)
     with assistant():
