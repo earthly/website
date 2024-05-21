@@ -1,0 +1,85 @@
+categories:
+  - slug: python-development
+    name: Python Development
+  - slug: devops-ci-cd
+    name: DevOps and CI/CD
+  - slug: web-development
+    name: Web Development
+  - slug: containerization-orchestration
+    name: Containerization and Orchestration
+  - slug: cloud-computing-serverless
+    name: Cloud Computing and Serverless
+  - slug: data-science-machine-learning
+    name: Data Science and Machine Learning
+  - slug: security
+    name: Security
+  - slug: scripting-automation
+    name: Scripting and Automation
+  - slug: programming-languages
+    name: Programming Languages
+  - slug: miscellaneous
+    name: Miscellaneous
+
+python-development:
+  - python-frameworks
+  - python-monorepo
+  - oauth-2-in-non-web-clients
+  - improve-django-performance-caching
+  - python-ast
+  - abstract-base-classes-python
+  - python-data-classes
+  - more-on-python-data-classes
+  - python-data-classes-vs-namedtuples
+  - python-hatch
+  - better-builds
+  - python-subprocess
+  - python-web-scraping
+  - python-microservices-rabbitmq-docker
+  - python-with-statement
+  - python-closures-decorators
+  - python-classes-and-objects
+  - python-concatenate-lists
+  - python-c-extension
+  - create-python-package
+  - python-makefile
+  - python-matplotlib-docker
+  - python-earthly
+  - python-timsort-merge
+  - python-3.11-new-features
+  - pytest-fixtures
+  - pyscript
+  - python-package-management
+  - python-logging
+  - python-data-science-libraries
+  - python-logging
+  - python-closures-decorators
+  - plotting-rainfall-data-with-python-and-matplotlib
+  - read-csv-in-python
+  - analyze-amzndata-pyth
+  - playwright-python-api-testing
+  - psycopg2-postgres-python
+  - structural-pattern-matching-python
+  - create-python-package
+  - poetry-publish
+  - incremental-rust-builds
+  - python-init
+  - python-makefile
+  - automate-tasks-shell-scripts
+  - django-signals
+  - python-docker
+  - bash-variables
+  - python-microservices-rabbitmq-docker
+  - python-poetry
+  - python-makefile
+  - pytest-fixtures
+  - python-makefile
+  - python-makefile
+  - python-data-science-libraries
+  - python-data-classes-vs-namedtuples
+  - magic-methods-python
+  - python-3.11-new-features
+  - django-template-filters
+  - customize-django-admin-site
+  - golang-docker
+  - create-python-package
+  - automate-tasks-shell-scripts
