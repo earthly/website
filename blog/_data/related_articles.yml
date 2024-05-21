@@ -28,18 +28,6 @@ python-frameworks:
  - python-monorepo
 
 
-soc-type-two:
- - earthly-v0-8
- - self-hosted-satellites
- - konfig
- - on-star-history
- - earthly-functions
- - earthly-docker-build
- - larger-satellite-sizes
- - docker-sbom
- - auto-skip
-
-
 introducing-earthly-build-automation-for-the-container-era:
  - the-world-deserves-better-builds
  - launching-earthly-CI
@@ -5323,12 +5311,12 @@ create-python-package:
  - python-c-extension
  - python-monorepo
  - incremental-rust-builds
+ - efficiently-cache-dependencies-earthfiles
  - konfig
  - yarn-vite-monorepo
  - rust-monorepo
  - future-is-rusty
  - earthly-functions
- - understanding-monorepos
 
 
 poetry-publish:
@@ -5336,12 +5324,12 @@ poetry-publish:
  - python-c-extension
  - python-monorepo
  - incremental-rust-builds
+ - efficiently-cache-dependencies-earthfiles
  - konfig
  - rust-monorepo
  - yarn-vite-monorepo
  - language-style-czar
  - future-is-rusty
- - monorepo-java
 
 
 python-c-extension:
@@ -5373,6 +5361,7 @@ merge-queues:
 incremental-rust-builds:
  - cargo-chef
  - rust-sccache
+ - efficiently-cache-dependencies-earthfiles
  - konfig
  - rust-monorepo
  - cargo-workspace-crates
@@ -5380,7 +5369,6 @@ incremental-rust-builds:
  - earthly-docker-build
  - docker-build-cloud
  - earthly-functions
- - build-buildkit-cache
 
 
 nerdctl:
@@ -5507,10 +5495,10 @@ understanding-monorepos:
  - gradle-monorepo
  - cargo-workspace-crates
  - yarn-vite-monorepo
+ - efficiently-cache-dependencies-earthfiles
  - konfig
  - incremental-rust-builds
  - cargo-chef
- - rust-sccache
 
 
 single-expression-functions:
@@ -5582,17 +5570,18 @@ on-star-history:
  - earthly-docker-build
  - konfig
  - earthly-functions
+ - efficiently-cache-dependencies-earthfiles
  - earthly-v0-8
  - self-hosted-satellites
  - cargo-chef
  - docker-build-cloud
  - larger-satellite-sizes
  - docker-init-in-go
- - auto-skip
 
 
 konfig:
  - earthly-docker-build
+ - efficiently-cache-dependencies-earthfiles
  - docker-init-in-go
  - docker-build-cloud
  - cargo-chef
@@ -5601,7 +5590,6 @@ konfig:
  - on-star-history
  - docker-init-rust
  - docker-init-in-python
- - monorepo-java
 
 
 build-buildkit-cache:
@@ -5609,17 +5597,18 @@ build-buildkit-cache:
  - docker-buildx
  - buildkit-secrets
  - cargo-chef
+ - efficiently-cache-dependencies-earthfiles
  - docker-init-nodejs
  - docker-init-in-go
  - docker-init-in-python
  - docker-init-quickly
  - docker-init-rust
- - rust-sccache
 
 
 earthly-v0-8:
  - earthly-docker-build
  - earthly-functions
+ - efficiently-cache-dependencies-earthfiles
  - konfig
  - self-hosted-satellites
  - auto-skip
@@ -5627,7 +5616,6 @@ earthly-v0-8:
  - larger-satellite-sizes
  - on-star-history
  - monorepo-java
- - python-monorepo
 
 
 python-monorepo:
@@ -5639,8 +5627,8 @@ python-monorepo:
  - docker-init-in-python
  - konfig
  - yarn-vite-monorepo
+ - efficiently-cache-dependencies-earthfiles
  - docker-init-in-go
- - docker-init-rust
 
 
 showboaters:
@@ -5659,6 +5647,7 @@ showboaters:
 rust-sccache:
  - incremental-rust-builds
  - cargo-chef
+ - efficiently-cache-dependencies-earthfiles
  - cargo-workspace-crates
  - rust-monorepo
  - docker-init-rust
@@ -5666,7 +5655,6 @@ rust-sccache:
  - understanding-monorepos
  - docker-build-cloud
  - auto-skip
- - future-is-rusty
 
 
 yarn-vite-monorepo:
@@ -5679,7 +5667,7 @@ yarn-vite-monorepo:
  - developer-portals-backstage
  - docker-init-nodejs
  - incremental-rust-builds
- - docker-init-in-go
+ - efficiently-cache-dependencies-earthfiles
 
 
 gradle-monorepo:
@@ -5689,10 +5677,10 @@ gradle-monorepo:
  - rust-monorepo
  - cargo-workspace-crates
  - yarn-vite-monorepo
+ - efficiently-cache-dependencies-earthfiles
  - earthly-functions
  - konfig
  - docker-init-in-go
- - developer-portals-backstage
 
 
 larger-satellite-sizes:
@@ -5701,11 +5689,11 @@ larger-satellite-sizes:
  - earthly-v0-8
  - earthly-functions
  - on-star-history
+ - efficiently-cache-dependencies-earthfiles
  - auto-skip
  - konfig
  - soc-type-two
  - incremental-rust-builds
- - docker-build-cloud
 
 
 cargo-workspace-crates:
@@ -5739,12 +5727,12 @@ cargo-chef:
  - docker-init-rust
  - docker-build-cloud
  - rust-sccache
+ - efficiently-cache-dependencies-earthfiles
  - earthly-docker-build
  - konfig
  - rust-monorepo
  - cargo-workspace-crates
  - docker-init-in-go
- - build-buildkit-cache
 
 
 self-hosted-satellites:
@@ -5754,10 +5742,10 @@ self-hosted-satellites:
  - earthly-functions
  - konfig
  - auto-skip
+ - efficiently-cache-dependencies-earthfiles
  - on-star-history
  - docker-build-cloud
  - incremental-rust-builds
- - soc-type-two
 
 
 namespaces-and-cgroups-docker:
@@ -5810,6 +5798,19 @@ why-developer-platform:
  - understanding-monorepos
  - data-engineering-analysis
  - docker-buildx
+
+
+soc-type-two:
+ - earthly-v0-8
+ - self-hosted-satellites
+ - konfig
+ - on-star-history
+ - earthly-functions
+ - earthly-docker-build
+ - larger-satellite-sizes
+ - efficiently-cache-dependencies-earthfiles
+ - docker-sbom
+ - auto-skip
 
 
 namespaces-and-containers-in-depth:
@@ -5865,6 +5866,7 @@ data-engineering-analysis:
 
 
 auto-skip:
+ - efficiently-cache-dependencies-earthfiles
  - earthly-docker-build
  - earthly-functions
  - earthly-v0-8
@@ -5874,7 +5876,6 @@ auto-skip:
  - cargo-chef
  - incremental-rust-builds
  - rust-sccache
- - understanding-monorepos
 
 
 platform-engineering-tools:
@@ -5905,6 +5906,7 @@ platform-teams:
 
 earthly-docker-build:
  - docker-build-cloud
+ - efficiently-cache-dependencies-earthfiles
  - earthly-functions
  - konfig
  - self-hosted-satellites
@@ -5913,7 +5915,6 @@ earthly-docker-build:
  - earthly-v0-8
  - cargo-chef
  - docker-init-in-go
- - docker-buildx
 
 
 what-is-platform-engineering:
@@ -5935,16 +5936,17 @@ monorepo-java:
  - gradle-monorepo
  - understanding-monorepos
  - cargo-workspace-crates
+ - efficiently-cache-dependencies-earthfiles
  - konfig
  - yarn-vite-monorepo
  - earthly-docker-build
  - docker-init-in-go
- - earthly-functions
 
 
 golang-dlv:
  - docker-init-in-go
  - docker-init-in-python
+ - efficiently-cache-dependencies-earthfiles
  - docker-buildx
  - yarn-vite-monorepo
  - future-is-rusty
@@ -5952,11 +5954,11 @@ golang-dlv:
  - konfig
  - docker-init-quickly
  - earthly-functions
- - docker-init-rust
 
 
 earthly-functions:
  - earthly-docker-build
+ - efficiently-cache-dependencies-earthfiles
  - earthly-v0-8
  - konfig
  - on-star-history
@@ -5965,7 +5967,6 @@ earthly-functions:
  - monorepo-java
  - self-hosted-satellites
  - python-monorepo
- - docker-build-cloud
 
 
 python-web-scraping:
@@ -5992,5 +5993,18 @@ python-libraries:
  - cosine_similarity_text_embeddings
  - generating-sbom
  - developer-portals-backstage
+
+
+efficiently-cache-dependencies-earthfiles:
+ - earthly-docker-build
+ - earthly-functions
+ - auto-skip
+ - cargo-chef
+ - konfig
+ - incremental-rust-builds
+ - docker-build-cloud
+ - monorepo-java
+ - earthly-v0-8
+ - rust-sccache
 
 
