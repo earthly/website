@@ -17,17 +17,6 @@ language-style-czar:
  - create-python-package
 
 
-python-frameworks:
- - python-libraries
- - platform-engineering-tools
- - developer-platforms
- - docker-init-quickly
- - why-developer-platform
- - python-c-extension
- - create-python-package
- - python-monorepo
-
-
 introducing-earthly-build-automation-for-the-container-era:
  - the-world-deserves-better-builds
  - launching-earthly-CI
@@ -5309,40 +5298,40 @@ kafka-vs-rabbitmq:
 create-python-package:
  - poetry-publish
  - python-c-extension
+ - pyinstaller
  - python-monorepo
  - incremental-rust-builds
+ - python-hatch
  - efficiently-cache-dependencies-earthfiles
  - konfig
  - yarn-vite-monorepo
  - rust-monorepo
- - future-is-rusty
- - earthly-functions
 
 
 poetry-publish:
  - create-python-package
  - python-c-extension
  - python-monorepo
+ - pyinstaller
  - incremental-rust-builds
+ - python-hatch
  - efficiently-cache-dependencies-earthfiles
  - konfig
  - rust-monorepo
  - yarn-vite-monorepo
- - language-style-czar
- - future-is-rusty
 
 
 python-c-extension:
  - create-python-package
  - poetry-publish
+ - pyinstaller
+ - python-hatch
  - incremental-rust-builds
  - python-monorepo
  - future-is-rusty
  - python-libraries
  - language-style-czar
  - docker-init-in-python
- - yarn-vite-monorepo
- - arm-containers-github-actions
 
 
 merge-queues:
@@ -5624,11 +5613,11 @@ python-monorepo:
  - understanding-monorepos
  - gradle-monorepo
  - cargo-workspace-crates
+ - python-hatch
  - docker-init-in-python
  - konfig
  - yarn-vite-monorepo
  - efficiently-cache-dependencies-earthfiles
- - docker-init-in-go
 
 
 showboaters:
@@ -5678,9 +5667,9 @@ gradle-monorepo:
  - cargo-workspace-crates
  - yarn-vite-monorepo
  - efficiently-cache-dependencies-earthfiles
+ - python-hatch
  - earthly-functions
  - konfig
- - docker-init-in-go
 
 
 larger-satellite-sizes:
@@ -5888,7 +5877,7 @@ platform-engineering-tools:
  - understanding-monorepos
  - data-engineering-analysis
  - python-libraries
- - docker-sbom
+ - python-hatch
 
 
 platform-teams:
@@ -5899,9 +5888,9 @@ platform-teams:
  - developer-portals-backstage
  - understanding-monorepos
  - data-engineering-analysis
+ - python-hatch
  - docker-build-cloud
  - generating-sbom
- - merge-queues
 
 
 earthly-docker-build:
@@ -5927,7 +5916,7 @@ what-is-platform-engineering:
  - understanding-monorepos
  - docker-buildx
  - data-engineering-analysis
- - generating-sbom
+ - python-hatch
 
 
 monorepo-java:
@@ -5973,26 +5962,39 @@ python-web-scraping:
  - python-libraries
  - developer-portals-backstage
  - docker-scout
+ - pyinstaller
  - data-engineering-analysis
  - python-c-extension
+ - python-hatch
  - create-python-package
  - docker-init-in-python
  - python-monorepo
- - arm-containers-github-actions
- - cosine_similarity_text_embeddings
+
+
+python-frameworks:
+ - python-libraries
+ - platform-engineering-tools
+ - developer-platforms
+ - pyinstaller
+ - docker-init-quickly
+ - python-hatch
+ - why-developer-platform
+ - python-c-extension
+ - create-python-package
+ - python-monorepo
 
 
 python-libraries:
  - python-frameworks
  - python-web-scraping
  - platform-engineering-tools
+ - pyinstaller
  - python-c-extension
+ - python-hatch
  - data-engineering-analysis
  - future-is-rusty
  - create-python-package
  - cosine_similarity_text_embeddings
- - generating-sbom
- - developer-portals-backstage
 
 
 efficiently-cache-dependencies-earthfiles:
@@ -6006,5 +6008,31 @@ efficiently-cache-dependencies-earthfiles:
  - monorepo-java
  - earthly-v0-8
  - rust-sccache
+
+
+pyinstaller:
+ - python-hatch
+ - python-c-extension
+ - docker-init-in-python
+ - create-python-package
+ - python-monorepo
+ - poetry-publish
+ - python-libraries
+ - docker-init-quickly
+ - efficiently-cache-dependencies-earthfiles
+ - docker-init-in-go
+
+
+python-hatch:
+ - pyinstaller
+ - python-monorepo
+ - docker-init-in-python
+ - efficiently-cache-dependencies-earthfiles
+ - monorepo-java
+ - konfig
+ - understanding-monorepos
+ - cargo-chef
+ - rust-monorepo
+ - python-c-extension
 
 
