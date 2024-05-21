@@ -10,8 +10,9 @@ internal-links:
  - pyinstaller for creating virtual environment
  - creating a python virtual environment
  - creating a virtual environment with pyinstaller 
+excerpt: |
+    This tutorial explains how to create a Python virtual environment using PyInstaller, a packaging tool for Python applications, and distribute them across different operating systems. PyInstaller analyzes dependencies, bundles the application and its dependencies into a single package, and generates an executable file that can be easily shared and run without installing Python separately.
 ---
-
 If your Python application depends on specific packages, these dependencies must be installed before running the application. However, managing dependencies within a Python application can quickly become complicated, necessitating compatibility checks across various Python versions, resolution of dependency conflicts, and negotiation of platform-specific requirements.
 
 Before you can run an application, you must install a precise Python version, configure [pip](https://pypi.org/project/pip/) for package installation, establish a [virtual environment](https://docs.python.org/3/tutorial/venv.html) to isolate dependencies, and install the application's package dependencies. These tasks demand a nuanced comprehension of Python's development ecosystem and can present challenges when distributing the application to non-developer systems.
