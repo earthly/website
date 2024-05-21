@@ -153,8 +153,8 @@ better-builds:
  - what-makes-earthly-fast
  - python-earthly
  - shutting-down-earthly-ci
- - docker-multistage
  - the-next-iteration
+ - phoenix
 
 
 earthly-0-3-6-released:
@@ -213,13 +213,13 @@ building-on-kubernetes-ingress:
  - app-routing-in-k8-cluster
  - k8s-networking
  - mutual-tls-kubernetes-nginx-ingress-controller
- - canary-deployment-in-k8s
  - K3s-and-K8s
  - kubernetes-terraform
  - dont-be-weird
  - kubernetes-services
  - openshift-vs-kubernetes
  - spinnaker-kubernetes
+ - kubernetes-network-policies
 
 
 dont-be-weird:
@@ -236,29 +236,29 @@ dont-be-weird:
 
 
 protobufs-and-grpc:
- - golang-grpc-example
  - lambda-grpc
  - golang-grpc-gateway
  - buf-protobuf
- - backward-and-forward-compatibility
  - build-GraphQL-APIs-Go
  - aws-lambda-api-proxy
  - build-golang-bazel-gazelle
  - mail-server-API-goroutines-gmail
  - aws-lambda-golang
+ - use-mongo-with-go
+ - optimize-golang-for-kubernetes
 
 
 youre-using-docker-compose-wrong:
  - dockercompose-vs-k8s
  - docker-vagrant
- - docker-networking
  - kubernetes-docker
  - earthly-podman
- - docker-secrets
  - repeatable-builds-every-time
  - docker-alternatives
- - portainer-for-docker-container-management
  - docker-vs-vm
+ - debugging-docker-containers
+ - containerd-vs-docker
+ - devcontainers
 
 
 unit-vs-integration:
@@ -294,10 +294,10 @@ encrypting-data-with-ssh-keys-and-golang:
  - golang-zip-files
  - build-GraphQL-APIs-Go
  - aws-lambda-golang
- - golang-csv-files
  - golang-http
- - golang-grpc-example
  - using-gorm-go
+ - protobufs-and-grpc
+ - pongo
 
 
 stackoverflow:
@@ -342,7 +342,6 @@ phoenix:
 top-3-resources-to-learn-golang-in-2021:
  - optimize-golang-for-kubernetes
  - learning-golang-common-mistakes-to-avoid
- - golang-monorepo
  - golang-streamers
  - build-golang-bazel-gazelle
  - aws-lambda-golang
@@ -350,6 +349,7 @@ top-3-resources-to-learn-golang-in-2021:
  - concurrency-in-Go
  - golang-gin-framework
  - software-design-go-interfaces
+ - write-better-tutorials
 
 
 top-5-scala-blogs:
@@ -366,16 +366,16 @@ top-5-scala-blogs:
 
 
 monorepo-vs-polyrepo:
- - setup-typescript-monorepo
  - monorepo-with-bazel
  - monorepo-tools
- - golang-monorepo
  - building-js-monorepo
  - nx-monorepos-guide
  - build-monorepo-with-turporepo
  - javascript-monorepo-with-lerna
- - npm-workspaces-monorepo
  - pants-python-monorepo
+ - repeatable-builds-every-time
+ - earthly-github-actions
+ - pants-build
 
 
 every-open-core-company-should-be-a-source-available-company:
@@ -394,27 +394,27 @@ every-open-core-company-should-be-a-source-available-company:
 mitmproxy:
  - mutual-tls-kubernetes-nginx-ingress-controller
  - build-your-own-ngrok-clone
- - setup-reverse-proxy-kubernetes-nginx
  - grafana-https-nginx-certbot
  - ess-linux-term-cmd
  - pull-through-cache
- - private-docker-registry
  - repeatable-builds-every-time
  - how-to-use-docker-in-vscode
- - docker-and-makefiles
+ - app-routing-in-k8-cluster
+ - earthly-podman
+ - macOS-native-containers
 
 
 what-is-buildkit-and-what-can-i-do-with-it:
  - compiling-containers-dockerfiles-llvm-and-buildkit
- - docker-multistage
  - repeatable-builds-every-time
- - docker-and-makefiles
  - introducing-earthly-build-automation-for-the-container-era
  - docker-vs-buildah-vs-kaniko
  - docker-alternatives
  - the-world-deserves-better-builds
  - earthly-podman
  - macOS-native-containers
+ - push-docker-image-bazel
+ - building-k8s-tekton
 
 
 intercal-yaml-and-other-horrible-programming-languages:
@@ -431,7 +431,6 @@ intercal-yaml-and-other-horrible-programming-languages:
 
 
 using-apple-silicon-m1-as-a-cloud-engineer-two-months-in:
- - homebrew-on-m1
  - macOS-native-containers
  - lima
  - docker-alternatives
@@ -441,6 +440,7 @@ using-apple-silicon-m1-as-a-cloud-engineer-two-months-in:
  - introducing-earthly-build-automation-for-the-container-era
  - devcontainers
  - shutting-down-earthly-ci
+ - docker-vs-vm
 
 
 how-to-setup-and-use-amazons-elastic-container-registry:
@@ -449,37 +449,37 @@ how-to-setup-and-use-amazons-elastic-container-registry:
  - deploy-DockerContainers-with-ECS
  - streamline-container-ghcr
  - aws-lambda-docker
- - private-docker-registry
  - deploy-dockcontainers-to-AWSECS-using-Terraform
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
- - docker-secrets
+ - pull-through-cache
+ - containerd-vs-docker
+ - kubernetes-secrets
 
 
 understanding-docker-logging-and-log-files:
- - docker-volumes
  - logging-in-python
  - debugging-docker-containers
- - docker-image-storage-on-host
- - docker-networking
  - grafana-loki-log-aggregation-k8s
- - mongodb-docker
  - how-to-use-docker-in-vscode
  - running-Grafana-in-Docker
  - containerd-vs-docker
+ - what-is-syslog
+ - kubernetes-docker
+ - docker-alternatives
+ - docker-slim
 
 
 build-your-own-ngrok-clone:
  - aws-ecs-tutorial
  - aws-networks
  - aws-lambda-docker
- - setup-reverse-proxy-kubernetes-nginx
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - app-routing-in-k8-cluster
  - deploy-DockerContainers-with-ECS
  - pull-through-cache
  - automate-micsvcs-in-k8s
  - aws-lambda-node
+ - terraform-lambda
 
 
 on-yaml-discussions:
@@ -491,21 +491,21 @@ on-yaml-discussions:
  - what-is-nix
  - idiots-and-maniacs
  - bazel-build
- - yaml-in-python
  - see-state
+ - thought-leaders
 
 
 compiling-containers-dockerfiles-llvm-and-buildkit:
  - what-is-buildkit-and-what-can-i-do-with-it
  - repeatable-builds-every-time
- - docker-multistage
- - docker-and-makefiles
  - docker-vs-buildah-vs-kaniko
  - push-docker-image-bazel
  - chroot
  - build-golang-bazel-gazelle
  - macOS-native-containers
  - containerd-vs-docker
+ - aws-lambda-docker
+ - monorepo-with-bazel
 
 
 understanding-bash:
@@ -575,15 +575,15 @@ brown-green-language:
 
 docker-networking:
  - k8s-networking
- - docker-volumes
  - docker-vs-vm
- - docker-image-storage-on-host
  - containerd-vs-docker
  - debugging-docker-containers
  - linux-network-commands
- - docker-mysql
  - docker-vagrant
  - youre-using-docker-compose-wrong
+ - dockercompose-vs-k8s
+ - lxc-vs-docker
+ - kubernetes-docker
 
 
 monorepo-with-bazel:
@@ -592,11 +592,11 @@ monorepo-with-bazel:
  - using-bazel-with-typescript
  - bazel-build
  - build-nodejs-app-with-bazel
- - setup-typescript-monorepo
  - push-docker-image-bazel
  - bazel-with-rust
  - build-java-projects-with-bazel
  - monorepo-vs-polyrepo
+ - build-monorepo-with-turporepo
 
 
 dos-gaming-in-docker:
@@ -629,18 +629,17 @@ repeatable-builds-every-time:
  - what-makes-earthly-fast
  - the-world-deserves-better-builds
  - better-builds
- - docker-multistage
  - introducing-earthly-build-automation-for-the-container-era
- - docker-and-makefiles
  - achieving-repeatability
  - monorepo-with-bazel
  - push-docker-image-bazel
  - monorepo-tools
+ - earthly-github-actions
+ - launching-earthly-CI
 
 
 docker-multistage:
  - repeatable-builds-every-time
- - docker-and-makefiles
  - what-is-buildkit-and-what-can-i-do-with-it
  - what-makes-earthly-fast
  - push-docker-image-bazel
@@ -649,19 +648,20 @@ docker-multistage:
  - docker-vs-chef
  - introducing-earthly-build-automation-for-the-container-era
  - the-world-deserves-better-builds
+ - automate-micsvcs-in-k8s
 
 
 backward-and-forward-compatibility:
  - buf-protobuf
- - golang-grpc-example
  - protobufs-and-grpc
  - software-design-go-interfaces
  - write-better-tutorials
- - golang-monorepo
  - golang-grpc-gateway
  - optimize-golang-for-kubernetes
  - lambda-grpc
  - build-golang-bazel-gazelle
+ - programming-language-improvements
+ - concurrency-in-Go
 
 
 jruby:
@@ -692,15 +692,15 @@ achieving-repeatability:
 
 creating-and-hosting-your-own-deb-packages-and-apt-repo:
  - creating-and-hosting-your-own-rpm-packages-and-yum-repo
- - private-docker-registry
- - cross-compiling-raspberry-pi
  - repeatable-builds-every-time
- - github-actions-environment-variables-and-secrets
  - cmake-gcc-cross-compile
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
  - g++-makefile
  - gitlab-ci
+ - ess-linux-term-cmd
+ - streamline-container-ghcr
+ - autoconf
+ - octopus-deploy
 
 
 autoconf:
@@ -708,12 +708,12 @@ autoconf:
  - g++-makefile
  - using-cmake
  - cmake-gcc-cross-compile
- - cmake-vs-make-diff
- - vscode-make
- - makefiles-on-windows
  - repeatable-builds-every-time
- - python-makefile
- - make-flags
+ - using-makefile-wildcards
+ - installandrun-CMake-on-windows
+ - ninjabuild-for-faster-build
+ - mng-dotfiles-with-git
+ - automate-micsvcs-in-k8s
 
 
 thought-leaders:
@@ -735,11 +735,11 @@ deployment-strategies:
  - canary-deployment
  - octopus-deploy
  - ci-vs-cd
- - canary-deployment-in-k8s
  - gitlab-ci
  - openshift-vs-kubernetes
  - jenkins-stages-pipelines
  - git-branching
+ - kubernetes-terraform
 
 
 incident-management-metrics:
@@ -782,16 +782,16 @@ git-branching:
 
 
 creating-and-hosting-your-own-rpm-packages-and-yum-repo:
- - creating-and-hosting-your-own-deb-packages-and-apt-repo
  - earthly-podman
  - repeatable-builds-every-time
- - private-docker-registry
  - earthly-github-actions
  - aws-ecr-github-actions
  - cicd-build-github-action-dockerhub
  - automate-micsvcs-in-k8s
- - github-actions-and-docker
  - bazel-with-rust
+ - mng-dotfiles-with-git
+ - pants-python-monorepo
+ - build-your-own-ngrok-clone
 
 
 markdown-lint:
@@ -822,41 +822,41 @@ video-camera-on:
 
 g++-makefile:
  - cmake-gcc-cross-compile
- - vscode-make
  - make-tutorial
- - cmake-vs-make-diff
  - using-cmake
- - python-makefile
- - golang-makefile
- - makefiles-on-windows
- - make-flags
- - makefile-variables
+ - autoconf
+ - using-makefile-wildcards
+ - ninjabuild-for-faster-build
+ - installandrun-CMake-on-windows
+ - static-and-dynamic-linking
+ - repeatable-builds-every-time
+ - mng-dotfiles-with-git
 
 
 python-concatenate-lists:
  - python-timsort-merge
  - bash-string
- - yaml-in-python
  - magic-methods-python
  - python-classes-and-objects
  - python-data-classes
  - python-3.11-new-features
  - error-handling-in-python
  - python-docker
- - python-makefile
+ - pants-python-monorepo
+ - python-data-classes-vs-namedtuples
 
 
 python-makefile:
  - make-tutorial
- - golang-makefile
- - vscode-make
  - g++-makefile
- - makefiles-on-windows
- - makefile-variables
- - cmake-vs-make-diff
  - python-docker
- - docker-and-makefiles
- - make-flags
+ - using-makefile-wildcards
+ - build-and-deploy-PyApp-with-bazel
+ - using-cmake
+ - autoconf
+ - repeatable-builds-every-time
+ - bazel-and-automated-tests
+ - python-poetry
 
 
 python-timsort-merge:
@@ -874,15 +874,15 @@ python-timsort-merge:
 
 golang-makefile:
  - make-tutorial
- - docker-and-makefiles
- - python-makefile
  - g++-makefile
- - vscode-make
  - build-golang-bazel-gazelle
- - makefile-variables
  - using-makefile-wildcards
- - golang-monorepo
- - makefiles-on-windows
+ - repeatable-builds-every-time
+ - golang-zip-files
+ - autoconf
+ - go-workspaces
+ - using-cmake
+ - go-modules
 
 
 python-matplotlib-docker:
@@ -892,10 +892,10 @@ python-matplotlib-docker:
  - stop-using-pie-charts
  - python-earthly
  - streamlit-python-dashboard
- - mongodb-docker
  - devcontainers
  - earthly-podman
- - cross-compiling-raspberry-pi
+ - circle-ci-with-django
+ - data-pipelines-with-airflow
 
 
 command-line-tools:
@@ -916,25 +916,25 @@ continuous-testing-in-devops:
  - achieving-repeatability
  - ios-continuous-integration-pipeline
  - gitlab-ci
- - github-actions-and-docker
  - ci-vs-cd
  - ci-cd-security-challenges-best-practices
  - travis-bitbucket
  - aws-ecr-github-actions
  - terraform-with-github-actions
+ - cicd-build-github-action-dockerhub
 
 
 vscode-make:
  - g++-makefile
  - make-tutorial
- - makefiles-on-windows
  - using-cmake
- - python-makefile
- - cmake-vs-make-diff
- - golang-makefile
- - makefile-variables
- - make-flags
- - docker-and-makefiles
+ - cmake-gcc-cross-compile
+ - installandrun-CMake-on-windows
+ - ninjabuild-for-faster-build
+ - using-makefile-wildcards
+ - autoconf
+ - how-to-use-docker-in-vscode
+ - repeatable-builds-every-time
 
 
 idiots-and-maniacs:
@@ -951,33 +951,32 @@ idiots-and-maniacs:
 
 
 convert-to-from-json:
- - jq-select
  - awk-csv
- - sed-find-replace
  - dont-configure-control-flow
  - bash-read-files
  - ess-linux-term-cmd
  - command-line-tools
  - understanding-bash
- - golang-csv-files
  - devetools-for-k8s
+ - how-to-use-docker-in-vscode
+ - repeatable-builds-every-time
+ - markdown-lint
 
 
 plotting-rainfall-data-with-python-and-matplotlib:
  - analyze-amzndata-pyth
  - stop-using-pie-charts
  - streamlit-python-dashboard
- - csv-python
  - build-news-classifier-nlp-newsapi-lr
  - python-poetry
- - yaml-in-python
  - python-matplotlib-docker
  - python-earthly
  - psycopg2-postgres-python
+ - logging-in-python
+ - python-data-classes
 
 
 jq-select:
- - convert-to-from-json
  - bash-string
  - bash-variables
  - shell-functions-arguments
@@ -985,34 +984,35 @@ jq-select:
  - awk-examples
  - ess-linux-term-cmd
  - understanding-bash
- - sed-find-replace
  - linux-uniq-command
+ - bash-read-files
+ - django-template-filters
 
 
 make-flags:
- - makefile-variables
  - make-tutorial
  - g++-makefile
  - using-makefile-wildcards
- - vscode-make
- - makefiles-on-windows
- - cmake-vs-make-diff
- - python-makefile
  - using-cmake
- - golang-makefile
+ - cmake-gcc-cross-compile
+ - autoconf
+ - repeatable-builds-every-time
+ - static-and-dynamic-linking
+ - shell-functions-arguments
+ - installandrun-CMake-on-windows
 
 
 make-tutorial:
- - makefile-variables
- - python-makefile
- - golang-makefile
  - using-makefile-wildcards
  - g++-makefile
- - vscode-make
- - cmake-vs-make-diff
  - autoconf
- - docker-and-makefiles
- - make-flags
+ - using-cmake
+ - repeatable-builds-every-time
+ - cmake-gcc-cross-compile
+ - ninjabuild-for-faster-build
+ - installandrun-CMake-on-windows
+ - shell-functions-arguments
+ - automate-tasks-shell-scripts
 
 
 ios-continuous-integration-pipeline:
@@ -1022,10 +1022,10 @@ ios-continuous-integration-pipeline:
  - continuous-integration
  - aws-ecr-github-actions
  - travis-bitbucket
- - github-actions-and-docker
  - jenkins-stages-pipelines
  - earthly-github-actions
  - terraform-with-github-actions
+ - bitbucket-ci
 
 
 hacktoberfest-2021:
@@ -1047,11 +1047,11 @@ awk-examples:
  - bash-string
  - understanding-bash
  - shell-functions-arguments
- - jq-select
  - bash-read-files
  - linux-uniq-command
  - automate-tasks-shell-scripts
- - sed-find-replace
+ - using-makefile-wildcards
+ - bash-variables
 
 
 pull-through-cache:
@@ -1061,10 +1061,10 @@ pull-through-cache:
  - build-your-own-ngrok-clone
  - caching-dependencies-github-actions
  - earthly-podman
- - private-docker-registry
  - introducing-earthly-build-automation-for-the-container-era
  - earthly-github-actions
  - streamline-container-ghcr
+ - docker-slim
 
 
 bitbucket-ci:
@@ -1152,14 +1152,13 @@ bash-string:
  - bash-read-files
  - loops-in-bash
  - shell-functions-arguments
- - sed-find-replace
  - linux-text-processing-commands
- - practical-guide-to-linux-echo-cmd
  - ess-linux-term-cmd
+ - automate-tasks-shell-scripts
+ - safely-using-bash-eval
 
 
 canary-deployment:
- - canary-deployment-in-k8s
  - deployment-strategies-kubernetes
  - deployment-strategies
  - blue-green
@@ -1169,19 +1168,20 @@ canary-deployment:
  - jenkins-stages-pipelines
  - ci-cd-security-challenges-best-practices
  - what-makes-earthly-fast
+ - continuous-integration
 
 
 bash-variables:
  - understanding-bash
  - shell-functions-arguments
  - bash-string
- - makefile-variables
- - github-actions-environment-variables-and-secrets
  - bash-conditionals
  - loops-in-bash
  - terraform-variables-guide
  - automate-tasks-shell-scripts
  - bash-read-files
+ - safely-using-bash-eval
+ - fish-shell
 
 
 azure-functions-node:
@@ -1205,9 +1205,9 @@ argocd-kubernetes:
  - spinnaker-kubernetes
  - octopus-deploy
  - devetools-for-k8s
- - canary-deployment-in-k8s
  - K3s-and-K8s
  - kubernetes-terraform
+ - automate-micsvcs-in-k8s
 
 
 octopus-deploy:
@@ -1237,16 +1237,16 @@ aws-lambda-node:
 
 
 awk-csv:
- - golang-csv-files
  - awk-examples
- - convert-to-from-json
  - property-based-testing
  - write-better-tutorials
  - bash-read-files
- - sed-find-replace
- - csv-python
  - bash-string
  - linux-uniq-command
+ - using-makefile-wildcards
+ - understanding-bash
+ - ess-linux-term-cmd
+ - linux-text-processing-commands
 
 
 jenkins-stages-pipelines:
@@ -1289,16 +1289,16 @@ travis-ci-alternatives:
 
 
 property-based-testing:
- - golang-csv-files
  - write-better-tutorials
  - awk-csv
- - golang-makefile
- - golang-monorepo
- - golang-errors
  - golang-zip-files
  - cryptography-encryption-in-go
  - software-design-go-interfaces
- - tui-app-with-go
+ - pongo
+ - aws-lambda-golang
+ - build-golang-bazel-gazelle
+ - go-workspaces
+ - optimize-sql-queries-golang
 
 
 earthly-v0-6:
@@ -1367,7 +1367,6 @@ docker-vs-chef:
 
 
 printf-debugging:
- - cross-compiling-raspberry-pi
  - programming-language-improvements
  - golang-streamers
  - idiots-and-maniacs
@@ -1377,32 +1376,33 @@ printf-debugging:
  - stop-10x-developer
  - debugging-docker-containers
  - video-camera-on
+ - static-and-dynamic-linking
 
 
 golang-http:
  - golang-command-line
- - golang-grpc-example
  - golang-grpc-gateway
  - aws-lambda-api-proxy
  - aws-lambda-golang
- - golang-sqlite
  - golang-gin-framework
  - mail-server-API-goroutines-gmail
  - golang-chi
  - build-GraphQL-APIs-Go
+ - pongo
+ - image-upload-api-cloudinary-golang
 
 
 docker-secrets:
  - kubernetes-secrets
  - securing-kubernetes-secrets
- - docker-volumes
- - docker-mysql
- - github-actions-environment-variables-and-secrets
  - dockercompose-vs-k8s
- - github-actions-and-docker
  - explore-portainer-as-tool
- - portainer-for-docker-container-management
  - deploy-DockerContainers-with-ECS
+ - docker-vagrant
+ - aws-ecs-tutorial
+ - kubernetes-docker
+ - docker-alternatives
+ - earthly-podman
 
 
 golang-errors:
@@ -1411,17 +1411,15 @@ golang-errors:
  - write-better-tutorials
  - concurrency-in-Go
  - top-3-resources-to-learn-golang-in-2021
- - golang-csv-files
  - using-gorm-go
  - golang-gin-framework
  - optimize-sql-queries-golang
  - golang-http
+ - mail-server-API-goroutines-gmail
 
 
 golang-command-line:
  - golang-http
- - golang-grpc-example
- - golang-sqlite
  - golang-grpc-gateway
  - aws-lambda-golang
  - pongo
@@ -1429,6 +1427,8 @@ golang-command-line:
  - mail-server-API-goroutines-gmail
  - golang-gin-framework
  - image-upload-api-cloudinary-golang
+ - buf-protobuf
+ - golang-chi
 
 
 stop-using-pie-charts:
@@ -1449,51 +1449,51 @@ blue-green:
  - deployment-strategies-kubernetes
  - canary-deployment
  - octopus-deploy
- - canary-deployment-in-k8s
  - ci-vs-cd
  - gitlab-ci
  - docker-vagrant
  - kubernetes-terraform
  - jenkins-stages-pipelines
+ - earthly-cloud-free-tier-launch
 
 
 docker-mysql:
- - mongodb-docker
- - docker-volumes
- - postgres-docker
- - docker-secrets
  - running-Grafana-in-Docker
- - docker-networking
- - docker-image-storage-on-host
- - portainer-for-docker-container-management
  - python-docker
  - explore-portainer-as-tool
+ - docker-vs-vm
+ - how-to-use-docker-in-vscode
+ - rails-with-docker
+ - docker-vagrant
+ - debugging-docker-containers
+ - kubernetes-secrets
+ - kubernetes-docker
 
 
 golang-sqlite:
  - using-gorm-go
- - golang-grpc-example
  - golang-http
  - optimize-sql-queries-golang
  - golang-command-line
  - use-mongo-with-go
  - build-GraphQL-APIs-Go
  - golang-gin-framework
- - golang-csv-files
  - golang-grpc-gateway
+ - write-better-tutorials
+ - mail-server-API-goroutines-gmail
 
 
 docker-volumes:
  - kubernetes-persistent-volumes
- - docker-mysql
- - mongodb-docker
- - docker-image-storage-on-host
- - docker-networking
  - kubernetes-secrets
  - how-to-use-docker-in-vscode
- - docker-secrets
  - docker-vagrant
- - postgres-docker
+ - running-Grafana-in-Docker
+ - dockercompose-vs-k8s
+ - explore-portainer-as-tool
+ - earthly-podman
+ - understanding-docker-logging-and-log-files
+ - docker-vs-vm
 
 
 gitlab-ci:
@@ -1516,10 +1516,10 @@ golang-grpc-example:
  - golang-command-line
  - lambda-grpc
  - buf-protobuf
- - golang-sqlite
  - aws-lambda-api-proxy
  - build-GraphQL-APIs-Go
  - mail-server-API-goroutines-gmail
+ - golang-chi
 
 
 lxc-vs-docker:
@@ -1536,9 +1536,7 @@ lxc-vs-docker:
 
 
 csv-python:
- - yaml-in-python
  - bash-read-files
- - golang-csv-files
  - python-classes-and-objects
  - python-data-classes
  - analyze-amzndata-pyth
@@ -1546,19 +1544,21 @@ csv-python:
  - write-better-tutorials
  - starting-with-pymongo
  - psycopg2-postgres-python
+ - python-with-statement
+ - error-handling-in-python
 
 
 mongodb-docker:
- - docker-mysql
  - starting-with-pymongo
- - postgres-docker
  - python-docker
- - docker-volumes
  - helm-k8s-package-manager
  - how-to-use-docker-in-vscode
  - devcontainers
  - rails-with-docker
- - docker-secrets
+ - deploy-DockerContainers-with-ECS
+ - aws-ecs-tutorial
+ - docker-vagrant
+ - pymongo-advanced
 
 
 welcome-josh:
@@ -1580,11 +1580,11 @@ circle-ci-with-django:
  - gitlab-ci
  - ci-comparison
  - earthly-cloud-free-tier-launch
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
  - devcontainers
  - deploy-DockerContainers-with-ECS
  - earthly-github-actions
+ - travis-bitbucket
 
 
 see-state:
@@ -1602,7 +1602,6 @@ see-state:
 
 golang-monorepo:
  - go-workspaces
- - setup-typescript-monorepo
  - monorepo-vs-polyrepo
  - monorepo-with-bazel
  - nx-monorepos-guide
@@ -1610,11 +1609,11 @@ golang-monorepo:
  - monorepo-tools
  - javascript-monorepo-with-lerna
  - build-monorepo-with-turporepo
- - docker-and-makefiles
+ - repeatable-builds-every-time
+ - building-js-monorepo
 
 
 golang-grpc-gateway:
- - golang-grpc-example
  - lambda-grpc
  - aws-lambda-api-proxy
  - golang-http
@@ -1623,20 +1622,21 @@ golang-grpc-gateway:
  - aws-lambda-golang
  - golang-command-line
  - golang-gin-framework
- - golang-monorepo
+ - build-GraphQL-APIs-Go
+ - golang-chi
 
 
 buf-protobuf:
- - golang-grpc-example
  - golang-grpc-gateway
- - backward-and-forward-compatibility
  - protobufs-and-grpc
  - build-golang-bazel-gazelle
  - lambda-grpc
  - golang-http
  - golang-command-line
  - bazel-with-rust
- - golang-monorepo
+ - monorepo-with-bazel
+ - earthly-github-actions
+ - golang-streamers
 
 
 aws-lambda-docker:
@@ -1646,10 +1646,10 @@ aws-lambda-docker:
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - aws-ecr-github-actions
  - how-to-setup-and-use-amazons-elastic-container-registry
- - github-actions-and-docker
  - aws-lambda-golang
  - terraform-lambda
  - build-your-own-ngrok-clone
+ - netlify-cloud-functions
 
 
 text-mode:
@@ -1666,16 +1666,16 @@ text-mode:
 
 
 postgres-docker:
- - docker-mysql
- - mongodb-docker
  - rails-with-docker
  - kubernetes-secrets
  - explore-portainer-as-tool
- - docker-volumes
  - running-Grafana-in-Docker
  - psycopg2-postgres-python
- - portainer-for-docker-container-management
  - python-docker
+ - how-to-use-docker-in-vscode
+ - devcontainers
+ - dockercompose-vs-k8s
+ - kubernetes-docker
 
 
 write-for-us:
@@ -1714,7 +1714,7 @@ bash-conditionals:
  - dont-configure-control-flow
  - automate-tasks-shell-scripts
  - ess-linux-term-cmd
- - practical-guide-to-linux-echo-cmd
+ - safely-using-bash-eval
 
 
 tui-app-with-go:
@@ -1723,11 +1723,11 @@ tui-app-with-go:
  - golang-gin-framework
  - golang-http
  - aws-lambda-golang
- - golang-monorepo
  - software-design-go-interfaces
  - golang-chi
  - build-golang-bazel-gazelle
  - build-GraphQL-APIs-Go
+ - top-3-resources-to-learn-golang-in-2021
 
 
 earthly-open-source:
@@ -1753,7 +1753,7 @@ docker-vs-vm:
  - dockercompose-vs-k8s
  - openshift-vs-kubernetes
  - podman-rootless
- - docker-networking
+ - nomad-vs-kubernetes
 
 
 loops-in-bash:
@@ -1766,7 +1766,7 @@ loops-in-bash:
  - shell-functions-arguments
  - using-sleep
  - ess-linux-term-cmd
- - practical-guide-to-linux-echo-cmd
+ - dont-configure-control-flow
 
 
 docker-alternatives:
@@ -1797,15 +1797,15 @@ programming-throwdown:
 
 python-docker:
  - rails-with-docker
- - mongodb-docker
  - how-to-use-docker-in-vscode
  - circle-ci-with-django
  - cicd-build-github-action-dockerhub
  - devcontainers
  - deploy-DockerContainers-with-ECS
- - github-actions-and-docker
- - docker-mysql
  - aws-ecs-tutorial
+ - python-microservices-rabbitmq-docker
+ - build-and-deploy-PyApp-with-bazel
+ - aws-lambda-docker
 
 
 sed-find-replace:
@@ -1814,11 +1814,11 @@ sed-find-replace:
  - bash-read-files
  - understanding-bash
  - bash-string
- - practical-guide-to-linux-echo-cmd
  - bash-conditionals
  - linux-uniq-command
  - automate-tasks-shell-scripts
- - convert-to-from-json
+ - dont-configure-control-flow
+ - repeatable-builds-every-time
 
 
 docker-vagrant:
@@ -1854,10 +1854,10 @@ aws-lambda-golang:
  - golang-http
  - image-upload-api-cloudinary-golang
  - aws-lambda-node
- - golang-monorepo
  - build-golang-bazel-gazelle
  - golang-grpc-gateway
  - build-GraphQL-APIs-Go
+ - optimize-golang-for-kubernetes
 
 
 ci-comparison:
@@ -1874,22 +1874,21 @@ ci-comparison:
 
 
 docker-and-makefiles:
- - golang-makefile
  - repeatable-builds-every-time
  - make-tutorial
- - makefiles-on-windows
- - docker-multistage
  - push-docker-image-bazel
- - vscode-make
  - using-makefile-wildcards
  - cicd-build-github-action-dockerhub
  - docker-vs-chef
+ - automate-micsvcs-in-k8s
+ - what-is-buildkit-and-what-can-i-do-with-it
+ - build-golang-bazel-gazelle
+ - g++-makefile
 
 
 earthly-podman:
  - podman-rootless
  - docker-alternatives
- - portainer-for-docker-container-management
  - introducing-earthly-build-automation-for-the-container-era
  - containerd-vs-docker
  - macOS-native-containers
@@ -1897,45 +1896,46 @@ earthly-podman:
  - automate-micsvcs-in-k8s
  - dockercompose-vs-k8s
  - earthly-v0-7
+ - managing-k8s-with-kubeadm
 
 
 rails-with-docker:
  - python-docker
- - postgres-docker
  - cicd-build-github-action-dockerhub
  - how-to-use-docker-in-vscode
  - devcontainers
- - github-actions-and-docker
  - dockercompose-vs-k8s
- - mongodb-docker
  - aws-ecs-tutorial
  - docker-slim
+ - docker-vagrant
+ - deploy-DockerContainers-with-ECS
+ - gitlab-ci
 
 
 kubernetes-config-maps:
  - kubernetes-secrets
  - kubernetes-persistent-volumes
- - docker-volumes
  - securing-kubernetes-secrets
  - k8s-namespaces
  - use-replicasets-in-k8s
  - k8s-cluster-security
  - kubernetes-terraform
  - kubernetes-services
- - docker-mysql
+ - kubernetes-operators
+ - helm-k8s-package-manager
 
 
 using-cmake:
- - cmake-vs-make-diff
  - installandrun-CMake-on-windows
  - g++-makefile
  - cmake-gcc-cross-compile
- - vscode-make
  - ninjabuild-for-faster-build
  - make-tutorial
- - makefiles-on-windows
  - autoconf
- - docker-and-makefiles
+ - using-makefile-wildcards
+ - repeatable-builds-every-time
+ - static-and-dynamic-linking
+ - build-nodejs-app-with-bazel
 
 
 line-staff:
@@ -1952,21 +1952,20 @@ line-staff:
 
 
 makefiles-on-windows:
- - vscode-make
  - installandrun-CMake-on-windows
- - cmake-vs-make-diff
  - make-tutorial
  - g++-makefile
- - docker-and-makefiles
- - python-makefile
  - using-cmake
  - using-makefile-wildcards
- - make-flags
+ - repeatable-builds-every-time
+ - cmake-gcc-cross-compile
+ - ninjabuild-for-faster-build
+ - autoconf
+ - mng-dotfiles-with-git
 
 
 minikube:
  - k8s-dev-solutions
- - managing-k8s-with-k9s
  - managing-k8s-with-kubeadm
  - k8s-role-based-access-control
  - securing-kubernetes-secrets
@@ -1975,11 +1974,11 @@ minikube:
  - deploy-kubernetes-cri-o-container-runtime
  - use-replicasets-in-k8s
  - K3s-and-K8s
+ - simplify-k8s-using-cr-cp
 
 
 kubescape:
  - validate-&-clean-yaml
- - managing-k8s-with-k9s
  - kube-bench
  - k8s-cluster-security
  - securing-kubernetes-secrets
@@ -1988,6 +1987,7 @@ kubescape:
  - devetools-for-k8s
  - k8s-GitOps-with-FluxCD
  - kubernetes-terraform
+ - kubernetes-secrets
 
 
 bash-read-files:
@@ -1997,36 +1997,36 @@ bash-read-files:
  - automate-tasks-shell-scripts
  - bash-string
  - bash-variables
- - practical-guide-to-linux-echo-cmd
  - ess-linux-term-cmd
- - sed-find-replace
  - shell-functions-arguments
+ - linux-text-processing-commands
+ - linux-uniq-command
 
 
 lambda-grpc:
  - golang-grpc-gateway
  - aws-lambda-api-proxy
- - golang-grpc-example
  - aws-lambda-golang
  - protobufs-and-grpc
  - aws-lambda-docker
  - build-golang-bazel-gazelle
  - build-GraphQL-APIs-Go
- - golang-monorepo
  - golang-http
+ - aws-lambda-node
+ - golang-gin-framework
 
 
 kubernetes-persistent-volumes:
- - docker-volumes
  - kubernetes-secrets
  - kubernetes-config-maps
  - use-replicasets-in-k8s
  - k8s-namespaces
- - docker-mysql
  - kubernetes-services
  - k8s-cluster-security
  - k8s-autoscaling
  - kubernetes-terraform
+ - k8s-networking
+ - kubernetes-operators
 
 
 kubernetes-terraform:
@@ -2050,9 +2050,9 @@ k8s-namespaces:
  - kubernetes-terraform
  - kubernetes-secrets
  - k8s-cluster-security
- - managing-k8s-with-k9s
  - use-replicasets-in-k8s
  - nomad-vs-kubernetes
+ - kubernetes-network-policies
 
 
 homebrew-on-m1:
@@ -2085,13 +2085,13 @@ k8s-networking:
  - kubernetes-services
  - app-routing-in-k8-cluster
  - kubernetes-network-policies
- - docker-networking
  - k8s-namespaces
  - K3s-and-K8s
  - managing-k8s-with-kubeadm
  - devetools-for-k8s
  - building-on-kubernetes-ingress
  - aws-networks
+ - k8s-autoscaling
 
 
 aws-lambda-api-proxy:
@@ -2104,7 +2104,7 @@ aws-lambda-api-proxy:
  - golang-chi
  - build-GraphQL-APIs-Go
  - image-upload-api-cloudinary-golang
- - golang-grpc-example
+ - aws-lambda-node
 
 
 yaml-validate-and-lint-cue-lang:
@@ -2143,13 +2143,11 @@ building-k8s-tekton:
  - automate-micsvcs-in-k8s
  - devetools-for-k8s
  - argocd-kubernetes
- - github-actions-and-docker
+ - octopus-deploy
 
 
 multi-factor-auth:
  - AWS-IAM
- - github-actions-environment-variables-and-secrets
- - docker-secrets
  - securing-kubernetes-secrets
  - build-transpose
  - terraform-with-github-actions
@@ -2157,6 +2155,8 @@ multi-factor-auth:
  - earthly-github-actions
  - python-earthly
  - repeatable-builds-every-time
+ - kubernetes-secrets
+ - terraform-variables-guide
 
 
 introduction-pyscript:
@@ -2168,8 +2168,8 @@ introduction-pyscript:
  - understanding-bash
  - starting-with-pymongo
  - python-earthly
- - yaml-in-python
  - python-poetry
+ - data-pipelines-with-airflow
 
 
 software-engineering-daily:
@@ -2229,12 +2229,12 @@ devcontainers:
  - docker-vagrant
  - python-docker
  - macOS-native-containers
- - github-actions-and-docker
  - devetools-for-k8s
  - circle-ci-with-django
  - rails-with-docker
  - kubernetes-docker
  - aws-ecs-tutorial
+ - deploy-DockerContainers-with-ECS
 
 
 analyze-amzndata-pyth:
@@ -2242,12 +2242,12 @@ analyze-amzndata-pyth:
  - streamlit-python-dashboard
  - stop-using-pie-charts
  - build-news-classifier-nlp-newsapi-lr
- - csv-python
  - starting-with-pymongo
  - circle-ci-with-django
  - python-data-classes
  - awk-examples
  - data-pipelines-with-airflow
+ - python-earthly
 
 
 podcast-earthly:
@@ -2294,38 +2294,38 @@ use-mongo-with-go:
  - build-GraphQL-APIs-Go
  - using-gorm-go
  - optimize-sql-queries-golang
- - mongodb-docker
  - golang-gin-framework
- - golang-sqlite
- - golang-monorepo
  - mail-server-API-goroutines-gmail
- - golang-csv-files
+ - helm-k8s-package-manager
+ - optimize-golang-for-kubernetes
+ - cryptography-encryption-in-go
+ - pymongo-advanced
 
 
 docker-slim:
  - rails-with-docker
- - docker-multistage
  - docker-alternatives
  - how-to-use-docker-in-vscode
  - push-docker-image-bazel
  - earthly-podman
- - docker-image-storage-on-host
  - containerd-vs-docker
- - docker-secrets
  - repeatable-builds-every-time
+ - python-docker
+ - introducing-earthly-build-automation-for-the-container-era
+ - docker-vagrant
 
 
 pongo:
  - pong-part2
- - tui-app-with-go
  - golang-http
  - aws-lambda-golang
  - write-better-tutorials
- - golang-monorepo
  - golang-gin-framework
  - build-golang-bazel-gazelle
  - golang-command-line
  - concurrency-in-Go
+ - learning-golang-common-mistakes-to-avoid
+ - golang-chi
 
 
 using-aws-graviton:
@@ -2356,15 +2356,15 @@ terraform-route53:
 
 using-makefile-wildcards:
  - make-tutorial
- - makefile-variables
- - make-flags
- - makefiles-on-windows
- - docker-and-makefiles
  - g++-makefile
- - golang-makefile
- - vscode-make
- - python-makefile
  - using-cmake
+ - autoconf
+ - cmake-gcc-cross-compile
+ - repeatable-builds-every-time
+ - mng-dotfiles-with-git
+ - shell-functions-arguments
+ - ninjabuild-for-faster-build
+ - understanding-bash
 
 
 docker-vs-buildah-vs-kaniko:
@@ -2381,7 +2381,6 @@ docker-vs-buildah-vs-kaniko:
 
 
 validate-&-clean-yaml:
- - managing-k8s-with-k9s
  - kubescape
  - yaml-validate-and-lint-cue-lang
  - managing-k8s-with-kubeadm
@@ -2391,6 +2390,7 @@ validate-&-clean-yaml:
  - devetools-for-k8s
  - k8s-role-based-access-control
  - kubernetes-secrets
+ - automate-micsvcs-in-k8s
 
 
 cryptography-encryption-in-go:
@@ -2400,10 +2400,10 @@ cryptography-encryption-in-go:
  - image-upload-api-cloudinary-golang
  - golang-zip-files
  - use-mongo-with-go
- - golang-csv-files
  - software-design-go-interfaces
  - golang-gin-framework
  - using-gorm-go
+ - golang-chi
 
 
 managing-k8s-with-k9s:
@@ -2421,7 +2421,6 @@ managing-k8s-with-k9s:
 
 pong-part2:
  - pongo
- - tui-app-with-go
  - golang-http
  - aws-lambda-golang
  - write-better-tutorials
@@ -2430,6 +2429,7 @@ pong-part2:
  - learning-golang-common-mistakes-to-avoid
  - golang-gin-framework
  - mail-server-API-goroutines-gmail
+ - build-golang-bazel-gazelle
 
 
 stop-10x-developer:
@@ -2460,7 +2460,6 @@ devetools-for-k8s:
 
 kube-bench:
  - managing-k8s-with-kubeadm
- - managing-k8s-with-k9s
  - kubescape
  - securing-kubernetes-secrets
  - validate-&-clean-yaml
@@ -2469,6 +2468,7 @@ kube-bench:
  - minikube
  - grafana-and-prometheus-k8s
  - kubernetes-jobs-cron-jobs
+ - deploy-kubernetes-cri-o-container-runtime
 
 
 grafana-and-prometheus-k8s:
@@ -2477,11 +2477,11 @@ grafana-and-prometheus-k8s:
  - k8s-GitOps-with-FluxCD
  - running-Grafana-in-Docker
  - helm-k8s-package-manager
- - managing-k8s-with-k9s
  - aws-cloudwatch
  - kubernetes-jobs-cron-jobs
  - explore-portainer-as-tool
  - managing-k8s-with-kubeadm
+ - spinnaker-kubernetes
 
 
 ruby-rogues:
@@ -2501,13 +2501,13 @@ ess-linux-term-cmd:
  - linux-text-processing-commands
  - advanced-git-commands
  - command-line-tools
- - sed-find-replace
  - advanced-git-commands-2
- - practical-guide-to-linux-echo-cmd
  - understanding-bash
  - automate-tasks-shell-scripts
  - mng-dotfiles-with-git
  - linux-uniq-command
+ - fish-shell
+ - bash-read-files
 
 
 python-classes-and-objects:
@@ -2517,10 +2517,10 @@ python-classes-and-objects:
  - abstract-base-classes-python
  - python-data-classes-vs-namedtuples
  - python-closures-decorators
- - yaml-in-python
  - error-handling-in-python
  - psycopg2-postgres-python
  - python-3.11-new-features
+ - python-with-statement
 
 
 mng-dotfiles-with-git:
@@ -2532,8 +2532,8 @@ mng-dotfiles-with-git:
  - automate-tasks-shell-scripts
  - gitlab-ci
  - advanced-git-commands
- - github-actions-environment-variables-and-secrets
  - automate-micsvcs-in-k8s
+ - k8s-GitOps-with-FluxCD
 
 
 bazel-build:
@@ -2558,8 +2558,8 @@ aws-networks:
  - app-routing-in-k8-cluster
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - deploy-DockerContainers-with-ECS
- - docker-networking
  - terraform-init-plan-apply
+ - linux-network-commands
 
 
 automate-micsvcs-in-k8s:
@@ -2570,9 +2570,9 @@ automate-micsvcs-in-k8s:
  - building-k8s-tekton
  - cicd-build-github-action-dockerhub
  - deploy-DockerContainers-with-ECS
- - github-actions-and-docker
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - k8s-GitOps-with-FluxCD
+ - earthly-github-actions
 
 
 face-recog-sys-with-jupyter:
@@ -2593,12 +2593,12 @@ lima:
  - using-apple-silicon-m1-as-a-cloud-engineer-two-months-in
  - earthly-podman
  - devcontainers
- - homebrew-on-m1
  - docker-vagrant
  - docker-slim
  - how-to-use-docker-in-vscode
  - aws-lambda-docker
  - docker-alternatives
+ - podman-rootless
 
 
 Flux-vs-Argo-CD:
@@ -2623,8 +2623,8 @@ use-replicasets-in-k8s:
  - rancher-managing-k8s
  - K3s-and-K8s
  - kubernetes-terraform
- - setup-reverse-proxy-kubernetes-nginx
  - automate-micsvcs-in-k8s
+ - simplify-k8s-using-cr-cp
 
 
 build-real-time-comm-app:
@@ -2641,7 +2641,6 @@ build-real-time-comm-app:
 
 
 explore-portainer-as-tool:
- - portainer-for-docker-container-management
  - kubernetes-terraform
  - running-Grafana-in-Docker
  - aws-ecs-tutorial
@@ -2651,10 +2650,10 @@ explore-portainer-as-tool:
  - how-to-use-docker-in-vscode
  - kubernetes-secrets
  - spinnaker-kubernetes
+ - deploy-DockerContainers-with-ECS
 
 
 set-up-postgresql-db:
- - postgres-docker
  - psycopg2-postgres-python
  - python-microservices-rabbitmq-docker
  - improve-django-performance-caching
@@ -2664,6 +2663,7 @@ set-up-postgresql-db:
  - query-database-sqlalchemy-python
  - django-signals
  - starting-with-pymongo
+ - python-docker
 
 
 build-GraphQL-APIs-Go:
@@ -2709,26 +2709,26 @@ python-subprocess:
  - psycopg2-postgres-python
  - python-docker
  - python-classes-and-objects
- - python-makefile
  - error-handling-in-python
  - pants-python-monorepo
  - python-poetry
- - yaml-in-python
  - understanding-bash
  - ess-linux-term-cmd
+ - bazel-and-automated-tests
+ - introduction-pyscript
 
 
 how-to-use-docker-in-vscode:
  - devcontainers
  - cicd-build-github-action-dockerhub
- - github-actions-and-docker
  - python-docker
- - docker-volumes
  - deploy-DockerContainers-with-ECS
  - explore-portainer-as-tool
  - rails-with-docker
  - docker-vagrant
  - aws-ecs-tutorial
+ - debugging-docker-containers
+ - automate-micsvcs-in-k8s
 
 
 deploy-DockerContainers-with-ECS:
@@ -2736,17 +2736,16 @@ deploy-DockerContainers-with-ECS:
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - aws-lambda-docker
  - aws-ecr-github-actions
- - github-actions-and-docker
  - how-to-setup-and-use-amazons-elastic-container-registry
  - deploying-iac-aws-cloud-formation
  - automate-micsvcs-in-k8s
  - how-to-use-docker-in-vscode
  - python-docker
+ - explore-portainer-as-tool
 
 
 simplify-k8s-using-cr-cp:
  - automate-micsvcs-in-k8s
- - managing-k8s-with-k9s
  - kubernetes-jobs-cron-jobs
  - building-k8s-tekton
  - kubernetes-operators
@@ -2755,19 +2754,20 @@ simplify-k8s-using-cr-cp:
  - use-replicasets-in-k8s
  - managing-k8s-with-kubeadm
  - securing-kubernetes-secrets
+ - kubernetes-services
 
 
 go-workspaces:
- - golang-monorepo
- - npm-workspaces-monorepo
  - build-golang-bazel-gazelle
- - setup-typescript-monorepo
  - go-modules
  - monorepo-with-bazel
  - nx-monorepos-guide
- - golang-makefile
  - aws-lambda-golang
  - javascript-monorepo-with-lerna
+ - golang-zip-files
+ - devcontainers
+ - build-monorepo-with-turporepo
+ - repeatable-builds-every-time
 
 
 chroot:
@@ -2801,12 +2801,12 @@ k8s-role-based-access-control:
  - minikube
  - k8s-cluster-security
  - kubernetes-secrets
- - managing-k8s-with-k9s
  - k8s-namespaces
  - managing-k8s-with-kubeadm
  - simplify-k8s-using-cr-cp
  - app-routing-in-k8-cluster
  - use-replicasets-in-k8s
+ - kubernetes-operators
 
 
 canary-deployment-in-k8s:
@@ -2839,13 +2839,13 @@ helm-k8s-package-manager:
  - grafana-and-prometheus-k8s
  - kubernetes-operators
  - k8s-GitOps-with-FluxCD
- - mongodb-docker
  - kubernetes-secrets
- - managing-k8s-with-k9s
  - devetools-for-k8s
  - grafana-loki-log-aggregation-k8s
  - building-k8s-tekton
  - spinnaker-kubernetes
+ - explore-portainer-as-tool
+ - managing-k8s-with-kubeadm
 
 
 portainer-for-docker-container-management:
@@ -2853,12 +2853,12 @@ portainer-for-docker-container-management:
  - earthly-podman
  - dockercompose-vs-k8s
  - running-Grafana-in-Docker
- - docker-mysql
- - docker-secrets
- - docker-volumes
- - postgres-docker
  - aws-ecs-tutorial
  - how-to-use-docker-in-vscode
+ - deploy-DockerContainers-with-ECS
+ - podman-rootless
+ - docker-alternatives
+ - rails-with-docker
 
 
 structural-pattern-matching-python:
@@ -2866,12 +2866,12 @@ structural-pattern-matching-python:
  - pymongo-advanced
  - python-3.11-new-features
  - python-data-classes
- - python-ast
  - more-on-python-data-classes
  - magic-methods-python
  - python-data-classes-vs-namedtuples
  - python-closures-decorators
  - abstract-base-classes-python
+ - pytest-fixtures
 
 
 dockercompose-vs-k8s:
@@ -2892,18 +2892,17 @@ running-Grafana-in-Docker:
  - grafana-and-prometheus-k8s
  - monitoring-system-metrics-prometheus-grafana
  - explore-portainer-as-tool
- - portainer-for-docker-container-management
- - docker-mysql
- - postgres-docker
- - docker-volumes
  - grafana-https-nginx-certbot
  - k8s-GitOps-with-FluxCD
+ - how-to-use-docker-in-vscode
+ - helm-k8s-package-manager
+ - debugging-docker-containers
+ - docker-alternatives
 
 
 managing-k8s-with-kubeadm:
  - deploy-kubernetes-cri-o-container-runtime
  - K3s-and-K8s
- - managing-k8s-with-k9s
  - automate-micsvcs-in-k8s
  - minikube
  - securing-kubernetes-secrets
@@ -2911,6 +2910,7 @@ managing-k8s-with-kubeadm:
  - k8s-GitOps-with-FluxCD
  - spinnaker-kubernetes
  - building-k8s-tekton
+ - kubernetes-terraform
 
 
 buildingrunning-NVIDIAcontainer:
@@ -2918,12 +2918,12 @@ buildingrunning-NVIDIAcontainer:
  - containerd-vs-docker
  - earthly-podman
  - explore-portainer-as-tool
- - github-actions-and-docker
  - streamline-container-ghcr
- - docker-mysql
  - deploy-kubernetes-cri-o-container-runtime
  - how-to-use-docker-in-vscode
  - cicd-build-github-action-dockerhub
+ - running-Grafana-in-Docker
+ - macOS-native-containers
 
 
 cmake-vs-make-diff:
@@ -2931,12 +2931,12 @@ cmake-vs-make-diff:
  - g++-makefile
  - make-tutorial
  - installandrun-CMake-on-windows
- - vscode-make
- - makefiles-on-windows
  - cmake-gcc-cross-compile
- - python-makefile
- - docker-and-makefiles
- - makefile-variables
+ - static-and-dynamic-linking
+ - ninjabuild-for-faster-build
+ - autoconf
+ - docker-vs-chef
+ - using-makefile-wildcards
 
 
 monorepo-tools:
@@ -2949,13 +2949,12 @@ monorepo-tools:
  - build-monorepo-with-turporepo
  - repeatable-builds-every-time
  - bazel-build
- - setup-typescript-monorepo
+ - using-bazel-with-typescript
 
 
 app-routing-in-k8-cluster:
  - k8s-networking
  - mutual-tls-kubernetes-nginx-ingress-controller
- - setup-reverse-proxy-kubernetes-nginx
  - kubernetes-services
  - aws-ecs-tutorial
  - building-on-kubernetes-ingress
@@ -2963,19 +2962,20 @@ app-routing-in-k8-cluster:
  - building-k8s-tekton
  - managing-k8s-with-kubeadm
  - kubernetes-secrets
+ - securing-kubernetes-secrets
 
 
 yaml-in-python:
  - python-docker
  - dont-configure-control-flow
  - python-classes-and-objects
- - csv-python
  - python-data-classes
  - python-poetry
  - starting-with-pymongo
  - query-database-sqlalchemy-python
  - pytest-fixtures
  - data-pipelines-with-airflow
+ - error-handling-in-python
 
 
 k8s-GitOps-with-FluxCD:
@@ -3006,7 +3006,6 @@ kubernetes-services:
 
 starting-with-pymongo:
  - pymongo-advanced
- - mongodb-docker
  - use-mongo-with-go
  - psycopg2-postgres-python
  - helm-k8s-package-manager
@@ -3014,7 +3013,8 @@ starting-with-pymongo:
  - circle-ci-with-django
  - python-microservices-rabbitmq-docker
  - python-docker
- - yaml-in-python
+ - python-poetry
+ - deploy-DockerContainers-with-ECS
 
 
 intro-to-Linux-capabilities:
@@ -3022,25 +3022,25 @@ intro-to-Linux-capabilities:
  - earthly-podman
  - chown-permissions-chmod
  - k8s-namespaces
- - docker-volumes
  - macOS-native-containers
  - ess-linux-term-cmd
  - lxc-vs-docker
  - linux-security-modules
  - docker-alternatives
+ - aws-ecs-tutorial
 
 
 installandrun-CMake-on-windows:
  - using-cmake
- - makefiles-on-windows
- - cmake-vs-make-diff
- - vscode-make
  - ninjabuild-for-faster-build
  - cmake-gcc-cross-compile
  - g++-makefile
  - make-tutorial
  - autoconf
  - docker-alternatives
+ - how-to-use-docker-in-vscode
+ - gitlab-ci
+ - repeatable-builds-every-time
 
 
 k8s-cluster-security:
@@ -3050,10 +3050,10 @@ k8s-cluster-security:
  - k8s-namespaces
  - kubernetes-network-policies
  - k8s-role-based-access-control
- - managing-k8s-with-k9s
  - earthly-podman
  - kubernetes-jobs-cron-jobs
  - mutual-tls-kubernetes-nginx-ingress-controller
+ - managing-k8s-with-kubeadm
 
 
 docker-init-rust:
@@ -3072,20 +3072,19 @@ docker-init-rust:
 ninjabuild-for-faster-build:
  - using-cmake
  - installandrun-CMake-on-windows
- - vscode-make
- - cmake-vs-make-diff
- - makefiles-on-windows
  - g++-makefile
  - make-tutorial
  - build-java-projects-with-bazel
  - repeatable-builds-every-time
  - using-bazel-with-typescript
+ - cmake-gcc-cross-compile
+ - bazel-and-automated-tests
+ - bazel-build
 
 
 k8s-distributed-tracing:
  - grafana-loki-log-aggregation-k8s
  - spinnaker-kubernetes
- - managing-k8s-with-k9s
  - k8s-GitOps-with-FluxCD
  - k8s-namespaces
  - K3s-and-K8s
@@ -3093,19 +3092,20 @@ k8s-distributed-tracing:
  - k8s-networking
  - app-routing-in-k8-cluster
  - automate-micsvcs-in-k8s
+ - running-Grafana-in-Docker
 
 
 makefile-variables:
  - make-tutorial
- - make-flags
  - using-makefile-wildcards
  - g++-makefile
  - bash-variables
- - vscode-make
- - golang-makefile
- - python-makefile
- - cmake-vs-make-diff
  - terraform-variables-guide
+ - shell-functions-arguments
+ - using-cmake
+ - repeatable-builds-every-time
+ - autoconf
+ - understanding-bash
 
 
 python-with-statement:
@@ -3114,24 +3114,24 @@ python-with-statement:
  - psycopg2-postgres-python
  - magic-methods-python
  - python-classes-and-objects
- - yaml-in-python
  - python-closures-decorators
  - python-poetry
- - python-subprocess
  - pytest-fixtures
+ - logging-in-python
+ - python-earthly
 
 
 setup-typescript-monorepo:
- - npm-workspaces-monorepo
  - javascript-monorepo-with-lerna
  - build-monorepo-with-turporepo
  - nx-monorepos-guide
  - monorepo-with-bazel
  - monorepo-vs-polyrepo
  - building-js-monorepo
- - golang-monorepo
  - monorepo-tools
  - using-bazel-with-typescript
+ - pants-python-monorepo
+ - go-workspaces
 
 
 build-and-deploy-PyApp-with-bazel:
@@ -3151,39 +3151,39 @@ deploy-dockcontainers-to-AWSECS-using-Terraform:
  - aws-ecs-tutorial
  - deploy-DockerContainers-with-ECS
  - aws-ecr-github-actions
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
  - aws-lambda-docker
  - terraform-init-plan-apply
  - deploying-iac-aws-cloud-formation
  - terraform-with-github-actions
  - create-manage-vpc-terraform
+ - kubernetes-terraform
 
 
 vscode-git:
  - mng-dotfiles-with-git
  - how-to-use-docker-in-vscode
  - devcontainers
- - github-actions-environment-variables-and-secrets
  - a-developer-guide-to-git-lfs
  - javascript-monorepo-with-lerna
  - gitlab-ci
  - caching-dependencies-github-actions
- - setup-typescript-monorepo
  - earthly-github-actions
+ - ios-continuous-integration-pipeline
+ - terraform-with-github-actions
 
 
 building-js-monorepo:
  - monorepo-with-bazel
  - monorepo-tools
  - javascript-monorepo-with-lerna
- - setup-typescript-monorepo
  - build-monorepo-with-turporepo
  - using-bazel-with-typescript
  - monorepo-vs-polyrepo
  - bazel-build
  - nx-monorepos-guide
- - npm-workspaces-monorepo
+ - build-nodejs-app-with-bazel
+ - pants-python-monorepo
 
 
 openshift-vs-kubernetes:
@@ -3206,10 +3206,10 @@ practical-guide-to-linux-echo-cmd:
  - bash-read-files
  - linux-text-processing-commands
  - bash-variables
- - sed-find-replace
  - shell-functions-arguments
  - fish-shell
  - chown-permissions-chmod
+ - loops-in-bash
 
 
 build-nodejs-app-with-bazel:
@@ -3228,14 +3228,14 @@ build-nodejs-app-with-bazel:
 psycopg2-postgres-python:
  - query-database-sqlalchemy-python
  - starting-with-pymongo
- - postgres-docker
  - set-up-postgresql-db
  - circle-ci-with-django
  - python-classes-and-objects
- - python-subprocess
  - python-with-statement
  - pymongo-advanced
  - python-docker
+ - error-handling-in-python
+ - python-poetry
 
 
 streamlit-python-dashboard:
@@ -3286,8 +3286,8 @@ golang-gin-framework:
  - aws-lambda-api-proxy
  - image-upload-api-cloudinary-golang
  - use-mongo-with-go
- - golang-monorepo
- - tui-app-with-go
+ - build-golang-bazel-gazelle
+ - aws-lambda-golang
 
 
 earthly-v0-7:
@@ -3318,7 +3318,6 @@ django-signals:
 
 pymongo-advanced:
  - starting-with-pymongo
- - mongodb-docker
  - use-mongo-with-go
  - psycopg2-postgres-python
  - query-database-sqlalchemy-python
@@ -3327,6 +3326,7 @@ pymongo-advanced:
  - magic-methods-python
  - kubernetes-operators
  - structural-pattern-matching-python
+ - data-pipelines-with-airflow
 
 
 remote-code-execution:
@@ -3357,15 +3357,15 @@ kubernetes-operators:
 
 kubernetes-secrets:
  - securing-kubernetes-secrets
- - docker-secrets
- - github-actions-environment-variables-and-secrets
  - kubernetes-persistent-volumes
  - k8s-cluster-security
  - kubernetes-config-maps
  - eso-with-hashicorp-vault
  - use-replicasets-in-k8s
- - postgres-docker
- - docker-volumes
+ - k8s-namespaces
+ - explore-portainer-as-tool
+ - k8s-role-based-access-control
+ - kubernetes-jobs-cron-jobs
 
 
 playwright-python-api-testing:
@@ -3374,11 +3374,11 @@ playwright-python-api-testing:
  - python-poetry
  - circle-ci-with-django
  - pants-python-monorepo
- - github-actions-and-docker
  - python-docker
  - continuous-testing-in-devops
  - python-earthly
  - build-and-deploy-PyApp-with-bazel
+ - using-github-actions-locally
 
 
 python-3.11-new-features:
@@ -3397,7 +3397,6 @@ python-3.11-new-features:
 mutual-tls-kubernetes-nginx-ingress-controller:
  - app-routing-in-k8-cluster
  - securing-kubernetes-secrets
- - setup-reverse-proxy-kubernetes-nginx
  - kubernetes-secrets
  - k8s-cluster-security
  - grafana-https-nginx-certbot
@@ -3405,6 +3404,7 @@ mutual-tls-kubernetes-nginx-ingress-controller:
  - building-on-kubernetes-ingress
  - managing-k8s-with-kubeadm
  - k8s-networking
+ - build-your-own-ngrok-clone
 
 
 what-is-nix:
@@ -3434,16 +3434,16 @@ aws-s3-backup-recovery-restic:
 
 
 javascript-monorepo-with-lerna:
- - setup-typescript-monorepo
  - building-js-monorepo
- - npm-workspaces-monorepo
  - monorepo-with-bazel
  - nx-monorepos-guide
  - build-monorepo-with-turporepo
  - earthly-github-actions
  - monorepo-vs-polyrepo
- - golang-monorepo
  - monorepo-tools
+ - pants-python-monorepo
+ - using-bazel-with-typescript
+ - cicd-build-github-action-dockerhub
 
 
 python-earthly:
@@ -3495,7 +3495,7 @@ netlify-cloud-functions:
  - earthly-github-actions
  - shell-functions-arguments
  - IaC-terraform-cdk
- - github-actions-environment-variables-and-secrets
+ - aws-ecs-tutorial
 
 
 pants-build:
@@ -3512,16 +3512,16 @@ pants-build:
 
 
 write-better-tutorials:
- - golang-csv-files
- - golang-errors
  - golang-zip-files
  - pongo
  - learning-golang-common-mistakes-to-avoid
  - software-design-go-interfaces
  - top-3-resources-to-learn-golang-in-2021
  - property-based-testing
- - golang-makefile
  - optimize-sql-queries-golang
+ - concurrency-in-Go
+ - golang-streamers
+ - optimize-golang-for-kubernetes
 
 
 python-data-classes:
@@ -3530,11 +3530,11 @@ python-data-classes:
  - python-data-classes-vs-namedtuples
  - abstract-base-classes-python
  - magic-methods-python
- - yaml-in-python
  - python-closures-decorators
  - query-database-sqlalchemy-python
  - python-3.11-new-features
  - psycopg2-postgres-python
+ - pytest-fixtures
 
 
 customize-django-admin-site:
@@ -3558,9 +3558,9 @@ django-template-filters:
  - data-pipelines-with-airflow
  - python-closures-decorators
  - using-makefile-wildcards
- - github-actions-environment-variables-and-secrets
  - streamlit-python-dashboard
  - introduction-pyscript
+ - pytest-fixtures
 
 
 securing-kubernetes-secrets:
@@ -3568,12 +3568,12 @@ securing-kubernetes-secrets:
  - k8s-cluster-security
  - k8s-role-based-access-control
  - eso-with-hashicorp-vault
- - docker-secrets
  - mutual-tls-kubernetes-nginx-ingress-controller
  - managing-k8s-with-kubeadm
- - managing-k8s-with-k9s
  - building-k8s-tekton
  - minikube
+ - app-routing-in-k8-cluster
+ - automate-micsvcs-in-k8s
 
 
 more-on-python-data-classes:
@@ -3604,28 +3604,28 @@ advanced-git-commands:
 
 caching-dependencies-github-actions:
  - earthly-github-actions
- - github-action-artifacts
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
  - terraform-with-github-actions
  - aws-ecr-github-actions
  - concurrency-in-github-actions
- - github-actions-environment-variables-and-secrets
  - using-github-actions-locally
- - composite-actions-github
+ - bazel-build-with-caching
+ - what-makes-earthly-fast
+ - repeatable-builds-every-time
+ - javascript-monorepo-with-lerna
 
 
 golang-zip-files:
- - golang-csv-files
- - golang-makefile
  - build-golang-bazel-gazelle
- - golang-monorepo
  - image-upload-api-cloudinary-golang
  - software-design-go-interfaces
  - write-better-tutorials
  - go-modules
  - go-workspaces
  - cryptography-encryption-in-go
+ - golang-gin-framework
+ - aws-lambda-golang
+ - golang-chi
 
 
 misaligned-incentives:
@@ -3647,15 +3647,14 @@ python-poetry:
  - python-docker
  - pants-python-monorepo
  - playwright-python-api-testing
- - python-makefile
  - circle-ci-with-django
  - caching-dependencies-github-actions
  - data-pipelines-with-airflow
- - yaml-in-python
+ - pytest-fixtures
+ - bazel-and-automated-tests
 
 
 learning-golang-common-mistakes-to-avoid:
- - golang-errors
  - concurrency-in-Go
  - top-3-resources-to-learn-golang-in-2021
  - software-design-go-interfaces
@@ -3665,6 +3664,7 @@ learning-golang-common-mistakes-to-avoid:
  - golang-gin-framework
  - mail-server-API-goroutines-gmail
  - write-better-tutorials
+ - build-GraphQL-APIs-Go
 
 
 pytest-fixtures:
@@ -3673,11 +3673,11 @@ pytest-fixtures:
  - python-earthly
  - python-poetry
  - continuous-testing-in-devops
- - yaml-in-python
  - circle-ci-with-django
- - python-makefile
  - pants-python-monorepo
  - python-data-classes
+ - python-closures-decorators
+ - python-classes-and-objects
 
 
 bazel-and-automated-tests:
@@ -3701,9 +3701,9 @@ load-testing-using-k6:
  - automate-micsvcs-in-k8s
  - aws-lambda-node
  - grafana-loki-log-aggregation-k8s
- - managing-k8s-with-k9s
  - aws-cloudwatch
  - optimize-golang-for-kubernetes
+ - aws-lambda-docker
 
 
 eso-with-hashicorp-vault:
@@ -3712,16 +3712,15 @@ eso-with-hashicorp-vault:
  - kubernetes-operators
  - k8s-GitOps-with-FluxCD
  - k8s-cluster-security
- - managing-k8s-with-k9s
- - docker-secrets
  - k8s-role-based-access-control
- - github-actions-environment-variables-and-secrets
  - deploy-dockcontainers-to-AWSECS-using-Terraform
+ - building-k8s-tekton
+ - validate-&-clean-yaml
+ - use-replicasets-in-k8s
 
 
 aws-ecr-github-actions:
  - cicd-build-github-action-dockerhub
- - github-actions-and-docker
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - terraform-with-github-actions
  - aws-ecs-tutorial
@@ -3730,19 +3729,20 @@ aws-ecr-github-actions:
  - gitlab-ci
  - streamline-container-ghcr
  - aws-lambda-docker
+ - deploying-iac-aws-cloud-formation
 
 
 github-actions-environment-variables-and-secrets:
  - kubernetes-secrets
- - github-actions-and-docker
- - github-action-artifacts
  - aws-ecr-github-actions
  - terraform-variables-guide
  - terraform-with-github-actions
  - cicd-build-github-action-dockerhub
  - caching-dependencies-github-actions
- - docker-secrets
  - earthly-github-actions
+ - bash-variables
+ - securing-kubernetes-secrets
+ - gitlab-ci
 
 
 error-handling-in-python:
@@ -3750,38 +3750,38 @@ error-handling-in-python:
  - python-with-statement
  - python-classes-and-objects
  - logging-in-python
- - yaml-in-python
  - psycopg2-postgres-python
  - abstract-base-classes-python
  - python-data-classes
- - golang-errors
  - understanding-bash
+ - python-closures-decorators
+ - magic-methods-python
 
 
 docker-image-storage-on-host:
- - docker-volumes
- - docker-networking
- - docker-mysql
  - containerd-vs-docker
  - docker-vs-vm
- - docker-secrets
  - lxc-vs-docker
  - understanding-docker-logging-and-log-files
- - docker-multistage
  - docker-vagrant
+ - how-to-use-docker-in-vscode
+ - how-to-setup-and-use-amazons-elastic-container-registry
+ - docker-slim
+ - debugging-docker-containers
+ - kubernetes-docker
 
 
 logging-in-python:
  - understanding-docker-logging-and-log-files
  - what-is-syslog
  - error-handling-in-python
- - yaml-in-python
  - build-news-classifier-nlp-newsapi-lr
  - python-docker
  - python-3.11-new-features
  - python-poetry
  - python-classes-and-objects
  - magic-methods-python
+ - starting-with-pymongo
 
 
 earthly-satellites-ga:
@@ -3812,19 +3812,18 @@ oauth-2-in-non-web-clients:
 
 linux-text-processing-commands:
  - ess-linux-term-cmd
- - sed-find-replace
  - linux-uniq-command
  - ripgrep-for-efficient-search
  - advanced-git-commands
- - practical-guide-to-linux-echo-cmd
  - bash-string
  - bash-read-files
  - command-line-tools
  - awk-examples
+ - linux-network-commands
+ - automate-tasks-shell-scripts
 
 
 terraform-with-github-actions:
- - github-actions-and-docker
  - aws-ecr-github-actions
  - earthly-github-actions
  - cicd-build-github-action-dockerhub
@@ -3832,8 +3831,9 @@ terraform-with-github-actions:
  - terraform-init-plan-apply
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - IaC-terraform-cdk
- - github-actions-environment-variables-and-secrets
  - caching-dependencies-github-actions
+ - terraform-depends-on-argument
+ - deploying-iac-aws-cloud-formation
 
 
 github-actions-and-docker:
@@ -3845,13 +3845,12 @@ github-actions-and-docker:
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - deploy-DockerContainers-with-ECS
  - streamline-container-ghcr
- - github-actions-environment-variables-and-secrets
- - github-action-artifacts
+ - gitlab-ci
+ - how-to-use-docker-in-vscode
 
 
 cicd-build-github-action-dockerhub:
  - aws-ecr-github-actions
- - github-actions-and-docker
  - streamline-container-ghcr
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - gitlab-ci
@@ -3860,6 +3859,7 @@ cicd-build-github-action-dockerhub:
  - how-to-use-docker-in-vscode
  - travis-bitbucket
  - aws-ecs-tutorial
+ - using-github-actions-locally
 
 
 grafana-loki-log-aggregation-k8s:
@@ -3870,22 +3870,22 @@ grafana-loki-log-aggregation-k8s:
  - helm-k8s-package-manager
  - k8s-log-compression-s3-upload
  - kubernetes-operators
- - managing-k8s-with-k9s
  - devetools-for-k8s
  - explore-portainer-as-tool
+ - grafana-https-nginx-certbot
 
 
 aws-ecs-tutorial:
  - deploy-DockerContainers-with-ECS
  - deploy-dockcontainers-to-AWSECS-using-Terraform
  - aws-lambda-docker
- - github-actions-and-docker
  - aws-ecr-github-actions
  - how-to-setup-and-use-amazons-elastic-container-registry
  - deploying-iac-aws-cloud-formation
  - cicd-build-github-action-dockerhub
  - app-routing-in-k8-cluster
  - explore-portainer-as-tool
+ - build-your-own-ngrok-clone
 
 
 bazel-with-rust:
@@ -3903,7 +3903,6 @@ bazel-with-rust:
 
 setup-reverse-proxy-kubernetes-nginx:
  - app-routing-in-k8-cluster
- - private-docker-registry
  - aws-ecs-tutorial
  - use-replicasets-in-k8s
  - mutual-tls-kubernetes-nginx-ingress-controller
@@ -3912,6 +3911,7 @@ setup-reverse-proxy-kubernetes-nginx:
  - grafana-https-nginx-certbot
  - k8s-networking
  - deploy-DockerContainers-with-ECS
+ - explore-portainer-as-tool
 
 
 query-database-sqlalchemy-python:
@@ -3919,12 +3919,12 @@ query-database-sqlalchemy-python:
  - starting-with-pymongo
  - python-data-classes
  - set-up-postgresql-db
- - yaml-in-python
  - python-classes-and-objects
  - python-docker
  - pymongo-advanced
  - data-pipelines-with-airflow
  - circle-ci-with-django
+ - abstract-base-classes-python
 
 
 ci-cd-security-challenges-best-practices:
@@ -3943,7 +3943,6 @@ ci-cd-security-challenges-best-practices:
 data-pipelines-with-airflow:
  - circle-ci-with-django
  - deploy-DockerContainers-with-ECS
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
  - building-k8s-tekton
  - kubernetes-terraform
@@ -3951,6 +3950,7 @@ data-pipelines-with-airflow:
  - octopus-deploy
  - terraform-with-github-actions
  - aws-ecr-github-actions
+ - dockercompose-vs-k8s
 
 
 push-docker-image-bazel:
@@ -3970,13 +3970,13 @@ abstract-base-classes-python:
  - python-classes-and-objects
  - python-data-classes
  - magic-methods-python
- - python-ast
  - python-closures-decorators
  - python-data-classes-vs-namedtuples
  - error-handling-in-python
  - python-3.11-new-features
  - query-database-sqlalchemy-python
  - more-on-python-data-classes
+ - pytest-fixtures
 
 
 improve-django-performance-caching:
@@ -3999,10 +3999,10 @@ deploy-kubernetes-cri-o-container-runtime:
  - containerd-vs-docker
  - streamline-container-ghcr
  - k8s-GitOps-with-FluxCD
- - managing-k8s-with-k9s
  - kubernetes-jobs-cron-jobs
  - minikube
  - k8s-networking
+ - explore-portainer-as-tool
 
 
 build-golang-bazel-gazelle:
@@ -4014,8 +4014,8 @@ build-golang-bazel-gazelle:
  - build-java-projects-with-bazel
  - build-and-deploy-PyApp-with-bazel
  - bazel-build
- - golang-makefile
- - golang-monorepo
+ - bazel-and-automated-tests
+ - bazel-query
 
 
 coffee-and-opensource:
@@ -4037,11 +4037,11 @@ golang-csv-files:
  - property-based-testing
  - using-gorm-go
  - awk-csv
- - golang-sqlite
  - use-mongo-with-go
  - image-upload-api-cloudinary-golang
  - cryptography-encryption-in-go
  - go-modules
+ - software-design-go-interfaces
 
 
 jeff-bullas-interview:
@@ -4066,21 +4066,21 @@ kubernetes-network-policies:
  - securing-kubernetes-secrets
  - kubernetes-secrets
  - kubernetes-services
- - docker-networking
  - k8s-role-based-access-control
+ - kubernetes-operators
 
 
 optimize-golang-for-kubernetes:
  - optimize-sql-queries-golang
  - top-3-resources-to-learn-golang-in-2021
  - learning-golang-common-mistakes-to-avoid
- - golang-monorepo
- - managing-k8s-with-k9s
  - aws-lambda-golang
- - docker-and-makefiles
- - setup-reverse-proxy-kubernetes-nginx
  - kubernetes-terraform
  - k8s-networking
+ - simplify-k8s-using-cr-cp
+ - k8s-autoscaling
+ - app-routing-in-k8-cluster
+ - securing-kubernetes-secrets
 
 
 python-data-classes-vs-namedtuples:
@@ -4090,10 +4090,10 @@ python-data-classes-vs-namedtuples:
  - abstract-base-classes-python
  - python-3.11-new-features
  - python-closures-decorators
- - yaml-in-python
  - pytest-fixtures
  - query-database-sqlalchemy-python
  - structural-pattern-matching-python
+ - psycopg2-postgres-python
 
 
 using-bazel-with-typescript:
@@ -4113,19 +4113,18 @@ private-docker-registry:
  - how-to-setup-and-use-amazons-elastic-container-registry
  - streamline-container-ghcr
  - aws-ecs-tutorial
- - setup-reverse-proxy-kubernetes-nginx
- - github-actions-and-docker
- - docker-secrets
  - cicd-build-github-action-dockerhub
  - grafana-https-nginx-certbot
  - deploy-DockerContainers-with-ECS
  - deploy-dockcontainers-to-AWSECS-using-Terraform
+ - earthly-podman
+ - explore-portainer-as-tool
+ - how-to-use-docker-in-vscode
 
 
 kubernetes-jobs-cron-jobs:
  - k8s-log-compression-s3-upload
  - cronjobs-for-github-actions
- - managing-k8s-with-k9s
  - building-k8s-tekton
  - simplify-k8s-using-cr-cp
  - kubernetes-secrets
@@ -4133,38 +4132,38 @@ kubernetes-jobs-cron-jobs:
  - k8s-GitOps-with-FluxCD
  - k8s-namespaces
  - deploy-kubernetes-cri-o-container-runtime
+ - grafana-and-prometheus-k8s
 
 
 chown-permissions-chmod:
  - intro-to-Linux-capabilities
  - ess-linux-term-cmd
  - understanding-bash
- - practical-guide-to-linux-echo-cmd
  - bash-read-files
  - mng-dotfiles-with-git
  - a-developer-guide-to-git-lfs
  - automate-tasks-shell-scripts
  - k8s-cluster-security
  - shell-functions-arguments
+ - loops-in-bash
 
 
 cmake-gcc-cross-compile:
- - cross-compiling-raspberry-pi
  - g++-makefile
  - using-cmake
- - cmake-vs-make-diff
- - vscode-make
  - autoconf
- - makefiles-on-windows
  - installandrun-CMake-on-windows
- - make-flags
  - make-tutorial
+ - static-and-dynamic-linking
+ - ninjabuild-for-faster-build
+ - using-makefile-wildcards
+ - repeatable-builds-every-time
+ - cicd-build-github-action-dockerhub
 
 
 python-microservices-rabbitmq-docker:
  - python-docker
  - circle-ci-with-django
- - mongodb-docker
  - build-real-time-comm-app
  - datastreaming-kafka-asyncio
  - rails-with-docker
@@ -4172,6 +4171,7 @@ python-microservices-rabbitmq-docker:
  - set-up-postgresql-db
  - data-pipelines-with-airflow
  - kafka-vs-rabbitmq
+ - starting-with-pymongo
 
 
 bazel-query:
@@ -4191,13 +4191,13 @@ cross-compiling-raspberry-pi:
  - cmake-gcc-cross-compile
  - g++-makefile
  - using-cmake
- - vscode-make
  - repeatable-builds-every-time
  - static-and-dynamic-linking
- - creating-and-hosting-your-own-deb-packages-and-apt-repo
  - devcontainers
  - installandrun-CMake-on-windows
  - buildingrunning-NVIDIAcontainer
+ - ninjabuild-for-faster-build
+ - using-apple-silicon-m1-as-a-cloud-engineer-two-months-in
 
 
 build-java-projects-with-bazel:
@@ -4228,28 +4228,28 @@ automate-tasks-shell-scripts:
 
 linux-uniq-command:
  - linux-text-processing-commands
- - practical-guide-to-linux-echo-cmd
  - ess-linux-term-cmd
  - bash-read-files
- - sed-find-replace
  - understanding-bash
  - loops-in-bash
  - ripgrep-for-efficient-search
  - command-line-tools
  - automate-tasks-shell-scripts
+ - shell-functions-arguments
+ - bash-string
 
 
 bash-pushd-popd-commands:
  - ess-linux-term-cmd
  - fish-shell
  - understanding-bash
- - practical-guide-to-linux-echo-cmd
  - advanced-git-commands-2
  - mng-dotfiles-with-git
  - advanced-git-commands
  - command-line-tools
  - bash-variables
  - shell-functions-arguments
+ - bash-read-files
 
 
 a-developer-guide-to-git-lfs:
@@ -4258,11 +4258,11 @@ a-developer-guide-to-git-lfs:
  - build-transpose
  - k8s-GitOps-with-FluxCD
  - advanced-git-commands
- - github-action-artifacts
  - caching-dependencies-github-actions
  - javascript-monorepo-with-lerna
  - earthly-github-actions
  - vscode-git
+ - repeatable-builds-every-time
 
 
 rust-macros:
@@ -4274,8 +4274,8 @@ rust-macros:
  - make-tutorial
  - using-makefile-wildcards
  - programming-language-improvements
- - makefile-variables
  - terraform-functions
+ - golang-streamers
 
 
 using-sleep:
@@ -4283,12 +4283,12 @@ using-sleep:
  - ess-linux-term-cmd
  - understanding-bash
  - automate-tasks-shell-scripts
- - practical-guide-to-linux-echo-cmd
  - bash-read-files
  - shell-functions-arguments
  - bash-conditionals
- - sed-find-replace
  - bash-variables
+ - cronjobs-for-github-actions
+ - bash-string
 
 
 earthly-github-actions:
@@ -4340,7 +4340,7 @@ monitoring-system-metrics-prometheus-grafana:
  - load-testing-using-k6
  - helm-k8s-package-manager
  - explore-portainer-as-tool
- - portainer-for-docker-container-management
+ - aws-ecs-tutorial
 
 
 tech-and-main-interview:
@@ -4359,20 +4359,18 @@ tech-and-main-interview:
 terraform-variables-guide:
  - terraform-functions
  - terraform-init-plan-apply
- - github-actions-environment-variables-and-secrets
  - terraform-depends-on-argument
  - IaC-terraform-cdk
  - terraform-with-github-actions
  - bash-variables
  - kubernetes-terraform
- - makefile-variables
  - create-manage-vpc-terraform
+ - pulumi-vs-terraform
+ - deploy-dockcontainers-to-AWSECS-using-Terraform
 
 
 grafana-https-nginx-certbot:
  - running-Grafana-in-Docker
- - setup-reverse-proxy-kubernetes-nginx
- - private-docker-registry
  - securing-kubernetes-secrets
  - monitoring-system-metrics-prometheus-grafana
  - mutual-tls-kubernetes-nginx-ingress-controller
@@ -4380,6 +4378,8 @@ grafana-https-nginx-certbot:
  - grafana-loki-log-aggregation-k8s
  - app-routing-in-k8-cluster
  - build-your-own-ngrok-clone
+ - aws-ecs-tutorial
+ - explore-portainer-as-tool
 
 
 build-news-classifier-nlp-newsapi-lr:
@@ -4391,8 +4391,8 @@ build-news-classifier-nlp-newsapi-lr:
  - datastreaming-kafka-asyncio
  - data-pipelines-with-airflow
  - python-docker
- - yaml-in-python
  - face-recog-sys-with-jupyter
+ - pants-python-monorepo
 
 
 build-transpose:
@@ -4441,10 +4441,10 @@ shell-functions-arguments:
  - terraform-functions
  - fish-shell
  - bash-conditionals
- - makefile-variables
  - loops-in-bash
  - netlify-cloud-functions
  - bash-read-files
+ - make-tutorial
 
 
 rust-concurrency-patterns-parallel-programming:
@@ -4502,14 +4502,14 @@ systemd:
 using-gorm-go:
  - optimize-sql-queries-golang
  - golang-gin-framework
- - golang-sqlite
  - use-mongo-with-go
  - build-GraphQL-APIs-Go
  - learning-golang-common-mistakes-to-avoid
  - concurrency-in-Go
  - mail-server-API-goroutines-gmail
  - image-upload-api-cloudinary-golang
- - golang-csv-files
+ - go-modules
+ - golang-chi
 
 
 effective-developer-podcast:
@@ -4528,27 +4528,27 @@ effective-developer-podcast:
 cli-with-argparse:
  - using-cmake
  - build-and-deploy-PyApp-with-bazel
- - python-subprocess
- - python-makefile
  - starting-with-pymongo
  - logging-in-python
  - pants-python-monorepo
  - python-poetry
  - python-docker
  - ess-linux-term-cmd
+ - python-classes-and-objects
+ - shell-functions-arguments
 
 
 software-design-go-interfaces:
  - learning-golang-common-mistakes-to-avoid
- - golang-errors
  - go-modules
  - golang-gin-framework
  - golang-chi
- - golang-monorepo
  - golang-zip-files
  - concurrency-in-Go
  - optimize-sql-queries-golang
  - image-upload-api-cloudinary-golang
+ - build-GraphQL-APIs-Go
+ - write-better-tutorials
 
 
 magic-methods-python:
@@ -4578,16 +4578,16 @@ earthly-cloud-free-tier-launch:
 
 
 linux-network-commands:
- - docker-networking
  - ess-linux-term-cmd
  - k8s-networking
  - debugging-docker-containers
  - aws-networks
  - linux-text-processing-commands
  - intro-to-Linux-capabilities
- - practical-guide-to-linux-echo-cmd
  - advanced-git-commands
  - app-routing-in-k8-cluster
+ - kubernetes-network-policies
+ - advanced-git-commands-2
 
 
 dont-configure-control-flow:
@@ -4600,20 +4600,20 @@ dont-configure-control-flow:
  - introducing-earthly-build-automation-for-the-container-era
  - earthly-github-actions
  - python-earthly
- - yaml-in-python
+ - build-transpose
 
 
 streamline-container-ghcr:
  - cicd-build-github-action-dockerhub
- - github-actions-and-docker
  - aws-ecr-github-actions
  - how-to-setup-and-use-amazons-elastic-container-registry
- - private-docker-registry
  - building-k8s-tekton
  - k8s-GitOps-with-FluxCD
  - deploy-kubernetes-cri-o-container-runtime
  - aws-ecs-tutorial
  - kubernetes-secrets
+ - explore-portainer-as-tool
+ - using-github-actions-locally
 
 
 rust-generics:
@@ -4659,26 +4659,26 @@ ripgrep-for-efficient-search:
  - linux-text-processing-commands
  - ess-linux-term-cmd
  - linux-uniq-command
- - sed-find-replace
  - command-line-tools
  - advanced-git-commands
  - bazel-with-rust
  - fish-shell
  - repeatable-builds-every-time
  - monorepo-tools
+ - bash-read-files
 
 
 debugging-docker-containers:
  - how-to-use-docker-in-vscode
- - docker-networking
- - docker-mysql
- - docker-volumes
  - aws-ecs-tutorial
  - understanding-docker-logging-and-log-files
  - explore-portainer-as-tool
  - containerd-vs-docker
  - running-Grafana-in-Docker
  - devcontainers
+ - python-docker
+ - docker-alternatives
+ - kubernetes-docker
 
 
 deploying-iac-aws-cloud-formation:
@@ -4755,8 +4755,8 @@ mail-server-API-goroutines-gmail:
  - aws-lambda-api-proxy
  - golang-gin-framework
  - use-mongo-with-go
- - golang-grpc-example
  - learning-golang-common-mistakes-to-avoid
+ - golang-chi
 
 
 AWS-IAM:
@@ -4813,15 +4813,15 @@ what-is-syslog:
 
 nx-monorepos-guide:
  - build-monorepo-with-turporepo
- - npm-workspaces-monorepo
- - setup-typescript-monorepo
  - monorepo-tools
  - javascript-monorepo-with-lerna
  - monorepo-with-bazel
  - monorepo-vs-polyrepo
  - building-js-monorepo
- - golang-monorepo
  - pants-python-monorepo
+ - npm-vs-npx-vs-pnmp
+ - using-bazel-with-typescript
+ - earthly-github-actions
 
 
 shutting-down-earthly-ci:
@@ -4841,13 +4841,13 @@ safely-using-bash-eval:
  - understanding-bash
  - bash-variables
  - shell-functions-arguments
- - practical-guide-to-linux-echo-cmd
  - bash-conditionals
  - automate-tasks-shell-scripts
  - bash-string
  - ci-cd-security-challenges-best-practices
  - bash-read-files
  - dont-configure-control-flow
+ - docker-slim
 
 
 diluting-dora:
@@ -4864,22 +4864,21 @@ diluting-dora:
 
 
 static-and-dynamic-linking:
- - cmake-vs-make-diff
  - cmake-gcc-cross-compile
  - using-cmake
  - g++-makefile
  - ninjabuild-for-faster-build
- - cross-compiling-raspberry-pi
- - make-flags
- - makefile-variables
  - make-tutorial
  - software-dependency-management
+ - mng-dotfiles-with-git
+ - intro-to-Linux-capabilities
+ - autoconf
+ - programming-language-improvements
 
 
 powerline10k:
  - command-line-tools
  - fish-shell
- - managing-k8s-with-k9s
  - devetools-for-k8s
  - programming-language-improvements
  - ess-linux-term-cmd
@@ -4887,6 +4886,7 @@ powerline10k:
  - earthly-podman
  - mng-dotfiles-with-git
  - introducing-earthly-build-automation-for-the-container-era
+ - v0-3-3-released
 
 
 terraform-depends-on-argument:
@@ -4904,8 +4904,6 @@ terraform-depends-on-argument:
 
 build-monorepo-with-turporepo:
  - nx-monorepos-guide
- - setup-typescript-monorepo
- - npm-workspaces-monorepo
  - monorepo-with-bazel
  - javascript-monorepo-with-lerna
  - monorepo-tools
@@ -4913,6 +4911,8 @@ build-monorepo-with-turporepo:
  - pants-python-monorepo
  - monorepo-vs-polyrepo
  - using-bazel-with-typescript
+ - earthly-github-actions
+ - npm-vs-npx-vs-pnmp
 
 
 devops-glossary:
@@ -4929,16 +4929,16 @@ devops-glossary:
 
 
 deprecation-error-github-action-command:
- - github-actions-environment-variables-and-secrets
- - github-actions-and-docker
  - caching-dependencies-github-actions
  - github-actions-reusable-workflows
  - aws-ecr-github-actions
- - github-action-artifacts
  - dont-configure-control-flow
- - composite-actions-github
  - cicd-build-github-action-dockerhub
  - understanding-bash
+ - mng-dotfiles-with-git
+ - using-github-actions-locally
+ - concurrency-in-github-actions
+ - automate-tasks-shell-scripts
 
 
 curse-of-knowledge:
@@ -4955,7 +4955,6 @@ curse-of-knowledge:
 
 
 npm-workspaces-monorepo:
- - setup-typescript-monorepo
  - nx-monorepos-guide
  - build-monorepo-with-turporepo
  - javascript-monorepo-with-lerna
@@ -4965,6 +4964,7 @@ npm-workspaces-monorepo:
  - npm-vs-yarn
  - building-js-monorepo
  - monorepo-vs-polyrepo
+ - monorepo-tools
 
 
 advanced-git-commands-2:
@@ -4982,7 +4982,6 @@ advanced-git-commands-2:
 
 deployment-strategies-kubernetes:
  - deployment-strategies
- - canary-deployment-in-k8s
  - canary-deployment
  - blue-green
  - openshift-vs-kubernetes
@@ -4991,6 +4990,7 @@ deployment-strategies-kubernetes:
  - kubernetes-operators
  - octopus-deploy
  - dockercompose-vs-k8s
+ - kubernetes-terraform
 
 
 rust-api-rocket-diesel:
@@ -5007,29 +5007,29 @@ rust-api-rocket-diesel:
 
 
 using-github-actions-locally:
- - github-actions-and-docker
  - cicd-build-github-action-dockerhub
  - aws-ecr-github-actions
- - github-action-artifacts
  - earthly-github-actions
  - cronjobs-for-github-actions
  - caching-dependencies-github-actions
  - terraform-with-github-actions
- - github-actions-environment-variables-and-secrets
  - streamline-container-ghcr
+ - continuous-testing-in-devops
+ - aws-lambda-docker
+ - gitlab-ci
 
 
 github-action-triggers:
- - github-actions-and-docker
- - github-action-artifacts
  - github-actions-reusable-workflows
  - cronjobs-for-github-actions
  - cicd-build-github-action-dockerhub
  - aws-ecr-github-actions
  - terraform-with-github-actions
- - composite-actions-github
- - github-actions-environment-variables-and-secrets
  - concurrency-in-github-actions
+ - ios-continuous-integration-pipeline
+ - continuous-testing-in-devops
+ - gitlab-ci
+ - streamline-container-ghcr
 
 
 azure-functions:
@@ -5041,34 +5041,34 @@ azure-functions:
  - deploying-iac-aws-cloud-formation
  - cicd-build-github-action-dockerhub
  - IaC-terraform-cdk
- - github-actions-environment-variables-and-secrets
  - shell-functions-arguments
+ - build-your-own-ngrok-clone
 
 
 github-action-artifacts:
- - github-actions-and-docker
  - caching-dependencies-github-actions
  - cicd-build-github-action-dockerhub
- - github-actions-environment-variables-and-secrets
  - aws-ecr-github-actions
  - terraform-with-github-actions
  - using-github-actions-locally
- - composite-actions-github
  - github-actions-reusable-workflows
  - github-action-triggers
+ - cronjobs-for-github-actions
+ - earthly-github-actions
+ - gitlab-ci
 
 
 cronjobs-for-github-actions:
  - kubernetes-jobs-cron-jobs
- - github-actions-and-docker
  - k8s-log-compression-s3-upload
  - cicd-build-github-action-dockerhub
  - using-github-actions-locally
- - github-action-artifacts
  - github-action-triggers
  - aws-ecr-github-actions
  - streamline-container-ghcr
  - concurrency-in-github-actions
+ - caching-dependencies-github-actions
+ - load-testing-using-k6
 
 
 macOS-native-containers:
@@ -5090,37 +5090,37 @@ fish-shell:
  - ess-linux-term-cmd
  - command-line-tools
  - automate-tasks-shell-scripts
- - practical-guide-to-linux-echo-cmd
  - mng-dotfiles-with-git
  - bash-variables
  - how-to-use-docker-in-vscode
  - bash-read-files
+ - bash-conditionals
 
 
 npm-vs-npx-vs-pnmp:
  - npm-vs-yarn
- - npm-workspaces-monorepo
  - nx-monorepos-guide
- - setup-typescript-monorepo
  - building-js-monorepo
  - monorepo-tools
  - javascript-monorepo-with-lerna
  - build-monorepo-with-turporepo
  - what-is-nix
  - monorepo-with-bazel
+ - monorepo-vs-polyrepo
+ - docker-vagrant
 
 
 npm-vs-yarn:
  - npm-vs-npx-vs-pnmp
- - npm-workspaces-monorepo
  - kubernetes-docker
  - openshift-vs-kubernetes
  - docker-vagrant
- - setup-typescript-monorepo
  - dockercompose-vs-k8s
  - software-dependency-management
  - monorepo-vs-polyrepo
  - javascript-monorepo-with-lerna
+ - devetools-for-k8s
+ - nx-monorepos-guide
 
 
 linux-security-modules:
@@ -5131,9 +5131,9 @@ linux-security-modules:
  - ess-linux-term-cmd
  - automate-tasks-shell-scripts
  - autoconf
- - private-docker-registry
  - static-and-dynamic-linking
- - docker-secrets
+ - securing-kubernetes-secrets
+ - AWS-IAM
 
 
 datastreaming-kafka-asyncio:
@@ -5153,26 +5153,26 @@ optimize-sql-queries-golang:
  - using-gorm-go
  - optimize-golang-for-kubernetes
  - build-GraphQL-APIs-Go
- - golang-sqlite
  - golang-gin-framework
  - use-mongo-with-go
  - learning-golang-common-mistakes-to-avoid
  - software-design-go-interfaces
  - concurrency-in-Go
- - golang-monorepo
+ - write-better-tutorials
+ - mail-server-API-goroutines-gmail
 
 
 composite-actions-github:
- - github-actions-and-docker
  - github-actions-reusable-workflows
- - github-action-artifacts
  - terraform-with-github-actions
  - caching-dependencies-github-actions
  - aws-ecr-github-actions
  - cicd-build-github-action-dockerhub
- - github-actions-environment-variables-and-secrets
  - earthly-github-actions
  - concurrency-in-github-actions
+ - github-action-triggers
+ - using-github-actions-locally
+ - building-k8s-tekton
 
 
 nomad-vs-kubernetes:
@@ -5191,14 +5191,14 @@ nomad-vs-kubernetes:
 concurrency-in-github-actions:
  - caching-dependencies-github-actions
  - github-actions-reusable-workflows
- - github-actions-and-docker
  - cronjobs-for-github-actions
- - composite-actions-github
- - github-action-artifacts
  - concurrency-in-Go
  - terraform-with-github-actions
  - kubernetes-jobs-cron-jobs
  - continuous-testing-in-devops
+ - earthly-github-actions
+ - cicd-build-github-action-dockerhub
+ - github-action-triggers
 
 
 the-roi-of-fast:
@@ -5246,11 +5246,11 @@ pants-python-monorepo:
  - monorepo-with-bazel
  - build-monorepo-with-turporepo
  - nx-monorepos-guide
- - setup-typescript-monorepo
  - javascript-monorepo-with-lerna
  - bazel-and-automated-tests
  - build-and-deploy-PyApp-with-bazel
  - building-js-monorepo
+ - monorepo-vs-polyrepo
 
 
 devtool-fm:
@@ -5274,35 +5274,35 @@ golang-chi:
  - software-design-go-interfaces
  - image-upload-api-cloudinary-golang
  - aws-lambda-golang
- - tui-app-with-go
  - using-gorm-go
  - mail-server-API-goroutines-gmail
+ - golang-grpc-gateway
 
 
 go-modules:
  - go-workspaces
  - software-design-go-interfaces
- - golang-monorepo
- - golang-makefile
  - concurrency-in-Go
  - golang-zip-files
  - using-gorm-go
  - golang-gin-framework
  - build-golang-bazel-gazelle
  - golang-chi
+ - programming-language-improvements
+ - learning-golang-common-mistakes-to-avoid
 
 
 github-actions-reusable-workflows:
- - composite-actions-github
- - github-actions-and-docker
- - github-action-artifacts
  - concurrency-in-github-actions
- - github-actions-environment-variables-and-secrets
  - github-action-triggers
  - aws-ecr-github-actions
  - achieving-repeatability
  - terraform-with-github-actions
  - continuous-testing-in-devops
+ - caching-dependencies-github-actions
+ - cicd-build-github-action-dockerhub
+ - ci-cd-security-challenges-best-practices
+ - repeatable-builds-every-time
 
 
 kafka-vs-rabbitmq:

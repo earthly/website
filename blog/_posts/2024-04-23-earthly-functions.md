@@ -13,7 +13,6 @@ internal-links:
 excerpt: |
     Introducing Earthly Functions: Reusable code blocks can enhance modularity and consistency in your Earthfiles.
 ---
-
 The concept of functions runs deep in software development. Pretty much every programming language has functions or something similar that delivers the same capabilities: a block of code that performs a specific task that you can call from anywhere. Functions are a fundamental part of C. Methods, functions associated with specific classes, are part of almost every object-oriented programming language. Even SQL has functions.
 
 Every programming language has functions because they are incredibly valuable. They make it easier to make programs modular and code reusable. These same benefits of modularity and reusability are valuable in your builds too. That's why we want to introduce you to Earthly Functions. Functions are exactly what you'd expect, reusable sets of instructions that can be imported into build targets or other functions in your Earthfiles. They are designed to make it easier to make your Earthfiles more modular and your build code less redundant.
