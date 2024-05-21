@@ -597,3 +597,7 @@ Alen Kalac:
     name    : "Alen Kalac"
     bio     : "Alen is a data scientist working in finance. He's a freelance data scientist, too, and writes about data science and machine learning."
     avatar  : "/assets/images/authors/person.jpg"
+Vivek Kumar Maskara:
+    name    : "Vivek Kumar Maskara"
+    bio     : "Vivek Kumar Maskara is an Associate Software Engineer at JP Morgan. He loves writing code, developing apps, creating websites, and writing technical blogs about his experiences."
+    avatar  : "/assets/images/authors/vivek-maskara.jpg"
