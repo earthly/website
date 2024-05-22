@@ -49,8 +49,22 @@ layout: default
                             name="fields[company]" placeholder="Company" aria-label="Company" required="" />
                         </div>
                         <div class="formkit-field"><input type="email" id="earthly-ci-form-email"
-                            class="formkit-input mb-4 flex h-12 w-full items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                            class="formkit-input mb-3 w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 px-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
                             name="email_address" placeholder="Email Address" aria-label="Email Address" required="" />
+                        </div>
+                        <div class="formkit-field">
+                          <div data-group="dropdown">
+                            <select class="formkit-select mb-4 w-full flex h-12 items-center space-x-3 rounded-lg bg-white py-3 pl-3 pr-4 text-left text-xl text-slate-800 shadow-sm ring-1 ring-slate-900/10 hover:ring-slate-300 focus:outline-none focus:ring-2 focus:ring-sky-500"
+                              data-element="tags-select" name="tags[]" required="">
+                              <option value="">What's your role in your company?</option>
+                              <option value="3920035">I own or lead CI/CD at my organization</option>
+                              <option value="3920037">I am part of the team that owns CI/CD</option>
+                              <option value="3920038">I am an engineering team executive (Director, VP, etc)</option>
+                              <option value="3920039">I lead an application team (team lead, manager, etc)</option>
+                              <option value="3920041">I am an engineer on an application team</option>
+                              <option value="3920042">Other</option>
+                            </select>
+                          </div>
                         </div>
                         <button
                           class="pt-3 pb-3 text-xl text-center text-white font-medium bg-green-500 hover:bg-green-700 rounded-lg w-full lg:w-80 inline-block"
