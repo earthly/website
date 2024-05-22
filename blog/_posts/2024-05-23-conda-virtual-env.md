@@ -33,7 +33,7 @@ A Python virtual environment can help you overcome or avoid the following proble
 * **Different versions of the same package on the system:** Because each project has its own environment, each environment can also have the exact required version of said package.
 * **Running different versions of Python:** Since the virtual environments encapsulate Python as well as the required packages, you can specify which version of Python you want to load/run inside the particular project's environment. This is especially useful for older projects that have not been upgraded to newer versions of Python.
 
-### Why You Need conda
+### Why You Need `conda`
 
 You probably know that Python has [native support for virtual environments](https://docs.python.org/3/library/venv.html), so why use another tool to manage your virtual environments?
 
@@ -45,11 +45,11 @@ The following are a few features offered by conda that go beyond what you would 
 * Conda is widely used by the [data science community](https://conda.io/projects/conda/en/latest/user-guide/concepts/data-science.html) due to its simplicity when packaging an environment for other data scientists to use.
 * It simplifies the installation of challenging tools like [TensorFlow](https://www.tensorflow.org).
 
-## How to Create a Virtual Environment Using conda
+## How to Create a Virtual Environment Using `conda`
 
 Now that you're more familiar with the benefits that conda offers, let's use it to manage the virtual environments for your Python applications.
 
-### Install conda
+### Install `conda`
 
 Conda has different [installation instructions](https://conda.io/projects/conda/en/latest/user-guide/install/index.html) depending on your operating system (OS). In this tutorial, you'll learn how to install conda on a Linux-based OS (specifically [Ubuntu](https://ubuntu.com)).
 
@@ -59,15 +59,19 @@ First, [download the 64-bit Anaconda installer package for Linux](https://www.an
 
 If you don't want to register, you can just skip the registration:
 
-![Skipping registration](https://i.imgur.com/LszYgS3.png)
+<div class="wide">
+![Skipping registration]({{site.images}}{{page.slug}}/LszYgS3.png)
+</div>
 
 You'll be taken straight to the download:
 
-![Downloading the Anaconda installer](https://i.imgur.com/4bTHZ6e.png)
+<div class="wide">
+![Downloading the Anaconda installer]({{site.images}}{{page.slug}}/4bTHZ6e.png)
+</div>
 
 Once you've registered (or skipped registration), run the `bash` command and reference the installer package you downloaded. Depending on your browser settings, the file will most likely be downloaded to your home directory's `Downloads` location, but change the file location in the command if your setup is different from the norm. Then, follow the prompts, and if you're unsure about any of the settings, it's fine to accept the defaults:
 
-```shell
+~~~
 ~ bash Downloads/Anaconda3-2024.02-1-Linux-x86_64.sh
 
 Welcome to Anaconda3 2024.02-1
@@ -76,7 +80,7 @@ In order to continue the installation process, please review the license
 agreement.
 Please, press ENTER to continue
 >>>
-```
+~~~
 
 After accepting the license agreement, you'll be asked a few questions to determine things like the installation location as well as whether or not Anaconda should be added to your default shell profile.
 
@@ -86,10 +90,10 @@ Once the installer is complete, you should be greeted by this message: "Thank yo
 
 You might have to close and open your shell again to ensure that conda loads on startup. Run `conda -V` to confirm that the installation was successful:
 
-```shell
+~~~
 (base) ~ conda -V
 conda 24.1.2
-```
+~~~
 
 You'll see that your shell has a new prefix called `(base)`. This is the base conda environment, and it confirms that conda is successfully installed and running when you open up a new shell.
 
@@ -97,20 +101,20 @@ You'll see that your shell has a new prefix called `(base)`. This is the base co
 
 To create a Python project, start by creating a directory for it:
 
-```shell
+~~~
 ~ mkdir condatest
 ~ cd condatest
-```
+~~~
 
 Inside this directory, create an `environment.yml` file. This [YAML](https://yaml.org) file will be the main configuration file that controls the creation of the conda virtual environment as well as which dependencies get installed in that environment:
 
-```yaml
+~~~
 name: condatest
 channels:
   - defaults
 dependencies:
   - python
-```
+~~~
 
 The `name` is simply the name of your environment, and the `channels` section points to `defaults`.
 
@@ -120,7 +124,7 @@ The `dependencies` section tells conda that you'll be building a Python project.
 
 Run the following command to generate a conda environment inside your project directory using your `environment.yml` file:
 
-```shell
+~~~
 (base) ~ conda env create --file environment.yml 
 Channels:
  - defaults
@@ -141,40 +145,40 @@ Executing transaction: done
 # To deactivate an active environment, use
 #
 #     $ conda deactivate
-```
+~~~
 
 Once it's completed, you can activate your newly built virtual environment like this:
 
-```shell
+~~~
 (base) ~ conda activate condatest
 (condatest) ~
-```
+~~~
 
 The moment you activate your new environment, the environment indicator changes from `(base)` to `(condatest)` to give you visual feedback that you've switched environments.
 
 Next, create a basic Python program in your project directory. A simple "Hello, World!" should do. Call this file `hello.py`:
 
-```python
+~~~
 def main():
     print("Hello, conda!")
 
 if __name__ == "__main__":
     main()
-```
+~~~
 
 Run this file from inside the virtual environment:
 
-```shell
+~~~
 (condatest) python hello.py 
 Hello, conda!
-```
+~~~
 
 Wait a minute, then make sure that your script runs with the Python interpreter that's part of the virtual environment and not the system default interpreter. To do so, run the `which` command to see which version of the interpreter was used:
 
-```shell
+~~~
 (condatest) which python
 /home/username/anaconda3/envs/condatest/bin/python
-```
+~~~
 
 As you can see, it uses the Python interpreter that's part of the `condatest` virtual environment you created.
 
@@ -182,7 +186,7 @@ As you can see, it uses the Python interpreter that's part of the `condatest` vi
 
 To install packages in your environment, modify your `hello.py` file to look like this:
 
-```python
+~~~
 from faker import Faker
 
 def main():
@@ -191,36 +195,36 @@ def main():
 
 if __name__ == "__main__":
     main()
-```
+~~~
 
 [Faker](https://faker.readthedocs.io/en/master/) is a small Python module that generates fake data. It's useful for quickly generating large amounts of fake usernames or fake addresses so you can test your application using fake data instead of production (read: potentially sensitive) data.
 
 Now, run this code:
 
-```shell
+~~~
 (condatest) ~ python hello.py 
 Traceback (most recent call last):
   File "/home/username/projects/condatest/hello.py", line 1, in <module>
     from faker import Faker
 ModuleNotFoundError: No module named 'faker'
-```
+~~~
 
 Python immediately tells you that it cannot find the `faker` package.
 
 Modify your `environment.yml` file to include it in your project:
 
-```yaml
+~~~
 name: condatest
 channels:
   - defaults
 dependencies:
   - python
   - faker
-```
+~~~
 
 Update your environment to include the new package:
 
-```shell
+~~~
 (condatest) ~ conda env update --file environment.yml
 Channels:
  - defaults
@@ -233,14 +237,14 @@ Downloading and Extracting Packages:
 Preparing transaction: done                                                     
 Verifying transaction: done                                                     
 Executing transaction: done
-```
+~~~
 
 If you run the Python script now, you should get the following output:
 
-```shell
+~~~
 (condatest) ~ python hello.py 
 Shawn Alexander
-```
+~~~
 
 Keep in mind that you're generating a random name with this code, so your output will look slightly different from the example.
 
@@ -250,16 +254,16 @@ Managing your virtual environments is easy with conda. The `environment.yml` fil
 
 To remove a conda environment, first make sure the environment you want to remove is not active:
 
-```shell
+~~~
 (condatest) ~ conda deactivate
 (base) ~
-```
+~~~
 
 As you can see, you dropped back to the `base` environment. That means you can remove the `condatest` environment that you created with the following command:
 
-```shell
+~~~
 (base) ~ conda remove --name condatest --all
-```
+~~~
 
 The `--name` parameter requires the name of the environment that you created (here, `condatest`). The `--all` parameter tells conda that you also want to remove all the packages from the environment.
 
@@ -267,12 +271,12 @@ Once you execute it, the command reviews the list of packages that are installed
 
 It'll ask you if you're sure. Reply `y` again to complete the removal of your environment:
 
-```shell
+~~~
 Everything found within the environment (/home/thinus/anaconda3/envs/condatest), including any conda environment configurations and any non-conda files, will be deleted. Do you wish to continue?
  (y/[n])? y
 
 (base) ~
-```
+~~~
 
 Remember, you can always rebuild the environment from the `environment.yml` file in your project directory.
 
@@ -295,10 +299,8 @@ You can read more about Earthly's solution to the environment problem on the [Ea
 
 ## Outside Article Checklist
 
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
+* [ ] Create header image in Canva
+* [ ] Optional: Find ways to break up content with quotes or images
+
+* [ ] Add keywords for internal links to front-matter
+* [ ] Run `link-opp` and find 1-5 places to incorporate links

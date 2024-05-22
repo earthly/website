@@ -661,3 +661,5 @@ seaborn
 Bokeh
 prefilled
 underutilizing
+
+Miniconda
