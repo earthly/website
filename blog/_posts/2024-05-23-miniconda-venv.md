@@ -29,51 +29,51 @@ To create and manage virtual environments, all you need are a few simple Minicon
 
 Miniconda is compatible with all popular operating systems, including Windows, macOS, and Linux.
 
-## How to Use Virtual Environments with Miniconda
+## How to Use Virtual Environments With Miniconda
 
 To start this tutorial, you need to install Miniconda. The [Miniconda installation guide](https://docs.anaconda.com/free/miniconda/miniconda-install/) covers everything you need to know about installing it.
 
 If you're using Linux, you can install Miniconda using the following shell commands:
 
-```bash
+~~~
 mkdir -p ~/miniconda3
 wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -O ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
-```
+~~~
 
 These commands create a directory for the installation files, retrieve the installer from the Miniconda repo, run it, and clean the system after installation.
 
 macOS users can run the following commands to install Miniconda:
 
-```bash
+~~~
 mkdir -p ~/miniconda3
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-MacOSX-arm64.sh -o ~/miniconda3/miniconda.sh
 bash ~/miniconda3/miniconda.sh -b -u -p ~/miniconda3
 rm -rf ~/miniconda3/miniconda.sh
-```
+~~~
 
 If you're on Windows, you can use the following commands to install Miniconda:
 
-```powershell
+~~~
 curl https://repo.anaconda.com/miniconda/Miniconda3-latest-Windows-x86_64.exe -o miniconda.exe
 start /wait "" miniconda.exe /S
 del miniconda.exe
-```
+~~~
 
 Once Miniconda is installed, you need to initialize it for your shell. Here's how to do that for `bash` and `zsh`:
 
-```bash
+~~~
 ~/miniconda3/bin/conda init bash
 ~/miniconda3/bin/conda init zsh
-```
+~~~
 
 For the changes to take effect, make sure you close your terminal session and start a new one. Once you've started a new terminal session, verify that the Miniconda installation was successful using `conda --version`:
 
-```bash
+~~~
 conda --version
 conda 24.4.0
-```
+~~~
 
 ### Create a Project
 
@@ -81,15 +81,15 @@ Once Miniconda is installed on your machine, you need to create a simple Python 
 
 You can get a version of the demo app from [this GitHub repository](https://github.com/rubaiat-hossain/miniconda-demo-app):
 
-```bash
+~~~
 git clone https://github.com/rubaiat-hossain/miniconda-demo-app
-```
+~~~
 
 Once you've cloned the application, navigate to the project directory with this command:
 
-```bash
+~~~
 cd miniconda-demo-app
-```
+~~~
 
 ### Set Up an Environment
 
@@ -105,13 +105,13 @@ You can then activate or deactivate these environments as needed. Sharing these 
 
 To create an environment to house your application, you need to open your terminal, navigate to the project directory, and run the following command:
 
-```bash
+~~~
 conda create --name server_env python=3.9
-```
+~~~
 
 This command creates a new virtual environment with Python 3.9 installed. It also installs all the necessary dependencies, so you'll need to confirm this using the interactive prompt:
 
-```bash
+~~~
 Channels:                                                                                                           
  - defaults                                                                                                         
 Platform: linux-64                                                                                                  
@@ -134,13 +134,13 @@ The following packages will be downloaded:
                                            Total:        28.7 MB                                                    
                                                                                                                     
 ---Text Output Truncated for Brevity---
-```
+~~~
 
 Once you've created the environment, you need to activate it. Run the following command to activate the `server_env` environment:
 
-```bash
+~~~
 conda activate server_env
-```
+~~~
 
 Once activated, your terminal prompt will change to indicate that you're now working within the `server_env` environment.
 
@@ -148,7 +148,7 @@ Once activated, your terminal prompt will change to indicate that you're now wor
 
 Once the environment is activated, you need to install the necessary packages for your server app. For example, to install Flask, you can run `pip install Flask`:
 
-```bash
+~~~
 pip install Flask                                   
 Collecting Flask
   Using cached flask-3.0.3-py3-none-any.whl.metadata (3.2 kB)
@@ -162,19 +162,21 @@ Collecting click>=8.1.3 (from Flask)
   Using cached click-8.1.7-py3-none-any.whl.metadata (3.0 kB)
 Collecting blinker>=1.6.2 (from Flask)
   ---Text Output Truncated for Brevity---
-```
+~~~
 
 #### Test Your Web App
 
 Once you've installed Flask, it's time to test your web app. Simply start the server using the following command, then send a `curl` request to `http://localhost:5000`:
 
-```bash
+~~~
 python app.py
-```
+~~~
 
 You can also verify the app by visiting this URL in your browser:
 
-![Miniconda demo app running](https://i.imgur.com/aJVJxqD.png)
+<div class="wide">
+![Miniconda demo app running]({{site.images}}{{page.slug}}/aJVJxqD.png)
+</div>
 
 As you can see in the terminal output, the web server is running as expected. You can now add some additional functionality to your demo app.
 
@@ -182,13 +184,13 @@ First, let's add a simple load test to the app using the [Locust](https://locust
 
 To install Locust using conda, use the following command:
 
-```bash
+~~~
 conda install conda-forge::locust
-```
+~~~
 
 Once Locust is installed, you need to create a basic load testing script. Open a code editor and copy the following code to a file called `locust.py`:
 
-```python
+~~~
 from locust import HttpUser, between, task
 
 class MyUser(HttpUser):
@@ -197,29 +199,31 @@ class MyUser(HttpUser):
     @task
     def index_page(self):
         self.client.get("/")
-```
+~~~
 
 Save and close the file. Then, run the following command to run the load test using Locust:
 
-```bash
+~~~
 locust -f locust.py --headless -u 100 -r 10 -t 5m --html report.html --host http://localhost:5000
-```
+~~~
 
 This command starts Locust in headless mode and simulates 100 concurrent user requests to the demo app for five minutes. It also creates a statistics report and saves it as `report.html`. You can open this file to get a graphical view of your demo app's performance under load:
 
-![Locust load testing Miniconda demo app](https://i.imgur.com/ldjm6BL.png)
+<div class="wide">
+![Locust load testing Miniconda demo app]({{site.images}}{{page.slug}}/ldjm6BL.png)
+</div>
 
 #### Remove the Environment
 
 Once you're done experimenting, you can remove the virtual environment, but you first need to deactivate it. Run the following command to do so:
 
-```bash
+~~~
 conda deactivate
-```
+~~~
 
 Then, run the following command to delete the `server_env` Miniconda environment, along with all the installed packages and their dependencies:
 
-```bash
+~~~
 conda remove --name server_env --all
 
 Remove all packages in environment /home/rubaiat/miniconda3/envs/server_env:
@@ -238,7 +242,7 @@ The following packages will be REMOVED:
   libgcc-ng-11.2.0-h1234567_1
   libgomp-11.2.0-h1234567_1
 ---Text Output Truncated for Brevity---
-```
+~~~
 
 As you can see, it's easy to work with virtual environments using Miniconda.
 
@@ -262,9 +266,6 @@ This tutorial showed you how to use Miniconda to create and manage Python virtua
 
 - [ ] Add in Author page
 - [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
