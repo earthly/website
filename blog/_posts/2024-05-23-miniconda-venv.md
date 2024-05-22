@@ -6,7 +6,10 @@ toc: true
 author: Rubaiat Hossain
 
 internal-links:
- - just an example
+ - create a python virtual environment
+ - create a virtual environment
+ - python virtual environment with miniconda
+ - use miniconda to create a python virtual environment
 ---
 
 Managing multiple Python versions and dependencies across different projects can be challenging. Virtual environments solve this problem by allowing developers to isolate project dependencies. With virtual environments, you can create sandboxed systems where you can install project-specific dependencies without affecting the entire system-wide Python installation.
