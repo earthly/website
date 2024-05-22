@@ -6,7 +6,10 @@ toc: true
 author: Thinus Swart
 
 internal-links:
- - just an example
+ - create virtual environment with conda
+ - remove virtual environment with conda
+ - create and remove virtual environment
+ - 
 ---
 
 [Python](https://www.python.org) is one of the most ubiquitous programming languages today, and because of its history and popularity, a lot of tooling has been created over the years to help Python developers achieve their goals.
@@ -59,19 +62,15 @@ First, [download the 64-bit Anaconda installer package for Linux](https://www.an
 
 If you don't want to register, you can just skip the registration:
 
-<div class="wide">
 ![Skipping registration]({{site.images}}{{page.slug}}/LszYgS3.png)
-</div>
 
 You'll be taken straight to the download:
 
-<div class="wide">
 ![Downloading the Anaconda installer]({{site.images}}{{page.slug}}/4bTHZ6e.png)
-</div>
 
 Once you've registered (or skipped registration), run the `bash` command and reference the installer package you downloaded. Depending on your browser settings, the file will most likely be downloaded to your home directory's `Downloads` location, but change the file location in the command if your setup is different from the norm. Then, follow the prompts, and if you're unsure about any of the settings, it's fine to accept the defaults:
 
-~~~
+~~~{.bash caption=">_"}
 ~ bash Downloads/Anaconda3-2024.02-1-Linux-x86_64.sh
 
 Welcome to Anaconda3 2024.02-1
@@ -90,7 +89,7 @@ Once the installer is complete, you should be greeted by this message: "Thank yo
 
 You might have to close and open your shell again to ensure that conda loads on startup. Run `conda -V` to confirm that the installation was successful:
 
-~~~
+~~~{.bash caption=">_"}
 (base) ~ conda -V
 conda 24.1.2
 ~~~
@@ -101,14 +100,14 @@ You'll see that your shell has a new prefix called `(base)`. This is the base co
 
 To create a Python project, start by creating a directory for it:
 
-~~~
+~~~{.bash caption=">_"}
 ~ mkdir condatest
 ~ cd condatest
 ~~~
 
 Inside this directory, create an `environment.yml` file. This [YAML](https://yaml.org) file will be the main configuration file that controls the creation of the conda virtual environment as well as which dependencies get installed in that environment:
 
-~~~
+~~~{.yaml caption="environment.yml"}
 name: condatest
 channels:
   - defaults
@@ -124,7 +123,7 @@ The `dependencies` section tells conda that you'll be building a Python project.
 
 Run the following command to generate a conda environment inside your project directory using your `environment.yml` file:
 
-~~~
+~~~{.yaml caption="environment.yml"}
 (base) ~ conda env create --file environment.yml 
 Channels:
  - defaults
@@ -149,7 +148,7 @@ Executing transaction: done
 
 Once it's completed, you can activate your newly built virtual environment like this:
 
-~~~
+~~~{.bash caption=">_"}
 (base) ~ conda activate condatest
 (condatest) ~
 ~~~
@@ -158,7 +157,7 @@ The moment you activate your new environment, the environment indicator changes 
 
 Next, create a basic Python program in your project directory. A simple "Hello, World!" should do. Call this file `hello.py`:
 
-~~~
+~~~{.python caption="hello.py"}
 def main():
     print("Hello, conda!")
 
@@ -168,14 +167,14 @@ if __name__ == "__main__":
 
 Run this file from inside the virtual environment:
 
-~~~
+~~~{.bash caption=">_"}
 (condatest) python hello.py 
 Hello, conda!
 ~~~
 
 Wait a minute, then make sure that your script runs with the Python interpreter that's part of the virtual environment and not the system default interpreter. To do so, run the `which` command to see which version of the interpreter was used:
 
-~~~
+~~~{.bash caption=">_"}
 (condatest) which python
 /home/username/anaconda3/envs/condatest/bin/python
 ~~~
@@ -186,7 +185,7 @@ As you can see, it uses the Python interpreter that's part of the `condatest` vi
 
 To install packages in your environment, modify your `hello.py` file to look like this:
 
-~~~
+~~~{.python caption="hello.py"}
 from faker import Faker
 
 def main():
@@ -201,7 +200,7 @@ if __name__ == "__main__":
 
 Now, run this code:
 
-~~~
+~~~{.bash caption=">_"}
 (condatest) ~ python hello.py 
 Traceback (most recent call last):
   File "/home/username/projects/condatest/hello.py", line 1, in <module>
@@ -213,7 +212,7 @@ Python immediately tells you that it cannot find the `faker` package.
 
 Modify your `environment.yml` file to include it in your project:
 
-~~~
+~~~{.yaml caption="environment.yml"}
 name: condatest
 channels:
   - defaults
@@ -224,7 +223,7 @@ dependencies:
 
 Update your environment to include the new package:
 
-~~~
+~~~{.yaml caption="environment.yml"}
 (condatest) ~ conda env update --file environment.yml
 Channels:
  - defaults
@@ -241,7 +240,7 @@ Executing transaction: done
 
 If you run the Python script now, you should get the following output:
 
-~~~
+~~~{.bash caption=">_"}
 (condatest) ~ python hello.py 
 Shawn Alexander
 ~~~
@@ -254,14 +253,14 @@ Managing your virtual environments is easy with conda. The `environment.yml` fil
 
 To remove a conda environment, first make sure the environment you want to remove is not active:
 
-~~~
+~~~{.bash caption=">_"}
 (condatest) ~ conda deactivate
 (base) ~
 ~~~
 
 As you can see, you dropped back to the `base` environment. That means you can remove the `condatest` environment that you created with the following command:
 
-~~~
+~~~{.bash caption=">_"}
 (base) ~ conda remove --name condatest --all
 ~~~
 
@@ -271,8 +270,12 @@ Once you execute it, the command reviews the list of packages that are installed
 
 It'll ask you if you're sure. Reply `y` again to complete the removal of your environment:
 
-~~~
-Everything found within the environment (/home/thinus/anaconda3/envs/condatest), including any conda environment configurations and any non-conda files, will be deleted. Do you wish to continue?
+~~~{ caption="Output"}
+
+Everything found within the environment 
+(/home/thinus/anaconda3/envs/condatest), including any 
+conda environment configurations and any non-conda files, 
+will be deleted. Do you wish to continue?
  (y/[n])? y
 
 (base) ~
@@ -296,11 +299,3 @@ If you're interested in trying an alternative method, consider using [Earthly](h
 You can read more about Earthly's solution to the environment problem on the [Earthly blog](https://earthly.dev/blog/python-earthly/).
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-* [ ] Create header image in Canva
-* [ ] Optional: Find ways to break up content with quotes or images
-
-* [ ] Add keywords for internal links to front-matter
-* [ ] Run `link-opp` and find 1-5 places to incorporate links
