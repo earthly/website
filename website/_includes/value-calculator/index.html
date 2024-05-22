@@ -1,0 +1,186 @@
+<link rel="stylesheet" href="/assets/css/subpage.css" />
+
+<div class="value-calculator">
+  <div class="font-semibold mt-10 text-3xl">Value Calculator</div>
+
+  <div class="leading-9 mt-4 text-gray-600 text-lg">
+    Lorem ipsum dolor sit amet consectetur. Etiam nulla nulla ut mollis elit tortor consectetur posuere aliquam.
+    Cursus<br />netus fermentum sed praesent nec ultricies magna bibendum quam.
+  </div>
+
+  <div class="bg-[#f9fafc] flex flex-col lg:flex-row gap-10 mt-6 px-4 lg:px-0 pt-8 pb-8 lg:pb-10 rounded-md">
+    <div class="lg:w-[47%] h-fit bg-white lg:ml-9 pb-10 pt-8 px-5 rounded-md">
+      <div class="border-b font-semibold pb-6 text-[#475569] text-xl lg:text-2xl text-center tracking-tight">Annual Savings</div>
+
+      <div class="border-b flex py-6">
+        <div class="flex-1">
+          <div class="flex font-semibold gap-0.5 justify-center text-2xl">
+            <span class="leading-none text-gray-600 text-sm lg:text-lg">$</span>
+            <span id="ci-savings" class="break-all leading-relaxed text-lg lg:text-[32px] tracking-tighter">23,220</span>
+          </div>
+
+          <div class="font-semibold mt-2 text-[#6b7280] text-sm lg:text-base text-center">CI infrastructure savings</div>
+        </div>
+
+        <div class="border-r" style="width: 1px; height: 72px"></div>
+
+        <div class="flex-1">
+          <div class="flex font-semibold gap-0.5 justify-center text-2xl">
+            <span class="leading-none text-gray-600 text-sm lg:text-lg">$</span>
+            <span id="developer-value" class="break-all leading-relaxed text-lg lg:text-[32px] tracking-tighter">302,344</span>
+          </div>
+
+          <div class="font-semibold mt-2 text-[#6b7280] text-sm lg:text-base text-center">Developer value saved</div>
+        </div>
+      </div>
+
+      <div class="py-6">
+        <div class="flex font-semibold gap-0.5 justify-center text-2xl">
+          <span class="leading-none text-gray-600 text-sm lg:text-lg">$</span>
+          <span id="earthly-price" class="break-all leading-relaxed text-lg lg:text-[32px] tracking-tighter">19,714</span>
+        </div>
+
+        <div class="font-semibold mt-2 text-[#6b7280] text-sm lg:text-base text-center">Earthly Cloud total price</div>
+      </div>
+
+      <div class="bg-[#E8F7FE] py-4 lg:py-8 rounded-md">
+        <div class="font-semibold text-center text-lg lg:text-xl tracking-tight">Return on investment</div>
+
+        <div class="flex mt-4 lg:mt-8">
+          <div class="flex-1">
+            <div class="flex font-semibold gap-0.5 justify-center text-2xl">
+              <span class="leading-none text-green-700 text-sm lg:text-lg">$</span>
+              <span id="value-saved" class="break-all leading-snug text-xl lg:text-[40px] text-green-700 tracking-tighter">305,850</span>
+            </div>
+
+            <div class="font-semibold mt-2 text-[#6b7280] text-sm lg:text-base text-center">Value saved</div>
+          </div>
+
+          <div class="border-r" style="width: 1px; height: 72px"></div>
+
+          <div class="flex-1">
+            <div id="developers" class="break-all font-semibold leading-snug text-xl lg:text-[40px] text-center text-green-700 tracking-tighter">
+              2.55
+            </div>
+            <div class="font-semibold mt-2 text-[#6b7280] text-sm lg:text-base text-center">Developers</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="flex-1 lg:mr-9">
+      <div class="bg-white pb-10 pt-6 px-3.5 rounded-md">
+        <div class="font-semibold text-[#475569] text-lg lg:text-xl tracking-tight">Your builds</div>
+
+        {% include /value-calculator/inputs.html %}
+      </div>
+
+      <div class="bg-white mt-5 px-3.5 rounded-md advanced-inputs">
+        <div class="cursor-pointer flex font-semibold items-center justify-between py-4 text-[#475569] text-lg lg:text-xl tracking-tight" onclick="toggleAdvancedInputs()">
+          <span>Advanced</span>
+          <img class="advanced-chevron" src="assets/svg/chevron.svg" alt="Chevron icon" />
+        </div>
+
+        <div>
+          {% include /value-calculator/inputs.html advanced=true %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  // All input values are stored here
+  var inputValues = {}
+
+  function vcCalculateValues() {
+    // Sanitize values (Empty string & decimal point to 0)
+    Object.keys(inputValues).forEach(function (key, index) {
+      let newValue = inputValues[key]
+      inputValues[key] = ["", "."].includes(newValue) ? 0 : newValue.endsWith(".") ? (newValue + "0") : newValue
+    })
+
+    // Calculate reusable variables
+    const buildMinutesWithoutEarthly =
+      inputValues["avg-build-time"] *
+      inputValues["build-frequency"] *
+      inputValues["parallel-tasks"] *
+      21.5 *
+      inputValues["team-size"]
+
+    const ciInfrastructureSavingsMonthly =
+      buildMinutesWithoutEarthly * inputValues["ci-price"] -
+      (buildMinutesWithoutEarthly / inputValues["speedup-factor"]) * inputValues["ci-price"]
+
+    const developerTimeSavedMonthly =
+      inputValues["avg-build-time"] *
+      inputValues["build-frequency"] *
+      inputValues["team-size"] *
+      (1 - inputValues["discount-factor"] / 100) *
+      (1 - 1 / inputValues["speedup-factor"]) *
+      21.5
+
+    const developerValueSavedMonthly = ((inputValues["developer-salary"] / 240 / 8) * developerTimeSavedMonthly) / 60
+
+    // Constant values
+    const EARTHLY_CLOUD_DEVELOPER_UNIT = 49.17
+    const EARTHLY_XSMALL_COMPUTE_UNIT = 0.0011
+
+    const earthlyCloudTotalPriceMonthly =
+      inputValues["team-size"] * EARTHLY_CLOUD_DEVELOPER_UNIT +
+      EARTHLY_XSMALL_COMPUTE_UNIT * (Math.max(0, buildMinutesWithoutEarthly / inputValues["speedup-factor"] - (50000 + 4000 * inputValues["team-size"]) / 2) * 2)
+
+    const valueSaved = (developerValueSavedMonthly + ciInfrastructureSavingsMonthly - earthlyCloudTotalPriceMonthly) * 12
+
+    // Write the values to text fields
+    document.getElementById("ci-savings").innerText = (ciInfrastructureSavingsMonthly * 12).toLocaleString(undefined, { maximumFractionDigits: 0 })
+    document.getElementById("developer-value").innerText = (developerValueSavedMonthly * 12).toLocaleString(undefined, { maximumFractionDigits: 0 })
+    document.getElementById("earthly-price").innerText = (earthlyCloudTotalPriceMonthly * 12).toLocaleString(undefined, { maximumFractionDigits: 0 })
+    document.getElementById("value-saved").innerText = valueSaved.toLocaleString(undefined, { maximumFractionDigits: 0 })
+    document.getElementById("developers").innerText = (valueSaved / inputValues["developer-salary"]).toLocaleString(undefined, { maximumFractionDigits: 2 })
+  }
+
+  // Handle manual text input in the fields
+  function vcHandleInputChange(input) {
+    const { id, min, max, value } = input
+
+    // Escape non-number chars & add restriction to input fields
+    var newValue = input.value.replace(/[^\d.]/, "")
+    if (!["", "."].includes(newValue) && (newValue < 0 || isNaN(newValue))) return input.value = inputValues[id.replace("-input", "")]
+    input.value = newValue
+
+    // Update slider accordingly
+    const slider = document.getElementById(id.replace("-input", ""))
+    slider.value = ["", "."].includes(newValue) ? 0 : newValue.endsWith(".") ? (newValue + "0") : newValue
+    slider.style.backgroundSize = ((slider.value - slider.min) * 100) / (slider.max - slider.min) + "% 100%"
+
+    inputValues[id.replace("-input", "")] = newValue
+    vcCalculateValues()
+  }
+
+  function vcHandleSliderChange(slider) {
+    const { min, max, value } = slider
+    slider.style.backgroundSize = ((value - min) * 100) / (max - min) + "% 100%"
+
+    // Update input value
+    document.getElementById(slider.id + "-input").value = value
+
+    inputValues[slider.id] = slider.value
+    vcCalculateValues()
+  }
+
+  function toggleAdvancedInputs() {
+    const advancedInputs = document.getElementsByClassName("advanced-inputs")
+    if (advancedInputs[0].classList.contains("open")) {
+      advancedInputs[0].classList.remove("open")
+    } else {
+      advancedInputs[0].classList.add("open")
+    }
+  }
+
+  document.addEventListener("DOMContentLoaded", function () {
+    document.querySelectorAll(".value-calculator .slider").forEach((slider) => {
+      vcHandleSliderChange(slider)
+    })
+  })
+</script>
