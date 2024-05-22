@@ -9,10 +9,8 @@ internal-links:
 author: Alex
 excerpt: |
     Learn how to plot precipitation data using Python, Pandas, and Matplotlib. Explore how to parse and manipulate the data, plot it interactively or save it as an image, and compare annual rainfall over multiple years.
-last_modified_at: 2023-07-14
+last_modified_at: 2024-05-22
 ---
-**Explore the dynamic world of weather data analysis in this article. Earthly can refine your build process for consistent and reproducible data pipelines. [Discover how with Earthly](https://cloud.earthly.dev/login).**
-
 <!-- vale HouseStyle.EG = NO -->
 <!-- vale WritingSuggestions.Cliches = NO -->
 ## Where Did All The Rain Go?
@@ -26,9 +24,9 @@ I ended up on Environment Canada's [historic data search page](https://climate.w
 recorded at Victoria International Airport, climate ID 1018621 (which is closer to Sidney BC, but I digress). On the right hand side of that page, there was an option to download the
 data as CSV. Upon clicking the `Download Data` button, my web browser was redirected to:
 
-```
+~~~
 https://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID=51337&Year=2021&Month=7&Day=1&time=&timeframe=2&submit=Download+Data
-```
+~~~
 
 The website gave me an option to change the range of data to download; however if you squint enough, the above URL looks like an API.
 Furthermore, the month and day values didn't seem to affect anything -- since this was annual data, only the year was used.
@@ -40,13 +38,13 @@ a relational databases' definition of a unique identifier, and insisted on creat
 
 I wrote a [bash](/blog/understanding-bash) while loop to download this data:
 
-```bash
+~~~
 #!/bin/sh
 set -e
 for year in $(seq 2013 2021); do
     curl "https://climate.weather.gc.ca/climate_data/bulk_data_e.html?format=csv&stationID=51337&Year=${year}&timeframe=2" > victoria-weather-$year.csv
 done
-```
+~~~
 
 ## Parsing the Data
 
@@ -55,21 +53,21 @@ done
 Python offers a standard library for parsing `.csv` files, aptly named `csv`. The `csv` library is fairly low-level and provides a `csv.reader` which can be
 used to iterate over rows:
 
-```python
+~~~
 import csv
 with open('data/victoria-weather-2020.csv') as fp:
     reader = csv.reader(fp)
     for row in reader:
         print(row)
-```
+~~~
 
 This will output something such as
 
-```
+~~~
 ['\ufeff"Longitude (x)"', 'Latitude (y)', 'Station Name', 'Climate ID', 'Date/Time', 'Year', 'Month', 'Day', 'Data Quality', 'Max Temp (°C)', 'Max Temp Flag', 'Min Temp (°C)', 'Min Temp Flag', 'Mean Temp (°C)', 'Mean Temp Flag', 'Heat Deg Days (°C)', 'Heat Deg Days Flag', 'Cool Deg Days (°C)', 'Cool Deg Days Flag', 'Total Rain (mm)', 'Total Rain Flag', 'Total Snow (cm)', 'Total Snow Flag', 'Total Precip (mm)', 'Total Precip Flag', 'Snow on Grnd (cm)', 'Snow on Grnd Flag', 'Dir of Max Gust (10s deg)', 'Dir of Max Gust Flag', 'Spd of Max Gust (km/h)', 'Spd of Max Gust Flag']
 ['-123.43', '48.65', 'VICTORIA INTL A', '1018621', '2020-01-01', '2020', '01', '01', '', '12.9', '', '5.5', '', '9.2', '', '8.8', '', '0.0', '', '0.0', 'T', '0.0', '', '0.0', 'T', '', '', '26', '', '59', '']
 ['-123.43', '48.65', 'VICTORIA INTL A', '1018621', '2020-01-02', '2020', '01', '02', '', '6.0', '', '0.9', '', '3.5', '', '14.5', '', '0.0', '', '14.6', '', '0.0', '', '14.6', '', '', '', '14', '', '45', '']
-```
+~~~
 
 The downside of using the standard python `csv.reader` parser, is it simply returns all cells as strings, and doesn't differentiate between cell headers and cell contents.
 Furthermore, the underlying data seems to have some sort of unicode character that's not being correctly handled.
@@ -78,9 +76,9 @@ Furthermore, the underlying data seems to have some sort of unicode character th
 
 The `csv` library provides a `csv.DictReader` class which will use the first row as cell headers, and rather than returning the row as a list; instead it will return it as a dictionary:
 
-```
+~~~
 {'\ufeff"Longitude (x)"': '-123.43', 'Latitude (y)': '48.65', 'Station Name': 'VICTORIA INTL A', 'Climate ID': '1018621', 'Date/Time': '2020-01-01', 'Year': '2020', 'Month': '01', 'Day': '01', 'Data Quality': '', 'Max Temp (°C)': '12.9', 'Max Temp Flag': '', 'Min Temp (°C)': '5.5', 'Min Temp Flag': '', 'Mean Temp (°C)': '9.2', 'Mean Temp Flag': '', 'Heat Deg Days (°C)': '8.8', 'Heat Deg Days Flag': '', 'Cool Deg Days (°C)': '0.0', 'Cool Deg Days Flag': '', 'Total Rain (mm)': '0.0', 'Total Rain Flag': 'T', 'Total Snow (cm)': '0.0', 'Total Snow Flag': '', 'Total Precip (mm)': '0.0', 'Total Precip Flag': 'T', 'Snow on Grnd (cm)': '', 'Snow on Grnd Flag': '', 'Dir of Max Gust (10s deg)': '26', 'Dir of Max Gust Flag': '', 'Spd of Max Gust (km/h)': '59', 'Spd of Max Gust Flag': ''}
-```
+~~~
 
 However, the `DictReader` doesn't parse the cell contents and returns everything simply as strings -- leaving all type parsing to the user.
 Again we see the incorrectly handled unicode character appear -- this time within the key of every row.
@@ -90,16 +88,16 @@ Again we see the incorrectly handled unicode character appear -- this time withi
 The `pandas` library is a third-party python library which provides tools for data analysis and manipulation. We will be using the
 `pandas.read_csv` function to parse our data:
 
-```python
+~~~
 import pandas
 
 weather = pandas.read_csv('data/victoria-weather-2020.csv')
 print(weather)
-```
+~~~
 
 This will produce output such as:
 
-```
+~~~
      Longitude (x)  Latitude (y)     Station Name  Climate ID   Date/Time  Year  Month  Day  ... Total Precip (mm)  Total Precip Flag Snow on Grnd (cm)  Snow on Grnd Flag Dir of Max Gust (10s deg)  Dir of Max Gust Flag Spd of Max Gust (km/h)  Spd of Max Gust Flag
 0          -123.43         48.65  VICTORIA INTL A     1018621  2020-01-01  2020      1    1  ...                0.0                  T               NaN                NaN                      26.0                   NaN                   59.0                   NaN
 1          -123.43         48.65  VICTORIA INTL A     1018621  2020-01-02  2020      1    2  ...               14.6                NaN               NaN                NaN                      14.0                   NaN                   45.0                   NaN
@@ -110,7 +108,7 @@ This will produce output such as:
 365        -123.43         48.65  VICTORIA INTL A     1018621  2020-12-31  2020     12   31  ...                7.2                NaN               NaN                NaN                      14.0                   NaN                   33.0                   NaN
 
 [366 rows x 31 columns]
-```
+~~~
 
 Notice how the columns have been automatically parsed to an appropriate data type, as well as the column headers are detected.
 Row numbers are additionally displayed, as well as the data is displayed as a table. This is possible due to the fact that the
@@ -125,7 +123,7 @@ My first task is to merge them together. All the datasets are located under the 
 
 Let's write a function to parse all the data:
 
-```python
+~~~
 import re
 import os
 import pandas
@@ -142,14 +140,14 @@ def get_data(weather_dir):
 
 weather = get_data('data')
 print(weather)
-```
+~~~
 
 This function 1) uses a regular expression to ensure we only parse files which match the expected form, which prevents
 our program from crashing if any other files existed in the directory, 2) parses each file separately using the
 `read_csv` function, 3) saves the returned data frame into the `data` list, then finally 4) concatenates
 the data using the `concat` function. This code should output a single data frame containing all the data spanning a decade:
 
-```
+~~~
      Longitude (x)  Latitude (y)     Station Name  Climate ID   Date/Time  Year  Month  Day  Data Quality  ... Total Snow Flag Total Precip (mm)  Total Precip Flag Snow on Grnd (cm)  Snow on Grnd Flag Dir of Max Gust (10s deg)  Dir of Max Gust Flag Spd of Max Gust (km/h)  Spd of Max Gust Flag
 0          -123.43         48.65  VICTORIA INTL A     1018621  2014-01-01  2014      1    1           NaN  ...              NaN               1.6                NaN               NaN                NaN                       NaN                   NaN                    <31                   NaN
 1          -123.43         48.65  VICTORIA INTL A     1018621  2014-01-02  2014      1    2           NaN  ...              NaN               6.6                NaN               NaN                NaN                      21.0                   NaN                     37                   NaN
@@ -164,7 +162,7 @@ the data using the `concat` function. This code should output a single data fram
 202        -123.43         48.65  VICTORIA INTL A     1018621  2021-07-22  2021      7   22           NaN  ...              NaN               0.0                NaN               NaN                NaN                       NaN                     M                    NaN                     M
 
 [2760 rows x 31 columns]
-```
+~~~
 
 ## Raindrops Keep Falling on my Plots
 
@@ -184,13 +182,13 @@ A pandas series can be converted into a [python list](/blog/python-concatenate-l
 
 Here's a quick example of plotting this data interactively:
 
-```python
+~~~
 import matplotlib.pyplot as plt
 
 rainfall = weather['Total Precip (mm)'].to_list()
 plt.plot(rainfall)
 plt.show()
-```
+~~~
 
 This will display a new window, containing a plot of the data:
 
@@ -213,7 +211,7 @@ At a quick glance, this might be an instance of [this bug](https://github.com/ma
 
 Lets revise the previous code to render the plot as a png instead of using an interactive window:
 
-```python
+~~~
 import matplotlib.pyplot as plt
 
 # create a new figure that is 10x7 inches
@@ -234,7 +232,7 @@ ax.set_title('Victoria BC daily precipitation')
 
 # save the plot to disk
 fig.savefig('daily-precipitation.png', bbox_inches='tight')
-```
+~~~
 
 Which will produce:
 
@@ -252,7 +250,7 @@ We will additionally define a date parsing function `yyyymmdd_parser` which will
 without this function, pandas will attempt to guess the format of the date, which is a best-effort strategy
 and may not always work.
 
-```python
+~~~
 import re
 import os
 import pandas
@@ -292,7 +290,7 @@ ax.set_xlabel('date')
 ax.set_ylabel('precipitation (mm)')
 ax.set_title('Victoria BC daily precipitation')
 fig.savefig('daily-precipitation-with-dates.png', bbox_inches='tight')
-```
+~~~
 
 <div class="wide">
 {% picture content-nocrop {{site.pimages}}{{page.slug}}/daily-precipitation-with-dates.png --picture --alt {{ Victoria BC daily precipitation with dates }} %}
@@ -309,7 +307,7 @@ Let's slice up the data and plot it against different years.
 
 We will create a new function that splits up the data by year, and calculates a new field that is days since January 1st of the current year:
 
-```python
+~~~
 def get_days_since_jan1(date):
     return date.timetuple().tm_yday - 1
 
@@ -347,11 +345,11 @@ def split_data_by_year(weather):
 rainfall_by_year = slice_data_by_year(weather)
 print(rainfall_by_year)
 
-```
+~~~
 
 This will then output something similar to:
 
-```
+~~~
 [(2014,      days_since_jan1  rainfall
 0                 0       1.6
 1                 1       6.6
@@ -369,7 +367,7 @@ This will then output something similar to:
 [366 rows x 2 columns]),
 
 ...
-```
+~~~
 
 ### Plotting the Data by Year
 
@@ -377,7 +375,7 @@ Rather than call `ax.plot` a single time; in this example we will call it from i
 a for loop once for each year in our data set. We pass the year as a label value, which will
 then be displayed on the legend.
 
-```python
+~~~
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(10.0, 7.0), dpi=100)
@@ -397,7 +395,7 @@ ax.legend()
 
 # save the plot to disk
 fig.savefig('daily-precipitation-by-year.png', bbox_inches='tight')
-```
+~~~
 
 This will produce the following plot:
 
@@ -415,7 +413,7 @@ One potential way to plot the cumulative annual rainfall would be to
 modify the `split_data_by_year` function to keep a yearly running total for the rainfall; however,
 pandas implements a `cumsum` function which can perform the calculation for us:
 
-```python
+~~~
 import matplotlib.pyplot as plt
 
 fig = plt.figure(figsize=(10.0, 7.0), dpi=100)
@@ -435,7 +433,7 @@ ax.legend()
 
 # save the plot to disk
 fig.savefig('cumulative-annual-precipitation.png', bbox_inches='tight')
-```
+~~~
 
 Finally, a clear image starts to appear:
 
@@ -453,10 +451,10 @@ or where the data is zero. Since it's not obvious which case applies, pandas wil
 In our case, the Environment Canada data encodes no snow as `""` rather than `0` cm. We will instruct pandas to fill in these gaps with a default value of `0`,
 using the `fillna()` method:
 
-```python
+~~~
 weather['Total Precip (mm)'] = weather['Total Precip (mm)'].fillna(0)
 weather['Total Snow (cm)'] = weather['Total Snow (cm)'].fillna(0)
-```
+~~~
 
 This will produce a plot without gaps:
 
@@ -477,7 +475,7 @@ is identical.
 
 Additionally, let's fix the x-axis to display the name of the month, rather than an integer value.
 
-```python
+~~~
 import matplotlib
 import matplotlib.pyplot as plt
 
@@ -509,7 +507,7 @@ ax.legend()
 
 # save the plot to disk
 fig.savefig('cumulative-annual-precipitation-sorted-legend.png', bbox_inches='tight')
-```
+~~~
 
 And here we have it, 2021 has been a really dry year here in Victoria:
 
@@ -526,7 +524,7 @@ On the west-coast (wet-coast as some call it); when we do get snow, it tends to 
 
 Let's revise our `split_data_by_year` function to calculate this.
 
-```python
+~~~
 def split_data_by_year(weather):
     yearly_rainfall = []
     yearly_days_since_jan1 = []
@@ -561,7 +559,7 @@ def split_data_by_year(weather):
             })))
 
     return by_year
-```
+~~~
 
 If you look closely, once we adjust for snow, it turned out that 2017 was a wetter year compared to 2014:
 
@@ -575,6 +573,25 @@ On the other hand, my tomatoes have been loving the heat.
 
 If you would like to try generating the above graphs, all the code (and data) can be found under
 [github.com/earthly/example-plotting-precipitation](https://github.com/earthly/example-plotting-precipitation).
+
+I've included a nice little Earthfile, so that you can run things without having to worry about any dependency issues:
+
+~~~
+deps:
+    FROM ubuntu:20.10
+    RUN apt-get update && apt-get install -y python3 python3-pip
+    RUN pip3 install matplotlib pandas
+
+plot:
+    FROM +deps
+    WORKDIR /precipitation
+    COPY --dir data .
+    COPY plot-precipitation.py .
+    RUN python3 plot-precipitation.py
+    SAVE ARTIFACT cumulative-annual-precipitation.png AS LOCAL ./
+~~~
+
+If you're curious how that works then [Better Dependency Management in Python](/blog/python-earthly/) is a great introduction to using Earthly with Python.
 
 {% include_html cta/bottom-cta.html %}
 
