@@ -256,6 +256,8 @@ Virtual environments in Python make managing project-specific dependencies easie
 
 This tutorial showed you how to use Miniconda to create and manage Python virtual environments to avoid dependency conflicts among packages. You also learned about some of Miniconda's limitations and how sandboxing tools like [Earthly](https://earthly.dev/) can help mitigate these limitations.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Add in Author page
@@ -266,4 +268,3 @@ This tutorial showed you how to use Miniconda to create and manage Python virtua
 - [ ] Run mark down linter (`lint`)
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
