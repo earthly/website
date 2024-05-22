@@ -10,7 +10,10 @@ internal-links:
  - remove virtual environment with conda
  - create and remove virtual environment
  - 
+excerpt: |
+    This tutorial explains how to create and remove virtual environments using conda, a tool that goes beyond the native support for virtual environments in Python. Conda allows you to manage different Python virtual environments for different projects, avoiding dependency conflicts and enabling the use of different versions of Python.
 ---
+**This article explores the integration of conda virtual environments with CI workflows. Earthly streamlines CI processes by containerizing builds for Python virtual environments. [Check it out](https://cloud.earthly.dev/login).**
 
 [Python](https://www.python.org) is one of the most ubiquitous programming languages today, and because of its history and popularity, a lot of tooling has been created over the years to help Python developers achieve their goals.
 
