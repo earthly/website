@@ -1,7 +1,5 @@
 ---
 title: "Cryptography & Encryption in Go"
-categories:
-  - Tutorials
 toc: true
 author: Ukeje Goodness
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to implement cryptography and encryption in Go with this tutorial. Discover how to use hashing functions, encrypt and decrypt text, and generate cryptographically secure random values in your Go programs.
 last_modified_at: 2023-07-19
+categories:
+  - Golang
 ---
 **The article summarizes Go cryptography techniques. Earthly streamlines and speeds up Go build pipelines. [Check it out](https://cloud.earthly.dev/login).**
 

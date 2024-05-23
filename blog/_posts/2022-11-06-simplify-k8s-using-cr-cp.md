@@ -1,7 +1,5 @@
 ---
 title: "How To Simplify Kubernetes Configuration Using Custom Resources And Controllers"
-categories:
-  - Tutorials
 toc: true
 author: Ayomide Akinola
 
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to simplify your Kubernetes configuration management using custom resources and controllers. This article guides you through creating a configuration template for your microservice infrastructure and shows you how to use a custom controller to generate microservice configurations from the template.
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **The article provides an in-depth look at Kubernetes configuration templates. Earthly simplifies the continuous integration pipeline for microservices, benefiting those who use Kubernetes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

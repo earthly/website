@@ -14,7 +14,7 @@ excerpt: |
     Learn how to automate your data pipelines and workflows using Apache Airflow. This powerful open-source platform simplifies task scheduling, monitoring, and collaboration, making it a must-have tool for data engineers.
 last_modified_at: 2023-07-19
 categories:
-  - Data
+  - Tutorials
 ---
 **This article provides an overview of Apache Airflow. Earthly simplifies the build process for complex data processing tasks, benefiting Airflow users. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,5 @@
 ---
 title: "Vagrant vs. Docker: Are Virtual Machines Ever the Right Option Anymore?"
-categories:
-  - Tutorials
 toc: true
 author: Gineesh Madapparambath
 
@@ -10,6 +8,8 @@ internal-links:
 excerpt: |
     Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 last_modified_at: 2023-07-14
+categories:
+  - Containers
 ---
 **The article compares Vagrant and Docker. Earthly improves Docker builds by enabling parallel execution. [Learn more about Earthly](https://cloud.earthly.dev/login/).**
 

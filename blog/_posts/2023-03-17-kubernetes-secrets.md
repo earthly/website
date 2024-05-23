@@ -1,7 +1,5 @@
 ---
 title: "An Introduction to Kubernetes Secrets"
-categories:
-  - Tutorials
 toc: true
 author: Mercy Bassey
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to manage sensitive data in Kubernetes using secrets. This tutorial covers creating secrets, using them as environment variables or volume mounts, and pulling images from private Docker repositories using secrets.
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **This article discusses Kubernetes secrets management. Earthly enhances Kubernetes workflows with its containerized build automation. [Check it out](https://cloud.earthly.dev/login).**
 

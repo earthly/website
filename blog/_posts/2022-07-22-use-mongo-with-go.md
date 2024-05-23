@@ -1,7 +1,5 @@
 ---
 title: "How to Use MongoDB with Go"
-categories:
-  - Tutorials
 toc: true
 author: Ukeje Goodness
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to use MongoDB with Go in this tutorial. Discover how to connect to a MongoDB Atlas cluster, perform CRUD operations, and query the database using the Go MongoDB driver.
 last_modified_at: 2023-07-19
+categories:
+  - Golang
 ---
 **This article explores the integration of MongoDB in Go applications. Earthly simplifies the build process for Go developers working with MongoDB. [Check it out](https://cloud.earthly.dev/login).**
 

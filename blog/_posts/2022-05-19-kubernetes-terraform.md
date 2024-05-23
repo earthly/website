@@ -1,7 +1,5 @@
 ---
 title: "Terraform and Kubernetes for Deploying Complex Applications"
-categories:
-  - Tutorials
 toc: true
 author: James Konik
 internal-links:
@@ -9,6 +7,8 @@ internal-links:
 excerpt: |
     Learn how to automate the deployment process and manage complex applications using Terraform and Kubernetes. Discover the benefits of scalability, portability, and workload support that these tools offer, and how they can complement each other to streamline your infrastructure management.
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **The article explains how Kubernetes and Terraform integration works. Earthly's caching mechanisms speed up builds for those using Kubernetes and Terraform. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

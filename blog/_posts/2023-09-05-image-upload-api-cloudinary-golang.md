@@ -1,7 +1,5 @@
 ---
 title: "Implementing an Image Upload System to Cloudinary in Golang"
-categories:
-  - Tutorials
 toc: true
 author: Timilehin Omolana
 editor: Muhammad Badawy
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     This tutorial explains how to implement an image upload system in a Golang web application using Cloudinary. It covers setting up access credentials, creating a Golang REST API with Gin, and integrating the Cloudinary Golang SDK for efficient image uploads.
 last_modified_at: 2023-09-08
+categories:
+  - Golang
 ---
 **Integrate Golang with Cloudinary for efficient image uploading in this article. Earthly provides reproducible builds that enhance reliability and efficiency. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

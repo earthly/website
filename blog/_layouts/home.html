@@ -116,7 +116,7 @@ indepth_posts:
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
-<a href="/blog/categories/python/" class="hover:underline text-lg block text-slate-500 -mt-4">More Cloud tutorials...</a>
+<a href="/blog/categories/cloud/" class="hover:underline text-lg block text-slate-500 -mt-4">More Cloud tutorials...</a>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
   Containers and Orchestration Tutorials
@@ -126,7 +126,7 @@ indepth_posts:
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
-<a href="/blog/categories/python/" class="hover:underline text-lg block text-slate-500 -mt-4">More Containers and Orchestration Tutorials...</a>
+<a href="/blog/categories/containers/" class="hover:underline text-lg block text-slate-500 -mt-4">More Containers and Orchestration Tutorials...</a>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
   GoLang Tutorials
@@ -136,7 +136,18 @@ indepth_posts:
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
-<a href="/blog/categories/python/" class="hover:underline text-lg block text-slate-500 -mt-4">More Go Tutorials...</a>
+<a href="/blog/categories/golang/" class="hover:underline text-lg block text-slate-500 -mt-4">More Go Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Shell Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.shell limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/golang/" class="hover:underline text-lg block text-slate-500 -mt-4">More Shell Tutorials...</a>
+
 
 
 <h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">

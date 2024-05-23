@@ -1,7 +1,5 @@
 ---
 title: "How to use Docker in VS Code"
-categories:
-  - Tutorials
 toc: true
 author: Temitope Oyedele
 
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to use Docker in VS Code with the Docker extension. This article walks you through the process of building, managing, and deploying containerized applications without leaving your code editor, making Docker management easier and more efficient.
 last_modified_at: 2023-07-19
+categories:
+  - Containers
 ---
 **This article explains how to use Docker with VS Code. Earthly ensures consistent builds using containerization. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

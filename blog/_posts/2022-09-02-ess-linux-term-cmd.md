@@ -1,7 +1,5 @@
 ---
 title: "15 Essential Linux Terminal Commands"
-categories:
-  - Tutorials
 toc: true
 author: Hrittik Roy
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
 last_modified_at: 2023-07-14
+categories:
+  - shell
 ---
 **This article explores essential Linux productivity commands. Earthly ensures your builds are reproducible with precision. [Check it out](https://cloud.earthly.dev/login).**
 

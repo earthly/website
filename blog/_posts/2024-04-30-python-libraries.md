@@ -12,7 +12,7 @@ internal-links:
 -excerpt: |
    This article provides an overview of the top Python Libraries for data science. These include Beautiful Soup, Keras, TensorFlow, Matplotlib and some other interesting libraries.
 categories:
-  - Data
+  - Tutorials
 ---
 
 One of the main reasons why Python is the go-to programming language for data science is its [vast ecosystem](https://learnpython.com/blog/python-modules-packages-libraries-frameworks/) of libraries, packages, and frameworks, many of which are geared toward data science.

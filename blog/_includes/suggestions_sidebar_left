@@ -20,7 +20,7 @@ Input:
     <div>
       <ul>
         {% for relate in site.data.indexes.related_sidebar[page.slug] %}
-          {% if forloop.index <= 3 and relate %}
+          {% if forloop.index and relate %}
           {% assign title = site.data.indexes.shorten_name[relate.slug] %}
             <li class="mb-1 series-item"><a class="text-sm text-gray-600 hover:underline" href="{{ relate.url | relative_url }}" title="{{ relate.title }}">‣  {{ title | truncate: 30, "..." }}</a></li>
           {% endif %}

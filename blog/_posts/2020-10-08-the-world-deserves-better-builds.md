@@ -10,7 +10,7 @@ excerpt: |
 topcta: false
 last_modified_at: 2023-07-14
 categories:
-  - Python
+  - Tutorials
 ---
 Hello, developers of planet Earth! Earlier this year, we at Earthly embarked on a journey to bring better builds to the world. We started with a deep belief that builds should be self-contained, reproducible, portable, and parallel. In addition, we think build tools should be friendly, accessible, and down to earth - hence our name.
 

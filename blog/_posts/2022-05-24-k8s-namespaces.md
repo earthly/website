@@ -1,7 +1,5 @@
 ---
 title: "How and When to Use Kubernetes Namespaces"
-categories:
-  - Tutorials
 toc: true
 author: Kasper Siig
 internal-links:
@@ -10,6 +8,8 @@ internal-links:
 excerpt: |
     Learn how and when to use Kubernetes namespaces to isolate workloads and manage resources more efficiently in your Kubernetes cluster. Discover the benefits of namespaces and how to create and manage them effectively.
 last_modified_at: 2023-07-14
+categories:
+  - Cloud
 ---
 **The article explains how Kubernetes namespaces effectively manage resources. Earthly strengthens your CI/CD toolkit by ensuring builds are reproducible, which supports your Kubernetes approach. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,5 @@
 ---
 title: "Working with GitHub Actions Environment Variables and Secrets"
-categories:
-  - Tutorials
 toc: true
 sidebar:
   nav: github-actions
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to work with GitHub Actions environment variables and secrets in this tutorial. Discover when to use them, how to define them for different scopes, and even how to store sensitive information like certificates. Plus, find out how Earthly can simplify your GitHub Actions builds.
 last_modified_at: 2023-07-11
+categories:
+  - Cloud
 ---
 **This article discusses managing secrets in GitHub Actions. Earthly streamlines your GitHub Actions build process. [Check it out](https://cloud.earthly.dev/login).**
 

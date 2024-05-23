@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Docker Build Cloud is a service that speeds up Docker builds by up to 39 times compared to local builds, allowing software developers to save valuable time and enhance productivity. It leverages on-demand cloud resources and team-wide caching to reduce build times and supports building images for different platforms.
 categories:
-  - Cloud
+  - Containers
 ---
 **The article examines Docker Build Cloud's features. Earthly Satellites is an improvement upon this idea which can shrink your image build time. [Check it out](https://cloud.earthly.dev/login).**
 
