@@ -1,7 +1,5 @@
 ---
 title: "How Kubernetes Autoscaling Works"
-categories:
-  - Tutorials
 toc: true
 author: Kasper Siig
 
@@ -11,6 +9,8 @@ internal-links:
 excerpt: |
     
 last_modified_at: 2023-07-14
+categories:
+  - Cloud
 ---
 **This article examines Kubernetes autoscaling techniques. Earthly simplifies the build process for seamless Kubernetes deployments. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

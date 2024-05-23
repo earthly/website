@@ -1,7 +1,5 @@
 ---
 title: "A Practical Guide to the Linux Uniq Command"
-categories:
-  - Tutorials
 toc: true
 author: Thinus Swart
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to use the `uniq` command in Linux to find unique lines of text and eliminate duplicates. This practical guide covers the basic syntax of the `uniq` command, advanced techniques for counting duplicates, and alternatives like `awk` and `sort`. Whether you're a beginner or an experienced Linux user, this article will help you streamline your text-processing tasks.
 last_modified_at: 2023-07-19
+categories:
+  - shell
 ---
 **The article explains how to use the Linux `uniq` command to manipulate text. Earthly maintains consistent builds with complex Linux commands. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

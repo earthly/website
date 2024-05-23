@@ -1,7 +1,5 @@
 ---
 title: "Optimizing Golang Applications for Kubernetes: Best Practices for Reducing Server Load"
-categories:
-  - Tutorials
 toc: true
 author: Ifedayo Adesiyan
 editor: Mustapha Ahmad Ayodeji
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to optimize Golang applications for Kubernetes and reduce server load with best practices such as resource allocation, garbage collection optimization, connection pooling, and implementing health checks and readiness probes. Improve the performance and scalability of your Golang applications in a containerized environment and ensure efficient resource utilization and cost-efficiency.
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **The article focuses on optimizing Golang applications for deployment on Kubernetes. Earthly significantly improves this process by enabling reproducible builds that can run in parallel. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

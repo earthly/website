@@ -1,7 +1,5 @@
 ---
 title: "An Ultimate Guide to Kubernetes Role-Based Access Control"
-categories:
-  - Tutorials
 toc: true
 author: Boemo Wame Mmopelwa
 
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to implement Role-Based Access Control (RBAC) in Kubernetes to secure resources and components from unauthorized access. This tutorial covers the creation of Roles and RoleBindings at both the cluster and namespace levels, as well as the differences between ClusterRoles and Roles.
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **This article examines the details of implementing Kubernetes RBAC. Earthly provides secure CI pipelines through isolated build environments. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

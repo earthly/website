@@ -78,6 +78,21 @@ Cloud:
   - azure-functions-node
   - kubernetes-secrets
   - kubernetes-services
+  - load-testing-using-k6
+  - grafana-and-prometheus-k8s
+  - streamlit-python-dashboard
+  - k8s-autoscaling
+  - monitoring-system-metrics-prometheus-grafana
+  - aws-cloudwatch
+  - k8s-log-compression-s3-upload
+  - kube-bench
+  - grafana-https-nginx-certbot
+  - kubernetes-network-policies
+  - build-your-own-ngrok-clone
+  - optimize-golang-for-kubernetes
+  - validate-&-clean-yaml
+  - k8s-role-based-access-control
+  - mutual-tls-kubernetes-nginx-ingress-controller
 Containers:
   - debugging-docker-containers
   - lxc-vs-docker
@@ -157,3 +172,28 @@ shell:
   - docker-and-makefiles
   - makefile-variables
   - python-makefile
+  - bash-conditionals
+  - chown-permissions-chmod
+  - kubernetes-config-maps
+  - fish-shell
+  - safely-using-bash-eval
+  - linux-security-modules
+  - linux-network-commands
+  - aws-networks
+  - linux-uniq-command
+  - practical-guide-to-linux-echo-cmd
+  - intro-to-Linux-capabilities
+  - cmake-vs-make-diff
+  - installandrun-CMake-on-windows
+  - cross-compiling-raspberry-pi
+  - bash-conditionals
+  - chown-permissions-chmod
+  - kubernetes-config-maps
+  - fish-shell
+  - safely-using-bash-eval
+  - linux-security-modules
+  - linux-network-commands
+  - aws-networks
+  - linux-uniq-command
+  - practical-guide-to-linux-echo-cmd
+  - intro-to-Linux-capabilities

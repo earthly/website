@@ -1,7 +1,5 @@
 ---
 title: "A Practical Guide To Linux Echo Command"
-categories:
-  - Tutorials
 toc: true
 author: Ubaydah Abdulwasiu
 editor: Bala Priya C
@@ -12,6 +10,8 @@ internal-links:
  - Command
  - Echo
 last_modified_at: 2023-07-19
+categories:
+  - shell
 ---
 **This article explains the Linux `echo` command in detail. Earthly improves continuous integration (CI) workflows by isolating shell scripts. [Learn how](https://cloud.earthly.dev/login).**
 

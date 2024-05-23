@@ -1,7 +1,5 @@
 ---
 title: Build Your Own Ngrok Clone With AWS
-categories:
-  - Tutorials
 toc: true
 author: Corey
 excerpt: |
@@ -15,6 +13,8 @@ internal-links:
 topic: cli
 funnel: 2
 last_modified_at: 2023-07-14
+categories:
+  - Cloud
 ---
 **Explore DIY ngrok alternatives in this article. Earthly provides a route to efficient, reproducible builds. [Learn how](https://cloud.earthly.dev/login).**
 

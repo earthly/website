@@ -1,7 +1,5 @@
 ---
 title: "Getting Started with AWS CloudWatch"
-categories:
-  - Tutorials
 toc: true
 author: Alexander Yu
 editor: Ubaydah Abdulwasiu
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
    AWS CloudWatch is a comprehensive monitoring and observability service. This article will serve as a practical guide for those looking to familiarize themselves with CloudWatch and harness its powerful capabilities.
 last_modified_at: 2023-08-15
+categories:
+  - Cloud
 ---
 **This guide explains AWS CloudWatch. Fans of AWS CloudWatch might like Earthly. Earthly streamlines and speeds up CI builds. [Check it out](https://cloud.earthly.dev/login).**
 

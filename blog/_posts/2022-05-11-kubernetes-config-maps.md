@@ -1,7 +1,5 @@
 ---
 title: "Kubernetes ConfigMaps and Configuration Best Practices"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 
@@ -11,6 +9,8 @@ topic: kubernetes
 excerpt: |
     Learn how to use Kubernetes ConfigMaps to store and inject configuration parameters into your pods. This article covers the use cases for ConfigMaps, how to create them, and how to consume them in your Kubernetes deployments.
 last_modified_at: 2023-07-14
+categories:
+  - shell
 ---
 **This article explains the use of Kubernetes ConfigMaps. Earthly ensures your builds are as reliable as your deployments. [Check it out](https://cloud.earthly.dev/login).**
 

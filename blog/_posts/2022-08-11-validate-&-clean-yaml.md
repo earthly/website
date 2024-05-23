@@ -1,7 +1,5 @@
 ---
 title: "How to validate and clean your YAML files using Kubeval and ValidKube"
-categories:
-  - Tutorials
 toc: true
 author: Boemo Wame Mmopelwa
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to validate and clean your YAML files using Kubeval and ValidKube. These tools help you spot misconfigurations and remove clutter from your files, ensuring the security and health of your Kubernetes cluster.
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **The article focuses on Kubeval's importance in validating Kubernetes manifests. Earthly strengthens CI pipelines through reproducible builds, which complements Kubeval's functions. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
