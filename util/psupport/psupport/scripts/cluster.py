@@ -169,9 +169,9 @@ def display_clusters(clusters: List[List[str]]) -> None:
 def main() -> None:
     try:
         folder_path = "./blog/_posts"
-        n_clusters = 10  # Adjust as necessary
+        n_clusters = 5  # Adjust as necessary
         contamination = 0.5  # Adjust as necessary to control the proportion of outliers
-        n_neighbors = 20  # Adjust as necessary for the sensitivity of LOF
+        n_neighbors = 4  # Adjust as necessary for the sensitivity of LOF
 
         all_files, markdown_texts = load_markdown_files(folder_path)
         embeddings = generate_embeddings(markdown_texts, all_files)

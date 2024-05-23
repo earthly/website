@@ -1,7 +1,5 @@
 ---
 title: "WebSocket Protocol with Django Channels"
-categories:
-  - Tutorials
 toc: true
 author: Mustapha Ahmad Ayodeji
 
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to build a real-time communication application with Django Channels and the WebSocket Protocol. This tutorial will guide you through setting up the project, creating the necessary models and views, and handling WebSocket connections. Get ready to dive into the world of real-time communication!
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article details how to construct chat applications with WebSockets. Earthly accelerates service builds, including for WebSockets. [Check it out](https://cloud.earthly.dev/login).**
 

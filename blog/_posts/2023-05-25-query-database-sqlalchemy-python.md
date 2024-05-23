@@ -1,7 +1,5 @@
 ---
 title: "Querying Relational Databases With SQLAlchemy in Python"
-categories:
-  - Tutorials
 toc: true
 author: Mercy Bassey
 editor: Mustapha Ahmad Ayodeji
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This tutorial explains how to use SQLAlchemy's powerful features. Earthly efficiently manages complex builds in monorepos. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

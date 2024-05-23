@@ -1,3 +1,13 @@
+Python:
+  - logging-in-python
+  - build-real-time-comm-app
+  - query-database-sqlalchemy-python
+  - set-up-postgresql-db
+  - pymongo-advanced
+  - yaml-in-python
+  - datastreaming-kafka-asyncio
+  - starting-with-pymongo
+  - csv-python
 Golang:
   - golang-zip-files
   - golang-monorepo
@@ -144,6 +154,9 @@ Containers:
   - namespaces-and-cgroups-docker
   - docker-init-in-python
   - docker-sbom
+  - pull-through-cache
+  - buildingrunning-NVIDIAcontainer
+  - docker-image-storage-on-host
 shell:
   - ess-linux-term-cmd
   - bash-string
