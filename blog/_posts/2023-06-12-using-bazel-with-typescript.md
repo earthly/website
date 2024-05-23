@@ -1,7 +1,5 @@
 ---
 title: "Using Bazel with TypeScript"
-categories:
-  - Tutorials
 toc: true
 author: Adeyinka Adegbenro
 editor: Mustapha Ahmad Ayodeji
@@ -16,6 +14,8 @@ internal-links:
 excerpt: |
     Learn how to use Bazel with TypeScript to build and test your projects faster and more efficiently. Discover the benefits of Bazel's advanced caching and parallelization features, and explore how to customize Bazel for your TypeScript project.
 last_modified_at: 2023-07-11
+categories:
+  - Build
 ---
 **This article examines how Bazel and TypeScript work together for reliable builds. Earthly guarantees consistent and reproducible builds for Bazel users in different environments. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

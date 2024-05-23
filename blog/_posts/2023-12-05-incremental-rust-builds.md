@@ -11,7 +11,7 @@ topcta: false
 excerpt: |
     This post introduces the `lib/rust` library, an open-source Earthly library that helps optimize Rust builds in continuous integration (CI) by leveraging caching features and persistent build runners. By using `lib/rust`, ExpressVPN was able to significantly reduce Cargo build times from 22.5 minutes to 2.5 minutes with a warm cache.
 categories:
-  - Tutorials
+  - Build
 ---
 In this post, we present [lib/rust](https://github.com/earthly/lib/tree/main/rust), an open-source [Earthly](https://earthly.dev/) library created in collaboration with the [ExpressVPN](https://github.com/expressvpn) core team, that will help you get maximum performance on Rust builds in CI when used in combination with persistent build runners.
 

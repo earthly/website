@@ -1,7 +1,5 @@
 ---
 title: "A Comprehensive Introduction To Syslog"
-categories:
-  - Tutorials
 toc: true
 author: Felix Kinaro
 editor: Muhammad Badawy
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Syslog is a standard protocol used for sending log messages between systems or within the same host, providing comprehensive visibility into system health and performance. It has a client-server architecture, with clients sending log messages to the syslog daemon, which parses and stores them based on a configuration file.
 last_modified_at: 2023-10-06
+categories:
+  - shell
 ---
 **This article provides a detailed guide on configuring syslog. Earthly streamlines complex build processes and speeds them up. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

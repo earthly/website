@@ -1,7 +1,7 @@
 ---
 title: "Making Your Docker Builds Faster with cargo-chef"
 categories:
-  - Tutorials
+  - Build
 toc: true
 author: Utibeabasi Umanah
 

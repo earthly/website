@@ -8,6 +8,10 @@ Python:
   - datastreaming-kafka-asyncio
   - starting-with-pymongo
   - csv-python
+  - django-signals
+  - build-real-time-comm-app
+  - set-up-postgresql-db
+  - datastreaming-kafka-asyncio
 Golang:
   - golang-zip-files
   - golang-monorepo
@@ -103,6 +107,43 @@ Cloud:
   - validate-&-clean-yaml
   - k8s-role-based-access-control
   - mutual-tls-kubernetes-nginx-ingress-controller
+   - terraform-functions
+  - IaC-terraform-cdk
+  - create-manage-vpc-terraform
+  - terraform-with-github-actions
+  - terraform-init-plan-apply
+  - pulumi-vs-terraform
+  - terraform-variables-guide
+  - terraform-depends-on-argument
+  - terraform-state-bucket
+  - terraform-lambda
+  - aws-lambda-node
+  - aws-ecs-tutorial
+  - how-to-setup-and-use-amazons-elastic-container-registry
+  - deploy-DockerContainers-with-ECS
+  - build-your-own-ngrok-clone
+  - aws-lambda-docker
+  - azure-functions
+  - deploying-iac-aws-cloud-formation
+  - aws-networks
+  - deploy-dockcontainers-to-AWSECS-using-Terraform
+  - azure-functions-node
+  - netlify-cloud-functions
+  - lxc-vs-docker
+  - devetools-for-k8s
+  - podman-rootless
+  - docker-vs-vm
+  - K3s-and-K8s
+  - docker-vs-buildah-vs-kaniko
+  - docker-alternatives
+  - dockercompose-vs-k8s
+  - containerd-vs-docker
+  - k8s-dev-solutions
+  - docker-vs-chef
+  - kubernetes-docker
+  - nomad-vs-kubernetes
+  - openshift-vs-kubernetes
+  - docker-vagrant
 Containers:
   - debugging-docker-containers
   - lxc-vs-docker
@@ -157,6 +198,15 @@ Containers:
   - pull-through-cache
   - buildingrunning-NVIDIAcontainer
   - docker-image-storage-on-host
+  - nerdctl
+  - namespaces-and-containers-in-depth
+  - namespaces-and-cgroups-docker
+  - docker-init-nodejs
+  - docker-init-rust
+  - docker-init-quickly
+  - docker-init-in-go
+  - docker-init-in-python
+  
 shell:
   - ess-linux-term-cmd
   - bash-string
@@ -210,3 +260,89 @@ shell:
   - linux-uniq-command
   - practical-guide-to-linux-echo-cmd
   - intro-to-Linux-capabilities
+  - bash-conditionals
+  - bash-string
+  - bash-read-files
+  - bash-variables
+  - understanding-bash
+  - loops-in-bash
+  - ess-linux-term-cmd
+  - linux-text-processing-commands
+  - sed-find-replace
+  - linux-uniq-command
+  - practical-guide-to-linux-echo-cmd
+  - bash-conditionals
+  - advanced-git-commands-2
+  - ess-linux-term-cmd
+  - chown-permissions-chmod
+  - awk-csv
+  - fish-shell
+  - a-developer-guide-to-git-lfs
+  - dont-configure-control-flow
+  - mng-dotfiles-with-git
+  - convert-to-from-json
+  - what-is-syslog
+  - safely-using-bash-eval
+  - bash-read-files
+  - shell-functions-arguments
+  - bash-variables
+  - linux-network-commands
+  - understanding-bash
+  - advanced-git-commands
+  - command-line-tools
+  - practical-guide-to-linux-echo-cmd
+  - automate-tasks-shell-scripts
+  - loops-in-bash
+  - intro-to-Linux-capabilities
+  - bash-string
+  - linux-text-processing-commands
+  - awk-examples
+  - ripgrep-for-efficient-search
+  - sed-find-replace
+  - linux-uniq-command
+  - bash-string
+  - linux-text-processing-commands
+  - awk-examples
+  - ripgrep-for-efficient-search
+  - sed-find-replace
+  - linux-uniq-command
+
+Platforms:
+  - developer-platforms
+  - what-is-platform-engineering
+  - why-developer-platform
+  - platform-engineering-tools
+  - platform-teams
+  - dx-three-ways
+
+Build:
+  - golang-monorepo
+  - nx-monorepos-guide
+  - javascript-monorepo-with-lerna
+  - monorepo-with-bazel
+  - npm-workspaces-monorepo
+  - build-monorepo-with-turporepo
+  - setup-typescript-monorepo
+  - building-js-monorepo
+  - build-nodejs-app-with-bazel
+  - bazel-with-rust
+  - build-and-deploy-PyApp-with-bazel
+  - build-java-projects-with-bazel
+  - push-docker-image-bazel
+  - pants-build
+  - build-golang-bazel-gazelle
+  - rust-concurrency-patterns-parallel-programming
+  - using-bazel-with-typescript
+  - bazel-and-automated-tests
+  - rust-generics
+  - rust-macros
+  - rust-lifetimes-ownership-burrowing
+  - incremental-rust-builds
+  - python-monorepo
+  - understanding-monorepos
+  - gradle-monorepo
+  - monorepo-java
+  - cargo-workspace-crates
+  - rust-sccache
+  - rust-monorepo
+

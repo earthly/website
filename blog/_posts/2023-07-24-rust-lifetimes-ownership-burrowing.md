@@ -1,7 +1,5 @@
 ---
 title: "Rust Lifetimes: A Complete Guide to Ownership and Borrowing"
-categories:
-  - Tutorials
 toc: true
 author: Enoch Chejieh
 editor: Mustapha Ahmad Ayodeji
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     This article provides a comprehensive guide to Rust lifetimes, explaining ownership and borrowing in the language. It covers the basics of lifetimes, borrowing and references, as well as advanced topics like lifetime subtyping and higher-ranked trait bounds.
 last_modified_at: 2023-08-28
+categories:
+  - Build
 ---
 **This article is about Rust lifetimes. If you're grappling with Rust's compile-time guarantees, Earthly can streamline your build process. [Check it out](https://cloud.earthly.dev/login).**
 

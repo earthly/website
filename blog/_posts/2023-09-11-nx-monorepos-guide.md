@@ -1,7 +1,5 @@
 ---
 title: "Getting Started with Nx Monorepos: A Beginner's Guide"
-categories:
-  - Tutorials
 toc: true
 author: Aniket Bhattacharyea
 editor: Ubaydah Abdulwasiu
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     This article introduces Nx, a powerful build tool for managing monorepos. It explains the benefits of using Nx, such as seamless code sharing, efficient task management, caching, and extensibility, and provides a step-by-step guide on how to create and manage a monorepo with Nx.
 last_modified_at: 2023-10-06
+categories:
+  - Build
 ---
 **This article explains how to manage monorepos using Nx. Earthly ensures reproducible builds for monorepo workflows, regardless of programming language. [Check it out](https://cloud.earthly.dev/login).**
 

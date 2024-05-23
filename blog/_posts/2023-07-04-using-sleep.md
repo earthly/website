@@ -1,7 +1,7 @@
 ---
 title: "Shell Scripting with sleep: Using Delays Strategically"
 categories:
-  - Tutorials
+  - shell
 toc: true
 author: James Konik
 
