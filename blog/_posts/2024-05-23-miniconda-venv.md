@@ -10,7 +10,10 @@ internal-links:
  - create a virtual environment
  - python virtual environment with miniconda
  - use miniconda to create a python virtual environment
+excerpt: |
+    Miniconda is a lightweight version of the Anaconda Python distribution that comes with a package manager called conda. This tutorial explains how to create and use virtual environments with Miniconda to manage project-specific dependencies and avoid conflicts.
 ---
+**The article explains the synergy between Miniconda and Earthly in streamlining Python development. Earthly simplifies and accelerates the build process. [Check it out](https://cloud.earthly.dev/login).**
 
 Managing multiple Python versions and dependencies across different projects can be challenging. Virtual environments solve this problem by allowing developers to isolate project dependencies. With virtual environments, you can create sandboxed systems where you can install project-specific dependencies without affecting the entire system-wide Python installation.
 
