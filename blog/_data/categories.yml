@@ -32,6 +32,53 @@ categories:
 
 
 
+categories:
+  - slug: web-development
+    name: Web Development
+    description: "Articles covering web development frameworks, building APIs, frontend tools, and best practices for creating web applications."
+
+  - slug: data-science-ml
+    name: Data Science and Machine Learning
+    description: "Tutorials and guides on data science and machine learning, including libraries, tools, data engineering, and visualization techniques."
+
+  - slug: security
+    name: Security
+    description: "Articles focused on encryption, secrets management, security best practices, and tools for securing applications and infrastructure."
+
+  - slug: version-control
+    name: Version Control
+    description: "Guides on using version control systems like Git, including advanced commands, branching strategies, and GitOps practices."
+
+  - slug: debugging-testing
+    name: Debugging and Testing
+    description: "Resources for debugging and testing, including tools, frameworks, performance testing, and best practices for ensuring code quality."
+
+  - slug: build-tools
+    name: Build Tools
+    description: "Articles on build automation and dependency management using tools like Bazel, CMake, and Makefiles."
+
+  - slug: database-management
+    name: Database Management
+    description: "Tutorials on managing SQL and NoSQL databases, including setup, CRUD operations, and performance optimization."
+
+  - slug: networking
+    name: Networking
+    description: "Guides on network configuration, network protocols, and tools for managing and troubleshooting network connections."
+
+  - slug: infrastructure-deployment
+    name: Infrastructure and Deployment
+    description: "Resources on container orchestration, serverless architecture, virtualization, and deploying applications in various environments."
+
+  - slug: productivity-tools
+    name: Productivity and Tools
+    description: "Articles on command-line tools, development environments, and shell utilities that enhance productivity and streamline workflows."
+
+  - slug: technical-writing
+    name: Technical Writing and Documentation
+    description: "Guides on writing effective tutorials, maintaining documentation, and using tools to ensure high-quality technical content."
+
+
+
 Python:
   - python-frameworks
   - python-monorepo
@@ -162,3 +209,22 @@ Data:
   - top-10-python-libraries-for-data-science
   - data-pipelines-with-airflow
   - log-aggregation-with-grafana-loki
+  - cosine_similarity_text_embeddings
+  - build-news-classifier-nlp-newsapi-lr
+  - data-engineering-analysis
+  - python-libraries
+  - streamlit-python-dashboard
+  - datastreaming-kafka-asyncio
+  - data-pipelines-with-airflow
+
+Golang:
+  - golang-dlv
+  - data-engineering-analysis
+  - golang-chi
+  - software-design-go-interfaces
+  - using-gorm-go
+  - golang-makefile
+  - golang-gRPC-example
+  - building-real-time-comm-app
+  - building-golang-with-bazel-gazelle
+  - golang-http
