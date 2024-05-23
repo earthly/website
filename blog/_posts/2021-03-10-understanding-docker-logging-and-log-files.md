@@ -1,8 +1,6 @@
 ---
 title: Understanding Docker Logging and Log Files
 toc: true
-categories:
-  - Tutorials
 tags:
 - docker
 - tutorials
@@ -21,6 +19,8 @@ internal-links:
 excerpt: |
     Learn how to effectively manage Docker logging and log files to improve the performance and reliability of your containerized applications. Discover different logging strategies, Docker logging commands, and the various logging drivers supported by Docker.
 last_modified_at: 2023-07-14
+categories:
+  - Containers
 ---
 **This article is about Docker logging management. Docker users will appreciate how Earthly simplifies and accelerates their CI builds. [Check it out](https://cloud.earthly.dev/login/).**
 

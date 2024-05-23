@@ -1,7 +1,5 @@
 ---
 title: "Building an ARM-Based Docker Image Using GitHub Actions"
-categories:
-  - Tutorials
 toc: true
 author: Rahul Rai
 
@@ -12,6 +10,8 @@ internal-links:
  - build arm-based docker image using github actions
 excerpt: |
     This tutorial explains how to automate the creation and deployment of Docker images specifically designed for ARM architecture using GitHub Actions. It covers the process of building and running a Docker image on an ARM device, as well as building an ARM-based Docker image on a non-ARM device.
+categories:
+  - Cloud
 ---
 **Automating ARM Docker images with GitHub Actions can significantly streamline the development process. Earthly Satellites can produce ARM even faster. [Check it out](https://cloud.earthly.dev/login).**
 

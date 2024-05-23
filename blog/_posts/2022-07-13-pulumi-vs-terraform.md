@@ -1,7 +1,5 @@
 ---
 title: "Pulumi vs Terraform"
-categories:
-  - Tutorials
 toc: true
 author: Alexander Yu
 excerpt: |
@@ -12,6 +10,8 @@ internal-links:
  - Terraform
  - IaC tools
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **This article compares infrastructure as code (IaC) tools. Earthly's declarative syntax streamlines complex build steps. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

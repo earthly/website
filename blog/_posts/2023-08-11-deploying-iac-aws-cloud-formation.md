@@ -1,7 +1,5 @@
 ---
 title: "Deploying Infrastructure as Code with AWS CloudFormation"
-categories:
-  - Tutorials
 toc: true
 author: Alexander Yu
 editor: Mustapha Ahmad Ayodeji
@@ -14,6 +12,8 @@ internal-links:
 excerpt: | 
      With AWS CloudFormation, you use a declarative approach to configuring and provisioning just about any resource out of Amazon Web Services' (AWS) massive 200+ service catalog.
 last_modified_at: 2023-08-12
+categories:
+  - Cloud
 ---
 **This article provides a detailed guide on using AWS CloudFormation. Earthly significantly improves CI/CD pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

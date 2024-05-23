@@ -1,7 +1,5 @@
 ---
 title: "Exploring Docker Alternatives"
-categories:
-  - Tutorials
 toc: true
 author: James Konik
 internal-links:
@@ -9,6 +7,8 @@ internal-links:
 excerpt: |
     Looking for alternatives to Docker? This article explores various container and non-container tools that can help you deploy software faster and more securely. From Podman to Kubernetes, discover the pros and cons of each option and find the right tool for your team.
 last_modified_at: 2023-07-14
+categories:
+  - Containers
 ---
 **This article discusses alternatives to Docker. Earthly's containerized builds extend Docker workflows without directly managing Dockerfiles. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -1,24 +1,36 @@
 categories:
-  - slug: python-development
-    name: Python Development
-  - slug: devops-ci-cd
-    name: DevOps and CI/CD
-  - slug: web-development
-    name: Web Development
-  - slug: containerization-orchestration
-    name: Containerization and Orchestration
-  - slug: cloud-computing-serverless
-    name: Cloud Computing and Serverless
-  - slug: data-science-machine-learning
-    name: Data Science and Machine Learning
+  - slug: python
+    name: Python
+    description: "Articles about Python development, including tutorials on libraries, frameworks, and tools. Topics cover web development, data science, scripting, and Python's use in various applications."
+  # - slug: devops
+  #   name: DevOps
+  #   description: "Articles on DevOps practices, continuous integration, and continuous deployment (CI/CD). Topics include automation, monitoring, deployment strategies, and tools like Jenkins, CircleCI, and GitHub Actions."
+  - slug: web
+    name: Web
+    description: "Articles on web development, focusing on front-end and back-end technologies, frameworks, and best practices. Topics cover HTML, CSS, JavaScript, and popular frameworks like React, Angular, and Django."
+  - slug: containers
+    name: Containers
+    description: "Articles focusing on containerization and orchestration technologies, including Docker, Kubernetes, and related tools. Topics cover container setup, management, deployment, and best practices for using containers in development and production."
+  - slug: cloud
+    name: Cloud
+    description: "Articles on cloud computing and serverless technologies. Topics include cloud providers like AWS, Azure, and Google Cloud, as well as serverless architectures, cloud infrastructure, and related services."
+  - slug: data
+    name: Data
+    description: "Articles on data science, machine learning, and data engineering. Topics cover data analysis, visualization, machine learning models, data pipelines, and tools like TensorFlow, Pandas, and PyTorch."
   - slug: security
     name: Security
-  - slug: scripting-automation
-    name: Scripting and Automation
-  - slug: programming-languages
-    name: Programming Languages
-  - slug: miscellaneous
-    name: Miscellaneous
+    description: "Articles on security practices, tools, and techniques. Topics include network security, application security, encryption, secure coding practices, and tools like SSL, SSH, and security frameworks."
+  - slug: automation
+    name: Automation
+    description: "Articles on scripting and automation. Topics cover shell scripting, task automation, and tools like Ansible, Terraform, and automated testing frameworks."
+  - slug: languages
+    name: Languages
+    description: "Articles on various programming languages and their applications. Topics include language-specific tutorials, best practices, and comparisons. Covered languages include Go, Java, Rust, and more."
+  # - slug: misc
+  #   name: Misc
+  #   description: "Articles on various miscellaneous topics that don't fit neatly into other categories. Topics include general software development practices, tools, and industry insights."
+
+
 
 Python:
   - python-frameworks
@@ -83,3 +95,70 @@ Python:
   - golang-docker
   - create-python-package
   - automate-tasks-shell-scripts
+
+Containers:
+  - arm-containers-github-actions
+  - docker-build-cloud
+  - namespaces-and-containers-in-depth
+  - docker-init-in-python
+  - buildkit-secrets
+  - containerd-docker
+  - docker-sbom
+  - docker-scout
+  - nerdctl
+  - private-docker-registry
+  - grafana-loki-log-aggregation-k8s
+  - containerd-vs-docker
+  - podman-rootless
+  - kubernetes-docker
+  - understanding-docker-logging-and-log-files
+  - how-to-setup-and-use-amazons-elastic-container-registry
+  - what-is-buildkit-and-what-can-i-do-with-it
+  - docker-init-quickly
+  - docker-init-nodejs
+  - docker-init-in-go
+  - docker-init-rust
+  - docker-init
+  - docker-slim
+  - docker-multistage
+  - docker-alternatives
+  - docker-and-makefiles
+  - docker-and-chef
+
+Cloud:
+  - arm-containers-github-actions
+  - docker-build-cloud
+  - terraform-functions
+  - deploying-iac-aws-cloud-formation
+  - aws-s3-backup-recovery-restic
+  - aws-lambda-golang
+  - build-and-deploy-pyapp-with-bazel
+  - buildingrunning-nvidia-container
+  - k8s-networking
+  - kubernetes-persistent-volumes
+  - kubescape
+  - devcontainers
+  - building-k8s-tekton
+  - kubernetes-gitops-fluxcd
+  - kubernetes-services
+  - eso-with-hashicorp-vault
+  - aws-ecs-tutorial
+  - grafana-loki-log-aggregation-k8s
+  - terraform-with-github-actions
+  - pulumi-with-eks-and-go
+  - azure-functions
+  - terraform-depends-on-argument
+  - terraform-variables-guide
+  - terraform-init-plan-apply
+  - create-manage-vpc-terraform
+  - pulumi-vs-terraform
+
+Data:
+  - cosine_similarity_text_embeddings
+  - data-engineering-analysis
+  - build-news-classifier-nlp-newsapi-lr
+  - analyzing-user-behavior-using-tools
+  - monitoring-kubernetes-metrics
+  - top-10-python-libraries-for-data-science
+  - data-pipelines-with-airflow
+  - log-aggregation-with-grafana-loki

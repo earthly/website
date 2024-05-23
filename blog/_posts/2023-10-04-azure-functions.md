@@ -1,7 +1,5 @@
 ---
 title: "Using Azure Functions to Build Your First Serverless Application"
-categories:
-  - Tutorials
 toc: true
 author: Osinachi Chukwujama
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     This tutorial explains how to build a serverless application using Azure Functions. It covers setting up a serverless architecture deployment on Azure, creating different serverless functions, managing state with Azure Cosmos DB, monitoring with Azure Application Insights, and deploying the functions using CI/CD and GitHub.
 last_modified_at: 2023-10-06
+categories:
+  - Cloud
 ---
 **This tutorial explains how to build a serverless application using Azure Functions. After reading it take a look at Earthly. Earthly provides indispensable build tools for your next project. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
