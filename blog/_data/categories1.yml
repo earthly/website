@@ -376,3 +376,9 @@ shell:
 Containers:
   - dos-gaming-in-docker
   - lima
+
+Writing:
+  - curse-of-knowledge
+  - write-better-tutorials
+  - write-for-us
+  - markdown-lint

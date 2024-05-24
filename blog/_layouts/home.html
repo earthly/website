@@ -1,6 +1,7 @@
 ---
 layout: home-archive
-hero_post: earthly-v0-8
+hero_post_1: earthly-v0-8
+hero_post_2: earthly-functions
 featured_posts_1:
   - earthly-satellites-ga
   - earthly-open-source
@@ -22,7 +23,7 @@ indepth_posts:
 
 <div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
   <div class="col-span-1 md:col-span-6 ">
-    {% assign post = site.data.indexes.slug[layout.hero_post] %}
+    {% assign post = site.data.indexes.slug[layout.hero_post_1] %}
     {% include hero-story.html type=entries_layout %}
   </div>
 
@@ -79,12 +80,63 @@ indepth_posts:
   Articles
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Articles limit:6 %}
+  {% for post in site.categories.Articles limit:3 %}
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
 <a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
 
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  More
+</h3>
+
+<div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
+  <div class="col-span-1 md:col-span-6 ">
+    {% assign post = site.data.indexes.slug[layout.hero_post_2] %}
+    {% include hero-story.html type=entries_layout %}
+  </div>
+
+  <div class="col-span-1 md:col-span-3 rounded-lg bg-blue-50">
+    <div class="p-4 pr-12 pl-8">
+      <h3 class="mb-6 pl-2 text-2xl text-slate-500">
+        Content Categories
+      </h3>
+
+      <ul>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/popular/">Popular</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/python/">Python</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/cloud/">Cloud</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/containers/">Containers</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/golang/">Go</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/shell/">Shell</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/build/">Build</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/platform/">Platform</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/gha/">GitHub Actions</a>
+        </li>
+        <li class="mb-1 series-item">
+          <a href="/blog/categories/tutorials/">More Tutorials</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
   Tutorials
@@ -191,6 +243,7 @@ indepth_posts:
   {% endfor %}
 </div>
 <a href="/blog/categories/popular/" class="hover:underline text-lg block text-slate-500 -mt-4">More of the most popular...</a>
+
 
 <h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
   In Depth
