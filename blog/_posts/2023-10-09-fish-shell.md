@@ -13,7 +13,7 @@ excerpt: |
     Fish Shell is a user-friendly and interactive shell that can be used for daily tasks and scripting. It offers features like auto suggestions, tab-based completion, syntax highlighting, setting aliases and abbreviations, customization options, and the ability to write custom functions.
 last_modified_at: 2023-10-06
 categories:
-  - shell
+  - cli
 ---
 **This article introduces the Fish shell. Fish shell is pretty sweet. Guess what else is? Earthly. Earthly is a powerful tool to optimize your CI pipeline. [Check it out](https://cloud.earthly.dev/login).**
 

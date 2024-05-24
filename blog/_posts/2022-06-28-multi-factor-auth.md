@@ -1,7 +1,7 @@
 ---
 title: "Programmatic Multi Factor Auth and Time Based One Time Passwords"
 categories:
-  - shell
+  - cli
 toc: false
 author: Adam
 internal-links:

@@ -15,7 +15,7 @@ excerpt: |
 
 last_modified_at: 2023-08-15
 categories:
-  - shell
+  - cli
 ---
 **Discover the speed of `ripgrep` in our latest article. Earthly provides parallel build capabilities that complement `ripgrep`'s speed and it works great with Rust. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

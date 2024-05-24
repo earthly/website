@@ -10,7 +10,7 @@ internal-links:
 topic: cli
 last_modified_at: 2023-07-11
 categories:
-  - shell
+  - cli
 ---
 **This article is about mitmproxy usage. If mitmproxy is your go-to for HTTP troubleshooting, Earthly can be your ally for reproducible builds. [Check it out](https://cloud.earthly.dev/login/).**
 

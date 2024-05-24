@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use loops in Bash to control the flow of your programs. This article covers the different types of loops in Bash, including `while`, `until`, and `for`, and provides examples of how to use them in practical scenarios.
 last_modified_at: 2023-07-14
 categories:
-  - shell
+  - cli
 ---
 **This article explains how to use Bash loops. Earthly makes your build process more consistent and efficient. [Check it out](https://cloud.earthly.dev/login/).**
 

@@ -12,7 +12,7 @@ excerpt: |
     Learn about the evolution of git branching strategies and how they have changed over time. Follow the story of Ashley, a software developer, as she navigates different branching models and discovers the benefits and challenges of each approach. Gain insights into the importance of continuous integration, deployment, and the impact of cloud-based workflows on branching strategies.
 last_modified_at: 2023-07-19
 categories:
-  - shell
+  - cli
 ---
 **This article explores git branching strategies. Earthly helps you build faster. [Learn how](https://cloud.earthly.dev/login).**
 

@@ -14,7 +14,7 @@ excerpt: |
     Learn how to automate common tasks in software development using shell scripts. From file backups to log analysis and system maintenance, this article provides step-by-step guides and introduces key concepts like variables, loops, and regular expressions.
 last_modified_at: 2023-07-19
 categories:
-  - shell
+  - cli
 ---
 **The article provides an in-depth analysis of shell script automation. Earthly enhances your build process through containerization. [Learn how](https://cloud.earthly.dev/login).**
 

@@ -12,7 +12,7 @@ excerpt: |
     Learn how to install and run CMake on Windows, a powerful tool for build automation, testing, packaging, and software installation. Discover the pros and cons of using CMake and how it can enhance your development workflow.
 last_modified_at: 2023-07-19
 categories:
-  - shell
+  - cli
 ---
 **This article explains how CMake handles complex build processes. Earthly provides robust caching mechanisms to improve on CMake's efficiency. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

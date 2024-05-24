@@ -13,7 +13,7 @@ excerpt: |
     Learn how to change file and directory ownership in Linux using the `chown` command. This article explains the importance of ownership in Linux, how permissions work, and provides examples of using `chown` to change ownership.
 last_modified_at: 2023-07-19
 categories:
-  - shell
+  - cli
 ---
 **This article explains the basics of managing ownership in Linux. Earthly provides advanced build automation for CI/CD pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

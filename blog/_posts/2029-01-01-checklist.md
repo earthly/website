@@ -6,7 +6,7 @@ published: false
 internal-links:
  - just an example
 categories:
-  - GitHubActions
+  - build
 ---
 
 ### Writing Article Checklist

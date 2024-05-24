@@ -2,7 +2,7 @@
 title: Using gRPC with Golang, Python, and Ruby
 toc: true
 categories:
-  - Golang
+  - Tutorials
 author: Alex
 internal-links:
    - grpc

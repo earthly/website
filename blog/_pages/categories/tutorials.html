@@ -1,7 +1,7 @@
 ---
 layout: default
 permalink: /categories/tutorials/
-title: Tutorials
+title: Programming Tutorials
 ---
 <div id="main" role="main" class="p-6 md:p-10">
   <div class="home-archive">
@@ -9,21 +9,11 @@ title: Tutorials
     <h3 class="mb-4 text-2xl text-gray-400">
       Recent <span class="lowercase">{{ page.title }}</span>
     </h3>
-    Count: {{ site.categories.Tutorials | size }}
     <div
     class="entries-grid grid grid-cols-1 md:grid-cols-2 gap-2 md:gap-12">
     {% for post in site.categories.Tutorials %} 
       {% include_cached archive-single.html post=post type="grid" heading="heading"  %}
     {% endfor %}
   </div>
-    <pre>
-{% for post in site.categories.Tutorials %}
-- title: "{{ post.title | xml_escape }}""
-  slug: {{ post.slug | xml_escape }}
-  excerpt: |
-    {{ post.excerpt | strip_html | strip_newlines | xml_escape }}
-{% endfor %}
-    </pre>
   </div>
-
 </div>

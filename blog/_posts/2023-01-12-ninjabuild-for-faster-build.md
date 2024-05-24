@@ -12,7 +12,7 @@ excerpt: |
     Learn how to use Ninja, a fast build system, to speed up the building of your software projects. Discover its advantages, limitations, and how to implement a Ninja build for your C++ projects.
 last_modified_at: 2023-07-19
 categories:
-  - shell
+  - cli
 ---
 **This article discusses the Ninja build tool. Earthly ensures consistent builds across team environments with its reproducibility features. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -119,7 +119,7 @@ indepth_posts:
           <a href="/blog/categories/golang/">Go</a>
         </li>
         <li class="mb-1 series-item">
-          <a href="/blog/categories/shell/">Shell</a>
+          <a href="/blog/categories/cli/">CLI and Scripting</a>
         </li>
         <li class="mb-1 series-item">
           <a href="/blog/categories/build/">Build</a>
@@ -131,22 +131,12 @@ indepth_posts:
           <a href="/blog/categories/gha/">GitHub Actions</a>
         </li>
         <li class="mb-1 series-item">
-          <a href="/blog/categories/tutorials/">More Tutorials</a>
+          <a href="/blog/categories/tutorials/">More Programming Tutorials</a>
         </li>
       </ul>
     </div>
   </div>
 </div>
-
-<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Tutorials
-</h3>
-<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Tutorials limit:6 %}
-  {% include_cached archive-single.html post=post type=entries_layout %}
-  {% endfor %}
-</div>
-<a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More tutorials...</a>
 
 
 
@@ -181,7 +171,7 @@ indepth_posts:
 <a href="/blog/categories/containers/" class="hover:underline text-lg block text-slate-500 -mt-4">More Containers and Orchestration Tutorials...</a>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  GoLang Tutorials
+  Golang Tutorials
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for post in site.categories.Golang limit:3 %}
@@ -191,14 +181,14 @@ indepth_posts:
 <a href="/blog/categories/golang/" class="hover:underline text-lg block text-slate-500 -mt-4">More Go Tutorials...</a>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Shell Tutorials
+  Command Line Mastery, Shell Scripting and Automation
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.shell limit:3 %}
+  {% for post in site.categories.cli limit:3 %}
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
-<a href="/blog/categories/shell/" class="hover:underline text-lg block text-slate-500 -mt-4">More Shell Tutorials...</a>
+<a href="/blog/categories/cli/" class="hover:underline text-lg block text-slate-500 -mt-4">More Shell Tutorials...</a>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
   Build Tutorials
@@ -229,6 +219,16 @@ indepth_posts:
   {% endfor %}
 </div>
 <a href="/blog/categories/gha/" class="hover:underline text-lg block text-slate-500 -mt-4">More GitHub Actions Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Programming Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Tutorials limit:6 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More programming tutorials...</a>
 
 
 
