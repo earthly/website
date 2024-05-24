@@ -5330,8 +5330,8 @@ python-c-extension:
  - python-monorepo
  - future-is-rusty
  - python-libraries
+ - conda-virtual-env
  - language-style-czar
- - docker-init-in-python
 
 
 merge-queues:
@@ -5960,6 +5960,7 @@ earthly-functions:
 
 python-web-scraping:
  - python-libraries
+ - conda-virtual-env
  - developer-portals-backstage
  - docker-scout
  - pyinstaller
@@ -5968,7 +5969,6 @@ python-web-scraping:
  - miniconda-venv
  - python-hatch
  - create-python-package
- - docker-init-in-python
 
 
 python-frameworks:
@@ -5987,6 +5987,7 @@ python-frameworks:
 python-libraries:
  - python-frameworks
  - python-web-scraping
+ - conda-virtual-env
  - platform-engineering-tools
  - pyinstaller
  - miniconda-venv
@@ -5994,7 +5995,6 @@ python-libraries:
  - python-hatch
  - data-engineering-analysis
  - future-is-rusty
- - create-python-package
 
 
 efficiently-cache-dependencies-earthfiles:
@@ -6013,6 +6013,7 @@ efficiently-cache-dependencies-earthfiles:
 pyinstaller:
  - python-hatch
  - miniconda-venv
+ - conda-virtual-env
  - python-c-extension
  - docker-init-in-python
  - create-python-package
@@ -6020,12 +6021,12 @@ pyinstaller:
  - poetry-publish
  - python-libraries
  - docker-init-quickly
- - efficiently-cache-dependencies-earthfiles
 
 
 python-hatch:
  - pyinstaller
  - miniconda-venv
+ - conda-virtual-env
  - python-monorepo
  - docker-init-in-python
  - efficiently-cache-dependencies-earthfiles
@@ -6033,10 +6034,23 @@ python-hatch:
  - konfig
  - understanding-monorepos
  - cargo-chef
- - rust-monorepo
+
+
+conda-virtual-env:
+ - miniconda-venv
+ - python-hatch
+ - pyinstaller
+ - docker-init-in-python
+ - python-monorepo
+ - python-libraries
+ - docker-init-quickly
+ - python-c-extension
+ - docker-init-nodejs
+ - python-web-scraping
 
 
 miniconda-venv:
+ - conda-virtual-env
  - python-hatch
  - pyinstaller
  - docker-init-in-python
@@ -6046,6 +6060,5 @@ miniconda-venv:
  - gradle-monorepo
  - docker-init-nodejs
  - rust-monorepo
- - python-c-extension
 
 
