@@ -1,7 +1,7 @@
 ---
 title: "Distributed Tracing in Kubernetes With SigNoz"
 categories:
-  - Tutorials
+  - Cloud
 toc: true
 author: Ayomide Akinola
 

@@ -1,7 +1,5 @@
 ---
 title: How to Man in the Middle HTTPS Using mitmproxy
-categories:
-  - Tutorials
 toc: true
 author: Adam
 excerpt: |
@@ -11,6 +9,8 @@ internal-links:
    - proxy
 topic: cli
 last_modified_at: 2023-07-11
+categories:
+  - shell
 ---
 **This article is about mitmproxy usage. If mitmproxy is your go-to for HTTP troubleshooting, Earthly can be your ally for reproducible builds. [Check it out](https://cloud.earthly.dev/login/).**
 

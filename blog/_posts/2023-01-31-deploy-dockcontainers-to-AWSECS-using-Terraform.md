@@ -12,7 +12,7 @@ excerpt: |
     Learn how to automate the process of deploying Docker containers to AWS ECS using Terraform. This tutorial provides step-by-step instructions and code examples to help you set up the necessary infrastructure and launch your containers on AWS.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - Containers
 ---
 **This article explains how to automate ECS deployment. Earthly simplifies the Docker container build process. [Check it out](https://cloud.earthly.dev/login).**
 

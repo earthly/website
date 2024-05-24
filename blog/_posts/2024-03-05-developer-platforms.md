@@ -9,7 +9,7 @@ internal-links:
  - top developer platforms to work
  - comparing popular developer platforms
 categories:
-  - Platforms
+  - Platform
 ---
 
 A developer platform is a framework or set of tools that simplifies and supports the process of building, testing, and deploying software applications, ultimately streamlining development pipelines. These platforms promote both teamwork and the standardization of service deployment, help speed up release cycles, and save costs by fostering a self-service model. All in all, these platforms serve as the backbone of a productive development ecosystem by melding tools into a unified workflow. With all these benefits, it's obvious why so many organizations are on the hunt for the right developer platform for their use case, but choosing the right one requires careful consideration of various factors.

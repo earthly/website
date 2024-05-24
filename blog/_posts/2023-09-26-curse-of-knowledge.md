@@ -1,7 +1,7 @@
 ---
 title: "The Curse of Knowledge in Technical Writing"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Mustapha Ahmad Ayodeji
 

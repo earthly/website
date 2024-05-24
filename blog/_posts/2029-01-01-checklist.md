@@ -1,12 +1,12 @@
 ---
 title: "Put Your Best Title Here"
-categories:
-  - Tutorials
 toc: true
 author: Adam
 published: false
 internal-links:
  - just an example
+categories:
+  - GitHubActions
 ---
 
 ### Writing Article Checklist

@@ -1,4 +1,4 @@
-Python:
+Python1:
   - logging-in-python
   - build-real-time-comm-app
   - query-database-sqlalchemy-python
@@ -12,7 +12,7 @@ Python:
   - build-real-time-comm-app
   - set-up-postgresql-db
   - datastreaming-kafka-asyncio
-Golang:
+Golang1:
   - golang-zip-files
   - golang-monorepo
   - go-workspaces
@@ -40,14 +40,13 @@ Golang:
   - golang-grpc-example
   - golang-grpc-gateway
   - build-GraphQL-APIs-Go
-Cloud:
+Cloud1:
   - spinnaker-kubernetes
   - use-replicasets-in-k8s
   - app-routing-in-k8-cluster
   - kubernetes-operators
   - aws-lambda-node
   - k8s-GitOps-with-FluxCD
-  - aws-ecr-github-actions
   - helm-k8s-package-manager
   - IaC-terraform-cdk
   - aws-ecs-tutorial
@@ -68,8 +67,6 @@ Cloud:
   - kubernetes-terraform
   - circle-ci-with-django
   - ci-cd-security-challenges-best-practices
-  - terraform-with-github-actions
-  - github-actions-and-docker
   - aws-lambda-docker
   - octopus-deploy
   - streamline-container-ghcr
@@ -80,10 +77,6 @@ Cloud:
   - deploying-iac-aws-cloud-formation
   - automate-micsvcs-in-k8s
   - managing-k8s-with-kubeadm
-  - github-actions-environment-variables-and-secrets
-  - using-github-actions-locally
-  - deploy-dockcontainers-to-AWSECS-using-Terraform
-  - cicd-build-github-action-dockerhub
   - Flux-vs-Argo-CD
   - private-docker-registry
   - jenkins-stages-pipelines
@@ -110,7 +103,6 @@ Cloud:
    - terraform-functions
   - IaC-terraform-cdk
   - create-manage-vpc-terraform
-  - terraform-with-github-actions
   - terraform-init-plan-apply
   - pulumi-vs-terraform
   - terraform-variables-guide
@@ -144,7 +136,7 @@ Cloud:
   - nomad-vs-kubernetes
   - openshift-vs-kubernetes
   - docker-vagrant
-Containers:
+Containers1:
   - debugging-docker-containers
   - lxc-vs-docker
   - devetools-for-k8s
@@ -189,7 +181,6 @@ Containers:
   - docker-scout
   - pyinstaller
   - namespaces-and-containers-in-depth
-  - arm-containers-github-actions
   - docker-build-cloud
   - docker-init-in-go
   - namespaces-and-cgroups-docker
@@ -207,7 +198,7 @@ Containers:
   - docker-init-in-go
   - docker-init-in-python
   
-shell:
+shell1:
   - ess-linux-term-cmd
   - bash-string
   - bash-read-files
@@ -307,7 +298,7 @@ shell:
   - sed-find-replace
   - linux-uniq-command
 
-Platforms:
+Platform1:
   - developer-platforms
   - what-is-platform-engineering
   - why-developer-platform
@@ -315,7 +306,7 @@ Platforms:
   - platform-teams
   - dx-three-ways
 
-Build:
+Build1:
   - golang-monorepo
   - nx-monorepos-guide
   - javascript-monorepo-with-lerna
@@ -346,3 +337,42 @@ Build:
   - rust-sccache
   - rust-monorepo
 
+
+GitHubActions1:
+  - checklist
+  - github-action-artifacts
+  - github-actions-reusable-workflows
+  - github-action-triggers
+  - composite-actions-github
+  - concurrency-in-github-actions
+  - cronjobs-for-github-actions
+  - aws-ecr-github-actions
+  - arm-containers-github-actions
+  - terraform-with-github-actions
+  - github-actions-and-docker
+  - terraform-with-github-actions
+  - github-actions-environment-variables-and-secrets
+  - using-github-actions-locally
+  - cicd-build-github-action-dockerhub
+
+Build:
+  - bazel-build-with-caching
+  - compiling-containers-dockerfiles-llvm-and-buildkit
+  - bazel-query
+  - travis-ci-alternatives
+  - better-builds
+  - travis-ci-alternatives
+  - achieving-repeatability
+  - slow-performance-in-jenkins
+  - bitbucket-ci
+
+shell:
+  - vscode-git
+  - git-branching
+  - mitmproxy
+  - yaml-validate-and-lint-cue-lang
+  - markdown-lint
+
+Containers:
+  - dos-gaming-in-docker
+  - lima

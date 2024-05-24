@@ -1,7 +1,5 @@
 ---
 title: "Exploring GitHub Actions Triggers"
-categories:
-  - Tutorials
 toc: true
 author: Ivan Kahl
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     GitHub Actions is a powerful CI/CD platform that allows you to automate various tasks in your GitHub repository. This article explores different triggers, such as `create`, `delete`, `deployment`, `issues`, `issue_comment`, `page_build`, `pull_request`, `pull_request_review`, `push`, `registry_package`, `release`, `schedule`, `workflow_call`, and `workflow_dispatch`, and provides examples of how to use them to create automated workflows.
 last_modified_at: 2023-10-18
+categories:
+  - GitHubActions
 ---
 **The article summarizes GitHub Actions triggers. Earthly ensures consistent and portable build environments for GitHub Actions users. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -2,8 +2,6 @@
 title: Compiling Containers - Dockerfiles, LLVM, and BuildKit
 # header: 
     # tagline: "Dockerfiles, LLVM and BuildKit"
-categories:
-  - Tutorials
 toc: true
 excerpt: |
     Learn how containers are compiled using Dockerfiles, LLVM, and BuildKit in this tutorial. Explore the phases involved in creating a container image, the similarities between compiling code and building images, and how to programmatically generate container images using BuildKit and Go. Discover the concept of intermediate representations and see the development of a custom frontend for Docker build using the Ickfile format.
@@ -15,6 +13,8 @@ internal-links:
   - docker build
   - machine code
 last_modified_at: 2023-07-14
+categories:
+  - Build
 ---
 **Explore the nuances of building Docker images in this article. Earthly can upgrade your build process with advanced caching of docker layers and parallel execution. [Learn how](https://cloud.earthly.dev/login).**
 

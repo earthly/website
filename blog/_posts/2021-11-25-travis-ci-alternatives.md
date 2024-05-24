@@ -1,7 +1,5 @@
 ---
 title: "Exploring Travis CI Alternatives"
-categories:
-  - Tutorials
 toc: true
 author: Reda Dokkar
 internal-links:
@@ -10,6 +8,8 @@ internal-links:
 excerpt: |
     Looking for alternatives to Travis CI? Check out this article that explores the ten best alternatives, including CircleCI, Jenkins, Bitrise, and more. Find the perfect CI tool for your project and improve your build process.
 last_modified_at: 2023-07-14
+categories:
+  - Build
 ---
 **This article examines alternatives to Travis CI. Earthly provides reproducible and parallel builds that can transform your CI pipeline. [Learn more](https://cloud.earthly.dev/login).**
 
