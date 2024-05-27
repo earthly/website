@@ -11,7 +11,7 @@ excerpt: |
     Learn how to automate the software building process using `make`, a powerful tool that saves time and resources. This article covers the basics of writing a Makefile, important components of `make`, and provides examples of using `make` with different technologies.
 last_modified_at: 2023-07-14
 categories:
-  - cli
+  - Make
 ---
 **In this article, you'll master Makefile automation. If you know `make`, Earthly provides a containerized, reliable way to improve your builds. [Learn more](https://cloud.earthly.dev/login).**
 

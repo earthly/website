@@ -89,3 +89,23 @@ Containers:
   - youre-using-docker-compose-wrong
   - macOS-native-containers
   - chroot
+
+Make:
+  - g++-makefile
+  - vscode-git
+  - ninjabuild-for-faster-build
+  - using-cmake
+  - cmake-gcc-cross-compile
+  - installandrun-CMake-on-windows
+  - vscode-make
+  - cross-compiling-raspberry-pi
+  - makefiles-on-windows
+  - autoconf
+  - static-and-dynamic-linking
+  - make-tutorial
+  - golang-makefile
+  - cmake-vs-make-diff
+  - make-flags
+  - using-makefile-wildcards
+  - docker-and-makefiles
+  - makefile-variables

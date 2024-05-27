@@ -14,7 +14,7 @@ excerpt: |
     This article explains the concepts of static and dynamic linking in programming. It discusses the differences between the two methods, their advantages and disadvantages, and provides guidance on when to choose each approach.
 last_modified_at: 2023-10-06
 categories:
-  - cli
+  - Make
 ---
 **This article explains how to handle linking in programming. Earthly simplifies the process of building and integrating static and dynamic libraries for C and C++ developers. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

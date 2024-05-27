@@ -52,6 +52,11 @@
   list-name: Deployment and CD
   title: Deployment and Continous Deployment
 
+- name: Make
+  slug: make
+  list-name: Makefiles
+  title: Makefiles and C++ builds
+
 - name: CLI
   slug: cli
   list-name: CLI, Scripting and Automation

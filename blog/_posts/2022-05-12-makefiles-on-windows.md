@@ -15,7 +15,7 @@ excerpt: |
     Learn how to run Makefiles on Windows with different options like Chocolatey, Cygwin, NMAKE, CMake, and Windows Subsystem for Linux. Discover the strengths and weaknesses of each approach and find the best solution for your needs.
 last_modified_at: 2023-07-11
 categories:
-  - cli
+  - Make
 ---
 **This article explores alternatives to Makefiles on Windows. Earthly provides a consistent, containerized build environment for Windows users. [Check it out](https://cloud.earthly.dev/login).**
 
