@@ -1,8 +1,10 @@
 
-Build:
-  - bazel-build-with-caching
-  - g++-makefile
-  - better-builds
-  - bash-conditionals
-  - advanced-git-commands-2
-  
+IaC:
+ - IaC-terraform-cdk
+ - terraform-init-plan-apply
+ - terraform-depends-on-argument
+  - create-manage-vpc-terraform
+  - deploy-dockcontainers-to-AWSECS-using-Terraform 
+  - kubernetes-terraform
+  - terraform-with-github-actions
+  - pulumi-vs-terraform

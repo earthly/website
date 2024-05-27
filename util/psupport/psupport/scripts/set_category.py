@@ -81,7 +81,7 @@ def main() -> None:
     if args.dryrun:
         print("Dry run mode activated. No changes will be made.")
 
-    config_file = "blog/_data/categories1.yml"  # Path to the YAML configuration file
+    config_file = "blog/_data/categories.yml"  # Path to the YAML configuration file
 
     with open(config_file, 'r') as f:
         config = yaml.safe_load(f)
