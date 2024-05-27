@@ -14,7 +14,8 @@ excerpt: |
     Learn how to build Go applications with Bazel and Gazelle, two powerful tools that automate the build process and significantly reduce build times. This tutorial covers the basics of setting up a workspace, running tests, and developing a basic application using Bazel and Gazelle.
 last_modified_at: 2023-07-11
 categories:
-  - Build
+  - Bazel
+  - Golang
 ---
 **The article examines the combined strengths of Bazel and Gazelle. Earthly's caching mechanisms improve incremental builds and augment Bazel's performance. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

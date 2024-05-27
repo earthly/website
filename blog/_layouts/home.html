@@ -97,69 +97,23 @@ indepth_posts:
 
   <div class="col-span-1 md:col-span-3 rounded-lg bg-blue-50">
     <div class="pr-12 pl-8 mb-8">
-      <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+      <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600">
         Tutorial Categories
       </h3>
       <ul class="mb-4">
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/python/" rel="permalink">Python</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/cloud/" rel="permalink">Cloud</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/containers/" rel="permalink">Containers</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/golang/" rel="permalink">Go</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/cli/" rel="permalink">CLI and Scripting</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/build/" rel="permalink">Build</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/platform/" rel="permalink">Platform</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/githubactions/" rel="permalink">GitHub Actions</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/iac/" rel="permalink">IaC</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/writing/" rel="permalink">Writing Tutorials</a>
-          </h2>
-        </li>
-        <li class="mb-1 series-item">
-          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-            <a class="hover:underline" href="/blog/categories/tutorials/" rel="permalink">More Programming Tutorials</a>
-          </h2>
-        </li>
+        {% for category in site.data.categories %}
+          {% if category.list-name %}
+            <li class="mb-1 series-item">
+              <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+                <a class="hover:underline" href="/blog/categories/{{ category.slug }}/" rel="permalink">{{ category.list-name }}</a>
+              </h2>
+            </li>
+          {% endif %}
+        {% endfor %}
       </ul>
-
     </div>
   </div>
+
 </div>
 
 

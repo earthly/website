@@ -12,7 +12,7 @@ excerpt: |
     Learn all you need to know about Bazel queries in this article. Discover how Bazel queries can help you analyze your project's build graph, optimize build performance, and debug builds.
 last_modified_at: 2023-07-19
 categories:
-  - Build
+  - Bazel
 ---
 **The article explains the advantages of using Bazel queries. Earthly enhances Bazel's dependency management with a simpler approach to build automation. [Check it out](https://cloud.earthly.dev/login).**
 

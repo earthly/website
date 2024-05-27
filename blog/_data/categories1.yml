@@ -8,3 +8,16 @@ IaC:
  - kubernetes-terraform
  - terraform-with-github-actions
  - pulumi-vs-terraform
+
+Bazel:
+ - build-and-deploy-PyApp-with-bazel
+ - push-docker-image-bazel
+ - bazel-and-automated-tests
+ - bazel-build-with-caching
+ - build-nodejs-app-with-bazel
+ - bazel-with-rust
+ - build-java-projects-with-bazel
+ - build-golang-bazel-gazelle
+ - using-bazel-with-typescript
+ - bazel-query
+ - building-js-monorepo
