@@ -1,7 +1,7 @@
 ---
 title: "Terraform Route53 And DNS Fun"
 categories:
-  - Cloud
+  - IaC
 author: Adam
 internal-links:
  - terraform route53

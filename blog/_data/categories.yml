@@ -42,6 +42,11 @@
   list-name: Containers 
   title: Containers and Orchestration Tutorials
 
+- name: Orchestration
+  slug: orchestration
+  list-name: Containers Orchestration 
+  title: Containers Orchestration Tutorials
+
 - name: CLI
   slug: cli
   list-name: CLI, Scripting and Automation

@@ -13,7 +13,7 @@ excerpt: |
     Learn how Kubernetes operators can simplify the deployment and management of complex, stateful applications in a Kubernetes cluster. Discover the benefits of using operators, how they work, and explore real-world examples of popular Kubernetes operators.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - Orchestration
 ---
 **This article explores Kubernetes operators. Earthly's containerized build automation complements this approach. [Check it out](https://cloud.earthly.dev/login).**
 

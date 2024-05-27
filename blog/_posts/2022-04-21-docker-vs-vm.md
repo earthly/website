@@ -9,7 +9,7 @@ excerpt: |
     Learn about the differences between Docker containers and virtual machines (VMs) in this article. Discover the strengths and limitations of each technology, including factors such as host machine utilization, simplicity, speed, security, and ease of replicability. Whether you're new to containerization or looking to optimize your virtualized deployments, this article provides valuable insights to help you make informed decisions.
 last_modified_at: 2023-07-14
 categories:
-  - Cloud
+  - Containers
 ---
 **This article compares Docker and virtual machines. Earthly significantly improves container build times with advanced caching. [Check it out](https://cloud.earthly.dev/login/).**
 

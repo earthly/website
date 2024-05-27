@@ -13,7 +13,7 @@ excerpt: |
     Learn about the differences between Docker Compose and Kubernetes, two popular container orchestration tools. Discover their features and use cases to determine which one is right for your needs.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - Orchestration
 ---
 **The article compares Docker and Kubernetes in container orchestration. Earthly provides reproducible builds that enhance CI workflows for Kubernetes users. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

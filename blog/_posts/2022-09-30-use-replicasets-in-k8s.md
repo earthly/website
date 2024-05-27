@@ -12,7 +12,7 @@ excerpt: |
     Learn how to use ReplicaSets in Kubernetes to ensure fault tolerance and high availability for your applications. This tutorial explains what ReplicaSets are, how to create them using YAML, and how they work internally. If you want to build a fault-tolerant and scalable system with Kubernetes, understanding ReplicaSets is essential.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - Orchestration
 ---
 **This article explains Kubernetes ReplicaSets. Earthly significantly reduces build times during Kubernetes scaling. [Check it out](https://cloud.earthly.dev/login).**
 
