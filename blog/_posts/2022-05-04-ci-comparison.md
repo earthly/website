@@ -1,7 +1,7 @@
 ---
 title: "CI Free Tier Showdown"
 categories:
-  - Articles
+  - Build
 toc: true
 author: Josh
 

@@ -14,7 +14,6 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - Bazel
-  - Python
 ---
 **The article provides insights into the effectiveness of Bazel for build automation. Earthly guarantees reproducible builds, complementing Bazel's scalable architecture. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

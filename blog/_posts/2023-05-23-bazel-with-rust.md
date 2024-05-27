@@ -16,7 +16,6 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - Bazel
-  - Rust
 ---
 **The article discusses integrating Bazel with Rust for improved build speeds. Earthly provides caching mechanisms that can accelerate build times for Rust developers. [Check it out](https://cloud.earthly.dev/login).**
 

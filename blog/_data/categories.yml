@@ -44,8 +44,13 @@
 
 - name: Orchestration
   slug: orchestration
-  list-name: Containers Orchestration 
-  title: Containers Orchestration Tutorials
+  list-name: Container Orchestration 
+  title: Container Orchestration Tutorials
+
+- name: Deployment
+  slug: deployment
+  list-name: Deployment and CD
+  title: Deployment and Continous Deployment
 
 - name: CLI
   slug: cli

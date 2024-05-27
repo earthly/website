@@ -11,7 +11,7 @@ excerpt: |
     Learn how to set up a continuous integration pipeline for your iOS app using fastlane and GitHub Actions. Automate your build, test, and deployment phases to streamline your development process and focus on writing code.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - Deployment
 ---
 **Explore the essentials of iOS CI/CD setup in this article. If you're enhancing your pipelines with fastlane and GitHub Actions, discover how Earthly can elevate your build consistency and speed. [Learn how](https://cloud.earthly.dev/login).**
 

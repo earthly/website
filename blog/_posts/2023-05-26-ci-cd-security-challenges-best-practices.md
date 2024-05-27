@@ -13,7 +13,7 @@ excerpt: |
     Learn about the challenges and best practices for securing your CI/CD pipeline in this informative article. Discover how to mitigate security risks and ensure the reliability and integrity of your software development and deployment process.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - Deployment
 ---
 **This article outlines top CI/CD security practices. Earthly secures these practices with its containerized builds, adding an extra layer of protection for teams. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

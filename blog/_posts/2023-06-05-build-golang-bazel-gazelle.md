@@ -15,7 +15,6 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - Bazel
-  - Golang
 ---
 **The article examines the combined strengths of Bazel and Gazelle. Earthly's caching mechanisms improve incremental builds and augment Bazel's performance. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

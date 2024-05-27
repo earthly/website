@@ -21,6 +21,7 @@ Bazel:
  - using-bazel-with-typescript
  - bazel-query
  - building-js-monorepo
+ - bazel-build
 
 Rust:
  - rust-concurrency-patterns-parallel-programming
@@ -69,3 +70,22 @@ Orchestration:
  - kubernetes-persistent-volumes
  - k8s-role-based-access-control
  - kubernetes-services
+
+Deployment:
+  - Flux-vs-Argo-CD
+  - ios-continuous-integration-pipeline
+  - continuous-testing-in-devops
+  - ci-cd-security-challenges-best-practices
+  - spinnaker-kubernetes
+  - canary-deployment-in-k8s
+  - argocd-kubernetes
+  - octopus-deploy
+  - jenkins-stages-pipelines
+  - building-k8s-tekton
+  - ci-vs-cd
+  - continuous-testing-in-devops
+
+Containers:
+  - youre-using-docker-compose-wrong
+  - macOS-native-containers
+  - chroot
