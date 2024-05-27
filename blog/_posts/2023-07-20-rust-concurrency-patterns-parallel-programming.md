@@ -13,7 +13,7 @@ excerpt: |
     This article explores Rust's concurrency features and provides an overview of basic concurrency primitives such as threads, shared ownership, and message passing. It also covers more advanced topics like error handling, performance optimization, testing, parallel programming with Rayon, and asynchronous programming with Tokio.
 last_modified_at: 2023-08-28
 categories:
-  - Tutorials
+  - Rust
 ---
 **Rust concurrency presents challenges. This article covers some patterns to overcome them. Earthly reliably reproduces builds for Rust applications with complex dependencies. [Check it out](https://cloud.earthly.dev/login).**
 

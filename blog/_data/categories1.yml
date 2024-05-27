@@ -21,3 +21,11 @@ Bazel:
  - using-bazel-with-typescript
  - bazel-query
  - building-js-monorepo
+
+Rust:
+ - rust-concurrency-patterns-parallel-programming
+ - rust-generics
+ - rust-macros
+ - rust-lifetimes-ownership-burrowing
+ - rust-api-rocket-diesel
+ - cargo-chef

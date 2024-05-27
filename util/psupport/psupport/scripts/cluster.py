@@ -16,9 +16,9 @@ CACHE_FILE = "./blog/_data/embeddings_cache.pkl"
 CLUSTER_TITLE_FILE = "./blog/_data/cluster_title_cache.pkl"
 
 # Initialize blacklist and whitelist
-BLACKLIST : List[str] = ["- News", "- Articles"]
-# BLACKLIST : List[str] = []
-WHITELIST : List[str] = ["Bazel"]
+# BLACKLIST : List[str] = ["- News", "- Articles"]
+BLACKLIST : List[str] = []
+WHITELIST : List[str] = ["- Cloud"]
 # WHITELIST : List[str] = []
 
 def load_cache(cache_file: str) -> dict:

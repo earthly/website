@@ -87,7 +87,6 @@ def count_categories_in_directory(directory: str) -> defaultdict:
         file_categories = count_categories_in_file(file)
         for category, count in file_categories.items():
             categories_count[category] += count
-    breakpoint()
     return categories_count
 
 def print_sorted_categories(categories_count: defaultdict):
