@@ -1,10 +1,51 @@
+- name: Cloud
+  slug: cloud
+  title: Cloud Tutorials
 
-IaC:
- - IaC-terraform-cdk
- - terraform-init-plan-apply
- - terraform-depends-on-argument
-  - create-manage-vpc-terraform
-  - deploy-dockcontainers-to-AWSECS-using-Terraform 
-  - kubernetes-terraform
-  - terraform-with-github-actions
-  - pulumi-vs-terraform
+- name: Platform
+  slug: platform
+  title: Platform Tutorials
+
+- name: Build
+  slug: build
+  title: Build Tutorials
+
+- name: Writing
+  slug: writing
+  title: Writing Tutorials
+
+- name: Python
+  slug: python
+  title: Python Development Tutorials
+
+- name: Golang
+  slug: golang
+  title: Golang Tutorials
+
+- name: GitHubActions
+  slug: githubactions
+  title: GitHub Actions Tutorials
+
+- name: Containers
+  slug: containers
+  title: Containers and Orchestration Tutorials
+
+- name: CLI
+  slug: cli
+  title: Command Line Mastery, Shell Scripting and Automation
+
+- name: Tutorials
+  slug: tutorials
+  title: Programming Tutorials
+
+- name: Articles
+  slug: articles
+  title: Articles
+
+- name: News
+  slug: news
+  title: News
+
+- name: IaC
+  slug: iac
+  title: Infrastructure as Code
