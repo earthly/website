@@ -61,34 +61,6 @@ indepth_posts:
 
 
 
-<h3 class="mb-4 mt-8 text-2xl font-semibold text-slate-600 ">
-  Popular Series
-</h3>
-
-<div class="bg-blue-50 rounded-lg px-2">
-
-  <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-
-    {% include series_list.html name="Docker" type="docker" style="md:border-r md:border-slate-300" %}
-    {% include series_list.html name="Bash" type="bash" style="md:border-r md:border-slate-300" %}
-    {% include series_list.html name="Make Files" type="makefile" %}
-
-  </div>
-</div>
-<a href="/blog/series" class="hover:underline block text-slate-500 text-lg mt-2 mb-2">More series...</a>
-
-<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Articles
-</h3>
-<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Articles limit:3 %}
-  {% include_cached archive-single.html post=post type=entries_layout %}
-  {% endfor %}
-</div>
-<a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
-
-
-
 <div class="grid col-span-1 mt-9 md:grid-cols-9 w-full gap-8 pb-10">
   <div class="col-span-1 md:col-span-6 ">
     {% assign post = site.data.indexes.slug[layout.hero_post_2] %}
@@ -117,6 +89,33 @@ indepth_posts:
 </div>
 
 
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Articles
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Articles limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
+
+
+
+<h3 class="mb-4 mt-8 text-2xl font-semibold text-slate-600 ">
+  Popular Series
+</h3>
+
+<div class="bg-blue-50 rounded-lg px-2">
+
+  <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+
+    {% include series_list.html name="Docker" type="docker" style="md:border-r md:border-slate-300" %}
+    {% include series_list.html name="Bash" type="bash" style="md:border-r md:border-slate-300" %}
+    {% include series_list.html name="Make Files" type="makefile" %}
+
+  </div>
+</div>
+<a href="/blog/series" class="hover:underline block text-slate-500 text-lg mt-2 mb-2">More series...</a>
 
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
