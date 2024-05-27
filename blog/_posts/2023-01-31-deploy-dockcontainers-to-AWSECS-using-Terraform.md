@@ -13,6 +13,7 @@ excerpt: |
 last_modified_at: 2023-07-19
 categories:
   - IaC
+  - Containers
 ---
 **This article explains how to automate ECS deployment. Earthly simplifies the Docker container build process. [Check it out](https://cloud.earthly.dev/login).**
 
