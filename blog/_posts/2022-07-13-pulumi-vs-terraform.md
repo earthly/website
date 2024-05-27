@@ -11,7 +11,7 @@ internal-links:
  - IaC tools
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - IaC
 ---
 **This article compares infrastructure as code (IaC) tools. Earthly's declarative syntax streamlines complex build steps. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

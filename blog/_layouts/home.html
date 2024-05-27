@@ -2,6 +2,7 @@
 layout: home-archive
 hero_post_1: earthly-v0-8
 hero_post_2: earthly-functions
+hero_post_3: soc-type-two
 featured_posts_1:
   - earthly-satellites-ga
   - earthly-open-source
@@ -86,11 +87,9 @@ indepth_posts:
 </div>
 <a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
 
-<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  More
-</h3>
 
-<div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
+
+<div class="grid col-span-1 mt-9 md:grid-cols-9 w-full gap-8 pb-10">
   <div class="col-span-1 md:col-span-6 ">
     {% assign post = site.data.indexes.slug[layout.hero_post_2] %}
     {% include hero-story.html type=entries_layout %}
@@ -144,6 +143,11 @@ indepth_posts:
         </li>
         <li class="mb-1 series-item">
           <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/categories/iac/" rel="permalink">IaC</a>
+          </h2>
+        </li>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
             <a class="hover:underline" href="/blog/categories/writing/" rel="permalink">Writing Tutorials</a>
           </h2>
         </li>
@@ -154,8 +158,30 @@ indepth_posts:
         </li>
       </ul>
 
+    </div>
+  </div>
+</div>
+
+
+
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Python Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Python limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/python/" class="hover:underline text-lg block text-slate-500 -mt-4">More Python tutorials...</a>
+
+<div class="grid col-span-1 mt-9 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
+ 
+
+  <div class="col-span-1 md:col-span-3 rounded-lg bg-blue-50">
+    <div class="pr-12 pl-8 mb-8">
       <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-        Listings
+        Groupings
       </h3>
       <ul>
         <li class="mb-1 series-item">
@@ -173,29 +199,31 @@ indepth_posts:
             <a class="hover:underline" href="/blog/categories/articles/" rel="permalink">Articles</a>
           </h2>
         </li>
+      </ul>
+      <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+        Lists
+      </h3>
+      <ul>
         <li class="mb-1 series-item">
           <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
             <a class="hover:underline" href="/blog/archive/" rel="permalink">All Content By Date</a>
           </h2>
         </li>
-        <li></li>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/series/" rel="permalink">Series List</a>
+          </h2>
+        </li>
       </ul>
     </div>
   </div>
+
+  <div class="col-span-1 md:col-span-6 ">
+    {% assign post = site.data.indexes.slug[layout.hero_post_3] %}
+    {% include hero-story.html type=entries_layout %}
+  </div>
 </div>
 
-
-
-
-<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Python Tutorials
-</h3>
-<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Python limit:3 %}
-  {% include_cached archive-single.html post=post type=entries_layout %}
-  {% endfor %}
-</div>
-<a href="/blog/categories/python/" class="hover:underline text-lg block text-slate-500 -mt-4">More Python tutorials...</a>
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
   Cloud Tutorials

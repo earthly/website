@@ -18,7 +18,7 @@ CLUSTER_TITLE_FILE = "./blog/_data/cluster_title_cache.pkl"
 # Initialize blacklist and whitelist
 BLACKLIST : List[str] = ["- News", "- Articles"]
 # BLACKLIST : List[str] = []
-WHITELIST : List[str] = ["Terraform"]
+WHITELIST : List[str] = ["Bazel"]
 # WHITELIST : List[str] = []
 
 def load_cache(cache_file: str) -> dict:
