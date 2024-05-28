@@ -1,7 +1,5 @@
 ---
 title: "Analyze Your Amazon Data with Python"
-categories:
-  - Tutorials
 toc: true
 author: Mr. Unity Buddy
 excerpt: |
@@ -12,6 +10,8 @@ internal-links:
  - Pip
  - Pandas
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article explains how Python developers can analyze Amazon spending. Earthly precisely builds your data analysis toolchain. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

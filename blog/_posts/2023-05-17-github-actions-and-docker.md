@@ -1,7 +1,5 @@
 ---
 title: "Using GitHub Actions to Run, Test, Build, and Deploy Docker Containers"
-categories:
-  - Tutorials
 toc: true
 sidebar:
   nav: github-actions
@@ -16,6 +14,8 @@ internal-links:
 excerpt: |
     Learn how to automate the process of developing, testing, building, and deploying Docker containers using GitHub Actions. This tutorial will guide you through the steps of creating a workflow, setting up a runner, running GitHub Actions locally, and setting up the build and test stages. Save time and improve the quality of your software with this powerful automation tool.
 last_modified_at: 2023-07-11
+categories:
+  - GitHubActions
 ---
 **This article explains how to automate Docker using GitHub Actions. Earthly's caching mechanisms speed up your GitHub Actions pipeline. [Learn how](https://cloud.earthly.dev/login).**
 

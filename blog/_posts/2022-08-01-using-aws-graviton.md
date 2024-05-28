@@ -1,7 +1,7 @@
 ---
 title: "Using AWS Graviton"
 categories:
-  - Tutorials
+  - Cloud
 toc: true
 author: Kealan Parr
 

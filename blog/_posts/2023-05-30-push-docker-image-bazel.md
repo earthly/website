@@ -1,7 +1,5 @@
 ---
 title: "Using and Pushing Docker Images With Bazel"
-categories:
-  - Tutorials
 toc: true
 author: Sooter Saalu
 editor: Mustapha Ahmad Ayodeji
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to use Docker images with Bazel to enhance scalability and simplify the development process. This article explores the integration of Docker and Bazel, provides a step-by-step tutorial, and highlights the benefits of using these tools together.
 last_modified_at: 2023-07-11
+categories:
+  - Bazel
 ---
 **This article explains how to integrate Docker with Bazel. Earthly simplifies containerized builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

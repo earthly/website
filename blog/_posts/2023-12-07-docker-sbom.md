@@ -1,7 +1,5 @@
 ---
 title: "How to Generate Your SBOM from Docker Images"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 
@@ -13,6 +11,8 @@ internal-links:
  - software bill of materials
 excerpt: |
     This tutorial explains how to generate a Software Bill of Materials (SBOM) for Docker images using the `docker sbom` command. SBOMs provide visibility into the dependencies and components included in containerized applications, allowing for better software supply chain security.
+categories:
+  - Containers
 ---
 **This article explains how generating a Software Bill of Materials (SBOM) for Docker can secure your images. Earthly improves the SBOM generation process, providing stronger security for Docker. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

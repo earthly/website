@@ -1,7 +1,5 @@
 ---
 title: "Build a Data Dashboard with Streamlit in Python"
-categories:
-  - Tutorials
 toc: true
 author: Barine Sambaris
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to build a data dashboard with Streamlit in Python. This tutorial will teach you how to create interactive visualizations and deploy web apps for data analysis and machine learning models.
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **The Streamlit dashboard tutorial teaches efficient data visualization project builds. Streamlit users will find Earthly streamlines app development. [Check it out](https://cloud.earthly.dev/login).**
 

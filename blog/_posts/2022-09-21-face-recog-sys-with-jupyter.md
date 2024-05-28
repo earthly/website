@@ -1,7 +1,7 @@
 ---
 title: "Creating and Deploying a Facial Recognition System with Jupyter Notebooks and Anvil"
 categories:
-  - Tutorials
+  - Python
 toc: true
 author: Fortune Adekogbe
 

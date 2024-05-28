@@ -1,7 +1,5 @@
 ---
 title: "My Adventure in Data Engineering"
-categories:
-  - Tutorials
 toc: true
 author: Ido
 
@@ -11,6 +9,8 @@ internal-links:
  - implementing data engineering
 excerpt: |
     An engineer at Earthly shares his journey and tips for implementing self-sign-up and analyzing user behavior using tools like Funnel Story and Hex to improve the onboarding process and make data-driven decisions. By tracking user behavior and making strategic product decisions based on the data, Earthly was able to attract more users and convert them into paying customers.
+categories:
+  - Articles
 ---
 
 **Ido - an engineer at Earthly - recently put on a data analytics hat and dove deep into instrumentation and visualization so he could understand how users are using Earthly. In this article, he shares his journey and tips for others.**

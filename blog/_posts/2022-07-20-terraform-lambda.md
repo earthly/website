@@ -1,7 +1,5 @@
 ---
 title: "Terraform Import - Leaving Click Ops Behind"
-categories:
-  - Tutorials
 toc: true
 sidebar:
   nav: "lambdas"
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to import existing infrastructure into Terraform and manage it as code. Follow along as the author imports resources such as AWS Lambda, ECR, S3, and API Gateway, and tests the infrastructure by destroying and recreating it.
 last_modified_at: 2023-07-14
+categories:
+  - Golang
 ---
 **The article summarizes how to import infrastructure into Terraform. Earthly provides DevOps professionals with consistent build environments. [Check it out](https://cloud.earthly.dev/login).**
 

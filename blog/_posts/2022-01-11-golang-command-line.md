@@ -1,7 +1,7 @@
 ---
 title: "Command Line JSON Client In Golang"
 categories:
-  - Tutorials
+  - Golang
 author: Adam
 sidebar:
   nav: "activity-tracker"

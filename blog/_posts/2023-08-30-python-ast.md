@@ -1,7 +1,5 @@
 ---
 title: "Introduction to Abstract Syntax Trees in Python"
-categories:
-  - Tutorials
 toc: true
 author: Daniel Boadzie
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     This tutorial introduces the concept of Abstract Syntax Trees (AST) in Python and explains their importance in code analysis and transformation. It provides examples of how to generate and work with ASTs, including static code analysis and code transformation techniques.
 last_modified_at: 2023-09-11
+categories:
+  - Python
 ---
 **This article explores Python Abstract Syntax Trees (ASTs). Python developers like that Earthly provides consistent and fast build environments for running Python code. [Check it out](https://cloud.earthly.dev/login).**
 

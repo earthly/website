@@ -1,7 +1,5 @@
 ---
 title: "Cross-Compiling for Raspberry Pi: Getting Started and Troubleshooting"
-categories:
-  - Tutorials
 toc: true
 author: Aniket Bhattacharyea
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to cross-compile programs for Raspberry Pi using a more powerful PC with this step-by-step tutorial. Discover how to set up the development environment, write a C++ program, and debug it using GDB.
 last_modified_at: 2023-07-19
+categories:
+  - Make
 ---
 **This article discusses how to cross-compile for Raspberry Pi efficiently. Earthly simplifies the build process for cross-compilation. [Check it out](https://cloud.earthly.dev/login).**
 

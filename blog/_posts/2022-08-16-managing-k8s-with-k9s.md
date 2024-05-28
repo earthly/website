@@ -1,7 +1,5 @@
 ---
 title: "How to Manage Kubernetes Resources Using K9s"
-categories:
-  - Tutorials
 toc: true
 author: Boemo Wame Mmopelwa
 
@@ -14,6 +12,8 @@ topic: kubernetes
 excerpt: |
     Learn how to manage your Kubernetes cluster more efficiently with K9s, a terminal UI tool that simplifies common `kubectl` commands and provides a faster and easier way to interact with your cluster. Install K9s on Linux, explore its features, and discover how it can help you fetch cluster metrics and manage your resources with ease.
 last_modified_at: 2023-07-19
+categories:
+  - Orchestration
 ---
 **K9s is a tool for exploring Kubernetes clusters. Earthly provides robust build automation that complements K9s. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

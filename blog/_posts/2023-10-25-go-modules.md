@@ -1,7 +1,5 @@
 ---
 title: "Understanding Go Package Management and Modules"
-categories:
-  - Tutorials
 toc: true
 author: Israel Ulelu
 
@@ -13,6 +11,8 @@ internal-links:
 last_modified_at: 2023-10-20
 excerpt: |
     This article provides a comprehensive guide to Go package management and modules. It explains the benefits of using Go modules, introduces essential commands and workflows, and offers tips and best practices for efficient package management.
+categories:
+  - Golang
 ---
 **This article explains Go package management. Earthly ensures reproducible and efficient parallel execution for Go builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

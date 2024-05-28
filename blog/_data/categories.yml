@@ -1,0 +1,86 @@
+- name: Cloud
+  slug: cloud
+  list-name: Cloud
+  title: Cloud Tutorials
+
+- name: Platform
+  slug: platform
+  list-name: Platform
+  title: Platform Tutorials
+
+- name: Build
+  slug: build
+  list-name: Build
+  title: Build Tutorials
+
+- name: Writing
+  slug: writing
+  title: Writing Tutorials
+
+- name: Python
+  slug: python
+  list-name: Python
+  title: Python Development Tutorials
+
+- name: Golang
+  slug: golang
+  list-name: Golang
+  title: Golang Tutorials
+
+- name: Rust
+  slug: rust
+  list-name: Rust
+  title: Rust Tutorials
+
+- name: GitHubActions
+  slug: githubactions
+  list-name: GitHub Actions
+  title: GitHub Actions Tutorials
+
+- name: Containers
+  slug: containers
+  list-name: Containers 
+  title: Containers and Orchestration Tutorials
+
+- name: Orchestration
+  slug: orchestration
+  list-name: Container Orchestration 
+  title: Container Orchestration Tutorials
+
+- name: Deployment
+  slug: deployment
+  list-name: Deployment and CD
+  title: Deployment and Continous Deployment
+
+- name: Make
+  slug: make
+  list-name: Makefiles
+  title: Makefiles and C++ builds
+
+- name: cli
+  slug: cli
+  list-name: CLI, Scripting and Automation
+  title: Command Line Mastery, Shell Scripting and Automation
+
+- name: IaC
+  slug: iac
+  list-name: Infrastructure as Code
+  title: Infrastructure as Code Tutorials
+
+- name: Bazel
+  slug: bazel
+  list-name: Bazel Builds
+  title: Bazel Build Tutorials
+
+- name: Tutorials
+  slug: tutorials
+  list-name: Miscellaneous
+  title: Programming Tutorials
+
+- name: Articles
+  slug: articles
+  title: Articles
+
+- name: News
+  slug: news
+  title: News

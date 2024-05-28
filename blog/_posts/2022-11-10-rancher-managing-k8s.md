@@ -1,7 +1,5 @@
 ---
 title: "Can Rancher Help You Better Manage Kubernetes?"
-categories:
-  - Tutorials
 toc: true
 author: Damaso Sanoja
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how Rancher can help you better manage your Kubernetes clusters, regardless of where they're hosted. With features like deploying managed Kubernetes clusters, importing existing clusters, enforcing security, and providing a centralized interface for multi-cluster management, Rancher simplifies the management and monitoring of your Kubernetes deployments.
 last_modified_at: 2023-07-14
+categories:
+  - Orchestration
 ---
 **This article is about Rancher Kubernetes management. Earthly provides precise build automation to enhance your CI pipeline's consistency and speed. [Check it out](https://cloud.earthly.dev/login).**
 

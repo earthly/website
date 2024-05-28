@@ -1,7 +1,5 @@
 ---
 title: "Kubernetes vs. Docker for Local Development"
-categories:
-  - Tutorials
 sidebar:
   nav: "docker"
 toc: true
@@ -9,6 +7,8 @@ author: Damaso Sanoja
 excerpt: |
     Learn the key similarities and differences between Docker and Kubernetes for local development and discover which tool is better suited for your use case. Find out how Docker's versatility and ease of use compare to Kubernetes' built-in container orchestration and unmatched flexibility.
 last_modified_at: 2023-07-14
+categories:
+  - Orchestration
 ---
 **This article compares Docker and Kubernetes. DevOps professionals benefit from Earthly's build automation when using Docker or Kubernetes. [Check it out](https://cloud.earthly.dev/login).**
 

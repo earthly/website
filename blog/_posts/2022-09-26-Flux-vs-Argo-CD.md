@@ -1,7 +1,5 @@
 ---
 title: "Comparison: Flux vs Argo CD"
-categories:
-  - Tutorials
 toc: true
 author: David Szakallas
 
@@ -15,6 +13,8 @@ topic: ci
 excerpt: |
     In this article, the author compares two popular GitOps tools, Flux and Argo CD. They discuss various aspects such as reconciliation, source tracking, configuration, Helm support, scaling out, permissions and access control, and more. The article provides insights into the similarities and differences between the two tools, helping readers make an informed decision based on their specific needs.
 last_modified_at: 2023-08-17
+categories:
+  - Deployment
 ---
 **The article compares Flux and Argo CD. Earthly enhances CI/CD security with isolated build environments, unlike Argo CD. [Check it out](https://cloud.earthly.dev/login).**
 

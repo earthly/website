@@ -1,7 +1,5 @@
 ---
 title: "How to Use Python's Subprocess Module"
-categories:
-  - Tutorials
 toc: true
 author: Bala Priya C
 internal-links:
@@ -12,6 +10,8 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use Python's subprocess module to run external commands, capture and process outputs, redirect output to files, and more. This tutorial covers the basics of the subprocess module and provides examples on how to run commands, handle errors, redirect outputs, and change the environment of a subprocess. Whether you're a beginner or an experienced Python developer, this guide will help you enhance your scripting capabilities.
 last_modified_at: 2023-07-11
+categories:
+  - Python
 ---
 **This article explains Python's `subprocess` module. Earthly streamlines build automation for Python developers. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

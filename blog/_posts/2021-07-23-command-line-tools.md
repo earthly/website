@@ -1,7 +1,5 @@
 ---
 title: "6 Command Line Tools for Productive Programmers"
-categories:
-  - Tutorials
 author: Adam
 sidebar:
   nav: "bash"
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     In this article, the author shares six command-line tools that can enhance productivity for programmers. These tools include `broot` for navigating directories, `funky` for customizing shell functions, `FZF` for fuzzy searching, `McFly` for command-line completion, `zoxide` for improved directory navigation, and `GitUpdate` for simplified git commits. The author also mentions other helpful command-line tools and invites readers to share their own suggestions.
 last_modified_at: 2023-07-14
+categories:
+  - cli
 ---
 **In this article, you'll discover how command-line tools can do more for you.Earthly can transform your build processes. [Learn more](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,7 @@
 ---
 title: "Creating and hosting your own deb packages and apt repo"
 categories:
-  - Tutorials
+  - Build
 toc: true
 author: Alex
 internal-links:

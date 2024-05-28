@@ -1,7 +1,5 @@
 ---
 title: "Getting Started With CMake"
-categories:
-  - Tutorials
 toc: true
 author: Kasper Siig
 sidebar:
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to use CMake, a popular tool for building applications in the C++ community. This tutorial provides a step-by-step guide on using CMake to configure a build pipeline and compile a simple C++ application.
 last_modified_at: 2023-07-14
+categories:
+  - Make
 ---
 **This article explains how to use CMake in C++ projects. Earthly improves C++ builds with CMake integration. [Learn how](https://cloud.earthly.dev/login).**
 

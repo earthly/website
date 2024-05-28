@@ -1,7 +1,7 @@
 ---
 title: "npm vs. Yarn: Unraveling the Knots of Package Management"
 categories:
-  - Tutorials
+  - Build
 toc: true
 author: Kumar Harsh
 

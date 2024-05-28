@@ -1,7 +1,5 @@
 ---
 title: "Harden Kubernetes cluster with pod and container security contexts"
-categories:
-  - Tutorials
 toc: true
 author: Muhammad Badawy
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to secure your Kubernetes cluster by applying security contexts to pods and containers. This article explains the concept of security contexts, their implementation in Kubernetes, and provides a step-by-step guide on how to apply them to enhance the overall security of your cluster.
 last_modified_at: 2023-07-19
+categories:
+  - Orchestration
 ---
 **This article provides a clear understanding of Kubernetes security contexts. Earthly strengthens CI pipelines with advanced caching. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

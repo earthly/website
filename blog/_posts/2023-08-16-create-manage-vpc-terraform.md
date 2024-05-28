@@ -1,7 +1,5 @@
 ---
 title: "Creating and Managing VPCs with Terraform: A Step-by-Step Guide"
-categories:
-  - Tutorials
 toc: true
 author: Ndafara Tsamba
 editor: Mustapha Ahmad Ayodeji
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     This tutorial provides a step-by-step guide on how to create and manage an Amazon VPC using Terraform. It covers the configuration of VPC elements such as subnets, internet gateways, NAT gateways, security groups, and EC2 instances.
 last_modified_at: 2023-08-28
+categories:
+  - IaC
 ---
 **This article explains the basics of setting up a Virtual Private Cloud (VPC) with Terraform. Users of Terraform find Earthly's approach to CI build speed powerful. [Learn how](https://cloud.earthly.dev/login).**
 

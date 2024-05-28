@@ -1,7 +1,5 @@
 ---
 title: "Deploy Applications to AWS ECR with a GitHub Actions CI/CD Pipeline"
-categories:
-  - Tutorials
 toc: true
 sidebar:
   nav: github-actions
@@ -16,6 +14,8 @@ internal-links:
 excerpt: |
     Learn how to automate the testing, building, and deployment processes of your applications using GitHub Actions and Docker deployments with AWS ECR. This tutorial provides step-by-step instructions on setting up the necessary tools and configuring the workflow to seamlessly deploy your applications to AWS ECR.
 last_modified_at: 2023-07-11
+categories:
+  - GitHubActions
 ---
 **This article explores CI/CD with GitHub Actions. Earthly guarantees reproducible Docker builds in any CI/CD pipelines. [Check it out](https://cloud.earthly.dev/login).**
 

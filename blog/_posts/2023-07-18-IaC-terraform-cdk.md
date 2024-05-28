@@ -1,7 +1,5 @@
 ---
 title: "Infrastructure as Code Made Easy: A Beginner's Guide to Terraform CDK"
-categories:
-  - Tutorials
 toc: true
 author: Alexandre Couedelo
 editor: Mustapha Ahmad Ayodeji
@@ -12,10 +10,11 @@ internal-links:
  - IaC
  - Guide
  - CDK
- - Cloud Development
 excerpt: |
     This article introduces the Terraform CDKTF, a programmatic way to create infrastructure as code (IaC). It explains the basics of CDKTF, its core components, and how to deploy an AWS stack using TypeScript. The article also provides best practices for using CDKTF and highlights the benefits of incorporating testing and continuous integration into your infrastructure provisioning process.
 last_modified_at: 2023-07-19
+categories:
+  - IaC
 ---
 **This article introduces the basics of CDKTF. Earthly provides reproducible builds for cloud infrastructure and everything else. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

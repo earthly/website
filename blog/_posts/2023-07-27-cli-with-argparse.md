@@ -1,7 +1,7 @@
 ---
 title: "Building a CLI Application With Argparse"
 categories:
-  - Tutorials
+  - Python
 toc: true
 author: Kabaki Antony
 editor: Ubaydah Abdulwasiu

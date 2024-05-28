@@ -1,7 +1,5 @@
 ---
 title: "LXC vs Docker: Which Container Platform Is Right for You?"
-categories:
-  - Tutorials
 toc: true
 author: Eric Kahuha
 
@@ -13,6 +11,8 @@ topic: docker
 excerpt: |
     Are you confused about whether to use LXC or Docker for your containerization needs? This article compares the two container platforms in terms of host machine utilization, simplicity, speed, security, ease of use, scalability, and tooling. Whether you're a developer looking for simplicity or a system administrator in need of control, this article will help you make an informed decision.
 last_modified_at: 2023-07-11
+categories:
+  - Containers
 ---
 **This article compares LXC and Docker. Earthly enhances Docker by streamlining the container build process with advanced caching and parallelization. [Check it out](https://cloud.earthly.dev/login).**
 

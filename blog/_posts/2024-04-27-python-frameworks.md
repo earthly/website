@@ -1,7 +1,5 @@
 ---
 title: "Top Python Frameworks for 2024"
-categories:
-  - Tutorials
 toc: true
 author: Jura Gorohovsky
 
@@ -12,6 +10,8 @@ internal-links:
  - python frameworks to look at
 excerpt: |
     This article provides an overview of the top Python web frameworks for 2024, including Django, Flask, and FastAPI. It discusses the features and use cases of each framework, as well as factors to consider when choosing a framework for your project.
+categories:
+  - Python
 ---
 **The article provides an overview of Python web frameworks. Earthly improves the efficiency of CI builds within your development lifecycle. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,5 @@
 ---
 title: "Improving Django Performance using Caching"
-categories:
-  - Tutorials
 toc: true
 author: Vivek Kumar Singh
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to improve the performance of your Django web application using caching techniques. This article covers everything from the basics of caching to advanced strategies, helping you optimize your application and provide a better user experience.
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article explores Django caching techniques. Earthly provides reproducible build environments that enhance CI pipelines. [Earthly ensures consistent builds](https://cloud.earthly.dev/login).**
 

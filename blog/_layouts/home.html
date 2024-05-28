@@ -1,6 +1,8 @@
 ---
 layout: home-archive
-hero_post: earthly-v0-8
+hero_post_1: earthly-v0-8
+hero_post_2: earthly-functions
+hero_post_3: soc-type-two
 featured_posts_1:
   - earthly-satellites-ga
   - earthly-open-source
@@ -22,12 +24,12 @@ indepth_posts:
 
 <div class="grid col-span-1 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
   <div class="col-span-1 md:col-span-6 ">
-    {% assign post = site.data.indexes.slug[layout.hero_post] %}
+    {% assign post = site.data.indexes.slug[layout.hero_post_1] %}
     {% include hero-story.html type=entries_layout %}
   </div>
 
   <div class="col-span-1 md:col-span-3 rounded-lg  bg-blue-50">
-    <div class="p-4 pr-12 pl-8">
+    <div class="p-4 pr-12 pl-8 mb-4">
       <h3 class="mb-6 pl-2 text-2xl text-slate-500">
         Earthly News
       </h3>
@@ -59,6 +61,46 @@ indepth_posts:
 
 
 
+<div class="grid col-span-1 mt-9 md:grid-cols-9 w-full gap-8 pb-10">
+  <div class="col-span-1 md:col-span-6 ">
+    {% assign post = site.data.indexes.slug[layout.hero_post_2] %}
+    {% include hero-story.html type=entries_layout %}
+  </div>
+
+  <div class="col-span-1 md:col-span-3 rounded-lg bg-blue-50">
+    <div class="pr-12 pl-8 mb-8">
+      <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600">
+        Tutorial Categories
+      </h3>
+      <ul class="mb-4">
+        {% for category in site.data.categories %}
+          {% if category.list-name %}
+            <li class="mb-1 series-item">
+              <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+                <a class="hover:underline" href="/blog/categories/{{ category.slug }}/" rel="permalink">{{ category.list-name }}</a>
+              </h2>
+            </li>
+          {% endif %}
+        {% endfor %}
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Articles
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Articles limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
+
+
+
 <h3 class="mb-4 mt-8 text-2xl font-semibold text-slate-600 ">
   Popular Series
 </h3>
@@ -75,26 +117,148 @@ indepth_posts:
 </div>
 <a href="/blog/series" class="hover:underline block text-slate-500 text-lg mt-2 mb-2">More series...</a>
 
+
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Articles
+  Python Tutorials
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Articles limit:6 %}
+  {% for post in site.categories.Python limit:3 %}
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
-<a href="/blog/categories/articles/" class="hover:underline text-lg block text-slate-500 -mt-4">More articles...</a>
+<a href="/blog/categories/python/" class="hover:underline text-lg block text-slate-500 -mt-4">More Python tutorials...</a>
+
+<div class="grid col-span-1 mt-9 md:grid-cols-9 w-full gap-8 -mt-[20px] pb-10">
+ 
+
+  <div class="col-span-1 md:col-span-3 rounded-lg bg-blue-50">
+    <div class="pr-12 pl-8 mb-8">
+      <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+        Groupings
+      </h3>
+      <ul>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/categories/popular/" rel="permalink">Popular Tutorials</a>
+          </h2>
+        </li>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/categories/news/" rel="permalink">Earthly News</a>
+          </h2>
+        </li>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/categories/articles/" rel="permalink">Articles</a>
+          </h2>
+        </li>
+      </ul>
+      <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+        Lists
+      </h3>
+      <ul>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/archive/" rel="permalink">All Content By Date</a>
+          </h2>
+        </li>
+        <li class="mb-1 series-item">
+          <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+            <a class="hover:underline" href="/blog/series/" rel="permalink">Series List</a>
+          </h2>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="col-span-1 md:col-span-6 ">
+    {% assign post = site.data.indexes.slug[layout.hero_post_3] %}
+    {% include hero-story.html type=entries_layout %}
+  </div>
+</div>
 
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Tutorials
+  Cloud Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Cloud limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/cloud/" class="hover:underline text-lg block text-slate-500 -mt-4">More Cloud tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Containers and Orchestration Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Containers limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/containers/" class="hover:underline text-lg block text-slate-500 -mt-4">More Containers and Orchestration Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Golang Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Golang limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/golang/" class="hover:underline text-lg block text-slate-500 -mt-4">More Go Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Command Line Mastery, Shell Scripting and Automation
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.cli limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/cli/" class="hover:underline text-lg block text-slate-500 -mt-4">More Shell Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Build Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Build limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/build/" class="hover:underline text-lg block text-slate-500 -mt-4">More Build Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Platform Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.Platform limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/platform/" class="hover:underline text-lg block text-slate-500 -mt-4">More Platform Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  GitHub Actions Tutorials
+</h3>
+<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
+  {% for post in site.categories.GitHubActions limit:3 %}
+  {% include_cached archive-single.html post=post type=entries_layout %}
+  {% endfor %}
+</div>
+<a href="/blog/categories/githubactions/" class="hover:underline text-lg block text-slate-500 -mt-4">More GitHub Actions Tutorials...</a>
+
+<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
+  Programming Tutorials
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
   {% for post in site.categories.Tutorials limit:6 %}
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
-<a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More tutorials...</a>
+<a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More programming tutorials...</a>
+
+
 
 
 <h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
@@ -107,6 +271,7 @@ indepth_posts:
   {% endfor %}
 </div>
 <a href="/blog/categories/popular/" class="hover:underline text-lg block text-slate-500 -mt-4">More of the most popular...</a>
+
 
 <h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
   In Depth

@@ -1,7 +1,5 @@
 ---
 title: "Using sed for Find and Replace"
-categories:
-  - Tutorials
 toc: true
 author: Zara Cooper
 internal-links:
@@ -10,6 +8,8 @@ topic: cli
 excerpt: |
     Learn how to use the `sed` command in the command line to search and manipulate text. Discover the benefits of using `sed` and explore various commands and techniques for find and replace operations.
 last_modified_at: 2023-07-11
+categories:
+  - cli
 ---
 **This article explains how to use `sed` for text manipulation. Earthly integrates `sed` into its reproducible build processes. [Learn how](https://cloud.earthly.dev/login).**
 

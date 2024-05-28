@@ -1,7 +1,5 @@
 ---
 title: "Understanding Docker Volumes"
-categories:
-  - Tutorials
 toc: true
 author: Shingai Zivuku
 sidebar:
@@ -13,6 +11,8 @@ topic: docker
 excerpt: |
     Learn how to use Docker volumes to persist data outside of containers and easily share data between containers. This tutorial covers the basics of Docker volumes, including how to create and manage them, mount them to containers, and configure them using Docker Compose. If you're looking to improve your containerization workflow and make your builds self-contained and portable, check out Earthly, a build automation tool mentioned in the article.
 last_modified_at: 2023-07-11
+categories:
+  - Containers
 ---
 **This article discusses Docker volumes management. Managing complex Docker builds, Earthly's caching and parallelization save time. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

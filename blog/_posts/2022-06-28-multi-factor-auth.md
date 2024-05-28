@@ -1,8 +1,8 @@
 ---
 title: "Programmatic Multi Factor Auth and Time Based One Time Passwords"
 categories:
-  - Tutorials
-toc: true
+  - cli
+toc: false
 author: Adam
 internal-links:
  - mfa

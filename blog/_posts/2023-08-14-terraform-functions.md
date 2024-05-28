@@ -1,7 +1,5 @@
 ---
 title: "Automating Infrastructure with Terraform Functions: Best Practices and Examples"
-categories:
-  - Tutorials
 toc: true
 author: Vivek Kumar Singh
 editor: Ubaydah Abdulwasiu
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
      One of Terraform's key features is its built-in functions that automate tasks in infrastructure management. These functions allow you to perform complex operations and calculations, making your code more flexible and reusable.
 last_modified_at: 2023-08-17
+categories:
+  - IaC
 ---
 **The article discusses Terraform functions. Users of Terraform find Earthly's declarative syntax both familiar and powerful. [Check it out](https://cloud.earthly.dev/login).**
 

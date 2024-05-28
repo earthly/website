@@ -8,6 +8,7 @@ authors = ["Adam Gordon Bell <adam@earthly.dev>"]
 python = "^3.11"
 psupport = {path = "util/psupport", develop = true}
 vulture = "^2.10"
+python-frontmatter = "^1.1.0"
 
 [build-system]
 requires = ["poetry-core"]

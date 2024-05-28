@@ -1,7 +1,5 @@
 ---
 title: "How to automate a microservice setup in Kubernetes using Earthly"
-categories:
-  - Tutorials
 toc: true
 author: Ayomide Akinola
 
@@ -12,6 +10,8 @@ funnel: 2
 excerpt: |
     Learn how to automate your microservice setup in Kubernetes using Earthly. This tutorial walks you through the process of creating a template, building and deploying your microservices, and automating the entire setup process.
 last_modified_at: 2023-07-14
+categories:
+  - Orchestration
 ---
 **The article discusses the automation of Kubernetes deployments. Earthly simplifies microservice build processes for Kubernetes. [Check it out](https://cloud.earthly.dev/login).**
 

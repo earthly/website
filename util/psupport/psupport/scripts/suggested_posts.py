@@ -1,11 +1,11 @@
+import argparse
 import datetime
 import os
 import pickle
-import argparse
 from typing import Dict, List, Tuple
-import yaml
 
 import numpy as np
+import yaml
 from openai import APIError, OpenAI
 from sklearn.metrics.pairwise import cosine_similarity
 
@@ -149,7 +149,7 @@ def main() -> None:
         folder_path = "./blog/_posts"
         popular_slugs = load_popular_slugs("./blog/_data/popular.yml")
         markdown_files = load_markdown_files(folder_path)
-        
+
         if args.popular:
             popular_files = load_popular_markdown_files(folder_path, popular_slugs)
             related_posts = find_related_posts(markdown_files, popular_files, max_related=3, min_similarity=0.50)
@@ -157,7 +157,7 @@ def main() -> None:
             popular_files = load_popular_markdown_files(folder_path, popular_slugs)
             non_popular_files = [file for file in markdown_files if file[0] not in [f[0] for f in popular_files]]
             related_posts = find_related_posts(markdown_files, non_popular_files, max_related=10, min_similarity=0.50)
-        
+
         print_related_posts(related_posts)
     except Exception as e:
         print(f"An error occurred: {e}")

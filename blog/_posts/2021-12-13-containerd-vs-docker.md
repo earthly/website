@@ -1,7 +1,5 @@
 ---
 title: "Comparing Container Runtimes: containerd vs. Docker"
-categories:
-  - Tutorials
 toc: true
 author: Johan Fischer
 sidebar:
@@ -11,6 +9,8 @@ internal-links:
 excerpt: |
     Learn about the differences between container runtimes containerd and Docker in this informative article. Discover their features, how they work together, and what they can do individually, helping you make an informed decision for your containerized applications.
 last_modified_at: 2023-07-14
+categories:
+  - Containers
 ---
 **This article discusses the differences between Docker and containerd. Earthly provides reproducible and parallelizable container build workflows. [Check it out](https://cloud.earthly.dev/login).**
 

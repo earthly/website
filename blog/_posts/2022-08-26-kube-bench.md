@@ -1,7 +1,5 @@
 ---
 title: "Kube-Bench"
-categories:
-  - Tutorials
 toc: true
 author: Anurag Kumar
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to benchmark your Kubernetes cluster against CIS benchmarks using Kube-Bench. This tutorial provides step-by-step instructions on installing and configuring Kube-Bench, running benchmarks via CLI, fixing WARN and FAIL benchmarks, and automating the process using Kubernetes jobs and cronjobs.
 last_modified_at: 2023-07-19
+categories:
+  - Orchestration
 ---
 **This article discusses Kubernetes security benchmarking. Kube-bench secures Kubernetes clusters, while Earthly ensures robust and reliable CI pipeline builds. [Check it out](https://cloud.earthly.dev/login).**
 

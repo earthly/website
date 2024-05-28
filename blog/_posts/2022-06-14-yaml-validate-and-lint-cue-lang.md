@@ -1,7 +1,5 @@
 ---
 title: "Validate Your YAML (with CUE)"
-categories:
-  - Tutorials
 toc: true
 author: Adam
 internal-links:
@@ -11,6 +9,8 @@ internal-links:
 excerpt: |
     Learn how to use Cuelang, an extension of YAML, to validate your YAML configurations and prevent runtime errors. Discover how to define types, add constraints, and import packages to ensure your YAML files are structured correctly.
 last_modified_at: 2023-07-14
+categories:
+  - cli
 ---
 **This article explains how Cuelang configurations enhance CI pipelines. Earthly guarantees reproducible and efficient builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

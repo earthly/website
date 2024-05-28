@@ -1,7 +1,7 @@
 ---
 title: "Understanding Software Dependency Management"
 categories:
-  - Tutorials
+  - Articles
 toc: true
 author: Rexford A. Nyarko
 

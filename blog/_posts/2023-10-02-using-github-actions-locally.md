@@ -1,7 +1,5 @@
 ---
 title: "How to Test and Run GitHub Actions Locally"
-categories:
-  - Tutorials
 toc: true
 author: Kumar Harsh
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     This tutorial explains how to test and run GitHub Actions locally using a tool called `act`. It covers the installation of `act`, exploring its features, and discusses the limitations of using `act` for local GitHub Actions development.
 last_modified_at: 2023-10-06
+categories:
+  - GitHubActions
 ---
 **The article explains how act can be used to run GitHub Actions locally. The limitations of that approach lead many towards Earthly. Earthly ensures consistent and reliable builds that run in GitHub Actions and locally. [Check it out](https://cloud.earthly.dev/login).**
 

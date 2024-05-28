@@ -1,7 +1,5 @@
 ---
 title: "Using Docker with Postgres: Tutorial and Best Practices"
-categories:
-  - Tutorials
 toc: true
 author: Aveek Das
 internal-links:
@@ -13,6 +11,8 @@ topic: docker
 excerpt: |
     Learn how to use Docker with Postgres to simplify data management and streamline the development process. This tutorial covers best practices for running PostgreSQL databases on Docker containers and includes step-by-step instructions for setting up and connecting to a PostgreSQL instance using Docker.
 last_modified_at: 2023-07-11
+categories:
+  - Containers
 ---
 **This article discusses PostgreSQL on Docker. Earthly simplifies your build process for scripting PostgreSQL Docker setups. [Check it out](https://cloud.earthly.dev/login).**
 

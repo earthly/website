@@ -1,7 +1,5 @@
 ---
 title: "AWS S3 Backup and Recovery With Restic"
-categories:
-  - Tutorials
 toc: true
 author: Saka-Aiyedun Segun
 editor: Bala Priya C
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to use Restic, an open-source backup software, to protect your valuable data from potential threats. This tutorial will guide you through the process of configuring Restic on your Unix machine, backing up data to an AWS S3 bucket, restoring data, and automating backups with cron jobs. Don't wait any longer, start securing your data today!
 last_modified_at: 2023-07-19
+categories:
+  - Cloud
 ---
 **This tutorial offers a step-by-step guide on using Restic for backups. For Restic users, Earthly streamlines the build process. [Check it out](https://cloud.earthly.dev/login).**
 

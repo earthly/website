@@ -1,7 +1,7 @@
 ---
 title: "Error Handling in Python"
 categories:
-  - Tutorials
+  - Python
 toc: true
 author: Daniel Boadzie
 

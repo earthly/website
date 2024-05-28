@@ -1,7 +1,5 @@
 ---
 title: "AWS ECS Tutorial: Running Your Containers on Amazon"
-categories:
-  - Tutorials
 toc: true
 author: Ndafara Tsamba
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to run your containers on Amazon using AWS ECS. This tutorial will guide you through the process of creating an ECS cluster, deploying a containerized application, and accessing it using the public IP address.
 last_modified_at: 2023-07-14
+categories:
+  - Cloud
 ---
 **This article is about ECS container deployment. Earthly simplifies build automation for developers handling complex microservices. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,5 @@
 ---
 title: "Python Web Scraping with Beautiful Soup and Selenium"
-categories:
-  - Tutorials
 toc: true
 author: Vivek Singh
 
@@ -13,6 +11,8 @@ internal-links:
  - web scraping
 excerpt: |
     This tutorial explains how to scrape website content using Beautiful Soup and Selenium in Python, allowing you to gather data for fine-tuning large language models (LLMs) and improving their accuracy. Beautiful Soup is used for extracting data from static pages, while Selenium is used for scraping dynamic content rendered with JavaScript.
+categories:
+  - Python
 ---
 **This article surveys web scraping techniques. Earthly ensures reproducible builds, helping keep your data scraping projects on track. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

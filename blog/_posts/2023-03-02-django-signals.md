@@ -1,7 +1,5 @@
 ---
 title: "Understanding Django Signals"
-categories:
-  - Tutorials
 toc: true
 author: Arafat Olayiwola
 editor: Bala Priya C
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn all about Django signals and how to use them in your project. This article covers the different types of signals, methods in the Django Signals module, and how to send, receive, and listen to signals. Plus, you'll see a practical application of signals in designing a Forgot Password endpoint.
 last_modified_at: 2023-07-19
+categories:
+  - Python
 ---
 **This article explains the use of Django signals. Earthly significantly accelerates your Django-based REST API's CI pipeline. [Check it out](https://cloud.earthly.dev/login).**
 

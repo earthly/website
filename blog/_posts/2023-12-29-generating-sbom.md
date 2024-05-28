@@ -1,7 +1,5 @@
 ---
 title: "Top 5 Tools for Generating Your SBOM"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 
@@ -12,6 +10,8 @@ internal-links:
  - generate your sbom
 excerpt: |
     This article discusses the importance of generating a software bill of materials (SBOM) and provides an overview of five popular tools for generating SBOMs, including Syft, Tern, Kubernetes bom, SPDX SBOM Generator, and CycloneDX Generator. These tools support various formats and offer different features, making it easier for developers to generate SBOMs and understand their software supply chain.
+categories:
+  - Containers
 ---
 **This article delves into SBOM generation tools. Earthly is a potent build tool highly valued by Docker enthusiasts. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

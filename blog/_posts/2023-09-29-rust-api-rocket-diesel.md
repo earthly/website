@@ -1,7 +1,5 @@
 ---
 title: "Building APIs with Rust Rocket and Diesel"
-categories:
-  - Tutorials
 toc: true
 author: Ukeje Goodness
 editor: Muhammad Badawy
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     This tutorial explores how to build a CRUD REST API using Rust's Rocket web framework and Diesel ORM. It covers setting up the database, handling POST, GET, PUT, and DELETE requests, and interacting with the database using Diesel.
 last_modified_at: 2023-10-06
+categories:
+  - Rust
 ---
 <!-- markdownlint-disable MD036 -->
 **This article provides a guide on creating APIs in Rust using the Rocket framework and Diesel ORM. It explains the setup, configuration, and implementation of CRUD operations in a Rust project, emphasizing practical application through examples.**

@@ -1,7 +1,7 @@
 ---
 title: 5 Blogs for Scala's Birthday
 categories:
-  - Articles
+  - Tutorials
 author: Adam
 internal-links:
   - scala

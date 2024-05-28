@@ -1,7 +1,5 @@
 ---
 title: "Using Kubernetes Persistent Volumes"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 internal-links:
@@ -12,6 +10,8 @@ topic: kubernetes
 excerpt: |
     Learn how to use Kubernetes persistent volumes to store data for stateful applications in your Kubernetes cluster. This article explains what persistent volumes are, why they're important, and how to create and manage them using kubectl.
 last_modified_at: 2023-07-19
+categories:
+  - Orchestration
 ---
 **The article summarizes the complexities of managing Kubernetes storage. Earthly provides consistent and reproducible builds in any environment. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
