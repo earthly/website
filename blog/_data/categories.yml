@@ -57,7 +57,7 @@
   list-name: Makefiles
   title: Makefiles and C++ builds
 
-- name: CLI
+- name: cli
   slug: cli
   list-name: CLI, Scripting and Automation
   title: Command Line Mastery, Shell Scripting and Automation
