@@ -3,13 +3,22 @@
     Consistent, Fast Builds in the Cloud
   </div>
 
-  <a
-    href="https://cloud.earthly.dev/login"
-    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
-    onclick="earthlyCloudGetStartedFreeClick()"
-  >
-    Get Started Free
-  </a>
+  <div class="w-full flex flex-col md:flex-row gap-4 max-w-md mx-auto xl:mx-0 my-4 md:my-1 lg:my-0">
+    <a
+      class="bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer flex-1 inline-block my-0.5 lg:my-2 py-4 rounded-lg shadow-sm text-2xl text-center text-white"
+      href="https://cloud.earthly.dev/login"
+      onclick="earthlyCloudGetStartedFreeClick()"
+    >
+      Get Started Free
+    </a>
+    <a
+      class="border border-2 border-[#2d7e5d] hover:bg-[#f1fbff] cursor-pointer inline-block my-0.5 lg:my-2 px-5 py-4 rounded-lg text-2xl text-center text-[#2d7e5d]"
+      href="/contact-us"
+      onclick="earthlyCloudGetDemoClick()"
+    >
+      Get a Demo
+    </a>
+  </div>
 
   <p class="text-center xl:text-left text-slate-400">No time limit free tier</p>
 </div>
@@ -19,6 +28,13 @@
     analytics.track('earthly-cloud-get-started-free-click', {
       category: 'Earthly Cloud Get Started Free Click',
       label: 'earthly-cloud-get-started-free-click'
+    });
+  }
+
+  function earthlyCloudGetDemoClick() {
+    analytics.track('earthly-cloud-get-a-demo-click', {
+      category: 'Get a Demo Click',
+      label: 'earthly-cloud-get-a-demo-click'
     });
   }
 </script>

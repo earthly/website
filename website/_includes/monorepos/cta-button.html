@@ -9,22 +9,39 @@
         Consistent, Fast Builds in the Cloud
       </p>
 
-      <a
-        href="https://cloud.earthly.dev/login"
-        class="w-full max-w-md mb-20 mt-4 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
-        onclick="bottomCtaTryEarthlySatellitesClick()"
-      >
-        Get Started Free
-      </a>
+      <div class="lg:flex mb-20 gap-4">
+        <a
+          href="https://cloud.earthly.dev/login"
+          class="w-full lg:w-80 max-w-md mt-4 py-4 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
+          onclick="bottomCtaGetEarthlyClick()"
+        >
+          Get Started Free
+        </a>
+
+        <a
+          href="/contact-us"
+          class="w-full flex-1 max-w-md mt-4 px-5 py-4 text-2xl text-center cursor-pointer shadow-sm text-[#2d7e5d] bg-white border border-2 border-[#2d7e5d] hover:bg-[#f1fbff] rounded-lg inline-block"
+          onclick="bottomCtaGetDemoClick()"
+        >
+          Get a Demo
+        </a>
+      </div>
     </div>
   </div>
 </div>
 
 <script>
-  function bottomCtaTryEarthlySatellitesClick() {
-    analytics.track("faster-builds-bottom-cta-get-started-free-click", {
+  function bottomCtaGetEarthlyClick() {
+    analytics.track("monorepo-builds-bottom-cta-get-started-free-click", {
       category: "Get Started Free Click",
-      label: "faster-builds-bottom-cta-get-started-free-click",
+      label: "monorepo-builds-bottom-cta-get-started-free-click",
+    });
+  }
+
+  function bottomCtaGetDemoClick() {
+    analytics.track("monorepo-builds-bottom-cta-get-a-demo-click", {
+      category: "Get a Demo Click",
+      label: "monorepo-builds-bottom-cta-get-a-demo-click",
     });
   }
 </script>

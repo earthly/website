@@ -109,7 +109,11 @@
         >
           Blog
         </a>
-        <div class="inline-flex items-center px-2 xl:px-4">
+        <div class="lg:gap-4 xl:gap-8 inline-flex items-center pl-8 pr-4 lg:pl-5 lg:pr-2.5 xl:pl-8 xl:pr-4">
+          <a href="/contact-us" onclick="navGetDemoClick()">
+            <img src="assets/svg/mail.svg" alt="contact">
+          </a>
+
           <a
             href="https://cloud.earthly.dev/login"
             class="py-4 h-10 px-4 xl:px-6 items-center text-sm xl:text-base text-center text-white bg-[#2d7e5d] hover:bg-green-800 rounded-lg inline-flex"
@@ -123,6 +127,13 @@
   </div>
 
   <script>
+    function navGetDemoClick() {
+      analytics.track("nav-get-a-demo-click", {
+        category: "Get a Demo Click",
+        label: "nav-get-a-demo-click",
+      });
+    }
+
     function navGetEarthlyClick() {
       analytics.track("nav-get-started-free-click", {
         category: "Get Started Free Click",
