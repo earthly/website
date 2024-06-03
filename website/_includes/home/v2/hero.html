@@ -16,13 +16,20 @@
 
     <p class="mt-9 text-center xl:text-left text-slate-400 text-xl">Simple, Fast, Consistent Builds</p>
 
-    <div class="max-w-md mx-auto xl:mx-0">
+    <div class="flex flex-col md:flex-row gap-4 max-w-md mx-auto xl:mx-0 my-4 md:my-1 lg:my-0">
       <a
-        class="w-full bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer inline-block my-0.5 lg:my-2 py-6 rounded-lg shadow-sm text-2xl text-center text-white"
+        class="bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer flex-1 inline-block my-0.5 lg:my-2 py-4 rounded-lg shadow-sm text-2xl text-center text-white"
         href="https://cloud.earthly.dev/login"
         onclick="homepageGetEarthlyClick()"
       >
         Get Started Free
+      </a>
+      <a
+        class="border border-2 border-[#2d7e5d] hover:bg-[#f1fbff] cursor-pointer inline-block my-0.5 lg:my-2 px-5 py-4 rounded-lg text-2xl text-center text-[#2d7e5d]"
+        href="/contact-us"
+        onclick="homepageGetDemoClick()"
+      >
+        Get a Demo
       </a>
     </div>
 
@@ -47,6 +54,13 @@
     analytics.track('homepage-get-started-free-click', {
       category: 'Get Started Free Click',
       label: 'homepage-get-started-free-click'
+    });
+  }
+
+  function homepageGetDemoClick() {
+    analytics.track('homepage-get-a-demo-click', {
+      category: 'Get a Demo Click',
+      label: 'homepage-get-a-demo-click'
     });
   }
 
