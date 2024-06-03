@@ -14,8 +14,6 @@ internal-links:
  - earthly cloud ui more enhanced
 ---
 
-## Updates and Enhancements to the Earthly Cloud UI
-
 Over the past several months, we've been working on revamping the UI of Earthly Cloud to better meet the needs of our users. Previously, our interface allowed you to view your satellites, their instance details, and status, and you could see build logs, but we knew there was room for improvement. We recognized the need to include build details and received valuable feedback from our users requesting features like build timings and build graphs. Today, we're thrilled to announce a series of updates and enhancements to the Earthly Cloud UI.
 
 ## Home Dashboard
@@ -28,7 +26,7 @@ The Earthly Cloud home dashboard isn't new, but it's a great entry point to Eart
 
 ## New Build Details Screen
 
-The new Build Details screen aims to give you more information about your builds, including what commands were executed, how long different parts of the build took to execute, the build graph, and build logs.
+The new Build Details screen aims to give you more information about your builds, including what commands were executed, how long different parts of the build took to execute, the build graph, and build logs. It has 4 tabs:  Overview, Timings, Graph, and Logs.
 
 ### Overview
 
@@ -36,7 +34,7 @@ The new Build Details screen aims to give you more information about your builds
 ![Image]({{site.images}}{{page.slug}}/earthly-cloud-ui-updates-02.png)\
 </div>
 
-The new Build Details screen has four tabs. The first and default tab is the Overview tab. It is a quick look at the status and performance of a build. It shows details like build status, duration, the percentage of the build that was cached, and a high-level build timeline.
+The first and default tab is the Overview tab. It is a quick look at the status and performance of a build. It shows details like build status, duration, the percentage of the build that was cached, and a high-level build timeline.
 
 ### Timings
 
@@ -46,13 +44,13 @@ The new Build Details screen has four tabs. The first and default tab is the Ove
 ![Image]({{site.images}}{{page.slug}}/earthly-cloud-ui-updates-03.png)\
 </div>
 
-The second tab is the Timings tab which has 2 sub-tabs. The first is Target Timings. Target Timings show how long each target run as part of the build took to execute. Clicking any of the targets takes you to its Target Details screen.
+The second tab is the Timings tab which has 2 sub-tabs. The first is Target Timings. Target Timings show how long each target run as part of the build took to execute. Clicking any of the targets takes you to its Target Detail screen.
 
 <div class="wide">
 ![Image]({{site.images}}{{page.slug}}/earthly-cloud-ui-updates-04.png)\
 </div>
 
-The Target Details screen shows you the build logs for the target next to the commands that were executed for the target.
+The Target Detail screen shows you the build logs for the target next to the commands that were executed for the target.
 
 #### Command Timings
 
@@ -60,7 +58,7 @@ The Target Details screen shows you the build logs for the target next to the co
 ![Image]({{site.images}}{{page.slug}}/earthly-cloud-ui-updates-05.png)\
 </div>
 
-The second sub-tab on the Timings tab is Command Timings. This screen gives a detailed breakdown of how long each command run as part of the build took to execute. Clicking any of the commands takes you to its Target Details screen with the command you clicked highlighted.
+The second sub-tab on the Timings tab is Command Timings. This screen gives a detailed breakdown of how long each command run as part of the build took to execute. Clicking any of the commands takes you to its Target Detail screen with the command you clicked highlighted.
 
 ### Build Graph
 
@@ -68,7 +66,7 @@ The second sub-tab on the Timings tab is Command Timings. This screen gives a de
 ![Image]({{site.images}}{{page.slug}}/earthly-cloud-ui-updates-06.png)\
 </div>
 
-The third tab on the Build Details screen is the Graph tab. This tab shows a graph visualization of each target run as part of the build and which relied on which others. Clicking any of the targets takes you to its Target Details screen.
+The third tab on the Build Details screen is the Graph tab. This tab shows a graph visualization of each target run as part of the build and which relied on which others. Clicking any of the targets takes you to its Target Detail screen.
 
 ### Build Logs
 
