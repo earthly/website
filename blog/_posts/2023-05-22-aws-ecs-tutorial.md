@@ -14,6 +14,7 @@ excerpt: |
 last_modified_at: 2023-07-14
 categories:
   - Cloud
+  - Containers
 ---
 **This article is about ECS container deployment. Earthly simplifies build automation for developers handling complex microservices. [Check it out](https://cloud.earthly.dev/login).**
 

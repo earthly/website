@@ -11,6 +11,7 @@ excerpt: |
 last_modified_at: 2023-07-14
 categories:
   - Containers
+  - IaC
 ---
 **This article discusses how Docker and Chef can be combined in CI/CD pipelines. Earthly provides reproducible and parallel builds that integrate smoothly with Docker and Chef. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

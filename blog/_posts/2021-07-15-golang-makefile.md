@@ -15,6 +15,7 @@ excerpt: |
 last_modified_at: 2023-07-24
 categories:
   - Make
+  - Golang
 ---
 **This article teaches you how to automate Golang tasks. Tired of struggling with Makefiles in your Golang projects? Earthly simplifies your build process with strong caching and the ability to run tasks in parallel. [Learn more](https://cloud.earthly.dev/login).**
 

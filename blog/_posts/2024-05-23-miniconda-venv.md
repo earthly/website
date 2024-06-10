@@ -1,7 +1,7 @@
 ---
 title: "How to Create a Python Virtual Environment with Miniconda"
 categories:
-  - Tutorials
+  - Python
 toc: true
 author: Rubaiat Hossain
 

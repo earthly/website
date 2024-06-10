@@ -1,7 +1,7 @@
 ---
 title: "Getting a Repeatable Build, Every Time"
 categories:
-  - Articles
+  - Build
 tags:
   - Makefile
   - Dockerfile

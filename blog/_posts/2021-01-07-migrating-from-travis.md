@@ -2,7 +2,7 @@
 title: Migrating Your Open Source Builds Off Of Travis CI
 featured: true
 categories:
-  - Articles
+  - Build
 author: Adam
 internal-links:
    - travis

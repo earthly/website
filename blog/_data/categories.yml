@@ -72,10 +72,10 @@
   list-name: Bazel Builds
   title: Bazel Build Tutorials
 
-- name: Tutorials
-  slug: tutorials
-  list-name: Miscellaneous
-  title: Programming Tutorials
+# - name: Tutorials
+#   slug: tutorials
+#   list-name: Miscellaneous
+#   title: Programming Tutorials
 
 - name: Articles
   slug: articles

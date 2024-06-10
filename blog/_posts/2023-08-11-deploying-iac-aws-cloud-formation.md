@@ -14,7 +14,7 @@ excerpt: |
 last_modified_at: 2023-08-12
 categories:
   - IaC
-  - Deployment
+  - Cloud
 ---
 **This article provides a detailed guide on using AWS CloudFormation. Earthly significantly improves CI/CD pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

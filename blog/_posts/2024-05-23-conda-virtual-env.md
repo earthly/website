@@ -1,7 +1,7 @@
 ---
 title: "How to Create and Remove a Virtual Environment with conda"
 categories:
-  - Tutorials
+  - Python
 toc: true
 author: Thinus Swart
 

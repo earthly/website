@@ -6,7 +6,7 @@ published: false
 internal-links:
  - just an example
 categories:
-  - Tutorials
+  - Articles
 ---
 
 ### Writing Article Checklist
