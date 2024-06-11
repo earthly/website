@@ -9,7 +9,7 @@
     - name: Containers
       slug: containers
       list-name: Containers
-      title: Containers and Orchestration Tutorials
+      title: Containers Tutorials
 
     - name: Orchestration
       slug: orchestration
@@ -26,14 +26,14 @@
       list-name: Platform Eng.
       title: Platform Tutorials
 
+    - name: cli
+      slug: cli
+      list-name: CLI, Scripting and Automation
+      title: Command Line Mastery, Shell Scripting and Automation
+
 - category: Builds & CI
   enabled: true
   items:
-    - name: GitHub Actions
-      slug: githubactions
-      list-name: GitHub Actions
-      title: GitHub Actions Tutorials
-
     - name: Deployment
       slug: deployment
       list-name: Deployment and CD
@@ -53,10 +53,15 @@
       slug: python-tooling
       list-name: Python Packaging and Builds
       title: Python Packaging, Builds and tools
-    
-    - name: Build
+
+    - name: GitHub Actions
+      slug: githubactions
+      list-name: GitHub Actions
+      title: GitHub Actions Tutorials
+
+    - name: Builds
       slug: build
-      list-name: Build
+      list-name: Other Builds
       title: Builds & CI
 
 - category: Software Engineering
@@ -76,11 +81,6 @@
       slug: rust
       list-name: Rust
       title: Rust Tutorials
-
-    - name: cli
-      slug: cli
-      list-name: CLI, Scripting and Automation
-      title: Command Line Mastery, Shell Scripting and Automation
 
 
 - category: Other

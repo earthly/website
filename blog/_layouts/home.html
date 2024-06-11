@@ -34,7 +34,7 @@ indepth_posts:
         Earthly News
       </h3>
 
-      {% for post in site.categories.News limit:5 %}
+      {% for post in site.categories.news limit:5 %}
       <h2 class="archive__item-title no_toc heading mt-6 pl-2 pr-2 text-md font-semibold" itemprop="headline">
         <a class="hover:underline" href="/blog/{{ post.url }}" rel="permalink">{{ post.title }}
         </a>
@@ -100,7 +100,7 @@ indepth_posts:
   Articles
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Articles limit:3 %}
+  {% for post in site.categories.articles limit:3 %}
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
