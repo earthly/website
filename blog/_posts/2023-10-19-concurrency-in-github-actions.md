@@ -11,7 +11,7 @@ excerpt: |
     This tutorial explains how to control and optimize concurrency in GitHub Actions by utilizing features such as the `concurrency` keyword, workflow triggers, job matrixes, and caching. It also highlights the benefits of a well-implemented concurrency strategy and provides tips for avoiding common pitfalls.
 last_modified_at: 2023-10-17
 categories:
-  - GitHubActions
+  - githubactions
 ---
 **This article explains GitHub Actions concurrency. Earthly provides robust parallel build capabilities for GitHub Actions. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

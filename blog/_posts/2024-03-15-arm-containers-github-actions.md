@@ -11,8 +11,9 @@ internal-links:
 excerpt: |
     This tutorial explains how to automate the creation and deployment of Docker images specifically designed for ARM architecture using GitHub Actions. It covers the process of building and running a Docker image on an ARM device, as well as building an ARM-based Docker image on a non-ARM device.
 categories:
-  - GitHubActions
+  - githubactions
 ---
+
 **Automating ARM Docker images with GitHub Actions can significantly streamline the development process. Earthly Satellites can produce ARM even faster. [Check it out](https://cloud.earthly.dev/login).**
 
 [ARM processor architecture](https://www.arm.com/architecture) is a family of instruction set architectures (ISAs) for central processing units (CPUs). An ISA helps applications talk to the hardware by specifying the processor's capabilities and outlining how user instructions are executed based on those capabilities.

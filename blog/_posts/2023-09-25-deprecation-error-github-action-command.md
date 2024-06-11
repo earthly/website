@@ -1,7 +1,7 @@
 ---
 title: "Resolving Deprecation Errors in GitHub Actions Due to the `set-output`, `save-state`, `add-path` and the `set-env` Workflow Commands"
 categories:
-  - GitHubActions
+  - githubactions
 toc: true
 author: Mustapha Ahmad Ayodeji
 

@@ -1,7 +1,7 @@
 ---
 title: "Caching Dependencies on GitHub Actions"
 categories:
-  - GitHubActions
+  - githubactions
 toc: true
 sidebar:
   nav: github-actions

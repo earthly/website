@@ -249,24 +249,11 @@ indepth_posts:
   GitHub Actions Tutorials
 </h3>
 <div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.GitHubActions limit:3 %}
+  {% for post in site.categories.githubactions limit:3 %}
   {% include_cached archive-single.html post=post type=entries_layout %}
   {% endfor %}
 </div>
 <a href="/blog/categories/githubactions/" class="hover:underline text-lg block text-slate-500 -mt-4">More GitHub Actions Tutorials...</a>
-
-<h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
-  Programming Tutorials
-</h3>
-<div class="entries-grid grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-4">
-  {% for post in site.categories.Tutorials limit:6 %}
-  {% include_cached archive-single.html post=post type=entries_layout %}
-  {% endfor %}
-</div>
-<a href="/blog/categories/tutorials/" class="hover:underline text-lg block text-slate-500 -mt-4">More programming tutorials...</a>
-
-
-
 
 <h3 class="mb-4 mt-4 text-2xl font-semibold text-slate-600 ">
   Popular

@@ -16,7 +16,7 @@ excerpt: |
 last_modified_at: 2023-08-28
 categories:
   - Containers
-  - GitHubActions
+  - githubactions
 ---
 **The article discusses the GitHub Container Registry. DevOps professionals using GHCR benefit from Earthly's approach to fast, reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 
