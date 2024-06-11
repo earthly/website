@@ -125,3 +125,11 @@ PBuilds:
   - python-poetry
   - python-earthly
   - python-makefile
+
+js-tooling:
+ - javascript-monorepo-with-lerna
+ - npm-workspaces-monorepo
+ - build-monorepo-with-turporepo
+ - setup-typescript-monorepo
+ - npm-vs-yarn
+ - npm-vs-npx-vs-pnmp

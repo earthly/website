@@ -15,7 +15,7 @@ excerpt: |
     Learn how to set up a TypeScript monorepo using npm workspaces. This tutorial covers the benefits of monorepos, how to define local packages, and how to use them within your monorepo.
 last_modified_at: 2023-07-11
 categories:
-  - build
+  - js-tooling
 ---
 **The article discusses the advantages of a monorepo approach. Earthly streamlines the build process and guarantees uniformity in builds across multiple projects. [Check it out](https://cloud.earthly.dev/login).**
 

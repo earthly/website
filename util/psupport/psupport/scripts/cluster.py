@@ -19,7 +19,7 @@ CLUSTER_TITLE_FILE = "./blog/_data/cluster_title_cache.pkl"
 # BLACKLIST : List[str] = ["- News", "- Articles"]
 BLACKLIST : List[str] = ["- News"]
 BLACKLIST : List[str] = []
-WHITELIST : List[str] = ["- Python", "- Articles"]
+WHITELIST : List[str] = ["- build", "- articles"]
 # WHITELIST : List[str] = []
 
 def load_cache(cache_file: str) -> dict:
@@ -173,7 +173,7 @@ def main() -> None:
     try:
         folder_path = "./blog/_posts"
         n_clusters = 10  # Adjust as necessary
-        contamination = 0.001  # Adjust as necessary to control the proportion of outliers
+        contamination = 0.101  # Adjust as necessary to control the proportion of outliers
         n_neighbors = 4  # Adjust as necessary for the sensitivity of LOF
 
         all_files, markdown_texts = load_markdown_files(folder_path)

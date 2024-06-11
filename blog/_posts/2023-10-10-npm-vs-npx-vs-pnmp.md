@@ -1,7 +1,5 @@
 ---
 title: "npx vs. npm vs. pnpm: A Comparison for JavaScript Projects"
-categories:
-  - build
 toc: true
 author: Kumar Harsh
 
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     This article compares npx, npm, and pnpm, three popular tools for managing JavaScript projects. It discusses their features, use cases, and when to use or not use each tool.
 last_modified_at: 2023-10-06
+categories:
+  - js-tooling
 ---
 **JavaScript management tools are crucial for integrating with CI workflows. Earthly streamlines this integration by effectively allowing you to use npm, npx, or pnpm with the dependability of containerized builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

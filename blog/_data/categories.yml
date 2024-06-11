@@ -54,6 +54,11 @@
       list-name: Python Packaging and Builds
       title: Python Packaging, Builds and tools
 
+    - name: JS Tooling
+      slug: js-tooling
+      list-name: JS Packaging and Tooling
+      title: JS Packaging and Tooling
+
     - name: GitHub Actions
       slug: githubactions
       list-name: GitHub Actions
