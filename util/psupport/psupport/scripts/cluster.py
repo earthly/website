@@ -19,7 +19,7 @@ CLUSTER_TITLE_FILE = "./blog/_data/cluster_title_cache.pkl"
 # BLACKLIST : List[str] = ["- News", "- Articles"]
 BLACKLIST : List[str] = ["- News"]
 BLACKLIST : List[str] = []
-WHITELIST : List[str] = ["- build", "- articles"]
+WHITELIST : List[str] = ["- build"]
 # WHITELIST : List[str] = []
 
 def load_cache(cache_file: str) -> dict:

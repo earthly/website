@@ -133,3 +133,20 @@ js-tooling:
  - setup-typescript-monorepo
  - npm-vs-yarn
  - npm-vs-npx-vs-pnmp
+
+monorepos:
+  - golang-monorepo
+  - monorepo-vs-polyrepo
+  - javascript-monorepo-with-lerna
+  - monorepo-with-bazel
+  - setup-typescript-monorepo
+  - building-js-monorepo
+  - monorepo-tools
+  - nx-monorepos-guide
+  - build-monorepo-with-turporepo
+  - setup-typescript-monorepo
+  - rust-monorepo
+  - python-monorepo
+  - understanding-monorepos
+  - monorepo-java
+  - merge-queues

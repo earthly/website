@@ -63,6 +63,11 @@
       slug: githubactions
       list-name: GitHub Actions
       title: GitHub Actions Tutorials
+  
+    - name: MonoRepos
+      slug: monorepos
+      list-name: Monorepos
+      title: Monorepo Tutorials
 
     - name: Builds
       slug: build
