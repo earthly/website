@@ -9,7 +9,7 @@ internal-links:
  - create and remove virtual environment
  - 
 categories:
-  - PBuilds
+  - Python-Tooling
   - Python
 ---
 

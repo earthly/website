@@ -11,7 +11,8 @@ excerpt: |
     This article explores the history of the build system Pants, from its early days at Google to its current version, Pants V2. It delves into the challenges faced by large tech organizations in managing builds and how Pants provides solutions for Python monorepos. If you're interested in understanding the background and development of build systems, this article is a must-read.
 last_modified_at: 2023-07-11
 categories:
-  - Build
+  - Python-Tooling
+  - Python
 ---
 **This article summarizes the Pants build system. Earthly significantly enhances CI builds with its caching mechanisms. [Check it out](https://cloud.earthly.dev/login).**
 

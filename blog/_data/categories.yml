@@ -44,20 +44,20 @@
       list-name: Makefiles
       title: Makefiles and C++ builds
 
-    - name: Build
-      slug: build
-      list-name: Build
-      title: Builds & CI
-
     - name: Bazel
       slug: bazel
       list-name: Bazel Builds
       title: Bazel Build Tutorials
     
-    - name: PBuilds
-      slug: python-packaging
+    - name: Python-Tooling
+      slug: python-tooling
       list-name: Python Packaging and Builds
       title: Python Packaging, Builds and tools
+    
+    - name: Build
+      slug: build
+      list-name: Build
+      title: Builds & CI
 
 - category: Software Engineering
   enabled: true

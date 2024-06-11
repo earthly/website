@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     This tutorial explains how to use Docker Init with Python to simplify the creation of Docker configuration files like `Dockerfile`, `compose.yaml`, and `.dockerignore`. Docker Init is a user-friendly tool that generates these files based on project-specific needs, making it easier for developers to containerize their Python applications.
 categories:
-  - PBuilds
+  - Python-Tooling
   - Python
   - Containers
 ---
