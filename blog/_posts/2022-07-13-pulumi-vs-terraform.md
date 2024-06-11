@@ -8,10 +8,10 @@ internal-links:
  - just an example
  - Pulumi
  - Terraform
- - IaC tools
+ - iac tools
 last_modified_at: 2023-07-19
 categories:
-  - IaC
+  - iac
 ---
 **This article compares infrastructure as code (IaC) tools. Earthly's declarative syntax streamlines complex build steps. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

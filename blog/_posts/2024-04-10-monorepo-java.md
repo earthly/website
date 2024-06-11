@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     This tutorial explains how to build a monorepo in Java, including the basic structure of a Java monorepo and the best tools to use for implementation. It also provides step-by-step instructions on building a monorepo with IntelliJ IDEA and Maven, as well as optimizing monorepo builds using Earthly.
 categories:
-  - Build
+  - build
 ---
 **This article explains how to streamline Java monorepos. Earthly simplifies and stabilizes Java monorepo builds. [Check it out](https://cloud.earthly.dev/login).**
 

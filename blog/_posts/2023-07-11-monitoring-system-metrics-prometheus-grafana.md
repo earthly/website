@@ -14,7 +14,7 @@ excerpt: |
     Learn how to set up a monitoring stack using Prometheus, Grafana, and Alertmanager to track system metrics and identify performance issues. This step-by-step tutorial will guide you through the process of configuring and starting the monitoring services, accessing the web UIs, and triggering alerts to test the system.
 last_modified_at: 2023-07-19
 categories:
-  - Cloud
+  - cloud
 ---
 **This article outlines how to set up a monitoring stack. Earthly secures consistent builds, complementing system monitoring with Prometheus. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

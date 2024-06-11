@@ -6,7 +6,7 @@ editor: Mustapha Ahmad Ayodeji
 sidebar:
   nav: "bazel"
 internal-links:
- - Bazel
+ - bazel
  - Typescript
  - Automation
  - Jest
@@ -15,7 +15,7 @@ excerpt: |
     Learn how to use Bazel with TypeScript to build and test your projects faster and more efficiently. Discover the benefits of Bazel's advanced caching and parallelization features, and explore how to customize Bazel for your TypeScript project.
 last_modified_at: 2023-07-11
 categories:
-  - Bazel
+  - bazel
 ---
 **This article examines how Bazel and TypeScript work together for reliable builds. Earthly guarantees consistent and reproducible builds for Bazel users in different environments. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
@@ -193,7 +193,7 @@ The previous rules in the `BUILD` file tell Bazel the following:
 
 - The rule is named `transpile`.
 - The input files that need to be compiled are to be found in the path `src/index.ts`.
-- Bazel should fetch the compiler configuration from the `tsconfig.json` file in the current directory, as denoted by `//`.
+- bazel should fetch the compiler configuration from the `tsconfig.json` file in the current directory, as denoted by `//`.
 - `allow_js` is set as `True`, which means that TypeScript should allow JavaScript files to be imported within the `.ts` project files.
 - `resolve_json_module` is set as `True`, which means that Bazel should allow the import of `.json` extension files within the `.ts` project files.
 

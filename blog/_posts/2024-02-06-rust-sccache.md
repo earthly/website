@@ -8,7 +8,7 @@ internal-links:
 excerpt: |
     This tutorial explains how to use sccache, a tool that can speed up Rust compilation by caching the output of compilation and reusing it for subsequent builds. It covers installing and configuring sccache, integrating it with Cargo, measuring and optimizing build performance, and using caching in continuous integration (CI) environments.
 categories:
-  - Rust
+  - rust
 ---
 **This article discusses how to optimize Rust builds. Earthly significantly speeds up Rust build times. [Learn more](https://cloud.earthly.dev/login).**
 

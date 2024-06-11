@@ -1,7 +1,7 @@
 ---
 title: "From Go to Rust: The Two Types of Readable Code"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Adam
 sidebar:

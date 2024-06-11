@@ -10,7 +10,7 @@ excerpt: |
     Learn how to achieve repeatability in your continuous integration pipeline and improve the reliability, reproducibility, reusability, and speed of your builds. Discover best practices for test automation, adopting continuous integration, and fixing broken builds immediately.
 last_modified_at: 2023-07-19
 categories:
-  - Build
+  - build
 ---
 **This article delves into Continuous Integration practices. If you're committed to improving your CI workflows, Earthly can help. [Discover Earthly's role](https://cloud.earthly.dev/login).**
 

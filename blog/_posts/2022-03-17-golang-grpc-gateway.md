@@ -12,7 +12,7 @@ excerpt: |
     In this article, the author explores different ways to create a gRPC gateway that accepts HTTP requests and proxies them to a gRPC service. They cover building a proxy using grpc-gateway, creating a REST service based on the same proto file as the gRPC service, and combining REST and gRPC requests in a single service. The author also discusses TLS, certificate generation, and HTTP/2 in the context of these implementations.
 last_modified_at: 2024-04-13
 categories:
-  - Golang
+  - golang
 ---
 **Exploring gRPC gateway methods? Earthly simplifies your build process for gRPC services. [Check it out](https://cloud.earthly.dev/login/).**
 

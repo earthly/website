@@ -1,7 +1,7 @@
 ---
 title: 'Building a Real-Time Application in the Phoenix Framework with Elixir'
 categories:
-  - Articles
+  - articles
 toc: true
 author: Allan MacGregor
 internal-links:

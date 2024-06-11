@@ -8,12 +8,12 @@ internal-links:
  - Kubernetes
  - OpenShift
  - Container
- - Deployment 
+ - deployment 
 excerpt: |
     Learn the key differences between OpenShift and Kubernetes, two popular container orchestration tools, and discover which one is the best fit for your cloud-native strategy. Find out how these platforms compare in terms of ease of use, deployment, continuous integration, security, installation, and updates.
 last_modified_at: 2023-07-19
 categories:
-  - Orchestration
+  - orchestration
 ---
 **The article compares Kubernetes and OpenShift. Earthly provides isolated build environments for enhanced security in CI/CD. [Check it out](https://cloud.earthly.dev/login).**
 

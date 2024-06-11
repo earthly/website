@@ -1,7 +1,7 @@
 ---
 title: "Rust, Ruby, and the Art of Implicit Returns"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Adam
 sidebar:

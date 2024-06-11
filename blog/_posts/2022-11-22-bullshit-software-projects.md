@@ -1,7 +1,7 @@
 ---
 title: "Bullshit Software Projects"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Adam
 excerpt: |

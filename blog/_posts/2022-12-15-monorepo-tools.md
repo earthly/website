@@ -1,7 +1,7 @@
 ---
 title: "Monorepo Build Tools"
 categories:
-  - Build
+  - build
 author: Adam
 sidebar:
   nav: monorepos

@@ -11,7 +11,7 @@ excerpt: |
     Learn how to securely manage secrets in Docker with Docker secrets. This article explains the benefits of using Docker secrets and provides a step-by-step guide on setting up Docker Swarm and leveraging Docker secrets in your development workflow.
 last_modified_at: 2023-07-11
 categories:
-  - Containers
+  - containers
 ---
 **This article discusses managing Docker secrets. Earthly significantly improves CI pipelines for Docker Swarm users. [Check it out](https://cloud.earthly.dev/login/).**
 

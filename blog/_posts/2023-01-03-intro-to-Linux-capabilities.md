@@ -7,7 +7,7 @@ editor: Bala Priya C
 internal-links:
  - Kubernetes
  - Linux
- - Containers
+ - containers
  - Pods
 excerpt: |
     Learn about Linux capabilities and how they allow for fine-grained control over the privileges of running processes. Discover how to use capabilities in Docker containers and Kubernetes, and understand the importance of setting the right capabilities for your containerized workloads.

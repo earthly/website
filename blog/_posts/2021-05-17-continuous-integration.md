@@ -1,7 +1,7 @@
 ---
 title: "What Is Continuous Integration?"
 categories: 
-  - Build
+  - build
 toc: true 
 author: Deborah Ruck
 internal-links:

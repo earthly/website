@@ -5,7 +5,7 @@ author: Aniket Bhattacharyea
 editor: Bala Priya C
 
 internal-links:
- - Rust Macros
+ - rust Macros
  - Metaprogramming
  - Macro
  - Programming
@@ -14,7 +14,7 @@ excerpt: |
     This article explores the power of macros in Rust, providing practical examples and best practices for using them effectively. Whether you're new to macros or looking to enhance your understanding, this article will help you harness the full potential of macros in your Rust projects.
 last_modified_at: 2023-07-19
 categories:
-  - Rust
+  - rust
 ---
 **This article delves into the power and versatility of Rust macros. Earthly guarantees a build process as robust as the macros you create. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

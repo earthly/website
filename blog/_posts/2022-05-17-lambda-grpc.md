@@ -10,7 +10,7 @@ excerpt: |
     Learn how to combine GRPC, AWS Lambdas, and GoLang to create a powerful serverless architecture. Discover different approaches to proxying GRPC requests on Lambda and explore the limitations of running a GRPC service on an AWS Lambda.
 last_modified_at: 2023-07-19
 categories:
-  - Golang
+  - golang
 ---
 **This article discusses integrating GRPC with AWS Lambda. Earthly provides a reproducible build environment for this integration. [Check it out](https://cloud.earthly.dev/login).**
 

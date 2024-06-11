@@ -1,8 +1,8 @@
 ---
 title: "Watch People Doing the Thing"
 categories:
-  - Golang
-  - Articles
+  - golang
+  - articles
 author: Adam
 internal-links:
  - live coding

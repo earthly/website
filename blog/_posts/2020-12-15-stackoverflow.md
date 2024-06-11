@@ -1,7 +1,7 @@
 ---
 title: "Earthly on Stack Overflow podcast"
 categories:
-  - News
+  - news
 toc: false
 author: Earthly
 excerpt: |

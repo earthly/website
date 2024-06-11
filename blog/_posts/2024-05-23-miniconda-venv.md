@@ -9,7 +9,7 @@ internal-links:
  - python virtual environment with miniconda
  - use miniconda to create a python virtual environment
 categories:
-  - Python-Tooling
+  - python-tooling
   - Python
 ---
 

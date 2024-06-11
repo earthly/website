@@ -3,7 +3,7 @@ title: On YAML Discussions
 tags:
 - news
 categories:
-  - Articles
+  - articles
 author: Adam
 excerpt: |
     Learn about the pitfalls and discussions surrounding the use of YAML as a programming language, including the challenges of config traps, alternative solutions like Dhall and HCL, the creation of DSLs, and the benefits of using a full programming language for configuration files. Dive into the lively discussions on Reddit, Hacker News, and Lobste.rs to gain insights from the programming community.

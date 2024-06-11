@@ -130,7 +130,7 @@ Languages:
   Programming:
   - Python
   - JavaScript
-  - Golang
+  - golang
 ~~~
   
 You can also create multiple blocks of *yaml* data from a Python object, such as a list of dictionaries into a single stream, where each dictionary is represented as a YAML document. To do this, you can use the `dump_all()` function.

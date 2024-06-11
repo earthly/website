@@ -12,7 +12,7 @@ excerpt: |
     Learn how to deploy Azure functions using Node.js with this tutorial. Discover the benefits of serverless computing and how it can simplify your application deployment process.
 last_modified_at: 2023-08-17
 categories:
-  - Cloud
+  - cloud
 ---
 **This article explains how to deploy Azure Functions. Earthly ensures consistent and reproducible builds in your CI/CD pipeline. [Check it out](https://cloud.earthly.dev/login).**
 

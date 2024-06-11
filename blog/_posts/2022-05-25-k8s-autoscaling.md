@@ -10,7 +10,7 @@ excerpt: |
     
 last_modified_at: 2023-07-14
 categories:
-  - Orchestration
+  - orchestration
 ---
 **This article examines Kubernetes autoscaling techniques. Earthly simplifies the build process for seamless Kubernetes deployments. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -14,7 +14,7 @@ excerpt: |
     This tutorial explores the use of `npm` workspaces for managing monorepos in software development. It covers the benefits and limitations of using `npm` workspaces and provides a step-by-step guide on setting up and implementing them.
 last_modified_at: 2023-10-06
 categories:
-  - Build
+  - build
 ---
 **This article discusses npm workspaces. Earthly ensures build consistency for teams utilizing npm workspaces, monorepos and many programming languages. [Check it out](https://cloud.earthly.dev/login).**
 

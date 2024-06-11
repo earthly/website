@@ -2,7 +2,7 @@
 title: "How To Efficiently Cache Dependencies in Earthfiles"
 slug: efficiently-cache-dependencies-earthfiles
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 topcta: false

@@ -3,7 +3,7 @@ title: 'Introducing Earthly: build automation for the container era'
 featured: true
 author: Vlad
 categories:
-  - News
+  - news
 toc: false
 internal-links:
    - build automation

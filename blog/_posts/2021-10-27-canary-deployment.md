@@ -1,8 +1,8 @@
 ---
 title: "The Canary Deployment Strategy and When to Use It"
 categories:
-  - Deployment
-  - Orchestration
+  - deployment
+  - orchestration
 toc: true
 author: Keanan Koppenhaver
 sidebar:

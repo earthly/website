@@ -13,7 +13,7 @@ excerpt: |
     Learn how Docker images are stored on the host machine and gain a deeper understanding of Docker image management. Discover the internals of Docker images, including layers, DiffIDs, and ChainIDs, and explore the storage drivers used by Docker.
 last_modified_at: 2023-07-19
 categories:
-  - Containers
+  - containers
 ---
 **This article explains how to create Docker images. Earthly optimizes the build process for Docker images, ensuring reproducibility and cache efficiency. Learn more about Earthly.**
 

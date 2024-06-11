@@ -1,7 +1,7 @@
 ---
 title: "Don't Feed the Thought Leaders"
 categories:
-  - Articles
+  - articles
 author: Adam
 featured: true
 toc: false

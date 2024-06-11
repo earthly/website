@@ -10,7 +10,7 @@ internal-links:
 excerpt: |
     Backstage is an open source project that helps companies create developer portals to manage and consolidate all their services, configurations, and secrets in one place. It comes with features like a Software Catalog, TechDocs, and Templates, and allows for customization and integration with third-party services.
 categories:
-  - Platform
+  - platform
 ---
 **This article provides a step-by-step process for setting up Backstage. Earthly guarantees reproducible builds. A great tool to pair with Backstage. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

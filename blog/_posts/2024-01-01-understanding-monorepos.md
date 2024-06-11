@@ -12,7 +12,7 @@ excerpt: |
     This article explores the benefits of monorepos and discusses high-performance build systems like Nx and Turborepo that can help improve the scalability and efficiency of monorepos. These build systems create a dependency tree, utilize caching, and enable parallel job execution to optimize the build process and reduce build times.
 last_modified_at: 2023-08-28
 categories:
-  - Build
+  - build
 ---
 **This article identifies top tools for optimizing monorepos. Earthly simplifies and standardizes developer builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

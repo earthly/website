@@ -1,7 +1,7 @@
 ---
 title: "Merge Queues: What You Need to Know"
 categories:
-  - Build
+  - build
 toc: true
 author: Carlos Inocencio
 

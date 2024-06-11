@@ -1,6 +1,6 @@
 
 # IaC:
-#  - IaC-terraform-cdk
+#  - iac-terraform-cdk
 #  - terraform-init-plan-apply
 #  - terraform-depends-on-argument
 #  - create-manage-vpc-terraform

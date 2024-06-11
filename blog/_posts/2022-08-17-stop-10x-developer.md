@@ -1,7 +1,7 @@
 ---
 title: "Stop saying 10x developer"
 categories:
-  - Articles
+  - articles
 author: Adam
 bottomcta: false
 internal-links:

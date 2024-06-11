@@ -14,7 +14,7 @@ internal-links:
   - machine code
 last_modified_at: 2023-07-14
 categories:
-  - Containers
+  - containers
 ---
 **Explore the nuances of building Docker images in this article. Earthly can upgrade your build process with advanced caching of docker layers and parallel execution. [Learn how](https://cloud.earthly.dev/login).**
 

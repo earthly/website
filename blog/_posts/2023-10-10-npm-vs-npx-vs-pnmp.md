@@ -1,7 +1,7 @@
 ---
 title: "npx vs. npm vs. pnpm: A Comparison for JavaScript Projects"
 categories:
-  - Build
+  - build
 toc: true
 author: Kumar Harsh
 

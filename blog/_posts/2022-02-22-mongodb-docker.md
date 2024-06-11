@@ -9,7 +9,7 @@ excerpt: |
     Learn how to use MongoDB with Docker to containerize your development environment and easily create isolated instances of MongoDB. This tutorial covers the best practices for running MongoDB in a Docker container, hosting a Flask app, and using Docker volumes to persist data.
 last_modified_at: 2023-09-19
 categories:
-  - Containers
+  - containers
 ---
 **This article examines how MongoDB and Docker work together. Earthly guarantees reproducible Docker builds for MongoDB. [Learn more about Earthly](https://cloud.earthly.dev/login/).**
 

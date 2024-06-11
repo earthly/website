@@ -1,7 +1,7 @@
 ---
 title: "Deployment Strategies"
 categories:
-  - Deployment
+  - deployment
 author: Adam
 toc: true 
 sidebar:

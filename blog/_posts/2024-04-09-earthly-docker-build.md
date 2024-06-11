@@ -2,7 +2,7 @@
 title: "Introducing Earthly docker-build: Faster Docker Builds, Persistent Cache, Works with Any CI"
 slug: earthly-docker-build
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 topcta: false

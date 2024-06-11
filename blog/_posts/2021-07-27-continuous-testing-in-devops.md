@@ -10,7 +10,7 @@ excerpt: |
     Learn how to implement continuous testing in your DevOps workflows using GitHub Actions. This tutorial covers the basics of continuous testing, including unit tests, API testing, end-to-end testing, and performance testing. Discover how to automate your testing process and improve the quality of your software releases.
 last_modified_at: 2023-07-14
 categories:
-  - Deployment
+  - deployment
 ---
 **In this article explore the benefits of automation testing. Using GitHub Actions for CI/CD? Earthly can seamlessly boost your testing workflows. [Learn how](https://cloud.earthly.dev/login).**
 
@@ -26,8 +26,8 @@ Extending the CI process by adding automated tests is referred to as continuous 
 
 A good CI/CT process always contains at least the following steps:
 
-- Build
-- Deployment
+- build
+- deployment
 - Integration tests
 - End-to-end tests
 

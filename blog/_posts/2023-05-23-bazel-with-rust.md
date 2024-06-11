@@ -6,16 +6,16 @@ editor: Bala Priya C
 sidebar:
   nav: "bazel"
 internal-links:
- - Rust
- - Bazel
+ - rust
+ - bazel
  - Deploy
  - Applications
- - Build
+ - build
 excerpt: |
     Learn how to use Bazel with Rust to simplify the build and deployment process of your applications. This article provides a step-by-step guide on setting up Bazel, building a Rust application, and running tests, helping you streamline your development workflow and improve build efficiency.
 last_modified_at: 2023-07-11
 categories:
-  - Bazel
+  - bazel
 ---
 **The article discusses integrating Bazel with Rust for improved build speeds. Earthly provides caching mechanisms that can accelerate build times for Rust developers. [Check it out](https://cloud.earthly.dev/login).**
 

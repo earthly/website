@@ -608,7 +608,7 @@ Recall that the browser flow does not occur on the non-web client. So, the non-w
 
 The `get_access_token_from_login_code` function involves the following steps:
 
-- Makes an API call to the Facebook access token endpoint with the device code and access token passed as query params.
+- makes an API call to the Facebook access token endpoint with the device code and access token passed as query params.
 - Calls the `_handle_error_from_login_code` function if there is an error. If the error is not a `PendingActionError` it raises an exception that terminates the function execution and if otherwise, delays the code by the 5s using `await asyncio.sleep()`.
 - The polling is achieved by using [recursion](https://users.cs.utah.edu/~germain/PPS/Topics/recursion.html). You can also use a loop to achieve the polling.
 

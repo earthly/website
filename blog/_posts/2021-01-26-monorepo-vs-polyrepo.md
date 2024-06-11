@@ -2,7 +2,7 @@
 title: Monorepo vs Polyrepo
 featured: true
 categories:
-  - Build
+  - build
 sidebar:
   nav: monorepos
 tags:

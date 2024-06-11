@@ -1,7 +1,7 @@
 ---
 title: "Making Your Docker Builds Faster with cargo-chef"
 categories:
-  - Rust
+  - rust
 toc: true
 author: Utibeabasi Umanah
 

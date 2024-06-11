@@ -1,7 +1,7 @@
 ---
 title: "The (Opinionated) Way We Interview Engineers"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Vlad
 published: true

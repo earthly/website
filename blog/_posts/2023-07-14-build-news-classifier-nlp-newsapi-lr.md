@@ -7,7 +7,7 @@ editor: Mustapha Ahmad Ayodeji
 internal-links:
  - NLP
  - Logistic Regression
- - Build
+ - build
  - Categorization
 excerpt: |
     Learn how to build a news categorization classifier using NewsAPI, NLP, and Logistic Regression. Discover the steps to preprocess text data, train and test a logistic regression model, and predict the category of news articles.

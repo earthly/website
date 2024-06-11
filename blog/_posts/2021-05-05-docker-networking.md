@@ -13,7 +13,7 @@ excerpt: |
     This article provides a comprehensive guide to understanding Docker networking. It covers the basics of Docker networking, including different network drivers and their use cases. The article also explores advanced concepts like overlay and macvlan networks, as well as how to publish container ports and configure DNS. Whether you're new to Docker or looking to enhance your networking knowledge, this article is a must-read.
 last_modified_at: 2023-07-11
 categories:
-  - Containers
+  - containers
 ---
 **This article explores Docker networking. If you love Docker, Earthly can simplify your container build process. [Discover how](https://cloud.earthly.dev/login).**
 

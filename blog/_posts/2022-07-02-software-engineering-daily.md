@@ -1,7 +1,7 @@
 ---
 title: "Earthly on Software Engineering Daily"
 categories:
-  - News
+  - news
 toc: false
 topcta: false
 author: Earthly

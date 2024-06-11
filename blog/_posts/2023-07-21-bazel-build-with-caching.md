@@ -12,7 +12,7 @@ excerpt: |
     Learn how to improve your Bazel build times by using a cache. This article explains the benefits of caching, the different types of caches, and how to set up a local or remote cache with Bazel.
 last_modified_at: 2023-07-28
 categories:
-  - Bazel
+  - bazel
 ---
 **This article examines Bazel caching options. Earthly provides a powerful built-in caching system for your builds. It's a simpler take on the ideas of Bazel. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

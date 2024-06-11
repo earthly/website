@@ -14,7 +14,7 @@ excerpt: |
     Learn all about Terraform variables and how to use them in this comprehensive guide. Discover the different variable types, their usage, and workarounds for their limitations. Whether you're new to Terraform or looking to enhance your skills, this article has got you covered.
 last_modified_at: 2023-08-24
 categories:
-  - IaC
+  - iac
 ---
 **This article summarizes Terraform variables. Earthly improves your CI/CD pipeline. Improve your cloud infrastructure. [Check it out](https://cloud.earthly.dev/login).**
 

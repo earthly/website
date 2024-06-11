@@ -16,7 +16,7 @@ excerpt: |
 last_modified_at: 2023-07-19
 
 categories:
-  - Make
+  - make
 ---
 **The article provides insights into cross-compiling for ARM64 architectures. Earthly simplifies the process of cross-compilation for those who use CMake. [Learn how](https://cloud.earthly.dev/login).**
 

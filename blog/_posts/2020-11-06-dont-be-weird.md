@@ -1,7 +1,7 @@
 ---
 title: Technology choice? Don't be weird
 categories:
-  - Articles
+  - articles
 tags:
   - Interview
 author: Corey

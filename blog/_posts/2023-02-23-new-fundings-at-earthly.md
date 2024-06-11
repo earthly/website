@@ -1,7 +1,7 @@
 ---
 title: "Announcing Earthly's $6.5M Seed+ round"
 categories:
-  - News
+  - news
 toc: false
 author: Vlad
 topcta: false

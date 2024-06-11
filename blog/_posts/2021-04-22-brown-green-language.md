@@ -2,7 +2,7 @@
 title: "Green Vs. Brown Programming Languages"
 author: Adam
 categories:
-  - Articles
+  - articles
 author: Adam
 sidebar:
   nav: "thoughts"

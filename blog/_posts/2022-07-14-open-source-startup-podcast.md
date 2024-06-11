@@ -1,7 +1,7 @@
 ---
 title: "Earthly And Vlad on Open Source Startup Podcast"
 categories:
-  - News
+  - news
 topcta: false
 author: Earthly
 excerpt: |

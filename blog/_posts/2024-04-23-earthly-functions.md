@@ -1,7 +1,7 @@
 ---
 title: "Introducing Earthly Functions: Reusable Code for More Modular, Consistent Build Files"
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 topcta: false

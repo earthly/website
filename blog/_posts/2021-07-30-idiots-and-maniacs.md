@@ -1,7 +1,7 @@
 ---
 title: "Idiots And Maniacs"
 categories:
-  - Articles
+  - articles
 author: Adam
 sidebar:
   nav: "thoughts"

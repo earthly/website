@@ -2,7 +2,7 @@
 title: "Welcoming Wes McKinney as an advisor to Earthly"
 
 categories:
-  - News
+  - news
 tags:
   - advisor
   - data-engineering

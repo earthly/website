@@ -1,7 +1,7 @@
 ---
 title: "How NOCD Reduced Build Times by 9x with Earthly and Earthly Cloud"
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 topcta: false
