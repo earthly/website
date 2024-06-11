@@ -14,6 +14,7 @@ excerpt: |
 last_modified_at: 2023-07-19
 categories:
   - Containers
+  - Cloud
 ---
 **This article discusses how to use Grafana within Docker containers. Earthly simplifies Docker container builds. Great for Grafana fans. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -1,86 +1,99 @@
-- name: Cloud
-  slug: cloud
-  list-name: Cloud
-  title: Cloud Tutorials
+- category: DevOps
+  enabled: true
+  items:
+    - name: Cloud
+      slug: cloud
+      list-name: Cloud
+      title: Cloud Tutorials
 
-- name: Platform
-  slug: platform
-  list-name: Platform
-  title: Platform Tutorials
+    - name: Containers
+      slug: containers
+      list-name: Containers
+      title: Containers and Orchestration Tutorials
 
-- name: Build
-  slug: build
-  list-name: Build
-  title: Build Tutorials
+    - name: Orchestration
+      slug: orchestration
+      list-name: Container Orchestration
+      title: Container Orchestration Tutorials
 
-- name: Writing
-  slug: writing
-  title: Writing Tutorials
+    - name: IaC
+      slug: iac
+      list-name: Infrastructure as Code
+      title: Infrastructure as Code Tutorials
 
-- name: Python
-  slug: python
-  list-name: Python
-  title: Python Development Tutorials
+    - name: Platform
+      slug: platform
+      list-name: Platform Eng.
+      title: Platform Tutorials
 
-- name: Golang
-  slug: golang
-  list-name: Golang
-  title: Golang Tutorials
+- category: Builds & CI
+  enabled: true
+  items:
+    - name: GitHubActions
+      slug: githubactions
+      list-name: GitHub Actions
+      title: GitHub Actions Tutorials
 
-- name: Rust
-  slug: rust
-  list-name: Rust
-  title: Rust Tutorials
+    - name: Deployment
+      slug: deployment
+      list-name: Deployment and CD
+      title: Deployment and Continuous Deployment
 
-- name: GitHubActions
-  slug: githubactions
-  list-name: GitHub Actions
-  title: GitHub Actions Tutorials
+    - name: Make
+      slug: make
+      list-name: Makefiles
+      title: Makefiles and C++ builds
 
-- name: Containers
-  slug: containers
-  list-name: Containers 
-  title: Containers and Orchestration Tutorials
+    - name: Build
+      slug: build
+      list-name: Build
+      title: Builds & CI
 
-- name: Orchestration
-  slug: orchestration
-  list-name: Container Orchestration 
-  title: Container Orchestration Tutorials
+    - name: Bazel
+      slug: bazel
+      list-name: Bazel Builds
+      title: Bazel Build Tutorials
+    
+    - name: PBuilds
+      slug: python-packaging
+      list-name: Python Packaging and Builds
+      title: Python Packaging, Builds and tools
 
-- name: Deployment
-  slug: deployment
-  list-name: Deployment and CD
-  title: Deployment and Continous Deployment
+- category: Software Engineering
+  enabled: true
+  items:
+    - name: Python
+      slug: python
+      list-name: Python
+      title: Python Development Tutorials
 
-- name: Make
-  slug: make
-  list-name: Makefiles
-  title: Makefiles and C++ builds
+    - name: Golang
+      slug: golang
+      list-name: Golang
+      title: Golang Tutorials
 
-- name: cli
-  slug: cli
-  list-name: CLI, Scripting and Automation
-  title: Command Line Mastery, Shell Scripting and Automation
+    - name: Rust
+      slug: rust
+      list-name: Rust
+      title: Rust Tutorials
 
-- name: IaC
-  slug: iac
-  list-name: Infrastructure as Code
-  title: Infrastructure as Code Tutorials
+    - name: cli
+      slug: cli
+      list-name: CLI, Scripting and Automation
+      title: Command Line Mastery, Shell Scripting and Automation
 
-- name: Bazel
-  slug: bazel
-  list-name: Bazel Builds
-  title: Bazel Build Tutorials
 
-# - name: Tutorials
-#   slug: tutorials
-#   list-name: Miscellaneous
-#   title: Programming Tutorials
+- category: Other
+  enabled: false
+  items:
+    - name: Writing
+      slug: writing
+      title: Writing Tutorials
 
-- name: Articles
-  slug: articles
-  title: Articles
+    - name: Articles
+      slug: articles
+      title: Articles
 
-- name: News
-  slug: news
-  title: News
+    - name: News
+      slug: news
+      title: News

@@ -14,9 +14,6 @@ categories:
 ---
 **This article discusses how to automate Kubernetes deployments. Earthly optimizes deployment pipelines effectively. [Check it out](https://cloud.earthly.dev/login).**
 
-**This article is about Spinnaker Kubernetes deployments. Summary:
-This blog post provides a comprehensive tutorial on using Spinnaker, an open-source continuous delivery platform, for automating Kubernetes deployments. [Check it out](https://cloud.earthly.dev/login).**
-
 Kubernetes has become the standard for deploying and managing containerized applications, but there are a lot of questions to be answered in the cloud native space. And they all seem to center around a single theme:
 
 *How do you constantly release software with speed, quality, and confidence?*

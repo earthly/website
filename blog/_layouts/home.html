@@ -72,22 +72,29 @@ indepth_posts:
       <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600">
         Tutorial Categories
       </h3>
-      <ul class="mb-4">
-        {% for category in site.data.categories %}
-          {% if category.list-name %}
-            <li class="mb-1 series-item">
-              <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
-                <a class="hover:underline" href="/blog/categories/{{ category.slug }}/" rel="permalink">{{ category.list-name }}</a>
-              </h2>
-            </li>
-          {% endif %}
-        {% endfor %}
-      </ul>
+
+      {% for category_group in site.data.categories %}
+      {% if category_group.enabled %}
+          <h4 class="mb-4 mt-6 text-xl font-semibold text-slate-700">
+            {{ category_group.category }}
+          </h4>
+          <ul class="mb-4">
+            {% for category in category_group.items %}
+              {% if category.list-name %}
+                <li class="mb-1 series-item">
+                  <h2 class="archive__item-title no_toc heading pr-2 text-md font-semibold" itemprop="headline">
+                    <a class="hover:underline" href="/blog/categories/{{ category.slug }}/" rel="permalink">{{ category.list-name }}</a>
+                  </h2>
+                </li>
+              {% endif %}
+            {% endfor %}
+          </ul>
+        {% endif %}
+      {% endfor %}
+      
     </div>
   </div>
-
 </div>
-
 
 <h3 class="mb-4 mt-9 text-2xl font-semibold text-slate-600 ">
   Articles
