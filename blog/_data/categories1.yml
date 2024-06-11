@@ -112,4 +112,16 @@
 
 
 PBuilds:
-
+  - python-hatch
+  - pyinstaller
+  - miniconda-venv
+  - conda-virtual-env
+  - docker-init-in-python
+  - create-python-package
+  - poetry-publish
+  - python-c-extension
+  - circle-ci-with-django
+  - pytest-fixtures
+  - python-poetry
+  - python-earthly
+  - python-makefile
