@@ -48,15 +48,8 @@ layout: default
               <span class="text-slate-400 ml-1 mr-1">/</span>
               <a href="/blog/series/{{ page.sidebar.nav }}" class="text-xl text-blue-600 font-semibold hover:underline">{{ site.data.navigation[page.sidebar.nav][0].title }}</a>
             {% else %}
-              {% assign category_slug = page.categories[0] | downcase %}
-              {% assign category_name = nil %}
-              {% for category in site.data.categories %}
-                {% for item in category.items %}
-                  {% if item.slug == category_slug %}
-                    {% assign category_name = item.name %}
-                  {% endif %}
-                {% endfor %}
-              {% endfor %}
+            {% assign category_slug = page.categories[0] %}
+            {% assign category_name = site.data.indexes.category_name[category_slug] %}
               <a href="/blog/categories/{{ category_slug }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ category_name }}</a>
             {% endif %}
           </div>
