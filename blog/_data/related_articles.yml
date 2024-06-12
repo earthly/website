@@ -5560,12 +5560,12 @@ on-star-history:
  - konfig
  - earthly-functions
  - efficiently-cache-dependencies-earthfiles
+ - earthly-cloud-ui-updates
  - earthly-v0-8
  - self-hosted-satellites
  - cargo-chef
  - docker-build-cloud
  - larger-satellite-sizes
- - docker-init-in-go
 
 
 konfig:
@@ -5597,6 +5597,7 @@ build-buildkit-cache:
 earthly-v0-8:
  - earthly-docker-build
  - earthly-functions
+ - earthly-cloud-ui-updates
  - efficiently-cache-dependencies-earthfiles
  - konfig
  - self-hosted-satellites
@@ -5604,7 +5605,6 @@ earthly-v0-8:
  - incremental-rust-builds
  - larger-satellite-sizes
  - on-star-history
- - monorepo-java
 
 
 python-monorepo:
@@ -5674,6 +5674,7 @@ gradle-monorepo:
 
 larger-satellite-sizes:
  - self-hosted-satellites
+ - earthly-cloud-ui-updates
  - earthly-docker-build
  - earthly-v0-8
  - earthly-functions
@@ -5682,7 +5683,6 @@ larger-satellite-sizes:
  - auto-skip
  - konfig
  - soc-type-two
- - incremental-rust-builds
 
 
 cargo-workspace-crates:
@@ -5728,13 +5728,13 @@ self-hosted-satellites:
  - earthly-docker-build
  - larger-satellite-sizes
  - earthly-v0-8
+ - earthly-cloud-ui-updates
  - earthly-functions
  - konfig
  - auto-skip
  - efficiently-cache-dependencies-earthfiles
  - on-star-history
  - docker-build-cloud
- - incremental-rust-builds
 
 
 namespaces-and-cgroups-docker:
@@ -5790,6 +5790,7 @@ why-developer-platform:
 
 
 soc-type-two:
+ - earthly-cloud-ui-updates
  - earthly-v0-8
  - self-hosted-satellites
  - konfig
@@ -5799,7 +5800,6 @@ soc-type-two:
  - larger-satellite-sizes
  - efficiently-cache-dependencies-earthfiles
  - docker-sbom
- - auto-skip
 
 
 namespaces-and-containers-in-depth:
@@ -5851,7 +5851,7 @@ data-engineering-analysis:
  - platform-teams
  - docker-build-cloud
  - python-libraries
- - self-hosted-satellites
+ - earthly-cloud-ui-updates
 
 
 auto-skip:
@@ -5864,7 +5864,7 @@ auto-skip:
  - konfig
  - cargo-chef
  - incremental-rust-builds
- - rust-sccache
+ - earthly-cloud-ui-updates
 
 
 platform-engineering-tools:
@@ -5903,7 +5903,7 @@ earthly-docker-build:
  - on-star-history
  - earthly-v0-8
  - cargo-chef
- - docker-init-in-go
+ - earthly-cloud-ui-updates
 
 
 what-is-platform-engineering:
@@ -5950,12 +5950,12 @@ earthly-functions:
  - efficiently-cache-dependencies-earthfiles
  - earthly-v0-8
  - konfig
+ - earthly-cloud-ui-updates
  - on-star-history
  - auto-skip
  - incremental-rust-builds
  - monorepo-java
  - self-hosted-satellites
- - python-monorepo
 
 
 python-web-scraping:
@@ -6060,5 +6060,18 @@ miniconda-venv:
  - gradle-monorepo
  - docker-init-nodejs
  - rust-monorepo
+
+
+earthly-cloud-ui-updates:
+ - earthly-docker-build
+ - earthly-v0-8
+ - earthly-functions
+ - larger-satellite-sizes
+ - self-hosted-satellites
+ - efficiently-cache-dependencies-earthfiles
+ - on-star-history
+ - auto-skip
+ - konfig
+ - docker-build-cloud
 
 
