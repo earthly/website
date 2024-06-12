@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use Django template filters to transform and modify variable data in your HTML templates. Discover the built-in filters provided by Django and how to create your own custom filters.
 last_modified_at: 2023-07-19
 categories:
-  - Python
+  - python
 ---
 **The article explains the effectiveness of Django template filters. Earthly accelerates Django template builds with its caching mechanisms. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -10,7 +10,7 @@ excerpt: |
 last_modified_at: 2023-07-19
 categories:
   - python-tooling
-  - Python
+  - python
 ---
 **This article explains how to deploy Django applications using CircleCI. Earthly significantly enhances build speeds with its advanced caching mechanisms. [Check it out](https://cloud.earthly.dev/login).**
 

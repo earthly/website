@@ -6,7 +6,6 @@ last_modified_at: 2023-06-29
 
 sidebar:
   nav: monorepos
-
 internal-links:
  - bazel
  - monorepo
@@ -15,6 +14,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - bazel
+  - monorepos
 ---
 **In this article, we delve into the powerful combination of monorepos and Bazel. Earthly streamlines your monorepo management by providing containerized, reproducible builds. [Learn how](https://cloud.earthly.dev/login).**
 

@@ -5,7 +5,7 @@ author: Ashutosh Krishna
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - Python
+ - python
  - Pytest
  - Testing
  - Fixtures
@@ -14,7 +14,7 @@ excerpt: |
 last_modified_at: 2023-07-19
 categories:
   - python-tooling
-  - Python
+  - python
 ---
 **Explore the benefits of PyTest fixtures in this article. Earthly significantly accelerates PyTest-based test builds with its caching mechanisms. [Check it out](https://cloud.earthly.dev/login).**
 

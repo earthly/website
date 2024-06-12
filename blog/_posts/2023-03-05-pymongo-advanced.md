@@ -6,7 +6,7 @@ editor: Mustapha Ahmad Ayodeji
 
 internal-links:
  - PyMongo
- - Python
+ - python
  - MongoDB
  - Database
  - Schema
@@ -14,7 +14,7 @@ excerpt: |
     Learn how to use advanced features of MongoDB with PyMongo, including schema validation, data modeling patterns, and advanced queries. This tutorial will help you optimize your MongoDB database and improve the efficiency of your applications.
 last_modified_at: 2023-07-19
 categories:
-  - Python
+  - python
 ---
 **This article explains the intricacies of working with MongoDB. Earthly simplifies the application build process, whether you use MongoDB or not. [Learn how](https://cloud.earthly.dev/login).**
 

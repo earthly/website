@@ -1,7 +1,7 @@
 ---
 title: "Nix Turns 20. What the Hell Is It?"
 categories:
-  - articles
+  - build
 toc: true
 author: Josh
 bottomcta: false

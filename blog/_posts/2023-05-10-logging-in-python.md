@@ -13,7 +13,7 @@ excerpt: |
     Learn how to effectively use the Python logging module to track and analyze events in your application. This comprehensive guide covers everything from basic logging to advanced techniques like rotating log files and structured JSON logging.
 last_modified_at: 2023-07-19
 categories:
-  - Python
+  - python
 ---
 **Explore the fundamentals of Python logging. Earthly provides faster and more reliable containerized builds for Python developers. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -5,7 +5,7 @@ author: Artem Oppermann
 sidebar:
   nav: "bazel"
 internal-links:
- - Python
+ - python
  - bazel
  - Deploy
  - Dependencies

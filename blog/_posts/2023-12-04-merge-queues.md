@@ -1,7 +1,5 @@
 ---
 title: "Merge Queues: What You Need to Know"
-categories:
-  - build
 toc: true
 author: Carlos Inocencio
 
@@ -12,6 +10,8 @@ internal-links:
  - merge queues for pull requests 
 excerpt: |
     Merge queues, also known as trains, are used to arrange and consecutively merge multiple pull requests in high-traffic repositories to avoid merge conflicts. They automate the merging process, ensuring stability in the main branch and allowing developers to focus on code modifications.
+categories:
+  - monorepos
 ---
 **Merge queues streamline development workflows. Earthly ensures consistent and reproducible builds for developers. [Check it out](https://cloud.earthly.dev/login).**
 

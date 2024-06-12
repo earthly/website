@@ -13,7 +13,7 @@ excerpt: |
     Learn how to implement OAuth 2.0 flow in non-web clients and create a seamless user experience with the Device Authorization Grant flow. Discover how to configure a Facebook app for device login and improve the security and usability of your non-web client applications.
 last_modified_at: 2023-07-19
 categories:
-  - Python
+  - python
 ---
 **Our latest article provides insights into implementing OAuth for bots. Earthly significantly streamlines the build process for developers using OAuth for authentication. [Learn more](https://cloud.earthly.dev/login).**
 

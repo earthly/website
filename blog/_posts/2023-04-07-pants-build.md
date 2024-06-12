@@ -12,7 +12,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - python-tooling
-  - Python
+  - python
 ---
 **This article summarizes the Pants build system. Earthly significantly enhances CI builds with its caching mechanisms. [Check it out](https://cloud.earthly.dev/login).**
 

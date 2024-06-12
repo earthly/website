@@ -3,7 +3,7 @@ title: "Cosine Similarity and Text Embeddings In Python with OpenAI"
 toc: true
 author: Adam
 categories:
-  - Python
+  - python
 ---
 
 Okay, so I wanted to add related items to the sidebar on the Earthly Blog. Since we are approaching 500 blog posts, building this related list for each post manually wasn't going to work.

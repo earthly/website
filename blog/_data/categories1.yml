@@ -150,3 +150,11 @@ monorepos:
   - understanding-monorepos
   - monorepo-java
   - merge-queues
+
+linux:
+  - what-is-syslog
+  - linux-network-commands
+  - linux-text-processing-commands  
+  - systemd
+  - intro-to-Linux-capabilities
+  - chown-permissions-chmod

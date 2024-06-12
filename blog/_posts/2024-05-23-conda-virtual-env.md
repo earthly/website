@@ -10,7 +10,7 @@ internal-links:
  - 
 categories:
   - python-tooling
-  - Python
+  - python
 ---
 
 [Python](https://www.python.org) is one of the most ubiquitous programming languages today, and because of its history and popularity, a lot of tooling has been created over the years to help Python developers achieve their goals.

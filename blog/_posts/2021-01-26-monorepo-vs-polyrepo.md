@@ -1,8 +1,6 @@
 ---
 title: Monorepo vs Polyrepo
 featured: true
-categories:
-  - build
 sidebar:
   nav: monorepos
 tags:
@@ -20,6 +18,8 @@ funnel: 2
 excerpt: |
     This article explores the debate between using a monorepo or a polyrepo structure for source code. It discusses the benefits and challenges of each approach, as well as the hybrid option. Whether you're interested in ease of importing, contributions within and across projects, viewing diffs, structure of releases, builds and CI, open-source considerations, or issue tracking, this article provides insights to help you make an informed decision.
 last_modified_at: 2023-07-11
+categories:
+  - monorepos
 ---
 **This article examines different repository structuring options. Earthly streamlines monorepo builds in your CI pipeline. [Check it out](https://cloud.earthly.dev/login/).**
 

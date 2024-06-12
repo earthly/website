@@ -15,6 +15,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - bazel
+  - monorepos
 ---
 **This article compares tools for managing monorepos. Earthly ensures build consistency with a containerized approach that is simpler than Bazel's. [Check it out](https://cloud.earthly.dev/login).**
 

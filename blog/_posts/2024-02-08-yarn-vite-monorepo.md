@@ -1,7 +1,8 @@
 ---
 title: "Building a Monorepo with Yarn and Vite"
 categories:
-  - build
+  - js-tooling
+  - monorepos
 toc: true
 author: Aniket Bhattacharyea
 

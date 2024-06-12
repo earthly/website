@@ -10,7 +10,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - python-tooling
-  - Python
+  - python
 ---
 <!-- markdownlint-disable MD036 -->
 

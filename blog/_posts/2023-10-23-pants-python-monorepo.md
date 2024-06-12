@@ -14,7 +14,8 @@ excerpt: |
 last_modified_at: 2023-10-17
 categories:
   - python-tooling
-  - Python
+  - monorepos
+  - python
 ---
 **This article explains the Pants build system for managing Python monorepos. Earthly streamlines build processes using its declarative Earthfile syntax. It works great with Python and excels at building monorepos. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

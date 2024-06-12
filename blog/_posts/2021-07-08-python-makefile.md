@@ -13,7 +13,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - make
-  - Python
+  - python
   - python-tooling
 ---
 **In this article, you'll learn how to automate Python builds with `make`. If you want to improve your Python build workflows, Earthly can elevate your `make` automation. [Learn more](https://cloud.earthly.dev/login).**

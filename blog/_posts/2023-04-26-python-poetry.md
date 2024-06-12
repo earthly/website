@@ -5,7 +5,7 @@ author: Ashutosh Krishna
 editor: Bala Priya C
 
 internal-links:
- - Python
+ - python
  - Dependencies
  - Poetry
  - Virtual Environments
@@ -14,7 +14,7 @@ excerpt: |
 last_modified_at: 2023-10-18
 categories:
   - python-tooling
-  - Python
+  - python
 ---
 **The article discusses the benefits of using Poetry for package management. Earthly significantly enhances build speeds with its caching mechanisms. It works great with Poetry projects. [Check it out](https://cloud.earthly.dev/login).**
 

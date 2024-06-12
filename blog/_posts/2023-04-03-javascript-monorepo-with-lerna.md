@@ -18,6 +18,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 categories:
   - js-tooling
+  - monorepos
 ---
 **The article explains how to configure a Lerna monorepo. Earthly streamlines and accelerates monorepo build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
