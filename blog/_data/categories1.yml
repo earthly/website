@@ -158,3 +158,11 @@ linux:
   - systemd
   - intro-to-Linux-capabilities
   - chown-permissions-chmod
+
+git:
+  - advanced-git-commands-2
+  - vscode-git
+  - a-developer-guide-to-git-lfs
+  - mng-dotfiles-with-git
+  - git-branching
+  - advanced-git-commands
