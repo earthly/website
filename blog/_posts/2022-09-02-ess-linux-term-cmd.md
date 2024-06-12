@@ -9,11 +9,12 @@ internal-links:
  - Curl
  - Pipe
  - Commands
+toc: false
 excerpt: |
     Learn fifteen essential Linux terminal commands that will supercharge you as a Linux user. From searching for patterns in files to managing permissions and scheduling tasks, these commands will make your workflow optimized and efficient.
 last_modified_at: 2023-07-14
 categories:
-  - cli
+  - linux
 ---
 **This article explores essential Linux productivity commands. Earthly ensures your builds are reproducible with precision. [Check it out](https://cloud.earthly.dev/login).**
 

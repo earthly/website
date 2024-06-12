@@ -31,10 +31,15 @@
       list-name: CLI, Scripting and Automation
       title: Command Line Mastery, Shell Scripting and Automation
     
-    - name: linux
+    - name: Linux
       slug: linux
       list-name: Linux
       title: Linux Usage and Administration
+
+    - name: Git
+      slug: git
+      list-name: Git
+      title: Git Usage and Tutorials
 
 - category: Builds & CI
   enabled: true
