@@ -1,7 +1,7 @@
 ---
 title: "The Montréal Effect: Why Programming Languages Need a Style Czar"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Adam
 sidebar:

@@ -1,7 +1,7 @@
 ---
 title: "Diluting DORA: How Marketers and Consultants Bastardize Engineering Best Practices"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Gavin
 topcta: false

@@ -1,7 +1,7 @@
 ---
 title: INTERCAL, YAML, And Other Horrible Programming Languages
 categories:
-  - Articles
+  - articles
 featured: true
 author: Adam
 sidebar:

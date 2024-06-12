@@ -7,14 +7,14 @@ editor: Bala Priya C
 sidebar:
   nav: "bazel"
 internal-links:
- - Bazel
+ - bazel
  - Automation
  - CI/CD
 excerpt: |
     Learn how to improve your automated test suite using Bazel, an open source software tool. Bazel can speed up the testing process, save time and computing resources, and ensure reliable and scalable deployments.
 last_modified_at: 2023-07-11
 categories:
-  - Bazel
+  - bazel
 ---
 **This article explores the use of Bazel for testing. Earthly enhances Bazel by offering reproducible and parallel build features. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,7 @@
 ---
 title: "How Blue-Green Deployments Work in Practice"
 categories:
-  - Deployment
+  - deployment
 toc: true
 sidebar:
   nav: "deployment-strategies"

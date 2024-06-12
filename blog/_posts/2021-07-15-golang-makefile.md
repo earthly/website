@@ -14,7 +14,8 @@ excerpt: |
     Learn how to automate repetitive tasks in Golang development using Makefiles. This tutorial covers creating a Makefile to build, run, clean, test, and manage dependencies in your Go projects, making your development process faster and more efficient.
 last_modified_at: 2023-07-24
 categories:
-  - Make
+  - make
+  - golang
 ---
 **This article teaches you how to automate Golang tasks. Tired of struggling with Makefiles in your Golang projects? Earthly simplifies your build process with strong caching and the ability to run tasks in parallel. [Learn more](https://cloud.earthly.dev/login).**
 

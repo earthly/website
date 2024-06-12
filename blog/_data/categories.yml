@@ -1,86 +1,119 @@
-- name: Cloud
-  slug: cloud
-  list-name: Cloud
-  title: Cloud Tutorials
+- category: DevOps
+  enabled: true
+  items:
+    - name: Cloud
+      slug: cloud
+      list-name: Cloud
+      title: Cloud Tutorials
 
-- name: Platform
-  slug: platform
-  list-name: Platform
-  title: Platform Tutorials
+    - name: Containers
+      slug: containers
+      list-name: Containers
+      title: Containers Tutorials
 
-- name: Build
-  slug: build
-  list-name: Build
-  title: Build Tutorials
+    - name: Orchestration
+      slug: orchestration
+      list-name: Container Orchestration
+      title: Container Orchestration Tutorials
 
-- name: Writing
-  slug: writing
-  title: Writing Tutorials
+    - name: IaC
+      slug: iac
+      list-name: Infrastructure as Code
+      title: Infrastructure as Code Tutorials
 
-- name: Python
-  slug: python
-  list-name: Python
-  title: Python Development Tutorials
+    - name: Platform
+      slug: platform
+      list-name: Platform Eng.
+      title: Platform Tutorials
 
-- name: Golang
-  slug: golang
-  list-name: Golang
-  title: Golang Tutorials
+    - name: cli
+      slug: cli
+      list-name: CLI, Scripting and Automation
+      title: Command Line Mastery, Shell Scripting and Automation
+    
+    - name: Linux
+      slug: linux
+      list-name: Linux
+      title: Linux Usage and Administration
 
-- name: Rust
-  slug: rust
-  list-name: Rust
-  title: Rust Tutorials
+    - name: Git
+      slug: git
+      list-name: Git
+      title: Git Usage and Tutorials
 
-- name: GitHubActions
-  slug: githubactions
-  list-name: GitHub Actions
-  title: GitHub Actions Tutorials
+- category: Builds & CI
+  enabled: true
+  items:
+    - name: Deployment
+      slug: deployment
+      list-name: Deployment and CD
+      title: Deployment and Continuous Deployment
 
-- name: Containers
-  slug: containers
-  list-name: Containers 
-  title: Containers and Orchestration Tutorials
+    - name: Make
+      slug: make
+      list-name: Makefiles
+      title: Makefiles and C++ builds
 
-- name: Orchestration
-  slug: orchestration
-  list-name: Container Orchestration 
-  title: Container Orchestration Tutorials
+    - name: Bazel
+      slug: bazel
+      list-name: Bazel Builds
+      title: Bazel Build Tutorials
+    
+    - name: Python-Tooling
+      slug: python-tooling
+      list-name: Python Packaging and Builds
+      title: Python Packaging, Builds and tools
 
-- name: Deployment
-  slug: deployment
-  list-name: Deployment and CD
-  title: Deployment and Continous Deployment
+    - name: JS Tooling
+      slug: js-tooling
+      list-name: JS Packaging and Tooling
+      title: JS Packaging and Tooling
 
-- name: Make
-  slug: make
-  list-name: Makefiles
-  title: Makefiles and C++ builds
+    - name: GitHub Actions
+      slug: githubactions
+      list-name: GitHub Actions
+      title: GitHub Actions Tutorials
+  
+    - name: MonoRepos
+      slug: monorepos
+      list-name: Monorepos
+      title: Monorepo Tutorials
 
-- name: cli
-  slug: cli
-  list-name: CLI, Scripting and Automation
-  title: Command Line Mastery, Shell Scripting and Automation
+    - name: Builds
+      slug: build
+      list-name: Other Builds
+      title: Builds & CI
 
-- name: IaC
-  slug: iac
-  list-name: Infrastructure as Code
-  title: Infrastructure as Code Tutorials
+- category: Software Engineering
+  enabled: true
+  items:
+    - name: Python
+      slug: python
+      list-name: Python
+      title: Python Development Tutorials
 
-- name: Bazel
-  slug: bazel
-  list-name: Bazel Builds
-  title: Bazel Build Tutorials
+    - name: Golang
+      slug: golang
+      list-name: Golang
+      title: Golang Tutorials
 
-- name: Tutorials
-  slug: tutorials
-  list-name: Miscellaneous
-  title: Programming Tutorials
+    - name: Rust
+      slug: rust
+      list-name: Rust
+      title: Rust Tutorials
 
-- name: Articles
-  slug: articles
-  title: Articles
 
-- name: News
-  slug: news
-  title: News
+- category: Other
+  enabled: false
+  items:
+    - name: Writing
+      slug: writing
+      title: Writing Tutorials
+
+    - name: Articles
+      slug: articles
+      title: Articles
+
+    - name: News
+      slug: news
+      title: News

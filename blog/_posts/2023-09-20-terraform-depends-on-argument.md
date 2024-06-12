@@ -13,7 +13,7 @@ excerpt: |
     This tutorial explains how to use the `depends_on` attribute in Terraform to specify resource dependencies. It covers both explicit and implicit dependencies and provides best practices for managing dependencies in Terraform configurations.
 last_modified_at: 2023-10-06
 categories:
-  - IaC
+  - iac
 ---
 **This article walks through Terraform dependency management. Fans of Terraform find Earthly improves build times with its advanced caching. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

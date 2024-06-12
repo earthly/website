@@ -1,7 +1,7 @@
 ---
 title: "Introducing Self-Hosted Earthly Satellites"
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 

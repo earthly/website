@@ -1,7 +1,7 @@
 ---
 title: 'Building on Kubernetes: Ingress'
 categories:
-  - Orchestration
+  - orchestration
 tags:
   - Interview
 author: Corey

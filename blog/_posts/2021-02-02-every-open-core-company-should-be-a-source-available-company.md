@@ -2,7 +2,7 @@
 title: Source-available
 featured: false
 categories:
- - News
+ - news
 tags:
 - license
 - news

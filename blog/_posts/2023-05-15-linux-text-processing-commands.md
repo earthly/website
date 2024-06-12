@@ -14,7 +14,7 @@ excerpt: |
     Learn how to efficiently manipulate and process text data in Linux with a variety of powerful commands, including sed, grep, awk, tr, wc, cut, sort, tac, bat, fd, uniq, and xargs. These commands will help you search, filter, transform, and analyze text data, saving you time and effort in your daily workflow.
 last_modified_at: 2023-07-14
 categories:
-  - cli
+  - linux
 ---
 **This article explores Linux text commands. Earthly efficiently manages build process dependencies. Great for your text processing needs. [Check it out](https://cloud.earthly.dev/login).**
 

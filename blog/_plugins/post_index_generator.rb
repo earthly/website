@@ -16,6 +16,14 @@ module Jekyll
         related_footer = {}
         shorten_name = {}
         popular_posts = []
+        category_name_index = {}
+
+        # Populate category_name_index
+        site.data['categories'].each do |category|
+         category['items'].each do |item|
+           category_name_index[item['slug']] = item['name']
+         end
+       end
   
         # Iterate over each post to populate the indexes
         site.posts.docs.each do |post|
@@ -105,6 +113,7 @@ module Jekyll
           'related_footer' => related_footer,
           'shorten_name' => shorten_name,
           'popular_posts' => popular_posts,
+          'category_name' => category_name_index, 
         }
   
         end_time = Time.now  # Capture end time

@@ -10,7 +10,7 @@ excerpt: |
 last_modified_at: 2023-07-14
 topcta: false
 categories:
-  - Containers
+  - containers
 ---
 <!-- vale HouseStyle.H2 = NO -->
 Tell me if this sounds familiar? You were introduced to docker-compose either by choice or by force. You've been using it for a while, but you find it clunky. I'm here to tell you, you are probably using it wrong.

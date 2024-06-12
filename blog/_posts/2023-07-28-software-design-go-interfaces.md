@@ -14,7 +14,7 @@ excerpt: |
     This article explains how to use interfaces in Go to design extensible and modular software. It covers the basics of interfaces, implementing interfaces, advanced interface techniques, and best practices for using interfaces.
 last_modified_at: 2023-08-28
 categories:
-  - Golang
+  - golang
 ---
 **The article clarifies the complexities of Go interfaces. Earthly streamlines the Go software build process, accommodating complex builds while keeping things simple. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn how to compress Kubernetes logs and send them to AWS S3 periodically using Kubernetes CronJobs. This tutorial will guide you through the process of setting up the environment, scripting and Dockerizing the solution, and creating the CronJob in your Kubernetes cluster.
 last_modified_at: 2023-07-19
 categories:
-  - Orchestration
+  - orchestration
 ---
 **This article outlines the key strategies for automating Kubernetes log management. Earthly streamlines Docker build scripts to enhance your CI pipelines. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

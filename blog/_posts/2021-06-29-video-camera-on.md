@@ -1,7 +1,7 @@
 ---
 title: "SQL Errors and Video Cameras"
 categories:
-  - Articles
+  - articles
 author: Adam
 internal-links:
  - just an example

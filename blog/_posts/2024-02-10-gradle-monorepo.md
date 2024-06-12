@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     This tutorial explains how to build a monorepo using Gradle, a powerful build tool. It covers creating subprojects, managing dependencies, and running the application.
 categories:
-  - Build
+  - monorepos
 ---
 **This article discusses the management of Gradle monorepos. If monorepos are your thing, Earthly might be worth a look. Earthly significantly enhances build efficiency in monorepos. [Check it out](https://cloud.earthly.dev/login).**
 

@@ -14,7 +14,7 @@ excerpt: |
     Learn how to beat TimSort at merging sorted lists in Python by creating a C extension. Discover the performance advantages of merging lists compared to sorting them, and explore the special comparisons used by TimSort for different data types.
 last_modified_at: 2023-10-18
 categories:
-  - Python
+  - python
 ---
 <iframe width="560" height="315" src="https://www.youtube.com/embed/9fcWnAf6rEY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 

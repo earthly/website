@@ -6,12 +6,12 @@ excerpt: |
     Learn how to analyze your Amazon data using Python and Pandas. Find out how much you've spent, the most expensive and cheapest items you've ordered, your average expenses, and even visualize your spending habits in a graph.
 internal-links:
  - Amazon
- - Python
+ - python
  - Pip
  - Pandas
 last_modified_at: 2023-07-19
 categories:
-  - Python
+  - python
 ---
 **This article explains how Python developers can analyze Amazon spending. Earthly precisely builds your data analysis toolchain. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

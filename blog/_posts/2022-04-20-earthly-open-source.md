@@ -2,7 +2,7 @@
 title: Earthly Switches to Open-source
 featured: true
 categories:
- - News
+ - news
 tags:
 - license
 - news

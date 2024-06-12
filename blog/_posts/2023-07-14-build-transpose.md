@@ -1,7 +1,7 @@
 ---
 title: "Mining Meaningful Methods from Large Language Models"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Adam
 

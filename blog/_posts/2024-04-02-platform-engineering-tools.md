@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Platform engineering focuses on improving developer productivity through standardized tooling, automation, and best practices. This article highlights seven popular platform engineering tools, including Backstage for building developer portals, Terraform for infrastructure provisioning, and Kubernetes for container orchestration.
 categories:
-  - Platform
+  - platform
 ---
 **This article lists key platform engineering tools for developers. Earthly guarantees consistent builds in any environment. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

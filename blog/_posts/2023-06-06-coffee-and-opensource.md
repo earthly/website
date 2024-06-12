@@ -1,7 +1,7 @@
 ---
 title: "Earthly on Coffee and Open Source"
 categories:
-  - News
+  - news
 toc: true
 author: Josh
 topcta: false

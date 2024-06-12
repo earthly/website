@@ -1,7 +1,7 @@
 ---
 title: "A Brief, Incomplete and Mostly Wrong Devops Glossary"
 categories:
-  - Articles
+  - articles
 toc: false
 author: Adam
 excerpt: |

@@ -13,7 +13,7 @@ excerpt: |
     The article discusses the phenomenon of the Curse of Knowledge in technical writing, where authors assume that their audience possesses prior knowledge, leading to ineffective communication. It explores the causes of the curse, its impact on readers, and provides strategies for writers to overcome it and create clear and engaging technical content.
 last_modified_at: 2023-10-06
 categories:
-  - Writing
+  - writing
 ---
 <div class="align-right">
 ![The Professor]({{site.images}}{{page.slug}}/tFNsGfD.jpg)\

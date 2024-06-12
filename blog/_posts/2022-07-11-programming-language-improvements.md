@@ -1,7 +1,7 @@
 ---
 title: "The Slow March of Progress in Programming Language Tooling"
 categories:
-  - Articles
+  - articles
 author: Adam
 bottomcta: false
 sidebar:

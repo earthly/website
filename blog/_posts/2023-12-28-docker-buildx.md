@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     This article introduces Docker's Buildx plugin, which combines BuildKit's capabilities with the classic Docker build syntax. Buildx allows you to create multiplatform images compatible with various CPU architectures, providing greater flexibility and efficiency across devices.
 categories:
-  - Containers
+  - containers
 ---
 **This article delves into Docker's Buildx plugin functionalities. Earthly significantly boosts your build process efficiency with its container-focused build automation. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

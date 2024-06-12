@@ -13,7 +13,7 @@ excerpt: |
     This tutorial explores various techniques for optimizing SQL queries in Go applications using GORM and Postgres. It covers topics such as indexing, query simplification, caching, and connection pooling to improve query performance and scalability.
 last_modified_at: 2023-10-17
 categories:
-  - Golang
+  - golang
 ---
 **This article explores SQL optimization techniques. Earthly provides Go developers with reproducible build environments for enhanced performance. [Check it out](https://cloud.earthly.dev/login).**
 

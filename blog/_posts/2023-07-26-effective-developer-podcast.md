@@ -1,7 +1,7 @@
 ---
 title: "Earthly On The Effective Developer Podcast"
 categories:
-  - News
+  - news
 toc: true
 author: Josh
 topcta: false

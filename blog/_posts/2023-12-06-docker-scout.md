@@ -11,7 +11,7 @@ internal-links:
 excerpt: |
     Docker Scout is a tool that simplifies securing Docker images by analyzing their contents and generating a detailed report of any vulnerabilities detected. It offers features such as inspecting for common vulnerabilities, providing security recommendations, and seamless integration with CI/CD workflows.
 categories:
-  - Containers
+  - containers
 ---
 **The article summarizes how Docker Scout enhances security in continuous integration (CI). Earthly provides reproducible builds that complement Docker Scout's vulnerability analysis. [Check it out](https://cloud.earthly.dev/login).**
 

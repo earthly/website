@@ -18,8 +18,8 @@ CLUSTER_TITLE_FILE = "./blog/_data/cluster_title_cache.pkl"
 # Initialize blacklist and whitelist
 # BLACKLIST : List[str] = ["- News", "- Articles"]
 BLACKLIST : List[str] = ["- News"]
-# BLACKLIST : List[str] = []
-WHITELIST : List[str] = ["- cli"]
+BLACKLIST : List[str] = []
+WHITELIST : List[str] = ["  - cli"]
 # WHITELIST : List[str] = []
 
 def load_cache(cache_file: str) -> dict:
@@ -55,7 +55,7 @@ def load_markdown_files(folder_path: str) -> Tuple[List[str], List[str]]:
             if any(blacklist_item in content for blacklist_item in BLACKLIST):
                 continue
             # Check whitelist
-            if WHITELIST and not all(whitelist_item in content for whitelist_item in WHITELIST):
+            if WHITELIST and not any(whitelist_item in content for whitelist_item in WHITELIST):
                 continue
             markdown_texts.append(content)
             filtered_files.append(file)
@@ -172,8 +172,8 @@ def display_clusters(clusters: List[List[str]]) -> None:
 def main() -> None:
     try:
         folder_path = "./blog/_posts"
-        n_clusters = 10  # Adjust as necessary
-        contamination = 0.001  # Adjust as necessary to control the proportion of outliers
+        n_clusters = 4  # Adjust as necessary
+        contamination = 0.201  # Adjust as necessary to control the proportion of outliers
         n_neighbors = 4  # Adjust as necessary for the sensitivity of LOF
 
         all_files, markdown_texts = load_markdown_files(folder_path)

@@ -1,7 +1,7 @@
 ---
 title: "Earthly Achieves SOC 2 Type 1 Compliance"
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 internal-links:

@@ -1,7 +1,7 @@
 ---
 title: "A biased take on the ROI of fast"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Vlad
 funnel: 3

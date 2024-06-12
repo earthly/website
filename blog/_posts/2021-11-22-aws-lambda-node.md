@@ -11,7 +11,7 @@ excerpt: |
     Learn how to set up your first AWS Lambda deployment for a Node application in this tutorial. Discover how to leverage AWS Lambda to execute backend applications without worrying about server configurations or maintenance.
 last_modified_at: 2023-08-17
 categories:
-  - Cloud
+  - cloud
 ---
 **This tutorial provides guidance on using AWS Lambda for serverless applications. Earthly simplifies and accelerates the build process in CI/CD pipelines. [Check it out](https://cloud.earthly.dev/login).**
 

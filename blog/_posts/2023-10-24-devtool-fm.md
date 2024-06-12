@@ -1,7 +1,7 @@
 ---
 title: "Earthly On devtools.FM"
 categories:
-  - News
+  - news
 topcta: false
 author: Adam
 topcta: false

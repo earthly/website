@@ -1,7 +1,7 @@
 ---
 title: Encrypting Data With SSH Keys and Golang
 categories:
-  - Golang
+  - golang
 author: Alex
 internal-links:
   - ssh

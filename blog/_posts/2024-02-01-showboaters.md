@@ -1,7 +1,7 @@
 ---
 title: "Showboaters, Maximalists and You"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Adam
 sidebar:

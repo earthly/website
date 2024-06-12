@@ -2,7 +2,7 @@
 title: Hacktoberfest 2020
 author: Vlad
 categories:
-  - News
+  - news
 toc: false
 internal-links:
    - hacktoberfest

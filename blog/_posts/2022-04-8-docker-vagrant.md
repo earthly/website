@@ -9,7 +9,7 @@ excerpt: |
     Learn about the differences between Vagrant and Docker and how they help create consistent development environments. Discover the benefits and considerations of each technology to choose the right option for your projects.
 last_modified_at: 2023-07-14
 categories:
-  - Containers
+  - containers
 ---
 **The article compares Vagrant and Docker. Earthly improves Docker builds by enabling parallel execution. [Learn more about Earthly](https://cloud.earthly.dev/login/).**
 
@@ -65,7 +65,7 @@ However, this involves configuring inter-container networking, service access, p
 There are some great benefits of using Dockerized application containers. For example:
 
 - Dockerfiles, their associated images and the containers are lightweight and portable.
-- Containers use fewer resources than VMs.
+- containers use fewer resources than VMs.
 - Building and deploying containers takes less time than deploying VMs.
 - A physical host can run many more containers than virtual machines.
 

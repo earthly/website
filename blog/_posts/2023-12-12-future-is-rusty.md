@@ -1,7 +1,7 @@
 ---
 title: "The Future is Rusty"
 categories:
-  - Articles
+  - articles
 toc: true
 sidebar:
   nav: "thoughts"

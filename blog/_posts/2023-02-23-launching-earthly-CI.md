@@ -1,7 +1,7 @@
 ---
 title: "Earthly CI: Launching a new era for CI"
 categories:
-  - News
+  - news
 toc: true
 author: Vlad
 topic: earthly

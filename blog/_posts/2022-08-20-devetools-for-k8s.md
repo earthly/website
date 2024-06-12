@@ -12,7 +12,7 @@ excerpt: |
     Learn about the essential developer tools for Kubernetes that can help you become more efficient and productive in your workload. From integrated development environments to package managers and tools for faster development, this article covers a range of tools that can simplify your Kubernetes journey.
 last_modified_at: 2023-07-14
 categories:
-  - Orchestration
+  - orchestration
 ---
 **This article explores Kubernetes development tools and their Kustomize integration. Earthly simplifies and streamlines your CI pipeline with containerized build steps that are easy to maintain. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

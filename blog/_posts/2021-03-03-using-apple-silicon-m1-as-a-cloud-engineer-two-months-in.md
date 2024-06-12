@@ -2,7 +2,7 @@
 title: Using Apple Silicon (M1) as a cloud engineer, two months in
 featured: true
 categories:
-  - Articles
+  - articles
 tags:
 - docker
 - apple-silicon

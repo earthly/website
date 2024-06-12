@@ -12,7 +12,7 @@ last_modified_at: 2023-10-20
 excerpt: |
     Reusable workflows in GitHub Actions are predefined templates that allow developers to quickly scaffold processes and accelerate software delivery. Best practices for using reusable workflows include parameterizing workflows, documenting them, using composite actions, considering a dedicated workflows repository, versioning workflows, testing them, following naming conventions, considering platform compatibility, and continuously improving and refining workflows based on user feedback.
 categories:
-  - GitHubActions
+  - githubactions
 ---
 **This article examines the benefits of GitHub's reusable workflows. Earthly enhances GitHub Actions with its reproducible and parallel builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -13,7 +13,7 @@ excerpt: |
     Learn how to implement OAuth 2.0 flow in non-web clients and create a seamless user experience with the Device Authorization Grant flow. Discover how to configure a Facebook app for device login and improve the security and usability of your non-web client applications.
 last_modified_at: 2023-07-19
 categories:
-  - Python
+  - python
 ---
 **Our latest article provides insights into implementing OAuth for bots. Earthly significantly streamlines the build process for developers using OAuth for authentication. [Learn more](https://cloud.earthly.dev/login).**
 
@@ -608,7 +608,7 @@ Recall that the browser flow does not occur on the non-web client. So, the non-w
 
 The `get_access_token_from_login_code` function involves the following steps:
 
-- Makes an API call to the Facebook access token endpoint with the device code and access token passed as query params.
+- makes an API call to the Facebook access token endpoint with the device code and access token passed as query params.
 - Calls the `_handle_error_from_login_code` function if there is an error. If the error is not a `PendingActionError` it raises an exception that terminates the function execution and if otherwise, delays the code by the 5s using `await asyncio.sleep()`.
 - The polling is achieved by using [recursion](https://users.cs.utah.edu/~germain/PPS/Topics/recursion.html). You can also use a loop to achieve the polling.
 

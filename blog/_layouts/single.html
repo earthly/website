@@ -48,24 +48,27 @@ layout: default
               <span class="text-slate-400 ml-1 mr-1">/</span>
               <a href="/blog/series/{{ page.sidebar.nav }}" class="text-xl text-blue-600 font-semibold hover:underline">{{ site.data.navigation[page.sidebar.nav][0].title }}</a>
             {% else %}
-              <a href="/blog/categories/{{ page.categories[0] | downcase }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ page.categories[0] }}</a>
+            {% assign category_slug = page.categories[0] %}
+            {% assign category_name = site.data.indexes.category_name[category_slug] %}
+              <a href="/blog/categories/{{ category_slug }}/" class="text-xl text-blue-600 font-semibold hover:underline">{{ category_name }}</a>
             {% endif %}
           </div>
           {% if page.toc %}
-          <div class="group mt-4">
-            <header>
-              <h4 class="font-semibold text-md mb-2">Table of contents</h4>
-            </header>
-            <div class="">
-              <div class="relative z-50">
-                {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="" skip_no_ids=true %}
+            <div class="group mt-4">
+              <header>
+                <h4 class="font-semibold text-md mb-2">Table of contents</h4>
+              </header>
+              <div class="">
+                <div class="relative z-50">
+                  {% include toc.html sanitize=true html=content h_min=1 h_max=4 class="" skip_no_ids=true %}
+                </div>
               </div>
             </div>
-          </div>
           {% endif %}
           {% include suggestions_sidebar_left slug=page.slug %}
         </div>
       </div>
+    
 
       <section class="page__content w-full p-2 pt-8 md:p-10 flex flex-1 flex-col items-center relative" itemprop="text">
             <div class="w-[1px] h-full text-md absolute right-0 z-10 hidden lg:block">

@@ -1,7 +1,7 @@
 ---
 title: "Earthly on The Jeff Bullas Show"
 categories:
-  - News
+  - news
 toc: true
 author: Josh
 topcta: false

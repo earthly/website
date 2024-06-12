@@ -2,7 +2,7 @@
 title: "Hacktoberfest 2021"
 author: Adam
 categories:
-  - News
+  - news
 internal-links:
    - hacktoberfest
    - contributor

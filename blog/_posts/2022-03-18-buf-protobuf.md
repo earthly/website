@@ -1,7 +1,7 @@
 ---
 title: "Avoiding Common Protobuf's Pitfalls with Buf"
 categories:
-  - Golang
+  - golang
 toc: true
 sidebar:
   nav: "activity-tracker"

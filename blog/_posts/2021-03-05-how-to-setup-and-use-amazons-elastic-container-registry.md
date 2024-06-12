@@ -14,7 +14,7 @@ excerpt: |
     Learn how to setup and use Amazon's Elastic Container Registry (ECR) to store and manage your container images. Discover the benefits of using ECR over Docker Hub and how it integrates with other AWS services like IAM, EKS, and ECS.
 last_modified_at: 2023-07-14
 categories:
-  - Cloud
+  - cloud
 ---
 **This article compares different container registries. Earthly enhances CI workflows with reproducible builds for users integrating with ECR. [Check it out](https://cloud.earthly.dev/login/).**
 

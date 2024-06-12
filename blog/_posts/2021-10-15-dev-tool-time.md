@@ -1,7 +1,7 @@
 ---
 title: "Dev Tool Time"
 categories:
-  - News
+  - news
 toc: false
 author: Earthly
 excerpt: |
