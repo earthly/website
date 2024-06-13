@@ -2,6 +2,7 @@
   - point: Fully managed, single-tenant satellite fleet
   - point: Unlimited users
   - point: Satellite auto-sleep
+  - point: <a class="underline" href="https://docs.earthly.dev/earthly-cloud/satellites/gha-runners">Integrated Github Actions runner</a>
 - points:
   - point: XS to 3XL satellites
   - point: Custom satellite specs
@@ -13,8 +14,6 @@
   - point: 24/7 support
 - points:
   - point: Secrets integrations – e.g. Vault
-    comingSoon: true
-  - point: Integrated GitHub Actions runner
     comingSoon: true
   - point: Export build analytics
     comingSoon: true
