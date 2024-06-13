@@ -4,7 +4,11 @@ toc: true
 author: Michael Nyamande
 
 internal-links:
- - just an example
+ - create a python virtual environment
+ - how to create a python virtual environment with virtualenv
+ - create a python virtual environment with virtualenv
+ - python virtual environment with virtualenv
+ - virtualenv to create a python virtual environment
 categories:
   - python-tooling
   - python
@@ -202,6 +206,3 @@ By mastering these tools, you can ensure that your Python projects are well orga
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-
-- [ ] Add keywords for internal links to front-matter
-- [ ] Run `link-opp` and find 1-5 places to incorporate links
