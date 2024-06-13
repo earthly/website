@@ -193,7 +193,7 @@ The previous rules in the `BUILD` file tell Bazel the following:
 
 - The rule is named `transpile`.
 - The input files that need to be compiled are to be found in the path `src/index.ts`.
-- bazel should fetch the compiler configuration from the `tsconfig.json` file in the current directory, as denoted by `//`.
+- Bazel should fetch the compiler configuration from the `tsconfig.json` file in the current directory, as denoted by `//`.
 - `allow_js` is set as `True`, which means that TypeScript should allow JavaScript files to be imported within the `.ts` project files.
 - `resolve_json_module` is set as `True`, which means that Bazel should allow the import of `.json` extension files within the `.ts` project files.
 

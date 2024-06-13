@@ -31,7 +31,7 @@ Storing media in Cloudinary brings advantages like improved performance, scalabi
 To implement an image upload system in Golang, you need the following prerequisites:
 
 - Basic understanding of REST APIs in Golang
-- cloudinary account
+- Cloudinary account
 - [Go installation](https://go.dev/doc/install) in a local environment.
 The code used in this tutorial can be found on [my GitHub repository](https://github.com/Tee-Stark/go-image-uploader), in case you'd like to use it as a reference as you follow along.
 Let's get started!

@@ -62,3 +62,6 @@ bom
 ko
 dpkg
 apk
+
+uv
+cmd

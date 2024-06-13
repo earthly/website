@@ -65,7 +65,7 @@ However, this involves configuring inter-container networking, service access, p
 There are some great benefits of using Dockerized application containers. For example:
 
 - Dockerfiles, their associated images and the containers are lightweight and portable.
-- containers use fewer resources than VMs.
+- Containers use fewer resources than VMs.
 - Building and deploying containers takes less time than deploying VMs.
 - A physical host can run many more containers than virtual machines.
 
