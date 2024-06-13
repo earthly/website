@@ -12,6 +12,8 @@ internal-links:
  - updates to the earthly cloud ui
  - enhancements to earthly cloud ui
  - earthly cloud ui more enhanced
+excerpt: |
+    Earthly Cloud has announced updates and enhancements to its UI, including a revamped home dashboard and a new Build Details screen that provides more information about builds. The Build Details screen includes tabs for overview, timings, graph, and logs, allowing users to easily track the status and performance of their builds.
 ---
 
 Over the past several months, we've been working on revamping the UI of Earthly Cloud to better meet the needs of our users. Previously, our interface allowed you to view your satellites, their instance details, and status, and you could see build logs, but we knew there was room for improvement. We recognized the need to include build details and received valuable feedback from our users requesting features like build timings and build graphs. Today, we're thrilled to announce a series of updates and enhancements to the Earthly Cloud UI.
