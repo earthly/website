@@ -25,7 +25,7 @@ In Python, a virtual environment is an isolated environment that allows you to i
 - **Use different Python versions:** You can use virtual environments to work with multiple Python versions on the same machine. This is especially useful for testing code compatibility.
 - **More easily test and debug:** With virtual environments, you can quickly switch between different environments to test how your code behaves with different sets of dependencies or configurations. For example, when your favorite web framework releases a new version, you can easily create a new environment to test for breaking changes before upgrading.
 
-## Virtual Environments Using virtualenv
+## Virtual Environments Using `virtualenv`
 
 While there are multiple tools available for setting up virtual environments in Python, such as [venv](https://docs.python.org/3/library/venv.html), [Poetry](https://python-poetry.org/), and [conda](https://docs.conda.io/en/latest/), virtualenv is a [popular choice](https://lp.jetbrains.com/python-developers-survey-2022/#PythonPackaging) due to its simplicity, effectiveness, and ability to work seamlessly with older versions of Python. It offers key benefits like dependency isolation (ensuring that each project has its own set of dependencies), reproducibility across different machines, and the ability to manage multiple Python versions.
 
@@ -35,16 +35,16 @@ Let's learn how you can use virtualenv to manage your Python project dependencie
 
 The first thing you need to do is install virtualenv. Since virtualenv is available as a Python package, you can install it using pip:
 
-```bash
+~~~{.bash caption=">_"}
 pip install virtualenv
-```
+~~~
 
 Once you've installed virtualenv, you need to create a directory for your new project using the following commands:
 
-```bash
+~~~{.bash caption=">_"}
 mkdir my_project
 cd my_project
-```
+~~~
 
 This directory serves as the root for your project's files and virtual environment. This step is optional but recommended for better organization.
 
@@ -52,9 +52,9 @@ This directory serves as the root for your project's files and virtual environme
 
 To create a virtual environment with virtualenv, run the following command inside your project directory:
 
-```bash
+~~~{.bash caption=">_"}
 virtualenv venv
-```
+~~~
 
 Here, `venv` is the name of your virtual environment folder. You can name it anything you like, but `venv` is a common convention.
 
@@ -64,15 +64,15 @@ At times, you may need to create a virtual environment with a specific version o
 
 To create a virtual environment with Python 3.11, use the following command and specify the path to the version of Python you want to use:
 
-```bash
+~~~{.bash caption=">_"}
 virtualenv -p /path/to/python3.11 venv
-```
+~~~
 
 Or, if the `python3.11` executable is in your system's PATH, you can simplify it like this:
 
-```bash
+~~~{.bash caption=">_"}
 virtualenv -p python3.11 venv
-```
+~~~
 
 This command tells virtualenv to use Python 3.11 to create the virtual environment. The resulting environment has its own Python 3.11 interpreter, along with a separate `site-packages` directory. If you want to learn about other CLI options for virtualenv, check out the [documentation](https://virtualenv.pypa.io/en/latest/cli_interface.html).
 
@@ -82,15 +82,15 @@ Once you've created a virtual environment, you need to activate it. Activating t
 
 To activate your environment on Windows, use the following command:
 
-```bash
+~~~{.bash caption=">_"}
 venv\Scripts\activate
-```
+~~~
 
 On macOS and Linux, use the following:
 
-```bash
+~~~{.bash caption=">_"}
 source venv/bin/activate
-```
+~~~
 
 After activation, your command prompt will change to indicate that the virtual environment is active, typically by showing the name of the environment in parentheses, like this: `(venv)`.
 
@@ -98,15 +98,15 @@ After activation, your command prompt will change to indicate that the virtual e
 
 With the virtual environment active, you can install packages using pip, just as you would globally. For example, the following command shows you how to install [Flask](https://flask.palletsprojects.com/), a popular web framework:
 
-```bash
+~~~{.bash caption=">_"}
 pip install flask
-```
+~~~
 
 You can specify a particular version in the install command using the syntax `pip install package==version`. For example, the following command installs version 2.2.5 of Flask:
 
-```bash
+~~~{.bash caption=">_"}
 pip install flask==2.2.5
-```
+~~~
 
 This command installs the Flask library within the virtual environment, making it available for your project without affecting the global Python installation.
 
@@ -114,15 +114,15 @@ This command installs the Flask library within the virtual environment, making i
 
 Managing packages in a virtual environment is crucial for maintaining project consistency. One helpful practice is to use a `requirements.txt` file to keep track of your project's dependencies. You can create this file by running the following:
 
-```bash
+~~~{.bash caption=">_"}
 pip freeze > requirements.txt
-```
+~~~
 
 This command lists all installed packages and their versions, saving them to `requirements.txt`. To recreate the environment on another machine or after deleting the environment, you can use the following:
 
-```bash
+~~~{.bash caption=">_"}
 pip install -r requirements.txt
-```
+~~~
 
 This ensures that the exact versions of the dependencies are installed, making your project environment reproducible.
 
@@ -130,37 +130,37 @@ When you're done with development and want to stop using the virtual environment
 
 To deactivate an environment, you can use the following command:
 
-```bash
+~~~{.bash caption=">_"}
 deactivate
-```
+~~~
 
 To delete the environment folder, use the following command:
 
-```bash
+~~~{.bash caption=">_"}
 rm -rf venv
-```
+~~~
 
 This removes the virtual environment and all the packages installed within it.
 
-## Limitations of virtualenv
+## Limitations of `virtualenv`
 
 While virtualenv is a powerful tool, it has some limitations:
 
-* **System-level dependencies:** virtualenv only isolates Python packages. It does not handle setting up system-level dependencies that some Python packages require. For example, packages like libpng or libfreetype, used in the Matplotlib library, require certain dependencies to be installed separately on the system.
-* **Reproducibility across different platforms:** virtualenv does not guarantee reproducibility across different operating systems and hardware platforms. It only simplifies environment reproducibility when you're not dealing with system- or platform-specific dependencies.
-* **Integration with CI/CD pipelines:** While virtualenv is great for working locally, it fails to seamlessly integrate with CI/CD pipelines. Ensuring the CI/CD environment matches the local development setup requires additional configuration and management.
+- **System-level dependencies:** virtualenv only isolates Python packages. It does not handle setting up system-level dependencies that some Python packages require. For example, packages like libpng or libfreetype, used in the Matplotlib library, require certain dependencies to be installed separately on the system.
+- **Reproducibility across different platforms:** virtualenv does not guarantee reproducibility across different operating systems and hardware platforms. It only simplifies environment reproducibility when you're not dealing with system- or platform-specific dependencies.
+- **Integration with CI/CD pipelines:** While virtualenv is great for working locally, it fails to seamlessly integrate with CI/CD pipelines. Ensuring the CI/CD environment matches the local development setup requires additional configuration and management.
 
 [Earthly](https://earthly.dev/) is a CI/CD framework that allows you to build, test, and deploy your projects consistently across different environments. It excels at sandboxing system-level dependencies, ensuring your projects can run anywhere without the typical "it works on my machine" issues. By leveraging Earthly, you can overcome the limitations of virtualenv to ensure that both Python and system-level dependencies are managed efficiently, leading to more stable and reproducible builds.
 
 Here's how Earthly works:
 
-* **It defines dependencies in an Earthfile:** Earthly allows you to define all your dependencies, including system-level ones, in an [Earthfile](https://docs.earthly.dev/docs/earthfile). This ensures a consistent setup across different machines.
-* **It builds consistent environments:** Earthly uses containerization to build environments, ensuring all dependencies are properly isolated and consistent.
-* **It integrates with CI/CD pipelines:** Earthly integrates seamlessly with CI/CD pipelines, allowing you to automate your workflows and run your builds, tests, and deployments in a consistent environment. This integration ensures that your application behaves the same throughout the development lifecycle.
+- **It defines dependencies in an Earthfile:** Earthly allows you to define all your dependencies, including system-level ones, in an [Earthfile](https://docs.earthly.dev/docs/earthfile). This ensures a consistent setup across different machines.
+- **It builds consistent environments:** Earthly uses containerization to build environments, ensuring all dependencies are properly isolated and consistent.
+- **It integrates with CI/CD pipelines:** Earthly integrates seamlessly with CI/CD pipelines, allowing you to automate your workflows and run your builds, tests, and deployments in a consistent environment. This integration ensures that your application behaves the same throughout the development lifecycle.
 
 The following is an example of an Earthfile for a Flask web app project. This setup installs both system-level and Python dependencies:
 
-```earthfile
+~~~{.dockerfile caption="Earthfile"}
 # Use a specific Python version
 FROM python:3.8
 WORKDIR /app
@@ -186,7 +186,7 @@ docker:
   ENV FLASK_APP=src/app.py
   ENTRYPOINT ["flask", "run", "--host=0.0.0.0", "--port=3000"]
   SAVE IMAGE my-python-app:latest
-```
+~~~
 
 For more details on using Earthly with Python, check out [this Earthly blog post](https://earthly.dev/blog/python-earthly/).
 
@@ -200,9 +200,7 @@ By mastering these tools, you can ensure that your Python projects are well orga
 
 - [ ] Create header image in Canva
 - [ ] Optional: Find ways to break up content with quotes or images
-- [ ] Verify look of article locally
-- [ ] Would any images look better `wide` or without the `figcaption`?
-- [ ] Run mark down linter (`lint`)
+
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
 - [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`

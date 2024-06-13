@@ -665,3 +665,6 @@ Miniconda
 sandboxing
 Miniconda
 miniconda
+
+libfreetype
+libpng
