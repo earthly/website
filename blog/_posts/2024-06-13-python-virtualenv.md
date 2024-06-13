@@ -196,6 +196,8 @@ In this article, you learned how to create and manage Python virtual environment
 
 By mastering these tools, you can ensure that your Python projects are well organized and free from dependency conflicts, allowing you to focus on what matters most: writing great code.
 
+{% include_html cta/bottom-cta.html %}
+
 ## Outside Article Checklist
 
 - [ ] Create header image in Canva
@@ -203,4 +205,3 @@ By mastering these tools, you can ensure that your Python projects are well orga
 
 - [ ] Add keywords for internal links to front-matter
 - [ ] Run `link-opp` and find 1-5 places to incorporate links
-- [ ] Add Earthly `CTA` at bottom `{% include_html cta/bottom-cta.html %}`
