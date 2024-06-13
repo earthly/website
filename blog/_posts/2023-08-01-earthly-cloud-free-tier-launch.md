@@ -1,7 +1,7 @@
 ---
 title: "Introducing Earthly Cloud"
 categories:
-  - News
+  - news
 toc: true
 author: Vlad
 topcta: false

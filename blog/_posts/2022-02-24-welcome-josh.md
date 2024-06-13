@@ -1,7 +1,7 @@
 ---
 title: "Welcoming Josh Alletto as Senior Technical Content Engineer"
 categories:
-  - News
+  - news
 toc: true
 author: Adam
 

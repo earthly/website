@@ -1,7 +1,5 @@
 ---
 title: "Concurrency in Go"
-categories:
-  - Tutorials
 toc: true
 author: Ifihanagbara Olusheye
 
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to use concurrency in Go to run multiple processes simultaneously, improve speed and performance, and communicate between goroutines using channels. Discover the benefits and challenges of concurrent programming in this informative article.
 last_modified_at: 2023-07-19
+categories:
+  - golang
 ---
 **This article explains Go concurrency essentials. Earthly accelerates Go development with its cache for faster builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

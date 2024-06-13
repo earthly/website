@@ -1,7 +1,7 @@
 ---
 title: "The Other Kind of Staff Software Engineer"
 categories:
-  - Tutorials
+  - articles
 toc: true
 author: Adam
 internal-links:

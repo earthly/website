@@ -1,7 +1,5 @@
 ---
 title: "Install `matplotlib` In A Docker Container"
-categories:
-  - Tutorials
 author: Adam
 internal-links:
  - matplotlib
@@ -9,6 +7,8 @@ bottomcta: false
 excerpt: |
     Learn how to install `matplotlib` in a Docker container and quickly generate graphs and visualizations. Discover the differences between installing `matplotlib` in Alpine Linux and Ubuntu, and why the process can be slower in Alpine.
 last_modified_at: 2023-07-19
+categories:
+  - python
 ---
 **In this article, we'll show you an easy way to install `matplotlib`. Earthly can simplify your build process on any Linux distribution. [Discover how](https://cloud.earthly.dev/login).**
 

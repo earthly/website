@@ -1,7 +1,5 @@
 ---
 title: What is Buildkit?
-categories:
-  - Tutorials
 toc: true
 author: Adam
 sidebar:
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to use BuildKit, an open-source project that turns Dockerfiles into Docker images. Discover its history, how to install it, and how to build images using BuildKit directly. Explore different output types and gain insights into the inner workings of BuildKit.
 last_modified_at: 2023-07-19
+categories:
+  - containers
 ---
 **The article explores BuildKit's capabilities. Earthly enhances BuildKit with additional build automation and optimization. [Check it out](https://cloud.earthly.dev/login/).**
 

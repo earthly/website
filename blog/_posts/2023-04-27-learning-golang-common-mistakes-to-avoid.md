@@ -1,19 +1,19 @@
 ---
 title: "Five Common Mistakes To Avoid When Learning Golang"
-categories:
-  - Tutorials
 toc: true
 author: Ubaydah Abdulwasiu
 editor: Mustapha Ahmad Ayodeji
 
 internal-links:
- - Golang
+ - golang
  - Common Mistakes
  - Improvement
  - Learning
 excerpt: |
     In this article, we explore five common mistakes to avoid when learning Golang. From understanding pointers and interfaces to utilizing concurrency and third-party libraries effectively, we cover key concepts and best practices to help you become a more proficient Go developer. Don't miss out on these valuable insights to enhance your Golang skills!
 last_modified_at: 2023-07-19
+categories:
+  - golang
 ---
 **The article provides insights into the common pitfalls encountered when programming in Golang and offers guidance on how to avoid them. Earthly excels at managing Go dependencies and optimizing build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

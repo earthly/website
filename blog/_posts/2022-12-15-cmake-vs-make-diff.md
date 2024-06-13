@@ -1,7 +1,5 @@
 ---
 title: "CMake vs. Make: What's the Difference?"
-categories:
-  - Tutorials
 toc: true
 author: Ndafara Tsamba
 editor: Bala Priya C
@@ -9,12 +7,14 @@ sidebar:
   nav: "makefile"
 internal-links:
  - CMake
- - Make
+ - make
  - Compilation
  - Dependency-Management
 excerpt: |
     Learn the key differences between CMake and Make, two popular build automation tools. Discover how CMake's cross-platform capabilities, GUI, and better dependency handling make it a preferred choice for software development.
 last_modified_at: 2023-07-19
+categories:
+  - make
 ---
 **This article compares CMake and Make. Earthly adds reproducibility and efficient caching to either. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 
@@ -325,7 +325,7 @@ This will build the C++ code for Windows Visual Studio 15 2017 build system:
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: C:/CMake_vs_Make/hello_cmake/build-windows
+-- build files have been written to: C:/CMake_vs_Make/hello_cmake/build-windows
 ~~~
 
 If you navigate to the `build-windows` directory, you should be able to see the following files:

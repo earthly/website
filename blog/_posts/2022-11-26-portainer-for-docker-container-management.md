@@ -1,7 +1,5 @@
 ---
 title: "Using Portainer with Docker and Docker Compose"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 editor: Bala Priya C
@@ -15,6 +13,8 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to use Portainer, a web-based Docker management system, to easily manage your containers, images, volumes, and more with a convenient graphical user interface. Discover the benefits of Portainer's features and how to deploy apps using built-in templates and your own Compose files.
 last_modified_at: 2023-07-19
+categories:
+  - containers
 ---
 **The article provides a step-by-step guide for configuring Portainer. Earthly improves continuous integration pipelines by providing efficient caching and enabling parallel builds. Great for those using Portainer. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,18 +1,18 @@
 ---
 title: "Using Ninja Build to Build Projects Faster"
-categories:
-  - Tutorials
 toc: true
 author: Antreas Antoniou
 editor: Bala Priya C
 
 internal-links:
  - Ninja
- - Build
- - Build System
+ - build
+ - build System
 excerpt: |
     Learn how to use Ninja, a fast build system, to speed up the building of your software projects. Discover its advantages, limitations, and how to implement a Ninja build for your C++ projects.
 last_modified_at: 2023-07-19
+categories:
+  - make
 ---
 **This article discusses the Ninja build tool. Earthly ensures consistent builds across team environments with its reproducibility features. [Check it out](https://cloud.earthly.dev/login).**
 
@@ -294,7 +294,7 @@ The following is a copy of the terminal output for the second build:
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: \
+-- build files have been written to: \
   /Users/helloworld/ninja-tutorial/incremental
 
 ninja-tutorial/incremental on  main [!+?] via △ v3.24.2 via 🐍 v3.9.13 \
@@ -310,7 +310,7 @@ ninja-tutorial/incremental on  main [!+?] via 🐍 v3.9.13 on ☁️
 ❯ cmake -S sample_project/ -G Ninja
 -- Configuring done
 -- Generating done
--- Build files have been written to: \
+-- build files have been written to: \
   /Users/helloworld/ninja-tutorial/incremental
 
 ninja-tutorial/incremental on  main [!+?] via 🐍 v3.9.13 on ☁️ took 3s

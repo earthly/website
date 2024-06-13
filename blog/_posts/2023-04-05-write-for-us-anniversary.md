@@ -1,7 +1,7 @@
 ---
 title: "Celebrating One Year of Write With Us!"
 categories:
-  - News
+  - news
 toc: true
 author: Josh
 topcta: true

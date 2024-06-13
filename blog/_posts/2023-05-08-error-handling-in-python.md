@@ -1,12 +1,12 @@
 ---
 title: "Error Handling in Python"
 categories:
-  - Tutorials
+  - python
 toc: true
 author: Daniel Boadzie
 
 internal-links:
- - Python
+ - python
  - Error Handling
  - Debugging
  - Exceptions

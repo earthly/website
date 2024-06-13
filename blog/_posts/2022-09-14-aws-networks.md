@@ -1,7 +1,5 @@
 ---
 title: "Introduction to AWS Networking"
-categories:
-  - Tutorials
 toc: true
 author: Josh
 toc: false
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn the basics of AWS networking and how to set up your own virtual private cloud (VPC) from scratch. This tutorial covers regions, availability zones, subnets, internet gateways, and route tables, and includes step-by-step instructions for creating an EC2 instance and deploying a web server using Nginx.
 last_modified_at: 2023-07-19
+categories:
+  - cloud
 ---
 **The article explains how to create a network in AWS. Earthly streamlines the build process for DevOps engineers working with AWS. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

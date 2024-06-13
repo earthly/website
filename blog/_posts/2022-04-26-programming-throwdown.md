@@ -1,7 +1,7 @@
 ---
 title: "Earthly on Programming Throwdown"
 categories:
-  - News
+  - news
 toc: false
 author: Earthly
 excerpt: |

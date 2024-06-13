@@ -1,7 +1,5 @@
 ---
 title: "When to use Bazel?"
-categories:
-  - Articles
 toc: true
 author: Adam
 sidebar:
@@ -11,6 +9,8 @@ internal-links:
 excerpt: |
     Learn about the benefits and challenges of using Bazel, Google's open-source monorepo build system, from experts who have experience with it. Discover when to use Bazel, its history, case studies, migration tips, and the future of this powerful build tool.
 last_modified_at: 2023-07-11
+categories:
+  - bazel
 ---
 **The article provides an in-depth analysis of the Bazel build system's complexities. Earthly streamlines the build process, presenting a straightforward alternative to Bazel's complex configuration. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

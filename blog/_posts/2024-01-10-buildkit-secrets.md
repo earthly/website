@@ -1,7 +1,5 @@
 ---
 title: "How to Handle Secrets with BuildKit"
-categories:
-  - Tutorials
 toc: true
 author: Rajkumar Venkatasamy
 
@@ -13,6 +11,8 @@ internal-links:
  - how to use buildkit to handle secrets
 excerpt: |
     This tutorial explores how to handle secrets securely during the Docker image build process using BuildKit. It covers the steps to enable Docker BuildKit secrets, securely pass secrets to the Docker image, and ensure that the secrets remain hidden from the Dockerfile, build cache, and final image.
+categories:
+  - containers
 ---
 **This article explores the use of BuildKit for secure Docker image building. Earthly enhances your build automation capabilities by leveraging BuildKit. You can find more information about Earthly at [this link](https://cloud.earthly.dev/login).**
 

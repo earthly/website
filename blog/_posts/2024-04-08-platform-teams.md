@@ -1,7 +1,5 @@
 ---
 title: "How a Platform Team Helps Your Developers"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 
@@ -10,6 +8,8 @@ internal-links:
  - platform team helping your developers
  - platform team useful for developers
  - developers being helped by platform team
+categories:
+  - platform
 ---
 
 Platform teams support the work of development teams by building internal tools and platforms that automate processes, unify operations, and enable self-service developer access to infrastructure resources.

@@ -1,7 +1,5 @@
 ---
 title: "How I Saved $5,000/mo with a $5 Droplet"
-categories:
-- Tutorials
 
 toc: true
 author: Corey
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to save money and improve your developer workflow by setting up a pull-through cache for Docker Hub. This article provides step-by-step instructions and tips for configuring and hosting your own cache, helping you avoid rate limits and reduce costs.
 last_modified_at: 2023-07-19
+categories:
+  - containers
 ---
 **In this article, you'll learn how to handle Docker rate limits. Earthly can optimize your CI builds with effective caching. [Learn more](https://cloud.earthly.dev/login).**
 

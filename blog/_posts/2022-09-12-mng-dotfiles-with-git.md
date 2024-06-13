@@ -1,7 +1,5 @@
 ---
 title: "Manage dotfiles from anywhere with Git"
-categories:
-  - Tutorials
 toc: true
 author: Talha Khalid
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to manage your dotfiles using Git and make your environment configuration easier to maintain and synchronize across multiple machines. Say goodbye to the hassle of manually reinstalling programs and customizing settings every time you switch computers.
 last_modified_at: 2023-07-19
+categories:
+  - git
 ---
 **This article explains how to manage dotfiles using Git. Earthly provides consistent and efficient build processes for dotfile management. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

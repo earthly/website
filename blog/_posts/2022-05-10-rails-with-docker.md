@@ -1,7 +1,5 @@
 ---
 title: "Docker and Rails: Running Ruby on Rails with Docker"
-categories:
-  - Tutorials
 toc: true
 author: Utibeabasi Umanah
 internal-links:
@@ -12,6 +10,8 @@ topic: docker
 excerpt: |
     Learn how to run a Ruby on Rails application inside a Docker container and discover best practices for building Docker images. This tutorial covers topics such as creating a Dockerfile, reducing image size with Alpine base images and multistage builds, and running multiple containers with Docker Compose.
 last_modified_at: 2023-07-11
+categories:
+  - containers
 ---
 **This article explains how to Dockerize Ruby on Rails applications. Earthly improves the Dockerization process for Rails apps by enabling parallel builds and optimizing cache usage. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

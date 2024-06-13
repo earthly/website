@@ -1,7 +1,5 @@
 ---
 title: "Go with the Gin Framework"
-categories:
-  - Tutorials
 toc: true
 author: Ukeje Goodness
 
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to build web applications in Go using the Gin framework. This tutorial will guide you through developing a CRUD API and using features like routing, JSON parsing, and database operations with GORM.
 last_modified_at: 2023-07-19
+categories:
+  - golang
 ---
 **This article delves into Gin web development. Earthly simplifies the Go build process for developers. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

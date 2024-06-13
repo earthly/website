@@ -1,7 +1,7 @@
 ---
 title: "Using Homebrew on M1 Mac"
 categories:
-  - Articles
+  - cli
 toc: true
 author: Josh
 tags:

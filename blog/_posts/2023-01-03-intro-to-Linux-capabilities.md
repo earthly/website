@@ -1,7 +1,5 @@
 ---
 title: "An Introduction to Linux Capabilities"
-categories:
-  - Tutorials
 toc: true
 author: Anurag Kumar
 editor: Bala Priya C
@@ -9,11 +7,13 @@ editor: Bala Priya C
 internal-links:
  - Kubernetes
  - Linux
- - Containers
+ - containers
  - Pods
 excerpt: |
     Learn about Linux capabilities and how they allow for fine-grained control over the privileges of running processes. Discover how to use capabilities in Docker containers and Kubernetes, and understand the importance of setting the right capabilities for your containerized workloads.
 last_modified_at: 2023-07-19
+categories:
+  - linux
 ---
 **This article explains Linux capabilities management. Earthly ensures consistent and efficient Docker image builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

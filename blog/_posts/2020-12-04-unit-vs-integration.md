@@ -2,7 +2,7 @@
 title: Unit Testing vs Integration Testing
 toc: true
 categories:
-  - Articles
+  - articles
 author: Adam
 internal-links:
   - integration testing

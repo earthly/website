@@ -1,7 +1,7 @@
 ---
 title: "Creating and hosting your own rpm packages and yum repo"
 categories:
-  - Tutorials
+  - build
 toc: true
 author: Alex
 bottomcta: false

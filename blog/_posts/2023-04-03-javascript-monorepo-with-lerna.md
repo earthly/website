@@ -1,7 +1,5 @@
 ---
 title: "A Guide to Setting Up Your Monorepo for JavaScript Projects with Lerna"
-categories:
-  - Tutorials
 toc: true
 author: Cameron Pavey
 editor: Mustapha Ahmad Ayodeji
@@ -18,6 +16,9 @@ internal-links:
 excerpt: |
     Learn how to set up a monorepo for JavaScript projects using Lerna. This tutorial covers the benefits of using Lerna, how to create packages, publish them to npm, and run CI workflows with GitHub Actions and Earthly.
 last_modified_at: 2023-07-11
+categories:
+  - js-tooling
+  - monorepos
 ---
 **The article explains how to configure a Lerna monorepo. Earthly streamlines and accelerates monorepo build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

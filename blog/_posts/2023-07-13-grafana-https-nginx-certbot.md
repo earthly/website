@@ -1,7 +1,5 @@
 ---
 title: "Securing Grafana with HTTPS using Nginx and Certbot"
-categories:
-  - Tutorials
 toc: true
 author: Emediong Samuel
 editor: Muhammad Badawy
@@ -16,6 +14,8 @@ internal-links:
 excerpt: |
     Learn how to secure your Grafana site with HTTPS using Nginx and Certbot in this comprehensive guide. Protect your sensitive data, establish trust, and enhance your website's reputation with HTTPS encryption and enhanced security.
 last_modified_at: 2023-07-11
+categories:
+  - cloud
 ---
 **This article explains how to secure Grafana using HTTPS. Earthly strengthens security with consistent, containerized builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,7 @@
 ---
 title: "Earthly on Ruby Rogues"
 categories:
-  - News
+  - news
 topcta: false
 author: Earthly
 excerpt: |

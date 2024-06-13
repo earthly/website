@@ -1,7 +1,7 @@
 ---
 title: "Remote Code Execution as a Service"
 categories:
-  - Articles
+  - articles
 author: Corey
 author2: Brandon
 author3: Adam

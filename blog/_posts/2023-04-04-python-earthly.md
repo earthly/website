@@ -1,7 +1,5 @@
 ---
 title: "Better Dependency Management in Python"
-categories:
-  - Tutorials
 toc: true
 author: Vlad
 topic: python
@@ -10,6 +8,9 @@ topcta: false
 excerpt: |
     Learn how Earthly can simplify dependency management in Python projects, ensuring consistency across different environments and streamlining the build and deployment process. Say goodbye to the "it works on my machine" problem and focus on the core functionality of your application.
 last_modified_at: 2023-07-11
+categories:
+  - python-tooling
+  - python
 ---
 <!-- markdownlint-disable MD036 -->
 

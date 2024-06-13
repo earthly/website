@@ -1,19 +1,19 @@
 ---
 title: "Introduction to Netlify Cloud Functions"
-categories:
-  - Tutorials
 toc: true
 author: El Achu
 editor: Bala Priya C
 
 internal-links:
  - Netlify
- - Cloud
+ - cloud
  - Functions
  - Serverless
 excerpt: |
     Learn how to create powerful serverless applications with Netlify Functions. This tutorial covers the basics of Netlify Functions, different types of functions, and how they compare to AWS Lambda.
 last_modified_at: 2023-07-19
+categories:
+  - cloud
 ---
 **The article provides a guide to Netlify Functions, focusing on optimization. Earthly streamlines the build process for Netlify Functions or whatever you are building. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

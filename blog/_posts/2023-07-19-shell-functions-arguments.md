@@ -1,7 +1,5 @@
 ---
 title: "Learning Shell Script Functions and Arguments: A Comprehensive Guide"
-categories:
-  - Tutorials
 toc: true
 author: Aniket Bhattacharyea
 editor: Ubaydah Abdulwasiu
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn the fundamentals of shell scripting functions and arguments in this comprehensive guide. Discover how to create functions, pass arguments, use variables, and return values in Bash scripts, along with best practices for writing efficient and reusable code.
 last_modified_at: 2023-07-19
+categories:
+  - cli
 ---
 **This article explains Bash scripting functions. Earthly provides reproducible build capabilities that improve Bash scripting. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

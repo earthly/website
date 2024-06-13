@@ -1,13 +1,13 @@
 ---
 title: "Getting a Repeatable Build, Every Time"
 categories:
-  - Articles
+  - build
 tags:
-  - Makefile
+  - makefile
   - Dockerfile
   - Bash
-  - Build scripts
-  - Build strategy
+  - build scripts
+  - build strategy
   - Repeatable builds
   - Glue layer
 toc: true

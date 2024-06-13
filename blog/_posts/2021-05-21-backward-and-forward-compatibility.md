@@ -1,7 +1,7 @@
 ---
 title: "Protocol Buffers Best Practices for Backward and Forward Compatibility"
 categories:
-  - Tutorials
+  - golang
 toc: true
 author: John Gramila
 internal-links:

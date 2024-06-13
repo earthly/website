@@ -1,7 +1,5 @@
 ---
 title: "Using Docker Init in Rust"
-categories:
-  - Tutorials
 toc: true
 author: Ikeh Akinyemi
 
@@ -13,6 +11,9 @@ internal-links:
  - using rust with docker
 excerpt: |
     This tutorial explains how to use `docker init` in Rust projects to simplify the setup of Docker-related files. It automatically generates `Dockerfile`, `compose.yaml`, and `.dockerignore` files, making it easier to containerize Rust applications.
+categories:
+  - containers
+  - rust
 ---
 **This article explains how to use `docker init` in Rust projects. Earthly provides a more efficient and reproducible build process for containerizing Rust. [Learn More](https://cloud.earthly.dev/login).**
 

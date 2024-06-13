@@ -1,7 +1,5 @@
 ---
 title: "S3 Terraform Backend"
-categories:
-  - Tutorials
 author: Adam
 sidebar:
   nav: "lambdas"
@@ -11,6 +9,8 @@ bottomcta: false
 excerpt: |
     Learn how to store your Terraform state in an S3 bucket to avoid leaking sensitive information and manage changes made by multiple people.
 last_modified_at: 2023-07-19
+categories:
+  - iac
 ---
 **The article simplifies the complexities of managing Terraform state. Earthly guarantees reproducible builds for Terraform projects in CI workflows. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,5 @@
 ---
 title: "What Is Platform Engineering?"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 
@@ -12,6 +10,8 @@ internal-links:
  - is platform engineering usefull
 excerpt: |
     Platform engineering is a discipline that improves developer productivity by providing automated tools and processes that accelerate the software delivery lifecycle. It focuses on centralization, consistency, and self-service developer access. Platform engineering involves creating internal developer platforms that act as one-stop shops for developers, simplifying their day-to-day tasks and improving consistency and control for team leaders.
+categories:
+  - platform
 ---
 **The article focuses on the transformative impact of platform engineering. Earthly's reproducible builds significantly enhance consistency and efficiency for platform engineers. [Check it out](https://cloud.earthly.dev/login).**
 

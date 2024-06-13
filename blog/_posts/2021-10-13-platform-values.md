@@ -1,7 +1,7 @@
 ---
 title: "The Platform Values of Earthly"
 categories:
-  - Articles
+  - articles
 toc: true
 author: Vlad
 internal-links:

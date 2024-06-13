@@ -1,7 +1,7 @@
 ---
 title: "Creating and Deploying a Facial Recognition System with Jupyter Notebooks and Anvil"
 categories:
-  - Tutorials
+  - python
 toc: true
 author: Fortune Adekogbe
 
@@ -9,7 +9,7 @@ internal-links:
  - Jupyter
  - Deepnote
  - Anvil
- - Python
+ - python
 excerpt: |
     Learn how to create and deploy a facial recognition system using Jupyter Notebooks and Anvil. This tutorial will guide you through the process of building the logic in Deepnote and creating the interface in Anvil, allowing you to serve models from your notebooks and quickly build minimal interfaces.
 last_modified_at: 2023-07-19

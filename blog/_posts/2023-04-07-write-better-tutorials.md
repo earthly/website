@@ -1,7 +1,5 @@
 ---
 title: "How to Write a Tutorial About How to Read a CSV in Golang"
-categories:
-  - Tutorials
 toc: true
 author: Josh
 topcta: false
@@ -11,6 +9,8 @@ internal-links:
 excerpt: |
     Learn how to write effective technical tutorials by providing context, being patient, and running code. This article explores the common pitfalls of tutorial writing and offers advice on how to improve your tutorials.
 last_modified_at: 2023-07-19
+categories:
+  - writing
 ---
 
 We've been running the Earthly blog for [over a year](/blog/write-for-us-anniversary) now, and in that time we've worked with dozens of talented writers on nearly a hundred programming tutorials.
@@ -274,7 +274,7 @@ If you run this code, and you're using the same dataset as me, your output will 
 [[Film Genre Lead Studio Audience score % Profitability Rotten Tomatoes % Worldwide Gross Year] [Youth in Revolt Comedy The Weinstein Company 52 1.09 68 $19.62  2010] [You Will Meet a Tall Dark Stranger Comedy Independent 35 1.211818182 43 $26.66  2010] [When in Rome Comedy Disney 44 0 15 $43.04  2010] [What Happens in Vegas Comedy Fox 72 6.267647029 28 $219.37  2008] ....
 ~~~
 
-Actually, there's way more, but for the sake of brevity, I've only included the first few lines. A couple of things to notice here. First, how is the data structured? When it was in the csv file, each row was separated by a new line and rows themselves were broken up into columns with commas. But now the data has been translated into Go and Go doesn't have a `csv` type, so it needs to convert the data into something it understands. In this case, a [slice]<https://go.dev/blog/slices-intro).> Actually, a slice of slices, where each slice in the larger slice represents a line in the csv.
+Actually, there's way more, but for the sake of brevity, I've only included the first few lines. A couple of things to notice here. First, how is the data structured? When it was in the csv file, each row was separated by a new line and rows themselves were broken up into columns with commas. But now the data has been translated into Go and Go doesn't have a `csv` type, so it needs to convert the data into something it understands. In this case, a [slice](https://go.dev/blog/slices-intro). Actually, a slice of slices, where each slice in the larger slice represents a line in the csv.
 
 From here we can treat the data like any slice. For example, we can loop through it and print one line at a time to the console. Remember that each line is also a slice, so I've imported the `string` package so I can join each line of data into a simple string. This isn't necessary, I just thought it looked a little better when it printed to the console.
 

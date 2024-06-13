@@ -1,7 +1,5 @@
 ---
 title: "Linting Markdown And Documentation"
-categories:
-  - Tutorials
 author: Adam
 internal-links:
  - vale
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to ensure the quality of your markdown files and documentation with linting tools. Discover various tools like markdownlint, mdspell, alex, write-good, textlint, proselint, and Vale that can help you catch formatting errors, spelling mistakes, grammar errors, and improve writing clarity. Find the right tool for your needs and automate their usage to maintain high-quality documentation.
 last_modified_at: 2023-07-19
+categories:
+  - writing
 ---
 **This article introduces prose linting tools. If you value precise software documentation, Earthly can integrate with Vale and markdownlint to automate and improve your CI builds. [Explore more](https://cloud.earthly.dev/login).**
 

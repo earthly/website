@@ -1,7 +1,5 @@
 ---
 title: "How to Streamline Your Container Workflow with GitHub Container Registry"
-categories:
-  - Tutorials
 toc: true
 author: Mercy Bassey
 editor: Ubaydah Abdulwasiu
@@ -16,6 +14,9 @@ internal-links:
 excerpt: |
     This article explores how to streamline your container workflow with the GitHub Container Registry. It covers configuring access, deploying Docker images, integrating with GitHub Actions, and integrating with Kubernetes.
 last_modified_at: 2023-08-28
+categories:
+  - containers
+  - githubactions
 ---
 **The article discusses the GitHub Container Registry. DevOps professionals using GHCR benefit from Earthly's approach to fast, reproducible builds. [Check it out](https://cloud.earthly.dev/login).**
 

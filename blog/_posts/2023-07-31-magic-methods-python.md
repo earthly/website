@@ -1,7 +1,5 @@
 ---
 title: "Exploring the Magic Methods in Python"
-categories:
-  - Tutorials
 toc: true
 author: Ashutosh Krishna
 editor: Ubaydah Abdulwasiu
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     This tutorial explores the concept of magic methods in Python, which are special methods that allow you to define and customize the behavior of classes. It covers topics such as object-oriented programming, operator overloading, and context managers, providing practical examples and explanations of commonly used magic methods.
 last_modified_at: 2023-08-28
+categories:
+  - python
 ---
 **This article explains Python magic methods. After learning that, Earthly provides clean and efficient build automation for Python development. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

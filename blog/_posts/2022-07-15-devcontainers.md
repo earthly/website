@@ -1,7 +1,5 @@
 ---
 title: "Code From Anywhere: Dev Containers and Github Codespaces"
-categories:
-  - Tutorials
 toc: true
 author: Josh
 
@@ -12,6 +10,8 @@ internal-links:
 excerpt: |
     Learn how to use Dev Containers and Github Codespaces to simplify development and make it more portable. These tools allow you to define a development environment and run your project in a Docker container, either locally or in the cloud. With Dev Containers and Codespaces, you can code from anywhere and standardize development across your team.
 last_modified_at: 2023-08-23
+categories:
+  - containers
 ---
 **The article explains how Jekyll Dev Containers enhance cloud development. Earthly streamlines continuous integration workflows in Codespaces. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

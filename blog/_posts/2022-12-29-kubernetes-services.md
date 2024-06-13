@@ -1,7 +1,5 @@
 ---
 title: "A Developer's Guide to Kubernetes Services"
-categories:
-  - Tutorials
 toc: true
 author: Vivek Kumar Singh
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to create and use services in Kubernetes to improve the communication and scalability of your containerized applications. This article covers the different types of services, such as ClusterIP, Headless, NodePort, and LoadBalancer, and provides step-by-step instructions on how to define and configure them using YAML files. Whether you're a beginner or an experienced developer, this guide will help you understand and leverage the power of services in Kubernetes.
 last_modified_at: 2023-07-19
+categories:
+  - orchestration
 ---
 **This article sheds light on the complexities of Kubernetes services. Earthly streamlines the continuous integration (CI) build process for Kubernetes users. [Discover how](https://cloud.earthly.dev/login).**
 

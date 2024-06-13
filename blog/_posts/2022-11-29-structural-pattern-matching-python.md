@@ -1,18 +1,18 @@
 ---
 title: "Structural Pattern Matching in Python"
-categories:
-  - Tutorials
 toc: true
 author: Mustapha Ahmad Ayodeji
 editor: Bala Priya C
 
 internal-links:
- - Python
+ - python
  - Pattern
  - Structural
 excerpt: |
     In this tutorial, you'll learn how structural pattern matching works in Python 3.10 and how to use different types of patterns to match and extract values from objects. You'll also explore real-world examples and see how this feature can be applied in various scenarios.
 last_modified_at: 2023-07-19
+categories:
+  - python
 ---
 **This article explores Python's structural pattern matching. Earthly streamlines the build process for Python developers. [Check it out](https://cloud.earthly.dev/login).**
 

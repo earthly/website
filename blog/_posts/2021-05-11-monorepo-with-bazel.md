@@ -1,20 +1,20 @@
 ---
 title: 'Building a Monorepo with Bazel'
-categories:
-  - Tutorials
 toc: true
 author: Siddhant Varma
 last_modified_at: 2023-06-29
 
 sidebar:
   nav: monorepos
-
 internal-links:
  - bazel
  - monorepo
 excerpt: |
     Learn how to build a monorepo with Bazel, an open-source build tool developed by Google. Discover the benefits of using a monorepo and how Bazel simplifies the process of building and compiling code in multiple languages and platforms.
 last_modified_at: 2023-07-11
+categories:
+  - bazel
+  - monorepos
 ---
 **In this article, we delve into the powerful combination of monorepos and Bazel. Earthly streamlines your monorepo management by providing containerized, reproducible builds. [Learn how](https://cloud.earthly.dev/login).**
 

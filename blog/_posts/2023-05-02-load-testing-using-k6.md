@@ -1,7 +1,5 @@
 ---
 title: "Load Testing Backend Services Using K6"
-categories:
-  - Tutorials
 toc: true
 author: Donald Le
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to implement load testing for your backend services using k6, a powerful performance testing tool. Discover how to create test scenarios, run load tests, and visualize the test metrics using InfluxDB and Grafana.
 last_modified_at: 2023-07-19
+categories:
+  - orchestration
 ---
 **K6 load testing significantly enhances performance tuning. Earthly provides stable build environments. Fan of k6 should check it out. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

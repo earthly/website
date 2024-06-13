@@ -1,7 +1,5 @@
 ---
 title: "Creating a G++ Makefile"
-categories:
-  - Tutorials
 toc: true
 author: Aniket Bhattacharyea
 sidebar:
@@ -15,6 +13,8 @@ last_modified_at: 2023-04-17
 excerpt: |
     Learn how to compile C++ programs with the g++ compiler provided by GCC and automate the compilation process using Make. This tutorial covers the installation of GCC on Linux, Mac, and Windows, as well as the compilation process and the use of the make utility to simplify complex compilation tasks.
 last_modified_at: 2023-07-11
+categories:
+  - make
 ---
 **In this article, we'll dive into GCC and Make. If you know the challenges of compiling C++ with Makefiles, Earthly provides a containerized approach to streamline and speed up your builds. [Explore Earthly](https://cloud.earthly.dev/login).**
 

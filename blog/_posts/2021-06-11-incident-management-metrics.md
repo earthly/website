@@ -1,7 +1,8 @@
 ---
 title: "Incident Management Metrics and Key Performance Indicators"
 categories:
-  - Tutorial
+  - cloud
+  - articles
 toc: true
 author: Adam
 internal-links:

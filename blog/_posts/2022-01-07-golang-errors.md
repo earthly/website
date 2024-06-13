@@ -1,7 +1,5 @@
 ---
 title: "Effective Error Handling in Golang"
-categories:
-  - Tutorials
 toc: true
 author: Brandon
 bottomcta: false
@@ -11,6 +9,8 @@ topic: go
 excerpt: |
     Learn how to effectively handle errors in Go with this informative article. Discover the basics of error handling in Go, strategies for robust code, and techniques for defining and wrapping errors. Improve your error handling skills and make your Go programs more reliable and debuggable.
 last_modified_at: 2023-10-03
+categories:
+  - golang
 ---
 **This article explores Go error handling. Earthly is popular with Go developers for ensuring reproducible builds. [Check it out](https://cloud.earthly.dev/login/).**
 

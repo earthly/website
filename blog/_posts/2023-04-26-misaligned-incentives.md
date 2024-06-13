@@ -1,7 +1,7 @@
 ---
 title: "Misaligned Incentives in Dev Tool Businesses"
 categories:
-  - Tutorials
+  - articles
 toc: true
 author: Adam
 

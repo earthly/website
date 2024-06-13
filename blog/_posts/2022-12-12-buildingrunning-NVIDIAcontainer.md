@@ -1,7 +1,5 @@
 ---
 title: "Building and Running an NVIDIA Container"
-categories:
-  - Tutorials
 toc: true
 author: James Walker
 editor: Bala Priya C
@@ -13,6 +11,8 @@ internal-links:
 excerpt: |
     Learn how to build and run NVIDIA containers with GPU access using the NVIDIA Container Runtime. This tutorial explains the architecture of the runtime, installation steps, and how to configure GPU access in Docker containers.
 last_modified_at: 2023-07-19
+categories:
+  - containers
 ---
 **This article examines the NVIDIA Container Runtime's features for AI and ML. Earthly simplifies the build process, whatever you build. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

@@ -1,7 +1,5 @@
 ---
 title: "Getting Started (Quickly) with Docker Init"
-categories:
-  - Tutorials
 toc: true
 author: Rajkumar Venkatasamy
 
@@ -13,6 +11,8 @@ internal-links:
  - using docker init quickly
 excerpt: |
     This tutorial explores the `docker init` command in Docker Desktop 4.18, which simplifies the setup of new Docker projects by generating Docker assets. It provides step-by-step instructions on how to use `docker init` with a Python Flask application.
+categories:
+  - containers
 ---
 **This article delves into Docker Init's application with Python Flask. [Learn how Earthly can enhance this process.](https://cloud.earthly.dev/login).**
 

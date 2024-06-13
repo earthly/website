@@ -1,18 +1,18 @@
 ---
 title: "PostgreSQL in Python Using Psycopg2"
-categories:
-  - Tutorials
 toc: true
 author: Bala Priya C
 
 internal-links:
- - Python
+ - python
  - Psycopg2
  - PostgreSQL
  - Context Managers
 excerpt: |
     Learn how to connect to PostgreSQL databases and run queries using the psycopg2 library in Python. This tutorial covers the basics of connecting to a database, running SQL queries, handling connection errors, and simplifying querying using context managers.
 last_modified_at: 2023-07-19
+categories:
+  - python
 ---
 **This article provides a tutorial on psycopg2. Earthly enhances build consistency when using psycopg2, or any python lib. [Check it out](https://cloud.earthly.dev/login).**
 

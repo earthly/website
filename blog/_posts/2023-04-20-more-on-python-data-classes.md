@@ -1,16 +1,16 @@
 ---
 title: "Let's Learn More About Python Data Classes"
-categories:
-  - Tutorials
 toc: true
 author: Bala Priya C
 
 internal-links:
- - Python
- - Python Classes
+ - python
+ - python Classes
 excerpt: |
     Learn more about Python data classes and their features in this tutorial. Discover how to set default values, exclude fields from the constructor, create fields post-initialization, and use slots for more efficient data classes.
 last_modified_at: 2023-07-19
+categories:
+  - python
 ---
 **This article explores the benefits of Python data classes. Earthly maintains consistent and efficient Python builds in your CI pipeline. [Check it out](https://cloud.earthly.dev/login).**
 

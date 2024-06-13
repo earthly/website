@@ -1,19 +1,19 @@
 ---
 title: "An Introduction To Closures and Decorators in Python"
-categories:
-  - Tutorials
 toc: true
 author: Rahul K
 
 internal-links:
  - Closures
  - Decorators
- - Python
+ - python
  - Function Modification
  - Variable Hiding
 excerpt: |
     Learn how to use closures and decorators in Python to hide variables, modify function behavior, and add functionality to existing functions or classes. This guide provides examples and explanations of closures and decorators, as well as their practical applications in Python programming.
 last_modified_at: 2023-07-19
+categories:
+  - python
 ---
 **The article explains the concepts of Python closures and decorators for the reader. Earthly offers a reliable method to automate and containerize Python build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

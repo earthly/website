@@ -1,7 +1,7 @@
 ---
 title: Top 3 Resources For Learning GoLang
 categories:
-  - Articles
+  - golang
 author: Adam
 internal-links:
    - golang

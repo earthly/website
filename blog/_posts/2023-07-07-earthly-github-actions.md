@@ -1,7 +1,7 @@
 ---
 title: "Better Together - Earthly + Github Actions"
 categories:
-  - Articles
+  - githubactions
 toc: false
 author: Evan Pease
 topic: earthly

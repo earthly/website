@@ -1,0 +1,168 @@
+
+# IaC:
+#  - iac-terraform-cdk
+#  - terraform-init-plan-apply
+#  - terraform-depends-on-argument
+#  - create-manage-vpc-terraform
+#  - deploy-dockcontainers-to-AWSECS-using-Terraform 
+#  - kubernetes-terraform
+#  - terraform-with-github-actions
+#  - pulumi-vs-terraform
+
+# Bazel:
+#  - build-and-deploy-PyApp-with-bazel
+#  - push-docker-image-bazel
+#  - bazel-and-automated-tests
+#  - bazel-build-with-caching
+#  - build-nodejs-app-with-bazel
+#  - bazel-with-rust
+#  - build-java-projects-with-bazel
+#  - build-golang-bazel-gazelle
+#  - using-bazel-with-typescript
+#  - bazel-query
+#  - building-js-monorepo
+#  - bazel-build
+
+# Rust:
+#  - rust-concurrency-patterns-parallel-programming
+#  - rust-generics
+#  - rust-macros
+#  - rust-lifetimes-ownership-burrowing
+#  - rust-api-rocket-diesel
+#  - cargo-chef
+
+# Orchestration:
+#  - kubescape
+#  - validate-&-clean-yaml
+#  - kube-bench
+#  - load-testing-using-k6
+#  - k8s-distributed-tracing
+#  - k8s-log-compression-s3-upload
+#  - k8s-cluster-security
+#  - securing-kubernetes-secrets
+#  - setup-reverse-proxy-kubernetes-nginx
+#  - mutual-tls-kubernetes-nginx-ingress-controller
+#  - k8s-GitOps-with-FluxCD
+#  - helm-k8s-package-manager
+#  - simplify-k8s-using-cr-cp
+#  - managing-k8s-with-k9s
+#  - minikube
+#  - kubernetes-jobs-cron-jobs
+#  - deploy-kubernetes-cri-o-container-runtime
+#  - automate-micsvcs-in-k8s
+#  - managing-k8s-with-kubeadm
+#  - kubernetes-secrets
+#  - kubernetes-operators
+#  - devetools-for-k8s
+#  - K3s-and-K8s
+#  - deployment-strategies-kubernetes
+#  - dockercompose-vs-k8s
+#  - k8s-dev-solutions
+#  - kubernetes-docker
+#  - nomad-vs-kubernetes
+#  - openshift-vs-kubernetes
+#  - use-replicasets-in-k8s
+#  - app-routing-in-k8-cluster
+#  - k8s-namespaces
+#  - kubernetes-network-policies
+#  - k8s-autoscaling
+#  - k8s-networking
+#  - kubernetes-persistent-volumes
+#  - k8s-role-based-access-control
+#  - kubernetes-services
+
+# Deployment:
+#   - Flux-vs-Argo-CD
+#   - ios-continuous-integration-pipeline
+#   - continuous-testing-in-devops
+#   - ci-cd-security-challenges-best-practices
+#   - spinnaker-kubernetes
+#   - canary-deployment-in-k8s
+#   - argocd-kubernetes
+#   - octopus-deploy
+#   - jenkins-stages-pipelines
+#   - building-k8s-tekton
+#   - ci-vs-cd
+#   - continuous-testing-in-devops
+
+# Containers:
+#   - youre-using-docker-compose-wrong
+#   - macOS-native-containers
+#   - chroot
+
+# Make:
+#   - g++-makefile
+#   - vscode-git
+#   - ninjabuild-for-faster-build
+#   - using-cmake
+#   - cmake-gcc-cross-compile
+#   - installandrun-CMake-on-windows
+#   - vscode-make
+#   - cross-compiling-raspberry-pi
+#   - makefiles-on-windows
+#   - autoconf
+#   - static-and-dynamic-linking
+#   - make-tutorial
+#   - golang-makefile
+#   - cmake-vs-make-diff
+#   - make-flags
+#   - using-makefile-wildcards
+#   - docker-and-makefiles
+#   - makefile-variables
+
+
+PBuilds:
+  - python-hatch
+  - pyinstaller
+  - miniconda-venv
+  - conda-virtual-env
+  - docker-init-in-python
+  - create-python-package
+  - poetry-publish
+  - python-c-extension
+  - circle-ci-with-django
+  - pytest-fixtures
+  - python-poetry
+  - python-earthly
+  - python-makefile
+
+js-tooling:
+ - javascript-monorepo-with-lerna
+ - npm-workspaces-monorepo
+ - build-monorepo-with-turporepo
+ - setup-typescript-monorepo
+ - npm-vs-yarn
+ - npm-vs-npx-vs-pnmp
+
+monorepos:
+  - golang-monorepo
+  - monorepo-vs-polyrepo
+  - javascript-monorepo-with-lerna
+  - monorepo-with-bazel
+  - setup-typescript-monorepo
+  - building-js-monorepo
+  - monorepo-tools
+  - nx-monorepos-guide
+  - build-monorepo-with-turporepo
+  - setup-typescript-monorepo
+  - rust-monorepo
+  - python-monorepo
+  - understanding-monorepos
+  - monorepo-java
+  - merge-queues
+
+linux:
+  - what-is-syslog
+  - linux-network-commands
+  - linux-text-processing-commands  
+  - systemd
+  - intro-to-Linux-capabilities
+  - chown-permissions-chmod
+
+git:
+  - advanced-git-commands-2
+  - vscode-git
+  - a-developer-guide-to-git-lfs
+  - mng-dotfiles-with-git
+  - git-branching
+  - advanced-git-commands

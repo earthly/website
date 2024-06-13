@@ -1,7 +1,5 @@
 ---
 title: "Running Containers on AWS Lambda"
-categories:
-  - Tutorials
 toc: true
 author: Adam
 sidebar:
@@ -12,6 +10,8 @@ topic: docker
 excerpt: |
     Learn how to run containers on AWS Lambda and leverage the scalability and cost-saving benefits of serverless computing. This article explores the process of setting up a containerized application in AWS Lambda, including creating a TypeScript Lambda function, testing it locally, pushing the image to AWS Elastic Container Registry (ECR), and deploying it as a Lambda function. Discover how to harness the power of containers and serverless computing for your applications on AWS.
 last_modified_at: 2023-07-11
+categories:
+  - cloud
 ---
 **This article explains AWS Lambda containers. Earthly streamlines the build process for AWS Lambda with container support. [Check it out](https://cloud.earthly.dev/login/).**
 

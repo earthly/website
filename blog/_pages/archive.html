@@ -1,11 +1,10 @@
 ---
 layout: page 
 title: All Posts
-permalink: /devlist/
+permalink: /archive/
 regenerate: true
 ---
-{% if jekyll.environment != "production" %}
-<h2>Archive</h2>
+<h2>Posts By Date</h2>
 {% assign postsByYearMonth = site.posts | group_by_exp:"post", "post.date | date: '%Y %B'"  %}
 {% for yearMonth in postsByYearMonth %}
   <h3>{{ yearMonth.name }}</h3>
@@ -15,4 +14,3 @@ regenerate: true
       {% endfor %}
     </ul>
     {% endfor %}
-{% endif %}

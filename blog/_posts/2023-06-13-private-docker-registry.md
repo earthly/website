@@ -1,7 +1,5 @@
 ---
 title: "How to Set Up a Private Docker Registry on Linux"
-categories:
-  - Tutorials
 toc: true
 author: Hitesh Jethva
 
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to set up a private Docker registry on Linux and secure your Docker images in an enterprise environment. This step-by-step guide covers everything from installing Docker and Docker Compose to configuring NGINX and implementing authentication, allowing you to have full control over your Docker registry and ensure the security of your images.
 last_modified_at: 2023-07-19
+categories:
+  - containers
 ---
 **This article outlines the key steps to setting up a Docker registry. Earthly precisely optimizes Docker image build processes. [Learn how](https://cloud.earthly.dev/login).**
 

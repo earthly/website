@@ -1,7 +1,5 @@
 ---
 title: "How To Work With CSV Files In Go"
-categories:
-  - Tutorials
 toc: true
 author: Muhammed Ali
 editor: Bala Priya C
@@ -14,6 +12,8 @@ internal-links:
 excerpt: |
     Learn how to work with CSV files in Go using the encoding/csv package and the goCSV library. This tutorial covers topics such as reading and appending CSV files, converting between CSV and JSON file formats, and provides code examples to help you get started. If you're a Go developer looking to manage CSV files in your projects, this article is a must-read.
 last_modified_at: 2023-07-19
+categories:
+  - golang
 ---
 **The article provides insight into the complexities of handling CSV files in Go. Earthly guarantees consistent build environments Go builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

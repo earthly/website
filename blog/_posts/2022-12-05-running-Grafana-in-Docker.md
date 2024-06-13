@@ -1,7 +1,5 @@
 ---
 title: "Make It Observable: Running Grafana in Docker"
-categories:
-  - Tutorials
 toc: true
 author: Sooter Saalu
 editor: Bala Priya C
@@ -14,6 +12,9 @@ internal-links:
 excerpt: |
     Learn how to implement Grafana in Docker containers to add observability to your infrastructure, making debugging and performance optimization easier. Discover the benefits of using Grafana, its use cases, and how to create and configure Grafana containers with persistent storage.
 last_modified_at: 2023-07-19
+categories:
+  - containers
+  - cloud
 ---
 **This article discusses how to use Grafana within Docker containers. Earthly simplifies Docker container builds. Great for Grafana fans. [Check it out](https://cloud.earthly.dev/login).**
 

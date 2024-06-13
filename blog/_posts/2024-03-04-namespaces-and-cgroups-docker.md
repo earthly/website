@@ -1,7 +1,5 @@
 ---
 title: "How to Use Linux Namespaces and cgroups to Control Docker Performance"
-categories:
-  - Tutorials
 toc: true
 author: Avi Singh
 
@@ -13,6 +11,8 @@ internal-links:
  - how to use linux namespaces and cgroups
 excerpt: |
     Linux namespaces and cgroups are powerful tools that can be used to control Docker performance by providing fine-grained resource allocation and ensuring optimal performance for each container. Namespaces isolate system resources, while cgroups enable the management and partitioning of system resources for a collection of processes.
+categories:
+  - containers
 ---
 **This article discusses how docker uses Linux namespaces. Earthly uses namespaces to make your build reproducible. [Check it out](https://cloud.earthly.dev/login).**
 

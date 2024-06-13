@@ -1,7 +1,7 @@
 ---
 title: "DevX Podcast Interview"
 categories:
-  - News
+  - news
 topcta: false
 toc: false
 author: Earthly

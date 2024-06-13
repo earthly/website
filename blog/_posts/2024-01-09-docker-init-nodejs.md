@@ -1,7 +1,5 @@
 ---
 title: "Using Docker Init in Node.js"
-categories:
-  - Tutorials
 toc: true
 author: Samuel Umoren
 
@@ -13,6 +11,8 @@ internal-links:
  - nodejs with docker init
 excerpt: |
     This article explores the use of `docker init` in Node.js development, which automates the setup of Dockerizing a Node.js application by generating essential files like Dockerfile and docker-compose.yaml. It discusses the benefits of using `docker init` and provides a step-by-step guide on how to use it with a sample Node.js project.
+categories:
+  - containers
 ---
 **This article focuses on using `docker init` in Node.js development. Earthly, a build automation tool, simplifies container building in Node.js development. [Learn more](https://cloud.earthly.dev/login).**
 

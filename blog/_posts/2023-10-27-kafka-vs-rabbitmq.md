@@ -1,7 +1,7 @@
 ---
 title: "Kafka vs RabbitMQ: What Are the Differences?"
 categories:
-  - Tutorials
+  - cloud
 toc: true
 author: Zubair Idris Aweda
 editor: Mustapha Ahmad Ayodeji

@@ -1,7 +1,7 @@
 ---
 title: "How to Speed Up Your Docker Build with BuildKit Cache"
 categories:
-  - Tutorials
+  - containers
 toc: true
 author: Rubaiat Hossain
 

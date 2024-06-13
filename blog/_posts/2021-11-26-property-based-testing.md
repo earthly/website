@@ -1,7 +1,7 @@
 ---
 title: "Property-Based Testing In Go"
 categories:
-  - Tutorials
+  - golang
 author: Adam
 
 internal-links:

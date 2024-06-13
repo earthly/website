@@ -1,19 +1,13 @@
 ---
 title: "Building Your First Application with Go and Chi"
-categories:
-  - Tutorials
 toc: true
 author: Milap Neupane
 editor: Mustapha Ahmad Ayodeji
-
-internal-links:
- - jbuilding first application with golang chi
- - build apps with golang chi
- - golang chi to build apps
- - using golang chi
 last_modified_at: 2023-10-20
 excerpt: |
     This tutorial explains how to build a REST API application using Go and the Chi router. It covers topics such as setting up the environment, creating routes for different HTTP methods, handling CRUD operations, and testing the application.
+categories:
+  - golang
 ---
 **This article discusses Go REST API development. Earthly significantly reduces testing time with its parallel build capabilities. Try it for your next Go project. [Check it out](https://cloud.earthly.dev/login).**
 

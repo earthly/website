@@ -1,7 +1,5 @@
 ---
 title: "Write For Us"
-categories:
-  - Tutorials
 author: Adam
 internal-links:
  - write for us
@@ -9,6 +7,8 @@ topcta: false
 excerpt: |
     Are you passionate about software development? Write for Earthly and reach a larger audience while getting paid. With tens of thousands of monthly visitors and a respected reputation, Earthly's blog is the perfect platform for your expertise. Apply now and start sharing your knowledge with the developer community.
 last_modified_at: 2023-07-14
+categories:
+  - writing
 ---
 <div class="notice--info notice--big">
 

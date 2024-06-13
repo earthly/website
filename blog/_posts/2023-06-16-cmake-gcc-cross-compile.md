@@ -1,7 +1,5 @@
 ---
 title: "Using CMake and GCC to Cross-Compile Binaries"
-categories:
-  - Tutorials
 toc: true
 author: Rubaiat Hossain
 editor: Bala Priya C
@@ -17,6 +15,8 @@ excerpt: |
     Learn how to cross-compile binaries for different architectures using CMake and GCC in this tutorial. Discover the process of building a simple C++ program and then cross-compiling it for ARM64-based devices, along with troubleshooting tips for common issues.
 last_modified_at: 2023-07-19
 
+categories:
+  - make
 ---
 **The article provides insights into cross-compiling for ARM64 architectures. Earthly simplifies the process of cross-compilation for those who use CMake. [Learn how](https://cloud.earthly.dev/login).**
 

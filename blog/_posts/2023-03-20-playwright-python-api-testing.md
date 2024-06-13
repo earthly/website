@@ -1,13 +1,11 @@
 ---
 title: "API Testing Using Playwright With Python"
-categories:
-  - Tutorials
 toc: true
 author: Donald Le
 editor: Bala Priya C
 
 internal-links:
- - Python
+ - python
  - Testing
  - API
  - Playwright
@@ -15,6 +13,8 @@ internal-links:
 excerpt: |
     Learn how to implement API testing using Playwright with Python and generate an allure report for your tests. Discover how to create, update, and delete GitHub repositories using Playwright's built-in methods, and see how to fix failing tests using the allure report.
 last_modified_at: 2023-07-19
+categories:
+  - python
 ---
 **Playwright offers robust tools for API testing in Python. Earthly enhances the consistency of CI processes for API test builds and all builds. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

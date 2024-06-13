@@ -1,12 +1,12 @@
 ---
 title: "go delve - The Golang Debugger "
-categories:
-  - Tutorials
 toc: true
 author: Adam
 
 internal-links:
  - just an example
+categories:
+  - golang
 ---
 Delve (`dlv`) is a CLI-based debugger for Go, tailored to the language's concurrency model and runtime. It allows you to set breakpoints, inspect goroutines, and evaluate and manipulate variables in real-time. Delve supports remote debugging and seamlessly integrates with major IDEs, including Visual Studio Code. Let me walk you through using it, but first, some background.
 
