@@ -22,6 +22,8 @@ In this article, you'll learn about Python virtual environments and why they're 
 
 ## What Is a Virtual Environment?
 
+![Virtual]({{site.images}}{{page.slug}}/virt.png)\
+
 In Python, a virtual environment is an isolated environment that allows you to install and manage packages independently from the global Python installation. This isolation is beneficial for several reasons, as you can:
 
 - **Avoid dependency conflicts:** Different projects can depend on different versions of the same package. For example, one project might require Flask 3.0, while another needs Flask 2.0. Virtual environments ensure that each project uses the correct version of its dependencies without affecting others.
@@ -148,6 +150,8 @@ This removes the virtual environment and all the packages installed within it.
 
 ## Limitations of `virtualenv`
 
+![Limitations]({{site.images}}{{page.slug}}/limitations.png)\
+
 While virtualenv is a powerful tool, it has some limitations:
 
 - **System-level dependencies:** virtualenv only isolates Python packages. It does not handle setting up system-level dependencies that some Python packages require. For example, packages like libpng or libfreetype, used in the Matplotlib library, require certain dependencies to be installed separately on the system.
@@ -201,8 +205,3 @@ In this article, you learned how to create and manage Python virtual environment
 By mastering these tools, you can ensure that your Python projects are well organized and free from dependency conflicts, allowing you to focus on what matters most: writing great code.
 
 {% include_html cta/bottom-cta.html %}
-
-## Outside Article Checklist
-
-- [ ] Create header image in Canva
-- [ ] Optional: Find ways to break up content with quotes or images
