@@ -2,7 +2,7 @@
 title: "Updates and Enhancements to the Earthly Cloud UI"
 slug: earthly-cloud-ui-updates
 categories:
-  - News
+  - news
 toc: true
 author: Gavin
 topcta: false
