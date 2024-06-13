@@ -12,7 +12,10 @@ internal-links:
 categories:
   - python-tooling
   - python
+excerpt: |
+    Virtual environments in Python allow developers to create isolated environments for their projects, ensuring that each project has its own set of dependencies. The article explains how to create and manage virtual environments using virtualenv, a popular tool known for its simplicity and compatibility with older versions of Python.
 ---
+**This article explains the role of Python virtual environments. Earthly ensures consistent builds for your Python projects, enhancing virtualenv's dependency management. [Check it out](https://cloud.earthly.dev/login).**
 
 Managing dependencies for multiple projects is a common challenge for developers, particularly in Python, where all dependencies are installed globally by default. Imagine working on multiple projects, each requiring different versions of the same library or even different versions of Python. If not properly isolated, these dependencies may clash, causing various problems and wasting valuable project time debugging the issues.
 
