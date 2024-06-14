@@ -5300,12 +5300,12 @@ create-python-package:
  - python-c-extension
  - pyinstaller
  - python-monorepo
+ - python-virtualenv
  - incremental-rust-builds
  - python-hatch
  - efficiently-cache-dependencies-earthfiles
  - konfig
- - yarn-vite-monorepo
- - rust-monorepo
+ - python-uv
 
 
 poetry-publish:
@@ -5313,25 +5313,25 @@ poetry-publish:
  - python-c-extension
  - python-monorepo
  - pyinstaller
+ - python-virtualenv
  - incremental-rust-builds
  - python-hatch
  - efficiently-cache-dependencies-earthfiles
  - konfig
  - rust-monorepo
- - yarn-vite-monorepo
 
 
 python-c-extension:
  - create-python-package
  - poetry-publish
  - pyinstaller
+ - python-virtualenv
  - python-hatch
  - incremental-rust-builds
  - python-monorepo
  - future-is-rusty
+ - python-uv
  - python-libraries
- - conda-virtual-env
- - language-style-czar
 
 
 merge-queues:
@@ -5617,7 +5617,7 @@ python-monorepo:
  - docker-init-in-python
  - konfig
  - yarn-vite-monorepo
- - efficiently-cache-dependencies-earthfiles
+ - python-virtualenv
 
 
 showboaters:
@@ -5656,7 +5656,7 @@ yarn-vite-monorepo:
  - developer-portals-backstage
  - docker-init-nodejs
  - incremental-rust-builds
- - efficiently-cache-dependencies-earthfiles
+ - python-virtualenv
 
 
 gradle-monorepo:
@@ -5890,7 +5890,7 @@ platform-teams:
  - data-engineering-analysis
  - python-hatch
  - docker-build-cloud
- - generating-sbom
+ - python-virtualenv
 
 
 earthly-docker-build:
@@ -5963,25 +5963,25 @@ python-web-scraping:
  - conda-virtual-env
  - developer-portals-backstage
  - docker-scout
+ - python-virtualenv
  - pyinstaller
  - data-engineering-analysis
  - python-c-extension
  - miniconda-venv
  - python-hatch
- - create-python-package
 
 
 python-frameworks:
  - python-libraries
+ - python-virtualenv
  - platform-engineering-tools
  - developer-platforms
  - pyinstaller
  - docker-init-quickly
  - python-hatch
+ - python-uv
  - why-developer-platform
  - python-c-extension
- - create-python-package
- - miniconda-venv
 
 
 python-libraries:
@@ -5990,11 +5990,11 @@ python-libraries:
  - conda-virtual-env
  - platform-engineering-tools
  - pyinstaller
+ - python-virtualenv
  - miniconda-venv
  - python-c-extension
  - python-hatch
- - data-engineering-analysis
- - future-is-rusty
+ - python-uv
 
 
 efficiently-cache-dependencies-earthfiles:
@@ -6011,7 +6011,9 @@ efficiently-cache-dependencies-earthfiles:
 
 
 pyinstaller:
+ - python-virtualenv
  - python-hatch
+ - python-uv
  - miniconda-venv
  - conda-virtual-env
  - python-c-extension
@@ -6019,11 +6021,11 @@ pyinstaller:
  - create-python-package
  - python-monorepo
  - poetry-publish
- - python-libraries
- - docker-init-quickly
 
 
 python-hatch:
+ - python-virtualenv
+ - python-uv
  - pyinstaller
  - miniconda-venv
  - conda-virtual-env
@@ -6032,12 +6034,12 @@ python-hatch:
  - efficiently-cache-dependencies-earthfiles
  - monorepo-java
  - konfig
- - understanding-monorepos
- - cargo-chef
 
 
 conda-virtual-env:
  - miniconda-venv
+ - python-virtualenv
+ - python-uv
  - python-hatch
  - pyinstaller
  - docker-init-in-python
@@ -6045,12 +6047,12 @@ conda-virtual-env:
  - python-libraries
  - docker-init-quickly
  - python-c-extension
- - docker-init-nodejs
- - python-web-scraping
 
 
 miniconda-venv:
  - conda-virtual-env
+ - python-virtualenv
+ - python-uv
  - python-hatch
  - pyinstaller
  - docker-init-in-python
@@ -6058,8 +6060,6 @@ miniconda-venv:
  - python-libraries
  - docker-init-quickly
  - gradle-monorepo
- - docker-init-nodejs
- - rust-monorepo
 
 
 earthly-cloud-ui-updates:
@@ -6073,5 +6073,31 @@ earthly-cloud-ui-updates:
  - auto-skip
  - konfig
  - docker-build-cloud
+
+
+python-uv:
+ - python-virtualenv
+ - python-hatch
+ - miniconda-venv
+ - pyinstaller
+ - conda-virtual-env
+ - python-monorepo
+ - docker-init-in-python
+ - efficiently-cache-dependencies-earthfiles
+ - monorepo-java
+ - docker-build-cloud
+
+
+python-virtualenv:
+ - python-uv
+ - miniconda-venv
+ - conda-virtual-env
+ - python-hatch
+ - pyinstaller
+ - python-monorepo
+ - docker-init-in-python
+ - python-c-extension
+ - create-python-package
+ - poetry-publish
 
 
