@@ -207,7 +207,7 @@ It seems that Earthly Satellites are taking off, not just because we are deliver
 
 - Satellite metrics – including CPU, memory, disk, and network I/O usage.
 
-- build history – for both local and Satellites builds – in the web UI.
+- Build history – for both local and Satellites builds – in the web UI.
 
 - Auto-skip – the ability to skip a build instantly if the changed files don't impact it.
 

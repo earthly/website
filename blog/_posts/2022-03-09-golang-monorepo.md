@@ -54,7 +54,7 @@ monorepo.
 
 **Cons:**
 
-- build tooling can be more complicated in a monorepo
+- Build tooling can be more complicated in a monorepo
 - It can be easy to accidentally tightly-couple components that should be decoupled
 - Components may be less autonomous, and developers may have less freedom to do things "their own way"
 

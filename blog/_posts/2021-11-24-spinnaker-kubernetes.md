@@ -187,7 +187,7 @@ Spinnaker allows you to define providers that are integrated into the cloud plat
 - Google App Engine
 - AWS
 - Azure
-- cloud Foundry
+- Cloud Foundry
 - DC/OS
 - Google Compute Engine
 - Kubernetes

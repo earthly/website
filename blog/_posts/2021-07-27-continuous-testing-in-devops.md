@@ -26,8 +26,8 @@ Extending the CI process by adding automated tests is referred to as continuous 
 
 A good CI/CT process always contains at least the following steps:
 
-- build
-- deployment
+- Build
+- Deployment
 - Integration tests
 - End-to-end tests
 
@@ -81,7 +81,7 @@ A GitHub Actions workflow contains three elements:
 
 It's straightforward to extend a workflow once you understand those three concepts. Here's a sample workflow for a Python application:
 
-```yaml
+~~~
 name: Python application
  
 on:
@@ -113,7 +113,7 @@ jobs:
     - name: Test with pytest
       run: |
         pytest
-```
+~~~
 
 This what a basic workflow looks like:
 
@@ -132,7 +132,7 @@ But let's not rely on a third party yet. Instead, generate a badge to display in
 - Generate the badge and add it to your README. Follow the setup step in the documentation of [schneegans/dynamic-badges-action@v1.1.0](https://github.com/Schneegans/dynamic-badges-action).
 {% raw %}
 
-```yml
+~~~
 # This workflow will install Python dependencies, run tests, and lint with a single version of Python
 # For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
  
@@ -202,7 +202,7 @@ jobs:
         label: coverage
         message: ${{ env.COVERAGE }}
         color: ${{ env.COLOR }}
-```
+~~~
 
 {% endraw %}
 
@@ -238,7 +238,7 @@ Now edit your workflow configuration:
   - Run Newman using the Action you just found in the Marketplace.
 - Move the gating job at the end of the workflow by changing the `needs` property.
 
-```yaml
+~~~
 name: Python application
  
 on:
@@ -262,7 +262,7 @@ jobs:
   gating:
     needs: tests_api
     [...] # we move the gating at the end of the workflow
-```
+~~~
 
 Now your workflow should contain four sequential jobs:
 
@@ -288,7 +288,7 @@ Have a look at the result:
 
 Your configuration should look along those lines to achieve this workflow:
 
-```yaml
+~~~
 name: Python application
  
 on:
@@ -328,7 +328,7 @@ jobs:
   gating:
     needs: [tests_api, test_e2e]
     [...] # move the gating at the end of the workflow
-```
+~~~
 
 ### Add Performance Testing
 
@@ -350,7 +350,7 @@ As before, create a new job (called `test_performance`). This time I did not fin
 
 Here is the workflow I came up with for my Python application:
 
-```yml
+~~~
 name: Python application
  
 on:
@@ -396,7 +396,7 @@ jobs:
           comment-on-alert: true
           fail-on-alert: true
           alert-comment-cc-users: '@xNok'
-```
+~~~
 
 Your final workflow must look like this:
 

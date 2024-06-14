@@ -851,7 +851,7 @@ In order to effectively use logging in Python, you should consider the following
 - Log at the appropriate level to ensure that your logs contain the necessary information without being cluttered with unnecessary details.
 - Consider using custom loggers to help organize and categorize your logs based on different parts of your code or different components of your application.
 - Rotate your logs to save disk space and ensure that you can easily find and analyze relevant logs from different points in time.
-- make sure to handle errors and exceptions appropriately in your logging code to avoid unexpected behavior and ensure that you capture all relevant information.
+- Make sure to handle errors and exceptions appropriately in your logging code to avoid unexpected behavior and ensure that you capture all relevant information.
 - Consider using structured logging formats like [JSON](/blog/convert-to-from-json) or XML to make it easier to parse and analyze your logs with automated tools.
 
 ## Conclusion

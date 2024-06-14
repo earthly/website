@@ -26,7 +26,7 @@ The Earthly Cloud home dashboard isn't new, but it's a great entry point to Eart
 
 ## New Build Details Screen
 
-The new Build Details screen aims to give you more information about your builds, including what commands were executed, how long different parts of the build took to execute, the build graph, and build logs. It has 4 tabs:  Overview, Timings, Graph, and Logs.
+The new Build Details screen aims to give you more information about your builds, including what commands were executed, how long different parts of the build took to execute, the build graph, and build logs. It has 4 tabs: Overview, Timings, Graph, and Logs.
 
 ### Overview
 
