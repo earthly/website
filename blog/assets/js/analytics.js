@@ -44,18 +44,6 @@ function getAnalyticCookie() {
 }
 
 $(document).ready(function() {
-  var earthlyID = getAnalyticCookie();
-  $.ajax({
-      type: "POST",
-      url: "https://api.earthly.dev/analytics",
-      data: JSON.stringify({
-          key: "blog",
-          url: window.location.href,
-          referrer: document.referrer,
-          earthlyID: earthlyID,
-      }),
-  });
-
   analytics.identify(earthlyID);
   if (newVisitor) {
       analytics.track('Cookie created');
