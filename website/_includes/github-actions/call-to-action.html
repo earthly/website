@@ -2,22 +2,13 @@
   <div class="text-center text-slate-400 text-xl">
     Consistent, Faster GitHub Actions
   </div>
-  <div class="w-full flex flex-col md:flex-row gap-4 max-w-md mx-auto xl:mx-0 my-4 md:my-1 lg:my-0">
-    <a
-      class="bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer flex-1 inline-block my-0.5 lg:my-2 py-4 rounded-lg shadow-sm text-2xl text-center text-white"
-      href="https://cloud.earthly.dev/login"
-      onclick="earthlyCoreTryEarthlyClick()"
-    >
-      Get Started Free
-    </a>
-    <a
-      class="border border-2 border-[#2d7e5d] hover:bg-[#f1fbff] cursor-pointer inline-block my-0.5 lg:my-2 px-5 py-4 rounded-lg text-2xl text-center text-[#2d7e5d]"
-      href="/contact-us"
-      onclick="earthlyCoreGetDemoClick()"
-    >
-      Get a Demo
-    </a>
-  </div>
+  <a
+    href="https://cloud.earthly.dev/login"
+    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
+    onclick="earthlyCoreTryEarthlyClick()"
+  >
+    Get Started Free
+  </a>
 </div>
 
 <script>
@@ -25,13 +16,6 @@
     analytics.track('earthly-github-actions-get-started-free-click', {
       category: 'Get Started Free Click',
       label: 'earthly-github-actions-get-started-free-click'
-    });
-  }
-
-  function earthlyCoreGetDemoClick() {
-    analytics.track('earthly-github-actions-get-a-demo-click', {
-      category: 'Get a Demo Click',
-      label: 'earthly-github-actions-get-a-demo-click'
     });
   }
 </script>
