@@ -65,19 +65,12 @@
             Blog
         </a>
 
-        <div class="w-48 my-10">
-          <a id="nav-mobile-cta-button-copy-control" href="https://cloud.earthly.dev/login"
-            class="h-10 items-center justify-center flex w-full text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg"
+        <a id="nav-mobile-cta-button-copy-control" href="https://cloud.earthly.dev/login"
+            class="h-10 px-4 my-10 items-center flex w-fit text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg"
             onclick="navMobileGetEarthlyClick()">
             Get Started Free
-          </a>
+        </a>
 
-          <a id="nav-mobile-cta-button-copy-control" href="/contact-us"
-            class="h-10 mt-2 items-center justify-center flex w-full text-xl py-4 text-center text-[#2d7e5d] border border-[#2d7e5d] hover:bg-[#f1fbff] rounded-lg"
-            onclick="navMobileGetDemoClick()">
-            Get a Demo
-          </a>
-        </div>
 
         <div class="star-cta mb-4 flex items-center relative top-[2px]">
             <a class="github-button" href="https://github.com/earthly/earthly" data-size="large" data-show-count="true"
@@ -120,13 +113,6 @@
     analytics.track('nav-mobile-get-started-free-click', {
       category: 'Get Started Free Click',
       label: 'nav-mobile-get-started-free-click'
-    });
-  }
-
-  function navMobileGetDemoClick() {
-    analytics.track('nav-mobile-get-a-demo-click', {
-      category: 'Get a Demo Click',
-      label: 'nav-mobile-get-a-demo-click'
     });
   }
 
