@@ -11,9 +11,9 @@
   - point: Automatically managed TLS certificates
   - point: Single sign-on
   - point: AWS Marketplace billing
-  - point: 24/7 support
+  - point: Support
 - points:
-  - point: Secrets integrations – e.g. Vault
+  - point: Secrets integrations
     comingSoon: true
   - point: Export build analytics
     comingSoon: true
