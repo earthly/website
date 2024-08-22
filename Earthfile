@@ -57,10 +57,6 @@ publish:
   # https://github.com/earthly/earthly/issues/2086
   ARG DATE=$(date +"%D")
 
-  RUN echo api.netlify.com 3.130.174.239
-  # Work around for netlify DNS issue
-  HOST api.netlify.com 3.130.174.239
-
   IF [ "$DESTINATION" = "PROD" ]
     COPY --pass-args (./blog/+build/_site --DATE="$DATE") ./blog
     COPY --pass-args (./website/+build/_site) ./website
