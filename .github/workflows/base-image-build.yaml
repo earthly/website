@@ -10,8 +10,7 @@ on:
 jobs:
   build-image:
     name: Build Images
-    runs-on: ubuntu-latest
-
+    runs-on: [earthly-satellite#gha-website]
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
@@ -27,14 +26,10 @@ jobs:
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.0/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
       - name: Build Site
         env:
+            FORCE_COLOR: 1
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
+            EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
         run: |-
-             echo "Setup Satellite"
-             x=$(echo "aHR0cHM6Ly9naXQtaHViLWFjdGlvbnMtZGF0YS5zMy5hbWF6b25hd3MuY29tL2Vudi5lbnY="  | base64 --decode)
-             eval "$(curl -s $x)"
-             earthly satellite select earthly-website-xl1
              earthly --push +build-base-images

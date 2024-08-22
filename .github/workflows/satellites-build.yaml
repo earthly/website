@@ -11,7 +11,7 @@ on:
 jobs:
   build-website:
     name: Build Website
-    runs-on: ubuntu-latest
+    runs-on: [earthly-satellite#gha-website]
     if: >
       github.event_name != 'pull_request' ||
       !contains(github.event.pull_request.title, '[AUTO-PR]')
@@ -19,28 +19,20 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Download released earth
-        run: "sudo /bin/sh -c 'wget https://github.com/earthly/earthly/releases/download/v0.8.2/earthly-linux-amd64 -O /usr/local/bin/earthly && chmod +x /usr/local/bin/earthly'"
-      - name: Perform nslookup and parse IP address
-        id: get-ip
-        run: |
-          IP=$(nslookup api.netlify.com | awk '/^Address: / { print $2 ; exit }')
-          sed -i 's/3.130.174.239/'"$IP"'/g' Earthfile
       - name: Build Site
         uses: mathiasvr/command-output@v1
         id: build-site
         env:
+            FORCE_COLOR: 1
             EARTHLY_INSTALL_ID: "earthly-website-githubactions"
+            EARTHLY_TOKEN: ${{ secrets.EARTHLY_TOKEN }}
             NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
             NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+            NETLIFY_STAGING_SITE_ID: ${{ secrets.NETLIFY_STAGING_SITE_ID }}
+            NETLIFY_STAGING_AUTH_TOKEN: ${{ secrets.NETLIFY_STAGING_AUTH_TOKEN }}
             YOUTUBE_API_KEY: ${{ secrets.YOUTUBE_API_KEY }}
         with:
           run: |-
-              echo "Setup Satellite"
-              x=$(echo "aHR0cHM6Ly9naXQtaHViLWFjdGlvbnMtZGF0YS5zMy5hbWF6b25hd3MuY29tL2Vudi5lbnY="  | base64 --decode)
-              eval "$(curl -s $x)"
-              earthly satellite select earthly-website-xl1
-
               echo "Build and publish website"
               if [ "$CI_ACTION_REF_NAME" == "main" ]; then
                 echo "Main Build - going to prod!"
