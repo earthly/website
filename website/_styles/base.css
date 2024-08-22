@@ -76,15 +76,15 @@ main.wave-main.homepage {
 }
 
 .homepage.animation .wave:nth-of-type(1) {
-  top: 224px;
+  top: 148px;
 }
 
 .homepage.animation .wave:nth-of-type(2) {
-  top: 254px;
+  top: 178px;
 }
 
 .homepage.animation .wave:nth-of-type(3) {
-  top: 264px;
+  top: 188px;
 }
 
 @media screen and (min-width: 1280px) {
