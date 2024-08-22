@@ -19,11 +19,6 @@ jobs:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v3
-      - name: Perform nslookup and parse IP address
-        id: get-ip
-        run: |
-          IP=$(nslookup api.netlify.com | awk '/^Address: / { print $2 ; exit }')
-          sed -i 's/3.130.174.239/'"$IP"'/g' Earthfile
       - name: Build Site
         uses: mathiasvr/command-output@v1
         id: build-site
