@@ -57,6 +57,7 @@ publish:
   # https://github.com/earthly/earthly/issues/2086
   ARG DATE=$(date +"%D")
 
+  RUN echo api.netlify.com 3.130.174.239
   # Work around for netlify DNS issue
   HOST api.netlify.com 3.130.174.239
 
