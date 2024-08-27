@@ -30,6 +30,11 @@
   <script defer src="/assets/js/button.js"></script>
 
   {% if jekyll.environment == "production" %}
+  <!-- Start of Reo Javascript -->
+  <script type="text/javascript">
+    !function(){var e,t,n;e="898d9538360ba6f",t=function(){Reo.init({clientID:"898d9538360ba6f"})},(n=document.createElement("script")).src="https://static.reo.dev/"+e+"/reo.js",n.async=!0,n.onload=t,document.head.appendChild(n)}();
+  </script>
+  <!-- End of Reo Javascript -->
   <script src="/assets/js/analytics.js"></script>
   <script src="/assets/js/heartbeat.js"></script>
   {%- include segment.html -%}
