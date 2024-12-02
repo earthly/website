@@ -1,7 +1,8 @@
 name: Create Top CTAs PR
 
 on:
-  pull_request:
+  pull_request_target:
+    types: [opened, reopened]
     paths:
       - 'blog/_posts/*.md'
   workflow_dispatch:
@@ -93,7 +94,7 @@ jobs:
 
         branch_name="automated-changes-$(date +'%Y-%m-%d-%H%M%S')" 
         git push --force --set-upstream origin HEAD:$branch_name  
-        gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
+        gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
         original_title=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq .title)
         echo "Original title: '$original_title'"
         modified_title="[AUTO-PR] $original_title - CTA change"
