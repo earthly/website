@@ -94,7 +94,7 @@ jobs:
 
         branch_name="automated-changes-$(date +'%Y-%m-%d-%H%M%S')" 
         git push --force --set-upstream origin HEAD:$branch_name  
-        gh auth login --with-token <<< "${{ secrets.GH_PAT }}"
+        gh auth login --with-token <<< "${{ secrets.GITHUB_TOKEN }}"
         original_title=$(gh pr view ${{ github.event.pull_request.number }} --json title --jq .title)
         echo "Original title: '$original_title'"
         modified_title="[AUTO-PR] $original_title - CTA change"
