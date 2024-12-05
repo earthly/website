@@ -673,4 +673,3 @@ ptrace
 syscall
 cache
 seccomp
-caching
