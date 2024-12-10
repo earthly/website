@@ -668,3 +668,9 @@ miniconda
 
 libfreetype
 libpng
+
+ptrace
+syscall
+cache
+seccomp
+caching
