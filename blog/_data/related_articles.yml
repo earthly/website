@@ -5357,7 +5357,7 @@ incremental-rust-builds:
  - docker-init-rust
  - earthly-docker-build
  - docker-build-cloud
- - earthly-functions
+ - ucacher
 
 
 nerdctl:
@@ -5639,11 +5639,11 @@ rust-sccache:
  - efficiently-cache-dependencies-earthfiles
  - cargo-workspace-crates
  - rust-monorepo
+ - ucacher
  - docker-init-rust
  - build-buildkit-cache
  - understanding-monorepos
  - docker-build-cloud
- - auto-skip
 
 
 yarn-vite-monorepo:
@@ -5861,10 +5861,10 @@ auto-skip:
  - earthly-v0-8
  - self-hosted-satellites
  - docker-build-cloud
+ - ucacher
  - konfig
  - cargo-chef
  - incremental-rust-builds
- - earthly-cloud-ui-updates
 
 
 platform-engineering-tools:
@@ -6099,5 +6099,18 @@ python-virtualenv:
  - python-c-extension
  - create-python-package
  - poetry-publish
+
+
+ucacher:
+ - incremental-rust-builds
+ - rust-sccache
+ - auto-skip
+ - efficiently-cache-dependencies-earthfiles
+ - understanding-monorepos
+ - cargo-chef
+ - konfig
+ - build-buildkit-cache
+ - nerdctl
+ - docker-build-cloud
 
 
