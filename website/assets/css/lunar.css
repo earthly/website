@@ -33,7 +33,12 @@ h2 {
 
 .feature h3 {
   font-size: 24px;
+  letter-spacing: -0.045em;
   line-height: 34px;
+}
+
+.feature p {
+  letter-spacing: -0.045em;
 }
 
 @keyframes customers-animation {
