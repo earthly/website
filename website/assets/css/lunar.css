@@ -1,0 +1,46 @@
+.hero {
+  background: linear-gradient(180deg, #eef9fe 63.02%, rgba(255, 255, 255, 0) 100%);
+}
+
+.hero h1 {
+  font-size: 56px;
+}
+
+.hero a {
+  width: 400px;
+}
+
+.customers {
+  background-color: #f9fafb;
+}
+
+.customers .gradient {
+  width: 102px;
+  background: linear-gradient(90deg, #f4f4f4 0%, rgba(244, 244, 244, 0) 100%);
+  z-index: 1;
+}
+
+.customers .logos {
+  height: 72px;
+  animation: customers-animation 10s linear infinite;
+}
+
+h2 {
+  font-size: 40px;
+  letter-spacing: -0.03em;
+  line-height: 64px;
+}
+
+.feature h3 {
+  font-size: 24px;
+  line-height: 34px;
+}
+
+@keyframes customers-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2799px);
+  }
+}

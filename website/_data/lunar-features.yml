@@ -1,0 +1,23 @@
+- title: Automated Guardrails
+  description: Enable consistent and safe engineering practices across your entire org through custom guardrails that you define.
+  icon: guardrails.svg
+
+- title: Boost DevOps Maturity
+  description: Reduce reliance on tribal knowledge and guide your teams to DevOps excellence with automatic feedback throughout the development lifecycle.
+  icon: lock.svg
+
+- title: Visibility for Engineering Leaders
+  description: Understand engineering quality with rich insights and drive improvements with custom scorecards tailored to your organizational goals.
+  icon: eye.svg
+
+- title: Eliminate Mass PRs
+  description: Make changes across any number of CI pipelines centrally.<br />No more manual YAML edits and stale PRs that linger forever.
+  icon: mass-merge.svg
+
+- title: Continuous Compliance
+  description: Shift compliance to the left by inserting custom security checks across your projects effortlessly from a central location.
+  icon: continuous-compliance.svg
+
+- title: Ownership Tracking
+  description: Make sense of the diverse components within your product.<br />Track owners and ensure incidents are handled with domain rollups.
+  icon: ownership-tracking.svg
