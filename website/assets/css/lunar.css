@@ -22,7 +22,7 @@
 
 .customers .logos {
   height: 72px;
-  animation: customers-animation 10s linear infinite;
+  animation: customers-animation 100s linear infinite;
 }
 
 h2 {
