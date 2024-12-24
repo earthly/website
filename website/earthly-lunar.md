@@ -1,6 +1,6 @@
 ---
 title: Governance
-description:
+description: Earthly enables platform engineers to manage diverse developer infrastructure at scale
 layout: default
 ---
 

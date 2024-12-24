@@ -3,11 +3,15 @@
 }
 
 .hero h1 {
-  font-size: 56px;
+  font-size: 36px;
+}
+
+.hero p {
+  color: #616161;
 }
 
 .hero a {
-  width: 400px;
+  width: 100%;
 }
 
 .customers {
@@ -15,7 +19,7 @@
 }
 
 .customers .gradient {
-  width: 102px;
+  width: 40px;
   background: linear-gradient(90deg, #f4f4f4 0%, rgba(244, 244, 244, 0) 100%);
   z-index: 1;
 }
@@ -25,10 +29,14 @@
   animation: customers-animation 100s linear infinite;
 }
 
+.customers .logos img {
+  transform: scale(0.9);
+}
+
 h2 {
-  font-size: 40px;
+  font-size: 30px;
   letter-spacing: -0.03em;
-  line-height: 64px;
+  line-height: 40px;
 }
 
 .feature h3 {
@@ -41,7 +49,43 @@ h2 {
   letter-spacing: -0.045em;
 }
 
+@media only screen and (min-width: 1024px) {
+  .hero h1 {
+    font-size: 56px;
+  }
+
+  .hero a {
+    width: 400px;
+  }
+
+  .customers .gradient {
+    width: 102px;
+  }
+
+  .customers .logos {
+    animation-name: customers-animation-desktop;
+  }
+
+  .customers .logos img {
+    transform: scale(1);
+  }
+
+  h2 {
+    font-size: 40px;
+    line-height: 64px;
+  }
+}
+
 @keyframes customers-animation {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-2271px);
+  }
+}
+
+@keyframes customers-animation-desktop {
   0% {
     transform: translateX(0);
   }
