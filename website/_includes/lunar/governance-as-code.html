@@ -1,9 +1,76 @@
 <div class="bg-[#E8F7FE] mt-16 pt-16">
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,600;1,600&display=swap" rel="stylesheet" />
+
   <div class="flex flex-col items-center max-w-7xl mx-auto px-6 lg:px-10">
     <h2>Governance-As-Code</h2>
 
     <p class="font-semibold mt-5 text-[#6b7280] text-center lg:text-left text-lg lg:text-2xl">Define custom policies with a few lines of Python</p>
   </div>
 
-  <img width="1440" height="403" class="mx-auto mt-8" src="assets/img/governance-as-code.png" alt="Governance-as-code" />
+  {% svg assets/svg/governance-as-code.svg class="h-auto max-w-full mx-auto mt-8" %}
 </div>
+
+<script>
+  const getIndicesFromOriginalText = (text, copiedText) => {
+    const textArr = text.split('')
+    const copiedArr = copiedText.split('')
+
+    let startIndex = 0
+    let endIndex = -1
+
+    const checkSubsequentChars = startIndex => {
+      let lineBreaks = 0
+
+      for (let i = 0; i < copiedArr.length; i++) {
+        const currentChar = textArr[startIndex + i + lineBreaks]
+
+        if (
+          !currentChar ||
+          currentChar === copiedArr[i] ||
+          (currentChar === ' ' && new DOMParser().parseFromString(copiedArr[i], 'text/html').body.innerHTML === '&nbsp;')
+        ) {
+          // If the characters match, continue
+          continue
+        } else if (currentChar === '\n') {
+          // If current character is a line break, increase lineBreaks count
+          lineBreaks++
+        } else {
+          // If characters don't match, return new start index
+          return textArr.indexOf(copiedArr[0], startIndex + 1)
+        }
+      }
+
+      // If subsequent characters match, set endIndex
+      endIndex = startIndex + copiedArr.length + lineBreaks
+      return startIndex
+    }
+
+    if (checkSubsequentChars(startIndex)) {
+      while (endIndex === -1) {
+        startIndex = checkSubsequentChars(startIndex)
+      }
+    }
+
+    return { startIndex, endIndex }
+  }
+
+  document.getElementById('code-collectors').addEventListener('copy', e => {
+    const text =
+      'collectors:\n- runBash: lunar collect “hasTests” true\n  hook:\n    type: before-command\n    patterns:\n    - ^go test.*\n    - ^npm test.*\n    - ^python -m .unittest.*'
+
+    const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
+    event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
+    event.preventDefault()
+  })
+
+  document.getElementById('code-policies').addEventListener('copy', e => {
+    const text =
+      'policies:\n- name: "Should have unit tests"\n  runPython: |-\n  import lunar\n  hasTests = lunar.get(“hasTests”)\n  lunar.assertTrue(hasTests)'
+
+    const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
+    event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
+    event.preventDefault()
+  })
+</script>

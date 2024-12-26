@@ -39,6 +39,11 @@ h2 {
   line-height: 40px;
 }
 
+.problem-statement-image {
+  margin: 48px -60px 0;
+  max-width: calc(100% + 120px);
+}
+
 .feature h3 {
   font-size: 24px;
   letter-spacing: -0.045em;
@@ -47,6 +52,13 @@ h2 {
 
 .feature p {
   letter-spacing: -0.045em;
+}
+
+@media only screen and (min-width: 640px) {
+  .problem-statement-image {
+    margin: 32px 0 0;
+    max-width: 100%;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
