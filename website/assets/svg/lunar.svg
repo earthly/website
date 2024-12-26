@@ -214,11 +214,11 @@
 <path d="M254.541 268.092V272.78H252.874V261.719H254.541V266.407H256.555V261.7H258.222V272.762H256.555V268.092H254.541Z" fill="#090909"/>
 <path d="M264.264 272.782H259.722V261.72H261.389V271.115H264.264V272.782Z" fill="#090909"/>
 <path d="M265.581 268.145L263.346 261.698H265.178L266.423 265.672L267.65 261.698H269.5L267.247 268.145V272.778H265.581V268.145Z" fill="#090909"/>
-<text fill="#111827" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="227.708" y="285.425">LUNAR</tspan></text>
+<text fill="#111827" xml:space="preserve" style="white-space: pre" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="227.708" y="285.425">LUNAR</tspan></text>
 </g>
-<text fill="#111827" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="24" y="243.637">Applications</tspan></text>
-<text fill="#111827" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="434" y="197.637">CI/CD</tspan></text>
-<text fill="#111827" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="317" y="407.637">Guardrails</tspan></text>
+<text fill="#111827" xml:space="preserve" style="white-space: pre" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="24" y="243.637">Applications</tspan></text>
+<text fill="#111827" xml:space="preserve" style="white-space: pre" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="434" y="197.637">CI/CD</tspan></text>
+<text fill="#111827" xml:space="preserve" style="white-space: pre" font-size="12" font-weight="bold" letter-spacing="-0.03em"><tspan x="317" y="407.637">Guardrails</tspan></text>
 <defs>
 <filter id="filter0_d_4458_1370" x="59.6508" y="59.7447" width="376.698" height="376.698" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
