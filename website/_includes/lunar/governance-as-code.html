@@ -13,6 +13,11 @@
 </div>
 
 <script>
+  /**
+   * Copying text from SVGs removes the indentation.
+   * This workaround gets the selected text and adds the necessary line breaks and indentation.
+   */
+
   const getIndicesFromOriginalText = (text, copiedText) => {
     const textArr = text.split('')
     const copiedArr = copiedText.split('')
@@ -57,8 +62,9 @@
   }
 
   document.getElementById('code-collectors').addEventListener('copy', e => {
+    // This text should have the exact text and spacing as in the SVG file.
     const text =
-      'collectors:\n- runBash: lunar collect “hasTests” true\n  hook:\n    type: before-command\n    patterns:\n    - ^go test.*\n    - ^npm test.*\n    - ^python -m .unittest.*'
+      'collectors:\n  - runBash: lunar collect "hasTests" true\n    hook:\n      type: before-command\n      patterns:\n        - ^go test.*\n        - ^npm test.*\n        - ^python -m .unittest.*'
 
     const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
     event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
@@ -66,8 +72,9 @@
   })
 
   document.getElementById('code-policies').addEventListener('copy', e => {
+    // This text should have the exact text and spacing as in the SVG file.
     const text =
-      'policies:\n- name: "Should have unit tests"\n  runPython: |-\n  import lunar\n  hasTests = lunar.get(“hasTests”)\n  lunar.assertTrue(hasTests)'
+      'policies:\n  - name: "Should have unit tests"\n    runPython: |-\n      import lunar\n      hasTests = lunar.get("hasTests")\n      lunar.assertTrue(hasTests)'
 
     const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
     event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
