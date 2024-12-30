@@ -12,3 +12,4 @@ layout: default
 {% include lunar/take-control.html %}
 {% include lunar/governance-as-code.html %}
 {% include lunar/deployed-in-minutes.html %}
+{% include lunar/diverse-tech-stacks.html %}

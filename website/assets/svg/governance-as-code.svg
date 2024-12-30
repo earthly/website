@@ -183,7 +183,7 @@
 <rect x="808.019" y="83.6429" width="344.941" height="207.936" rx="29.3294" fill="#111214" shape-rendering="crispEdges"/>
 <rect x="808.019" y="83.6429" width="344.941" height="207.936" rx="29.3294" stroke="white" stroke-width="4.85831" shape-rendering="crispEdges"/>
 </g>
-<text id="code-policies" fill="#D09A66" xml:space="preserve" style="transform: translate(7px, 2px); white-space: pre" font-family="Source Code Pro" font-size="13" font-weight="600" letter-spacing="-0.03em"><tspan x="832.244" y="146.514">policies:</tspan><tspan x="832.244" y="165.231">&#160;&#160;- name:</tspan> <tspan fill="#98C37A">&#34;Should have unit tests&#34;</tspan><tspan x="832.244" y="183.948">&#160;&#160;&#160;&#160;runPython:</tspan> <tspan fill="#98C37A">|-</tspan><tspan x="832.244" y="202.664" fill="#D7F7FF" filter="url(#filter11_d_4459_2188)">&#160;&#160;&#160;&#160;&#160;&#160;import lunar</tspan><tspan x="832.244" y="220.154" fill="#D7F7FF" filter="url(#filter11_d_4459_2188)">&#160;&#160;&#160;&#160;&#160;&#160;hasTests = lunar.get(&#34;hasTests&#34;)</tspan><tspan x="832.244" y="237.664" fill="#D7F7FF" filter="url(#filter11_d_4459_2188)">&#160;&#160;&#160;&#160;&#160;&#160;lunar.assertTrue(hasTests)</tspan></text>
+<text id="code-policies" fill="#D09A66" xml:space="preserve" style="transform: translate(7px, 2px); white-space: pre" font-family="Source Code Pro" font-size="13" font-weight="600" letter-spacing="-0.03em"><tspan x="832.244" y="146.514">policies:</tspan><tspan x="832.244" y="165.231">&#160;&#160;- name:</tspan> <tspan fill="#98C37A">&#34;Should have unit tests&#34;</tspan><tspan x="832.244" y="183.948">&#160;&#160;&#160;&#160;runPython:</tspan> <tspan fill="#98C37A">|-</tspan><tspan x="832.244" y="202.664" fill="#D7F7FF" style="text-shadow: 0px 0px 2px #ADF2FF">&#160;&#160;&#160;&#160;&#160;&#160;import lunar</tspan><tspan x="832.244" y="220.154" fill="#D7F7FF" style="text-shadow: 0px 0px 2px #ADF2FF">&#160;&#160;&#160;&#160;&#160;&#160;hasTests = lunar.get(&#34;hasTests&#34;)</tspan><tspan x="832.244" y="237.664" fill="#D7F7FF" style="text-shadow: 0px 0px 2px #ADF2FF">&#160;&#160;&#160;&#160;&#160;&#160;lunar.assertTrue(hasTests)</tspan></text>
 <g filter="url(#filter12_d_4459_2188)">
 <rect x="681.419" y="141.191" width="93.618" height="93.618" rx="46.809" fill="#F9FAFC" shape-rendering="crispEdges"/>
 <g filter="url(#filter13_d_4459_2188)">
@@ -432,16 +432,6 @@
 <feComposite in2="hardAlpha" operator="out"/>
 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_4459_2188"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4459_2188" result="shape"/>
-</filter>
-<filter id="filter11_d_4459_2188" x="860.579" y="187.621" width="254.936" height="57.5251" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_4459_2188"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_4459_2188" result="shape"/>
 </filter>
 <filter id="filter12_d_4459_2188" x="674.016" y="118.044" width="110.368" height="129.027" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
