@@ -1,0 +1,15 @@
+<div class="flex flex-col items-center max-w-7xl mt-16 mx-auto px-6 lg:px-10">
+  <h2 class="text-center lg:text-left">Take Control Of The Development Lifecycle</h2>
+
+  {% svg assets/svg/take-control.svg class="h-auto max-w-full mt-8" %}
+
+  <div class="w-full gap-6 lg:gap-12 grid md:grid-cols-2 lg:grid-cols-3 mt-16">
+    {% for item in site.data.lunar-features %}
+      <div class="feature bg-[#f9fafc] border border-[#ededed] pb-6 pt-14 px-6 rounded-3xl shadow">
+        <img width="40" height="40" class="w-10 h-10" src="assets/svg/{{ item.icon }}" alt="{{ item.title }}" />
+        <h3 class="font-semibold mt-2.5 text-[#475569]">{{ item.title }}</h3>
+        <p class="mt-4 text-[#6b7280] text-lg">{{ item.description }}</p>
+      </div>
+    {% endfor %}
+  </div>
+</div>
