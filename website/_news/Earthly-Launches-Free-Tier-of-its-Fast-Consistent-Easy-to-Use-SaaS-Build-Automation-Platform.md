@@ -11,7 +11,7 @@ featured: true
 layout: news
 ---
 
-SAN FRANCISCO--([BUSINESS WIRE](https://www.businesswire.com/))--[Earthly Technologies](https://earthly.dev/), the company behind the popular open source developer tool [Earthly](https://earthly.dev/earthly-core) – the super simple build framework with consistent builds that you write once and run anywhere – announces today the launch of a free tier of its software-as-a-service (SaaS) build automation platform, [Earthly Cloud](https://earthly.dev/earthly-cloud). This new, free offering provides developers with 6,000 minutes per month of Earthly Cloud’s consistent, fast continuous integration (CI) and remote build runners that are compatible with any CI system.
+SAN FRANCISCO--([BUSINESS WIRE](https://www.businesswire.com/))--[Earthly Technologies](https://earthly.dev/), the company behind the popular open source developer tool [Earthly](https://earthly.dev/earthfile) – the super simple build framework with consistent builds that you write once and run anywhere – announces today the launch of a free tier of its software-as-a-service (SaaS) build automation platform, [Earthly Cloud](https://earthly.dev/earthly-cloud). This new, free offering provides developers with 6,000 minutes per month of Earthly Cloud’s consistent, fast continuous integration (CI) and remote build runners that are compatible with any CI system.
 
 {: .news-quote}
 Switching to Earthly took our builds from 45 minutes to 20 minutes, and using Earthly Satellites took us from like 20 minutes to 4 or 5 on average. We experienced another 2x increase, literally just from using Satellites.
