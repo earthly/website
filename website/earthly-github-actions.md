@@ -12,11 +12,11 @@ layout: default
 {% include home/layout.html template='github-actions/benefits-title.html' %}
 {% include home/layout.html template='github-actions/benefits-improvement.html' %}
 {% include home/layout.html template='home/v2/benefits-1.html' %}
-{% include home/layout.html template='core/benefits-earthfile.html' %}
-{% include home/layout.html template='core/benefits-compatible.html' %}
+{% include home/layout.html template='github-actions/benefits-earthfile.html' %}
+{% include home/layout.html template='github-actions/benefits-compatible.html' %}
 {% include home/layout.html template='github-actions/benefits-speed.html' %}
-{% include home/layout.html template='core/benefits-caching.html' %}
-{% include home/layout.html template='core/benefits-monorepo.html' %}
+{% include home/layout.html template='github-actions/benefits-caching.html' %}
+{% include home/layout.html template='github-actions/benefits-monorepo.html' %}
 {% include home/layout.html template='home/v2/benefits-adopt-incrementally.html' %}
 
 {% include home/layout.html template='github-actions/cta-satellites-button.html' %}

@@ -10,6 +10,8 @@
 # Redirect for CI
 /signup/earthly-ci /
 /earthly-ci /
+/earthly-lunar /
+/earthly-core /earthfile
 /blog/devcontianers /devcontainers
 
 # Renamed article

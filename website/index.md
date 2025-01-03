@@ -1,21 +1,16 @@
 ---
-title: Earthly
+fullTitle: Earthly Lunar - Your Internal Governance Platform
+description: Earthly enables platform engineers to manage diverse developer infrastructure at scale
 layout: default
-# Example banner from when a crypto a-hole abused Satellites
-# banner: ⚠️ We are seeing unusual abuse activity in our free tier ⚠️ <b>We are temporarily requiring verifying the account with a credit card before being able to launch satellites. <a href="https://status.earthly.dev/">Status</a></b>
 ---
 
-{% include home/layout.html template='home/v2/hero.html' %}
-{% include home/layout.html template='home/v2/customers.html' %}
-{% include home/layout.html template='home/v2/customer-quotes.html' %}
-{% include home/layout.html template='home/why.html' %}
+<link rel="stylesheet" href="/assets/css/home.css">
 
-{% include home/layout.html template='cloud/benefits-title.html' %}
-{% include home/layout.html template='cloud/benefits-build-automation.html' %}
-{% include home/layout.html template='cloud/benefits-write-once.html' %}
-{% include home/layout.html template='cloud/benefits-caching.html' %}
-{% include home/layout.html template='cloud/benefits-speed.html' %}
-{% include home/layout.html template='home/v2/benefits-earthfile.html' %}
-{% include home/layout.html template='home/v2/benefits-monorepo.html' %}
-
-{% include home/layout.html template='cta-home-button.html' %}
+{% include lunar/hero.html %}
+{% include lunar/customers.html %}
+{% include lunar/problem-statement.html %}
+{% include lunar/take-control.html %}
+{% include lunar/governance-as-code.html %}
+{% include lunar/deployed-in-minutes.html %}
+{% include lunar/diverse-tech-stacks.html %}
+{% include lunar/investors.html %}

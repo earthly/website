@@ -4,7 +4,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="{{ "/assets/css/index.46bb9c26.css" | relative_url }}">
   <link rel="icon" type="image/png" href="/assets/img/favicon.png">
-  <title>{{ page.title }} - {{ site.tagline }}</title>
+  {% if page.fullTitle != null && page.fullTitle != "" %}
+    <title>{{ page.fullTitle }}</title>
+  {% else %}
+    <title>{{ page.title }} - {{ site.tagline }}</title>
+  {% endif %}
   {% if page.description != null && page.description != "" %}
     <meta name="description" content="{{ page.description }}">
   {% else %}
