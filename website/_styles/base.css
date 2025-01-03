@@ -69,6 +69,7 @@ main.wave-main {
 
 main.wave-main.homepage {
   height: fit-content;
+  background: linear-gradient(#e8f8fe, white 60%, white);
 }
 
 .homepage .wave {
@@ -76,25 +77,29 @@ main.wave-main.homepage {
 }
 
 .homepage.animation .wave:nth-of-type(1) {
-  top: 148px;
+  top: 150px;
 }
 
 .homepage.animation .wave:nth-of-type(2) {
-  top: 178px;
+  top: 180px;
 }
 
 .homepage.animation .wave:nth-of-type(3) {
-  top: 188px;
+  top: 190px;
 }
 
 @media screen and (min-width: 1280px) {
+  main.wave-main.homepage {
+    background: #e8f8fe;
+  }
+
   .homepage.animation .wave {
     animation: none;
   }
 
   .earthly-animation {
-    margin-bottom: -24px;
-    top: 108px;
+    margin-bottom: 58px;
+    top: 70px;
     right: -24px;
   }
 }
@@ -107,8 +112,8 @@ main.wave-main.homepage {
 
 @media screen and (min-width: 1536px) {
   .earthly-animation {
-    margin-bottom: -64px;
-    top: 88px;
+    margin-bottom: 0;
+    top: 76px;
     right: 0;
   }
 }
@@ -398,4 +403,16 @@ main.wave-main.homepage {
   letter-spacing: -0.03em;
   padding: 0 4px;
   transform: translateY(-2px);
+}
+
+.join-slack {
+  background: linear-gradient(77.8deg, #f1f5f7 3.62%, white 100%);
+  border: 1px solid rgba(27, 31, 35, 0.2);
+  border-radius: 0.25em;
+  padding: 13px 12.5px;
+}
+
+.join-slack p {
+  font-size: 17px;
+  line-height: 18px;
 }

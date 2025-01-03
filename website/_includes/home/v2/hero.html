@@ -16,21 +16,72 @@
 
     <p class="mt-9 text-center xl:text-left text-slate-400 text-xl">Simple, Fast, Consistent Builds</p>
 
-    <div class="max-w-md mx-auto xl:mx-0">
+    <div class="flex flex-col sm:flex-row gap-4 max-w-xl mx-auto xl:mx-0 my-4 lg:my-2">
       <a
-        class="w-full bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer inline-block my-0.5 lg:my-2 py-6 rounded-lg shadow-sm text-2xl text-center text-white"
+        class="sm:w-7/12 bg-[#2d7e5d] hover:bg-[#2d7e5d] cursor-pointer inline-block py-4 rounded-lg shadow-sm text-xl sm:text-2xl text-center text-white"
         href="https://cloud.earthly.dev/login"
-        onclick="homepageGetEarthlyClick()"
+        onclick="earthfileGetStartedFreeClick()"
       >
         Get Started Free
+      </a>
+
+      <a
+        class="border-2 border-[#2d7e5d] flex-1 inline-block sm:mr-2 py-4 rounded-lg text-[#2d7e5d] text-xl sm:text-2xl text-center"
+        href="https://docs.earthly.dev"
+        onclick="earthfileViewDocsClick()"
+      >
+        View Docs
       </a>
     </div>
 
     <div id="homepage-hero-install-no-login">
-      <p class="text-center xl:text-left text-slate-400 text-sm">Open Source on <a class="underline" href="https://github.com/earthly/earthly">GitHub</a>&nbsp;&nbsp;|&nbsp;&nbsp;<a class="underline" href="https://earthly.dev/get-earthly" onclick="homepageHeroInstallNoLoginClick()">Install Earthly w/o logging in</a></p>
+      <p class="text-center xl:text-left text-slate-400 text-sm"><a class="underline" href="https://earthly.dev/get-earthly" onclick="earthfileHeroInstallNoLoginClick()">Install Earthly w/o logging in</a></p>
     </div>
 
-    <div class="absolute bottom-0 right-0 hidden min-[1800px]:flex" style="margin-bottom: -64px; top: 88px;">
+    <div class="flex flex-col sm:flex-row gap-4 items-center sm:items-start justify-center xl:justify-start mt-7">
+
+      <a class="pb-1.5 sm:pb-0" href="/pricing" onclick="earthfilePricingClick()">
+        <div class="join-slack w-fit h-fit cursor-pointer items-center flex gap-2.5">
+          <p class="font-semibold px-4 py-px">Pricing</p>
+        </div>
+      </a>
+
+      <div class="star-cta flex items-center relative">
+        <a
+          class="github-button"
+          href="https://github.com/earthly/earthly"
+          data-size="large"
+          data-show-count="true"
+          aria-label="Star earthly/earthly on GitHub"
+          onclick="earthfileGithubClick()"
+        >
+          Star
+        </a>
+      </div>
+
+      <a href="/slack" onclick="earthfileSlackClick()">
+        <div class="join-slack w-fit h-fit cursor-pointer items-center flex gap-2.5">
+          <p class="font-medium">Join us on</p>
+          <svg width="75" height="20" viewBox="0 0 75 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M24.0752 15.3474L25.0103 13.1692C26.0208 13.9255 27.3632 14.3188 28.6904 14.3188C29.6708 14.3188 30.2892 13.9406 30.2892 13.3658C30.2741 11.7624 24.4221 13.0179 24.3768 8.99429C24.3618 6.95221 26.1717 5.37906 28.7357 5.37906C30.259 5.37906 31.7823 5.75722 32.8682 6.61943L31.9935 8.84302C30.998 8.20771 29.7613 7.75392 28.5848 7.75392C27.7855 7.75392 27.2576 8.13208 27.2576 8.61612C27.2727 10.1893 33.1699 9.32707 33.2302 13.1692C33.2302 15.2566 31.4656 16.7239 28.9317 16.7239C27.0766 16.7239 25.3723 16.2852 24.0752 15.3474Z" fill="black"/>
+            <path d="M59.956 12.3826C59.4885 13.1994 58.6137 13.7591 57.6032 13.7591C56.11 13.7591 54.9034 12.549 54.9034 11.0515C54.9034 9.55397 56.11 8.34385 57.6032 8.34385C58.6137 8.34385 59.4885 8.90353 59.956 9.72036L62.5351 8.28334C61.5699 6.55892 59.7147 5.37906 57.6032 5.37906C54.4811 5.37906 51.9473 7.92031 51.9473 11.0515C51.9473 14.1827 54.4811 16.7239 57.6032 16.7239C59.7298 16.7239 61.5699 15.5592 62.5351 13.8196L59.956 12.3826Z" fill="black"/>
+            <path d="M37.755 0.674713H34.5273V16.5121H37.755V0.674713Z" fill="black"/>
+            <path d="M63.8027 0.674713V16.5121H67.0304V11.7624L70.8613 16.5121H74.9939L70.1223 10.87L74.6319 5.60594H70.6803L67.0304 9.97749V0.674713H63.8027Z" fill="black"/>
+            <path d="M47.3476 12.4129C46.8801 13.1843 45.9148 13.7591 44.8289 13.7591C43.3357 13.7591 42.1291 12.549 42.1291 11.0515C42.1291 9.55397 43.3357 8.34385 44.8289 8.34385C45.9148 8.34385 46.8801 8.94891 47.3476 9.73548V12.4129ZM47.3476 5.60596V6.89171C46.8197 5.99924 45.5076 5.37906 44.1351 5.37906C41.2996 5.37906 39.0674 7.89005 39.0674 11.0364C39.0674 14.1827 41.2996 16.7239 44.1351 16.7239C45.5076 16.7239 46.8197 16.1037 47.3476 15.2113V16.497H50.5753V5.60596H47.3476Z" fill="black"/>
+            <path d="M4.12043 12.3977C4.12043 13.5019 3.23057 14.3944 2.12955 14.3944C1.02853 14.3944 0.138672 13.5019 0.138672 12.3977C0.138672 11.2935 1.02853 10.401 2.12955 10.401H4.12043V12.3977Z" fill="#E01E5A"/>
+            <path d="M5.11621 12.3977C5.11621 11.2934 6.00607 10.401 7.10709 10.401C8.20811 10.401 9.09797 11.2934 9.09797 12.3977V17.3894C9.09797 18.4936 8.20811 19.3861 7.10709 19.3861C6.00607 19.3861 5.11621 18.4936 5.11621 17.3894V12.3977Z" fill="#E01E5A"/>
+            <path d="M7.10709 4.38069C6.00607 4.38069 5.11621 3.48823 5.11621 2.38399C5.11621 1.27976 6.00607 0.387299 7.10709 0.387299C8.20811 0.387299 9.09797 1.27976 9.09797 2.38399V4.38069H7.10709Z" fill="#36C5F0"/>
+            <path d="M7.10719 5.39413C8.2082 5.39413 9.09806 6.2866 9.09806 7.39083C9.09806 8.49506 8.2082 9.38752 7.10719 9.38752H2.1149C1.01389 9.38752 0.124023 8.49506 0.124023 7.39083C0.124023 6.2866 1.01389 5.39413 2.1149 5.39413H7.10719Z" fill="#36C5F0"/>
+            <path d="M15.0859 7.3908C15.0859 6.28657 15.9758 5.3941 17.0768 5.3941C18.1778 5.3941 19.0677 6.28657 19.0677 7.3908C19.0677 8.49503 18.1778 9.38749 17.0768 9.38749H15.0859V7.3908Z" fill="#2EB67D"/>
+            <path d="M14.0902 7.39086C14.0902 8.49509 13.2003 9.38755 12.0993 9.38755C10.9983 9.38755 10.1084 8.49509 10.1084 7.39086V2.38399C10.1084 1.27976 10.9983 0.387299 12.0993 0.387299C13.2003 0.387299 14.0902 1.27976 14.0902 2.38399V7.39086Z" fill="#2EB67D"/>
+            <path d="M12.0993 15.3927C13.2003 15.3927 14.0902 16.2852 14.0902 17.3894C14.0902 18.4937 13.2003 19.3861 12.0993 19.3861C10.9983 19.3861 10.1084 18.4937 10.1084 17.3894V15.3927H12.0993Z" fill="#ECB22E"/>
+            <path d="M12.0993 14.3944C10.9983 14.3944 10.1084 13.5019 10.1084 12.3977C10.1084 11.2935 10.9983 10.401 12.0993 10.401H17.0916C18.1926 10.401 19.0824 11.2935 19.0824 12.3977C19.0824 13.5019 18.1926 14.3944 17.0916 14.3944H12.0993Z" fill="#ECB22E"/>
+          </svg>          
+        </div>
+      </a>
+    </div>
+
+    <div class="absolute bottom-0 right-0 hidden min-[1800px]:flex" style="margin-bottom: 32px; top: 76px;">
       {% svg assets/svg/earthly-animation.svg class="h-full absolute -right-32" %}
     </div>
   </div>
@@ -43,17 +94,45 @@
 </main>
 
 <script>
-  function homepageGetEarthlyClick() {
-    analytics.track('homepage-get-started-free-click', {
+  function earthfileGetStartedFreeClick() {
+    analytics.track('earthfile-get-started-free-click', {
       category: 'Get Started Free Click',
-      label: 'homepage-get-started-free-click'
+      label: 'earthfile-get-started-free-click'
     });
   }
 
-  function homepageHeroInstallNoLoginClick() {
-    analytics.track('homepage-hero-install-no-login-click', {
+  function earthfileHeroInstallNoLoginClick() {
+    analytics.track('earthfile-hero-install-no-login-click', {
       category: 'Install No Login Click',
-      label: 'homepage-hero-install-no-login-click'
+      label: 'earthfile-hero-install-no-login-click'
+    });
+  }
+
+  function earthfileViewDocsClick() {
+    analytics.track('earthfile-view-docs-click', {
+      category: 'View Docs Click',
+      label: 'earthfile-view-docs-click'
+    });
+  }
+
+  function earthfilePricingClick() {
+    analytics.track("earthfile-pricing-click", {
+      category: "Pricing Click",
+      label: "earthfile-pricing-click",
+    });
+  }
+
+  function earthfileGithubClick() {
+    analytics.track("earthfile-github-click", {
+      category: "Github Click",
+      label: "earthfile-github-click",
+    });
+  }
+
+  function earthfileSlackClick() {
+    analytics.track("earthfile-slack-click", {
+      category: "Slack Click",
+      label: "earthfile-slack-click",
     });
   }
 </script>

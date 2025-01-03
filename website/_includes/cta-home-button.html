@@ -1,6 +1,6 @@
 <div class="w-full mt-2">
   <div class="px-6 lg:px-10 pt-4 max-w-7xl m-auto">
-    <div class="bg-[#f1fbff] flex flex-col items-center px-6 rounded-lg">
+    <div class="bg-[#f1fbff] flex flex-col items-center pb-14 px-6 rounded-lg">
       <p class="font-semibold pt-14 text-4xl text-center tracking-tight">
         Get Started with Earthfiles now!
       </p>
@@ -9,13 +9,22 @@
         Simple, Fast, Consistent Builds
       </p>
 
-      <a
-        href="https://cloud.earthly.dev/login"
-        class="w-full max-w-md mb-20 mt-4 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block"
-        onclick="bottomCtaGetEarthlyClick()"
-      >
-        Get Started Free
-      </a>
+      <div class="flex flex-col sm:flex-row gap-4 mt-6 mx-6">
+        <a
+          href="https://cloud.earthly.dev/login"
+          class="w-64 py-4 text-xl sm:text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg inline-block whitespace-nowrap"
+          onclick="bottomCtaGetEarthlyClick()"
+        >
+          Get Started Free
+        </a>
+        <a
+          href="https://docs.earthly.dev"
+          class="w-64 py-4 text-xl sm:text-2xl text-center cursor-pointer shadow-sm border-2 border-[#2d7e5d] text-[#2d7e5d] rounded-lg inline-block whitespace-nowrap"
+          onclick="bottomCtaViewDocsClick()"
+        >
+          View Docs
+        </a>
+      </div>
     </div>
   </div>
 </div>
@@ -25,6 +34,13 @@
     analytics.track("bottom-cta-get-started-free-click", {
       category: "Get Started Free Click",
       label: "bottom-cta-get-started-free-click",
+    });
+  }
+
+  function bottomCtaViewDocsClick() {
+    analytics.track("bottom-cta-view-docs-click", {
+      category: "View Docs Click",
+      label: "bottom-cta-view-docs-click",
     });
   }
 </script>
