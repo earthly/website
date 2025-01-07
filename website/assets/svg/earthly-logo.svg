@@ -1,189 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 27.2.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<svg version="1.1"
-	 id="svg2" xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:cc="http://creativecommons.org/ns#" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:svg="http://www.w3.org/2000/svg" xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" inkscape:export-filename="/home/vlad/workspace/logo/test2.png" inkscape:export-xdpi="96" inkscape:export-ydpi="96" inkscape:version="1.0.1 (c497b03c, 2020-09-10)" sodipodi:docname="white-logo.svg"
-	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 901 298"
-	 style="enable-background:new 0 0 901 298;" xml:space="preserve">
-<style type="text/css">
-	.st0{fill:#83FF50;stroke:#83FF50;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st1{opacity:0.83;clip-path:url(#SVGID_00000080895763411143063620000003946941406721728898_);}
-	.st2{fill:#96FF5B;fill-opacity:0.6471;}
-	.st3{fill:#FFFFFF;}
-	.st4{fill:#00D6FF;stroke:#00D6FF;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st5{fill:#7DFFFF;stroke:#7DFFFF;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st6{fill:#32E6FF;stroke:#32E6FF;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st7{opacity:0.86;clip-path:url(#SVGID_00000122682779506278355710000011518640239278589079_);}
-	.st8{fill:#00D5FF;fill-opacity:0.5451;}
-	.st9{fill:#20E6FF;stroke:#20E6FF;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st10{fill:#2AF0FF;stroke:#2AF0FF;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st11{opacity:0.95;clip-path:url(#SVGID_00000067935788216487674460000017756686234451421835_);}
-	.st12{fill:#29EFFF;fill-opacity:0.8;}
-	.st13{fill:#32F8B9;stroke:#32F8B9;stroke-width:1;stroke-miterlimit:5.3333;}
-	.st14{opacity:0.85;clip-path:url(#SVGID_00000162337586531770572300000000167629634986491300_);}
-	.st15{fill:#32F6B8;fill-opacity:0.5647;}
-	.st16{fill:#090909;}
-</style>
-<g id="g10" transform="matrix(1.3333333,0,0,-1.3333333,0,1333.3333)" inkscape:groupmode="layer" inkscape:label="Earthly white bg">
-	<g id="g12" transform="translate(30.349812,938.92202)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path14" inkscape:connector-curvature="0" class="st0" d="M118,0L88.5-51.2h-0.2L59.1-0.5L118,0z"/>
-	</g>
-	<g>
-		<g id="g18" transform="translate(-450.86849,387.30675)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-			<g id="g24">
-				<g id="g26">
-				</g>
-				<g id="g38">
-					<g>
-						<defs>
-							<rect id="SVGID_1_" x="460.9" y="542.4" width="158.4" height="69.7"/>
-						</defs>
-						<clipPath id="SVGID_00000174578530605239856790000016492496000338511018_">
-							<use xlink:href="#SVGID_1_"  style="overflow:visible;"/>
-						</clipPath>
-						<g id="g36" style="opacity:0.83;clip-path:url(#SVGID_00000174578530605239856790000016492496000338511018_);">
-							<g id="g34" transform="translate(481.4741,551.9014)">
-								<path id="path32" inkscape:connector-curvature="0" class="st2" d="M118,0l-0.1-0.2h-0.1l0-0.1l-59-0.5l0,0.1H-0.3L-0.7,0
-									L29,51.4h59.4L118,0z"/>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-	<g id="g40" transform="translate(30.485012,938.99722)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path42" inkscape:connector-curvature="0" class="st3" d="M118,0L118,0L88.5-51.2h-0.1l29.5,51.2L118,0L118,0z"/>
-	</g>
-	<g id="g44" transform="translate(1.0187102,887.05882)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path46" inkscape:connector-curvature="0" class="st4" d="M118,0l-0.1-0.2L88.3-51.4v0H29L-0.7,0L29,51.4h0.3L58.5,0.7
-			h59.1L118,0z"/>
-	</g>
-	<g id="g48" transform="translate(0.60761022,887.76582)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path50" inkscape:connector-curvature="0" class="st5" d="M118,0H59L29.7,50.7h59.1L118,0z"/>
-	</g>
-	<g id="g52" transform="translate(30.786312,836.92502)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path54" inkscape:connector-curvature="0" class="st6" d="M118,0l0.5-0.8h-0.9L95.1-1L58.6-1.3l29.6,51.2h58.7L118,0z"/>
-	</g>
-	<g id="g56" transform="translate(-450.86849,387.30675)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<g>
-			<g id="g58">
-				<g id="g64">
-					<g id="g66">
-					</g>
-					<g id="g78">
-						<g>
-							<defs>
-								<rect id="SVGID_00000113349542533246887100000016756461507466418367_" x="525" y="379.5" width="119.9" height="137.2"/>
-							</defs>
-							<clipPath id="SVGID_00000052812051687137078050000006255378118721314435_">
-								<use xlink:href="#SVGID_00000113349542533246887100000016756461507466418367_"  style="overflow:visible;"/>
-							</clipPath>
-							<g id="g76" style="opacity:0.86;clip-path:url(#SVGID_00000052812051687137078050000006255378118721314435_);">
-								<g id="g74" transform="translate(511.9336,398.1758)">
-									<path id="path72" inkscape:connector-curvature="0" class="st8" d="M118,0l-0.9-1.5H57.8L28.1,49.9l0.1,0.2v0l29.6,51.2
-										h0.1L28.3,50.2l36.5,0.3l22.6,0.2h0.9L117.4,0H118z"/>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-	<g id="g80" transform="translate(30.786312,836.92502)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path82" inkscape:connector-curvature="0" class="st9" d="M118,0l0.5-0.8h-0.9L88.4,49.9h58.5L118,0z"/>
-	</g>
-	<g id="g84" transform="translate(89.478712,836.12812)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path86" inkscape:connector-curvature="0" class="st10" d="M118,0H59.8l-0.5,0.8l28.8,49.9h0.6L118,0z"/>
-	</g>
-	<g id="g88" transform="translate(-450.86849,387.30675)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<g>
-			<g id="g90">
-				<g id="g96">
-					<g id="g98">
-					</g>
-					<g id="g110">
-						<g>
-							<defs>
-								<rect id="SVGID_00000083069750939687145980000010640198437501922177_" x="590.4" y="389.7" width="78.2" height="67.5"/>
-							</defs>
-							<clipPath id="SVGID_00000070800203215072149570000016036056325378891696_">
-								<use xlink:href="#SVGID_00000083069750939687145980000010640198437501922177_"  style="overflow:visible;"/>
-							</clipPath>
-							<g id="g108" style="opacity:0.95;clip-path:url(#SVGID_00000070800203215072149570000016036056325378891696_);">
-								<g id="g106" transform="translate(540.7529,448.1143)">
-									<path id="path104" inkscape:connector-curvature="0" class="st12" d="M118,0L89.2-49.9h-0.6L59.4,0.7h58.2L118,0z"/>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-	<g id="g112" transform="translate(119.47131,887.55482)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path114" inkscape:connector-curvature="0" class="st13" d="M118,0L88.3-51.4H88L58.8-0.7H-0.3L-0.7,0l0.1,0.2l29.5,51.2
-			l0,0.1h59.4l29.2-50.6L118,0z"/>
-	</g>
-	<g id="g116" transform="translate(-450.86849,387.30675)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<g>
-			<g id="g118">
-				<g id="g124">
-					<g id="g126">
-					</g>
-					<g id="g138">
-						<g>
-							<defs>
-								<rect id="SVGID_00000118398134125535155890000007193991426162861722_" x="614.2" y="379.5" width="118.7" height="138.1"/>
-							</defs>
-							<clipPath id="SVGID_00000031928815844511343390000001499846702564364928_">
-								<use xlink:href="#SVGID_00000118398134125535155890000007193991426162861722_"  style="overflow:visible;"/>
-							</clipPath>
-							<g id="g136" style="opacity:0.85;clip-path:url(#SVGID_00000031928815844511343390000001499846702564364928_);">
-								<g id="g134" transform="translate(599.9912,448.8926)">
-									<path id="path132" inkscape:connector-curvature="0" class="st15" d="M118,0L88.3-51.4L29-52.2L58.4-1.5L58-0.8h0.3
-										L88,50.6l-0.5,0.8h0.9L118,0z"/>
-								</g>
-							</g>
-						</g>
-					</g>
-				</g>
-			</g>
-		</g>
-	</g>
-	
-		<g id="g140" transform="matrix(1.5550309,0,0,1.5550309,186.55413,840.47647)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path142" inkscape:connector-curvature="0" class="st16" d="M75.9,0v60.5h25.9v-9.2H85V34.8h12.3v-9.2H85V9.2h16.8V0
-			H75.9z"/>
-	</g>
-	
-		<g id="g144" transform="matrix(1.5550309,0,0,1.5550309,262.29502,912.91898)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path146" inkscape:connector-curvature="0" class="st16" d="M75.9,0l-3.4-23.8h6.8L75.9,0z M71.1-32.7l-2.2-13.9h-9.5
-			l10.3,60.4h12.5l10.1-60.4h-9.6l-2.1,13.9H71.1z"/>
-	</g>
-	
-		<g id="g156" transform="matrix(1.5550309,0,0,1.5550309,330.61001,911.79376)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path158" inkscape:connector-curvature="0" class="st16" d="M75.9,0c0,3.5-1.7,5.3-5.2,5.3h-5.5v-19.3h5.5
-			c1.4,0,2.7,0.5,3.7,1.5c1,1,1.5,2.3,1.5,3.7V0z M70.5,14.6c5.1,0,8.8-1.4,11.2-4.2c2.1-2.4,3.1-5.9,3.1-10.2v-8.8
-			c0-4.3-1.6-7.9-4.9-10.9l6.8-26.4h-9.9l-5.5,22.8h-0.8h-5.3v-22.8h-9.1v60.4H70.5z"/>
-	</g>
-	
-		<g id="g160" transform="matrix(1.5550309,0,0,1.5550309,369.90501,920.1931)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path162" inkscape:connector-curvature="0" class="st16" d="M75.9,0h-9.7v9.2h28.5V0H85v-51.3h-9.1V0z"/>
-	</g>
-	
-		<g id="g164" transform="matrix(1.5550309,0,0,1.5550309,424.64692,880.29676)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path166" inkscape:connector-curvature="0" class="st16" d="M75.9,0v-25.6h-9.1v60.4h9.1V9.2h11v25.7H96v-60.4h-9.1V0
-			H75.9z"/>
-	</g>
-	
-		<g id="g168" transform="matrix(1.5550309,0,0,1.5550309,507.21237,840.47647)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path170" inkscape:connector-curvature="0" class="st16" d="M75.9,0H51.1v60.4h9.1V9.1h15.7V0z"/>
-	</g>
-	
-		<g id="g172" transform="matrix(1.5550309,0,0,1.5550309,518.3862,879.84736)" inkscape:export-xdpi="96" inkscape:export-ydpi="96">
-		<path id="path174" inkscape:connector-curvature="0" class="st16" d="M75.9,0L63.7,35.2h10l6.8-21.7l6.7,21.7h10.1L85,0v-25.3
-			h-9.1V0z"/>
-	</g>
-</g>
+<svg width="241" height="51" viewBox="0 0 241 51" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <g clip-path="url(#clip0_4817_7760)">
+    <path d="M36.7483 12.9163L29.5245 25.4539H29.4755L22.3252 13.0387L36.7483 12.9163Z" fill="#83FF50" stroke="#83FF50" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <mask id="mask0_4817_7760" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="2" y="-2" width="40" height="18">
+      <path d="M41.6641 15.1727H2.87402V-1.89588H41.6641V15.1727Z" fill="white"/>
+    </mask>
+    <g mask="url(#mask0_4817_7760)">
+      <g opacity="0.83">
+        <path d="M36.8088 12.8457L36.7843 12.8947H36.7599V12.9192L22.3118 13.0416V13.0171H7.83916L7.74121 12.8457L15.0142 0.25873H29.5603L36.8088 12.8457Z" fill="#96FF5B" fill-opacity="0.6471"/>
+      </g>
+    </g>
+    <path d="M36.7817 12.8974L29.5577 25.4354H29.5332L36.7573 12.8974H36.7817Z" fill="white"/>
+    <path d="M29.5666 25.6164L29.5422 25.6654L22.2936 38.2034H7.77205L0.499023 25.6164L7.77205 13.0294H7.84551L14.9961 25.445H29.4687L29.5666 25.6164Z" fill="#00D6FF" stroke="#00D6FF" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <path d="M29.464 25.4434H15.0159L7.84082 13.0278H22.3134L29.464 25.4434Z" fill="#7DFFFF" stroke="#7DFFFF" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <path d="M36.8566 37.8934L36.979 38.0894H36.7586L31.2488 38.1383L22.3105 38.2118L29.5591 25.6738H43.9337L36.8566 37.8934Z" fill="#32E6FF" stroke="#32E6FF" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <mask id="mask1_4817_7760" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="18" y="21" width="30" height="35">
+      <path d="M47.9342 55.0651H18.5723V21.4666H47.9342V55.0651Z" fill="white"/>
+    </mask>
+    <g mask="url(#mask1_4817_7760)">
+      <g opacity="0.86">
+        <path d="M44.2689 50.4914L44.0485 50.8588H29.5269L22.2539 38.2718L22.2784 38.2228L29.5269 25.6848H29.5514L22.3029 38.1983L31.2411 38.1248L36.7755 38.0759H36.9959L44.122 50.4914H44.2689Z" fill="#00D5FF" fill-opacity="0.5451"/>
+      </g>
+    </g>
+    <path d="M36.8557 37.8935L36.9782 38.0894H36.7578L29.6074 25.6742H43.9326L36.8557 37.8935Z" fill="#20E6FF" stroke="#20E6FF" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <path d="M51.2277 38.0884H36.976L36.8535 37.8925L43.9059 25.6732H44.0528L51.2277 38.0884Z" fill="#2AF0FF" stroke="#2AF0FF" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <mask id="mask2_4817_7760" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="34" y="36" width="20" height="17">
+      <path d="M53.7387 52.566H34.5889V36.0364H53.7387V52.566Z" fill="white"/>
+    </mask>
+    <g mask="url(#mask2_4817_7760)">
+      <g opacity="0.95">
+        <path d="M51.3253 38.2618L44.2729 50.4811H44.1259L36.9756 38.0904H51.2273L51.3253 38.2618Z" fill="#29EFFF" fill-opacity="0.8"/>
+      </g>
+    </g>
+    <path d="M58.5725 25.4949L51.2995 38.0819H51.226L44.0754 25.6663H29.6028L29.5049 25.4949L29.5294 25.4459L36.7534 12.9079V12.8834H51.2995L58.4501 25.2745L58.5725 25.4949Z" fill="#32F8B9" stroke="#32F8B9" stroke-width="0.244885" stroke-miterlimit="5.3333"/>
+    <mask id="mask3_4817_7760" style="mask-type:luminance" maskUnits="userSpaceOnUse" x="40" y="21" width="30" height="35">
+      <path d="M69.4812 55.0646H40.4131V21.2457H69.4812V55.0646Z" fill="white"/>
+    </mask>
+    <g mask="url(#mask3_4817_7760)">
+      <g opacity="0.85">
+        <path d="M65.8307 38.0716L58.5577 50.6586L44.0361 50.8545L51.2357 38.4389L51.1377 38.2675H51.2112L58.4842 25.6805L58.3618 25.4846H58.5822L65.8307 38.0716Z" fill="#32F6B8" fill-opacity="0.5647"/>
+      </g>
+    </g>
+  </g>
+  <path d="M75.0088 37.0156V13.9772H84.8715V17.4805H78.4741V23.7638H83.1579V27.2671H78.4741V33.5123H84.8715V37.0156H75.0088Z" fill="#090909"/>
+  <path d="M93.5547 19.2757L92.26 28.3387H94.8494L93.5547 19.2757ZM91.7269 31.7279L90.8891 37.021H87.2715L91.1937 14.0206H95.9537L99.7998 37.021H96.1441L95.3445 31.7279H91.7269Z" fill="#090909"/>
+  <path d="M110.286 19.5512C110.286 18.2183 109.639 17.5329 108.306 17.5329H106.211V24.8824H108.306C108.839 24.8824 109.334 24.692 109.715 24.3112C110.096 23.9304 110.286 23.4353 110.286 22.9022V19.5512ZM108.23 13.9915C110.172 13.9915 111.581 14.5246 112.495 15.5908C113.294 16.5047 113.675 17.8375 113.675 19.475V22.826C113.675 24.4635 113.066 25.8344 111.809 26.9768L114.399 37.0299H110.629L108.534 28.3476H108.23H106.211V37.0299H102.746V14.0295H108.23V13.9915Z" fill="#090909"/>
+  <path d="M119.906 17.4942H116.212V13.9909H127.065V17.4942H123.371V37.0293H119.906V17.4942Z" fill="#090909"/>
+  <path d="M133.314 27.2643V37.0128H129.849V14.0125H133.314V23.761H137.503V13.9744H140.968V36.9747H137.503V27.2643H133.314Z" fill="#090909"/>
+  <path d="M153.531 37.0156H144.087V14.0153H147.552V33.5503H153.531V37.0156Z" fill="#090909"/>
+  <path d="M156.267 27.3743L151.621 13.9701H155.429L158.019 22.2335L160.57 13.9701H164.416L159.732 27.3743V37.0085H156.267V27.3743Z" fill="#090909"/>
+  <path d="M236.383 19.5512C236.383 18.2183 235.735 17.5329 234.402 17.5329H232.308V24.8824H234.402C234.936 24.8824 235.431 24.692 235.811 24.3112C236.192 23.9304 236.383 23.4353 236.383 22.9022V19.5512ZM234.326 13.9915C236.268 13.9915 237.677 14.5246 238.591 15.5908C239.391 16.5047 239.772 17.8375 239.772 19.475V22.826C239.772 24.4635 239.162 25.8344 237.906 26.9768L240.495 37.0299H236.725L234.631 28.3476H234.326H232.308V37.0299H228.843V14.0295H234.326V13.9915Z" fill="#49728B"/>
+  <path d="M219.726 19.2757L218.431 28.3387H221.02L219.726 19.2757ZM217.898 31.7279L217.06 37.021H213.442L217.365 14.0206H222.125L225.971 37.021H222.315L221.515 31.7279H217.898Z" fill="#49728B"/>
+  <path d="M202.916 24.6101V37.0128H199.451V14.0125H202.916L207.105 26.1569V13.9744H210.571V36.9747H207.105L202.916 24.6101Z" fill="#49728B"/>
+  <path d="M190.593 37.0128C187.758 37.0128 185.459 34.714 185.459 31.8784V14.0125H188.924V31.4463C188.924 32.603 189.862 33.5407 191.019 33.5407C192.175 33.5407 193.113 32.603 193.113 31.4463V13.9744H196.578V31.8397C196.578 34.6819 194.286 36.9917 191.444 37.0128H190.593Z" fill="#49728B"/>
+  <path d="M172.726 37.0156V13.9772H176.191V17.4805V23.7638V27.2671V33.5123H182.588V37.0156H172.726Z" fill="#49728B"/>
+  <defs>
+    <clipPath id="clip0_4817_7760">
+      <rect width="69" height="51" fill="white"/>
+    </clipPath>
+  </defs>
 </svg>

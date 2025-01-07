@@ -3,13 +3,14 @@
 
   <div class="flex h-[70px]">
     <div class="siteHeader-logoAndMenuButton pl-6">
-      <a class="siteHeader-logoLink" href="{{site.landingurl}}/">
-        {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" height=70 %}
+      <a class="inline-block h-full" href="{{site.landingurl}}/">
+        {% svg assets/svg/earthly-logo.svg class="siteHeader-logoLink-svg" %}
       </a>
     </div>
 
     <nav class="flex flex-1 justify-end">
       {% include home/v2/inline.html template='home/v2/mobile-menu.html' %}
+
       <div class="hidden lg:flex">
         <div class="relative border-l cursor-default w-[80px] xl:w-[100px] text-sm xl:text-base h-[70px] flex group items-center justify-center hover:bg-[#f1fbff]">
           Products
@@ -27,12 +28,11 @@
             </div>
           </div>
         </div>
-        <a
-          href="{{site.blogurl}}"
-          class="border-l border-r w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]"
-        >
+
+        <a href="{{site.blogurl}}" class="border-l border-r w-[80px] xl:w-[100px] text-sm xl:text-base flex items-center justify-center hover:bg-[#f1fbff]">
           Blog
         </a>
+
         <div class="inline-flex items-center px-2 xl:px-4">
           <a
             href="/contact-us"

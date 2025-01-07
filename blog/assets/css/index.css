@@ -6,4 +6,12 @@
   position: relative;
   top: 5px;
   height: 60px;
+  transform: scale(0.85);
+  transform-origin: left;
+}
+
+@media screen and (min-width: 640px) {
+  .siteHeader-logoLink-svg {
+    transform: scale(1);
+  }
 }
