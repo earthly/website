@@ -1,14 +1,30 @@
-<div class="flex flex-col items-center max-w-lg mx-auto mb-6 lg:mb-12 -mt-32 px-6 lg:px-10">
+<div class="flex flex-col items-center mx-auto mb-6 lg:mb-12 -mt-32 px-6 lg:px-10">
   <div class="text-center text-slate-400 text-xl">
     Fast, Simple Remote Build Runners
   </div>
-  <a
-    href="https://cloud.earthly.dev/login"
-    class="my-0.5 lg:my-2 py-6 text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
-    onclick="earthlySatellitesTryEarthlySatellitesClick()"
-  >
-    Get Started Free
-  </a>
+  <div class="w-full flex flex-col sm:flex-row gap-4 max-w-xl mb-4 sm:mb-0 mt-4 px-2">
+    <a
+      href="https://cloud.earthly.dev/login"
+      class="flex-1 py-4 text-xl sm:text-2xl text-center cursor-pointer shadow-sm text-white bg-[#2d7e5d] hover:bg-[#2d7e5d] rounded-lg w-full inline-block"
+      onclick="earthlySatellitesTryEarthlySatellitesClick()"
+    >
+      Get Started Free
+    </a>
+    <a
+      href="/pricing"
+      class="border-2 border-[#2d7e5d] flex-1 py-4 text-xl sm:text-2xl text-center cursor-pointer shadow-sm text-[#2d7e5d] rounded-lg w-full inline-block"
+      onclick="earthlySatellitesTryEarthlySatellitesClick()"
+    >
+      Pricing
+    </a>
+    <!-- <a
+        class="border-2 border-[#2d7e5d] flex-1 inline-block sm:mr-2 py-4 rounded-lg text-[#2d7e5d] text-xl sm:text-2xl text-center"
+        href="https://docs.earthly.dev"
+        onclick="earthfileViewDocsClick()"
+      >
+        View Docs
+      </a> -->
+  </div>
 </div>
 
 <script>

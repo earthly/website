@@ -28,7 +28,7 @@
 
 - title: Instantly Available Cache
   points:
-    - A feature of <a href="/earthly-satellites">Earthly Satellites</a>.
+    - A feature of <a href="/earthfile/satellites">Earthly Satellites</a>.
     - Provides cache sharing between CI runs without download/upload delays.
     - Satellites offer high cache hit rates and facilitate cache reuse among team members outside of CI.
   image: instant-cache.svg

@@ -12,6 +12,7 @@
 /earthly-ci /
 /earthly-lunar /
 /earthly-core /earthfile
+/earthly-satellites /earthfile/satellites
 /blog/devcontianers /devcontainers
 
 # Renamed article

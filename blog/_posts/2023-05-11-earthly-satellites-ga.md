@@ -12,7 +12,7 @@ excerpt: |
 last_modified_at: 2023-07-11
 ---
 
-We're excited to announce that [Earthly Satellites](https://earthly.dev/earthly-satellites) have moved from Beta to General Availability (GA)! Satellites are remote build runners managed by the Earthly team. Satellites make builds fast, are super simple to use, and work with any CI as well as builds triggered from your laptop.
+We're excited to announce that [Earthly Satellites](https://earthly.dev/earthfile/satellites) have moved from Beta to General Availability (GA)! Satellites are remote build runners managed by the Earthly team. Satellites make builds fast, are super simple to use, and work with any CI as well as builds triggered from your laptop.
 
 ## Why Use Earthly Satellites?
 
@@ -117,7 +117,7 @@ Another reason that we've effectively hitched ourselves to your wagon is every t
 
 We want to extend a big thank you to Ses as well as all of the other Earthly Satellites users that have helped us refine and improve Satellites to the point that we can now bring them into GA.
 
-If your CI builds are slow or your team is constantly having to waste time waiting for slow builds, try [Earthly Satellites](https://earthly.dev/earthly-satellites). They are remote build runners that make builds fast with an automatic and instantly available build cache. Builds can be triggered by any CI as well as from your laptop. And they're super simple to use. Get started by following [the steps in our documentation to self-serve Satellites](https://docs.earthly.dev/earthly-cloud/satellites).
+If your CI builds are slow or your team is constantly having to waste time waiting for slow builds, try [Earthly Satellites](https://earthly.dev/earthfile/satellites). They are remote build runners that make builds fast with an automatic and instantly available build cache. Builds can be triggered by any CI as well as from your laptop. And they're super simple to use. Get started by following [the steps in our documentation to self-serve Satellites](https://docs.earthly.dev/earthly-cloud/satellites).
 
 **Next, you might like to read about Earthly Compute, the service that underpins Earthly Satellites. Dive into the technicalities of Satellites with some of the engineers that build them in our blog post [Remote Code Execution as a Service](/blog/remote-code-execution/).**
 

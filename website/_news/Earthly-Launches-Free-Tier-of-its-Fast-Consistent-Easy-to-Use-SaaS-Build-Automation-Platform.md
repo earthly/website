@@ -20,7 +20,7 @@ Earthly Cloud makes modern, complex software builds fast and easy. Its automatic
 
 "Earthly Cloud's speed is game-changing for development teams. Builds are ridiculously fast - usually at least twice as fast as in CI. When a whole team is getting faster builds, it saves a lot of time. I’m excited that we are offering a free tier that will make Earthly Cloud accessible to a broader range of developers and teams,” said Vlad A. Ionescu, founder and CEO of Earthly Technologies.
 
-Earthly Cloud’s key features are [Earthly Satellites](https://earthly.dev/earthly-satellites) and [Earthly CI](https://earthly.dev/). Earthly Satellites are remote build runners that make builds fast, are super simple to use, and work seamlessly with any CI and the developer’s laptop. Earthly CI is a full-fledged CI system that uses Earthly Satellites under the hood. Earthly Cloud’s free tier gives users 6,000 build minutes per month to be used across Satellites and CI.
+Earthly Cloud’s key features are [Earthly Satellites](https://earthly.dev/earthfile/satellites) and [Earthly CI](https://earthly.dev/). Earthly Satellites are remote build runners that make builds fast, are super simple to use, and work seamlessly with any CI and the developer’s laptop. Earthly CI is a full-fledged CI system that uses Earthly Satellites under the hood. Earthly Cloud’s free tier gives users 6,000 build minutes per month to be used across Satellites and CI.
 
 “Switching to Earthly took our builds from forty-five minutes to twenty minutes, and using Earthly Satellites took us from like twenty minutes to four or five on average. We experienced another 2x increase, literally just from using Satellites,” said Ses Goe, Director of Internal Tools at [NOCD](https://www.treatmyocd.com/).
 
