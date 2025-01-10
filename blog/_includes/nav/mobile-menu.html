@@ -39,86 +39,31 @@
         <div class="border-b w-full text-xl pt-4 flex flex-col pl-2">
             <div>Products</div>
 
-            <a href="/earthfile" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthfile</a>
             <a href="/earthly-lunar" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Lunar</a>
-            <a href="/earthly-cloud" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Cloud</a>
-            <a href="/earthfile/satellites" class="ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Satellites</a>
+            <a href="/earthfile" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthfile</a>
+            <a href="https://cloud.earthly.dev/login" class="border-b ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Login</a>
+            <a href="https://docs.earthly.dev" class="border-b ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthfile Docs</a>
+            <a href="/earthly-satellites" class="border-b ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Earthly Satellites</a>
+            <a href="/pricing" class="ml-4 pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Satellites Pricing</a>
         </div>
-
-        <div class="border-b w-full text-xl pt-4 flex flex-col pl-2">
-            <div> Resources</div>
-            <a href="/customer-stories" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Customer Stories</a>
-            <a href="/solutions" class="border-b pl-4 py-4 flex items-center hover:bg-[#f1fbff]">Solutions</a>
-            <a href="/faq" class="pl-4 py-4 flex items-center hover:bg-[#f1fbff]">FAQ</a>
-        </div>
-
-        <a href="https://docs.earthly.dev/"
-            class="border-b w-full text-xl py-4 flex pl-2 items-center hover:bg-[#f1fbff]">
-            Docs
-        </a>
-
-        <a href="/pricing" class="border-b w-full text-xl pl-2 py-4 flex items-center hover:bg-[#f1fbff]">
-            Pricing
-        </a>
 
         <a href="{{site.blogurl}}" class="border-b w-full pl-2 text-xl py-4 flex items-center hover:bg-[#f1fbff]">
             Blog
         </a>
 
-        <a href="https://cloud.earthly.dev/login"
+        <a href="/contact-us"
         class="h-10 px-4 my-10 items-center flex w-fit text-xl py-4 text-center text-white bg-[#2d7e5d] hover:bg-green-700 rounded-lg"
-            onclick="navMobileGetStartedFreeClick()">
-            Get Started Free
+            onclick="navMobileGetADemoClick()">
+            Get a Demo
         </a>
-
-        <div class="star-cta mb-4 flex items-center relative top-[2px]">
-            <a class="github-button" href="https://github.com/earthly/earthly" data-size="large" data-show-count="true"
-                aria-label="Star earthly/earthly on GitHub">Star</a>
-        </div>
-
-        <div class="flex  items-center content-start h-[70px]">
-
-            <span class="mr-3 text-sm whitespace-nowrap xl:text-lg">Join us on</span>
-            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="c-nav--footer__svgicon c-slackhash"
-                viewBox="0 0 54 54">
-                <g fill="none" fill-rule="evenodd">
-                    <path
-                        d="M19.712.133a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386h5.376V5.52A5.381 5.381 0 0 0 19.712.133m0 14.365H5.376A5.381 5.381 0 0 0 0 19.884a5.381 5.381 0 0 0 5.376 5.387h14.336a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386"
-                        fill="#36C5F0"></path>
-                    <path
-                        d="M53.76 19.884a5.381 5.381 0 0 0-5.376-5.386 5.381 5.381 0 0 0-5.376 5.386v5.387h5.376a5.381 5.381 0 0 0 5.376-5.387m-14.336 0V5.52A5.381 5.381 0 0 0 34.048.133a5.381 5.381 0 0 0-5.376 5.387v14.364a5.381 5.381 0 0 0 5.376 5.387 5.381 5.381 0 0 0 5.376-5.387"
-                        fill="#2EB67D"></path>
-                    <path
-                        d="M34.048 54a5.381 5.381 0 0 0 5.376-5.387 5.381 5.381 0 0 0-5.376-5.386h-5.376v5.386A5.381 5.381 0 0 0 34.048 54m0-14.365h14.336a5.381 5.381 0 0 0 5.376-5.386 5.381 5.381 0 0 0-5.376-5.387H34.048a5.381 5.381 0 0 0-5.376 5.387 5.381 5.381 0 0 0 5.376 5.386"
-                        fill="#ECB22E"></path>
-                    <path
-                        d="M0 34.249a5.381 5.381 0 0 0 5.376 5.386 5.381 5.381 0 0 0 5.376-5.386v-5.387H5.376A5.381 5.381 0 0 0 0 34.25m14.336-.001v14.364A5.381 5.381 0 0 0 19.712 54a5.381 5.381 0 0 0 5.376-5.387V34.25a5.381 5.381 0 0 0-5.376-5.387 5.381 5.381 0 0 0-5.376 5.387"
-                        fill="#E01E5A"></path>
-                </g>
-            </svg>
-            <a href="/slack">
-                <span class="font-semibold ml-2 text-lg cursor-pointer">
-                    Slack
-                </span>
-            </a>
-        </div>
-
-
     </div>
 </div>
 
 <script>
-  function navMobileLearnEarthlyClick() {
-    analytics.track('blog-nav-mobile-learn-earthly-click', {
-      category: 'Learn Earthly Click',
-      label: 'blog-nav-mobile-learn-earthly-click'
-    });
-  }
-
-  function navMobileGetStartedFreeClick() {
-    analytics.track('blog-nav-mobile-get-started-free-click', {
-      category: 'Get Started Free',
-      label: 'blog-nav-mobile-get-started-free-click'
+  function navMobileGetADemoClick() {
+    analytics.track('blog-nav-mobile-get-a-demo-click', {
+      category: 'Get a Demo',
+      label: 'blog-nav-mobile-get-a-demo-click'
     });
   }
 
