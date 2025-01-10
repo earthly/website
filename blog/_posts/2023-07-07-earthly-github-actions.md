@@ -292,7 +292,7 @@ Developer speed is also an important dimension to consider. As I mentioned earli
 
 ### **Earthly**
 
-With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [Earthly Satellites](https://earthly.dev/earthly-satellites) (our managed remote build runners), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
+With Earthly, executing the same pipeline locally completes in 7 seconds consistently. With [Earthly Satellites](https://earthly.dev/earthfile/satellites) (our managed remote build runners), it also completes in 7 seconds. This is another data point that speaks to the reproducibility and consistency that Earthly offers.
 
 <div class="wide">
 ![7-secs]({{site.images}}{{page.slug}}/7-secs.png)\
@@ -302,7 +302,7 @@ When it comes to developer speed. There really is no comparison. Composing my CI
 
 ### Better Together: Earthly + Github Actions
 
-Because you can use Earthly pretty much anywhere where the Earthly CLI can be installed, there are quite a few Earthly users running [Earthly on Github Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration). This is a very convenient option for anyone who wants the best of both worlds. You can also use [Earthly Satellites](https://earthly.dev/earthly-satellites) – our managed remote build runners – and self-hosted [remote runners](https://docs.earthly.dev/docs/remote-runners#how-remote-runners-work) with GitHub Actions. Both of these options let you run Earthly commands from your local machine or Github Actions but actually have the execution take place on a remote server dedicated to your organization. This also gives your team the added benefit of a shared cache they can use locally as well. This pattern has become popular as Github Actions users run into challenges with Github's free runners or want to reduce costs for paid Github Actions.
+Because you can use Earthly pretty much anywhere where the Earthly CLI can be installed, there are quite a few Earthly users running [Earthly on Github Actions](https://docs.earthly.dev/ci-integration/vendor-specific-guides/gh-actions-integration). This is a very convenient option for anyone who wants the best of both worlds. You can also use [Earthly Satellites](https://earthly.dev/earthfile/satellites) – our managed remote build runners – and self-hosted [remote runners](https://docs.earthly.dev/docs/remote-runners#how-remote-runners-work) with GitHub Actions. Both of these options let you run Earthly commands from your local machine or Github Actions but actually have the execution take place on a remote server dedicated to your organization. This also gives your team the added benefit of a shared cache they can use locally as well. This pattern has become popular as Github Actions users run into challenges with Github's free runners or want to reduce costs for paid Github Actions.
 
 As part of this project I also created a Github Actions workflow that uses an Earthly Satellite. Below you can see a comparison of the performance. Using a Satellite cuts the build time by more than half (conservatively) and the performance is extremely consistent relative to building with Github Actions only. Because the cache on Earthly Satellites is local to the runner, it is instantly available (no upload/download is necessary).
 
@@ -318,6 +318,6 @@ If you're interested in running this build yourself - you can find everything at
 
 ### Next Steps
 
-Thank you for taking the time to read our article about Github Actions and Earthly. If you're interested in learning more, please [schedule](https://calendly.com/d/y22-s9m-cqn/earthly-demo) a demo or conversation with us. Or, skip the call and try [Earthly Satellites](https://earthly.dev/earthly-satellites). They are remote build runners that make builds fast with an automatic and instantly available build cache. Builds can be triggered by GitHub Actions (or any CI) as well as from your laptop. And they're super simple to use. Get started by following [the steps in our documentation to self-serve Satellites](https://docs.earthly.dev/earthly-cloud/satellites).
+Thank you for taking the time to read our article about Github Actions and Earthly. If you're interested in learning more, please [schedule](https://calendly.com/d/y22-s9m-cqn/earthly-demo) a demo or conversation with us. Or, skip the call and try [Earthly Satellites](https://earthly.dev/earthfile/satellites). They are remote build runners that make builds fast with an automatic and instantly available build cache. Builds can be triggered by GitHub Actions (or any CI) as well as from your laptop. And they're super simple to use. Get started by following [the steps in our documentation to self-serve Satellites](https://docs.earthly.dev/earthly-cloud/satellites).
 
 {% include_html cta/bottom-cta.html %}
