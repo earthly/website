@@ -201,5 +201,5 @@ jekyll_include_cache:
   enabled: true
 
 # Site banner
-banner: <b>Introducing Earthly Lunar.</b> Streamline your development processes with an all-in-one governance platform. Built for the age of diverse tech stacks and microservices. <a href="/earthly-lunar" onclick="bannerLinkClick()">Learn More</a>.
-mobileBanner: <b>Introducing Earthly Lunar.</b> Streamline your development processes with an all-in-one governance platform. Built for the age of diverse tech stacks and microservices. <a href="/earthly-lunar" onclick="bannerLinkClick()">Learn More</a>.
+banner: <b>Introducing Earthly Lunar.</b> Streamline your development process with an all-in-one governance platform. <a href="/earthly-lunar" onclick="bannerLinkClick()">Learn More</a>.
+mobileBanner: <b>Introducing Earthly Lunar.</b> Streamline your development process with an all-in-one governance platform. <a href="/earthly-lunar" onclick="bannerLinkClick()">Learn More</a>.
