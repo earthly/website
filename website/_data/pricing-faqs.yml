@@ -1,7 +1,7 @@
 - question: What are Satellites?
   answer: "Satellites are remote build runners that speed up builds with Earthly’s caching and parallelization. Available via BYOC or Self-Hosted, they integrate with CI systems and local workflows to:<ul><li>Enhance CI with caching and parallelism.</li><li>Share compute and cache across the team.</li><li>Enable cross-platform builds (e.g., x86 on ARM).</li></ul>"
 - question: What is BYOC?
-  answer: BYOC stands for “Bring Your Own Cloud,” a service model that combines the benefits of on-premises deployment with the convenience of vendor management for a cloud-like experience. With our BYOC plan, you provide Earthly with access to your AWS account using a tightly controlled IAM role that you control.
+  answer: BYOC stands for “Bring Your Own Cloud,” a service model that combines the benefits of on-premises deployment with the convenience of vendor management for a cloud-like experience. With our BYOC plan, you provide Earthly with access to your AWS account using a strict IAM role that you own.
 - question: Is BYOC as secure as Self-Hosted?
   answer: The IAM role you grant us allows Earthly to create and manage EC2 instances within a specific VPC. However, this role does not grant Earthly connection access to the instances themselves or to their internal cache data. For more details, refer to our <a class="underline" href="https://docs.earthly.dev/earthly-cloud/satellites/byoc" target="_blank">BYOC documentation</a>.<br />That said, organizations with strict compliance requirements may prefer the Self-Hosted option, which ensures that satellites are fully controlled by your team alone.
 - question: How are users tracked?
