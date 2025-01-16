@@ -91,6 +91,6 @@ _For the complete guide, visit [the Self-Hosted Satellites page in our documenta
 
 ![today]({{site.images}}{{page.slug}}/today.png)\
 
-[Sign up for Earthly Cloud](https://cloud.earthly.dev/login) to start self-hosting your own Earthly Satellites. They are even available on our free tier, so you can start with self-hosted Satellites now at no cost ([visit our Pricing page](https://earthly.dev/pricing#compute-pricing) for more details about pricing for self-hosted Satellites). Try out self-hosted Earthly Satellites, and let us know how they work for you.
+[Sign up for Earthly Cloud](https://cloud.earthly.dev/login) to start self-hosting your own Earthly Satellites. They are even available on our free tier, so you can start with self-hosted Satellites now at no cost ([visit our Pricing page](https://earthly.dev/earthfile/satellites/pricing) for more details about pricing for self-hosted Satellites). Try out self-hosted Earthly Satellites, and let us know how they work for you.
 
 {% include_html cta/bottom-cta.html %}
