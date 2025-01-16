@@ -1,5 +1,0 @@
-- point: Up to 15 users
-- point: XS to XL satellites
-- point: 14 day cache retention
-- point: Static originating IP address
-- point: <a class="underline" href="https://docs.earthly.dev/earthly-cloud/satellites/gha-runners">Integrated Github Actions runner</a>

@@ -13,6 +13,7 @@
 /earthly-lunar /
 /earthly-core /earthfile
 /earthly-satellites /earthfile/satellites
+/pricing /earthfile/satellites/pricing
 /blog/devcontianers /devcontainers
 
 # Renamed article

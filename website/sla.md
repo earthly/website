@@ -21,7 +21,7 @@ layout: page
 
 “<ins>Build</ins>” means execution of a CI/CD task on the Cloud Service, whether triggered manually by Users or automatically (including when triggered by an integration with a Third-Party Platform).
 
-“<ins>Compute Minute</ins>” has the definition given on our pricing page at [https://earthly.dev/pricing](https://earthly.dev/pricing).
+“<ins>Compute Minute</ins>” has the definition given on our pricing page at [https://earthly.dev/earthfile/satellites/pricing](https://earthly.dev/earthfile/satellites/pricing).
 
 “<ins>Maintenance</ins>” means Provider’s routine maintenance of the Cloud Service conducted in accordance with its Maintenance Procedures or reasonable emergency maintenance.
 

@@ -29,7 +29,7 @@ Common use-cases for using Satellites include:
 - Using satellites in local development workflows in order to share compute and cache with colleagues
 - Using satellites in order to execute x86 builds on ARM (or Apple Silicon) machines, or vice-versa
 
-To learn more about our plans, please visit our [pricing page](/pricing).
+To learn more about our plans, please visit our [pricing page](/earthfile/satellites/pricing).
 
 <h2 class="text-2xl font-semibold mb-5 mt-20" id="monorepo">How does Earthly handle monorepo setups and what makes it special?<span class="hide"><a href="#monorepo">¶</a></span></h2>
 
@@ -61,7 +61,7 @@ Earthly, on the other hand, can be used for general-purpose CI/CD use cases. Ear
 
 Bazel does exceptionally well in very specific environments, for very specific use cases, but it is not a general-purpose CI/CD framework.
 
-For these reasons, Bazel is often run in conjunction with Earthly, rather than instead of it. Here is an [example of how to do that in the Earthly repository on GitHub](https://github.com/earthly/earthly/tree/main/examples/bazel). In particular, the combination of Bazel and [Earthly Satellites](https://earthly.dev/pricing) (or self-hosted [Earthly remote runners](https://docs.earthly.dev/ci-integration/remote-buildkit)) allows Bazel’s cache to be saved on the remote runner and instantly available on the next build. This can make Bazel executions in CI very fast.
+For these reasons, Bazel is often run in conjunction with Earthly, rather than instead of it. Here is an [example of how to do that in the Earthly repository on GitHub](https://github.com/earthly/earthly/tree/main/examples/bazel). In particular, the combination of Bazel and [Earthly Satellites](https://earthly.dev/earthfile/satellites/pricing) (or self-hosted [Earthly remote runners](https://docs.earthly.dev/ci-integration/remote-buildkit)) allows Bazel’s cache to be saved on the remote runner and instantly available on the next build. This can make Bazel executions in CI very fast.
 
 One of Bazel’s use cases is managing builds for a monorepo setup. For this use case, there is some overlap with what Earthly can do. Here are some key differences between the two:
 

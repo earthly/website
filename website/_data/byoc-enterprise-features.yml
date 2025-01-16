@@ -1,0 +1,17 @@
+- points:
+  - point: Unlimited users
+  - point: Fully-managed, single-tenant satellite fleet
+  - point: Auto-sleep cost-saving features
+  - point: x86 and arm64
+- points:
+  - point: xsmall to 3xlarge size instances
+  - point: Custom satellite specs
+  - point: Managed TLS with automatic key rotation
+  - point: <a class="underline" href="https://docs.earthly.dev/earthly-cloud/satellites/gha-runners" target="_blank">Integrated Github Actions runner</a>
+- points:
+  - point: Unlimited log retention
+  - point: Third-Party Secrets Integration
+    comingSoon: true
+  - point: Export build analytics
+    comingSoon: true
+  - point: 24/7 support and a dedicated Slack channel
