@@ -249,13 +249,19 @@ allowOverflow: true
       body,
       method: 'POST'
     })
-      .then(response => {
+      .then(async response => {
         if (response.status === 200) {
-          form.classList.add('hidden')
-          thankYou.classList.remove('hidden')
+          const results = await response.json()
 
-          form.parentElement.classList.remove('items-center')
-          form.parentElement.classList.replace('pt-10', 'pt-20')
+          if (results.status === 'success') {
+            form.classList.add('hidden')
+            thankYou.classList.remove('hidden')
+
+            form.parentElement.classList.remove('items-center')
+            form.parentElement.classList.replace('pt-10', 'pt-20')
+          } else {
+            errorCommon.classList.remove('hidden')
+          }
         } else {
           errorCommon.classList.remove('hidden')
         }
