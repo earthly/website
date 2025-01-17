@@ -1,12 +1,12 @@
-- title: No profit from slow builds
-  description: We charge zero-margin on compute. Compute costs are passed directly to the customer. That means we invest heavily in making your builds faster, because that makes users happy.
-  image: assets/svg/percentage.svg
-- title: More effective build minutes
-  description: Earthly Cloud's automatic caching and parallelism makes builds 2-20X faster than on traditional CI/CD platforms. You don’t need as many build minutes for the same work.
-  image: assets/svg/clock-fast.svg
-- title: Build minutes for everyone
-  description: Unlike other vendors, our included minutes scale with team size. They are designed to handle most workloads so customers don’t even have to think about additional build minutes.
-  image: assets/svg/community.svg
-- title: Productivity is our value-add
-  description: Earthly Cloud's value-add is developer productivity. In a team of 30, a 2.8X speed boost to CI/CD means 2 FTEs worth of time saved.
-  image: assets/svg/fastapi.svg
+- title: Ship Code<br />Faster
+  description: Leverage automatic caching and parallelism to accelerate builds by 2-20x compared to traditional CI/CD platforms.
+  image: /assets/svg/shipping-fast.svg
+- title: Effortless<br />Configuration
+  description: Earthly Satellites automatically cache every step in your Earthfile—no need for custom configurations, special build tooling, or costly cache downloads from container registries.
+  image: /assets/svg/effortless-config.svg
+- title: Secure,<br />In Your Environment
+  description: Choose Self-Hosted or BYOC (Bring Your Own Cloud) plans to ensure your builds remain secure, with all data staying within your infrastructure.
+  image: /assets/svg/secure.svg
+- title: Maximize<br />Productivity
+  description: Earthly Satellites focus on developer efficiency. For a 30-person team, a 2.8x speed boost in CI/CD delivers productivity gains equivalent to adding two full-time engineers—without the overhead.
+  image: /assets/svg/graph-bar-increase.svg

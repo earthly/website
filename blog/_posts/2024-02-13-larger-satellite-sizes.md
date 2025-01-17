@@ -25,7 +25,7 @@ At Earthly, we're constantly trying to make builds more consistent, faster, and 
 - **3xlarge:**  32 vCPUs, 128 GB of RAM, and a 1TB cache disk. x86 & arm64 available.
 - **4xlarge:** 64 vCPUs, 256 GB of RAM, and a 2TB cache disk. x86 & arm64 available.
 
-_[Visit our Pricing page](https://earthly.dev/pricing#compute-pricing) for more details about the Satellites instance sizes we offer._
+_[Visit our Pricing page](https://earthly.dev/earthfile/satellites/pricing) for more details about the Satellites instance sizes we offer._
 
 ## From Feedback to Features
 

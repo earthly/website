@@ -1,41 +1,30 @@
-<div class="bg-[#f4f5f7] mt-12 px-5 lg:px-10 py-8 rounded-xl">
-  <div id="faq" class="font-medium mb-12 text-3xl lg:text-4xl tracking-tighter">
-    Frequently Asked Questions
-  </div>
+<div class="bg-[#f4f5f7] mt-20 px-5 lg:px-10 py-8 rounded-xl">
+  <div id="faq" class="font-medium mb-12 text-3xl lg:text-4xl tracking-tighter">Frequently Asked Questions</div>
 
   {% for item in site.data.pricing-faqs %}
     <div class="border-b border-gray-300 mt-5 pb-2.5 pricing-faq">
       <div class="cursor-pointer flex items-center group" onclick="toggleFAQ(this)">
         <div class="relative">
-          <img style="width: 20px" src="../../../assets/svg/minus.svg" alt="Minus Icon" />
-          <img
-            style="width: 20px"
-            src="../../../assets/svg/minus.svg"
-            alt="Minus Icon"
-          />
+          <img style="width: 20px" src="/assets/svg/minus.svg" alt="Minus Icon" />
+          <img style="width: 20px" src="/assets/svg/minus.svg" alt="Minus Icon" />
         </div>
+
         <div class="flex-1 lg:flex-none font-medium text-2xl ml-2">
           <span data-id="{{ item.question | slugify }}">{{ item.question }}</span>
         </div>
-        <a href="/pricing#{{ item.question | slugify }}" style="margin-left: 10px">
-          <img
-            class="hidden group-hover:block"
-            style="width: 20px"
-            src="../../../assets/svg/link-black.svg"
-            alt="Link Icon"
-          />
+
+        <a href="/earthfile/satellites/pricing#{{ item.question | slugify }}" style="margin-left: 10px">
+          <img class="hidden group-hover:block" style="width: 20px" src="/assets/svg/link-black.svg" alt="Link Icon" />
         </a>
       </div>
 
-      <div class="answer leading-8 text-gray-500 text-lg ml-7 mt-3">
-        {{ item.answer }}
-      </div>
+      <div class="answer leading-8 text-gray-500 text-lg ml-7 mt-3">{{ item.answer }}</div>
     </div>
   {% endfor %}
 </div>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function () {
+  document.addEventListener('DOMContentLoaded', function () {
     scrollToFAQ(window.location.hash.substring(1))
   })
 

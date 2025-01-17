@@ -95,7 +95,7 @@ There is, however, an upfront cost of integrating Earthly into your existing set
 
 At Earthly, we believe that billing CI/CD by the build minute is fundamentally broken, because the slower the build gets, the more the vendor profits. It creates misaligned incentives. CI/CD tooling should be aligned to developer productivity (not to the opposite of it!).
 
-For this reason, our pricing model uses the number of active users for the profit-generating component of our pricing, and charges a zero-margin fee on compute. Plus, because we don't want our customers to even think about build minutes, our plans come with a very [generous amount of included build minutes that scale with the team size](https://earthly.dev/pricing) - something very unique in the realm of CI/CD tooling.
+For this reason, our pricing model uses the number of active users for the profit-generating component of our pricing, and charges a zero-margin fee on compute. Plus, because we don't want our customers to even think about build minutes, our plans come with a very [generous amount of included build minutes that scale with the team size](https://earthly.dev/earthfile/satellites/pricing) - something very unique in the realm of CI/CD tooling.
 
 In our running example, we showed how a 2.5X build speed improvement can save you $23k in CI infrastructure, and $300k in developer time (conservative estimate) in a team of 30 people. For this setup, Earthly Cloud costs $19.7k per year. So in this case, you're covering the cost of Earthly without even asking for more budget (you just shift from existing CI infrastructure) - yet the benefits are 16X greater than that.
 

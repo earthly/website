@@ -135,6 +135,6 @@ As a newcomer to working with large language models, I found the experience of b
 
 These techniques were invaluable in helping me understand how to apply LLMs to [real-world problems](https://github.com/earthly/build-transpose/). The potential of these technologies, combined with thoughtful instructional approaches to overcome their limitations, is fantastic.
 
-If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should [give Earthly a try](https://earthly.dev/earthly-github-actions). Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? [Our satellites can make that happen](https://earthly.dev/pricing).
+If you're building things with LLMs, I'd love to hear about any tricks you've learned. Also, if you are using GitHub actions, you should [give Earthly a try](https://earthly.dev/earthly-github-actions). Earthly can improve the consistency of your build, so you never get a build failure you can't reproduce locally. It works great with GitHub actions. And want your GitHub Actions to be even faster? [Our satellites can make that happen](https://earthly.dev/earthfile/satellites/pricing).
 
 {% include_html cta/bottom-cta.html %}
