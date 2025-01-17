@@ -1,0 +1,272 @@
+---
+title: Get a Demo - Earthly Lunar
+description: Get Earthly Lunar and start your journey to engineering excellence.
+layout: default
+allowOverflow: true
+---
+
+<div class="blue-bg-gradient mt-[70px] pb-20 relative">
+  <div class="w-full h-full absolute flex-col hidden lg:flex mt-12">
+    <img class="w-full" src="/assets/svg/clouds.svg" />
+    <div class="flex-1" style="background: linear-gradient(#f8fcfe, white)"></div>
+  </div>
+
+  <div class="flex flex-col lg:flex-row gap-10 items-center max-w-7xl m-auto pt-10 px-6 lg:px-10 relative z-10">
+    <div class="w-full lg:max-w-md xl:max-w-lg lg:pr-6">
+      <p class="font-semibold text-lg tracking-tighter">Get a Demo</p>
+      <p class="font-semibold leading-tight mt-2 text-[40px] text-[#2d7e5d] tracking-tight">Start your journey to engineering excellence today.</p>
+      <p class="mt-6 text-[#6b7280] text-lg tracking-tighter">
+        Supporting infinitely diverse CI/CD setups is overwhelming.<br />Take control of your development lifecycle with <b>Earthly Lunar</b>.
+      </p>
+
+      <div class="flex flex-col gap-2 mt-10">
+        {% for item in site.data.demo-features %}
+          <div class="flex gap-3 items-center">
+            <img class="w-5 h-5" src="/assets/svg/done-check.svg" alt="Checked bullet" />
+            <p class="text-[#6b7280] text-lg tracking-tighter">{{ item }}</p>
+          </div>
+          {% endfor %}
+      </div>
+    </div>
+
+    <form id="earthly-ci-form" class="get-a-demo w-full bg-[#E8F7FE] flex-1 rounded-3xl">
+      <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
+        <div class="flex-1">
+          <div class="input">
+            <input type="text" name="fields[first_name]" placeholder="First name" aria-label="First Name" onkeyup="handleKeyUp(this)" />
+            <div class="placeholder">First name<span>*</span></div>
+          </div>
+          <p class="error">This field cannot be empty</p>
+        </div>
+
+        <div class="flex-1">
+          <div class="input">
+            <input type="text" name="fields[last_name]" placeholder="Last name" aria-label="Last Name" onkeyup="handleKeyUp(this)" />
+            <div class="placeholder">Last name<span>*</span></div>
+          </div>
+          <p class="error">This field cannot be empty</p>
+        </div>
+      </div>
+
+      <div class="input mt-4">
+        <input
+          id="earthly-ci-form-email"
+          type="email"
+          name="email_address"
+          placeholder="Company email"
+          aria-label="Company email"
+          onkeyup="handleKeyUp(this)"
+        />
+        <div class="placeholder">Company email<span>*</span></div>
+      </div>
+      <p class="error">This field cannot be empty</p>
+
+      <div class="input mt-4">
+        <input type="text" name="fields[company]" placeholder="Company name" aria-label="Company name" onkeyup="handleKeyUp(this)" />
+        <div class="placeholder">Company name<span>*</span></div>
+      </div>
+      <p class="error">This field cannot be empty</p>
+
+      <div class="input mt-4 relative" onclick="toggleOptions(this)">
+        <input type="text" name="fields[team_size]" placeholder="Engineering team size" aria-label="Engineering team size" readonly />
+        <div class="placeholder">Engineering team size<span>*</span></div>
+
+        <div class="options hidden">
+          <p onclick="selectOption('fields[team_size]', this)">1-10</p>
+          <p onclick="selectOption('fields[team_size]', this)">10-50</p>
+          <p onclick="selectOption('fields[team_size]', this)">50-200</p>
+          <p onclick="selectOption('fields[team_size]', this)">200-500</p>
+          <p onclick="selectOption('fields[team_size]', this)">500-1000</p>
+          <p onclick="selectOption('fields[team_size]', this)">1000-5000</p>
+          <p onclick="selectOption('fields[team_size]', this)">5000+</p>
+        </div>
+      </div>
+      <p class="error">This field cannot be empty</p>
+
+      <div class="input mt-4 relative" onclick="toggleOptions(this)">
+        <input type="text" data-element="tags-select" name="tags[]" placeholder="What is your role?" aria-label="What is your role?" readonly />
+        <div class="placeholder">What is your role?<span>*</span></div>
+
+        <div class="options hidden">
+          <p onclick="selectOption('tags[]', this)">I manage CI/CD</p>
+          <p onclick="selectOption('tags[]', this)">I am an application developer</p>
+          <p onclick="selectOption('tags[]', this)">I’m an engineering leader</p>
+          <p onclick="selectOption('tags[]', this)">I’m a security leader</p>
+          <p onclick="selectOption('tags[]', this)">I manage compliance</p>
+          <p onclick="selectOption('tags[]', this)">I’m in charge of GRC</p>
+          <p onclick="selectOption('tags[]', this)">I’m a DevOps leader</p>
+          <p onclick="selectOption('tags[]', this)">I’m a Platform Engineer</p>
+          <p onclick="selectOption('tags[]', this)">Something else</p>
+        </div>
+      </div>
+      <p class="error">This field cannot be empty</p>
+
+      <div class="input mt-4">
+        <input
+          type="text"
+          name="fields[problem]"
+          placeholder="(Optional) What are you trying to solve with Earthly Lunar?"
+          aria-label="(Optional) What are you trying to solve with Earthly Lunar?"
+        />
+        <div class="placeholder">
+          <p class="text-sm inline-block">(Optional)</p>
+          What are you trying to solve with Earthly Lunar?
+        </div>
+      </div>
+
+      <div class="w-full bg-[#2d7e5d] hover:bg-green-700 cursor-pointer mt-8 py-4 rounded-lg text-2xl text-center text-white" onclick="submitForm()">
+        Book now
+      </div>
+
+      <p class="error-common hidden">Something went wrong. Please try again.</p>
+    </form>
+
+    <div id="thank-you" class="w-full h-fit bg-[#E8F7FE] flex flex-col flex-1 hidden items-center py-10 rounded-3xl">
+      <img class="w-10 h-10" src="/assets/svg/success-filled.svg" alt="Success" />
+      <p class="font-bold mt-2.5 tracking-tight">Request Sent</p>
+      <p class="font-semibold mt-2 text-[#2d7e5d] text-2xl tracking-tight">Thank you for signing!</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.addEventListener('click', e => {
+    const teamSizeOptions = document.getElementsByClassName('options')[0]
+    const roleOptions = document.getElementsByClassName('options')[1]
+
+    if (!teamSizeOptions.parentElement.contains(e.target) && !teamSizeOptions.classList.contains('hidden')) {
+      teamSizeOptions.classList.add('hidden')
+    }
+
+    if (!roleOptions.parentElement.contains(e.target) && !roleOptions.classList.contains('hidden')) {
+      roleOptions.classList.add('hidden')
+    }
+  })
+
+  function createMultipartBody(data) {
+    const boundary = '----WebKitFormBoundary' + Math.random().toString(36).substring(2)
+
+    let body = ''
+    for (const [key, value] of Object.entries(data)) {
+      body += `--${boundary}\r\n`
+      body += `Content-Disposition: form-data; name="${key}"\r\n\r\n`
+      body += `${value}\r\n`
+    }
+
+    body += `--${boundary}--\r\n`
+    return { body, boundary }
+  }
+
+  function generateUUID() {
+    return 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function (c) {
+      const r = (Math.random() * 16) | 0
+      const v = c === 'x' ? r : (r & 0x3) | 0x8
+      return v.toString(16)
+    })
+  }
+
+  const handleKeyUp = e => {
+    if (e.value.trim()) {
+      if (e.name === 'email_address' && !/^[a-zA-Z0-9._]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(e.value.trim())) {
+        return (document.querySelector(`input[name="${e.name}"]`).parentElement.nextSibling.nextSibling.innerText =
+          'Please enter a valid email address')
+      }
+
+      document.querySelector(`input[name="${e.name}"]`).parentElement.classList.remove('error')
+    }
+  }
+
+  const toggleOptions = e => {
+    const options = e.getElementsByClassName('options')[0]
+
+    if (options.classList.contains('hidden')) options.classList.remove('hidden')
+    else options.classList.add('hidden')
+  }
+
+  const selectOption = (field, e) => {
+    const element = document.querySelector(`input[name="${field}"]`)
+
+    element.value = e.innerText
+    element.parentElement.classList.remove('error')
+  }
+
+  const submitForm = async () => {
+    const form = document.getElementById('earthly-ci-form')
+
+    const errorCommon = document.getElementsByClassName('error-common')[0]
+    const thankYou = document.getElementById('thank-you')
+
+    errorCommon.classList.add('hidden')
+
+    const formData = new FormData(form)
+
+    const fields = ['fields[first_name]', 'fields[last_name]', 'email_address', 'fields[company]', 'fields[team_size]', 'tags[]']
+
+    let errorFound = false
+
+    fields.forEach(field => {
+      const element = document.querySelector(`input[name="${field}"]`).parentElement
+
+      if (!formData.get(field).trim()) {
+        element.classList.add('error')
+        errorFound = true
+      }
+
+      if (field === 'email_address') {
+        if (!formData.get(field).trim()) {
+          element.nextSibling.nextSibling.innerText = 'This field cannot be empty'
+        } else if (!/^[a-zA-Z0-9._]+@(?:[a-zA-Z0-9]+\.)+[A-Za-z]+$/.test(formData.get(field).trim())) {
+          element.nextSibling.nextSibling.innerText = 'Please enter a valid email address'
+          element.classList.add('error')
+          errorFound = true
+        }
+      }
+    })
+
+    if (errorFound) return
+
+    const { body, boundary } = createMultipartBody({
+      'fields[first_name]': formData.get('fields[first_name]'),
+      'fields[last_name]': formData.get('fields[last_name]'),
+      email_address: formData.get('email_address'),
+      'fields[company]': formData.get('fields[company]'),
+      'fields[team_size]': formData.get('fields[team_size]'),
+      'tags[]': formData.get('tags[]'),
+      'fields[problem]': formData.get('fields[problem]'),
+      token: '',
+      referrer: window.location.origin,
+      host: window.location.href,
+      search: window.location.search,
+      user: generateUUID(),
+      ckjs_version: '6'
+    })
+
+    fetch('https://app.convertkit.com/forms/3735631/subscriptions', {
+      headers: {
+        'content-type': `multipart/form-data; boundary=${boundary}`,
+        'x-ckjs-version': '6'
+      },
+      body,
+      method: 'POST'
+    })
+      .then(response => {
+        if (response.status === 200) {
+          form.classList.add('hidden')
+          thankYou.classList.remove('hidden')
+
+          form.parentElement.classList.remove('items-center')
+          form.parentElement.classList.replace('pt-10', 'pt-20')
+        } else {
+          errorCommon.classList.remove('hidden')
+        }
+      })
+      .catch(error => errorCommon.classList.remove('hidden'))
+
+    var formEmail = document.getElementById('earthly-ci-form-email').value
+    analytics.identify(formEmail)
+    analytics.track('contact-us-contact-us-form-submit', {
+      category: 'Form Submission',
+      label: 'contact-us-contact-us-form-submit'
+    })
+  }
+</script>

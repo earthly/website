@@ -13,6 +13,7 @@
 /earthly-lunar /
 /earthly-core /earthfile
 /earthly-satellites /earthfile/satellites
+/contact-us /earthly-lunar/demo
 /blog/devcontianers /devcontainers
 
 # Renamed article
