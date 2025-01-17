@@ -68,7 +68,7 @@ update:
 build:
   FROM +base-or-cache-image
   CACHE --persist _site
-  COPY --dir _data _sass _styles _layouts _includes _news assets signup .
+  COPY --dir _data _sass _styles _layouts _includes _news assets signup earthly-lunar .
   COPY *.md *.js *.html *.yml *.json *.rb _redirects Gemfile Gemfile.lock robots.txt .
   ARG FLAGS=""
   # Date is only used to bust the cache and get around this issue
