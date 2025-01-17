@@ -29,7 +29,7 @@ allowOverflow: true
       </div>
     </div>
 
-    <form id="earthly-ci-form" class="get-a-demo w-full bg-[#E8F7FE] flex-1 rounded-3xl">
+    <form id="earthly-lunar-form" class="get-a-demo w-full bg-[#E8F7FE] flex-1 rounded-3xl">
       <div class="flex flex-col sm:flex-row gap-4 sm:gap-5">
         <div class="flex-1">
           <div class="input">
@@ -50,7 +50,7 @@ allowOverflow: true
 
       <div class="input mt-4">
         <input
-          id="earthly-ci-form-email"
+          id="earthly-lunar-form-email"
           type="email"
           name="email_address"
           placeholder="Company email"
@@ -191,7 +191,7 @@ allowOverflow: true
   }
 
   const submitForm = async () => {
-    const form = document.getElementById('earthly-ci-form')
+    const form = document.getElementById('earthly-lunar-form')
 
     const errorCommon = document.getElementsByClassName('error-common')[0]
     const thankYou = document.getElementById('thank-you')
@@ -262,11 +262,11 @@ allowOverflow: true
       })
       .catch(error => errorCommon.classList.remove('hidden'))
 
-    var formEmail = document.getElementById('earthly-ci-form-email').value
+    var formEmail = document.getElementById('earthly-lunar-form-email').value
     analytics.identify(formEmail)
-    analytics.track('contact-us-contact-us-form-submit', {
+    analytics.track('earthly-lunar-form-submit', {
       category: 'Form Submission',
-      label: 'contact-us-contact-us-form-submit'
+      label: 'earthly-lunar-form-submit'
     })
   }
 </script>
