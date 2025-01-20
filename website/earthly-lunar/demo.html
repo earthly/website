@@ -21,10 +21,10 @@ allowOverflow: true
 
       <div class="flex flex-col gap-2 mt-10">
         {% for item in site.data.demo-features %}
-          <div class="flex gap-3 items-center">
-            <img class="w-5 h-5" src="/assets/svg/done-check.svg" alt="Checked bullet" />
-            <p class="text-[#6b7280] text-lg tracking-tighter">{{ item }}</p>
-          </div>
+        <div class="flex gap-3 items-center">
+          <img class="w-5 h-5" src="/assets/svg/done-check.svg" alt="Checked bullet" />
+          <p class="text-[#6b7280] text-lg tracking-tighter">{{ item }}</p>
+        </div>
         {% endfor %}
       </div>
     </div>
@@ -218,15 +218,11 @@ allowOverflow: true
       mode: 'no-cors'
     })
       .then(async response => {
-        if (response.status === 200) {
-          form.classList.add('hidden')
-          thankYou.classList.remove('hidden')
+        form.classList.add('hidden')
+        thankYou.classList.remove('hidden')
 
-          form.parentElement.classList.remove('items-center')
-          form.parentElement.classList.replace('pt-10', 'pt-20')
-        } else {
-          errorCommon.classList.remove('hidden')
-        }
+        form.parentElement.classList.remove('items-center')
+        form.parentElement.classList.replace('pt-10', 'pt-20')
       })
       .catch(error => errorCommon.classList.remove('hidden'))
 
