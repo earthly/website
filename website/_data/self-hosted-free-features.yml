@@ -1,0 +1,7 @@
+- point: Up to 5 users
+- point: <a class="underline" href="/earthfile/satellites">Satellites</a>
+- point: x86 and arm64
+- point: Managed TLS
+- point: Log Sharing
+- point: <a class="underline" href="https://docs.earthly.dev/earthly-cloud/cloud-secrets" target="_blank">Earthly Cloud Secrets</a>
+- point: <a class="underline" href="https://docs.earthly.dev/earthly-cloud/satellites/gha-runners" target="_blank">Integrated Github Actions runner</a>

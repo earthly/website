@@ -1,6 +1,37 @@
 <div id="byoc" class="hidden">
-  <div class="text-2xl lg:text-3xl font-semibold text-center pt-1 pb-1">Bring Your Own Cloud</div>
-  <div class="mb-4 text-xl lg:text-2xl text-slate-500 text-center pt-1 pb-3">Earthly Satellites, fully managed by us in your AWS account</div>
+  <div class="text-2xl lg:text-3xl font-bold mt-9 tracking-tight">BYOC</div>
+  <div class="mt-3.5 text-lg text-gray-900 tracking-tight">Earthly Satellites fully managed by us in your own AWS account.</div>
 
-  {% include /pricing/v2/tier-5.html tab="byoc" %}
+  <div class="border-2 border-gray-300 bg-white mt-9 p-6 pb-8 pt-4 rounded-lg shadow">
+    <div class="lg:flex justify-between items-center mb-5">
+      <div>
+        <div class="font-semibold text-3xl text-gray-900 tracking-tight">Enterprise</div>
+        <div class="font-light mt-1 text-gray-500 sm:text-lg dark:text-gray-400">
+          A convenient cloud-like experience, with a fully secure on-prem deployment.
+        </div>
+      </div>
+
+      <a href="/contact-us" class="flex mt-3 lg:mt-0">
+        <div class="bg-green-700 hover:bg-green-800 px-16 py-3 rounded-lg text-center text-white text-xl">Contact Us</div>
+      </a>
+    </div>
+
+    <div class="lg:flex gap-8">
+      {% for group in site.data.byoc-enterprise-features %}
+        <div class="flex-1">
+          {% for item in group.points %}
+            <div class="flex pb-2">
+              <img style="height: 24px" src="/assets/svg/done-check.svg" alt="Checked bullet" />
+              <div class="px-2 tracking-tight">
+                {% if (item.comingSoon) %}
+                <span class="coming-soon">Coming soon</span>
+                {% endif %}
+                <span>{{ item.point }}</span>
+              </div>
+            </div>
+          {% endfor %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
 </div>

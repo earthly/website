@@ -1,13 +1,11 @@
-<h1 class="font-medium pt-24 text-gray-800 text-5xl text-center tracking-tight">
-  Pricing Aligned with Productivity
-</h1>
+<h1 class="font-semibold pt-24 text-[#2d7e5d] text-5xl text-center tracking-tight">Build at the Speed of Light</h1>
 
-<div class="bg-white flex flex-col lg:flex-row gap-8 mb-16 mt-12 pb-10 pt-6 px-8 rounded-xl shadow-xl">
+<div class="bg-white flex flex-col lg:flex-row gap-8 mb-20 mt-12 py-10 px-12 rounded-xl shadow-xl">
   {% for item in site.data.pricing-features %}
-  <div class="flex flex-1 flex-col items-center">
-    <img class="w-11 h-11" src="{{ item.image }}" alt="{{ item.title }}" />
-    <div class="font-bold flex items-center mt-2 text-center text-lg min-h-[60px] mb-2">{{ item.title }}</div>
-    <div class="font-normal text-base text-center text-gray-600">{{ item.description }}</div>
-  </div>
+    <div class="flex flex-1 flex-col items-center">
+      <img class="w-11 h-11" src="{{ item.image }}" alt="{{ item.title }}" />
+      <div class="font-bold flex items-center my-4 text-center text-xl tracking-tight">{{ item.title }}</div>
+      <div class="font-normal text-base text-center text-gray-600 tracking-tight">{{ item.description }}</div>
+    </div>
   {% endfor %}
 </div>

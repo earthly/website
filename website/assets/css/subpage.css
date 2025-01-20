@@ -198,7 +198,7 @@ p > a:visited {
 }
 
 .toggle-switch .slider {
-  background-color: #cdd1d7;
+  border: 2px solid #2d7e5d;
   border-radius: 25px;
   cursor: pointer;
   position: absolute;
@@ -211,26 +211,22 @@ p > a:visited {
 }
 
 .toggle-switch .slider:before {
-  width: 20px;
-  height: 20px;
-  background-color: white;
+  width: 17.61px;
+  height: 17.61px;
+  background-color: #2d7e5d;
   border-radius: 25px;
   position: absolute;
   content: "";
-  left: 2px;
-  bottom: 2px;
-  transition: .4s;
-  -webkit-transition: .4s;
-}
-
-.toggle-switch input:checked + .slider {
-  background-color: #006A4F;
+  left: 1.5px;
+  bottom: 1.2px;
+  transition: .2s;
+  -webkit-transition: .2s;
 }
 
 .toggle-switch input:checked + .slider:before {
-  transform: translateX(24px);
-  -ms-transform: translateX(24px);
-  -webkit-transform: translateX(24px);
+  transform: translateX(23.4px);
+  -ms-transform: translateX(23.4px);
+  -webkit-transform: translateX(23.4px);
 }
 
 .agreement-list {
@@ -298,81 +294,6 @@ p > a:visited {
 
 .pricing-faq.open .answer {
   max-height: 1056px;
-}
-
-.pricing-slider {
-  width: 100%;
-  height: 6px;
-  appearance: none;
-  -webkit-appearance: none;
-  background: #D1D6D9;
-  background-image: linear-gradient(#2D7E5D, #2D7E5D);
-  background-repeat: no-repeat;
-  background-size: 0% 100%;
-  border-radius: 20px;
-  outline: none;
-}
-
-.pricing-slider::-webkit-slider-thumb {
-  width: 26px;
-  height: 26px;
-  background: url("/assets/svg/slider-thumb.svg");
-  cursor: pointer;
-  -webkit-appearance: none;
-}
-
-.pricing-slider::-moz-range-thumb {
-  width: 26px;
-  height: 26px;
-  background: url("/assets/svg/slider-thumb.svg");
-  border: none;
-  cursor: pointer;
-}
-
-.pricing-slider::-webkit-slider-runnable-track  {
-  background: transparent;
-  -webkit-appearance: none;
-}
-
-.included-minutes-tooltip span {
-  background-color: #fff;
-  border: 1.5px solid #D4D5D9;
-  border-radius: 8px;
-  padding: 3px 12px;
-  position: absolute;
-  top: calc(100% + 20px);
-  left: 10px;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  visibility: hidden;
-}
-
-.included-minutes-tooltip span:before {
-  width: 0;
-  height: 0;
-  border: 10px solid transparent;
-  border-bottom-color: #D4D5D9;
-  content: "";
-  display: block;  
-  position: absolute;
-  left: calc(50% - 10px);
-  bottom: 100%;
-}
-
-.included-minutes-tooltip span::after {
-  width: 0;
-  height: 0;
-  border: 9px solid transparent;
-  border-bottom-color: white;
-  content: "";
-  display: block;  
-  position: absolute;
-  left: calc(50% - 9px);
-  bottom: calc(100% - 1px);
-}
-
-.included-minutes-tooltip:hover span {
-  visibility: visible;
 }
 
 @media screen and (min-width: 640px) {
