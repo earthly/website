@@ -20,7 +20,7 @@ main.wave-main {
 
 .wave {
   animation: wave 50s infinite linear;
-  background-image: url("/assets/svg/wave.svg");
+  background-image: url('/assets/svg/wave.svg');
   background-size: 50% 100%;
   bottom: -5%;
   left: 0;
@@ -136,8 +136,7 @@ main.wave-main.homepage {
 .widget {
   display: inline-block;
   overflow: hidden;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial, sans-serif;
   font-size: 0;
   line-height: 0;
   white-space: nowrap;
@@ -218,6 +217,10 @@ main.wave-main.homepage {
   background: linear-gradient(180deg, #e8f8ff 0%, #ffffff 30%, #ffffff 100%);
 }
 
+.blue-bg-gradient {
+  background: linear-gradient(180deg, #eef9fe 63.02%, rgba(255, 255, 255, 0) 100%);
+}
+
 .announcement-banner {
   width: 100%;
   background-color: #f6f8f7;
@@ -237,12 +240,7 @@ main.wave-main.homepage {
   height: calc(100% - 20px);
   align-items: center;
   background: radial-gradient(closest-side, white 83%, transparent 84% 100%),
-    conic-gradient(
-      #d1d6d9 0deg,
-      #d1d6d9 var(--progress),
-      #4175dd var(--progress),
-      #4175dd 1turn
-    );
+    conic-gradient(#d1d6d9 0deg, #d1d6d9 var(--progress), #4175dd var(--progress), #4175dd 1turn);
   border-radius: 50%;
   display: flex;
   justify-content: center;
@@ -415,4 +413,110 @@ main.wave-main.homepage {
 .join-slack p {
   font-size: 17px;
   line-height: 18px;
+}
+
+form.get-a-demo {
+  padding: 24px 29px 40px;
+}
+
+form.get-a-demo .input {
+  border: 1px solid #f3f4f6;
+  border-radius: 8px;
+  position: relative;
+}
+
+form.get-a-demo .input.error {
+  border-color: #d4390e;
+}
+
+form.get-a-demo .input input {
+  width: 100%;
+  background-color: white;
+  border-radius: 8px;
+  outline: none;
+  padding: 15px 12px;
+}
+
+form.get-a-demo .input input::placeholder {
+  color: transparent;
+}
+
+form.get-a-demo .input input:disabled {
+  background-color: white;
+  opacity: 0.6;
+}
+
+form.get-a-demo .input input:read-only {
+  cursor: pointer;
+}
+
+form.get-a-demo .input input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset !important;
+}
+
+form.get-a-demo .input .placeholder {
+  color: #6b7280;
+  display: none;
+  left: 12px;
+  max-width: calc(100% - 24px);
+  overflow: hidden;
+  pointer-events: none;
+  position: absolute;
+  text-overflow: ellipsis;
+  top: 15px;
+  white-space: nowrap;
+}
+
+form.get-a-demo .input .placeholder span {
+  color: #d4390e;
+}
+
+form.get-a-demo .input input:placeholder-shown + .placeholder {
+  display: block;
+}
+
+form.get-a-demo .input input:autofill + .placeholder {
+  display: none;
+}
+
+form.get-a-demo .input + .error {
+  color: #d4390e;
+  display: none;
+  font-size: 12px;
+  line-height: 9px;
+  margin-top: 4px;
+}
+
+form.get-a-demo .input.error + .error {
+  display: block;
+}
+
+form.get-a-demo .options {
+  background-color: white;
+  border: 1px solid #ededed;
+  border-radius: 8px;
+  box-shadow: 0px 1.94667px 3.89333px rgba(139, 139, 139, 0.25);
+  left: 0;
+  margin-top: 4px;
+  padding: 0 24px 2px;
+  position: absolute;
+  right: 0;
+  z-index: 1;
+}
+
+form.get-a-demo .options p {
+  color: #6b7280;
+  cursor: pointer;
+  padding: 9.5px 0;
+}
+
+form.get-a-demo .options p:not(:first-of-type) {
+  border-top: 1px solid #f3f4f6;
+}
+
+form.get-a-demo .error-common {
+  color: #d4390e;
+  font-size: 14px;
+  margin-top: 16px;
+  text-align: center;
 }
