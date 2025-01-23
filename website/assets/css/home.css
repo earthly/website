@@ -1,17 +1,24 @@
 .hero {
-  background: linear-gradient(180deg, #eef9fe 63.02%, rgba(255, 255, 255, 0) 100%);
+  background: radial-gradient(153.88% 558.28% at 149.46% 50%, #34f8bb 0%, #83ff50 31.5%, #00acd7 73.56%, #52dcff 100%);
+  background-blend-mode: multiply;
+}
+
+.hero > div {
+  height: 710px;
 }
 
 .hero h1 {
   font-size: 36px;
 }
 
-.hero p {
-  color: #616161;
-}
-
 .hero a {
   width: 100%;
+}
+
+.hero > div > svg {
+  width: calc(100% + 240px);
+  left: -120px;
+  top: -414px;
 }
 
 .customers {
@@ -54,20 +61,58 @@ h2 {
   letter-spacing: -0.045em;
 }
 
+@media only screen and (min-width: 420px) {
+  .hero > div > svg {
+    top: -436px;
+  }
+}
+
 @media only screen and (min-width: 640px) {
+  .hero > div {
+    height: 768px;
+  }
+
+  .hero > div > svg {
+    width: calc(100% + 180px);
+    left: -90px;
+    top: -380px;
+  }
+
   .problem-statement-image {
     margin: 32px 0 0;
     max-width: 100%;
   }
 }
 
+@media only screen and (min-width: 768px) {
+  .hero > div > svg {
+    width: 100%;
+    left: 0;
+  }
+}
+
 @media only screen and (min-width: 1024px) {
+  .hero > div {
+    height: 608px;
+  }
+
+  .hero > div > div {
+    max-width: 400px;
+  }
+
   .hero h1 {
     font-size: 56px;
   }
 
   .hero a {
     width: 400px;
+  }
+
+  .hero > div > svg {
+    width: fit-content;
+    left: unset;
+    right: -172px;
+    top: -684px;
   }
 
   .customers .gradient {
@@ -85,6 +130,12 @@ h2 {
   h2 {
     font-size: 40px;
     line-height: 64px;
+  }
+}
+
+@media only screen and (min-width: 1024px) {
+  .hero > div > div {
+    max-width: unset;
   }
 }
 
