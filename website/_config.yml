@@ -7,7 +7,7 @@ githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
 slack_url: "/slack"
-tagline: "Make Builds Super Simple"
+tagline: "Monitoring for Your SDLC"
 description: "Achieve engineering excellence that is out of this world. Earthly Lunar helps you take control of your complex diverse tech stack with a rich ecosystem of plugins and custom guardrails you define to ensure quality throughout the development lifecycle."
 include:
   - _redirects
