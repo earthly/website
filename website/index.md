@@ -1,5 +1,5 @@
 ---
-fullTitle: Earthly Lunar - Your Internal Governance Platform
+fullTitle: Earthly Lunar - Monitoring for Your SDLC
 description: Earthly enables platform engineers to manage diverse developer infrastructure at scale
 layout: default
 ---
