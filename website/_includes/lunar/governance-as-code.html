@@ -8,7 +8,16 @@
     <p class="font-semibold mt-5 text-[#6b7280] text-center lg:text-left text-lg lg:text-2xl">Define custom policies with a few lines of Python</p>
   </div>
 
-  {% svg assets/svg/governance-as-code.svg class="h-auto max-w-full mx-auto mt-8" %}
+  {% svg assets/svg/governance-as-code.svg class="h-auto hidden lg:block max-w-full mx-auto mt-8" %}
+  {% svg assets/svg/governance-as-code-mobile.svg class="h-auto lg:hidden max-w-full mx-auto mt-8 pb-10" %}
+
+  {% for item in site.data.info-tooltip %}
+    <div class="info-tooltip">
+      <b>{{ item.title }}</b>
+      <p>{{ item.description }}</p>
+      {% svg assets/svg/info-tooltip-arrow.svg %}
+    </div>
+  {% endfor %}
 </div>
 
 <script>
@@ -60,23 +69,46 @@
     return { startIndex, endIndex }
   }
 
-  document.getElementById('code-collectors').addEventListener('copy', e => {
-    // This text should have the exact text and spacing as in the SVG file.
-    const text =
-      'collectors:\n  - runBash: lunar collect "hasTests" true\n    hook:\n      type: before-command\n      patterns:\n        - ^go test.*\n        - ^npm test.*\n        - ^python -m .unittest.*'
+  document.querySelectorAll('#code-collectors').forEach(x => {
+    x.addEventListener('copy', e => {
+      // This text should have the exact text and spacing as in the SVG file.
+      const text =
+        'collectors:\n  - runBash: lunar collect "hasTests" true\n    hook:\n      type: before-command\n      patterns:\n        - ^go test.*\n        - ^npm test.*\n        - ^python -m .unittest.*'
 
-    const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
-    event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
-    event.preventDefault()
+      const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
+      event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
+      event.preventDefault()
+    })
   })
 
-  document.getElementById('code-policies').addEventListener('copy', e => {
-    // This text should have the exact text and spacing as in the SVG file.
-    const text =
-      'policies:\n  - name: "Should have unit tests"\n    runPython: |-\n      import lunar\n      hasTests = lunar.get("hasTests")\n      lunar.assertTrue(hasTests)'
+  document.querySelectorAll('#code-policies').forEach(x => {
+    x.addEventListener('copy', e => {
+      // This text should have the exact text and spacing as in the SVG file.
+      const text =
+        'policies:\n  - name: "Should have unit tests"\n    runPython: |-\n      import lunar\n      hasTests = lunar.get("hasTests")\n      lunar.assertTrue(hasTests)'
 
-    const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
-    event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
-    event.preventDefault()
+      const { startIndex, endIndex } = getIndicesFromOriginalText(text, document.getSelection().toString())
+      event.clipboardData.setData('text/plain', text.substring(startIndex, endIndex))
+      event.preventDefault()
+    })
   })
+
+  const handleHover = (elem, index) => {
+    const { left, top, width } = elem.querySelector('path').getBoundingClientRect()
+    const tooltip = document.getElementsByClassName('info-tooltip')[index].style
+
+    tooltip.display = 'block'
+    tooltip.top = top - 24 + window.scrollY + 'px'
+    tooltip.left = left + width / 2 + window.scrollX + (window.innerWidth > 1023 && window.innerWidth < 1480 && index === 4 ? -40 : 0) + 'px'
+
+    if (window.innerWidth > 1023 && index === 4) {
+      const arrow = document.getElementsByClassName('info-tooltip')[index].querySelector('svg').style
+      if (window.innerWidth < 1180) arrow.transform = 'translate(133px, 22px)'
+      else if (window.innerWidth < 1480) arrow.transform = 'translate(152px, 22px)'
+    }
+  }
+
+  const handleLeave = (elem, index) => {
+    document.getElementsByClassName('info-tooltip')[index].style.display = 'none'
+  }
 </script>

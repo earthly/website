@@ -1,0 +1,14 @@
+- title: CI/CD Metadata
+  description: Metadata across SDLC activities, including CI/CD builds, are gathered using custom collectors and plugins.
+
+- title: CI/CD Instrumentation Engine
+  description: This example collector uses a small bash script to report the value "true" anytime unit tests are run in CI/CD. The collector automatically triggers whenever a build tool like Go, NPM, or Python is detected with unit test parameters.
+
+- title: Queryable Data Model
+  description: The results of all collectors are stored in Lunar and can be used for policy evaluation or queried via SQL for monitoring.
+
+- title: Policy Engine
+  description: This example policy ensures that unit tests are run in CI/CD pipelines. It uses a simple Python script and the Lunar SDK to check that the value previously gathered by the collector was set to "true".
+
+- title: Policy Evaluations
+  description: The resulting policy evaluations are shown to developers directly in their PRs. In this case, if their CI/CD pipeline doesn’t have unit tests, the developer will be notified of the missing requirement.

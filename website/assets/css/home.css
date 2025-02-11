@@ -61,6 +61,48 @@ h2 {
   letter-spacing: -0.045em;
 }
 
+.info-pulse {
+  cursor: pointer;
+}
+
+.info-pulse circle {
+  animation: info-pulse 2s linear infinite;
+  cursor: pointer;
+}
+
+.info-pulse:hover circle,
+.info-pulse:hover ~ .info-pulse circle,
+.info-pulse:has(~ .info-pulse:hover) circle {
+  animation-play-state: paused;
+}
+
+.info-tooltip {
+  width: 288px;
+  background-color: white;
+  border-radius: 16px;
+  box-shadow: 2px 2px 20px rgba(0, 0, 0, 0.25);
+  display: none;
+  padding: 24px 24px 11px 24px;
+  position: absolute;
+  transform: translate(-50%, -100%);
+}
+
+.info-tooltip b {
+  color: #475569;
+}
+
+.info-tooltip p {
+  color: #6B7280;
+  font-size: 13px;
+  letter-spacing: -0.045em;
+  line-height: 18px;
+  margin-top: 12px;
+}
+
+.info-tooltip svg {
+  transform: translate(112px, 22px);
+}
+
 @media only screen and (min-width: 420px) {
   .hero > div > svg {
     top: -436px;
@@ -97,7 +139,7 @@ h2 {
   }
 
   .hero > div > div {
-    max-width: 400px;
+    max-width: unset;
   }
 
   .hero h1 {
@@ -131,11 +173,23 @@ h2 {
     font-size: 40px;
     line-height: 64px;
   }
+
+  .info-tooltip {
+    width: 250px;
+  }
+
+  .info-tooltip svg {
+    transform: translate(93px, 22px);
+  }
 }
 
-@media only screen and (min-width: 1024px) {
-  .hero > div > div {
-    max-width: unset;
+@media only screen and (min-width: 1180px) {
+  .info-tooltip {
+    width: 288px;
+  }
+
+  .info-tooltip svg {
+    transform: translate(112px, 22px);
   }
 }
 
@@ -154,5 +208,20 @@ h2 {
   }
   100% {
     transform: translateX(-2799px);
+  }
+}
+
+@keyframes info-pulse {
+  0% {
+    stroke-width: 0;
+    transform: scale(1);
+  }
+  50% {
+    stroke-width: 1;
+    transform: scale(1.25);
+  }
+  100% {
+    stroke-width: 0;
+    transform: scale(1);
   }
 }
