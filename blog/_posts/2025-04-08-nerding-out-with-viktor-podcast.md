@@ -18,7 +18,7 @@ He talked about how to set code quality standards, and ensure continuous complia
 
 The tradeoffs we made switching to microservices:
 
-> That meant there's more decouplin and you can have more freedom within each team to innovate better. But at the same time, it creates massive chaos when it comes to the developer infrastructure.
+> That meant there's more decoupling and you can have more freedom within each team to innovate better. But at the same time, it creates massive chaos when it comes to the developer infrastructure.
 
  And the realities of remote work across different timezones:
 
