@@ -10,13 +10,13 @@ excerpt: |
 last_modified_at: 2025-04-08
 ---
 
-Earthly CEO, Vlad A. Ionescu was featured on an episode of the podcast [Nerding Out With Viktor]().
+Earthly CEO, Vlad A. Ionescu was featured on an episode of the podcast [Nerding Out With Viktor](https://www.youtube.com/@nerdingoutwithviktor). TODO UPDATE
 
 He talked about how to set code quality standards, and ensure continuous compliance throughout the development lifecycle:
 
 > You need what we call "Gradual Enforcement". Each control you want to enforce needs to be treated differently. We have different levels, so initially you could just monitor things and see if they're in a good state or not. Then you can announce that you will start blocking PRs.
 
-The tradeoffs we made switching to microservices: 
+The tradeoffs we made switching to microservices:
 
 > That meant there's more decouplin and you can have more freedom within each team to innovate better. But at the same time, it creates massive chaos when it comes to the developer infrastructure.
 
@@ -24,7 +24,7 @@ The tradeoffs we made switching to microservices:
 
  > The key thing is building trust. It's a bit harder when you're a remote team, you have to rely heavily on async types of communication like written documents.
 
-Listen to the full out the full episode on your favorite platform!
+Listen to the full episode on your favorite platform! TODO add links
 
 * YouTube
 * Apple Music
