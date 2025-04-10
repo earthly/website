@@ -9,6 +9,7 @@ excerpt: |
     In this episode of Nerding Out With Viktor, Vlad talks about enabling engineering standards company-wide, the tradeoffs of microservices, and the realities of remote work.
 last_modified_at: 2025-04-08
 ---
+**This article discusses the difficulties of ensuring code compliance. Earthly simplifies microservices builds. [Check it out](https://cloud.earthly.dev/login).**
 
 Earthly CEO, Vlad A. Ionescu was featured on an episode of the podcast [Nerding Out With Viktor](https://www.youtube.com/@nerdingoutwithviktor). TODO UPDATE
 
