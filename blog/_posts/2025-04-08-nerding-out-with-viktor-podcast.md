@@ -12,7 +12,7 @@ last_modified_at: 2025-04-08
 
 Earthly CEO, Vlad A. Ionescu was featured on an episode of the podcast [Nerding Out With Viktor](https://vpetersson.com/podcast/S02E07.html).
 
-<iframe width="560" height="315" src="https://www.youtube.com/watch?v=BOBFYCJGW9w)" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+<iframe width="560" height="315" src="https://www.youtube.com/watch?v=BOBFYCJGW9w" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 He talked about how to set code quality standards, and ensure continuous compliance throughout the development lifecycle:
 
