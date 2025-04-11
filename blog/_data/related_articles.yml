@@ -2189,6 +2189,7 @@ pulumi-vs-terraform:
 
 
 open-source-startup-podcast:
+ - nerding-out-with-viktor-podcast
  - business-of-open-source-podcast
  - coffee-and-opensource
  - effective-developer-podcast
@@ -2197,7 +2198,6 @@ open-source-startup-podcast:
  - software-engineering-daily
  - podcast-earthly
  - stackoverflow
- - new-fundings-at-earthly
  - programming-throwdown
 
 
@@ -2228,6 +2228,7 @@ analyze-amzndata-pyth:
 
 
 podcast-earthly:
+ - nerding-out-with-viktor-podcast
  - open-source-startup-podcast
  - effective-developer-podcast
  - tech-and-main-interview
@@ -2237,7 +2238,6 @@ podcast-earthly:
  - stackoverflow
  - devtool-fm
  - software-engineering-daily
- - earthly-cloud-free-tier-launch
 
 
 terraform-lambda:
@@ -3996,6 +3996,7 @@ build-golang-bazel-gazelle:
 
 
 coffee-and-opensource:
+ - nerding-out-with-viktor-podcast
  - business-of-open-source-podcast
  - open-source-startup-podcast
  - jeff-bullas-interview
@@ -4003,7 +4004,6 @@ coffee-and-opensource:
  - effective-developer-podcast
  - devtool-fm
  - programming-throwdown
- - new-fundings-at-earthly
  - earthly-open-source
  - software-engineering-daily
 
@@ -4022,6 +4022,7 @@ golang-csv-files:
 
 
 jeff-bullas-interview:
+ - nerding-out-with-viktor-podcast
  - tech-and-main-interview
  - coffee-and-opensource
  - business-of-open-source-podcast
@@ -4030,7 +4031,6 @@ jeff-bullas-interview:
  - software-engineering-daily
  - devtool-fm
  - stackoverflow
- - earthly-cloud-free-tier-launch
  - podcast-earthly
 
 
@@ -4321,6 +4321,7 @@ monitoring-system-metrics-prometheus-grafana:
 
 
 tech-and-main-interview:
+ - nerding-out-with-viktor-podcast
  - business-of-open-source-podcast
  - effective-developer-podcast
  - jeff-bullas-interview
@@ -4329,7 +4330,6 @@ tech-and-main-interview:
  - software-engineering-daily
  - stackoverflow
  - devtool-fm
- - new-fundings-at-earthly
  - podcast-earthly
 
 
@@ -4490,6 +4490,7 @@ using-gorm-go:
 
 
 effective-developer-podcast:
+ - nerding-out-with-viktor-podcast
  - tech-and-main-interview
  - open-source-startup-podcast
  - coffee-and-opensource
@@ -4498,7 +4499,6 @@ effective-developer-podcast:
  - software-engineering-daily
  - podcast-earthly
  - stackoverflow
- - new-fundings-at-earthly
  - devtool-fm
 
 
@@ -4685,6 +4685,7 @@ terraform-functions:
 
 
 business-of-open-source-podcast:
+ - nerding-out-with-viktor-podcast
  - coffee-and-opensource
  - open-source-startup-podcast
  - tech-and-main-interview
@@ -4693,7 +4694,6 @@ business-of-open-source-podcast:
  - devtool-fm
  - software-engineering-daily
  - stackoverflow
- - earthly-open-source
  - programming-throwdown
 
 
@@ -5231,6 +5231,7 @@ pants-python-monorepo:
 
 
 devtool-fm:
+ - nerding-out-with-viktor-podcast
  - business-of-open-source-podcast
  - tech-and-main-interview
  - jeff-bullas-interview
@@ -5239,7 +5240,6 @@ devtool-fm:
  - misaligned-incentives
  - open-source-startup-podcast
  - software-engineering-daily
- - new-fundings-at-earthly
  - shutting-down-earthly-ci
 
 
@@ -6113,4 +6113,14 @@ ucacher:
  - nerdctl
  - docker-build-cloud
 
-
+nerding-out-with-viktor-podcast:
+ - business-of-open-source-podcast
+ - tech-and-main-interview
+ - jeff-bullas-interview
+ - coffee-and-opensource
+ - effective-developer-podcast
+ - misaligned-incentives
+ - open-source-startup-podcast
+ - software-engineering-daily
+ - new-fundings-at-earthly
+ - shutting-down-earthly-ci
