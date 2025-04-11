@@ -1,5 +1,5 @@
 ---
-title: "We Interviewed 100 Eng Teams. The Problem With Modern Engineering Isn’t Speed. It's Chaos."
+title: "We Interviewed 100 Eng Teams. The Problem With Modern Engineering Isn't Speed. It's Chaos."
 categories:
   - news
 toc: true
