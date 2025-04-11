@@ -10,7 +10,7 @@ excerpt: |
 last_modified_at: 2025-04-08
 ---
 
-Earthly CEO, Vlad A. Ionescu was featured on an episode of the podcast [Nerding Out With Viktor](https://www.youtube.com/@nerdingoutwithviktor). TODO UPDATE
+Earthly CEO, Vlad A. Ionescu was featured on an episode of the podcast [Nerding Out With Viktor](https://vpetersson.com/podcast/S02E07.html). TODO UPDATE
 
 He talked about how to set code quality standards, and ensure continuous compliance throughout the development lifecycle:
 
@@ -24,10 +24,11 @@ The tradeoffs we made switching to microservices:
 
  > The key thing is building trust. It's a bit harder when you're a remote team, you have to rely heavily on async types of communication like written documents.
 
-Listen to the full episode on your favorite platform! TODO add links
+Watch the full episode on your favorite platform!
 
-* YouTube
-* Apple Music
-* Spotify
+* [YouTube](https://www.youtube.com/watch?v=BOBFYCJGW9w)
+* [Spotify](https://open.spotify.com/episode/4hb2MIAqlA78GyuxvmEg0z?si=a098482f54ef4ad0)
+* [Apple Podcasts](https://podcasts.apple.com/gb/podcast/reimagining-ci-cd-and-engineering-culture-at-scale/id1722663295?i=1000703152620)
+* [Amazon Music](https://music.amazon.co.uk/podcasts/c8e79c21-2dde-4597-b9fb-257ecbc2bf29/episodes/61e85535-89f9-436b-871c-86ae5d5ff9f2/nerding-out-with-viktor-reimagining-ci-cd-and-engineering-culture-at-scale-with-vlad-a-ionescu-from-earthly)
 
 {% include_html cta/bottom-cta.html %}
