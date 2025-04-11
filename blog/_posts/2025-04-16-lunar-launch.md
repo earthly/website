@@ -68,7 +68,7 @@ Problem: Issues are discovered too late, and enforcement is manual and inconsist
 Problem: Too many dashboards, poor integration, no centralized control plane.
 5. **DIY Solutions** – Custom internal systems provide deep insights but are costly and hard to maintain.
 Problem: Scalability issues, limited shift-left feedback, and incomplete enforcement.
-6. **Doing Nothing** – Policies without enforcement. It’s compliance theater: the intention is there, the tools exist, but there’s no way to track or govern what’s actually happening across teams.
+6. **Doing Nothing** – Policies without enforcement. It's compliance theater: the intention is there, the tools exist, but there’s no way to track or govern what’s actually happening across teams.
 Problem: Inconsistent enforcement, lack of visibility, massive risk.
 
 Each approach tackles part of the problem in some way but none solves it entirely.
