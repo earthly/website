@@ -72,4 +72,3 @@ Problem: Scalability issues, limited shift-left feedback, and incomplete enforce
 Problem: Inconsistent enforcement, lack of visibility, massive risk.
 
 Each approach tackles part of the problem in some way but none solves it entirely.
-
