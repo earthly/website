@@ -83,13 +83,13 @@ After over a hundred interviews, one insight became impossible to ignore: **a si
 
 This is why today we're announcing **[Earthly Lunar](https://earthly.dev/)**.
 
-IMAGE HERE
+![Global visibility over engineering practices without the need to integrate in every team's messy CI/CD pipeline]({{site.images}}{{page.slug}}/initiatives.png)
 
 **Lunar is a platform for monitoring engineering practices at scale. It's like production monitoring, except it targets everything that happens before production.** It gives Platform, DevEx, Security, QA, and Compliance teams real-time visibility into how applications are being developed, together with the power to gradually enforce specific practices — across every project, in every PR and in every deployment.
 
 Lunar works by instrumenting your existing CI/CD pipelines (no YAML changes needed) and source code repositories to collect structured metadata about how code is built, tested, scanned, and deployed. This metadata is then continuously evaluated against policies that you define—policies that are flexible, testable, and expressive enough to reflect your real-world engineering standards.
 
-IMAGE HERE
+![Continuous compliance enables application developers to understand what's wrong in context, right in their PR]({{site.images}}{{page.slug}}/pr.png)
 
 Want to block deployments that would violate compliance rules, like using unapproved licenses or bypassing required security scans? Or fail a PR if it introduces stale dependencies or vulnerable CI plugins? Or ensure that security-sensitive services are collecting SBOMs, running code scans, and deploying frequently enough to avoid operational drift? Lunar makes all of that possible—without requiring a wholesale rewrite of every team's CI pipeline, and without sacrificing developer velocity.
 
@@ -102,4 +102,5 @@ Engineering at scale is messy. You've got hundreds of services, dozens of teams,
 If this sounds like a problem you're facing, we'd love to show you how Lunar works in practice.
 
 👉 [Visit the Lunar homepage](https://earthly.dev/)
+
 👉 [Book a demo](https://earthly.dev/earthly-lunar/demo)
