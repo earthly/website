@@ -68,3 +68,37 @@ Problem: Scalability issues, limited shift-left feedback, and incomplete enforce
 Problem: Inconsistent enforcement, lack of visibility, massive risk.
 
 Each approach tackles part of the problem in some way but none solves it entirely.
+
+## What now?
+The more we listened, the more we realized our mission had to grow beyond what we first imagined.
+
+We started out Earthly with the goal of helping teams tame CI/CD complexity in today's world of diverse tech stacks. One way to do that is to empower teams managing CI/CD (both platform and app teams) to be more effective in how they develop and run CI scripts. Consistent and fast CI scripts means that collaboration barriers are greatly reduced between these diverse ecosystems, and engineering teams as a whole are more productive. Certainly, that is the mission of Earthfiles.
+
+But another way to look at it is to step back and address the bigger problem. Enterprises are struggling to tame not just CI/CD complexity, but SDLC complexity as a whole, because it's riddled with the same diversity, but also entangled with the difficulties of managing people at scale and giving every team the freedom to innovate with the right tools for the job, but to do so safely, within guardrails that aren't slowing them down.
+
+## Earthly Lunar: Monitoring for the SDLC
+
+After over a hundred interviews, one insight became impossible to ignore: **a significant chunk of production incidents originate from issues that could have been caught earlier in the software development lifecycle.** And yet, while we’ve built a whole industry around monitoring and securing production systems, we treat everything before production like the Wild West.
+
+This is why today we're announcing **[Earthly Lunar](https://earthly.dev/)**.
+
+IMAGE HERE
+
+**Lunar is a platform for monitoring engineering practices at scale. It's like production monitoring, except it targets everything that happens before production.** It gives Platform, DevEx, Security, QA, and Compliance teams real-time visibility into how applications are being developed, together with the power to gradually enforce specific practices — across every project, in every PR and in every deployment.
+
+Lunar works by instrumenting your existing CI/CD pipelines (no YAML changes needed) and source code repositories to collect structured metadata about how code is built, tested, scanned, and deployed. This metadata is then continuously evaluated against policies that you define—policies that are flexible, testable, and expressive enough to reflect your real-world engineering standards.
+
+IMAGE HERE
+
+Want to block deployments that would violate compliance rules, like using unapproved licenses or bypassing required security scans? Or fail a PR if it introduces stale dependencies or vulnerable CI plugins? Or ensure that security-sensitive services are collecting SBOMs, running code scans, and deploying frequently enough to avoid operational drift? Lunar makes all of that possible—without requiring a wholesale rewrite of every team’s CI pipeline, and without sacrificing developer velocity.
+
+And crucially, **Lunar is designed to work with the messy reality of modern engineering.** It's not a one-size-fits-all template, and it doesn’t require rewriting every CI pipeline. Its instrumentation is flexible and centralized—meaning platform teams stay in control, app teams stay autonomous, and standards actually get enforced.
+
+## Finally
+
+Engineering at scale is messy. You’ve got hundreds of services, dozens of teams, and a sprawling ecosystem of tools—each doing one part of the job. But stitching that all together into a coherent, reliable, and compliant software delivery process? That’s the hard part. And that’s what Earthly Lunar is here to solve.
+
+If this sounds like a problem you’re facing, we’d love to show you how Lunar works in practice.
+
+👉 [Visit the Lunar homepage](https://earthly.dev/)
+👉 [Book a demo](https://earthly.dev/earthly-lunar/demo)
