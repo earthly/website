@@ -11,7 +11,6 @@ excerpt: |
     In the next three months, we will be phasing out our Earthly Satellite commercial services, including the Earthly Cloud Satellites, Self-Hosted Satellites, and BYOC Satellites, together with their respective free tiers. We are also phasing out Earthly Cloud Secrets and Logs.
 last_modified_at: 2025-04-16
 ---
-
 **TLDR:**
 * In the next three months, we will be phasing out our Earthly Satellite commercial services, including the Earthly Cloud Satellites, Self-Hosted Satellites, and BYOC Satellites, together with their respective free tiers. We are also phasing out Earthly Cloud Secrets and Logs.
 * We are also ending active maintenance of the Earthly open-source project.
