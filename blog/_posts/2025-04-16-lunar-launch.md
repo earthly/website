@@ -70,6 +70,7 @@ Problem: Inconsistent enforcement, lack of visibility, massive risk.
 Each approach tackles part of the problem in some way but none solves it entirely.
 
 ## What now?
+
 The more we listened, the more we realized our mission had to grow beyond what we first imagined.
 
 We started out Earthly with the goal of helping teams tame CI/CD complexity in today's world of diverse tech stacks. One way to do that is to empower teams managing CI/CD (both platform and app teams) to be more effective in how they develop and run CI scripts. Consistent and fast CI scripts means that collaboration barriers are greatly reduced between these diverse ecosystems, and engineering teams as a whole are more productive. Certainly, that is the mission of Earthfiles.
