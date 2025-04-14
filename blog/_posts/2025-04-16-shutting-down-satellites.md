@@ -29,4 +29,3 @@ We started Earthly to reinvent how CI/CD is done. While CI/CD is central to the 
 
 With that said, we have encountered some significant challenges when attempting to commercialize Earthly in its current form, and unfortunately, without commercial success, we are no longer able to sustain our development efforts towards the project.
 
-
