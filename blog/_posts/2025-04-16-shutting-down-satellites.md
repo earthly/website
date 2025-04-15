@@ -84,7 +84,7 @@ Dagger has offered to organize a workshop for Earthly users to help evaluate Dag
 
 Earthly is our first product. Just like Vagrant didn't create commercialization potential for Hashicorp despite being wildly successful as an open-source project, Earthly doesn't have to bring us commercial success all on its own. We are moving forward with developing new products to add to our line. [We are announcing one such product today](/blog/lunar-launch).
 
-We know this is not the news you were hoping to hear. For many of you, Earthly has been more than just a tool - it's been a part of your workflow, your creativity, and your successes. We deeply value every bug report, contribution, feature request, and piece of feedback you’ve shared with us. Without your support, Earthly would not be what it is today.
+We know this is not the news you were hoping to hear. For many of you, Earthly has been more than just a tool - it's been a part of your workflow, your creativity, and your successes. We deeply value every bug report, contribution, feature request, and piece of feedback you've shared with us. Without your support, Earthly would not be what it is today.
 
 We hope that this information will help you to plan accordingly. If you have additional questions, please reach out to us at [support@earthly.dev](mailto:support@earthly.dev).
 
