@@ -55,7 +55,7 @@ We became obsessed with this problem: **How do you preserve freedom, but still e
 After speaking to over 100 engineering leaders, we identified a handful of common strategies for dealing with engineering chaos. Each has its strengths but also major weaknesses.
 
 |  | Approach | Issues |
-| --- | --- | --- | 
+| --- | --- | --- |
 | 1. | **Common CI/CD Templates** – Centralizing workflows via reusable templates works well for companies that adopted them early. But in mature orgs, adoption is rarely 100%, and maintaining consistency is a losing battle. | Rigid, difficult to retrofit, and often resented by app teams. |
 | 2. | **Manual Checklists** – Reviews per PR or before launches. Cheap and flexible, but prone to human error and rubber-stamping. | Inefficient, inconsistent, and lacks ongoing visibility. |
 | 3. | **Scorecards (IDPs)** – Great for accountability and high-level visibility. But they're shallow, with limited CI/CD support and no shift-left feedback. | Problem: Issues are discovered too late, and enforcement is manual and inconsistent. |
