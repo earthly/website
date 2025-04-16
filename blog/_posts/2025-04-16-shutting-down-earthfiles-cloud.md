@@ -78,7 +78,7 @@ Earthly Cloud, including Satellites, will stop working on **July 16th, 2025**. I
 
 Aside from the ongoing community fork, we have arranged with our friends at Dagger to offer a migration path to current Earthly users and customers. Although Dagger is not a drop-in replacement for Earthfiles, there are similarities in the goals of the two projects. In fact, both Earthly and Dagger happen to share Buildkit as an underlying technology.
 
-Dagger has offered to organize a workshop for Earthly users to help evaluate Dagger more easily. Earthly customers also get 1 year for free on Dagger Cloud Pro. [More details in Dagger's announcement](https://dagger.io/). TODO FIX THIS LINK.
+Dagger has offered to organize a workshop for Earthly users to help evaluate Dagger more easily. Earthly customers also get 1 year for free on Dagger Cloud Pro. [More details in Dagger's announcement](https://dagger.io/blog/earthly-to-dagger-migration?utm_campaign=Earthly-Migration&utm_medium=blog&utm_source=earthly-blog).
 
 ## What's next for Earthly Technologies?
 
