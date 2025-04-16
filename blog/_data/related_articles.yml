@@ -6108,7 +6108,7 @@ ucacher:
  - efficiently-cache-dependencies-earthfiles
  - understanding-monorepos
  - cargo-chef
- - konfig
+ - lunar-launch
  - build-buildkit-cache
  - nerdctl
  - docker-build-cloud
@@ -6122,5 +6122,10 @@ nerding-out-with-viktor-podcast:
  - misaligned-incentives
  - open-source-startup-podcast
  - software-engineering-daily
- - new-fundings-at-earthly
  - shutting-down-earthly-ci
+ - lunar-launch
+
+lunar-launch:
+ - nerding-out-with-viktor-podcast
+ - shutting-down-earthly-ci
+ - ucacher
