@@ -38,7 +38,7 @@ Adopting new open-source technology is a slow process. Even the most successful 
 
 In the past, venture-backed companies could rely on open-source traction alone. Hashicorp, for example, sustained itself up to Series C—six years after inception—on open-source projects like Vagrant, Packer, and Consul that weren't even commercialized.
 
-Today, the economic landscape has shifted. Many infrastructure investors have pivoted towards AI, and high interest rates have made LPs prioritize non-venture opportunities. As a result, there is less appetite for open-source moonshots, making early monetization a necessity.
+Today, the economic landscape has shifted. Many infrastructure investors have pivoted toward AI, and there is less appetite for pure-play open-source moonshots, making early monetization a necessity.
 
 For Earthly, the need to monetize quickly became a do-or-die situation. While Earthly has seen widespread adoption, translating that adoption into revenue has been much harder than we anticipated. Large organizations, despite initial interest, are reluctant to commit to adopting Earthly widely throughout their infrastructure. Despite many conversations, we couldn't secure any company-wide top-down deployments - only slow, organic bottom-up motions.
 
