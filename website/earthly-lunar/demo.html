@@ -203,6 +203,10 @@ allowOverflow: true
 
     if (errorFound) return
 
+    if (['200-500', '500-1000', '1000-5000', '5000+'].includes(formData.get('team_size'))) {
+      window.open('https://calendly.com/d/cpqs-fcx-9vc/exploration-30m', '_blank')
+    }
+
     fetch('https://hooks.zapier.com/hooks/catch/21357277/2k11b51/', {
       headers: { 'Content-Type': `application-json` },
       body: JSON.stringify({
@@ -223,10 +227,6 @@ allowOverflow: true
 
         form.parentElement.classList.remove('items-center')
         form.parentElement.classList.replace('pt-10', 'pt-20')
-
-        if (['200-500', '500-1000', '1000-5000', '5000+'].includes(formData.get('team_size'))) {
-          window.open('https://calendly.com/d/cpqs-fcx-9vc/exploration-30m', '_blank')
-        }
       })
       .catch(error => errorCommon.classList.remove('hidden'))
 
