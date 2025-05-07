@@ -24,7 +24,3 @@ plugins:
 collections:
   news:
     output: true
-
-# Site banner
-banner: <b>Introducing Earthly Lunar.</b> Achieve engineering excellence with universal SDLC monitoring. <a href="/earthly-lunar" onclick="bannerLinkClick()">Learn More</a>.
-mobileBanner: <b>Introducing Earthly Lunar.</b> Achieve engineering excellence with universal SDLC monitoring. <a href="/earthly-lunar" onclick="bannerLinkClick()">Learn More</a>.
