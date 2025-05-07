@@ -2,6 +2,7 @@
 fullTitle: Earthly Lunar - Monitoring for Your SDLC
 description: Earthly enables platform engineers to manage diverse developer infrastructure at scale
 layout: default
+banner: We interviewed 100 engineering teams. Read the <b><a href="https://earthly.dev/blog/lunar-launch>Earthly Lunar launch article</a></b> to see what we learned.
 ---
 
 <link rel="stylesheet" href="/assets/css/home.css">
