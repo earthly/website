@@ -6122,10 +6122,18 @@ nerding-out-with-viktor-podcast:
  - misaligned-incentives
  - open-source-startup-podcast
  - software-engineering-daily
- - shutting-down-earthly-ci
  - lunar-launch
+ - lunar-part-2
 
 lunar-launch:
  - nerding-out-with-viktor-podcast
  - shutting-down-earthly-ci
  - ucacher
+ - lunar-part-2
+
+lunar-part-2:
+ - nerding-out-with-viktor-podcast
+ - shutting-down-earthly-ci
+ - ucacher
+ - lunar-launch
+
