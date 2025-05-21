@@ -3,6 +3,7 @@ url: "https://earthly.dev"
 docsurl: "https://docs.earthly.dev"
 landingurl: "https://earthly.dev"
 blogurl: "/blog/"
+lunardocsurl: "https://docs-lunar.earthly.dev"
 githuburl: "https://github.com/earthly/earthly"
 twitter_username: earthlytech
 github_username:  earthly
