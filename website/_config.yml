@@ -12,6 +12,8 @@ tagline: "Better SDLC"
 description: "Achieve engineering excellence that is out of this world. Earthly Lunar helps you take control of your complex diverse tech stack with a rich ecosystem of plugins and custom guardrails you define to ensure quality throughout the development lifecycle."
 include:
   - _redirects
+exclude:
+  - Earthfile
 sass:
     load_paths:
         - _sass

@@ -16,3 +16,4 @@ end
 gem "jekyll-inline-svg"
 gem "rouge"
 gem "jekyll-tagging-related_posts"
+gem "webrick", "~> 1.8"

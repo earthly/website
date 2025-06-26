@@ -12,6 +12,8 @@ banner: <b>We interviewed 100 engineering teams.</b> Read our <a href="https://e
 {% include lunar/problem-statement.html %}
 {% include lunar/deployed-in-minutes.html %}
 {% include lunar/take-control.html %}
+{% include lunar/how-lunar-works.html %}
 {% include lunar/governance-as-code.html %}
 {% include lunar/diverse-tech-stacks.html %}
 {% include lunar/investors.html %}
+{% include lunar/get-a-demo.html %}

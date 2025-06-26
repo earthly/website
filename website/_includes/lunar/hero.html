@@ -3,16 +3,18 @@
     <div class="relative z-10">
       <h1 class="font-medium leading-none text-center lg:text-left text-white">
         Introducing
-        <span class="block pt-4 text-white text-5xl sm:text-7xl">Earthly Lunar</span>
+        <span class="block pt-4 text-white text-5xl sm:text-7xl">Earthly <br class="sm:hidden lg:block xl:hidden"/>Lunar</span>
       </h1>
 
-      <p class="lg:leading-8 mt-9 lg:mt-4 text-center lg:text-left text-base lg:text-xl text-white">
-        <span class="font-semibold">Monitoring for your SDLC</span><br />
-        Achieve engineering excellence that is out of this world
+      <p class="md:leading-8 mt-9 lg:mt-4 text-center lg:text-left text-2xl md:text-[32px] text-white font-semibold">
+        <span id="typewriter-text"></span><br />
+        as code
       </p>
 
+      <p class="text-white mt-9 text-xl text-center lg:text-left">Achieve engineering excellence today!</p>
+
       <a
-        class="bg-white border-[#2d7e5d] border-2 inline-block mt-9 py-4 rounded-lg text-2xl text-center text-[#2d7e5d]"
+        class="bg-white border-[#2d7e5d] border-2 inline-block mt-4 py-4 rounded-lg text-2xl text-center text-[#2d7e5d]"
         href="/earthly-lunar/demo"
         onclick="lunarGetADemoClick()"
       >
@@ -31,4 +33,49 @@
       label: 'lunar-get-a-demo-click'
     })
   }
+
+  const texts = [
+    "Compliance",
+    "Engineering culture",
+    "Governance",
+    "Guardrails",
+    "Engineering standards",
+    "Policy",
+    "SDLC instrumentation"
+  ]
+
+  let currentTextIndex = 0;
+  let charIndex = 0;
+  let typingForward = true;
+
+  const speed = 100;
+  const delayBetweenWords = 500;
+  const element = document.getElementById("typewriter-text");
+
+  function type() {
+    const currentText = texts[currentTextIndex];
+
+    if (typingForward) {
+      element.textContent = currentText.substring(0, charIndex + 1);
+      charIndex++;
+
+      if (charIndex === currentText.length) {
+        typingForward = false;
+        setTimeout(type, delayBetweenWords);
+        return;
+      }
+    } else {
+      element.textContent = currentText.substring(0, charIndex - 1);
+      charIndex--;
+
+      if (charIndex === 0) {
+        typingForward = true;
+        currentTextIndex = (currentTextIndex + 1) % texts.length;
+      }
+    }
+
+    setTimeout(type, speed);
+  }
+
+  type();
 </script>
