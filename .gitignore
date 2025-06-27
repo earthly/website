@@ -8,5 +8,4 @@ website/build
 install.sh
 .vscode
 .secret
-website/.ruby-version
 get_new_cta.pkl
