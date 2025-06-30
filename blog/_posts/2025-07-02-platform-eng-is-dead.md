@@ -12,7 +12,11 @@ excerpt: |
 last_modified_at: 2025-07-02
 ---
 
+<div class="notice--info">
+**TL;DR:**
+
 I showed up at PlatformCon dressed for the funeral. Black suit. Black tie. Sash that read: PLATFORM ENGINEERING IS DEAD.
+</div>
 
 It started as a joke. A Friday brainstorming exercise, late in the day, the week before PlatformCon. Someone on our team said, "What's something so unhinged they'd actually kick us out of PlatformCon?" The point wasn't to actually get kicked out \- just to push boundaries and see what might stick.
 
@@ -95,7 +99,7 @@ Caught the flight, and then later, in my hotel room, I sat there alone prepping 
 
 Mike, one of our engineers replied with a screenshot from Star Trek TNG, and the explanation:
 
-{% picture grid {{site.pimages}}{{page.slug}}/star-trek-quote.png --picture --img width="400px" --alt {{ Star Trek TNG quote }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/star-trek-quote.png --alt {{ Star Trek TNG }} %}
 
 > The Episode "Tapestry" teaches that regret, rather than being erased, should be embraced, because our mistakes, pain, and flawed choices are often the very threads that give our lives meaning, courage, and authenticity.
 
@@ -148,3 +152,5 @@ Someone told me: "I showed the card and the tears to Kaspar, \[Humanitec's CEO, 
 I had worried we were pushing too far. Turns out, we weren't pushing far enough.
 
 So yeah \- platform engineering may or may not be dead. But if it is… we gave it one hell of a send-off.
+
+{% include_html cta/bottom-cta.html %}
