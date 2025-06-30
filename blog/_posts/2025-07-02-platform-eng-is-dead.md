@@ -34,7 +34,10 @@ I had three days. My plane was leaving on Tuesday.
 
 I used the weekend to design a two-sided funeral card: front side read like a eulogy, with a cartoon of an engineer crushed under labeled tech boxes (overwhelming the engineer due to its sheer diversity). The back explained the "cause of death" \- golden paths, legacy migrations, broken scorecards, and standards documented that no one followed.
 
-![Funeral card front side]({{site.images}}{{page.slug}}/funeral-card-front.png) ![Funeral card back side]({{site.images}}{{page.slug}}/funeral-card-back.png)
+<div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
+  {% picture gridnc {{site.pimages}}{{page.slug}}/funeral-card-front.png --picture --img width="300px" --alt {{ Funeral card front side }} %}
+  {% picture gridnc {{site.pimages}}{{page.slug}}/funeral-card-back.png --picture --img width="300px" --alt {{ Funeral card back side }} %}
+</div>
 
 After brainstorming some more funny ideas with ChatGPT, another ridiculous idea emerged: giving away small vials of "ENGINEER TEARS". Hilarious\! I figured that they should be easy to make, and they're small and lightweight \- perfect for carrying around on my own. I ordered all the raw materials on Amazon on Saturday, filtering for next day delivery. I quickly designed the label.
 
@@ -64,7 +67,7 @@ Looked up online for other options... quickest turnaround time was one week. Ugh
 
 I spent the rest of the day cutting the label sheet, and sticking them on all the vials with my wife's help, and thinking about what to do about the sash.
 
-![Vial labels being prepared]({{site.images}}{{page.slug}}/vial-labels.jpg)
+{% picture grid {{site.pimages}}{{page.slug}}/vial-labels.jpg --picture --img width="400px" --alt {{ Vial labels being prepared }} %}
 
 All this prep was all for nothing if I didn't immediately stand out.
 
@@ -72,7 +75,7 @@ In an act of desperation I bought a blank, white sash off Amazon, some thick mar
 
 I laid out everything on my kitchen counter.
 
-![Sash materials laid out on kitchen counter]({{site.images}}{{page.slug}}/sash-materials.jpg)
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/sash-materials.jpg --picture --img width="500px" --alt {{ Sash materials laid out on kitchen counter }} %}
 
 The instructions were super dodgy. In one section it said "move the iron back-and-forth for 15-30s" and in another it said "hot tip\! Do **not** move the iron in a back-and-forth motion". 🤦
 
@@ -88,15 +91,15 @@ Caught the flight, and then later, in my hotel room, I sat there alone prepping 
 
 > I'm sitting here in my hotel room filling these up. It kinda makes you reconsider your life choices 😂
 
-![Hotel room vials being filled]({{site.images}}{{page.slug}}/hotel-room-vials.jpg)
+{% picture grid {{site.pimages}}{{page.slug}}/hotel-room-vials.jpg --picture --img width="400px" --alt {{ Hotel room vials being filled }} %}
 
 Mike, one of our engineers replied with a screenshot from Star Trek TNG, and the explanation:
+
+{% picture grid {{site.pimages}}{{page.slug}}/star-trek-quote.png --picture --img width="400px" --alt {{ Star Trek TNG quote }} %}
 
 > The Episode "Tapestry" teaches that regret, rather than being erased, should be embraced, because our mistakes, pain, and flawed choices are often the very threads that give our lives meaning, courage, and authenticity.
 
 Very inspirational\! 🥹😅
-
-![Star Trek TNG screenshot from Tapestry episode]({{site.images}}{{page.slug}}/star-trek-quote.png)
 
 The next day, I walked into the conference fully suited, sash across my chest, black roses pinned and everything.
 
@@ -128,7 +131,7 @@ Later, I changed out of the funeral outfit for another event, and still got appr
 
 And then it happened. I bumped into Kelsey Hightower. And **he** asked **me** for a photo \- not the other way round\! My job here was done.
 
-![Photo with Kelsey Hightower]({{site.images}}{{page.slug}}/kelsey-photo.jpg)
+{% picture grid {{site.pimages}}{{page.slug}}/kelsey-photo.jpg --picture --img width="400px" --alt {{ Photo with Kelsey Hightower }} %}
 
 We left funeral cards on tables, at coffee stands, in breakout lounges. You'd see people reading them, chuckling, flipping them over and reading them again. They'd turn to someone next to them and say, "You have to read this."
 
