@@ -18,7 +18,7 @@ last_modified_at: 2025-07-02
 I showed up at PlatformCon dressed for the funeral. Black suit. Black tie. Sash that read: PLATFORM ENGINEERING IS DEAD.
 </div>
 
-It started as a joke. A Friday brainstorming exercise, late in the day, the week before PlatformCon. Someone on our team said, "What's something so unhinged they'd actually kick us out of PlatformCon?" The point wasn't to actually get kicked out \- just to push boundaries and see what might stick.
+It started as a joke. A Friday brainstorming exercise, late in the day, the week before PlatformCon. Someone on our team said, "What's something so unhinged they'd actually kick us out of PlatformCon?" The point wasn't to actually get kicked out — just to push boundaries and see what might stick.
 
 So I said: "Easy. I go dressed up as a poop emoji with a sign that says 'scorecards are sh\!t.'"
 
@@ -36,14 +36,14 @@ And just like that, the joke turned into a plan.
 
 I had three days. My plane was leaving on Tuesday.
 
-I used the weekend to design a two-sided funeral card: front side read like a eulogy, with a cartoon of an engineer crushed under labeled tech boxes (overwhelming the engineer due to its sheer diversity). The back explained the "cause of death" \- golden paths, legacy migrations, broken scorecards, and standards documented that no one followed.
+I used the weekend to design a two-sided funeral card: front side read like a eulogy, with a cartoon of an engineer crushed under labeled tech boxes (overwhelming the engineer due to its sheer diversity). The back explained the "cause of death": golden paths, legacy migrations, broken scorecards, and standards documented that no one followed.
 
 <div style="display: flex; gap: 10px; margin: 20px 0; flex-wrap: wrap;">
   {% picture gridnc {{site.pimages}}{{page.slug}}/funeral-card-front.png --picture --img width="300px" --alt {{ Funeral card front side }} %}
   {% picture gridnc {{site.pimages}}{{page.slug}}/funeral-card-back.png --picture --img width="300px" --alt {{ Funeral card back side }} %}
 </div>
 
-After brainstorming some more funny ideas with ChatGPT, another ridiculous idea emerged: giving away small vials of "ENGINEER TEARS". Hilarious\! I figured that they should be easy to make, and they're small and lightweight \- perfect for carrying around on my own. I ordered all the raw materials on Amazon on Saturday, filtering for next day delivery. I quickly designed the label.
+After brainstorming some more funny ideas with ChatGPT, another ridiculous idea emerged: giving away small vials of "ENGINEER TEARS". Hilarious\! I figured that they should be easy to make, and they're small and lightweight — perfect for carrying around on my own. I ordered all the raw materials on Amazon on Saturday, filtering for next day delivery. I quickly designed the label.
 
 The next day, I ran to the only print shop that was open on a Sunday, to print the cards and the vial labels.
 
@@ -59,7 +59,7 @@ FedEx guy: "No, I'm sorry. Oh... Wait... Hmm... That is not true". He then goes 
 
 Went back in Canva on my laptop, copied the design across in a 7x6 pattern on an entire piece of paper. And voilà\!
 
-FedEx guy, after now being emotionally invested: "Ok, I'll put in the card printing for tomorrow evening. It's very likely that it'll run late though \- do you think you can pick them up on Tuesday morning if that happens?"
+FedEx guy, after now being emotionally invested: "Ok, I'll put in the card printing for tomorrow evening. It's very likely that it'll run late though. Do you think you can pick them up on Tuesday morning if that happens?"
 
 Me: "YES\! THANK YOU\!"
 
@@ -71,15 +71,15 @@ Looked up online for other options... quickest turnaround time was one week. Ugh
 
 I spent the rest of the day cutting the label sheet, and sticking them on all the vials with my wife's help, and thinking about what to do about the sash.
 
-{% picture grid {{site.pimages}}{{page.slug}}/vial-labels.jpg --picture --img width="400px" --alt {{ Vial labels being prepared }} %}
+{% picture grid {{site.pimages}}{{page.slug}}/vial-labels.jpg --picture class="align-center" --img width="400px" --alt {{ Vial labels being prepared }} %}
 
 All this prep was all for nothing if I didn't immediately stand out.
 
-In an act of desperation I bought a blank, white sash off Amazon, some thick marker pens, and some iron-on letters. The reviews for the letters were terrible. But I had no choice. Amazon came in last minute \- the very evening before the flight.
+In an act of desperation I bought a blank, white sash off Amazon, some thick marker pens, and some iron-on letters. The reviews for the letters were terrible. But I had no choice. Amazon came in last minute — the very evening before the flight.
 
 I laid out everything on my kitchen counter.
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/sash-materials.jpg --picture --img width="500px" --alt {{ Sash materials laid out on kitchen counter }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/sash-materials.jpg --picture class="align-center" --img width="400px" --alt {{ Sash materials laid out on kitchen counter }} %}
 
 The instructions were super dodgy. In one section it said "move the iron back-and-forth for 15-30s" and in another it said "hot tip\! Do **not** move the iron in a back-and-forth motion". 🤦
 
@@ -95,11 +95,11 @@ Caught the flight, and then later, in my hotel room, I sat there alone prepping 
 
 > I'm sitting here in my hotel room filling these up. It kinda makes you reconsider your life choices 😂
 
-{% picture grid {{site.pimages}}{{page.slug}}/hotel-room-vials.jpg --picture --img width="400px" --alt {{ Hotel room vials being filled }} %}
+{% picture grid {{site.pimages}}{{page.slug}}/hotel-room-vials.jpg --picture class="align-center" --img width="400px" --alt {{ Hotel room vials being filled }} %}
 
 Mike, one of our engineers replied with a screenshot from Star Trek TNG, and the explanation:
 
-{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/star-trek-quote.png --alt {{ Star Trek TNG }} %}
+{% picture grid {{site.pimages}}{{page.slug}}/star-trek-quote.png --picture class="align-center" --alt {{ Star Trek TNG screenshot }} %}
 
 > The Episode "Tapestry" teaches that regret, rather than being erased, should be embraced, because our mistakes, pain, and flawed choices are often the very threads that give our lives meaning, courage, and authenticity.
 
@@ -117,7 +117,7 @@ People loved it. The reactions were rolling in:
 
 "They built the golden path. Very few used it, but damn was it golden. HA\! I love that\!"
 
-"Wait \- you even bought [platformengineeringisdead.com](https://platformengineeringisdead.com)??? That is hilarious\!"
+"Wait. You even bought [platformengineeringisdead.com](https://platformengineeringisdead.com)??? That is hilarious\!"
 
 "I read the whole thing and laughed my ass off. Who are you people??"
 
@@ -133,9 +133,9 @@ Later, I changed out of the funeral outfit for another event, and still got appr
 
 "Wait, you're the guy\! The funeral guy\! I saw you earlier today. Everyone's talking about it."
 
-And then it happened. I bumped into Kelsey Hightower. And **he** asked **me** for a photo \- not the other way round\! My job here was done.
+And then it happened. I bumped into Kelsey Hightower. And **he** asked **me** for a photo — not the other way around\! My job here was done.
 
-{% picture grid {{site.pimages}}{{page.slug}}/kelsey-photo.jpg --picture --img width="400px" --alt {{ Photo with Kelsey Hightower }} %}
+{% picture grid {{site.pimages}}{{page.slug}}/kelsey-photo.jpg --picture class="align-center" --img width="400px" --alt {{ Photo with Vlad A. Ionescu and Kelsey Hightower }} %}
 
 We left funeral cards on tables, at coffee stands, in breakout lounges. You'd see people reading them, chuckling, flipping them over and reading them again. They'd turn to someone next to them and say, "You have to read this."
 
@@ -143,7 +143,7 @@ One person picked up a vial, read it, and said: "Honestly, this is too real. I h
 
 Someone else said, "I've been on the receiving end of three golden paths."
 
-What struck me most was how quickly people got it. The funeral wasn't just a joke \- it resonated. The pain of legacy migrations. The futility of broken scorecards. The ghost town of abandoned Confluence docs.
+What struck me most was how quickly people got it. The funeral wasn't just a joke. It resonated. The pain of legacy migrations. The futility of broken scorecards. The ghost town of abandoned Confluence docs.
 
 And yet, it wasn't bitter. It was catharsis. It made people laugh because the premise was true.
 
@@ -151,6 +151,6 @@ Someone told me: "I showed the card and the tears to Kaspar, \[Humanitec's CEO, 
 
 I had worried we were pushing too far. Turns out, we weren't pushing far enough.
 
-So yeah \- platform engineering may or may not be dead. But if it is… we gave it one hell of a send-off.
+So yeah — platform engineering may or may not be dead. But if it is… we gave it one hell of a send-off.
 
 {% include_html cta/bottom-cta.html %}
