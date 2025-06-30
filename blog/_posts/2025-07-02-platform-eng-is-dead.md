@@ -8,7 +8,7 @@ topic: lunar
 funnel: 3
 topcta: false
 excerpt: |
-  A humorous account of showing up at PlatformCon dressed for a funeral to declare platform engineering dead. What started as a joke turned into a viral moment that resonated with the entire industry.
+  A humorous account of showing up at PlatformCon dressed for a funeral to declare platform engineering dead. What started as a joke turned into a viral moment that resonated with the industry.
 last_modified_at: 2025-07-02
 ---
 
