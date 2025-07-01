@@ -97,14 +97,6 @@ Caught the flight, and then later, in my hotel room, I sat there alone prepping 
 
 {% picture grid {{site.pimages}}{{page.slug}}/hotel-room-vials.jpg --picture --img width="400px" --alt {{ Hotel room vials being filled }} %}
 
-Mike, one of our engineers replied with a screenshot from Star Trek TNG, and the explanation:
-
-![Star Trek TNG screenshot]({{site.images}}{{page.slug}}/star-trek-quote.png)
-
-> The Episode "Tapestry" teaches that regret, rather than being erased, should be embraced, because our mistakes, pain, and flawed choices are often the very threads that give our lives meaning, courage, and authenticity.
-
-Very inspirational\! 🥹😅
-
 The next day, I walked into the conference fully suited, sash across my chest, black roses pinned and everything.
 
 First reactions were immediate. People pointed. Laughed. Took photos. Some burst out laughing before even making it all the way through the sash. One person nearly dropped their coffee reading the funeral card.
