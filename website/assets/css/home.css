@@ -193,6 +193,20 @@ h2 {
   }
 }
 
+@media only screen and (max-width: 374px) {
+  .red-line-mobile,
+  .green-line,
+  .how-lunar-works-svg {
+    display: none;
+  }
+  .how-lunar-works-mobile-svg {
+    display: block;
+  }
+  .embded-iframe {
+    height: 165px;
+  }
+}
+
 @keyframes customers-animation {
   0% {
     transform: translateX(0);

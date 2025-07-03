@@ -6,11 +6,11 @@
       {% svg assets/svg/men-working-mobile.svg class="z-10 block lg:hidden" %}
       <span class="absolute top-[52%] lg:top-[54%] right-[12px] lg:right-1 xl:right-[-16px]">
         {% svg assets/svg/green-circle.svg class="hidden lg:block" %}
-        {% svg assets/svg/green-circle-mobile.svg class="block lg:hidden" %}
+        {% svg assets/svg/green-circle-mobile.svg class="block lg:hidden green-line" %}
       </span>
       <span class="absolute top-[54%] left-2 lg:left-0">
         {% svg assets/svg/red-line.svg class="hidden lg:block" %}
-        {% svg assets/svg/red-line-mobile.svg class="block lg:hidden" %}
+        {% svg assets/svg/red-line-mobile.svg class="block lg:hidden red-line-mobile" %}
       </span>
     </div>
     
@@ -19,8 +19,9 @@
         <div class="text-2xl">Step 1: Installation</div>
         <p class="text-lg pt-10 text-[#475569]">Lunar instruments your code repositories and CI/CD pipelines via a lightweight agent. No changes are needed to anyone’s app code or CI/CD Yaml—It's designed to work with the diverse technologies and proceses you already have.</p>
       </div>
-      {% svg assets/svg/installation.svg class="w-full lg:w-auto z-10" %}
-      <div class="relative block lg:hidden">
+      {% svg assets/svg/installation.svg class="w-full lg:w-auto z-10 block how-lunar-works-svg" %}
+      {% svg assets/svg/installation-mobile.svg class="w-full lg:w-auto z-10 hidden how-lunar-works-mobile-svg" %}
+      <div class="relative block lg:hidden green-line">
         {% svg assets/svg/data-collection-green-line.svg class="absolute right-[-15px] top-[-32px]" %}
       </div>
     </div>
@@ -30,8 +31,9 @@
         <div class="text-2xl">Step 2: Data Collection</div>
         <div class="text-lg pt-10 text-[#475569]">With easy-to-write custom collectors or existing plugins, you can collect SDLC metadata from pretty much anything.</div>
       </div>
-      {% svg assets/svg/data-collection.svg class="w-full lg:w-auto" %}
-      <div class="relative block lg:hidden">
+      {% svg assets/svg/data-collection.svg class="w-full lg:w-auto block how-lunar-works-svg" %}
+      {% svg assets/svg/data-collection-mobile.svg class="w-full lg:w-auto hidden how-lunar-works-mobile-svg" %}
+      <div class="relative block lg:hidden green-line">
         {% svg assets/svg/sdlc-green-line.svg class="absolute right-[-15px] top-[-32px]" %}
       </div>
     </div>
@@ -42,8 +44,9 @@
         <div class="text-2xl">Step 3: Centralize SDLC Metadata</div>
         <div class="text-lg pt-10 text-[#475569]">Results from collectors are centralized in a database. Each of your components now has a corresponding rich JSON document describing their current level of maturity and standards adherence.</div>
       </div>
-      {% svg assets/svg/sdlc-metadata.svg class="w-full lg:w-auto" %}
-      <div class="relative block lg:hidden">
+      {% svg assets/svg/sdlc-metadata.svg class="w-full lg:w-auto block how-lunar-works-svg" %}
+      {% svg assets/svg/sdlc-metadata-mobile.svg class="w-full lg:w-auto hidden how-lunar-works-mobile-svg" %}
+      <div class="relative block lg:hidden green-line">
         {% svg assets/svg/sdlc-green-line.svg class="absolute right-[-15px] top-[-32px]" %}
       </div>
     </div>
@@ -54,7 +57,8 @@
         <div class="text-2xl">Step 4 : Policy Feedback</div>
         <div class="text-lg pt-10 text-[#475569]">Write policy-as-code and customize their level of enforcement based on business domain or compliance scope. Real-time policy results are calculated on every code change and shown to developers directly in their PRs.</div>
       </div>
-      {% svg assets/svg/policy-feedback.svg class="w-full lg:w-auto" %}
+      {% svg assets/svg/policy-feedback.svg class="w-full lg:w-auto block how-lunar-works-svg" %}
+      {% svg assets/svg/policy-feedback-mobile.svg class="w-full lg:w-auto hidden how-lunar-works-mobile-svg" %}
     </div>
   </div>
 </div>
