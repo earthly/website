@@ -1,23 +1,16 @@
-<div class="bg-[#E8F7FE] mt-16 pt-16">
+<div class="bg-[#E8F7FE] mt-16 pt-16 px-6">
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap" rel="stylesheet" />
-
   <div class="flex flex-col items-center max-w-7xl mx-auto px-6 lg:px-10">
-    <h2>Governance-As-Code</h2>
-    <p class="font-semibold mt-5 text-[#6b7280] text-center lg:text-left text-lg lg:text-2xl">Define custom policies with a few lines of Python</p>
-  </div>
-
-  {% svg assets/svg/governance-as-code.svg class="h-auto hidden lg:block max-w-full mx-auto mt-8" %}
-  {% svg assets/svg/governance-as-code-mobile.svg class="h-auto lg:hidden max-w-full mx-auto mt-8 pb-10" %}
-
-  {% for item in site.data.info-tooltip %}
-    <div class="info-tooltip">
-      <b>{{ item.title }}</b>
-      <p>{{ item.description }}</p>
-      {% svg assets/svg/info-tooltip-arrow.svg %}
+    <div class="text-[32px] leading-[48px] font-normal text-center">Do It All With Code</div>
+    <div class="w-full lg:w-[996px]">
+      <p class="text-[#475569] text-xl leading-8 text-center mt-5">Write collectors and policies with just a couple lines of Bash or Python. With the flexibility of real code, you can collect SLDC metadata from any vendor or in-house tooling.</p>
     </div>
-  {% endfor %}
+  </div>
+  {% svg assets/svg/governance-as-code.svg class="h-auto hidden lg:block max-w-full mx-auto mt-8" %}
+  {% svg assets/svg/governance-as-code-tablet.svg class="h-auto max-w-full mx-auto mt-8 hidden md:block lg:hidden pb-10" %}
+  {% svg assets/svg/governance-as-code-mobile.svg class="h-auto max-w-full mx-auto mt-8 block md:hidden pb-10" %}
 </div>
 
 <script>

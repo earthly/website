@@ -4,7 +4,7 @@
 }
 
 .hero > div {
-  height: 710px;
+  height: 800px;
 }
 
 .hero h1 {
@@ -103,15 +103,23 @@ h2 {
   transform: translate(112px, 22px);
 }
 
+.animated-text {
+  font-family: "Source Code Pro", monospace;
+}
+
 @media only screen and (min-width: 420px) {
   .hero > div > svg {
     top: -436px;
+  }
+
+  .hero a {
+    width: 342px;
   }
 }
 
 @media only screen and (min-width: 640px) {
   .hero > div {
-    height: 768px;
+    height: 900px;
   }
 
   .hero > div > svg {
@@ -144,10 +152,6 @@ h2 {
 
   .hero h1 {
     font-size: 56px;
-  }
-
-  .hero a {
-    width: 400px;
   }
 
   .hero > div > svg {
@@ -190,6 +194,23 @@ h2 {
 
   .info-tooltip svg {
     transform: translate(112px, 22px);
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .red-line-mobile,
+  .green-line,
+  .how-lunar-works-svg {
+    display: none;
+  }
+  .how-lunar-works-mobile-svg {
+    display: block;
+  }
+  .embded-iframe {
+    height: 165px;
+  }
+  .problem-statement-content {
+    width: 100%;
   }
 }
 
