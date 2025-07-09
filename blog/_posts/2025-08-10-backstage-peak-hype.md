@@ -22,3 +22,7 @@ A look behind the portal everyone's building - and the hard truths most discover
 * So what's really going on with Backstage, and why are so many teams quietly struggling to make it work? Can we fix that?
 
 </div>
+
+By 2014, Spotify had over 100 engineers and was spinning up new microservices weekly, leading to service sprawl, duplicated efforts, and poor visibility into ownership. In response, a platform team created an internal microservices catalog called System Z. \[[Source](https://newsletter.pragmaticengineer.com/p/backstage)\] System Z let teams register services with metadata (code links, owners, etc.), and later model relationships between components, organizing services into cohesive systems.
+
+![]({{site.images}}{{page.slug}}/system-z.jpg)
