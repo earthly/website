@@ -25,7 +25,7 @@ A look behind the portal everyone's building - and the hard truths most discover
 
 By 2014, Spotify had over 100 engineers and was spinning up new microservices weekly, leading to service sprawl, duplicated efforts, and poor visibility into ownership. In response, a platform team created an internal microservices catalog called System Z. \[[Source](https://newsletter.pragmaticengineer.com/p/backstage)\] System Z let teams register services with metadata (code links, owners, etc.), and later model relationships between components, organizing services into cohesive systems.
 
-![]({{site.images}}{{page.slug}}/system-z.jpg)
+![System-Z, An Early Predecessor to Backstage]({{site.images}}{{page.slug}}/system-z.jpg)
 
 By 2017, the growing usage and feature scope of System Z prompted a complete rewrite. This next-generation portal was dubbed **Backstage**. Internally, Backstage delivered notable improvements: a 55% decrease in new engineer onboarding time (measured by time to 10th pull request) and vastly improved developer productivity. By early 2020, 280+ engineering teams at Spotify were using Backstage to manage over 2,000 microservices, 300+ websites, 4,000 data pipelines, and 200 mobile features.
 
@@ -38,3 +38,5 @@ Spotify had a clear roadmap for Backstage's open-source debut, broken into three
 3. a vibrant **plugin ecosystem** contributed by the community.
 
 Adoption came quickly. By September 2020, over 130 people had submitted contributions to the Backstage repo, with \~40% of pull requests coming from outside Spotify. Notable early adopters included Expedia, American Airlines and Netflix. That same month, Backstage was accepted as a CNCF Sandbox project.
+
+![An initial release of Backstage in 2020]({{site.images}}{{page.slug}}/backstage-2020.png)
