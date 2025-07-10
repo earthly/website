@@ -80,6 +80,7 @@ The need for a TPM yet again highlights the sheer amount of human capital requir
 Finally, DIY work tends to break when Backstage gets updated - especially if you've strayed too far from upstream patterns. The advice we heard from companies getting burnt by this is that you should try to not go against the design choices of Backstage, and try to limit any hacks as much as possible - because those hacks may no longer work later. And no, abandoning upstream altogether is not a great solution, because that would mean your internal platform would stagnate in momentum. It'll get very difficult to add other community plugins on top later.
 
 ### 2. Limited Adoption
+
 The next big problem of typical Backstage installations is that the adoption level is very low. While Spotify internally claims to have achieved 99% voluntary adoption, most organizations get stuck at about 10% [Source].
 
 These aren't early experiments. These are mature teams, often with 4–5 custom plugins and 10+ engineers behind them, still struggling to drive meaningful adoption. Imagine sinking so much effort into this great platform that ends up being largely unused at the end of the day.
@@ -87,13 +88,50 @@ These aren't early experiments. These are mature teams, often with 4–5 custom 
 Most companies try to fix this the wrong way: by building even more features, hoping dev teams will adopt the platform if they just find "the right one". I don't know about you, but I have seen this movie too many times in the startup world: a failing startup isn't taking off and they just endlessly build even more stuff nobody needs in hopes that "we're just missing this one feature". No. It's either a distribution problem or a product-market-fit problem and it needs to be treated as such. It's not a "needs more bells-and-whistels" problem. And no, "build it and they will come" is never the right answer.
 
 ### 3. Catalogs Rot Fast
+
 Another common issue: catalog data rots quickly. People leave. Teams reshuffle. Ownership records go out of date. The worst part about this is that you learn about it in a post-mortem. An SRE scrambles to reach the owner during an incident - no one picks up. MTTR tanks.
 
 ### 4. Scaffolding Only Works for Greenfield
+
 Scaffolding promises standardization. If every service had the same CI/CD setup, life would be easier. Right?
 
 But the reality is that the most critical apps are the oldest and messiest. You're not migrating that to a new dev setup. It's like doing surgery on a sprinting patient. App teams have their own goals and milestones and they don't have time for your rip-and-replace infrastructure project that gives them very little in return.
 
 ### 5. Scorecards are Super Limited
+
 I wrote previously about the limitations of scorecards. In summary: most scorecards are 💩. They promise a lot, but in reality they provide very little insight into key development practices in code and in CI/CD. In addition, they have no way to shift to the left to provide the feedback in context, in PRs. The feedback lives in a dashboard no one checks.
 
+![Traditional scorecards are just the tip of the iceberg]({{site.images}}{{page.slug}}/scorecards-miss.png)
+
+## Limited ROI
+
+Zoom out, and the pattern is clear: Backstage is expensive to implement, and even harder to make stick. The technical lift is high, the organizational cost is even higher, and the payoff, more often than not, just doesn’t materialize. DIY piles up. Adoption stalls. Catalogs rot. And scorecards turn into a dashboard of guilt that nobody looks at.
+
+The result is a beautiful portal, used by 10% of the company. It's because of all these points that I fear that Backstage may see tremendous churn over the next few years.
+
+## But It Doesn't Have to Be That Way
+
+Backstage isn’t going away \- nor should it. It’s a powerful foundation. But the next chapter for most organizations isn’t about building more plugins. It’s about making the investment finally pay off.
+
+Here’s what that might look like:
+
+1. **Fix the adoption bottleneck**. Backstage only creates value when enough teams are onboarded. But adoption doesn’t have to be all-or-nothing.
+
+   A smart next step can be to start nudging adoption from the places developers already work \- like the PR workflow. If a service is missing catalog metadata, show a friendly warning in the pull request. If it violates a security baseline, surface that inline.
+
+   These nudges don’t block progress \- they raise awareness. And because they’re delivered in the right context (not in a dashboard nobody checks), they’re far more likely to result in action. Over time, this creates a self-reinforcing loop \- no top-down mandates required.
+2. **Use Backstage to drive real engineering alignment**. The catalog should evolve from being a passive registry to an active system of record for engineering health. That means embedding signals directly into it:
+
+   * Which of my 20,000 repos are production-related?
+   * Are those services adhering to organizational standards?
+   * Did all services apply the mitigation that resulted from that big post-mortem last month?
+   * Are we covered against that vulnerability that came out recently in the industry?
+   * Is everyone using the provided CI/CD templates correctly?
+   * Are services tested and scanned according to compliance standards?
+   * How far along is that high-priority migration initiative we launched last quarter?
+
+Backstage can become the lens through which leadership sees engineering maturity at a glance. Not a vanity scorecard, but a dynamic map of what’s production-ready, what’s at risk, and where to invest. That’s when Backstage becomes indispensable.
+
+Backstage isn’t the problem. But its success hinges on how it’s used, and whether it’s integrated into the day-to-day flow of engineering, not just maintained on the sidelines by a heroic platform team.
+
+If this is the kind of platform problem you want to tackle, where developer experience meets governance and engineering culture, [**we’re hiring**](https://jobs.earthly.dev/). We want to turn Backstage from a static registry into a real-time, policy-aware visibility layer by plugging directly into code, CI/CD, and PR workflows. We’re answering the questions no plugin or scorecard can.
