@@ -25,11 +25,11 @@ A look behind the portal everyone's building - and the hard truths most discover
 
 By 2014, Spotify had over 100 engineers and was spinning up new microservices weekly, leading to service sprawl, duplicated efforts, and poor visibility into ownership. In response, a platform team created an internal microservices catalog called System Z. \[[Source](https://newsletter.pragmaticengineer.com/p/backstage)\] System Z let teams register services with metadata (code links, owners, etc.), and later model relationships between components, organizing services into cohesive systems.
 
-![System-Z, An Early Predecessor to Backstage]({{site.images}}{{page.slug}}/system-z.jpg)
+![Image source: [https://newsletter.pragmaticengineer.com/p/backstage](https://newsletter.pragmaticengineer.com/p/backstage)]({{site.images}}{{page.slug}}/system-z.jpg)
 
 By 2017, the growing usage and feature scope of System Z prompted a complete rewrite. This next-generation portal was dubbed **Backstage**. Internally, Backstage delivered notable improvements: a 55% decrease in new engineer onboarding time (measured by time to 10th pull request) and vastly improved developer productivity. By early 2020, 280+ engineering teams at Spotify were using Backstage to manage over 2,000 microservices, 300+ websites, 4,000 data pipelines, and 200 mobile features.
 
-Seeing Backstage's internal success, Spotify leadership realized they had built something many large tech companies could use. So on March 16, 2020, Spotify announced Backstage's open-source release ￼- the company's first major open-source infrastructure platform. The announcement highlighted Backstage's vision: an "open platform for building developer portals" that allows engineers to focus on coding rather than wrangling disparate tooling.
+Seeing Backstage's internal success, Spotify leadership realized they had built something many large tech companies could use. So on March 16, 2020, Spotify announced Backstage's open-source release - the company's first major open-source infrastructure platform. The announcement highlighted Backstage's vision: an "open platform for building developer portals" that allows engineers to focus on coding rather than wrangling disparate tooling.
 
 Spotify had a clear roadmap for Backstage's open-source debut, broken into three phases:
 
@@ -39,7 +39,7 @@ Spotify had a clear roadmap for Backstage's open-source debut, broken into three
 
 Adoption came quickly. By September 2020, over 130 people had submitted contributions to the Backstage repo, with \~40% of pull requests coming from outside Spotify. Notable early adopters included Expedia, American Airlines and Netflix. That same month, Backstage was accepted as a CNCF Sandbox project.
 
-![Backstage in 2020]({{site.images}}{{page.slug}}/backstage-2020.png)
+![Image source: https://techcrunch.com/2025/05/04/backstage-access-spotifys-dev-tools-side-hustle-is-growing-legs/]({{site.images}}{{page.slug}}/backstage-2020.png)
 
 In March 2022, Backstage 1.0 was released, and CNCF promoted the project to Incubation status.
 
@@ -47,7 +47,7 @@ What followed was a massive uptick in adoption. Within just a few years of open-
 
 Meanwhile, a growing ecosystem of vendors emerged. Spotify introduced [SoundCheck](https://backstage.spotify.com/partners/spotify/plugin/soundcheck/), a paid scorecarding plugin, while others like Cortex and OpsLevel began innovating in the broader IDP space beyond Backstage.
 
-![Source: [2020](https://backstage.io/blog/2020/03/16/announcing-backstage/)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
+![Source: [2020](https://backstage.io/blog/2020/03/16/announcing-backstage/), [2021](https://backstage.spotify.com/discover/blog/50-public-adopters/), [2021](https://backstage.io/blog/2021/12/20/backstage-wrapped-2021/), [2022](https://backstage.spotify.com/discover/blog/backstage-turns-2/), [2022](https://backstage.io/blog/2022/12/19/backstage-wrapped-2022/), [2023](https://backstage.io/blog/2023/03/15/backstage-turns-3/), [2023](https://www.cncf.io/announcements/2023/11/08/cloud-native-computing-foundation-presents-the-top-end-user-award-to-spotify/), [2025](https://thenewstack.io/five-years-in-backstage-is-just-getting-started/)](https://backstage.io/blog/2020/03/16/announcing-backstage/)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
 
 But as adoption surged, so did the realization: running Backstage in the real world is nothing like the demo.
 
@@ -55,7 +55,7 @@ But as adoption surged, so did the realization: running Backstage in the real wo
 
 While many companies are eager to adopt Backstage, those a year or two in are starting to realize just how hard it is to maintain \- and even harder to make successful. Reddit user [u/hcaandrade2](https://www.reddit.com/user/hcaandrade2/) put it [best](https://www.reddit.com/r/devops/comments/1kgfqys/comment/mqyvwdm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button):
 
-{% picture grid {{site.pimages}}{{page.slug}}/backstage-reddit.png --picture --img width="500px" --alt {{ Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride." }} %}
+{% picture grid {{site.pimages}}{{page.slug}}/backstage-reddit.png --picture --alt {{ Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride." }} %}
 
 Backstage seems like a sleek developer portal out of the box. What you actually get is a skeleton and a long, expensive journey of internal platform engineering.
 
@@ -101,7 +101,7 @@ But the reality is that the most critical apps are the oldest and messiest. You'
 
 I wrote previously about the limitations of scorecards. In summary: most scorecards are 💩. They promise a lot, but in reality they provide very little insight into key development practices in code and in CI/CD. In addition, they have no way to shift to the left to provide the feedback in context, in PRs. The feedback lives in a dashboard no one checks.
 
-![Traditional scorecards are just the tip of the iceberg]({{site.images}}{{page.slug}}/scorecards-miss.png)
+![Traditional scorecards only see the tip of the iceberg]({{site.images}}{{page.slug}}/scorecards.png)
 
 ## Limited ROI
 
