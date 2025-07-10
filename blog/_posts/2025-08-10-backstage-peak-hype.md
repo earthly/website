@@ -48,3 +48,11 @@ What followed was a massive uptick in adoption. Within just a few years of open-
 Meanwhile, a growing ecosystem of vendors emerged. Spotify introduced [SoundCheck](https://backstage.spotify.com/partners/spotify/plugin/soundcheck/), a paid scorecarding plugin, while others like Cortex and OpsLevel began innovating in the broader IDP space beyond Backstage.
 
 ![Source \[2020\]\(https://backstage.io/blog/2020/03/16/announcing-backstage/\)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
+
+But as adoption surged, so did the realization: running Backstage in the real world is nothing like the demo.
+
+## The Hidden Cost of Adoption
+
+While many companies are eager to adopt Backstage, those a year or two in are starting to realize just how hard it is to maintain \- and even harder to make successful. Reddit user [u/hcaandrade2](https://www.reddit.com/user/hcaandrade2/) put it [best](https://www.reddit.com/r/devops/comments/1kgfqys/comment/mqyvwdm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button):
+
+![Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride."]({{site.images}}{{page.slug}}/backstage-reddit.png)
