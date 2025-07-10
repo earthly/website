@@ -139,6 +139,41 @@ h2 {
     width: 100%;
     left: 0;
   }
+
+  .red-line-left {
+    left: -25px;
+  }
+
+  .green-line-tablet {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+  .how-lunar-works-section {
+    max-width: 768px;
+  }
+  .green-line-tablet {
+    right: 27.5%;
+  }
+  .red-line-tablet-2 {
+    display: none;
+  }
+  .red-line-left {
+    top: 52%;
+  }
+  .red-line-tablet-3 {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1023px) {
+  .how-lunar-works-section {
+    max-width: 900px;
+  }
+  .green-line-tablet {
+    right: 23%;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -185,6 +220,7 @@ h2 {
   .info-tooltip svg {
     transform: translate(93px, 22px);
   }
+
 }
 
 @media only screen and (min-width: 1180px) {
@@ -195,11 +231,33 @@ h2 {
   .info-tooltip svg {
     transform: translate(112px, 22px);
   }
+
+  .red-line-left {
+    left: -5rem;
+  }
+
+  .red-line-tablet,
+  .green-line-tablet,
+  .green-circle-tablet {
+    display: none;
+  }
+
+  .red-line-desktop,
+  .green-line-desktop,
+  .green-circle-desktop {
+    display: block;
+  }
+
+  .green-circle-left {
+    right: -68px;
+  }
 }
+
 
 @media only screen and (max-width: 374px) {
   .red-line-mobile,
   .green-line,
+  .green-circle-mobile,
   .how-lunar-works-svg {
     display: none;
   }
