@@ -39,7 +39,7 @@ Spotify had a clear roadmap for Backstage's open-source debut, broken into three
 
 Adoption came quickly. By September 2020, over 130 people had submitted contributions to the Backstage repo, with \~40% of pull requests coming from outside Spotify. Notable early adopters included Expedia, American Airlines and Netflix. That same month, Backstage was accepted as a CNCF Sandbox project.
 
-![An initial release of Backstage in 2020]({{site.images}}{{page.slug}}/backstage-2020.png)
+![Backstage in 2020]({{site.images}}{{page.slug}}/backstage-2020.png)
 
 In March 2022, Backstage 1.0 was released, and CNCF promoted the project to Incubation status.
 
@@ -47,7 +47,7 @@ What followed was a massive uptick in adoption. Within just a few years of open-
 
 Meanwhile, a growing ecosystem of vendors emerged. Spotify introduced [SoundCheck](https://backstage.spotify.com/partners/spotify/plugin/soundcheck/), a paid scorecarding plugin, while others like Cortex and OpsLevel began innovating in the broader IDP space beyond Backstage.
 
-![Source \[2020\]\(https://backstage.io/blog/2020/03/16/announcing-backstage/\)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
+![Source: [2020](https://backstage.io/blog/2020/03/16/announcing-backstage/)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
 
 But as adoption surged, so did the realization: running Backstage in the real world is nothing like the demo.
 
@@ -55,7 +55,7 @@ But as adoption surged, so did the realization: running Backstage in the real wo
 
 While many companies are eager to adopt Backstage, those a year or two in are starting to realize just how hard it is to maintain \- and even harder to make successful. Reddit user [u/hcaandrade2](https://www.reddit.com/user/hcaandrade2/) put it [best](https://www.reddit.com/r/devops/comments/1kgfqys/comment/mqyvwdm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button):
 
-![Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride."]({{site.images}}{{page.slug}}/backstage-reddit.png)
+{% picture grid {{site.pimages}}{{page.slug}}/backstage-reddit.png --picture --img width="500px" --alt {{ Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride." }} %}
 
 Backstage seems like a sleek developer portal out of the box. What you actually get is a skeleton and a long, expensive journey of internal platform engineering.
 
@@ -135,3 +135,5 @@ Backstage can become the lens through which leadership sees engineering maturity
 Backstage isn't the problem. But its success hinges on how it's used, and whether it's integrated into the day-to-day flow of engineering, not just maintained on the sidelines by a heroic platform team.
 
 If this is the kind of platform problem you want to tackle, where developer experience meets governance and engineering culture, [**we're hiring**](https://jobs.earthly.dev/). We want to turn Backstage from a static registry into a real-time, policy-aware visibility layer by plugging directly into code, CI/CD, and PR workflows. We're answering the questions no plugin or scorecard can.
+
+{% include_html cta/bottom-cta.html %}
