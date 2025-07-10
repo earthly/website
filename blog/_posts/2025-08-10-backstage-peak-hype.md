@@ -40,3 +40,11 @@ Spotify had a clear roadmap for Backstage's open-source debut, broken into three
 Adoption came quickly. By September 2020, over 130 people had submitted contributions to the Backstage repo, with \~40% of pull requests coming from outside Spotify. Notable early adopters included Expedia, American Airlines and Netflix. That same month, Backstage was accepted as a CNCF Sandbox project.
 
 ![An initial release of Backstage in 2020]({{site.images}}{{page.slug}}/backstage-2020.png)
+
+In March 2022, Backstage 1.0 was released, and CNCF promoted the project to Incubation status.
+
+What followed was a massive uptick in adoption. Within just a few years of open-sourcing, some of the largest engineering orgs had adopted Backstage with enthusiasm. Yelp, Twilio, Lyft, Box, VMware, LinkedIn, AirBnB, Epic Games, AWS, Splunk and many others were jumping on the bandwagon.
+
+Meanwhile, a growing ecosystem of vendors emerged. Spotify introduced [SoundCheck](https://backstage.spotify.com/partners/spotify/plugin/soundcheck/), a paid scorecarding plugin, while others like Cortex and OpsLevel began innovating in the broader IDP space beyond Backstage.
+
+![Source \[2020\]\(https://backstage.io/blog/2020/03/16/announcing-backstage/\)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
