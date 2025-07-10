@@ -56,3 +56,44 @@ But as adoption surged, so did the realization: running Backstage in the real wo
 While many companies are eager to adopt Backstage, those a year or two in are starting to realize just how hard it is to maintain \- and even harder to make successful. Reddit user [u/hcaandrade2](https://www.reddit.com/user/hcaandrade2/) put it [best](https://www.reddit.com/r/devops/comments/1kgfqys/comment/mqyvwdm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button):
 
 ![Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride."]({{site.images}}{{page.slug}}/backstage-reddit.png)
+
+Backstage seems like a sleek developer portal out of the box. What you actually get is a skeleton and a long, expensive journey of internal platform engineering.
+
+Here are some of the most common pitfalls teams encounter when adopting Backstage:
+
+### 1. Overwhelming DIY
+
+As part of my effort to understand the Backstage ecosystem better, I spoke with several users about their adoption journey.
+
+One consistent theme stood out: everyone invests heavily in DIY solutions on top of Backstage. Whether it's integrating better catalog data, enabling use cases not covered by community plugins, or adapting to their unique engineering processes - the teams I spoke to ended up building custom plugins or modifying official ones.
+
+In fact, I didn't meet a single company that hadn't built at least one internal plugin tailored to their unique setup.
+
+A big takeaway from all this is that plugin development is not optional. It's table stakes. But most teams don't realize that until they're already knee-deep. The required investment, and the headcount, is non-trivial. It's never a one-person job. While a two-person team might hold the line in some orgs, it's usually 4+, and often 15+ at scale.
+
+Worse still, you're looking for engineers who blend a mix of DevOps, Platform skills, and React JS. The talent for this overlap is scarce, and you'll need to pay top dollar for the uniqueness of the background.
+
+Another commonly overlooked challenge is managing, discovering, and evolving the use cases the platform needs to support. Success depends on a tight feedback loop between plugin authors and internal users - gathering requirements, writing user stories, testing mockups, and refining UX specs. Because UI is involved, it quickly becomes intricate work, with many stakeholders to satisfy: engineers, managers, SREs, security teams, and more. Ideally, this work is led by a technical product manager (TPM). But most companies don't staff one for Backstage - so features get built but go unused, while real needs go unaddressed. Another common failure mode is poor UX decisions that never get user-tested, leading to frustrating experiences that kill adoption at scale.
+
+The need for a TPM yet again highlights the sheer amount of human capital required to pull off a successful Backstage installation.
+
+Finally, DIY work tends to break when Backstage gets updated - especially if you've strayed too far from upstream patterns. The advice we heard from companies getting burnt by this is that you should try to not go against the design choices of Backstage, and try to limit any hacks as much as possible - because those hacks may no longer work later. And no, abandoning upstream altogether is not a great solution, because that would mean your internal platform would stagnate in momentum. It'll get very difficult to add other community plugins on top later.
+
+### 2. Limited Adoption
+The next big problem of typical Backstage installations is that the adoption level is very low. While Spotify internally claims to have achieved 99% voluntary adoption, most organizations get stuck at about 10% [Source].
+
+These aren't early experiments. These are mature teams, often with 4–5 custom plugins and 10+ engineers behind them, still struggling to drive meaningful adoption. Imagine sinking so much effort into this great platform that ends up being largely unused at the end of the day.
+
+Most companies try to fix this the wrong way: by building even more features, hoping dev teams will adopt the platform if they just find "the right one". I don't know about you, but I have seen this movie too many times in the startup world: a failing startup isn't taking off and they just endlessly build even more stuff nobody needs in hopes that "we're just missing this one feature". No. It's either a distribution problem or a product-market-fit problem and it needs to be treated as such. It's not a "needs more bells-and-whistels" problem. And no, "build it and they will come" is never the right answer.
+
+### 3. Catalogs Rot Fast
+Another common issue: catalog data rots quickly. People leave. Teams reshuffle. Ownership records go out of date. The worst part about this is that you learn about it in a post-mortem. An SRE scrambles to reach the owner during an incident - no one picks up. MTTR tanks.
+
+### 4. Scaffolding Only Works for Greenfield
+Scaffolding promises standardization. If every service had the same CI/CD setup, life would be easier. Right?
+
+But the reality is that the most critical apps are the oldest and messiest. You're not migrating that to a new dev setup. It's like doing surgery on a sprinting patient. App teams have their own goals and milestones and they don't have time for your rip-and-replace infrastructure project that gives them very little in return.
+
+### 5. Scorecards are Super Limited
+I wrote previously about the limitations of scorecards. In summary: most scorecards are 💩. They promise a lot, but in reality they provide very little insight into key development practices in code and in CI/CD. In addition, they have no way to shift to the left to provide the feedback in context, in PRs. The feedback lives in a dashboard no one checks.
+
