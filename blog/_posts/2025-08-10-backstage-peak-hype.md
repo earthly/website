@@ -105,21 +105,21 @@ I wrote previously about the limitations of scorecards. In summary: most scoreca
 
 ## Limited ROI
 
-Zoom out, and the pattern is clear: Backstage is expensive to implement, and even harder to make stick. The technical lift is high, the organizational cost is even higher, and the payoff, more often than not, just doesn’t materialize. DIY piles up. Adoption stalls. Catalogs rot. And scorecards turn into a dashboard of guilt that nobody looks at.
+Zoom out, and the pattern is clear: Backstage is expensive to implement, and even harder to make stick. The technical lift is high, the organizational cost is even higher, and the payoff, more often than not, just doesn't materialize. DIY piles up. Adoption stalls. Catalogs rot. And scorecards turn into a dashboard of guilt that nobody looks at.
 
 The result is a beautiful portal, used by 10% of the company. It's because of all these points that I fear that Backstage may see tremendous churn over the next few years.
 
 ## But It Doesn't Have to Be That Way
 
-Backstage isn’t going away \- nor should it. It’s a powerful foundation. But the next chapter for most organizations isn’t about building more plugins. It’s about making the investment finally pay off.
+Backstage isn't going away \- nor should it. It's a powerful foundation. But the next chapter for most organizations isn't about building more plugins. It's about making the investment finally pay off.
 
-Here’s what that might look like:
+Here's what that might look like:
 
-1. **Fix the adoption bottleneck**. Backstage only creates value when enough teams are onboarded. But adoption doesn’t have to be all-or-nothing.
+1. **Fix the adoption bottleneck**. Backstage only creates value when enough teams are onboarded. But adoption doesn't have to be all-or-nothing.
 
    A smart next step can be to start nudging adoption from the places developers already work \- like the PR workflow. If a service is missing catalog metadata, show a friendly warning in the pull request. If it violates a security baseline, surface that inline.
 
-   These nudges don’t block progress \- they raise awareness. And because they’re delivered in the right context (not in a dashboard nobody checks), they’re far more likely to result in action. Over time, this creates a self-reinforcing loop \- no top-down mandates required.
+   These nudges don't block progress \- they raise awareness. And because they're delivered in the right context (not in a dashboard nobody checks), they're far more likely to result in action. Over time, this creates a self-reinforcing loop \- no top-down mandates required.
 2. **Use Backstage to drive real engineering alignment**. The catalog should evolve from being a passive registry to an active system of record for engineering health. That means embedding signals directly into it:
 
    * Which of my 20,000 repos are production-related?
@@ -130,8 +130,8 @@ Here’s what that might look like:
    * Are services tested and scanned according to compliance standards?
    * How far along is that high-priority migration initiative we launched last quarter?
 
-Backstage can become the lens through which leadership sees engineering maturity at a glance. Not a vanity scorecard, but a dynamic map of what’s production-ready, what’s at risk, and where to invest. That’s when Backstage becomes indispensable.
+Backstage can become the lens through which leadership sees engineering maturity at a glance. Not a vanity scorecard, but a dynamic map of what's production-ready, what's at risk, and where to invest. That's when Backstage becomes indispensable.
 
-Backstage isn’t the problem. But its success hinges on how it’s used, and whether it’s integrated into the day-to-day flow of engineering, not just maintained on the sidelines by a heroic platform team.
+Backstage isn't the problem. But its success hinges on how it's used, and whether it's integrated into the day-to-day flow of engineering, not just maintained on the sidelines by a heroic platform team.
 
-If this is the kind of platform problem you want to tackle, where developer experience meets governance and engineering culture, [**we’re hiring**](https://jobs.earthly.dev/). We want to turn Backstage from a static registry into a real-time, policy-aware visibility layer by plugging directly into code, CI/CD, and PR workflows. We’re answering the questions no plugin or scorecard can.
+If this is the kind of platform problem you want to tackle, where developer experience meets governance and engineering culture, [**we're hiring**](https://jobs.earthly.dev/). We want to turn Backstage from a static registry into a real-time, policy-aware visibility layer by plugging directly into code, CI/CD, and PR workflows. We're answering the questions no plugin or scorecard can.
