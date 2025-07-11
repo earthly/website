@@ -55,7 +55,7 @@ But as adoption surged, so did the realization: running Backstage in the real wo
 
 While many companies are eager to adopt Backstage, those a year or two in are starting to realize just how hard it is to maintain \- and even harder to make successful. Reddit user [u/hcaandrade2](https://www.reddit.com/user/hcaandrade2/) put it [best](https://www.reddit.com/r/devops/comments/1kgfqys/comment/mqyvwdm/?utm_source=share&utm_medium=web3x&utm_name=web3xcss&utm_term=1&utm_content=share_button):
 
-{% picture grid {{site.pimages}}{{page.slug}}/backstage-reddit.png --picture --alt {{ Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride." }} %}
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/backstage-reddit.png --alt {{ Backstage is a "free" IDP in the same way you would get a "free" car if some dumped all the parts of a Chevy on your desk and said "congratulations, here's your free ride." }} %}
 
 Backstage seems like a sleek developer portal out of the box. What you actually get is a skeleton and a long, expensive journey of internal platform engineering.
 
@@ -99,9 +99,9 @@ But the reality is that the most critical apps are the oldest and messiest. You'
 
 ### 5. Scorecards are Super Limited
 
-I wrote previously about the limitations of scorecards. In summary: most scorecards are 💩. They promise a lot, but in reality they provide very little insight into key development practices in code and in CI/CD. In addition, they have no way to shift to the left to provide the feedback in context, in PRs. The feedback lives in a dashboard no one checks.
+I [wrote previously about the limitations of scorecards](https://earthly.dev/blog/slack-archived-service-running/#scorecards-typically-in-idps). In summary: most scorecards are 💩. They promise a lot, but in reality they provide very little insight into key development practices in code and in CI/CD. In addition, they have no way to shift to the left to provide the feedback in context, in PRs. The feedback lives in a dashboard no one checks.
 
-![Traditional scorecards only see the tip of the iceberg]({{site.images}}{{page.slug}}/scorecards.png)
+{% picture content-wide-nocrop {{site.pimages}}{{page.slug}}/scorecards.png --alt {{ Scorecards miss 90% of SDLC concerns }} %}
 
 ## Limited ROI
 
