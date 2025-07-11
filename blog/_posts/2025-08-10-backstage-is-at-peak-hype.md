@@ -25,7 +25,7 @@ last_modified_at: 2025-06-10
 
 By 2014, Spotify had over 100 engineers and was spinning up new microservices weekly, leading to service sprawl, duplicated efforts, and poor visibility into ownership. In response, a platform team created an internal microservices catalog called System Z. \[[Source](https://newsletter.pragmaticengineer.com/p/backstage)\] System Z let teams register services with metadata (code links, owners, etc.), and later model relationships between components, organizing services into cohesive systems.
 
-![Image source: [https://newsletter.pragmaticengineer.com/p/backstage](https://newsletter.pragmaticengineer.com/p/backstage)]({{site.images}}{{page.slug}}/system-z.jpg)
+![[Image source](https://newsletter.pragmaticengineer.com/p/backstage)]({{site.images}}{{page.slug}}/system-z.jpg)
 
 By 2017, the growing usage and feature scope of System Z prompted a complete rewrite. This next-generation portal was dubbed **Backstage**. Internally, Backstage delivered notable improvements: a 55% decrease in new engineer onboarding time (measured by time to 10th pull request) and vastly improved developer productivity. By early 2020, 280+ engineering teams at Spotify were using Backstage to manage over 2,000 microservices, 300+ websites, 4,000 data pipelines, and 200 mobile features.
 
@@ -39,7 +39,7 @@ Spotify had a clear roadmap for Backstage's open-source debut, broken into three
 
 Adoption came quickly. By September 2020, over 130 people had submitted contributions to the Backstage repo, with \~40% of pull requests coming from outside Spotify. Notable early adopters included Expedia, American Airlines and Netflix. That same month, Backstage was accepted as a CNCF Sandbox project.
 
-![Image source: [https://techcrunch.com/2025/05/04/backstage-access-spotifys-dev-tools-side-hustle-is-growing-legs](https://techcrunch.com/2025/05/04/backstage-access-spotifys-dev-tools-side-hustle-is-growing-legs)]({{site.images}}{{page.slug}}/backstage-2020.png)
+![[Image source](https://techcrunch.com/2025/05/04/backstage-access-spotifys-dev-tools-side-hustle-is-growing-legs)]({{site.images}}{{page.slug}}/backstage-2020.png)
 
 In March 2022, Backstage 1.0 was released, and CNCF promoted the project to Incubation status.
 
