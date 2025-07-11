@@ -6130,10 +6130,17 @@ lunar-launch:
  - shutting-down-earthly-ci
  - ucacher
  - slack-archived-service-running
+ - backstage-is-at-peak-hype
 
 slack-archived-service-running:
  - nerding-out-with-viktor-podcast
  - shutting-down-earthly-ci
  - ucacher
  - lunar-launch
+ - backstage-is-at-peak-hype
 
+backstage-is-at-peak-hype:
+  - lunar-launch
+  - slack-archived-service-running
+  - platform-eng-is-dead
+  - uacacher
