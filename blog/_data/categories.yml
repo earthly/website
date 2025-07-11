@@ -23,7 +23,7 @@
 
     - name: Platform
       slug: platform
-      list-name: Platform Eng.
+      list-name: Platform Engineering
       title: Platform Tutorials
 
     - name: cli
