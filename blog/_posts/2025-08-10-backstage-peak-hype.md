@@ -81,7 +81,7 @@ Finally, DIY work tends to break when Backstage gets updated - especially if you
 
 ### 2. Limited Adoption
 
-The next big problem of typical Backstage installations is that the adoption level is very low. While Spotify internally claims to have achieved 99% voluntary adoption, most organizations get stuck at about 10% [Source].
+The next big problem of typical Backstage installations is that the adoption level is very low. While Spotify internally claims to have achieved 99% voluntary adoption, most organizations get stuck at about 10% [Source](https://thenewstack.io/how-spotify-achieved-a-voluntary-99-internal-platform-adoption-rate/).
 
 These aren't early experiments. These are mature teams, often with 4–5 custom plugins and 10+ engineers behind them, still struggling to drive meaningful adoption. Imagine sinking so much effort into this great platform that ends up being largely unused at the end of the day.
 
