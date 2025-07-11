@@ -45,7 +45,7 @@ In March 2022, Backstage 1.0 was released, and CNCF promoted the project to Incu
 
 What followed was a massive uptick in adoption. Within just a few years of open-sourcing, some of the largest engineering orgs had adopted Backstage with enthusiasm. Yelp, Twilio, Lyft, Box, VMware, LinkedIn, AirBnB, Epic Games, AWS, Splunk and many others were jumping on the bandwagon.
 
-Meanwhile, a growing ecosystem of vendors emerged. Spotify introduced [SoundCheck](https://backstage.spotify.com/partners/spotify/plugin/soundcheck/), a paid scorecarding plugin, while others like Cortex and OpsLevel began innovating in the broader IDP space beyond Backstage.
+Meanwhile, a growing ecosystem of vendors emerged. Spotify introduced [Soundcheck](https://backstage.spotify.com/partners/spotify/plugin/soundcheck/), a paid scorecarding plugin, while others like Cortex and OpsLevel began innovating in the broader IDP space beyond Backstage.
 
 ![Source: [2020](https://backstage.io/blog/2020/03/16/announcing-backstage/), [2021](https://backstage.spotify.com/discover/blog/50-public-adopters/), [2021](https://backstage.io/blog/2021/12/20/backstage-wrapped-2021/), [2022](https://backstage.spotify.com/discover/blog/backstage-turns-2/), [2022](https://backstage.io/blog/2022/12/19/backstage-wrapped-2022/), [2023](https://backstage.io/blog/2023/03/15/backstage-turns-3/), [2023](https://www.cncf.io/announcements/2023/11/08/cloud-native-computing-foundation-presents-the-top-end-user-award-to-spotify/), [2025](https://thenewstack.io/five-years-in-backstage-is-just-getting-started/)]({{site.images}}{{page.slug}}/backstage-adoption-trend.png)
 
