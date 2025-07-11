@@ -8,8 +8,8 @@ topic: earthly
 funnel: 3
 topcta: false
 excerpt: |
-   A look behind the portal everyone's building - and the hard truths most discover too late.
-last_modified_at: 2025-06-10
+   A look behind the portal everyone's building - and the hard truths most discover too late. Spotify open-sourced Backstage in 2020 and it's been adopted by Netflix, Lyft, Twilio, and dozens of other tech giants. The hype is real, but why are so many teams quietly struggling to make it work?
+last_modified_at: 2025-08-15
 ---
 *A look behind the portal everyone's building - and the hard truths most discover too late.*
 
