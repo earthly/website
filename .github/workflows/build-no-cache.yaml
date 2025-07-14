@@ -54,6 +54,4 @@ jobs:
            regex: 'https.*netlify.app'
       - name: Comment on build
         run: |-
-          echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
-  
-         
+          echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY  

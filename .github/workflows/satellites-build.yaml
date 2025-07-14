@@ -66,5 +66,3 @@ jobs:
       - name: Comment on build
         run: |-
           echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
-  
-         
