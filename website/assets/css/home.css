@@ -107,6 +107,17 @@ h2 {
   font-family: "Source Code Pro", monospace;
 }
 
+.iframe-mask {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #E8F7FE; /* or match your page background */
+  z-index: 2;
+  pointer-events: none;
+  height: 50px;
+  bottom: 0px;
+}
+
 @media only screen and (min-width: 420px) {
   .hero > div > svg {
     top: -436px;
@@ -253,6 +264,23 @@ h2 {
   }
 }
 
+@media only screen and (max-width: 640px) {
+  .embded-iframe {
+    height: 222px;
+  }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 639px) {
+  .embded-iframe {
+    height: 280px;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  .embded-iframe {
+    height: 198px;
+  }
+}
 
 @media only screen and (max-width: 374px) {
   .red-line-mobile,

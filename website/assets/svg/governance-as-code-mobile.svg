@@ -1,4 +1,4 @@
-<svg width="361" height="902" viewBox="0 0 361 902" fill="none" xmlns="http://www.w3.org/2000/svg">
+<svg width="361" height="900" viewBox="0 0 361 900" fill="none" xmlns="http://www.w3.org/2000/svg">
 <g clip-path="url(#clip0_6082_11877)">
 <path d="M263.451 -84.9111L263.451 242.573C263.451 250.505 261.878 258.358 258.824 265.678L175.826 464.589" stroke="url(#paint0_linear_6082_11877)" stroke-width="2"/>
 <path d="M87.6182 -83.9111L87.6181 242.573C87.6181 250.505 89.1908 258.358 92.2453 265.678L175.244 464.589" stroke="url(#paint1_linear_6082_11877)" stroke-width="2"/>
@@ -27,14 +27,10 @@
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="70.7637" y="181.04">patterns:</tspan></text>
 <text fill="#98C37A" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="70.7637" y="199.756">- ^go test.*&#10;</tspan><tspan x="70.7637" y="217.246">- ^npm test.*&#10;</tspan><tspan x="70.7637" y="234.736">- ^python -m .unittest.*  </tspan></text>
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="34.8125" y="253.473">  runBash:</tspan></text>
-<g filter="url(#filter1_d_6082_11877)">
 <text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="116.702" y="253.473">|-</tspan></text>
-</g>
-<g filter="url(#filter2_d_6082_11877)">
 <text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="34.8125" y="272.19">&#xa0;&#xa0;&#xa0; lunar collect &#34;.unit_tests.run&#34; </tspan><tspan x="34.8125" y="289.68">true</tspan></text>
 </g>
-</g>
-<g filter="url(#filter3_d_6082_11877)">
+<g filter="url(#filter1_d_6082_11877)">
 <rect x="78.4922" y="383.062" width="194" height="137" rx="22.3314" fill="#111214" shape-rendering="crispEdges"/>
 <rect x="78.4922" y="383.062" width="194" height="137" rx="22.3314" stroke="url(#paint6_linear_6082_11877)" stroke-width="4" shape-rendering="crispEdges"/>
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6" font-weight="600" letter-spacing="-0.03em"><tspan x="108.992" y="426.856">{</tspan></text>
@@ -45,7 +41,7 @@
 </g>
 <g clip-path="url(#clip1_6082_11877)">
 <rect x="149.863" y="367.867" width="51.2571" height="38.6286" rx="6.68501" fill="white"/>
-<g filter="url(#filter4_d_6082_11877)">
+<g filter="url(#filter2_d_6082_11877)">
 <mask id="path-34-inside-1_6082_11877" fill="white">
 <path d="M167.364 375.105H167.359C167.332 374.01 166.431 373.159 165.335 373.144V373.142H157.949V373.147C156.863 373.174 156.034 374.019 156.01 375.106H156.005V399.209H156.009C156.029 400.292 156.874 401.134 157.949 401.176V401.221H165.335C166.465 401.221 167.364 400.339 167.364 399.209V375.105ZM161.684 398.873C161.296 398.878 160.91 398.806 160.55 398.66C160.189 398.515 159.862 398.3 159.585 398.027C159.309 397.754 159.089 397.429 158.939 397.07C158.79 396.712 158.712 396.327 158.713 395.938C158.713 395.55 158.79 395.165 158.94 394.807C159.089 394.448 159.309 394.123 159.585 393.85C159.862 393.577 160.19 393.362 160.55 393.217C160.911 393.071 161.296 392.999 161.685 393.004C162.457 393.014 163.193 393.328 163.736 393.877C164.278 394.426 164.582 395.167 164.582 395.939C164.582 396.711 164.278 397.452 163.735 398.001C163.193 398.55 162.456 398.863 161.684 398.873ZM165.016 388.323H158.353V375.489H165.016V388.323ZM181.072 375.105H181.067C181.04 374.01 180.139 373.159 179.042 373.144V373.142H171.656V373.147C170.57 373.174 169.741 374.019 169.717 375.106H169.712V399.209H169.716C169.736 400.292 170.581 401.134 171.656 401.176V401.221H179.042C180.173 401.221 181.072 400.339 181.072 399.209V375.105ZM175.391 398.873C175.003 398.878 174.617 398.806 174.257 398.66C173.897 398.515 173.569 398.3 173.292 398.027C173.016 397.754 172.796 397.429 172.647 397.07C172.497 396.712 172.42 396.327 172.42 395.938C172.42 395.55 172.497 395.165 172.647 394.807C172.797 394.448 173.016 394.123 173.293 393.85C173.569 393.577 173.897 393.362 174.258 393.217C174.618 393.071 175.003 392.999 175.392 393.004C176.164 393.014 176.901 393.327 177.443 393.877C177.985 394.426 178.29 395.167 178.29 395.939C178.29 396.711 177.985 397.451 177.443 398.001C176.901 398.55 176.163 398.863 175.391 398.873ZM178.724 388.323H172.06V375.489H178.724L178.724 388.323ZM194.779 375.105H194.774C194.747 374.01 193.846 373.159 192.75 373.144V373.142H185.363V373.147C184.277 373.174 183.449 374.019 183.424 375.106H183.419V399.209H183.423C183.443 400.292 184.289 401.134 185.363 401.176V401.221H192.75C193.88 401.221 194.779 400.339 194.779 399.209V375.105ZM189.099 398.873C188.711 398.878 188.325 398.806 187.965 398.66C187.604 398.515 187.277 398.3 187 398.027C186.724 397.754 186.504 397.429 186.354 397.07C186.205 396.712 186.128 396.327 186.128 395.938C186.128 395.55 186.205 395.165 186.355 394.807C186.504 394.448 186.724 394.123 187 393.85C187.277 393.577 187.605 393.362 187.965 393.217C188.326 393.071 188.711 392.999 189.1 393.004C189.872 393.014 190.608 393.328 191.151 393.877C191.693 394.426 191.997 395.167 191.997 395.939C191.997 396.711 191.693 397.452 191.15 398.001C190.608 398.55 189.871 398.863 189.099 398.873ZM192.431 388.323H185.768V375.489H192.431V388.323Z"/>
 </mask>
@@ -53,9 +49,9 @@
 <path d="M167.364 375.105H167.359C167.332 374.01 166.431 373.159 165.335 373.144V373.142H157.949V373.147C156.863 373.174 156.034 374.019 156.01 375.106H156.005V399.209H156.009C156.029 400.292 156.874 401.134 157.949 401.176V401.221H165.335C166.465 401.221 167.364 400.339 167.364 399.209V375.105ZM161.684 398.873C161.296 398.878 160.91 398.806 160.55 398.66C160.189 398.515 159.862 398.3 159.585 398.027C159.309 397.754 159.089 397.429 158.939 397.07C158.79 396.712 158.712 396.327 158.713 395.938C158.713 395.55 158.79 395.165 158.94 394.807C159.089 394.448 159.309 394.123 159.585 393.85C159.862 393.577 160.19 393.362 160.55 393.217C160.911 393.071 161.296 392.999 161.685 393.004C162.457 393.014 163.193 393.328 163.736 393.877C164.278 394.426 164.582 395.167 164.582 395.939C164.582 396.711 164.278 397.452 163.735 398.001C163.193 398.55 162.456 398.863 161.684 398.873ZM165.016 388.323H158.353V375.489H165.016V388.323ZM181.072 375.105H181.067C181.04 374.01 180.139 373.159 179.042 373.144V373.142H171.656V373.147C170.57 373.174 169.741 374.019 169.717 375.106H169.712V399.209H169.716C169.736 400.292 170.581 401.134 171.656 401.176V401.221H179.042C180.173 401.221 181.072 400.339 181.072 399.209V375.105ZM175.391 398.873C175.003 398.878 174.617 398.806 174.257 398.66C173.897 398.515 173.569 398.3 173.292 398.027C173.016 397.754 172.796 397.429 172.647 397.07C172.497 396.712 172.42 396.327 172.42 395.938C172.42 395.55 172.497 395.165 172.647 394.807C172.797 394.448 173.016 394.123 173.293 393.85C173.569 393.577 173.897 393.362 174.258 393.217C174.618 393.071 175.003 392.999 175.392 393.004C176.164 393.014 176.901 393.327 177.443 393.877C177.985 394.426 178.29 395.167 178.29 395.939C178.29 396.711 177.985 397.451 177.443 398.001C176.901 398.55 176.163 398.863 175.391 398.873ZM178.724 388.323H172.06V375.489H178.724L178.724 388.323ZM194.779 375.105H194.774C194.747 374.01 193.846 373.159 192.75 373.144V373.142H185.363V373.147C184.277 373.174 183.449 374.019 183.424 375.106H183.419V399.209H183.423C183.443 400.292 184.289 401.134 185.363 401.176V401.221H192.75C193.88 401.221 194.779 400.339 194.779 399.209V375.105ZM189.099 398.873C188.711 398.878 188.325 398.806 187.965 398.66C187.604 398.515 187.277 398.3 187 398.027C186.724 397.754 186.504 397.429 186.354 397.07C186.205 396.712 186.128 396.327 186.128 395.938C186.128 395.55 186.205 395.165 186.355 394.807C186.504 394.448 186.724 394.123 187 393.85C187.277 393.577 187.605 393.362 187.965 393.217C188.326 393.071 188.711 392.999 189.1 393.004C189.872 393.014 190.608 393.328 191.151 393.877C191.693 394.426 191.997 395.167 191.997 395.939C191.997 396.711 191.693 397.452 191.15 398.001C190.608 398.55 189.871 398.863 189.099 398.873ZM192.431 388.323H185.768V375.489H192.431V388.323Z" stroke="url(#paint7_linear_6082_11877)" stroke-width="5.09776" mask="url(#path-34-inside-1_6082_11877)"/>
 </g>
 </g>
-<g filter="url(#filter5_d_6082_11877)">
-<rect x="11.9922" y="571.874" width="327" height="295.429" rx="29.3294" fill="#111214" shape-rendering="crispEdges"/>
-<rect x="11.9922" y="571.874" width="327" height="295.429" rx="29.3294" stroke="white" stroke-width="4.85831" shape-rendering="crispEdges"/>
+<g filter="url(#filter3_d_6082_11877)">
+<rect x="11.9922" y="571.874" width="327" height="252.429" rx="29.3294" fill="#111214" shape-rendering="crispEdges"/>
+<rect x="11.9922" y="571.874" width="327" height="252.429" rx="29.3294" stroke="white" stroke-width="4.85831" shape-rendering="crispEdges"/>
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="35.3125" y="617.775">policies:</tspan></text>
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="35.3125" y="636.492">- name:</tspan></text>
 <text fill="#98C37A" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="94.1992" y="636.492">unit-tests</tspan></text>
@@ -64,20 +60,15 @@
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="35.3125" y="690.924">  on:</tspan></text>
 <text fill="#98C37A" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="79.1992" y="690.924">[all-production-services]</tspan></text>
 <text fill="#D09A66" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="35.3125" y="709.641">  runPython:</tspan></text>
-<g filter="url(#filter6_d_6082_11877)">
 <text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="133.199" y="709.641">|-</tspan></text>
+<text fill="#98C37A" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="96.3067" y="728.358"> </tspan><tspan x="142.798" y="728.358">(&#34;unit-tests&#34;, &#34;Ran </tspan><tspan x="65.3125" y="745.848">Unit Tests in CI&#34;) as c:</tspan></text>
+<text fill="#C397D8" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="65.3125" y="728.358">with</tspan></text>
+<text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="104.055" y="728.358">Check</tspan></text>
+<text fill="#98C37A" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="172.223" y="770.358">(&#34; .unt_tests.run&#34;, &#10;</tspan><tspan x="71.4922" y="787.848">&#34;Unit tests are required&#34;</tspan></text>
+<text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="71.4922" y="770.358">c.</tspan><tspan x="265.206" y="787.848">)</tspan></text>
+<text fill="#7AA6DA" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="86.9893" y="770.358">assert_true</tspan></text>
 </g>
-<g filter="url(#filter7_d_6082_11877)">
-<text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="65.3125" y="728.358">from lunar_snippets import Check</tspan></text>
-</g>
-<g filter="url(#filter8_d_6082_11877)">
-<text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="81.3125" y="753.358">with Check(&#34;unit-tests&#34;, &#34;Ran </tspan><tspan x="81.3125" y="770.848">Unit Tests in CI&#34;) as c:</tspan></text>
-</g>
-<g filter="url(#filter9_d_6082_11877)">
-<text fill="#C5D5FF" xml:space="preserve" style="white-space: pre" font-family="Source Code Pro" font-size="13.6033" font-weight="600" letter-spacing="-0.03em"><tspan x="103.312" y="795.358">c.assert_true(&#34;.unt_tests.r</tspan><tspan x="103.312" y="812.848">un&#34;, &#34;No unit tests were </tspan><tspan x="103.312" y="830.338">detected in CI&#34;)</tspan></text>
-</g>
-</g>
-<text fill="#475569" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="116.43" y="897.286">Policy Engine</tspan></text>
+<text fill="#475569" xml:space="preserve" style="white-space: pre" font-family="Helvetica" font-size="18" font-weight="bold" letter-spacing="0em"><tspan x="116.43" y="854.286">Policy Engine</tspan></text>
 <defs>
 <filter id="filter0_d_6082_11877" x="0.0270147" y="31.0622" width="360.355" height="309.454" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
@@ -89,27 +80,7 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
 </filter>
-<filter id="filter1_d_6082_11877" x="115.037" y="238.24" width="21.5672" height="23.7078" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
-</filter>
-<filter id="filter2_d_6082_11877" x="30.5626" y="257.148" width="279.473" height="37.2801" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
-</filter>
-<filter id="filter3_d_6082_11877" x="69.6118" y="374.922" width="213.24" height="156.24" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter1_d_6082_11877" x="69.6118" y="374.922" width="213.24" height="156.24" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dx="0.739824" dy="1.47965"/>
@@ -119,7 +90,7 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
 </filter>
-<filter id="filter4_d_6082_11877" x="145.215" y="362.351" width="60.3549" height="49.6606" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter2_d_6082_11877" x="145.215" y="362.351" width="60.3549" height="49.6606" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feMorphology radius="2.54888" operator="dilate" in="SourceAlpha" result="effect1_dropShadow_6082_11877"/>
@@ -130,7 +101,7 @@
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
 </filter>
-<filter id="filter5_d_6082_11877" x="0.527015" y="561.381" width="354.925" height="320.303" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<filter id="filter3_d_6082_11877" x="0.527015" y="561.381" width="354.925" height="277.303" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
 <feFlood flood-opacity="0" result="BackgroundImageFix"/>
 <feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
 <feOffset dx="0.971662" dy="1.94332"/>
@@ -138,46 +109,6 @@
 <feComposite in2="hardAlpha" operator="out"/>
 <feColorMatrix type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.25 0"/>
 <feBlend mode="normal" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
-</filter>
-<filter id="filter6_d_6082_11877" x="131.534" y="694.408" width="21.5672" height="23.7078" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
-</filter>
-<filter id="filter7_d_6082_11877" x="61.5118" y="713.316" width="256.948" height="22.7557" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
-</filter>
-<filter id="filter8_d_6082_11877" x="76.3419" y="738.316" width="234.22" height="39.5252" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
-<feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
-</filter>
-<filter id="filter9_d_6082_11877" x="98.9806" y="780.356" width="218.22" height="57.4852" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
-<feFlood flood-opacity="0" result="BackgroundImageFix"/>
-<feColorMatrix in="SourceAlpha" type="matrix" values="0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 127 0" result="hardAlpha"/>
-<feOffset/>
-<feGaussianBlur stdDeviation="2.52632"/>
-<feComposite in2="hardAlpha" operator="out"/>
-<feColorMatrix type="matrix" values="0 0 0 0 0.67762 0 0 0 0 0.948167 0 0 0 0 1 0 0 0 1 0"/>
-<feBlend mode="difference" in2="BackgroundImageFix" result="effect1_dropShadow_6082_11877"/>
 <feBlend mode="normal" in="SourceGraphic" in2="effect1_dropShadow_6082_11877" result="shape"/>
 </filter>
 <linearGradient id="paint0_linear_6082_11877" x1="219.638" y1="-132.411" x2="219.638" y2="464.589" gradientUnits="userSpaceOnUse">
