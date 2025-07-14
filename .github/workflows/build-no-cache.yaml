@@ -11,7 +11,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v3
       - name: Set up Earthly
-        uses: earthly/actions/setup-earthly@v1
+        uses: earthly/actions-setup@v1
       - name: Build Site
         uses: mathiasvr/command-output@v1
         id: build-site

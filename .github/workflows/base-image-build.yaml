@@ -16,7 +16,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Set up Earthly
-        uses: earthly/actions/setup-earthly@v1
+        uses: earthly/actions-setup@v1
       - name: setup qemu
         id: qemu
         uses: docker/setup-qemu-action@v1
