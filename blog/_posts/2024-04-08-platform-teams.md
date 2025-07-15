@@ -10,6 +10,8 @@ internal-links:
  - developers being helped by platform team
 categories:
   - platform
+  - articles
+last_modified_at: 2025-07-15
 ---
 
 Platform teams support the work of development teams by building internal tools and platforms that automate processes, unify operations, and enable self-service developer access to infrastructure resources.
