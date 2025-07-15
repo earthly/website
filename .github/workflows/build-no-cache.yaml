@@ -5,11 +5,13 @@ on:
 jobs:
   build-website:
     name: Build Website
-    runs-on: [earthly-satellite#gha-website]
+    runs-on: ubuntu-latest
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Set up Earthly
+        uses: earthly/actions-setup@v1
       - name: Build Site
         uses: mathiasvr/command-output@v1
         id: build-site
@@ -52,6 +54,4 @@ jobs:
            regex: 'https.*netlify.app'
       - name: Comment on build
         run: |-
-          echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY 
-  
-         
+          echo "Preview URL: ${{ steps.regex-match.outputs.match }}" >> $GITHUB_STEP_SUMMARY  
