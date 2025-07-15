@@ -3,7 +3,6 @@ title: "Three Ways to Do Developer Experience (DX)"
 toc: true
 author: Adam
 internal-links:
- - articles
  - dx
  - developer experience
 excerpt: |
@@ -11,6 +10,7 @@ excerpt: |
 last_modified_at: 2023-08-15
 categories:
   - platform
+  - articles
 ---
 **This article emphasizes the vital role of Developer Experience (DX) in boosting productivity and job satisfaction. Earthly improves DX with reliable and efficient build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
 

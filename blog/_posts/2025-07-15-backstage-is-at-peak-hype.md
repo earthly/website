@@ -1,5 +1,7 @@
 ---
 title: "Backstage Is at the Peak of Its Hype"
+categories:
+  - news
 toc: true
 author: Vlad
 topic: earthly
