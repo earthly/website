@@ -1,0 +1,68 @@
+<div class="mt-16 px-6 sm:px-12 pt-4 max-w-[375px] sm:max-w-5xl m-auto mb-16 how-lunar-works-section">
+  <div class="flex flex-col items-center">
+    <div class="text-[40px] mb-2 px-10 sm:px-0 text-center">Here’s How Lunar Works</div>
+    <div class="flex relative">
+      {% svg assets/svg/men-working.svg class="w-full z-10 hidden sm:block" %}
+      {% svg assets/svg/men-working-mobile.svg class="z-10 block sm:hidden" %}
+      <span class="absolute top-[52%] right-[10px] sm:right-[-14px] green-circle-left block sm:hidden md:block">
+        {% svg assets/svg/green-circle.svg class="hidden green-circle-desktop" %}
+        {% svg assets/svg/green-circle-tablet.svg class="hidden md:block green-circle-tablet" %}
+        {% svg assets/svg/green-circle-mobile.svg class="block sm:hidden green-circle-mobile" %}
+      </span>
+      <span class="absolute top-[55%] left-2 sm:top-[53%] red-line-left block sm:hidden md:block">
+        {% svg assets/svg/red-line-desktop.svg class="hidden red-line-desktop" %}
+        {% svg assets/svg/red-line.svg class="hidden lg:block red-line-tablet" %}
+        {% svg assets/svg/red-line-tablet.svg class="hidden red-line-tablet-2 md:block lg:hidden" %}
+        {% svg assets/svg/red-line-tablet-2.svg class="hidden red-line-tablet-3" %}
+        {% svg assets/svg/red-line-mobile.svg class="block md:hidden red-line-mobile" %}
+      </span>
+    </div>
+    
+    <div class="flex flex-col md:flex-row mt-[72px] sm:mt-0 md:mt-[56px] justify-between">
+      <div class="flex flex-col justify-center w-full ml:0 md:ml-5 md:w-[31%] xl:w-2/5">
+        <div class="text-2xl">Step 1: Installation</div>
+        <p class="text-lg pt-10 text-[#475569]">Lunar instruments your code repositories and CI/CD pipelines via a lightweight agent. No changes are needed to anyone’s app code or CI/CD Yaml—It's designed to work with the diverse technologies and proceses you already have.</p>
+      </div>
+      {% svg assets/svg/installation.svg class="w-full md:w-auto z-10 block sm:hidden md:block how-lunar-works-svg" %}
+      {% svg assets/svg/installation-mobile.svg class="w-full h-auto z-10 hidden sm:block md:hidden how-lunar-works-mobile-svg" %}
+      <div class="relative block sm:hidden green-line">
+        {% svg assets/svg/data-collection-green-line.svg class="absolute right-[-15px] top-[-32px]" %}
+      </div>
+    </div>
+    {% include lunar/green-line.html %}
+    <div class="flex flex-col md:flex-row justify-between mt-10 md:mt-0">
+      <div class="flex flex-col justify-center w-full ml:0 md:ml-5 md:w-[31%] xl:w-2/5">
+        <div class="text-2xl">Step 2: Data Collection</div>
+        <div class="text-lg pt-10 text-[#475569]">With easy-to-write custom collectors or existing plugins, you can collect SDLC metadata from pretty much anything.</div>
+      </div>
+      {% svg assets/svg/data-collection.svg class="w-full md:w-auto sm:hidden md:block how-lunar-works-svg" %}
+      {% svg assets/svg/data-collection-mobile.svg class="w-full h-auto hidden sm:block md:hidden how-lunar-works-mobile-svg" %}
+      <div class="relative block sm:hidden green-line">
+        {% svg assets/svg/sdlc-green-line.svg class="absolute right-[-15px] top-[-32px]" %}
+      </div>
+    </div>
+    {% include lunar/green-line.html %}
+
+    <div class="flex flex-col md:flex-row justify-between mt-[43px] md:mt-0">
+      <div class="flex flex-col justify-center ml:0 md:ml-5 w-full md:w-[31%] xl:w-2/5">
+        <div class="text-2xl">Step 3: Centralize SDLC Metadata</div>
+        <div class="text-lg pt-10 text-[#475569]">Results from collectors are centralized in a database. Each of your components now has a corresponding rich JSON document describing their current level of maturity and standards adherence.</div>
+      </div>
+      {% svg assets/svg/sdlc-metadata.svg class="w-full md:w-auto sm:hidden md:block how-lunar-works-svg" %}
+      {% svg assets/svg/sdlc-data-moblile.svg class="w-full h-auto hidden sm:block md:hidden how-lunar-works-mobile-svg" %}
+      <div class="relative block sm:hidden green-line">
+        {% svg assets/svg/sdlc-green-line.svg class="absolute right-[-15px] top-[-32px]" %}
+      </div>
+    </div>
+    {% include lunar/green-line.html %}
+
+    <div class="flex flex-col md:flex-row justify-between mb-0 md:mb-24 z-10 mt-[47px] md:mt-0">
+      <div class="flex flex-col justify-center ml:0 md:ml-5 w-full md:w-[31%] xl:w-2/5">
+        <div class="text-2xl">Step 4 : Policy Feedback</div>
+        <div class="text-lg pt-10 text-[#475569]">Write policy-as-code and customize their level of enforcement based on business domain or compliance scope. Real-time policy results are calculated on every code change and shown to developers directly in their PRs.</div>
+      </div>
+      {% svg assets/svg/policy-feedback.svg class="w-full md:w-auto sm:hidden md:block how-lunar-works-svg" %}
+      {% svg assets/svg/policy-feedback-mobile.svg class="w-full h-auto hidden sm:block md:hidden how-lunar-works-mobile-svg" %}
+    </div>
+  </div>
+</div>

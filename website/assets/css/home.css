@@ -4,7 +4,7 @@
 }
 
 .hero > div {
-  height: 710px;
+  height: 800px;
 }
 
 .hero h1 {
@@ -103,15 +103,34 @@ h2 {
   transform: translate(112px, 22px);
 }
 
+.animated-text {
+  font-family: "Source Code Pro", monospace;
+}
+
+.iframe-mask {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  background: #E8F7FE; /* or match your page background */
+  z-index: 2;
+  pointer-events: none;
+  height: 50px;
+  bottom: 0px;
+}
+
 @media only screen and (min-width: 420px) {
   .hero > div > svg {
     top: -436px;
+  }
+
+  .hero a {
+    width: 342px;
   }
 }
 
 @media only screen and (min-width: 640px) {
   .hero > div {
-    height: 768px;
+    height: 900px;
   }
 
   .hero > div > svg {
@@ -131,6 +150,41 @@ h2 {
     width: 100%;
     left: 0;
   }
+
+  .red-line-left {
+    left: -25px;
+  }
+
+  .green-line-tablet {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 899px) {
+  .how-lunar-works-section {
+    max-width: 768px;
+  }
+  .green-line-tablet {
+    right: 27.5%;
+  }
+  .red-line-tablet-2 {
+    display: none;
+  }
+  .red-line-left {
+    top: 52%;
+  }
+  .red-line-tablet-3 {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 900px) and (max-width: 1023px) {
+  .how-lunar-works-section {
+    max-width: 900px;
+  }
+  .green-line-tablet {
+    right: 23%;
+  }
 }
 
 @media only screen and (min-width: 1024px) {
@@ -144,10 +198,6 @@ h2 {
 
   .hero h1 {
     font-size: 56px;
-  }
-
-  .hero a {
-    width: 400px;
   }
 
   .hero > div > svg {
@@ -181,6 +231,7 @@ h2 {
   .info-tooltip svg {
     transform: translate(93px, 22px);
   }
+
 }
 
 @media only screen and (min-width: 1180px) {
@@ -190,6 +241,62 @@ h2 {
 
   .info-tooltip svg {
     transform: translate(112px, 22px);
+  }
+
+  .red-line-left {
+    left: -5rem;
+  }
+
+  .red-line-tablet,
+  .green-line-tablet,
+  .green-circle-tablet {
+    display: none;
+  }
+
+  .red-line-desktop,
+  .green-line-desktop,
+  .green-circle-desktop {
+    display: block;
+  }
+
+  .green-circle-left {
+    right: -68px;
+  }
+}
+
+@media only screen and (max-width: 640px) {
+  .embded-iframe {
+    height: 222px;
+  }
+}
+
+@media only screen and (min-width: 550px) and (max-width: 639px) {
+  .embded-iframe {
+    height: 280px;
+  }
+}
+
+@media only screen and (max-width: 549px) {
+  .embded-iframe {
+    height: 198px;
+  }
+}
+
+@media only screen and (max-width: 374px) {
+  .red-line-mobile,
+  .green-line,
+  .green-circle-mobile,
+  .how-lunar-works-svg {
+    display: none;
+  }
+  .how-lunar-works-mobile-svg {
+    display: block;
+  }
+  .embded-iframe {
+    height: 165px;
+  }
+  .problem-statement-content {
+    width: 100%;
   }
 }
 
