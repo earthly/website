@@ -10,11 +10,13 @@ on:
 jobs:
   build-image:
     name: Build Images
-    runs-on: [earthly-satellite#gha-website]
+    runs-on: ubuntu-latest
     steps:
       - uses: FranzDiebold/github-env-vars-action@v2
       - name: Checkout code
         uses: actions/checkout@v2
+      - name: Set up Earthly
+        uses: earthly/actions-setup@v1
       - name: setup qemu
         id: qemu
         uses: docker/setup-qemu-action@v1
