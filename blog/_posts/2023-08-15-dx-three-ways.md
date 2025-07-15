@@ -3,6 +3,7 @@ title: "Three Ways to Do Developer Experience (DX)"
 toc: true
 author: Adam
 internal-links:
+ - articles
  - dx
  - developer experience
 excerpt: |

@@ -1,7 +1,5 @@
 ---
 title: "When the Slack Channel Gets Archived, but the Service Keeps Running"
-categories:
-  - news
 toc: true
 author: Vlad
 topic: earthly

@@ -13,6 +13,7 @@ excerpt: |
 categories:
   - platform
   - articles
+last_modified_at: 2025-07-15
 ---
 **The article focuses on the transformative impact of platform engineering. Earthly's reproducible builds significantly enhance consistency and efficiency for platform engineers. [Check it out](https://cloud.earthly.dev/login).**
 
