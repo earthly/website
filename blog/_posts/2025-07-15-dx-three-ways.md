@@ -12,8 +12,6 @@ categories:
   - platform
   - articles
 ---
-**This article emphasizes the vital role of Developer Experience (DX) in boosting productivity and job satisfaction. Earthly improves DX with reliable and efficient build processes. [Learn more about Earthly](https://cloud.earthly.dev/login).**
-
 Think of Developer Experience, or DX, as user experience but for developers. Instead of making things easier for the everyday user, DX is about making a developer's life easier when working with tools, libraries, and platforms.
 
 ## Who Should Care About Developer Experience?
