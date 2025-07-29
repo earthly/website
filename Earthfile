@@ -46,7 +46,7 @@ clean:
 
 ## Satellite Build
 publish:
-  FROM 22.17.1-alpine3.21
+  FROM node:22.17.1-alpine3.21
   RUN npm i -g netlify-cli && apk add --no-cache jq curl
 
   BUILD --pass-args ./blog/+lint
